@@ -9,5 +9,37 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require twitter/bootstrap
  *= require_tree .
 */
+body{ 
+  background:#ccc;
+}
+
+div.article{ 
+  width:500px;
+  margin:auto;
+}
+div.date{ 
+  color:#999;
+  font-weight:0.8em;
+}
+div.content{ 
+  margin:20px 0px;
+  font-weight:1.5em;
+  background:#fff;
+}
+
+div#search_content{ 
+  width:500px;
+  margin:70px auto 0px;
+  background:#ddd;
+  padding:40px;
+}
+form#search_form{ 
+  margin-top:40px;
+}
+input#search{ 
+  width:400px;
+
+}

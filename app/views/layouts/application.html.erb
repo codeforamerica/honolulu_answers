@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Honoluluanswers</title>
+  <title>Honolulu Answers</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">
+        Honolulu Answers
+      </a>
+    </div>
+  </div>
+</div>
+
 <%= yield %>
+
+
 
 </body>
 </html>
