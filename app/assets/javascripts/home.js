@@ -2,9 +2,57 @@
 // All this logic will automatically be available in application.js.
 
 
-$(document).ready(function(){
-    $("#search_form").submit(function(e){
+var hnlAnswers = function (){
+    
+    
 
+};
+
+
+$(function(){
+    $("#search_form").submit(function(e){
+        
         e.preventDefault();
+        searchControl.startSearch("");
+        
+
     });
 });
+
+
+
+
+
+
+var searchController = function(){
+
+    var self = this;
+    this.startSearch = function(query){
+        
+
+        $.ajax("/search.json", {data:{q:query}, success:function(data){
+
+            for(r in data.results){
+                console.log("result: ", data.results[r]);
+                self.addResult(data.results[r]);
+            }
+        
+            $("#results").fadeIn();
+        }});
+
+        $("#search_content p").fadeOut('fast');
+        $("#search_content h1").fadeOut('fast');
+        $("#search_content form").animate({"margin":"5"}, 300);
+        $("#search_content").animate({padding: "10",
+                                      "margin-top":"20"}, 300);
+
+    };
+    this.addResult = function(result){
+        $("#results ul").append(Mustache.render(self.resultTemplate, result));
+    };
+    this.resultTemplate = "<li><div class='title'><a href='/articles/{{id}}'>{{title}}</a></div><div>{{content}}</div></li>";
+
+};
+
+
+window.searchControl = new searchController();

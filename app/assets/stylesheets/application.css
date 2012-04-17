@@ -33,7 +33,6 @@ div.content{
 div#search_content{ 
   width:500px;
   margin:70px auto 0px;
-  background:#ddd;
   padding:40px;
 }
 form#search_form{ 
@@ -41,5 +40,21 @@ form#search_form{
 }
 input#search{ 
   width:400px;
-
 }
+div#results{ 
+  width:600px;
+  background:#eee;
+  margin:20px  auto 0px;
+  padding: 50px;
+  display:none;
+}
+
+div#results ul{ 
+  margin:0px;
+  padding:0px;
+}
+div#results ul li{
+  padding:20px 0px;
+  border-bottom:dotted 1px #ccc;
+  list-style:none;
+} 

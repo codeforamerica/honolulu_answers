@@ -1,9 +1,14 @@
+
+
 class SearchController < ApplicationController
 
-  def index
-  end
 
-  def api
+  def index
+    if(params[:format] == "json") then
+      @results = Article.search(params[:q])
+      render :json => {"results"=>@results}
+    end
+
   end
   
 end
