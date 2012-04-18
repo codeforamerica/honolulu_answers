@@ -5,15 +5,13 @@
 var hnlAnswers = function (){
     
     
-
 };
 
 
 $(function(){
-    $("#search_form").submit(function(e){
-        
+    $("#search_form").submit(function(e){       
         e.preventDefault();
-        searchControl.startSearch("");
+        searchControl.startSearch($("#search").val());
         
 
     });
@@ -31,7 +29,7 @@ var searchController = function(){
         
 
         $.ajax("/search.json", {data:{q:query}, success:function(data){
-
+            $("#results ul").empty();
             for(r in data.results){
                 console.log("result: ", data.results[r]);
                 self.addResult(data.results[r]);
