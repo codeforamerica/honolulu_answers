@@ -46,9 +46,11 @@ var searchController = function(){
 
     };
     this.addResult = function(result){
-        $("#results ul").append(Mustache.render(self.resultTemplate, result));
+        $("#results ul").append(Mustache.render(self.resultTemplate, result).replace(/\n/g, "<br />"));
     };
-    this.resultTemplate = "<li><div class='title'><a href='/articles/{{id}}'>{{title}}</a></div><div>{{content}}</div></li>";
+    this.resultTemplate = "<li><div class='title'>"+
+        "<a href='/articles/{{docid}}'>{{title}}</a></div>"+
+        "<div>{{&snippet_text}}</div></li>";
 
 };
 
