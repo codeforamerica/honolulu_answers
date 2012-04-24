@@ -8,4 +8,8 @@ class Article < ActiveRecord::Base
     end
   end
 
+  def allContent()
+    self.title + " "+self.content
+  end
+
 end

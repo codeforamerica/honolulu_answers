@@ -9,6 +9,8 @@ gem 'pg'
 
 gem 'less-rails-bootstrap'
 gem 'rails_admin'
+gem 'bluecloth'  
+gem 'indextank'
 
 # Gems used only for assets and not required
 # in production environments by default.
