@@ -1,4 +1,6 @@
 Honoluluanswers::Application.routes.draw do
+  resources :contacts
+
   resources :articles
 
   #get "home/index"
