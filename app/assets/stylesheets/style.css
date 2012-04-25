@@ -12,10 +12,63 @@
  *= require twitter/bootstrap
  *= require_tree .
 */
+
 body{ 
-  background: transparent url(search_page_photo.png) no-repeat left top;
+  background: transparent url(background_pattern.png) repeat left top;
+  margin: 0 0 0 0;
 }
 
+#topDivPattern {
+	background: transparent url(border.png) repeat-x;
+	opacity: 0.75;
+	position: absolute;
+	width: 100%;
+	height: 25px;
+	top: .5em;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+
+#bgTopDiv {
+	background: transparent url(search_page_photo.png) no-repeat left top;
+	position: absolute;
+	width: 100%;
+	height: 70%;
+	margin: 0;
+	padding: 0;
+}
+
+#search_content{
+	background: transparent url(yellow_bg.png) repeat left top;
+	position: relative;
+	top: 4em;
+	width:50%;
+	margin: 0 auto;
+	padding: 15px;
+}
+
+form#search_form{ 
+  margin: 10px 0 10px 0;
+}
+
+
+/* -------------- Font Stuff ---------------*/
+
+p {
+	font-family: Glegoo, sans-serif;
+	font-size: 18px;
+	color: #352400;
+	margin: 0;
+	padding: 0;
+}
+
+.example_text {
+	font-family: Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: italic;
+	color: #937426;
+}
+/*
 div.article{ 
   width:500px;
   margin:auto;
@@ -30,23 +83,16 @@ div.content{
   background:#fff;
 }
 
-div#search_content{ 
-  width:500px;
-  margin:70px auto 0px;
-  padding:40px;
-}
-form#search_form{ 
-  margin-top:40px;
-}
-input#search{ 
-  width:400px;
-}
 div#results{ 
   width:600px;
   background:#eee;
   margin:20px  auto 0px;
   padding: 50px;
   display:none;
+}
+
+input#search{ 
+  width:400px;
 }
 
 div#results ul{ 
@@ -58,3 +104,5 @@ div#results ul li{
   border-bottom:dotted 1px #ccc;
   list-style:none;
 } 
+
+*/
