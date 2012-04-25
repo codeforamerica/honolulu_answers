@@ -14,12 +14,12 @@
 */
 
 body{ 
-  background: transparent url(background_pattern.png) repeat left top;
+  background: transparent url(../images/background_pattern.png) repeat left top;
   margin: 0 0 0 0;
 }
 
 #topDivPattern {
-	background: transparent url(border.png) repeat-x;
+	background: transparent url(../images/border.png) repeat-x;
 	opacity: 0.75;
 	position: absolute;
 	width: 100%;
@@ -27,19 +27,30 @@ body{
 	top: .5em;
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;
+	z-index: 99;
 }
 
 #bgTopDiv {
-	background: transparent url(search_page_photo.png) no-repeat left top;
-	position: absolute;
+	background: transparent url(../images/search_page_photo.png) no-repeat left top;
+	position: relative;
 	width: 100%;
 	height: 70%;
 	margin: 0;
 	padding: 0;
 }
 
-#search_content{
-	background: transparent url(yellow_bg.png) repeat left top;
+#bgTopDiv2 {
+	background: transparent url(../images/search_page_photo.png) no-repeat left top;
+	position: relative;
+	width: 100%;
+	height: 5em;
+	margin: 0;
+	padding: 0;
+	vertical-align: bottom;
+}
+
+#searchContent {
+	background: transparent url(../images/yellow_bg.png) repeat left top;
 	position: relative;
 	top: 4em;
 	width:50%;
@@ -47,27 +58,150 @@ body{
 	padding: 15px;
 }
 
-form#search_form{ 
-  margin: 10px 0 10px 0;
+#searchContent2 {
+	background: transparent url(../images/yellow_bg.png) repeat left top;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	text-align: center;
 }
+
+#searchText {
+	position: relative;
+	top: 2.3em;
+	width:100%;
+	margin: 0 auto;
+}
+
+#mainContainer {
+	position: relative;
+	width: 70%;
+	height: 100%;
+	margin: 1.5em auto;
+	padding: 0;
+	text-align: left;
+}
+
+.searchForm { 
+	position: relative;
+	margin: .5em 0 .5em 0;
+	display: inline-block;
+}
+
+input#search{ 
+  width: 20em;
+  height: 2em;
+}
+
+.articleIcon {
+	position: relative;
+	vertical-align: middle;
+}
+
+div#results ul{ 
+  margin: 1.5em 0 0 0;
+  padding: 0;
+  border-top: 1px dashed #999;
+}
+
+div#results ul li{
+  padding: 0 0 1em 0;
+  border-bottom: dashed 1px #999;
+  list-style:none;
+} 
 
 
 /* -------------- Font Stuff ---------------*/
 
 p {
+	margin: .2em 0 0 0;
+	font-family: Helvetica, sans-serif;
+	font-size: 14px;
+}
+p.display {
 	font-family: Glegoo, sans-serif;
-	font-size: 18px;
-	color: #352400;
+	font-size: 1em;
+	color: #5c3e00;
 	margin: 0;
 	padding: 0;
+	display: inline;
+	vertical-align: middle;
+	
 }
 
-.example_text {
+.exampleText {
 	font-family: Helvetica, sans-serif;
 	font-size: 12px;
 	font-style: italic;
 	color: #937426;
 }
+
+h1 {
+	font-family: Helvetica, sans-serif;
+	font-size: 28px;
+	color: #333;
+	margin: 1em 0 0 0;
+	padding: 0;
+}
+
+h2 {
+	font-family: Helvetica, sans-serif;
+	font-size: 18px;
+	color: #ccc;
+}
+
+h3 {
+	font-family: Helvetica, sans-serif;
+	color: #262626;
+	font-size: 16px;
+	margin: 0;
+}
+
+h4 {
+	color: #262626;
+	font: normal 14px Helvetica, sans-serif;
+}
+
+.italic {
+	font-style: italic;
+	margin: 0;
+	padding: 0;
+}
+
+
+/*------------Links-----------*/
+
+a:link {
+	color: #01546E;
+	font-weight: bold;
+}
+
+a:hover {
+	color: #895b00;
+}
+
+a:visited {
+	color: #9a006d;
+}
+
+a.results:link {
+	font-weight: normal;
+}
+
+a.results:hover {
+	font-weight: normal;
+	color: #895b00;
+}
+
+a.results:visited {
+	font-weight: normal;
+	color: #9a006d;
+}
+
+/*------------Visual elements--------------*/
+
+
+
 /*
 div.article{ 
   width:500px;
@@ -91,18 +225,6 @@ div#results{
   display:none;
 }
 
-input#search{ 
-  width:400px;
-}
 
-div#results ul{ 
-  margin:0px;
-  padding:0px;
-}
-div#results ul li{
-  padding:20px 0px;
-  border-bottom:dotted 1px #ccc;
-  list-style:none;
-} 
 
 */
