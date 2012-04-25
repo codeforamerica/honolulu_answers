@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require mustache
+//= require bootstrap-typeahead
 //= require_tree .

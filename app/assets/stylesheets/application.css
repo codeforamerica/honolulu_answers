@@ -57,4 +57,7 @@ div#results ul li{
   padding:20px 0px;
   border-bottom:dotted 1px #ccc;
   list-style:none;
-} 
+}
+ul.typeahead.dropdown-menu { 
+  width:400px;
+}
