@@ -35,6 +35,13 @@ body{
   top:0px;
 
 }
+#bgTopDiv.headline {
+  height: 87px;
+  position:absolute;
+  top:0px;
+  background-position:0px -120px;
+}
+
 
 #searchContent {
 	background:  rgba(255, 198, 10, 0.8);
@@ -45,12 +52,25 @@ body{
     border-radius:3px;
 }
 
+.searchForm { 
+	position: relative;
+	margin: .5em 0 .5em 0;
+	display: inline-block;
+}
+
 #searchContent.headline {
-	background: #ffc60a;
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	text-align: center;
+  background:  rgba(255, 198, 10, 0.4);
+  background: #ffc60a;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  padding:0px;
+  margin-top:0px;
+}
+#searchContent.headline form{
+  margin:0px; 
+  padding-top:40px;
+  padding-bottom:10px;
 }
 
 #searchText {
@@ -66,12 +86,6 @@ body{
 	margin: 120px auto;
 	padding: 0;
 
-}
-
-.searchForm { 
-	position: relative;
-	margin: .5em 0 .5em 0;
-	display: inline-block;
 }
 
 input#search{ 
@@ -114,6 +128,26 @@ div#results ul li{
 } 
 
 
+/* --------- article -----------*/
+
+div.article{ 
+  background: #fff;
+  padding:30px;
+  min-width:400px;
+  max-width:600px;
+  margin:120px auto;
+  border:solid 1px #ccc;
+  font-family: arial;
+  font-size:14px;
+}
+div.article h2{ 
+  font-size:32px;
+  color:#333;
+  font-weight:normal;
+}
+
+
+
 /* -------------- Font Stuff ---------------*/
 
 p {
@@ -123,10 +157,10 @@ p {
 }
 p.display {
 	font-family: Glegoo, sans-serif;
-	font-size: 1em;
+	font-size: 28px;
 	color: #5c3e00;
 	margin: 0;
-	padding: 5px 0px;;
+	padding: 10px 3px;
 	display: inline;
 	vertical-align: middle;
 	

@@ -1,18 +1,28 @@
+<div id="topDivPattern"></div>
+<div id="bgTopDiv" class="headline">  
+  <div id="searchContent" class="headline">
+    <form id="searchForm" autocomplete="off">
+      <input type="text" id="search" />
+      <input type="submit" id="search_btn" value="Search" />
+    </form>
+  </div>
+</div>
+
 <p id="notice"><%= notice %></p>
 
 
 <div class="article">
   <h2><%= @article.title %></h2>
-  <div class='date'>
+<!--  <div class='date'>
     <%= @article.updated %>
-  </div>
+  </div> -->
 
   <div class="content">
     <%= raw @content_html %>
   </div>
 
 
-  <%= link_to 'Edit', edit_article_path(@article) %> |
-  <%= link_to 'Back', articles_path %>
+<!--  <%= link_to 'Edit', edit_article_path(@article) %> |
+  <%= link_to 'Back', articles_path %> -->
 
 </div>

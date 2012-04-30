@@ -62,7 +62,7 @@ var searchController = function(){
             }
             $("#searchstatus").find("strong").text(query);
             $("#searchstatus").find("div.count").text(data.matches+" result"+
-                                                      (data.matches.length > 0? "s":"")
+                                                      (data.matches.length > 1 ? "s":"")
                                                       +" found");
             $("#searchstatus").fadeIn();
             $("#results ul").fadeIn();
