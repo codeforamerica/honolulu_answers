@@ -9,9 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require twitter/bootstrap
+ *= require style
  *= require_tree .
 */
+/*
 body{ 
   background: transparent url(search_page_photo.png) no-repeat left top;
 }
@@ -61,3 +62,4 @@ div#results ul li{
 ul.typeahead.dropdown-menu { 
   width:400px;
 }
+*/

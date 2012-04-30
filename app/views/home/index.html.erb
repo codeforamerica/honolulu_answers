@@ -1,26 +1,47 @@
-<div id="search_content">
-  <h1>Honolulu Answers</h1>
-  <p>Get your honolulu answers here.</p>
+<div id="topDivPattern"></div>
+<!--
+<div id="bgTopDiv2">
+  <div id="searchContent2">
+    <div id="searchText">
+      <p class="display">Welcome to Honolulu Answers: <form class="searchForm">
+      <input type="text" id="search" />
+      <input type="submit" id="search_btn" value="Search" />
+    </form>
+      </p>
+    </div>
+  </div>
+</div>
+-->
 
-
-  <form id="search_form" autocomplete="off">
-    <input type="text" id="search" />
-    <input type="submit" id="search_btn" value="Search" />
-  </form>
+<div id="bgTopDiv">  
+  <div id="searchContent">
+    <p class="display">Welcome to Honolulu Answers, the best way to get government services and information. </p>
+    <form id="searchForm" autocomplete="off">
+      <input type="text" id="search" />
+      <input type="submit" id="search_btn" value="Search" />
+    </form>
+    <span class="exampleText">Try bank holidays, clock change, student finance, car tax</span>
+  </div>
 </div>
 
-<div id="results">
-  
-  <ul>
-  </ul>
+<div id="mainContainer">
+  <div id="results">
+    <div id="searchstatus">Search results for "<strong></strong>"<br />
+    <div class="count">results found</div>
+    </div>
 
+
+    <ul>
+<!--
+    <li>	
+    <h1><a href=#>Holiday entitlement: your rights</a></h1>
+    <h4>Find out about your legal right to paid holidays, calculating your annual leave entitlement</h4>
+    </li>
+-->
+    </ul> 
+  </div> 
 </div>
 
-
-
-
-
-<%= link_to "Browse", articles_path %>
 
 
 

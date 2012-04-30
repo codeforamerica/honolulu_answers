@@ -8,18 +8,15 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
- *= require twitter/bootstrap
- *= require_tree .
 */
 
 body{ 
-  background: transparent url(../images/background_pattern.png) repeat left top;
+  background: transparent url(/assets/background_pattern.png) repeat left top;
   margin: 0 0 0 0;
 }
 
 #topDivPattern {
-	background: transparent url(../images/border.png) repeat-x;
+	background: transparent url(/assets/border.png) repeat-x;
 	opacity: 0.75;
 	position: absolute;
 	width: 100%;
@@ -31,35 +28,25 @@ body{
 }
 
 #bgTopDiv {
-	background: transparent url(../images/search_page_photo.png) no-repeat left top;
-	position: relative;
-	width: 100%;
-	height: 70%;
-	margin: 0;
-	padding: 0;
-}
+  background: transparent url(/assets/search_page_photo.png) no-repeat left top;
+  width: 100%;
+  height: 70%;
+  position:absolute;
+  top:0px;
 
-#bgTopDiv2 {
-	background: transparent url(../images/search_page_photo.png) no-repeat left top;
-	position: relative;
-	width: 100%;
-	height: 5em;
-	margin: 0;
-	padding: 0;
-	vertical-align: bottom;
 }
 
 #searchContent {
-	background: transparent url(../images/yellow_bg.png) repeat left top;
+	background:  rgba(255, 198, 10, 0.8);
 	position: relative;
-	top: 4em;
 	width:50%;
-	margin: 0 auto;
-	padding: 15px;
+	margin: 120px auto;
+	padding: 25px;
+    border-radius:3px;
 }
 
-#searchContent2 {
-	background: transparent url(../images/yellow_bg.png) repeat left top;
+#searchContent.headline {
+	background: #ffc60a;
 	position: absolute;
 	height: 100%;
 	width: 100%;
@@ -74,12 +61,11 @@ body{
 }
 
 #mainContainer {
-	position: relative;
 	width: 70%;
 	height: 100%;
-	margin: 1.5em auto;
+	margin: 120px auto;
 	padding: 0;
-	text-align: left;
+
 }
 
 .searchForm { 
@@ -89,9 +75,26 @@ body{
 }
 
 input#search{ 
-  width: 20em;
-  height: 2em;
+  width: 400px;
+  padding:4px;
+  margin-top:10px;
+  
 }
+
+#searchstatus{ 
+  margin:20px;
+  font-size:20px;
+  display:none;
+  font-family:arial;
+  line-height:24px;
+}
+#searchstatus .count{ 
+  font-size:14px;
+  font-style:italic;
+}
+#searchstatus strong{
+  font-weight:bold;
+} 
 
 .articleIcon {
 	position: relative;
@@ -101,7 +104,7 @@ input#search{
 div#results ul{ 
   margin: 1.5em 0 0 0;
   padding: 0;
-  border-top: 1px dashed #999;
+  border-top: dashed 1px #999;
 }
 
 div#results ul li{
@@ -123,7 +126,7 @@ p.display {
 	font-size: 1em;
 	color: #5c3e00;
 	margin: 0;
-	padding: 0;
+	padding: 5px 0px;;
 	display: inline;
 	vertical-align: middle;
 	

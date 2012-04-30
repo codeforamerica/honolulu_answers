@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
 
   def index
-    client = IndexTank::Client.new(ENV['SEARCHIFY_API_URL'] || '<API_URL>')
+    client = IndexTank::Client.new(ENV['SEARCHIFY_API_URL'])
     index = client.indexes("hnlanswers-"+ENV['RAILS_ENV'])
     
     if(params[:format] == "json") then
