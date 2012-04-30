@@ -2,8 +2,8 @@
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ * Any CSS and SCSS file within this directory, lib../images/stylesheets, vendor../images/stylesheets,
+ * or vendor../images/stylesheets of plugins, if any, can be referenced here using a relative path.
  *
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
@@ -11,12 +11,12 @@
 */
 
 body{ 
-  background: transparent url(/assets/background_pattern.png) repeat left top;
+  background: transparent url(../images/background_pattern.png) repeat left top;
   margin: 0 0 0 0;
 }
 
 #topDivPattern {
-	background: transparent url(/assets/border.png) repeat-x;
+	background: transparent url(../images/border.png) repeat-x;
 	opacity: 0.75;
 	position: absolute;
 	width: 100%;
@@ -28,7 +28,7 @@ body{
 }
 
 #bgTopDiv {
-  background: transparent url(/assets/search_page_photo.png) no-repeat left top;
+  background: transparent url(../images/search_page_photo.png) no-repeat left top;
   width: 100%;
   height: 70%;
   position:absolute;
@@ -126,6 +126,24 @@ div#results ul li{
   border-bottom: dashed 1px #999;
   list-style:none;
 } 
+
+#disclaimer {
+	width: 100%;
+	background-color: #F17921;
+	top: 70%;
+	bottom: 0;
+	position: absolute;
+}
+
+#footer {
+	width: 100%;
+	background-color: #ccc;
+	position: absolute;
+	top: 70px;
+	bottom: 0;
+	padding: 0;
+	display: block;
+}
 
 
 /* --------- article -----------*/
