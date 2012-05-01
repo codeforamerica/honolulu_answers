@@ -142,7 +142,7 @@ div#results ul li{
 	top: 70px;
 	bottom: 0;
 	padding: 0;
-	display: block;
+	height: 100%;
 }
 
 #browse {
@@ -151,30 +151,70 @@ div#results ul li{
 	width: 50%;
 	margin: 320px auto;
 	padding: 25px;
+	border-radius: 3px;
 }
 
 
 /* --------- article ---------*/
 
+
 div.article{ 
   background: #fff;
-  padding:30px;
+  padding: 10px 30px;
   min-width:500px;
-  max-width:800px;
-  margin:120px auto;
-  border:solid 1px #ccc;
-  font-family: arial;
-  font-size:14px;
+  max-width:660px;
+  border-top: 3px solid #BD8A38;
+  position: relative;
+  margin: 120px auto;
+  left: -100px;
+  font: 14px arial;
 }
-div.article h2{ 
+
+div.article h1{ 
   font-size:32px;
   color:#333;
   font-weight:normal;
+  display: inline;
+}
+
+.icon {
+	width: 42px;
+	height: 61px;
+	display: inline;
+	margin: 10px 15px 0 0;
+	float: left;
+}
+div.content {
+	width: 100%;
+	padding: 30px 0;
+}
+
+div.contact {
+	background-color: #ecdebd;
+	width: 200px;
+	padding: 10px;
+	position: absolute;
+	right: -200px;
+	top: 50px;
+	color: #ecdebd;
+}
+
+.button {
+	background: #transparent url(/assets/getting_started_btn.png) no-repeat left top;
+	width: 213px;
+	height: 97px;
+}
+
+div.quickAnswer {
+	width: 600px;
+	background-color: #5397B2;
+	margin: auto;
+	padding: 20px 15px;
 }
 
 
-
 /* -------------- Font Stuff ---------------*/
+
 
 p {
 	margin: .2em 0 0 0;
@@ -190,14 +230,13 @@ p.display {
 
 p.tags {
 	font-family: Helvetica, sans-serif;
-	font-size: 12px;
-	width: 100px;
-	height: 20px;
+	font-size: 14px;
 	background-color: #fff;
 	opacity: 0.8;
 	display: inline;
 	margin: 5px 5px 5px 0;
 	padding: 5px;
+	border-radius: 1px;
 }
 
 .exampleText {
@@ -216,9 +255,13 @@ h1 {
 }
 
 h2 {
-	font-family: Helvetica, sans-serif;
-	font-size: 18px;
-	color: #ccc;
+	font-family: Montserrat, sans-serif;
+	font-size: 10px;
+	color: #000;
+	text-transform: uppercase;
+	display: inline-block;
+	vertical-align: top;
+	margin: 10px 0 0 0;
 }
 
 h3 {
@@ -247,6 +290,8 @@ h4 {
 
 /*------------Links-----------*/
 
+
+
 a:link {
 	color: #01546E;
 	font-weight: bold;
@@ -274,33 +319,4 @@ a.results:visited {
 	color: #9a006d;
 }
 
-/*------------Visual elements--------------*/
 
-
-
-/*
-div.article{ 
-  width:500px;
-  margin:auto;
-}
-div.date{ 
-  color:#999;
-  font-weight:0.8em;
-}
-div.content{ 
-  margin:20px 0px;
-  font-weight:1.5em;
-  background:#fff;
-}
-
-div#results{ 
-  width:600px;
-  background:#eee;
-  margin:20px  auto 0px;
-  padding: 50px;
-  display:none;
-}
-
-
-
-*/
