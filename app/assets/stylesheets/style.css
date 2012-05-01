@@ -161,18 +161,26 @@ h4.disclaimer {
 	font: 12px Helvetica, sans-serif;
 }
 
-th {
-	font-family: Helvetica, Arial, sans-serif;
-	font-weight: bold;
-	font-size: 12px;
+table, th, td {
+	padding: 5px;
 }
 
-tr {
-	padding: 5px;
+table {
+	width: 70%;
+	margin: auto;
+}
+
+th {
+	text-align: left;
+	background-color: #ddd;
+	font:  12px Helvetica, Arial, sans-serif;
 }
 
 td {
-	padding: 5px;
+	font-size: 10px;
+	text-align: left;
+	background-color: #ededed;
+	margin: 1px;
 }
 
 /* --------- article ---------*/
