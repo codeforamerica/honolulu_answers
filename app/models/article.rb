@@ -1,5 +1,6 @@
 class Article < ActiveRecord::Base
-
+  # has_and_belongs_to_many :locations
+  belongs_to :contact
   def self.search(search)
     if search
       where('title ILIKE ? OR content ILIKE ?', "%#{search}%", "%#{search}%")

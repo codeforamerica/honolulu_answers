@@ -10,7 +10,7 @@ namespace :admin  do
 
     @articles = Article.all
     for @a in @articles do
-      index.document(@a.id.to_s).add({ :text => strip_tags(@a.content), :title => @a.title })
+      index.document(@a.id.to_s).add({ :text => strip_tags(@a.content), :title => @a.title, :tags => @a.tags })
     end
     print "#{@articles.length} articles indexed.\n"
   end

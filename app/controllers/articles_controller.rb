@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @content_html = BlueCloth.new(@article.content).to_html
+     
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @article }

@@ -2,9 +2,14 @@
 
 <table>
   <tr>
-    <th>Updated</th>
     <th>Title</th>
     <th>Content</th>
+    <th>Category</th>
+    <th>Content type</th>
+    <th>Preview</th>
+    <th>Contact</th>
+    <th>Tags</th>
+    <th>Service url</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +17,14 @@
 
 <% @articles.each do |article| %>
   <tr>
-    <td><%= article.updated %></td>
     <td><%= article.title %></td>
     <td><%= article.content %></td>
+    <td><%= article.category %></td>
+    <td><%= article.content_type %></td>
+    <td><%= article.preview %></td>
+    <td><%= article.contact_id %></td>
+    <td><%= article.tags %></td>
+    <td><%= article.service_url %></td>
     <td><%= link_to 'Show', article %></td>
     <td><%= link_to 'Edit', edit_article_path(article) %></td>
     <td><%= link_to 'Destroy', article, confirm: 'Are you sure?', method: :delete %></td>

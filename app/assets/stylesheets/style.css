@@ -151,8 +151,8 @@ div#results ul li{
 div.article{ 
   background: #fff;
   padding:30px;
-  min-width:400px;
-  max-width:600px;
+  min-width:500px;
+  max-width:800px;
   margin:120px auto;
   border:solid 1px #ccc;
   font-family: arial;
