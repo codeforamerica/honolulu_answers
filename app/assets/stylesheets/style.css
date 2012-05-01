@@ -185,7 +185,6 @@ p.display {
 	font-family: Glegoo, sans-serif;
 	font-size: 28px;
 	color: #5c3e00;
-	margin: 0;
 	padding: 10px 3px;
 	display: inline;
 	vertical-align: middle;
@@ -198,6 +197,7 @@ p.tags {
 	width: 100px;
 	height: 20px;
 	background-color: #fff;
+	opacity: 0.8;
 	display: inline;
 	margin: 5px 5px 5px 0;
 	padding: 5px;
