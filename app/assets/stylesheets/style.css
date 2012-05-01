@@ -161,6 +161,20 @@ h4.disclaimer {
 	font: 12px Helvetica, sans-serif;
 }
 
+th {
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+tr {
+	padding: 5px;
+}
+
+td {
+	padding: 5px;
+}
+
 /* --------- article ---------*/
 
 
