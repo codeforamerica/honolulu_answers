@@ -12,13 +12,22 @@
 
 
 <div class="article">
-  <h2><%= @article.title %></h2>
+<span class="icon"><img src="/assets/quick_answers_icon.png" /></span>
+  <h2>Quick Answers</h2><br />
+  <h1><%= @article.title %></h1>
 <!--  <div class='date'>
     <%= @article.updated %>
   </div> -->
 
   <div class="content">
+  <div class="quickAnswer">Pandas and gradient backgrounds increase transparency in local government through Twitter and #gov20. Oswald font is great for communication through scotch and San Francisco for Claremont McKenna Director
+  <img src="/assets/getting_started_btn.png" />
+  </div>
     <%= raw @content_html %>
+  </div>
+  
+  <div class="contact">
+    <%= raw @article_contact %>
   </div>
 
 

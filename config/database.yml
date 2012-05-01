@@ -9,8 +9,8 @@ development:
   database: honoluluanswers_dev
   pool: 5
   timeout: 5000
-  username: hnl
-  password: test44
+  username: dianatran
+  password: 
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
