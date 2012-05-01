@@ -30,9 +30,8 @@ body{
 #bgTopDiv {
   background: transparent url(/assets/search_page_photo.png) no-repeat left top;
   width: 100%;
-  height: 70%;
-  position:absolute;
-  top:0px;
+  padding-top:50px;
+  padding-bottom:100px;
 
 }
 #bgTopDiv.headline {
@@ -40,6 +39,7 @@ body{
   position:absolute;
   top:0px;
   background-position:0px -120px;
+  padding:0px;
 }
 
 
@@ -81,11 +81,11 @@ body{
 }
 
 #mainContainer {
-	width: 70%;
-	height: 100%;
-	margin: 120px auto;
-	padding: 0;
-
+  width: 70%;
+  height: 100%;
+  margin: 120px auto;
+  padding: 0;
+  display:none;
 }
 
 input#search{ 
@@ -115,6 +115,7 @@ input#search{
 	vertical-align: middle;
 }
 
+
 div#results ul{ 
   margin: 1.5em 0 0 0;
   padding: 0;
@@ -127,30 +128,28 @@ div#results ul li{
   list-style:none;
 } 
 
-#disclaimer {
-	width: 100%;
-	background-color: #F17921;
-	top: 70%;
-	bottom: 0;
-	position: absolute;
+h4.disclaimer {
+  width: 100%;
+  background-color: #F17921;
+  margin-top:0px;
+  padding:15px 20px;
 }
 
 #footer {
-	width: 100%;
-	background-color: #ccc;
-	position: absolute;
-	top: 70px;
-	bottom: 0;
-	padding: 0;
-	display: block;
+  width: 100%;
+  background-color: #ccc;
+  padding: 0;
+  display: block;
+  height:300px;
+
 }
 
 #browse {
-	background:  rgba(255, 198, 10, 0.8);
-	position: relative;
-	width: 50%;
-	margin: 320px auto;
-	padding: 25px;
+  background:  rgba(255, 198, 10, 0.8);
+  position: relative;
+  width: 50%;
+  padding: 25px;
+  margin:40px auto;
 }
 
 
