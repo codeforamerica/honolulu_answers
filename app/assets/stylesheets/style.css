@@ -144,13 +144,23 @@ h4.disclaimer {
 }
 
 #browse {
-  background:  rgba(255, 198, 10, 0.8);
+  background:  rgba(255, 255, 255, 0.9);
   position: relative;
-  width: 50%;
-  padding: 25px;
-  margin:40px auto;
+  width: 25%;
+  padding: 10px 20px 30px 20px;
+  margin: -40px 0 0 253px;
+  border-radius: 3px;
 }
 
+.tags {
+	background-color: #5397B2;
+	display: inline-block;
+	margin: 0px 2px 5px 0;
+	padding: 5px;
+	border-radius: 1px;
+	color: #fff;
+	font: 12px Helvetica, sans-serif;
+}
 
 /* --------- article ---------*/
 
@@ -189,9 +199,9 @@ div.content {
 div.contact {
 	background-color: #ecdebd;
 	width: 200px;
-	padding: 10px;
+	padding: 5px 15px;
 	position: absolute;
-	right: -200px;
+	right: -220px;
 	top: 50px;
 	color: #ecdebd;
 }
@@ -200,13 +210,16 @@ div.contact {
 	background: #transparent url(/assets/getting_started_btn.png) no-repeat left top;
 	width: 213px;
 	height: 97px;
+	float: right;
+	position: relative;
+	margin-top: -85px;
 }
 
 div.quickAnswer {
 	width: 600px;
 	background-color: #5397B2;
 	margin: auto;
-	padding: 20px 15px;
+	padding: 30px 25px;
 }
 
 
@@ -225,15 +238,9 @@ p.display {
 	line-height: 1em;
 }
 
-p.tags {
-	font-family: Helvetica, sans-serif;
-	font-size: 14px;
-	background-color: #fff;
-	opacity: 0.8;
-	display: inline;
-	margin: 5px 5px 5px 0;
-	padding: 5px;
-	border-radius: 1px;
+
+p.quickAnswer {
+	margin-right: 250px;
 }
 
 .exampleText {
@@ -258,7 +265,7 @@ h2 {
 	text-transform: uppercase;
 	display: inline-block;
 	vertical-align: top;
-	margin: 10px 0 0 0;
+	margin: 10px 0 3px 0;
 }
 
 h3 {
@@ -270,7 +277,7 @@ h3 {
 
 h4 {
 	color: #262626;
-	font: normal 14px Helvetica, sans-serif;
+	font: normal 12px Helvetica, sans-serif;
 }
 
 .italic {
@@ -291,7 +298,7 @@ h4 {
 
 a:link {
 	color: #01546E;
-	font-weight: bold;
+	font-weight: normal;
 }
 
 a:hover {
@@ -300,6 +307,7 @@ a:hover {
 
 a:visited {
 	color: #9a006d;
+	text-decoration: none;
 }
 
 a.results:link {
@@ -314,6 +322,23 @@ a.results:hover {
 a.results:visited {
 	font-weight: normal;
 	color: #9a006d;
+}
+
+a.browse:link {
+	color: #fff;
+	text-decoration: none;
+}
+
+a.browse:hover {
+	text-decoration: underline;
+}
+
+a.browse:visited {
+	color: #fff;
+}
+
+a.browse:active {
+	color: #fff;
 }
 
 
