@@ -185,9 +185,7 @@ p.display {
 	font-family: Glegoo, sans-serif;
 	font-size: 28px;
 	color: #5c3e00;
-	display: inline;
-	vertical-align: middle;
-	
+	line-height: 1em;
 }
 
 p.tags {
