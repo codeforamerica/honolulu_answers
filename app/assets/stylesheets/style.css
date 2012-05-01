@@ -47,7 +47,7 @@ body{
 	background:  rgba(255, 198, 10, 0.8);
 	position: relative;
 	width:50%;
-	margin: 120px auto;
+	margin: 70px auto;
 	padding: 25px;
     border-radius:3px;
 }
@@ -145,6 +145,14 @@ div#results ul li{
 	display: block;
 }
 
+#browse {
+	background:  rgba(255, 198, 10, 0.8);
+	position: relative;
+	width: 50%;
+	margin: 320px auto;
+	padding: 25px;
+}
+
 
 /* --------- article -----------*/
 
@@ -177,11 +185,21 @@ p.display {
 	font-family: Glegoo, sans-serif;
 	font-size: 28px;
 	color: #5c3e00;
-	margin: 0;
-	padding: 10px 3px;
 	display: inline;
 	vertical-align: middle;
 	
+}
+
+p.tags {
+	font-family: Helvetica, sans-serif;
+	font-size: 12px;
+	width: 100px;
+	height: 20px;
+	background-color: #fff;
+	opacity: 0.8;
+	display: inline;
+	margin: 5px 5px 5px 0;
+	padding: 5px;
 }
 
 .exampleText {
@@ -222,6 +240,11 @@ h4 {
 	margin: 0;
 	padding: 0;
 }
+
+.disclaimer {
+	padding: 0 20px;
+}
+
 
 
 /*------------Links-----------*/
