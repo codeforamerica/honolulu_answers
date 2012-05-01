@@ -67,9 +67,12 @@ var searchController = function(){
             $("#searchstatus").fadeIn();
             $("#results ul").fadeIn();
         }});
+        $("#mainContainer").fadeIn("fast");
+        $("#mainContainer").animate({"margin-top":"0px"});
         $("#bgTopDiv").animate({height:"87px",
-                                "margin-top":"0px"});
-        
+                                "margin-top":"0px",
+                                "padding":"0px"});
+        $("#browse").fadeOut('fast');
         $("#bgTopDiv").css("background-position","0px -200px");
         $("#searchContent p").fadeOut('fast');
         $("#searchContent span").fadeOut('fast');
