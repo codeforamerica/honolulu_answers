@@ -12,13 +12,15 @@ $(function(){
     $("#searchForm").submit(function(e){       
         e.preventDefault();
         searchControl.startSearch($("#search").val());
+        var query = $("#search").val();
+        history.pushState({"query":query}, "Searching for - "+query, "/search?q="+encodeURIComponent(query));
     })
     window.onpopstate = function(event){
         console.log("popstate", event, window.location);
         if(window.location.pathname == "/"){
             // we are home.
             searchControl.transfromToHome();   
-        }/*else if(window.location.pathname == "/search"){
+        }else if(window.location.pathname == "/search"){
             var params = window.location.search.replace("?", "").split("&")
             var query = null;
             for(p in params){
@@ -26,9 +28,10 @@ $(function(){
                     query = params[p].split("=")[1]
                 }
             }
+            console.log("query", query);
             if(query)
                 searchControl.startSearch(query);
-        }*/
+        }
     }
 
 /*    $("#search").typeahead({items:6,
@@ -82,7 +85,7 @@ var searchController = function(){
             $("#searchstatus").find("div.count").text(data.matches+" result"+
                                                       (data.matches.length > 1 ? "s":"")
                                                       +" found");
-            history.pushState({"query":query}, "Searching for - "+query, "/search?q="+encodeURIComponent(query));
+
 
         }});
         self.transfromToResults();

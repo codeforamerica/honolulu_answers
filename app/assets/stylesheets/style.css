@@ -129,7 +129,6 @@ div#results ul li{
 } 
 
 h4.disclaimer {
-  width: 100%;
   background-color: #F17921;
   margin-top:0px;
   padding:15px 20px;
@@ -207,7 +206,7 @@ div.contact {
 }
 
 .button {
-	background: #transparent url(/assets/getting_started_btn.png) no-repeat left top;
+	background: transparent url(/assets/getting_started_btn.png) no-repeat left top;
 	width: 213px;
 	height: 97px;
 	float: right;
