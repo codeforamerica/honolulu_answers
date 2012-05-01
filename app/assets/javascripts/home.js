@@ -11,8 +11,26 @@ var hnlAnswers = function (){
 $(function(){
     $("#searchForm").submit(function(e){       
         e.preventDefault();
-        searchControl.startSearch($("#search").val());        
+        searchControl.startSearch($("#search").val());
     })
+    window.onpopstate = function(event){
+        console.log("popstate", event, window.location);
+        if(window.location.pathname == "/"){
+            // we are home.
+            searchControl.transfromToHome();   
+        }/*else if(window.location.pathname == "/search"){
+            var params = window.location.search.replace("?", "").split("&")
+            var query = null;
+            for(p in params){
+                if((params[p].split("=").length >1) && (params[p].split("=")[0] == "q")){
+                    query = params[p].split("=")[1]
+                }
+            }
+            if(query)
+                searchControl.startSearch(query);
+        }*/
+    }
+
 /*    $("#search").typeahead({items:6,
                             lookup: function(event){
                                 var that = this
@@ -64,9 +82,15 @@ var searchController = function(){
             $("#searchstatus").find("div.count").text(data.matches+" result"+
                                                       (data.matches.length > 1 ? "s":"")
                                                       +" found");
-            $("#searchstatus").fadeIn();
-            $("#results ul").fadeIn();
+            history.pushState({"query":query}, "Searching for - "+query, "/search?q="+encodeURIComponent(query));
+
         }});
+        self.transfromToResults();
+    };
+
+    this.transfromToResults = function(){
+        $("#searchstatus").fadeIn();
+        $("#results ul").fadeIn();
         $("#mainContainer").fadeIn("fast");
         $("#mainContainer").animate({"margin-top":"0px"});
         $("#bgTopDiv").animate({height:"87px",
@@ -84,11 +108,32 @@ var searchController = function(){
                                      "margin-top":"0px"}, 300);
 
     };
+
+    this.transfromToHome = function(){
+        $("#searchstatus").fadeOut();
+        $("#results ul").fadeOut();
+        $("#mainContainer").fadeOut("fast");
+        $("#mainContainer").animate({"margin":"120px auto"});
+        $("#bgTopDiv").css("height", "");
+        $("#bgTopDiv").animate({"padding":"50px 0px 100px 0px"});
+        $("#browse").fadeIn('fast');
+        $("#bgTopDiv").css("background-position","0px 0px");
+        $("#searchContent p").fadeIn('fast');
+        $("#searchContent span").fadeIn('fast');
+        $("#searchContent form").animate({"margin":"0", "padding-top":"0px", "padding-bottom":"0px"}, 300);
+        $("#searchContent").css("text-align", "left");
+        $("#searchContent").css("background-color", "rgba(255, 198, 10, 0.8);");
+        $("#searchContent").animate({width:"50%",
+                                     padding: "25px",
+                                     "margin":"70px auto"}, 300);
+
+    };
+
     this.addResult = function(result){
         $("#results ul").append(Mustache.render(self.resultTemplate, result).replace(/\n/g, "<br />"));
     };
     this.resultTemplate = "<li><h1><a href='/articles/{{docid}}'>{{title}}</a></h1>"+
-        "<div>{{&snippet_text}}</div>" +
+        "<div>{{preview}}</div>" +
         "</li>";
 
 };
