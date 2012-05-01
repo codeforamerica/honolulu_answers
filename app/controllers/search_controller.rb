@@ -13,13 +13,13 @@ class SearchController < ApplicationController
   end
 
   def autocomplete
-#    client = IndexTank::Client.new(ENV['SEARCHIFY_API_URL'] || '<API_URL>')
-#    index = client.indexes("hnlanswers-"+ENV['RAILS_ENV'])
+    client = IndexTank::Client.new(ENV['SEARCHIFY_API_URL'] || '<API_URL>')
+    index = client.indexes("hnlanswers-"+ENV['RAILS_ENV'])
 
     
     if(params[:format] == "json") then
-      @results = Article.search_titles(params[:q])
-      # @results = index.search("title:"+params[:q], :fetch => 'title,timestamp')
+      # @results = Article.search_titles(params[:q])
+      @results = index.search("title:"+params[:q], :fetch => 'title,timestamp')
       render :json => { :results =>@results }
     end
   end

@@ -9,6 +9,8 @@ gem 'pg'
 
 gem 'less-rails-bootstrap'
 gem 'rails_admin'
+gem 'devise'
+gem 'cancan'
 gem 'bluecloth'  
 gem 'indextank'
 
@@ -40,3 +42,6 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+
+gem "devise"
