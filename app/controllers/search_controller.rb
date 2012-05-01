@@ -6,7 +6,7 @@ class SearchController < ApplicationController
     
     if(params[:format] == "json") then
       @results = index.search(params[:q]+" OR title:"+params[:q]+ " OR tags:"+params[:q],
-                              :fetch => 'title,timestamp', 
+                              :fetch => 'title,timestamp,preview', 
                               :snippet => 'text')
       render :json => @results
     end

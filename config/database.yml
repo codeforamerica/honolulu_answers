@@ -3,14 +3,20 @@
 #
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
+login: &login
+  username: hnl
+  password: pass
+
+<%= file = File.join(Rails.root, "config", "dblogin.yml")
+    IO.read(file) if File.exist?(file) %>
+  
 development:
   adapter: postgresql
   encoding: unicode
   database: honoluluanswers_dev
   pool: 5
   timeout: 5000
-  username: dianatran
-  password: 
+  <<: *login
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
