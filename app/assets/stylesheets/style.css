@@ -196,7 +196,7 @@ div.contact {
 }
 
 .button {
-	background: #transparent url(/assets/getting_started_btn.png) no-repeat left top;
+	background: transparent url(/assets/getting_started_btn.png) no-repeat left top;
 	width: 213px;
 	height: 97px;
 }
