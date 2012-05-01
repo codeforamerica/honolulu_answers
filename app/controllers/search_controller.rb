@@ -5,7 +5,7 @@ class SearchController < ApplicationController
     index = client.indexes("hnlanswers-"+ENV['RAILS_ENV'])
     
     if(params[:format] == "json") then
-      @results = index.search(params[:q]+" OR title:"+params[:q],
+      @results = index.search(params[:q]+" OR title:"+params[:q]+ " OR tags:"+params[:q],
                               :fetch => 'title,timestamp', 
                               :snippet => 'text')
       render :json => @results
