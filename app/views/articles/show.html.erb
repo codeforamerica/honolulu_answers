@@ -1,8 +1,9 @@
 <div id="topDivPattern"></div>
 <div id="bgTopDiv" class="headline">  
   <div id="searchContent" class="headline">
-    <form id="searchForm" autocomplete="off">
-      <input type="text" id="search" />
+    <form id="searchForm" class="noanimation" autocomplete="off" action="/search">
+      <p class="hnlanswers">Honolulu Answers</p>
+      <input type="text" id="search" name="q" />
       <input type="submit" id="search_btn" value="Search" />
     </form>
   </div>
@@ -15,9 +16,6 @@
 <span class="icon"><img src="/assets/quick_answers_icon.png" /></span>
   <h2>Quick Answers</h2><br />
   <h1><%= @article.title %></h1>
-<!--  <div class='date'>
-    <%= @article.updated %>
-  </div> -->
 
   <div class="content">
 
@@ -40,7 +38,5 @@
     Phone: <%= raw @article.contact.number %><br />
   </div>
   <% end %>
-<!--  <%= link_to 'Edit', edit_article_path(@article) %> |
-  <%= link_to 'Back', articles_path %> -->
 
 </div>

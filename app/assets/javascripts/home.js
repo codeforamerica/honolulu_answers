@@ -9,7 +9,7 @@ var hnlAnswers = function (){
 
 
 $(function(){
-    $("#searchForm").submit(function(e){       
+    $("#searchForm:not(.noanimation)").submit(function(e){       
         e.preventDefault();
         searchControl.startSearch($("#search").val());
         var query = $("#search").val();

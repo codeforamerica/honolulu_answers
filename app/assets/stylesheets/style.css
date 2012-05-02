@@ -68,7 +68,8 @@ body{
   margin-top:0px;
 }
 #searchContent.headline form{
-  margin:0px; 
+  margin:auto;
+  width:50%;
   padding-top:40px;
   padding-bottom:10px;
 }
@@ -281,6 +282,10 @@ p.hnlanswers{
   font-size: 24px;
   color: #5c3e00;
   display:none;
+}
+
+.headline p.hnlanswers{ 
+  display:block
   
 }
 
