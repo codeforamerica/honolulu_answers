@@ -16,7 +16,6 @@ $(function(){
         history.pushState({"query":query}, "Searching for - "+query, "/search?q="+encodeURIComponent(query));
     })
     window.onpopstate = function(event){
-        console.log("popstate", event, window.location);
         if(window.location.pathname == "/"){
             // we are home.
             searchControl.transfromToHome();   
@@ -28,9 +27,8 @@ $(function(){
                     query = params[p].split("=")[1]
                 }
             }
-            console.log("query", query);
             if(query)
-                searchControl.startSearch(query);
+                searchControl.startSearch(decodeURIComponent(query));
         }
     }
 
@@ -92,7 +90,6 @@ var searchController = function(){
         $.ajax("/search.json", {data:{q:query}, success:function(data){
             $("#results ul").empty();
             for(r in data.results){
-                console.log("result: ", data.results[r]);
                 self.addResult(data.results[r]);
             }
             $("#searchstatusloading").hide();
