@@ -51,8 +51,12 @@
 #bgTopDiv.headline{ 
   position:relative;
 }
+p.display{ 
+  display:none;
+}
 p.hnlanswers{ 
   float:none;
+  display:block;
 }
 
 #mainContainer {
@@ -81,7 +85,6 @@ input#search_btn {
 
 
 #browse {
-	background:  rgba(255, 198, 10, 0.8);
 	position: relative;
 	margin: 40px auto;
 	border-radius: 3px;
@@ -95,10 +98,9 @@ div.contact {
   background-color: #ecdebd;
   width: inherit;
   padding: 5px 5px;
-  position: absolute;
-  bottom: -20px;
-  left:0px;
+  position: static;
   color: #ecdebd;
+  margin-top:50px;
 }
 
 div.article{ 

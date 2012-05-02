@@ -118,12 +118,12 @@ var searchController = function(){
         $("#results ul").fadeIn();
         $("#mainContainer").fadeIn("fast");
         $("#browse").fadeOut('fast');
-        $("#searchContent p.display").fadeOut('fast');
-        $("#searchContent p.hnlanswers").fadeIn('fast');
         $("#searchContent span").fadeOut('fast');
 
         if($(window).width()<=400){$("#bgTopDiv").addClass("mobileresults"); return;}
 
+        $("#searchContent p.display").fadeOut('fast');
+        $("#searchContent p.hnlanswers").fadeIn('fast');
 
         $("#mainContainer").animate({"margin-top":"0px"});
         $("#bgTopDiv").animate({height:"87px",
@@ -145,11 +145,12 @@ var searchController = function(){
         $("#results ul").fadeOut();
         $("#mainContainer").fadeOut("fast");
         $("#browse").fadeIn('fast');
-        $("#searchContent p.display").fadeIn('fast');
-        $("#searchContent p.hnlanswers").fadeOut('fast');
         $("#searchContent span").fadeIn('fast');
 
         if($(window).width()<=400) {$("#bgTopDiv").removeClass("mobileresults"); return;}
+        $("#searchContent p.display").fadeIn('fast');
+        $("#searchContent p.hnlanswers").fadeOut('fast');
+
         $("#mainContainer").animate({"margin":"120px auto"});
         $("#bgTopDiv").css("height", "");
         $("#bgTopDiv").animate({"padding":"50px 0px 100px 0px",
