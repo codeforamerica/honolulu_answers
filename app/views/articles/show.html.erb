@@ -32,20 +32,15 @@
   
     <%= raw @content_html %>
   </div>
-  <% if @article.content.nil? %>
+  <% if !@article.contact.nil? %>
   <div class="contact">
-  
-  <!---
-  	<h2>Need more Information?</h2>
-  	<h4><strong>Department of Awesome </strong><br />
-  	123 Awesome Ave.<br />
-  	Honolulu, HI, Awesome<br /><br />
-  	<span class="italic">Phone: 808-808-8080</span>
-  	</h4>
-  -->
-    <h2><%= @article.contact.name %></h2>
+    <h2>Need more information?</h2>
+    <h4><strong><a href="<%= raw @article.contact.url %>"><%= raw @article.contact.name %></a></strong><br />
+    <%= raw @article.contact.address %><br />
+    Phone: <%= raw @article.contact.number %><br />
   </div>
-<% end %>
+  <% end %>
+
 
 <!--  <%= link_to 'Edit', edit_article_path(@article) %> |
   <%= link_to 'Back', articles_path %> -->
