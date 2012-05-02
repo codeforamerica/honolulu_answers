@@ -19,12 +19,16 @@
 
   <div class="content">
 
-<!---  
 
-<div class="quickAnswer"><p class="quickAnswer">Pandas and gradient backgrounds increase transparency in local government through Twitter and #gov20. Oswald font is great for communication through scotch and San Francisco for Claremont McKenna Director</p>
-  <span class="button"><a href="#"><img src="/assets/getting_started_btn.png" /></span></a>
+  <% if !@article.service_url.nil? and @article.service_url != ''  %>
+
+  <div class="quickAnswer">
+    <div class="button"><a href="<%= @article.service_url%>"><img src="/assets/getting_started_btn.png" /></a></div>
+    <h3 class="quickAnswer">Honolulu.gov lets you do this online! </h3>
+    <p>This will take you directly to the online service on the honolulu.gov website.</p>
   </div>
--->  
+  <% end %>
+
   
   
   

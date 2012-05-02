@@ -250,15 +250,21 @@ div.contact {
 	width: 213px;
 	height: 97px;
 	float: right;
-	position: relative;
-	margin-top: -85px;
+
 }
 
 div.quickAnswer {
-	width: 600px;
-	background-color: #5397B2;
-	margin: auto;
-	padding: 30px 25px;
+  width: 600px;
+  background-color: #5397B2;
+  margin: 0px auto 20px auto;
+  padding: 30px 25px;
+  min-height:85px;
+}
+div.quickAnswer h3{
+  
+} 
+div.quickAnswer p{ 
+  font-size:16px;
 }
 
 
