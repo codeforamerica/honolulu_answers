@@ -183,6 +183,10 @@ td {
 	margin: 1px;
 }
 
+ul, li {
+	padding: 5px;
+}
+
 /* --------- article ---------*/
 
 
