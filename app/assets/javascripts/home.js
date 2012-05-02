@@ -98,17 +98,19 @@ var searchController = function(){
         $("#mainContainer").animate({"margin-top":"0px"});
         $("#bgTopDiv").animate({height:"87px",
                                 "margin-top":"0px",
-                                "padding":"0px"});
+                                "padding":"0px",
+                                "background-position":"0px -200px"});
         $("#browse").fadeOut('fast');
-        $("#bgTopDiv").css("background-position","0px -200px");
-        $("#searchContent p").fadeOut('fast');
+        $("#searchContent p.display").fadeOut('fast');
+        $("#searchContent p.hnlanswers").fadeIn('fast');
         $("#searchContent span").fadeOut('fast');
-        $("#searchContent form").animate({"margin":"0", "padding-top":"40px", "padding-bottom":"10px"}, 300);
-        $("#searchContent").css("text-align", "center");
+        $("#searchContent form").animate({"width":"50%", "padding-top":"40px", "padding-bottom":"10px"}, 200);
+        $("#searchContent").css("text-align", "right");
+        $("#searchContent form").css("margin", "auto");
         $("#searchContent").css("background-color", "rgba(255, 198, 10, 0.2);");
         $("#searchContent").animate({width:"100%",
                                      padding: "0px",
-                                     "margin-top":"0px"}, 300);
+                                     "margin-top":"0px"}, 200);
 
     };
 
@@ -118,17 +120,18 @@ var searchController = function(){
         $("#mainContainer").fadeOut("fast");
         $("#mainContainer").animate({"margin":"120px auto"});
         $("#bgTopDiv").css("height", "");
-        $("#bgTopDiv").animate({"padding":"50px 0px 100px 0px"});
+        $("#bgTopDiv").animate({"padding":"50px 0px 100px 0px",
+                                "background-position":"0px 0px"});
         $("#browse").fadeIn('fast');
-        $("#bgTopDiv").css("background-position","0px 0px");
-        $("#searchContent p").fadeIn('fast');
+        $("#searchContent p.display").fadeIn('fast');
+        $("#searchContent p.hnlanswers").fadeOut('fast');
         $("#searchContent span").fadeIn('fast');
-        $("#searchContent form").animate({"margin":"0", "padding-top":"0px", "padding-bottom":"0px"}, 300);
+        $("#searchContent form").animate({"width":"100%","margin":"0", "padding-top":"0px", "padding-bottom":"0px"}, 200);
         $("#searchContent").css("text-align", "left");
         $("#searchContent").css("background-color", "rgba(255, 198, 10, 0.8);");
         $("#searchContent").animate({width:"50%",
                                      padding: "25px",
-                                     "margin":"70px auto"}, 300);
+                                     "margin":"70px auto"}, 200);
 
     };
 

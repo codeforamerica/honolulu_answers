@@ -102,7 +102,7 @@ body{
 }
 
 input#search{ 
-  width: 400px;
+  width: 300px;
   padding:4px;
   margin-top:10px;
   
@@ -275,7 +275,14 @@ p.display {
 	color: #5c3e00;
 	line-height: 1em;
 }
-
+p.hnlanswers{ 
+  float:left;
+  font-family: Glegoo, sans-serif;
+  font-size: 24px;
+  color: #5c3e00;
+  display:none;
+  
+}
 
 p.quickAnswer {
 	margin-right: 250px;
