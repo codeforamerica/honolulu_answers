@@ -32,8 +32,9 @@
   
     <%= raw @content_html %>
   </div>
-  
+  <% if @article.content.nil? %>
   <div class="contact">
+  
   <!---
   	<h2>Need more Information?</h2>
   	<h4><strong>Department of Awesome </strong><br />
@@ -42,9 +43,9 @@
   	<span class="italic">Phone: 808-808-8080</span>
   	</h4>
   -->
-    <h2><%= raw @article.contact.name %></h2>
+    <h2><%= @article.contact.name %></h2>
   </div>
-
+<% end %>
 
 <!--  <%= link_to 'Edit', edit_article_path(@article) %> |
   <%= link_to 'Back', articles_path %> -->
