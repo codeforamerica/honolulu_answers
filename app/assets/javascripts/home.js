@@ -32,12 +32,12 @@ $(function(){
         }
     }
 
-    if($(window).width()<=400)
+    if($(window).width()<=600)
         searchControl.clearTransforms();
 
     $(window).resize(function(){
 
-        if($(window).width()<=400){
+        if($(window).width()<=600){
             if(window.location.pathname != "/")
                 $("#bgTopDiv").addClass("mobileresults");
             searchControl.clearTransforms();
@@ -98,7 +98,8 @@ var searchController = function(){
                                                       (data.matches.length > 1 ? "s":"")
                                                       +" found");
             $("#searchstatus").fadeIn('fast');
-            $(window).scrollTop(80);
+            if((window).width() <= 600)
+                $(window).scrollTop(80);
         }});
         self.transfromToResults();
     };
@@ -120,7 +121,7 @@ var searchController = function(){
         $("#searchContent span").fadeOut('fast');
         $("#searchstatusloading").show();
 
-        if($(window).width()<=400){$("#bgTopDiv").addClass("mobileresults"); return;}
+        if($(window).width()<=600){$("#bgTopDiv").addClass("mobileresults"); return;}
 
         $("#searchContent p.display").fadeOut('fast');
         $("#searchContent p.hnlanswers").fadeIn('fast');
@@ -148,7 +149,7 @@ var searchController = function(){
         $("#searchContent span").fadeIn('fast');
         $("#searchstatusloading").hide();
 
-        if($(window).width()<=400) {$("#bgTopDiv").removeClass("mobileresults"); return;}
+        if($(window).width()<=600) {$("#bgTopDiv").removeClass("mobileresults"); return;}
         $("#searchContent p.display").fadeIn('fast');
         $("#searchContent p.hnlanswers").fadeOut('fast');
 
