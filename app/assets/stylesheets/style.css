@@ -264,6 +264,12 @@ p.quickAnswer {
 	margin-right: 250px;
 }
 
+p.quickAnswer2 {
+	font-size: 18px;
+	font-family: Helvetica, Arial, sans-serif;
+	color: #fff;
+}
+
 .exampleText {
 	font-family: Helvetica, sans-serif;
 	font-size: 12px;
