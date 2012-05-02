@@ -82,7 +82,10 @@ input#search_btn {
 	height: 30px;
 }
 
-
+div.quickAnswer{
+  margin-top:10px;
+  width:inherit;
+}
 
 #browse {
 	position: relative;
