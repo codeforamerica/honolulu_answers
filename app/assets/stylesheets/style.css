@@ -45,11 +45,11 @@ body{
 
 #searchContent {
 	background:  rgba(255, 198, 10, 0.8);
-	position: relative;
-	width:50%;
+    border-radius:3px;
 	margin: 70px auto;
 	padding: 25px;
-    border-radius:3px;
+	position: relative;
+	width: 50%;
 }
 
 .searchForm { 
@@ -144,11 +144,11 @@ h4.disclaimer {
 
 #browse {
   background:  rgba(255, 255, 255, 0.9);
-  position: relative;
-  width: 25%;
-  padding: 10px 20px 30px 20px;
-  margin: -40px 0 0 253px;
   border-radius: 3px;
+  padding: 5px 25px 15px;
+  position: relative;
+  margin: 70px auto;
+  width: 50%;
 }
 
 .tags {

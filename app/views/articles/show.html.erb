@@ -42,8 +42,11 @@
   	<span class="italic">Phone: 808-808-8080</span>
   	</h4>
   -->
-    <h2><%= raw @article.contact.name %></h2>
-  </div>
+    <h2>Need more information?</h2>
+    <h4><strong><a href="<%= raw @article.contact.url %>"><%= raw @article.contact.name %></a></strong><br />
+    <%= raw @article.contact.address %><br />
+    Phone: <%= raw @article.contact.number %><br />
+    </div>
 
 
 <!--  <%= link_to 'Edit', edit_article_path(@article) %> |
