@@ -40,7 +40,8 @@ $(function(){
     $(window).resize(function(){
 
         if($(window).width()<=400){
-            $("#bgTopDiv").addClass("mobileresults");
+            if(window.location.pathname != "/")
+                $("#bgTopDiv").addClass("mobileresults");
             searchControl.clearTransforms();
         }else{
             $("#bgTopDiv").removeClass("mobileresults");
@@ -106,7 +107,8 @@ var searchController = function(){
 
     this.clearTransforms = function(){
         $('#mainContainer').removeAttr('style');
-        $('#mainContainer').show();        
+        if(window.location.pathname != "/")
+            $('#mainContainer').show();
         $('#bgTopDiv').removeAttr('style');
         $('#searchContent form').removeAttr('style');
         $('#searchContent').removeAttr('style');
