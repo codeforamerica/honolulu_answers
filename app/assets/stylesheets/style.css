@@ -123,6 +123,13 @@ input#search{
 #searchstatus strong{
   font-weight:bold;
 } 
+#searchstatusloading{ 
+  font-size:24px;
+  font-family:arial;
+  display:none;
+  font-weight:bold;
+  text-align:center;
+}
 
 .articleIcon {
 	position: relative;

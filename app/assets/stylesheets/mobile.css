@@ -86,6 +86,22 @@ div.quickAnswer{
   margin-top:10px;
   width:inherit;
 }
+#searchstatus{ 
+  margin:2px;
+  font-size:16px;
+}
+#searchstatus .count{ 
+  font-size:12px;
+}
+div#results ul{ 
+  margin-top:5px;
+}
+div#results ul h1{
+  margin-top:5px;
+} 
+div#results ul li{
+  padding-bottom:5px;
+}
 
 #browse {
 	position: relative;

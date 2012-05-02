@@ -88,19 +88,20 @@ var searchController = function(){
 
     var self = this;
     this.startSearch = function(query){
-        
+        $("#searchstatus").hide();        
         $.ajax("/search.json", {data:{q:query}, success:function(data){
             $("#results ul").empty();
             for(r in data.results){
                 console.log("result: ", data.results[r]);
                 self.addResult(data.results[r]);
             }
+            $("#searchstatusloading").hide();
             $("#searchstatus").find("strong").text(query);
             $("#searchstatus").find("div.count").text(data.matches+" result"+
                                                       (data.matches.length > 1 ? "s":"")
                                                       +" found");
-
-
+            $("#searchstatus").fadeIn('fast');
+            $(window).scrollTop(80);
         }});
         self.transfromToResults();
     };
@@ -116,11 +117,11 @@ var searchController = function(){
 
     this.transfromToResults = function(){
 
-        $("#searchstatus").fadeIn();
         $("#results ul").fadeIn();
         $("#mainContainer").fadeIn("fast");
         $("#browse").fadeOut('fast');
         $("#searchContent span").fadeOut('fast');
+        $("#searchstatusloading").show();
 
         if($(window).width()<=400){$("#bgTopDiv").addClass("mobileresults"); return;}
 
@@ -148,6 +149,7 @@ var searchController = function(){
         $("#mainContainer").fadeOut("fast");
         $("#browse").fadeIn('fast');
         $("#searchContent span").fadeIn('fast');
+        $("#searchstatusloading").hide();
 
         if($(window).width()<=400) {$("#bgTopDiv").removeClass("mobileresults"); return;}
         $("#searchContent p.display").fadeIn('fast');
