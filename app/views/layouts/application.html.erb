@@ -2,8 +2,13 @@
 <html>
 <head>
   <title>Honolulu Answers</title>
+  <meta name="viewport" content="width=device-width,initial-scale =1, user-scalable = no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="apple-touch-icon" href="icons/regular_icon.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="icons/retina_icon.png" />
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Glegoo">
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "mobile", :media => "all and (max-width: 600px)" %>
   <%= javascript_include_tag "application" %>
 
   <%= csrf_meta_tags %>

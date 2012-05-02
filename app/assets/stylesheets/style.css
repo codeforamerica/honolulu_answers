@@ -69,7 +69,7 @@ body{
 }
 #searchContent.headline form{
   margin:auto;
-  width:50%;
+  width:500px;
   padding-top:40px;
   padding-bottom:10px;
 }
@@ -103,7 +103,7 @@ body{
 }
 
 input#search{ 
-  width: 300px;
+  width: 200px;
   padding:4px;
   margin-top:10px;
   

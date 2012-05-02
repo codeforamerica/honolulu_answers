@@ -34,6 +34,19 @@ $(function(){
         }
     }
 
+    if($(window).width()<=400)
+        searchControl.clearTransforms();
+
+    $(window).resize(function(){
+
+        if($(window).width()<=400){
+            $("#bgTopDiv").addClass("mobileresults");
+            searchControl.clearTransforms();
+        }else{
+            $("#bgTopDiv").removeClass("mobileresults");
+        }
+    });
+
 /*    $("#search").typeahead({items:6,
                             lookup: function(event){
                                 var that = this
@@ -91,19 +104,32 @@ var searchController = function(){
         self.transfromToResults();
     };
 
+    this.clearTransforms = function(){
+        $('#mainContainer').removeAttr('style');
+        $('#mainContainer').show();        
+        $('#bgTopDiv').removeAttr('style');
+        $('#searchContent form').removeAttr('style');
+        $('#searchContent').removeAttr('style');
+    }
+
     this.transfromToResults = function(){
+
         $("#searchstatus").fadeIn();
         $("#results ul").fadeIn();
         $("#mainContainer").fadeIn("fast");
+        $("#browse").fadeOut('fast');
+        $("#searchContent p.display").fadeOut('fast');
+        $("#searchContent p.hnlanswers").fadeIn('fast');
+        $("#searchContent span").fadeOut('fast');
+
+        if($(window).width()<=400){$("#bgTopDiv").addClass("mobileresults"); return;}
+
+
         $("#mainContainer").animate({"margin-top":"0px"});
         $("#bgTopDiv").animate({height:"87px",
                                 "margin-top":"0px",
                                 "padding":"0px",
                                 "background-position":"0px -200px"});
-        $("#browse").fadeOut('fast');
-        $("#searchContent p.display").fadeOut('fast');
-        $("#searchContent p.hnlanswers").fadeIn('fast');
-        $("#searchContent span").fadeOut('fast');
         $("#searchContent form").animate({"width":"50%", "padding-top":"40px", "padding-bottom":"10px"}, 200);
         $("#searchContent").css("text-align", "right");
         $("#searchContent form").css("margin", "auto");
@@ -118,14 +144,17 @@ var searchController = function(){
         $("#searchstatus").fadeOut();
         $("#results ul").fadeOut();
         $("#mainContainer").fadeOut("fast");
-        $("#mainContainer").animate({"margin":"120px auto"});
-        $("#bgTopDiv").css("height", "");
-        $("#bgTopDiv").animate({"padding":"50px 0px 100px 0px",
-                                "background-position":"0px 0px"});
         $("#browse").fadeIn('fast');
         $("#searchContent p.display").fadeIn('fast');
         $("#searchContent p.hnlanswers").fadeOut('fast');
         $("#searchContent span").fadeIn('fast');
+
+        if($(window).width()<=400) {$("#bgTopDiv").removeClass("mobileresults"); return;}
+        $("#mainContainer").animate({"margin":"120px auto"});
+        $("#bgTopDiv").css("height", "");
+        $("#bgTopDiv").animate({"padding":"50px 0px 100px 0px",
+                                "background-position":"0px 0px"});
+
         $("#searchContent form").animate({"width":"100%","margin":"0", "padding-top":"0px", "padding-bottom":"0px"}, 200);
         $("#searchContent").css("text-align", "left");
         $("#searchContent").css("background-color", "rgba(255, 198, 10, 0.8);");
