@@ -161,7 +161,7 @@ h4.disclaimer {
   background-color: #ccc;
   padding: 0;
   display: block;
-  height:300px;
+  height:200px;
 }
 
 #browse {
@@ -183,12 +183,19 @@ h4.disclaimer {
 	font: 12px Helvetica, sans-serif;
 }
 
+.cfaLogo {
+	float: right;
+	margin: 20px;
+}
+
+/* -------- Tables & Lists -------- */
+
 table, th, td {
 	padding: 5px;
 }
 
 table {
-	width: 70%;
+	width: 80%;
 	margin: auto;
 }
 
@@ -205,9 +212,8 @@ td {
 	margin: 1px;
 }
 
-ul, li {
-	padding: 5px;
-	margin-left: 15px;
+li {
+	margin: 0 0 15px 5px;
 }
 
 /* --------- article ---------*/
@@ -279,64 +285,25 @@ div.quickAnswer p{
 
 /* -------------- Font Stuff ---------------*/
 
-
 p {
-	margin: .2em 0 0 0;
 	font-family: Helvetica, sans-serif;
 	font-size: 16px;
-}
-p.display {
-	font-family: Glegoo, sans-serif;
-	font-size: 28px;
-	color: #5c3e00;
-	line-height: 1em;
-}
-p.hnlanswers{ 
-  float:left;
-  font-family: Glegoo, sans-serif;
-  font-size: 24px;
-  color: #5c3e00;
-  display:none;
-}
-
-.headline p.hnlanswers{ 
-  display:block
-  
-}
-
-p.quickAnswer {
-	margin-right: 250px;
-}
-
-p.quickAnswer2 {
-	font-size: 18px;
-	font-family: Helvetica, Arial, sans-serif;
-	color: #fff;
-}
-
-.exampleText {
-	font-family: Helvetica, sans-serif;
-	font-size: 12px;
-	font-style: italic;
-	color: #937426;
+	margin: 0;
 }
 
 h1 {
 	font-family: Helvetica, sans-serif;
 	font-size: 28px;
 	color: #333;
-	margin: 1em 0 0 0;
-	padding: 0;
+	display: inline;
 }
 
 h2 {
+	color: #000;	
 	font-family: Montserrat, sans-serif;
 	font-size: 10px;
-	color: #000;
 	text-transform: uppercase;
-	display: inline-block;
 	vertical-align: top;
-	margin: 10px 0 3px 0;
 }
 
 h3 {
@@ -350,6 +317,45 @@ h4 {
 	color: #262626;
 	font: normal 12px Helvetica, sans-serif;
 }
+
+p.display {
+	color: #5c3e00;
+	font-family: PT Sans, sans-serif;
+	font-size: 29px;
+	line-height: 1.1em;
+}
+
+p.hnlanswers { 
+  color: #5c3e00;
+  display:none;
+  float:left;
+  font-family: PT Sans, sans-serif;
+  font-size: 24px;
+}
+
+.headline p.hnlanswers { 
+  display:block;
+}
+
+p.quickAnswer {
+	margin-right: 250px;
+}
+
+p.quickAnswer2 {
+	font-size: 18px;
+	font-family: Helvetica, Arial, sans-serif;
+	color: #fff;
+}
+
+
+
+.exampleText {
+	font-family: Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: italic;
+	color: #937426;
+}
+
 
 .italic {
 	font-style: italic;
