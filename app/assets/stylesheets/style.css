@@ -49,7 +49,7 @@ body{
 	margin: 70px auto;
 	padding: 25px;
 	position: relative;
-	width: 50%;
+	width: 70%;
 }
 
 .searchForm { 
@@ -69,7 +69,7 @@ body{
 }
 #searchContent.headline form{
   margin:auto;
-  width:500px;
+  width:600px;
   padding-top:40px;
   padding-bottom:10px;
 }
@@ -103,12 +103,51 @@ body{
 }
 
 input#search{ 
-  width: 200px;
-  margin-top:8px;
+  width: 90%;
+  height: 32px;
+  margin:15px 0 3px 0;
 border: solid 1px #D2D2D2;
 padding: 3px 5px;
 border-radius: 10px;
 background: #FFF;
+font-size: 19px;
+}
+
+input#search_btn {
+	position: relative;
+	width: 30px;
+	height:30px;
+	background: transparent url(/assets/searchIcon.png) no-repeat center center;
+	background-color:#5397B2;
+	border: none;
+	border-radius: 8px;
+	bottom:9px;
+	left: -40px;
+}
+
+.headline input#search_btn {
+	position: relative;
+	width: 20px;
+	height:20px;
+	background: transparent url(/assets/searchIcon.png) no-repeat center center;
+	background-size: 12px 12px;
+	background-color:#5397B2;
+	border: none;
+	border-radius: 5px;
+	bottom:3px;
+	left: -30px;	
+}
+	
+
+.headline input#search{ 
+  width: 58%;
+  height: 20px;
+  margin:6px 0 2px 0;
+  border: solid 1px #D2D2D2;
+  padding: 3px 5px;
+  border-radius: 8px;
+  background: #FFF;
+  font-size: 14px;
 }
 
 #searchstatus{ 
@@ -329,16 +368,13 @@ h4 {
 
 p.hnlanswers { 
   color: #5c3e00;
-  display:none;
-  float:left;
+  display:inline;
+  float: left;
   font-family: PT Sans, sans-serif;
   font-size: 24px;
-  margin-top: 2px;
+  margin: 4px 0 0 0;
 }
 
-.headline p.hnlanswers { 
-  display:block;
-}
 
 p.quickAnswer {
 	margin-right: 250px;
