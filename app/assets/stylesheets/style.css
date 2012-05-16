@@ -35,7 +35,7 @@ body{
 
 }
 #bgTopDiv.headline {
-  height: 87px;
+  height: 80px;
   position:absolute;
   top:0px;
   background-position:0px -120px;
@@ -104,9 +104,11 @@ body{
 
 input#search{ 
   width: 200px;
-  padding:4px;
-  margin-top:10px;
-  
+  margin-top:8px;
+border: solid 1px #D2D2D2;
+padding: 3px 5px;
+border-radius: 10px;
+background: #FFF;
 }
 
 #searchstatus{ 
@@ -331,6 +333,7 @@ p.hnlanswers {
   float:left;
   font-family: PT Sans, sans-serif;
   font-size: 24px;
+  margin-top: 2px;
 }
 
 .headline p.hnlanswers { 
@@ -347,15 +350,12 @@ p.quickAnswer2 {
 	color: #fff;
 }
 
-
-
 .exampleText {
 	font-family: Helvetica, sans-serif;
 	font-size: 12px;
 	font-style: italic;
 	color: #937426;
 }
-
 
 .italic {
 	font-style: italic;
@@ -370,7 +370,6 @@ p.quickAnswer2 {
 
 
 /*------------Links-----------*/
-
 
 
 a:link {
