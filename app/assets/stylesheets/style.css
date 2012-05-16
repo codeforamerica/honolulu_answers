@@ -28,7 +28,7 @@ body{
 }
 
 #bgTopDiv {
-  background: transparent url(/assets/search_page_photo.png) no-repeat left top;
+  background: rgba(255, 198, 10, 0.8);
   width: 100%;
   padding-top:50px;
   padding-bottom:100px;
@@ -59,7 +59,7 @@ body{
 }
 
 #searchContent.headline {
-  background:  rgba(255, 198, 10, 0.4);
+  background:  rgba(255, 198, 10, 0.8);
   background: #ffc60a;
   position: absolute;
   width: 100%;

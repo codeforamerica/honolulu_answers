@@ -132,7 +132,7 @@ var searchController = function(){
                                 "margin-top":"0px",
                                 "padding":"0px",
                                 "background-position":"0px -200px"});
-        $("#searchContent form").animate({"width":"50%", "padding-top":"40px", "padding-bottom":"10px"}, 200);
+        $("#searchContent form").animate({"width":"600px", "padding-top":"40px", "padding-bottom":"10px"}, 200);
         $("#searchContent").css("text-align", "right");
         $("#searchContent form").css("margin", "auto");
         $("#searchContent").css("background-color", "rgba(255, 198, 10, 0.2);");
