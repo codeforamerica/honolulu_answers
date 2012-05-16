@@ -118,6 +118,7 @@ var searchController = function(){
         $("#results ul").fadeIn();
         $("#mainContainer").fadeIn("fast");
         $("#browse").fadeOut('fast');
+        $("#bgTopDiv").addClass("headline");
         $("#searchContent span").fadeOut('fast');
         $("#searchstatusloading").show();
 
