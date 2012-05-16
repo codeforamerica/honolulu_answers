@@ -28,7 +28,7 @@ body{
 }
 
 #bgTopDiv {
-  background: rgba(255, 198, 10, 0.8);
+  background: transparent url(/assets/search_page_photo.png) no-repeat left top;
   width: 100%;
   padding-top:50px;
   padding-bottom:100px;
