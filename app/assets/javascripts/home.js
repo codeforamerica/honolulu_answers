@@ -116,7 +116,7 @@ var searchController = function(){
     this.transfromToResults = function(){
 
         $("#results ul").fadeIn();
-        $("#mainContainer").fadeIn("fast");
+        $("#mainContainer").fadeIn("normal");
         $("#browse").fadeOut('fast');
         $("#bgTopDiv").addClass("headline");
         $("#searchContent span").fadeOut('fast');
@@ -127,7 +127,7 @@ var searchController = function(){
         $("#searchContent p.display").fadeOut('fast');
         $("#searchContent p.hnlanswers").fadeIn('fast');
 
-        $("#mainContainer").animate({"margin-top":"0px"});
+        $("#mainContainer").animate({"margin-top":"120px"});
         $("#bgTopDiv").animate({height:"87px",
                                 "margin-top":"0px",
                                 "padding":"0px",
@@ -135,7 +135,7 @@ var searchController = function(){
         $("#searchContent form").animate({"width":"600px", "padding-top":"40px", "padding-bottom":"10px"}, 200);
         $("#searchContent").css("text-align", "right");
         $("#searchContent form").css("margin", "auto");
-        $("#searchContent").css("background-color", "rgba(255, 198, 10, 0.2);");
+        $("#searchContent").css("background-color", "rgba(255, 198, 10, 1);");
         $("#searchContent").animate({width:"100%",
                                      padding: "0px",
                                      "margin-top":"0px"}, 200);
@@ -146,6 +146,7 @@ var searchController = function(){
         $("#searchstatus").fadeOut();
         $("#results ul").fadeOut();
         $("#mainContainer").fadeOut("fast");
+        $("#bgTopDiv").removeClass("headline");
         $("#browse").fadeIn('fast');
         $("#searchContent span").fadeIn('fast');
         $("#searchstatusloading").hide();
@@ -161,7 +162,7 @@ var searchController = function(){
 
         $("#searchContent form").animate({"width":"100%","margin":"0", "padding-top":"0px", "padding-bottom":"0px"}, 200);
         $("#searchContent").css("text-align", "left");
-        $("#searchContent").css("background-color", "rgba(255, 198, 10, 0.8);");
+        $("#searchContent").css("background-color", "rgba(255, 198, 10, 1);");
         $("#searchContent").animate({width:"50%",
                                      padding: "25px",
                                      "margin":"70px auto"}, 200);
