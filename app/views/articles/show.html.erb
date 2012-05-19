@@ -20,19 +20,20 @@
   <div class="content">
 
 
-  <% if !@article.service_url.nil? and @article.service_url != ''  %>
-
-  <div class="quickAnswer">
-    <div class="button"><a href="<%= @article.service_url%>"><img src="/assets/getting_started_btn.png" /></a></div>
-    <h3 class="quickAnswer">Honolulu.gov lets you do this online! </h3>
-    <p>This will take you directly to the online service on the honolulu.gov website.</p>
-  </div>
+  <% if !@article.service_url.present? %>
+	  <div class="quickAnswer">
+	    <div class="button">
+			<a href="<%= @article.service_url%>"><img src="/assets/getting_started_btn.png" /></a>
+		</div>
+	    <h3 class="quickAnswer">Honolulu.gov lets you do this online! </h3>
+	    <p>This will take you directly to the online service on the honolulu.gov website.</p>
+	  </div>
   <% end %>
 
   
   
   
-    <%= raw @content_html %>
+  <%= raw @content_html %>
   </div>
   <% if !@article.contact.nil? %>
   <div class="contact">
