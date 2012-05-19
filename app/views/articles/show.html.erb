@@ -20,7 +20,7 @@
   <div class="content">
 
 
-  <% if !@article.service_url.present? %>
+  <% if @article.service_url.present? %>
 	  <div class="quickAnswer">
 	    <div class="button">
 			<a href="<%= @article.service_url%>"><img src="/assets/getting_started_btn.png" /></a>
