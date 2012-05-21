@@ -19,7 +19,7 @@ class Article < ActiveRecord::Base
   end
 
   def allContent()
-    self.title + " "+self.content
+    [self.title, self.content].join(" ")
   end
 
 end
