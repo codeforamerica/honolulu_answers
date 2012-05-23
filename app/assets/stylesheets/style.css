@@ -202,7 +202,7 @@ h4.disclaimer {
   background-color: #ccc;
   padding: 0;
   display: block;
-  height:200px;
+  height: 180px;
 }
 
 #browse {
@@ -226,6 +226,7 @@ h4.disclaimer {
 
 .cfaLogo {
 	float: right;
+	vertical-align: middle;
 	margin: 20px;
 }
 
