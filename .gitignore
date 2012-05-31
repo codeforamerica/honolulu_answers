@@ -16,3 +16,4 @@
 
 .DS_Store
 config/dblogin.yml
+/.env
