@@ -8,7 +8,7 @@
 
 ## Setting up Searchify
 
-We use the Searchify heroku addon to power the search index for honolulu answers. In order to use this in development you can either run a copy of Indextank (which is what searchify is built on) or add the searchify addon to a heroku app, and copy the provided search api endpoint to your .env file.
+We use the [Searchify](https://addons.heroku.com/searchify) heroku addon to power the search index for honolulu answers. In order to use this in development you can either run a copy of Indextank (which is what searchify is built on) or add the searchify addon to a heroku app, and copy the provided search api endpoint to your .env file.
 
 
 ### Other stuff
