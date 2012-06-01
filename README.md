@@ -9,12 +9,14 @@
 To setup some example data:
     $ rake db:seed  
 
-## Setting up Searchify
+## Configuration
+
+### Setting up Searchify
 
 We use the [Searchify](https://addons.heroku.com/searchify) heroku addon to power the search index for honolulu answers. In order to use this in development you can either run a copy of Indextank (which is what searchify is built on) or add the searchify addon to a heroku app, and copy the provided search api endpoint to your .env file.
 
 
-### Configuration
+### Environment Vars
 
 Honolulu Answers uses Environment variables for configuration. It expects `SEARCHIFY_API_URL` to be set to the searchify endpoint (which can be retrived from `heroku config` once searchify is an addon for your app)
 
@@ -25,6 +27,8 @@ Included in this project is an example of what the `.env` file should include. I
     $ cp .env.sample .env
 
 Now edit `.env` to set the correct url to the searchify endpoint.
+
+### DB Login
 
 Also included `config/dblogin.yml.sample` copy this file too
 
