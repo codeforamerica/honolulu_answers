@@ -6,20 +6,40 @@
     $ rake db:create
     $ rake db:migrate
 
+To setup some example data:
+    $ rake db:seed  
+
 ## Setting up Searchify
 
 We use the [Searchify](https://addons.heroku.com/searchify) heroku addon to power the search index for honolulu answers. In order to use this in development you can either run a copy of Indextank (which is what searchify is built on) or add the searchify addon to a heroku app, and copy the provided search api endpoint to your .env file.
 
 
-### Other stuff
+### Configuration
 
-A .env.sample file is include in the project, as well as a config/dblogin.yml.sample cp both of these to remove .sample, and edit the settings to match your configuration.
+Honolulu Answers uses Environment variables for configuration. It expects `SEARCHIFY_API_URL` to be set to the searchify endpoint (which can be retrived from `heroku config` once searchify is an addon for your app)
+
+`foreman` is a great tool for checking your Procfile used for heroku, and running your application locally. When running `foreman start` this will load enivronment variables from `.env` if that file is found.  
+
+Included in this project is an example of what the `.env` file should include. In order to use this make a copy and replace the values appropriate values for your setup.
+
+    $ cp .env.sample .env
+
+Now edit `.env` to set the correct url to the searchify endpoint.
+
+Also included `config/dblogin.yml.sample` copy this file too
+
+    $ cp config/dblogin.yml.sample config/dblogin.yml
+
+Now if you need to set login credentials for your database that that are different then the default, you can do it in `config/dblogin.yml`
+
+Both `config/dblogin.yml` and `.env` are added to the `.gitignore` so changes should not be committed, dont commit passwords :)
+
 
 ## Usage
     
     $ rails s
 
-With Foreman:
+With Foreman (used to load .env):
     
     $ foreman start
 
@@ -80,6 +100,11 @@ bug report should include a pull request with failing specs.
 7. Submit a pull request. Please do not include changes to the gemspec or
    version file. (If you want to create your own version for some reason,
    please do so in a separate commit.)
+
+## Roadmap
+* Support other search indexes backends/services (perhaps just fulltext search in DB as a fallback)
+* A comprehensive admin component
+* Results tailored to current location
 
 ## Supported Ruby Versions
 This library aims to support and is [tested against][travis] the following Ruby
