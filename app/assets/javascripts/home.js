@@ -95,7 +95,7 @@ var searchController = function(){
             $("#searchstatusloading").hide();
             $("#searchstatus").find("strong").text(query);
             $("#searchstatus").find("div.count").text(data.matches+" result"+
-                                                      (data.matches.length > 1 ? "s":"")
+                                                      (data.matches > 1 ? "s":"")
                                                       +" found");
             $("#searchstatus").fadeIn('fast');
             if((window).width() <= 600)
