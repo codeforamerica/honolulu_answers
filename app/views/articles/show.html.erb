@@ -2,7 +2,7 @@
 <div id="bgTopDiv" class="headline">  
   <div id="searchContent" class="headline">
     <form id="searchForm" class="noanimation" autocomplete="off" action="/search">
-      <p class="hnlanswers">Honolulu Answers</p>
+      <p class="hnlanswers"><a class="header" href="/">Honolulu Answers</a></p>
       <input type="text" id="search" name="q" />
       <input type="submit" id="search_btn" value="" />
     </form>
@@ -14,16 +14,16 @@
 
 <div class="article">
 <span class="icon"><img src="/assets/quick_answers_icon.png" /></span>
-  <h2>Quick Answers</h2><br />
+  <h2 class="quickanswer">Quick Answers</h2><br />
   <h1><%= @article.title %></h1>
 
   <div class="content">
 
 
   <% if !@article.service_url.nil? and @article.service_url != ''  %>
-  <div class="quickAnswer">
-    <div class="button"><a href="<%= @article.service_url%>"><img src="/assets/getting_started_btn.png" /></a></div>
-    <h3 class="quickAnswer">Honolulu.gov lets you do this online! </h3><br />
+  <div class="onlineservice">
+    <div class="servicebox"><a href="<%= @article.service_url%>"><img src="/assets/getting_started_btn.png" /></a></div>
+    <h3 class="service">Honolulu.gov lets you do this online! </h3>
     <p>This will take you directly to the online service on the honolulu.gov website.</p>
   </div>
   <% end %>

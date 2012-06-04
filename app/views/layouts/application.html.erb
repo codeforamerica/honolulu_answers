@@ -11,6 +11,11 @@
   <%= stylesheet_link_tag    "mobile", :media => "all and (max-width: 600px)" %>
   <%= javascript_include_tag "application" %>
 
+
+<% if current_page?('/') %>
+<script src="http://codeforamerica.github.com/cfa_banner/banner.js?type=corner-right&forkUrl=https://github.com/codeforamerica/honolulu_answers" id="cfa_banner_script"></script>
+<% end %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -21,8 +26,7 @@
 
 
 <div id="footer">
-  <h4 class="disclaimer">This is a test website, so some information may be inaccurate. The official website remains <a href="http://honolulu.gov">honolulu.gov</a>.</h4>
-  <span class="cfaLogo"><img src="/assets/cfa_logo.png" width="160" height="64" /></span>
+  <h4 class="disclaimer">This is a beta test website, so some information may be inaccurate. Please visit the official <a target="_blank" href="http://honolulu.gov">honolulu.gov</a> for complete information.</a>.</h4>
 </div>
 <script type="text/javascript">
   var _gaq = _gaq || [];

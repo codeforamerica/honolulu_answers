@@ -11,10 +11,78 @@
 */
 
 body{ 
-  background: transparent url(/assets/background_pattern.png) repeat left top;
-  margin: 0 0 0 0;
+	background: transparent url(/assets/background_pattern.png) repeat left top;
+	margin: 0 0 0 0;
+	font-size:16px;
+	font-family:Helvetica, sans-serif;
+	line-height:140%;
 }
 
+/* -------- Tables & Lists -------- */
+
+table, th, td {
+	padding: 5px;
+}
+
+table {
+	width: 80%;
+	margin: auto;
+}
+
+th {
+	text-align: left;
+	background-color: #ddd;
+	font:  14px Helvetica, Arial, sans-serif;
+}
+
+td {
+	font-size: 12px;
+	text-align: left;
+	background-color: #ededed;
+	margin: 1px;
+}
+
+ul{
+	margin-top:12px;
+}
+
+li {
+	margin: 0 0 15px 5px;
+}
+
+p{
+	margin-bottom:12px;
+}
+
+h1 {
+	font-size: 28px;
+	color: #333;
+}
+
+h2 {
+	color: #000;
+	font-family: Montserrat, sans-serif;
+	font-size: 14px;
+	text-transform: uppercase;
+	vertical-align: top;
+}
+
+h2.quickanswer{
+	color:#d33895;
+}
+
+h3 {
+	color: #262626;
+	font-size: 16px;
+	margin: 0;
+}
+
+h4 {
+	color: #262626;
+	font: normal 14px Helvetica, sans-serif;
+}
+
+/* --------- structure ---------*/
 #topDivPattern {
 	background: transparent url(/assets/border.png) repeat-x;
 	opacity: 0.75;
@@ -42,7 +110,49 @@ body{
   padding:0px;
 }
 
+#footer {
+  width: 100%;
+  background-color: #ccc;
+  padding: 0;
+  display: block;
+  height: 40px;
+}
 
+#browse {
+  background:  rgba(255, 255, 255, 0.9);
+  border-radius: 3px;
+  padding: 5px 25px 15px;
+  position: relative;
+  margin: 70px auto;
+  width: 50%;
+}
+
+.tags {
+	background-color: #5397B2;
+	display: inline-block;
+	margin: 0px 2px 5px 0;
+	padding: 5px;
+	border-radius: 1px;
+	color: #fff;
+	font: 12px Helvetica, sans-serif;
+}
+
+.cfaLogo {
+	float: right;
+	vertical-align: middle;
+	margin: 20px;
+}
+
+h4.disclaimer {
+  background-color: #F17921;
+  margin-top:0px;
+  padding:15px 20px;
+}
+.disclaimer {
+	padding: 0 20px;
+}
+
+/* --------- search ---------*/
 #searchContent {
 	background:  rgba(255, 198, 10, 1);
     border-radius:3px;
@@ -91,15 +201,30 @@ body{
   display:none;
   background:#fff;
   padding:40px;
-  font-family:arial;
   
 }
-#results ul h1{
-  background:url(/assets/quick_answers_icon_small.png) 0px 5px no-repeat;
-  padding-left:30px;
-}
 #results ul div.preview{ 
-  margin:5px 0px 5px 30px;
+	margin:5px 0px 5px 30px;
+	line-height:140%;
+}
+#results ul{ 
+  margin: 1.5em 0 0 0;
+  padding: 0;
+  border-top: dashed 1px #999;
+}
+#results ul li{
+  padding: 0 0 1em 0;
+  border-bottom: dashed 1px #999;
+  list-style:none;
+  margin-left: 15px;
+  background:url(/assets/quick_answers_icon_small.png)  0px 5px no-repeat;
+} 
+#results ul h1{
+	margin-top:12px;
+	margin-bottom:0px;
+	margin-left:30px;
+	padding-top:5px;
+	line-height:120%;
 }
 
 input#search{ 
@@ -138,11 +263,10 @@ input#search_btn {
 	left: -30px;	
 }
 	
-
 .headline input#search{ 
   width: 58%;
   height: 20px;
-  margin:6px 0 2px 0;
+  margin:6px 0px 2px 0px;
   border: solid 1px #D2D2D2;
   padding: 3px 5px;
   border-radius: 8px;
@@ -177,90 +301,22 @@ input#search_btn {
 	vertical-align: middle;
 }
 
-
-div#results ul{ 
-  margin: 1.5em 0 0 0;
-  padding: 0;
-  border-top: dashed 1px #999;
+p.hnlanswers { 
+  color: #5c3e00;
+  display:inline;
+  float: left;
+  font-family: PT Sans, sans-serif;
+  font-size: 24px;
+  margin: 4px 0 0 0;
+/*  display:none;*/
 }
 
-div#results ul li{
-  padding: 0 0 1em 0;
-  border-bottom: dashed 1px #999;
-  list-style:none;
-  margin-left: 15px;
-} 
-
-h4.disclaimer {
-  background-color: #F17921;
-  margin-top:0px;
-  padding:15px 20px;
-}
-
-#footer {
-  width: 100%;
-  background-color: #ccc;
-  padding: 0;
-  display: block;
-  height: 180px;
-}
-
-#browse {
-  background:  rgba(255, 255, 255, 0.9);
-  border-radius: 3px;
-  padding: 5px 25px 15px;
-  position: relative;
-  margin: 70px auto;
-  width: 50%;
-}
-
-.tags {
-	background-color: #5397B2;
-	display: inline-block;
-	margin: 0px 2px 5px 0;
-	padding: 5px;
-	border-radius: 1px;
-	color: #fff;
-	font: 12px Helvetica, sans-serif;
-}
-
-.cfaLogo {
-	float: right;
-	vertical-align: middle;
-	margin: 20px;
-}
-
-/* -------- Tables & Lists -------- */
-
-table, th, td {
-	padding: 5px;
-}
-
-table {
-	width: 80%;
-	margin: auto;
-}
-
-th {
-	text-align: left;
-	background-color: #ddd;
-	font:  12px Helvetica, Arial, sans-serif;
-}
-
-td {
-	font-size: 10px;
-	text-align: left;
-	background-color: #ededed;
-	margin: 1px;
-}
-
-li {
-	margin: 0 0 15px 5px;
+/* --------- list of articles ---------*/
+div.article h1.list{
+	margin:6px 0px 0px 0px;
 }
 
 /* --------- article ---------*/
-
-
 div.article{ 
   background: #fff;
   padding: 10px 30px;
@@ -270,26 +326,11 @@ div.article{
   position: relative;
   margin: 120px auto;
   left: -100px;
-  font: 14px arial;
 }
 
-div.article h1{ 
-  font-size:32px;
-  color:#333;
-  font-weight:normal;
-  display: inline;
-}
-
-.icon {
-	width: 42px;
-	height: 61px;
-	display: inline;
-	margin: 10px 15px 0 0;
-	float: left;
-}
 div.content {
 	width: 100%;
-	padding: 30px 0;
+	padding: 24px 0;
 }
 
 div.contact {
@@ -302,7 +343,15 @@ div.contact {
 	color: #ecdebd;
 }
 
-.button {
+div.onlineservice {
+  width: 600px;
+  background-color: #5397B2;
+  margin: 0px auto 20px auto;
+  padding: 30px 25px;
+  min-height:85px;
+}
+
+.servicebox {
 	background: transparent url(/assets/getting_started_btn.png) no-repeat left top;
 	width: 213px;
 	height: 97px;
@@ -310,75 +359,59 @@ div.contact {
 
 }
 
-div.quickAnswer {
-  width: 600px;
-  background-color: #5397B2;
-  margin: 0px auto 20px auto;
-  padding: 30px 25px;
-  min-height:85px;
-}
-div.quickAnswer h3{
-  
-} 
-div.quickAnswer p{ 
-  font-size:16px;
-}
-
-
-/* -------------- Font Stuff ---------------*/
-
-p {
-	font-family: Helvetica, sans-serif;
-	font-size: 16px;
-	margin: 0;
-}
-
-h1 {
-	font-family: Helvetica, sans-serif;
-	font-size: 28px;
-	color: #333;
+.icon {
+	width: 42px;
+	height: 61px;
 	display: inline;
+	margin: 10px 15px 0 0;
+	float: left;
 }
 
-h2 {
-	color: #000;	
-	font-family: Montserrat, sans-serif;
-	font-size: 10px;
-	text-transform: uppercase;
-	vertical-align: top;
+div.quick_top{ /*blue box for quick answers*/
+	background:#94d3ec; /*bae3f4; /*dbddfc;*/
+	padding:6px 18px 6px 18px;
+	margin:0px 0px 18px 0px;
 }
 
-h3 {
-	font-family: Helvetica, sans-serif;
-	color: #262626;
-	font-size: 16px;
-	margin: 0;
+div.quick_bottom{ /*box for addl info*/
+	padding:0px 12px 12px 12px;
+	margin:0px;
 }
 
-h4 {
-	color: #262626;
-	font: normal 12px Helvetica, sans-serif;
+div.article h1{ /*article title*/
+	font-size:32px;
+	color:#333;
+	font-weight:normal;
+	margin:-24px 0px 0px 56px;
+	line-height:120%;
 }
 
-.display {
-	color: #5c3e00;
-	font-family: PT Sans, sans-serif;
-	font-size: 29px;
-	line-height: 1.1em;
+h3.service{ 
+} 
+
+div.quick_top h2,
+div.quick_bottom h2{
+	margin-bottom:9px;
+	text-transform:none;
+	font-size:100%;
+}
+div.quick_top p{
 }
 
-p.hnlanswers { 
-  color: #5c3e00;
-  display:inline;
-  float: left;
-  font-family: PT Sans, sans-serif;
-  font-size: 24px;
-  margin: 4px 0 0 0;
-  display:none;
+div.quick_bottom h3{
+	margin:24px 0px 0px 0px;
+	text-transform:uppercase;
+	font-size:14px;
 }
 
+div.quick_bottom h3:first-child{
+	margin-top:0px;
+}
+div.quick_bottom p{
+	margin: 0px 0px 12px 0px;
+}
 
-p.quickAnswer {
+/*p.quickAnswer {
 	margin-right: 250px;
 }
 
@@ -386,6 +419,14 @@ p.quickAnswer2 {
 	font-size: 18px;
 	font-family: Helvetica, Arial, sans-serif;
 	color: #fff;
+}*/
+
+/* -------------- Misc ---------------*/
+.display {
+	color: #5c3e00;
+	font-family: PT Sans, sans-serif;
+	font-size: 29px;
+	line-height: 1.1em;
 }
 
 .exampleText {
@@ -401,15 +442,7 @@ p.quickAnswer2 {
 	padding: 0;
 }
 
-.disclaimer {
-	padding: 0 20px;
-}
-
-
-
 /*------------Links-----------*/
-
-
 a:link {
 	color: #01546E;
 	font-weight: normal;
@@ -455,4 +488,10 @@ a.browse:active {
 	color: #fff;
 }
 
-
+a.header{
+	color:#000;
+	text-decoration:none;
+	font-size:24px;
+	margin-top:3px;
+	display:block;
+}
