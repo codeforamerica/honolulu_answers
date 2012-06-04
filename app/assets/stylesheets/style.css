@@ -284,6 +284,7 @@ input#search_btn {
 #searchstatus .count{ 
   font-size:14px;
   font-style:italic;
+  color:#d23894;
 }
 #searchstatus strong{
   font-weight:bold;
