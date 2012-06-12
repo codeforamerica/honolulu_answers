@@ -80,6 +80,7 @@ input#search{
 input#search_btn {
 	width: 30px;
 	height: 30px;
+	cursor:pointer;
 }
 
 div.quickAnswer{
@@ -107,6 +108,7 @@ div#results ul li{
 	position: relative;
 	margin: 40px auto;
 	border-radius: 3px;
+	width:70%;
 }
 div.content {
 	width: inherit;
@@ -189,4 +191,8 @@ div#results ul li{
 
 .disclaimer {
 	padding: 0 20px;
+}
+
+#cfa_corner_ribbon {
+	visibility:hidden;
 }

@@ -248,6 +248,7 @@ input#search_btn {
 	border-radius: 8px;
 	bottom:9px;
 	left: -40px;
+	cursor:pointer;
 }
 
 .headline input#search_btn {
@@ -261,6 +262,7 @@ input#search_btn {
 	border-radius: 5px;
 	bottom:3px;
 	left: -30px;	
+	cursor:pointer;
 }
 	
 .headline input#search{ 
@@ -315,6 +317,11 @@ p.hnlanswers {
 /* --------- list of articles ---------*/
 div.article h1.list{
 	margin:6px 0px 0px 0px;
+	padding-bottom: 10px;
+}
+
+div.article-section {
+	padding: 4px 0px;
 }
 
 /* --------- article ---------*/

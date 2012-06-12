@@ -11,46 +11,131 @@
 
 <div class="article">
 
-<p>
-	<h1 class="list">Listing of all articles</h1>
-</p>
-<p>
-	<h2>
-		<a name="driverlicense">Driver License</a>
-	</h2>
-</p>
-<ul>
-	<%= article_list_tag(1,"How do I get a Hawai’i driver license for the first time?") %>
-	<%= article_list_tag(2, "How do I renew my driver license?")%>
-	<%= article_list_tag(3, "Where do I go to apply for a driver license?")%>
-</ul>
 
-<p>
-	<h2>
-		<a name="motorvehicle">Motor Vehicles</a>
-	</h2>
-</p>
-<ul>
-	<%= article_list_tag(4, "How do I register a new motor vehicle?")%>
-	<%= article_list_tag(5, "How do I renew the registration for my motor vehicle?")%>
-	<%= article_list_tag(6, "Where do I go to register a motor vehicle?")%>
-	<%= article_list_tag(7, "What is the registration fee for my motor vehicle?")%>
-	<%= article_list_tag(8, "How do I register a new trailer?")%>
-	<%= article_list_tag(9, "How do I renew the registration for my trailer?")%>
-	<%= article_list_tag(10, "Where do I go to register a trailer?")%>
-	<%= article_list_tag(11, "What is the registration fee for my trailer?")%>
-	<%= article_list_tag(12, "How do I transfer ownership of my vehicle or trailer?")%>
-	<%= article_list_tag(13, "How do I get a personalized license plate?")%>
-</ul>
+	<h1 class="list">Listing of All Articles</h1>
 
-<p>
-	<h2>
-		<a name="jobs">Jobs</a>
-	</h2>
-</p>
-<ul>
-	<%= article_list_tag(14, "How do I get a job at the City?")%>
-	<%= article_list_tag(15, "What employment benefits are offered by the City?")%>
-</ul>
+	<div class="article-section">
+		<h2>
+			<a name="driver-license">Driver License</a>
+		</h2>
+	<ul>
+		<%= article_list_tag(1,"How do I get a Hawai’i driver license for the first time?") %>
+		<%= article_list_tag(2, "How do I renew my driver license?")%>
+		<%= article_list_tag(3, "Where do I go to apply for a driver license?")%>
+	</ul>
+	</div>
+
+	<div class="article-section">
+		<h2>
+			<a name="motor-vehicle">Motor Vehicles</a>
+		</h2>
+		<ul>
+			<%= article_list_tag(4, "How do I register a new motor vehicle?")%>
+			<%= article_list_tag(5, "How do I renew the registration for my motor vehicle?")%>
+			<%= article_list_tag(6, "Where do I go to register a motor vehicle?")%>
+			<%= article_list_tag(7, "What is the registration fee for my motor vehicle?")%>
+			<%= article_list_tag(8, "How do I register a new trailer?")%>
+			<%= article_list_tag(9, "How do I renew the registration for my trailer?")%>
+			<%= article_list_tag(10, "Where do I go to register a trailer?")%>
+			<%= article_list_tag(11, "What is the registration fee for my trailer?")%>
+			<%= article_list_tag(12, "How do I transfer ownership of my vehicle or trailer?")%>
+			<%= article_list_tag(13, "How do I get a personalized license plate?")%>
+		</ul>
+	</div>
+
+	<div class="article-section">
+		<h2>
+			<a name="jobs">Jobs</a>
+		</h2>
+		<ul>
+			<%= article_list_tag(14, "How do I get a job at the City?")%>
+			<%= article_list_tag(15, "What employment benefits are offered by the City?")%>
+		</ul>
+	</div>
+
+	<div class="article-section">
+		<h2>
+			<a name="camping">Camping</a>
+		</h2>
+		<ul>
+			<%= article_list_tag(16, "How can I get a camping permit?")%>
+			<%= article_list_tag(17, "How far in advance can I reserve a camping spot?")%>
+			<%= article_list_tag(18, "For how many days can I reserve a camping spot?")%>
+		</ul>
+	</div>
+
+	<div class="article-section">
+		<h2>
+			<a name="planning-permit">Planning Permit</a>
+		</h2>
+		<ul>
+			<%= article_list_tag(19, "How do I get a permit for a construction project?")%>
+			<%= article_list_tag(20, "What are the regulations for a construction project?")%>
+			<%= article_list_tag(21, "Where do I get a permit for a construction project?")%>
+			<%= article_list_tag(22, "How do I get in touch with a building inspector?")%>
+		</ul>
+	</div>
+
+	<div class="article-section">
+		<h2>
+			<a name="requesting-service">Requesting Service</a>
+		</h2>
+		<ul>
+			<%= article_list_tag(23, "How do I report a broken streetlight/pothole/sidewalk/etc.?")%>
+			<%= article_list_tag(24, "When will my reported streetlight/pothole/sidewalk/etc. be fixed?")%>
+		</ul>
+	</div>
+
+	<div class="article-section">
+		<h2>
+			<a name="garbage-collection">Garbage Collection</a>
+		</h2>
+		<ul>
+			<%= article_list_tag(25, "Where can I report that my trash or recycling was not picked up?")%>
+			<%= article_list_tag(26, "How do I replace a broken garbage can?")%>
+			<%= article_list_tag(27, "What is my trash pickup day?")%>
+			<%= article_list_tag(28, "What is my recycling pickup day?")%>
+			<%= article_list_tag(29, "What is my compost pickup day?")%>
+		</ul>
+	</div>
+
+	<div class="article-section">
+		<h2>
+			<a name="traffic-report">Traffic Report</a>
+		</h2>
+		<ul>
+			<%= article_list_tag(30, "How is traffic currently flowing along a particular route?")%>
+			<%= article_list_tag(31, "Where can I view a live video feed of traffic in a particular area?")%>
+			<%= article_list_tag(32, "Are there any upcoming traffic advisories?")%>
+			<%= article_list_tag(32, "Where can I see live video of all areas of traffic congestion?")%>
+		</ul>
+	</div>
+
+	<div class="article-section">
+		<h2>
+			<a name="satellite-city-halls">Satellite City Halls</a>
+		</h2>
+		<ul>
+			<%= article_list_tag(33, "What services do satellite city halls offer?")%>
+			<%= article_list_tag(34, "Which satellite city halls process driver licenses?")%>
+			<%= article_list_tag(35, "Which satellite city halls process motor vehicle registration?")%>
+			<%= article_list_tag(36, "Where are the satellite city hall locations?")%>
+			<%= article_list_tag(37, "What are the hours for satellite city halls?")%>
+			<%= article_list_tag(38, "What is the closest satellite city hall to me?")%>
+		</ul>
+	</div>
+
+	<div class="article-section">
+		<h2>
+			<a name="live-webcams">Live Webcams</a>
+		</h2>
+		<ul>
+			<%= article_list_tag(39, "Where can I view a live video feed of traffic in a particular area?")%>
+			<%= article_list_tag(40, "Where can I view a live webcast of Honolulu Council meetings?")%>
+			<%= article_list_tag(41, "Where can I see live video of all areas of traffic congestion?")%>
+			<%= article_list_tag(42, "Where can I view live video of Waikiki beach?")%>
+			<%= article_list_tag(43, "Where can I view live video of Kuhio beach?")%>
+		</ul>
+	</div>
 
 </div>

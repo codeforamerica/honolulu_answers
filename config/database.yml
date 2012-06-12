@@ -5,7 +5,7 @@
 #   gem 'sqlite3'
 login: &login
   username: hnl
-  password: pass
+  password: test44
 
 <%= file = File.join(Rails.root, "config", "dblogin.yml")
     IO.read(file) if File.exist?(file) %>
