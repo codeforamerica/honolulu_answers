@@ -317,6 +317,11 @@ p.hnlanswers {
 /* --------- list of articles ---------*/
 div.article h1.list{
 	margin:6px 0px 0px 0px;
+	padding-bottom: 10px;
+}
+
+div.article-section {
+	padding: 4px 0px;
 }
 
 /* --------- article ---------*/
