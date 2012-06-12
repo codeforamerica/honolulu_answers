@@ -24,7 +24,7 @@ $(function(){
             var query = null;
             for(p in params){
                 if((params[p].split("=").length >1) && (params[p].split("=")[0] == "q")){
-                    query = params[p].split("=")[1]
+                    query = params[p].split("=")[1].replace("+"," ")
                 }
             }
             if(query)
