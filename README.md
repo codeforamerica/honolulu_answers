@@ -16,6 +16,11 @@ To setup some example data:
 We use the [Searchify](https://addons.heroku.com/searchify) heroku addon to power the search index for honolulu answers. In order to use this in development you can either run a copy of Indextank (which is what searchify is built on) or add the searchify addon to a heroku app, and copy the provided search api endpoint to your .env file.
 
 
+### Run indextank locally
+
+If you dont want to use Searchify, or if you want to run indextank locally for development, follow [these instructions](https://github.com/codeforamerica/honolulu_answers/tree/master/indextank)
+
+
 ### Environment Vars
 
 Honolulu Answers uses Environment variables for configuration. It expects `SEARCHIFY_API_URL` to be set to the searchify endpoint (which can be retrived from `heroku config` once searchify is an addon for your app)
