@@ -1,8 +1,8 @@
 class SearchController < ApplicationController
 
   def index
-    client = IndexTank::Client.new(ENV['SEARCHIFY_API_URL'])
-    index = client.indexes("hnlanswers-"+ENV['RAILS_ENV'])
+    # client = IndexTank::Client.new(ENV['SEARCHIFY_API_URL'])
+    # index = client.indexes("hnlanswers-"+ENV['RAILS_ENV'])
     
     query = params[:q]
     ## Pre-process the search query for natural language searches
@@ -20,9 +20,11 @@ class SearchController < ApplicationController
       query = "\"#{query}\""
     end
     
-    @results = index.search("(#{query}) OR (title:#{query}) OR (tags:#{query})",
-                            :fetch => 'title,timestamp,preview', 
-                            :snippet => 'text')
+    # @results = index.search("(#{query}) OR (title:#{query}) OR (tags:#{query})",
+    #                         :fetch => 'title,timestamp,preview', 
+    #                         :snippet => 'text')
+
+    @results = Article.search_tank( query, :snippets => [:text], :fetch => [:title, :timestamp, :preview] )
     render :json => @results
 
   end
