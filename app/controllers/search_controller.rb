@@ -2,9 +2,9 @@ class SearchController < ApplicationController
 
   def index
     client = IndexTank::Client.new(ENV['SEARCHIFY_API_URL'])
-    index = client.indexes("hnlanswers-"+ENV['RAILS_ENV'])
+    index = client.indexes("hnlanswers-" + Rails.env)
     
-    query = params[:q]
+    query = params[:q].downcase
     ## Pre-process the search query for natural language searches
 
     # Stop list of common English words
@@ -14,7 +14,7 @@ class SearchController < ApplicationController
     query = query.split - eng_stop_list.flatten
     query = query.join " "
 
-    logger.info "Search Query: #{query}"
+    logger.info "  Search string: '#{query}'"
 
     if(query.include?(' '))
       query = "\"#{query}\""
@@ -23,6 +23,8 @@ class SearchController < ApplicationController
     @results = index.search("(#{query}) OR (title:#{query}) OR (tags:#{query})",
                             :fetch => 'title,timestamp,preview', 
                             :snippet => 'text')
+    logger.info "  Results found: #{@results['results'].size}"
+
     render :json => @results
 
   end
