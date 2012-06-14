@@ -4,8 +4,7 @@ class SearchController < ApplicationController
     client = IndexTank::Client.new(ENV['SEARCHIFY_API_URL'])
     index = client.indexes("hnlanswers-"+ENV['RAILS_ENV'])
     
-
-    @results = index.search("("+params[:q]+") OR (title:"+params[:q]+ ") OR (tags:"+params[:q]+")",
+    @results = index.search("("+params[:q]+") OR (title:\""+params[:q]+"\") OR (tags:\""+params[:q]+"\")",
                             :fetch => 'title,timestamp,preview', 
                             :snippet => 'text')
     render :json => @results
