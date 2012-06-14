@@ -1,9 +1,6 @@
 class SearchController < ApplicationController
 
-  def index
-    # client = IndexTank::Client.new(ENV['SEARCHIFY_API_URL'])
-    # index = client.indexes("hnlanswers-"+ENV['RAILS_ENV'])
-    
+  def index    
     query = params[:q]
     ## Pre-process the search query for natural language searches
 
@@ -11,22 +8,23 @@ class SearchController < ApplicationController
     eng_stop_list = CSV.read( "#{Rails.root.to_s}/lib/assets/eng_stop.csv" )
 
     # Remove these words from the query
-    query = query.split - eng_stop_list.flatten
-    query = query.join " "
+    query = (query.split - eng_stop_list.flatten).join " "
 
     logger.info "Search Query: #{query}"
 
     if(query.include?(' '))
       query = "\"#{query}\""
     end
-    
-    # @results = index.search("(#{query}) OR (title:#{query}) OR (tags:#{query})",
-    #                         :fetch => 'title,timestamp,preview', 
-    #                         :snippet => 'text')
 
-    @results = Article.search_tank( query, :snippets => [:text], :fetch => [:title, :timestamp, :preview] )
+    # TODO: Either manipulate @results to look like the old output, 
+    #       or change how results are displayed
+    # 
+    # NOT WORKING
+    @results = Article.search_tank( query, 
+                              :fetch => [:title, :timestamp, :preview],
+                              :snippets => [:text] )
+
     render :json => @results
-
   end
 
   def autocomplete
