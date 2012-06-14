@@ -6,11 +6,16 @@ namespace :admin  do
   task :indexdocs => :environment do
 
     client = IndexTank::Client.new(ENV['SEARCHIFY_API_URL'])
-    index = client.indexes("hnlanswers-"+ENV['RAILS_ENV'])
+    index = client.indexes("hnlanswers-"+ Rails.env)
 
     @articles = Article.all
-    for @a in @articles do
-      index.document(@a.id.to_s).add({ :text => strip_tags(@a.content), :title => @a.title, :tags => @a.tags.to_s, :preview => @a.preview.to_s })
+    @articles.each do |a|
+      index.document( a.id.to_s ).add( {
+          :text    => strip_tags(a.content), 
+          :title   => a.title,
+          :tags    => a.tags.to_s,
+          :preview => a.preview.to_s
+           } )
     end
     print "#{@articles.length} articles indexed.\n"
   end
@@ -18,7 +23,7 @@ namespace :admin  do
   task :createindex => :environment do
 
     client = IndexTank::Client.new(ENV['SEARCHIFY_API_URL'])
-    index = client.indexes("hnlanswers-"+ENV['RAILS_ENV'])
+    index = client.indexes("hnlanswers-"+ Rails.env)
     index.add()
 
     print "Waiting for index to be ready"
@@ -33,8 +38,8 @@ namespace :admin  do
 
   task :deleteindex => :environment do
     client = IndexTank::Client.new(ENV['SEARCHIFY_API_URL'])
-    index = client.indexes("hnlanswers-"+ENV['RAILS_ENV'])
-    index.delete()
+    index = client.indexes("hnlanswers-"+ Rails.env)
+    index.delete
   end
   
 end

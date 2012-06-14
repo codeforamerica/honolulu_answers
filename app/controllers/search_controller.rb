@@ -4,7 +4,25 @@ class SearchController < ApplicationController
     client = IndexTank::Client.new(ENV['SEARCHIFY_API_URL'])
     index = client.indexes("hnlanswers-"+ENV['RAILS_ENV'])
     
-    @results = index.search("("+params[:q]+") OR (title:\""+params[:q]+"\") OR (tags:\""+params[:q]+"\")",
+    query = params[:q]
+    ## Pre-process the search query for natural language searches
+
+    # Stop list of common English words
+    eng_stop_list = CSV.read( "#{Rails.root.to_s}/lib/assets/eng_stop.csv" )
+
+    # Remove these words from the query
+    query = query.split - eng_stop_list.flatten
+
+    # Default behaviour is AND; this changed it to OR
+    query = query.join " "
+
+    logger.info "Search Query: #{query}"
+
+    if(query.include?(' '))
+      query = "\"#{query}\""
+    end
+    
+    @results = index.search("(#{query}) OR (title:#{query}) OR (tags:#{query})",
                             :fetch => 'title,timestamp,preview', 
                             :snippet => 'text')
     render :json => @results
