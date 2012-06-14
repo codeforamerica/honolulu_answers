@@ -12,8 +12,6 @@ class SearchController < ApplicationController
 
     # Remove these words from the query
     query = query.split - eng_stop_list.flatten
-
-    # Default behaviour is AND; this changed it to OR
     query = query.join " "
 
     logger.info "Search Query: #{query}"
