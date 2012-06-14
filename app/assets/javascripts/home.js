@@ -11,8 +11,8 @@ var hnlAnswers = function (){
 $(function(){
     $("#searchForm:not(.noanimation)").submit(function(e){       
         e.preventDefault();
-        searchControl.startSearch($("#search").val());
         var query = $("#search").val();
+        searchControl.startSearch(query);
         history.pushState({"query":query}, "Searching for - "+query, "/search?q="+encodeURIComponent(query));
     })
     window.onpopstate = function(event){
@@ -83,17 +83,16 @@ $(function(){
 
 
 var searchController = function(){
-
     var self = this;
     this.startSearch = function(query){
-        $("#searchstatus").hide();        
+        $("#searchstatus").hide();
         $.ajax("/search.json", {data:{q:query}, success:function(data){
             $("#results ul").empty();
             for(r in data.results){
                 self.addResult(data.results[r]);
             }
             $("#searchstatusloading").hide();
-            $("#searchstatus").find("strong").text(query);
+            $("#searchstatus").find("strong").text(query.replace("+"," "));
             $("#searchstatus").find("div.count").text(data.matches+" result"+
                                                       (data.matches > 1 ? "s":"")
                                                       +" found");

@@ -16,7 +16,11 @@ class SearchController < ApplicationController
 
     logger.info "Search Query: #{query}"
 
-    @results = index.search("(#{query}) OR (title: #{query}) OR (tags:#{query})",
+    if(query.include?(' '))
+      query = "\"#{query}\""
+    end
+    
+    @results = index.search("(#{query}) OR (title:#{query}) OR (tags:#{query})",
                             :fetch => 'title,timestamp,preview', 
                             :snippet => 'text')
     render :json => @results
