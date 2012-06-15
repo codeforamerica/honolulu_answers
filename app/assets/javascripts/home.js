@@ -169,7 +169,7 @@ var searchController = function(){
     this.addResult = function(result){
         $("#results ul").append(Mustache.render(self.resultTemplate, result).replace(/\n/g, "<br />"));
     };
-    this.resultTemplate = "<li><h1><a href='/articles/{{docid}}'>{{title}}</a></h1>"+
+    this.resultTemplate = "<li><h1><a href='/articles/{{id}}'>{{title}}</a></h1>"+
         "<div class='preview'>{{preview}}</div>" +
         "</li>";
 
