@@ -88,13 +88,13 @@ var searchController = function(){
         $("#searchstatus").hide();
         $.ajax("/search.json", {data:{q:query}, success:function(data){
             $("#results ul").empty();
-            for(r in data.results){
-                self.addResult(data.results[r]);
+            for(i=0; i < data.length;i++){
+                self.addResult(data[i]);
             }
             $("#searchstatusloading").hide();
             $("#searchstatus").find("strong").text(query.replace("+"," "));
-            $("#searchstatus").find("div.count").text(data.matches+" result"+
-                                                      (data.matches != 1 ? "s":"")
+            $("#searchstatus").find("div.count").text(data.length+" result"+
+                                                      (data.length != 1 ? "s":"")
                                                       +" found");
             $("#searchstatus").fadeIn('fast');
             if($(window).width() <= 600)
@@ -113,7 +113,6 @@ var searchController = function(){
     }
 
     this.transfromToResults = function(){
-
         $("#results ul").fadeIn();
         $("#mainContainer").fadeIn("normal");
         $("#browse").fadeOut('fast');
@@ -138,7 +137,6 @@ var searchController = function(){
         $("#searchContent").animate({width:"100%",
                                      padding: "0px",
                                      "margin-top":"0px"}, 200);
-
     };
 
     this.transfromToHome = function(){
