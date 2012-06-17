@@ -177,7 +177,8 @@ DEPENDENCIES
   cancan
   devise
   indextank
-  jquery-rails
+  jquery-rails (>= 1.0.12)
+  jquery-ui-rails
   less-rails-bootstrap
   pg
   rails (= 3.2.6)

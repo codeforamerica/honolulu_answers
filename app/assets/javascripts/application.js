@@ -12,6 +12,21 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require mustache
 //= require bootstrap-typeahead
+//= require indextank/jquery.indextank.ize.js
+//= require indextank/jquery.indextank.autocomplete.js
+//= require indextank/querybuilder.js
+//= require indextank/jquery.indextank.ajaxsearch.js
+//= require indextank/jquery.indextank.renderer.js
+//= require indextank/jquery.indextank.instantsearch.js
 //= require_tree .
+//
+
+$(document).ready(function(){
+    // let the form be 'indextank-aware'
+    $("#searchForm").indextank_Ize("http://8bpwv.api.searchify.com", "hnlanswers-production");
+    // let the query box have autocomplete
+    $("#search").indextank_Autocomplete().indextank_AjaxSearch( {listeners: renderer}).indextank_InstantSearch();
+});
