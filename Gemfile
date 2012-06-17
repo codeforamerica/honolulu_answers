@@ -15,6 +15,8 @@ gem 'bluecloth'
 gem 'indextank'
 gem 'thin'
 
+gem 'hunspell-ffi' # for spellchecking the query
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

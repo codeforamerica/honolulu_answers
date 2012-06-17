@@ -16,6 +16,7 @@ class SearchController < ApplicationController
 
     logger.info "  Search string: '#{query}'"
 
+    # As this is just about the display of the text, it should be in the view after the search has taken place.
     if(query.include?(' '))
       query = "\"#{query}\""
     end
@@ -24,6 +25,34 @@ class SearchController < ApplicationController
                             :fetch => 'title,timestamp,preview', 
                             :snippet => 'text')
     logger.info "  Results found: #{@results['results'].size}"
+
+    # Try to spell check the query if no results were found
+    if @results.first[1] == 0
+      dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/en_US", 'en_US' )
+      query_corrected = []
+
+      query.split.each do |term|
+        if dict.check?( term ) == false
+          suggestion = dict.suggest( term ).first
+          if suggestion.nil? # if no suggestion, stick with the existing term
+            query_corrected << term
+          else
+            query_corrected << suggestion
+          end
+        else 
+          query_corrected << term
+        end
+      end
+      query = query_corrected.join ' '
+
+      logger.info "  Corrected search string: '#{query}'"
+
+      @results = index.search("(#{query}) OR (title:#{query}) OR (tags:#{query})",
+                              :fetch => 'title,timestamp,preview', 
+                              :snippet => 'text')
+
+      logger.info "  Results found: #{@results['results'].size}"
+    end
 
     render :json => @results
 
