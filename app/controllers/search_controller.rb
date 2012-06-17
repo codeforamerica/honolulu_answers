@@ -44,6 +44,8 @@ class SearchController < ApplicationController
         end
       end
       query = query_corrected.join ' '
+      # remove the stop words again, in case one of the mistyped words is somethign like 'get'
+      query = (query.split - eng_stop_list.flatten).join " "
 
       logger.info "  Corrected search string: '#{query}'"
 
