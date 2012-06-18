@@ -12,12 +12,15 @@ gem 'rails_admin'
 gem 'devise'
 gem 'cancan'
 gem 'bluecloth'  
-gem 'indextank'
+# gem 'indextank'
+gem 'tanker'
 gem 'thin'
 
 gem 'hunspell-ffi' # for spellchecking the query
 
-# gem 'newrelic_rpm'
+gem 'newrelic_rpm'
+
+gem 'will_paginate', '~> 3.0'
 
 # Gems used only for assets and not required
 # in production environments by default.

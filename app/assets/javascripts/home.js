@@ -11,7 +11,7 @@ var hnlAnswers = function (){
 $(function(){
     $("#searchForm:not(.noanimation)").submit(function(e){       
         e.preventDefault();
-        var query = $("#search").val();
+        var query = $("#search").val().replace(/\"/g,"");
         searchControl.startSearch(query);
         history.pushState({"query":query}, "Searching for - "+query, "/search?q="+encodeURIComponent(query));
     })
@@ -20,11 +20,12 @@ $(function(){
             // we are home.
             searchControl.transfromToHome();   
         }else if(window.location.pathname == "/search"){
-            var params = window.location.search.replace("?", "").split("&")
+            console.log("onpopstate");
+            var params = window.location.search.replace("?", "").split("&");
             var query = null;
             for(p in params){
                 if((params[p].split("=").length >1) && (params[p].split("=")[0] == "q")){
-                    query = params[p].split("=")[1].replace("+"," ")
+                    query = params[p].split("=")[1].replace(/\+/g," ").replace(/\"/g,"").replace(/%22/g,"");
                 }
             }
             if(query)
@@ -87,16 +88,16 @@ var searchController = function(){
         $("#searchstatus").hide();
         $.ajax("/search.json", {data:{q:query}, success:function(data){
             $("#results ul").empty();
-            for(r in data.results){
-                self.addResult(data.results[r]);
+            for(i=0; i < data.length;i++){
+                self.addResult(data[i]);
             }
             $("#searchstatusloading").hide();
             $("#searchstatus").find("strong").text(query.replace("+"," "));
-            $("#searchstatus").find("div.count").text(data.matches+" result"+
-                                                      (data.matches > 1 ? "s":"")
+            $("#searchstatus").find("div.count").text(data.length+" result"+
+                                                      (data.length != 1 ? "s":"")
                                                       +" found");
             $("#searchstatus").fadeIn('fast');
-            if((window).width() <= 600)
+            if($(window).width() <= 600)
                 $(window).scrollTop(80);
         }});
         self.transfromToResults();
@@ -112,7 +113,6 @@ var searchController = function(){
     }
 
     this.transfromToResults = function(){
-
         $("#results ul").fadeIn();
         $("#mainContainer").fadeIn("normal");
         $("#browse").fadeOut('fast');
@@ -137,7 +137,6 @@ var searchController = function(){
         $("#searchContent").animate({width:"100%",
                                      padding: "0px",
                                      "margin-top":"0px"}, 200);
-
     };
 
     this.transfromToHome = function(){
@@ -170,7 +169,7 @@ var searchController = function(){
     this.addResult = function(result){
         $("#results ul").append(Mustache.render(self.resultTemplate, result).replace(/\n/g, "<br />"));
     };
-    this.resultTemplate = "<li><h1><a href='/articles/{{docid}}'>{{title}}</a></h1>"+
+    this.resultTemplate = "<li><h1><a href='/articles/{{id}}'>{{title}}</a></h1>"+
         "<div class='preview'>{{preview}}</div>" +
         "</li>";
 
