@@ -19,3 +19,10 @@ config/dblogin.yml
 /.env
 
 config/initializers/searchify.rb
+
+
+
+
+#lib/assets/tasks/update_dict.rb
+#lib/assets/dict
+#lib/assets/en_US
