@@ -10,23 +10,11 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+// loaclhost:3000/?debug_assets=1 > View Page Source -- to view all assets client side loads
+//
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.all
+//= require jquery.ui.autocomplete
 //= require mustache
-//= require bootstrap-typeahead
-//= require indextank/jquery.indextank.ize.js
-//= require indextank/jquery.indextank.autocomplete.js
-//= require indextank/querybuilder.js
-//= require indextank/jquery.indextank.ajaxsearch.js
-//= require indextank/jquery.indextank.renderer.js
-//= require indextank/jquery.indextank.instantsearch.js
 //= require_tree .
 //
-
-$(document).ready(function(){
-    // let the form be 'indextank-aware'
-    $("#searchForm").indextank_Ize("http://8bpwv.api.searchify.com", "hnlanswers-production");
-    // let the query box have autocomplete
-    $("#search").indextank_Autocomplete().indextank_AjaxSearch( {listeners: renderer}).indextank_InstantSearch();
-});
