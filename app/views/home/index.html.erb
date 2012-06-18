@@ -8,6 +8,7 @@
       <input type="text" id="search" />
       <input type="submit" id="search_btn" value="" />
     </form>
+	<div id="results"></div>
     <span class="exampleText">Try driver license, jobs, car registration, etc.</span>
   </div>
 
@@ -19,7 +20,7 @@
 	<p class="tags"><a href="articles/#jobs" class="browse">Jobs</a></p>
 	<p class="tags"><a href="articles/#camping" class="browse">Camping</a></p>
 	<p class="tags"><a href="articles/#planning-permit" class="browse">Planning Permit</a></p>
-	<p class="tags"><a href="articles/#requesting-service" class="browse">Requesting Service</a></p>	
+	<p class="tags"><a href="articles/#requesting-service" class="browse">Service Request</a></p>
 	<p class="tags"><a href="articles/#garbage-collection" class="browse">Garbage Collection</a></p>	
 	<p class="tags"><a href="articles/#traffic-report" class="browse">Traffic Report</a></p>
 	<p class="tags"><a href="articles/#satellite-city-halls" class="browse">Satellite City Halls</a></p>
@@ -41,8 +42,12 @@
   </div> 
 </div>
 
+<script type="text/javascript">
 
-
-
-
-
+$(document).ready(function(){
+    // let the form be 'indextank-aware'
+    $("#searchForm").indextank_Ize("http://8bpwv.api.searchify.com", "hnlanswers-production");
+    // let the query box have autocomplete
+    $("#search").indextank_Autocomplete().indextank_AjaxSearch( {listeners: renderer}).indextank_InstantSearch();
+});
+</script>

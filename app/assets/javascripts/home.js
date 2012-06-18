@@ -46,38 +46,37 @@ $(function(){
         }
     });
 
-/*    $("#search").typeahead({items:6,
-                            lookup: function(event){
-                                var that = this
-                                , items
-                                , q
-                                
-                                this.query = this.$element.val()
-                                
-                                if (!this.query) {
-                                    return this.shown ? this.hide() : this
-                                }
-                                
-                                $.ajax("/autocomplete.json", {data:{q:this.query}, success:function(data){
-                                    items = [];
-                                    for( r in data.results){
-                                        items.push(data.results[r].title);
-                                    }
+/*    
+	$("#search").typeahead({items:6,
+           lookup: function(event){
+               var that = this
+               , items
+               , q
+               
+               this.query = this.$element.val()
+               
+               if (!this.query) {
+                   return this.shown ? this.hide() : this
+               }
+               
+               $.ajax("/autocomplete.json", {data:{q:this.query}, success:function(data){
+                   items = [];
+                   for( r in data.results){
+                       items.push(data.results[r].title);
+                   }
 
 
-                                    if (!items.length) {
-                                        return that.shown ? that.hide() : that
-                                    }
-                                    that.render(items).show()
-                                }}, "json");
-                                
-                            }
-                            
-                           });*/
+                   if (!items.length) {
+                       return that.shown ? that.hide() : that
+                   }
+                   that.render(items).show()
+               }}, "json");
+               
+           }
+           
+          });*/
 
 });
-
-
 
 
 

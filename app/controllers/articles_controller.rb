@@ -21,5 +21,12 @@ class ArticlesController < ApplicationController
       format.json { render json: @article }
     end
   end
+  
+  #Going to be created for missing articles - Joey
+  def missing_article
+    if Article.find(params[:id]).empty?
+      layout "missing"
+    end
+  end
 
 end

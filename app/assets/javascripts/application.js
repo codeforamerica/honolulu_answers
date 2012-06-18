@@ -10,8 +10,11 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+// loaclhost:3000/?debug_assets=1 > View Page Source -- to view all assets client side loads
+//
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.autocomplete
 //= require mustache
-//= require bootstrap-typeahead
 //= require_tree .
+//
