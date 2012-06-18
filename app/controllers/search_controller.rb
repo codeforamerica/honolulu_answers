@@ -39,7 +39,7 @@ class SearchController < ApplicationController
                               :fetch => [:title, :timestamp, :preview],
                               :snippets => [:text] )
 
-    logger.info "  Results found: #{@results['results'].size}"
+    logger.info "  Results found: #{@results.size}"
 
 
     render :json => @results
