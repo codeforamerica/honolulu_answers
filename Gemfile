@@ -1,6 +1,14 @@
 source 'https://rubygems.org'
 
+
+# If you get errors about this, run:
+#   gem uninstall bundler
+#   gem install bundler --pre
+ruby '1.9.3'
+
 gem 'rails', '3.2.6'
+
+gem 'heroku'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -28,6 +28,7 @@ GEM
     activesupport (3.2.6)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    addressable (2.2.8)
     arel (3.0.2)
     bbenezech-nested_form (0.0.6)
     bcrypt-ruby (3.0.1)
@@ -55,6 +56,11 @@ GEM
       multi_json (~> 1.0)
     ffi (1.0.11)
     haml (3.1.4)
+    heroku (2.24.1)
+      launchy (>= 0.3.2)
+      netrc (~> 0.7.1)
+      rest-client (~> 1.6.1)
+      rubyzip
     hike (1.2.1)
     hpricot (0.8.6)
     hunspell-ffi (0.1.3)
@@ -72,6 +78,8 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
+    launchy (2.1.0)
+      addressable (~> 2.2.6)
     less (2.1.0)
       commonjs (~> 0.2.0)
       therubyracer (~> 0.10.0)
@@ -87,6 +95,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.18)
     multi_json (1.3.6)
+    netrc (0.7.1)
     newrelic_rpm (3.4.0)
     orm_adapter (0.0.7)
     pg (0.13.2)
@@ -133,6 +142,9 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     remotipart (1.0.2)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    rubyzip (0.9.8)
     sass (3.1.15)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -171,6 +183,7 @@ DEPENDENCIES
   bluecloth
   cancan
   devise
+  heroku
   hunspell-ffi
   jquery-rails (>= 1.0.12)
   jquery-ui-rails
