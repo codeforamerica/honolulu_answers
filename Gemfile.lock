@@ -98,6 +98,7 @@ GEM
     mime-types (1.18)
     multi_json (1.3.6)
     multipart-post (1.1.5)
+    newrelic_rpm (3.3.4.1)
     orm_adapter (0.0.7)
     pg (0.13.2)
     polyglot (0.3.3)
@@ -183,6 +184,7 @@ DEPENDENCIES
   indextank
   jquery-rails
   less-rails-bootstrap
+  newrelic_rpm
   pg
   rails (= 3.2.6)
   rails_admin
