@@ -30,10 +30,6 @@ class SearchController < ApplicationController
 
     logger.info "  Search string corrected: '#{query}'"
 
-    # What is this for?  --PH
-    if(query.include?(' '))
-      query = "\"#{query}\""
-    end
 
     @results = Article.search_tank( query, 
                               :fetch => [:title, :timestamp, :preview],

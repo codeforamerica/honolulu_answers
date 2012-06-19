@@ -1,6 +1,14 @@
 source 'https://rubygems.org'
 
+
+# If you get errors about this, run:
+#   gem uninstall bundler
+#   gem install bundler --pre
+ruby '1.9.3'
+
 gem 'rails', '3.2.6'
+
+gem 'heroku'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -16,7 +24,8 @@ gem 'bluecloth'
 gem 'tanker'
 gem 'thin'
 
-gem 'hunspell-ffi' # for spellchecking the query
+gem 'hunspell-ffi' 
+# for spellchecking the query
 
 gem 'newrelic_rpm'
 
@@ -32,7 +41,7 @@ group :assets do
   #gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer'
+  # gem 'therubyracer'
 
 end
 
@@ -52,8 +61,6 @@ gem 'jquery-rails', '>= 1.0.12'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
-
-gem "devise"
 
 group :test do
 
