@@ -17,7 +17,7 @@ gem 'pg'
 
 gem 'less-rails-bootstrap'
 gem 'rails_admin'
-gem 'devise'
+gem 'devise', '~> 2.0'
 gem 'cancan'
 gem 'bluecloth'  
 # gem 'indextank'
