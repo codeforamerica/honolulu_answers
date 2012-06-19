@@ -57,11 +57,7 @@ rails_admin/multiselect/ui-icon-circle-triangle-n-dark.png: rails_admin/multisel
 rails_admin/multiselect/ui-icon-circle-triangle-n-light.png: rails_admin/multiselect/ui-icon-circle-triangle-n-light-9ca653b869cbdabe8fd68fa0d3189a42.png
 rails_admin/multiselect/ui-icon-circle-triangle-s-dark.png: rails_admin/multiselect/ui-icon-circle-triangle-s-dark-2bb3c1c870cdbaa5bb7230d258308965.png
 rails_admin/multiselect/ui-icon-circle-triangle-s-light.png: rails_admin/multiselect/ui-icon-circle-triangle-s-light-e9946f23257cc66075586457665bfe24.png
-rails_admin/jquery.colorpicker.js: rails_admin/jquery.colorpicker-b8ce768efb3708a925d2deffa725c218.js
-rails_admin/rails_admin.js: rails_admin/rails_admin-36a3b22e93c63c6cb5fcc664b867159c.js
 rails_admin/base/README: rails_admin/base/README
-rails_admin/jquery.colorpicker.css: rails_admin/jquery.colorpicker-fd9ba05e2747afcf6549b0581158344d.css
-rails_admin/rails_admin.css: rails_admin/rails_admin-58094ea81271a6d83de732c3800de4f8.css
 jquery-ui/ui-bg_flat_0_aaaaaa_40x100.png: jquery-ui/ui-bg_flat_0_aaaaaa_40x100-f5a78af016567ed1f3a07cfdd8cde4bf.png
 jquery-ui/ui-bg_flat_75_ffffff_40x100.png: jquery-ui/ui-bg_flat_75_ffffff_40x100-9beae513a25066acb9591e300c0304e6.png
 jquery-ui/ui-bg_glass_55_fbf9ee_1x400.png: jquery-ui/ui-bg_glass_55_fbf9ee_1x400-71b04b5f57e0cf2715160373655130f6.png
@@ -75,7 +71,7 @@ jquery-ui/ui-icons_2e83ff_256x240.png: jquery-ui/ui-icons_2e83ff_256x240-7f12bf3
 jquery-ui/ui-icons_454545_256x240.png: jquery-ui/ui-icons_454545_256x240-5f7b77f6c485492b3fcb833ff6181026.png
 jquery-ui/ui-icons_888888_256x240.png: jquery-ui/ui-icons_888888_256x240-8f556c1a549dc1daee6de85662bf8f7d.png
 jquery-ui/ui-icons_cd0a0a_256x240.png: jquery-ui/ui-icons_cd0a0a_256x240-5cccf0d16866254d18b688636354bad5.png
-glyphicons-halflings-white.png: glyphicons-halflings-white-cf86fed49ffa37ac551054f82c11d5ca.png
-glyphicons-halflings.png: glyphicons-halflings-86a888aefa012fd2d6d08cbb5ee17fd3.png
-twitter/bootstrap/glyphicons-halflings-white.png: twitter/bootstrap/glyphicons-halflings-white-cf86fed49ffa37ac551054f82c11d5ca.png
-twitter/bootstrap/glyphicons-halflings.png: twitter/bootstrap/glyphicons-halflings-86a888aefa012fd2d6d08cbb5ee17fd3.png
+glyphicons-halflings-white.png: glyphicons-halflings-white-0395f4dc4d7e2ca0af69bb6093a134cf.png
+glyphicons-halflings.png: glyphicons-halflings-8da10de02f5ed1ef1fa16554b3c0de4e.png
+twitter/bootstrap/glyphicons-halflings-white.png: twitter/bootstrap/glyphicons-halflings-white-0395f4dc4d7e2ca0af69bb6093a134cf.png
+twitter/bootstrap/glyphicons-halflings.png: twitter/bootstrap/glyphicons-halflings-8da10de02f5ed1ef1fa16554b3c0de4e.png
