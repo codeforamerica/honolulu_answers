@@ -185,7 +185,6 @@ DEPENDENCIES
   devise
   heroku
   hunspell-ffi
-  jquery-rails (>= 1.0.12)
   jquery-ui-rails
   less-rails-bootstrap
   newrelic_rpm
