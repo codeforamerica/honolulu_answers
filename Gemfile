@@ -24,7 +24,7 @@ gem 'bluecloth'
 gem 'tanker'
 gem 'thin'
 
-gem 'hunspell-ffi' 
+# gem 'hunspell-ffi' 
 # for spellchecking the query
 
 gem 'newrelic_rpm'
