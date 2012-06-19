@@ -9,8 +9,9 @@ if defined?(Bundler)
   Bundler.require(:default, :assets, Rails.env)
 end
 
-# require 'devise'
-# require 'rails_admin'
+require 'devise'
+require 'rails_admin'
+require 'tanker'
 
 module Honoluluanswers
   class Application < Rails::Application
