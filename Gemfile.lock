@@ -55,6 +55,7 @@ GEM
     excon (0.14.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    ffi (1.0.11)
     haml (3.1.6)
     heroku (2.27.3)
       heroku-api (~> 0.2.5)
@@ -66,6 +67,8 @@ GEM
       excon (~> 0.14.0)
     hike (1.2.1)
     hpricot (0.8.6)
+    hunspell-ffi (0.1.3)
+      ffi (~> 1.0.7)
     i18n (0.6.0)
     journey (1.0.4)
     jquery-rails (2.0.2)
@@ -183,7 +186,9 @@ DEPENDENCIES
   bluecloth
   cancan
   devise (~> 2.0)
+  ffi (= 1.0.11)
   heroku
+  hunspell-ffi (>= 0.1.3)
   jquery-ui-rails
   less-rails-bootstrap
   newrelic_rpm

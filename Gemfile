@@ -24,8 +24,10 @@ gem 'bluecloth'
 gem 'tanker'
 gem 'thin'
 
-# gem 'hunspell-ffi' 
+
 # for spellchecking the query
+gem 'hunspell-ffi','>= 0.1.3'
+gem 'ffi', '1.0.11' 
 
 gem 'newrelic_rpm'
 
