@@ -419,6 +419,10 @@ div.quick_bottom p{
 	margin: 0px 0px 12px 0px;
 }
 
+.missing-article {
+	color:#666;
+}
+
 /*p.quickAnswer {
 	margin-right: 250px;
 }

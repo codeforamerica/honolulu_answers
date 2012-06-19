@@ -13,18 +13,23 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @article = Article.find(params[:id])
+    begin
+      @article = Article.find(params[:id])
+      @content_html = BlueCloth.new(@article.content).to_html
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @article }
+      end      
+    rescue
+      render :template => 'articles/missing'
+    end
+    
     if @article.nil?
-      render :layout => 'missing'
     end
     puts "Working this far"
-    @content_html = BlueCloth.new(@article.content).to_html
+    
   
-   
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @article }
-    end
+
   end
   
   #Going to be created for missing articles - Joey
