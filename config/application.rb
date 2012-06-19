@@ -10,6 +10,7 @@ require 'rails/all'
 # end
 
 require 'devise'
+require 'rails_admin'
 
 module Honoluluanswers
   class Application < Rails::Application

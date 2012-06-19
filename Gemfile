@@ -24,7 +24,8 @@ gem 'bluecloth'
 gem 'tanker'
 gem 'thin'
 
-gem 'hunspell-ffi' # for spellchecking the query
+gem 'hunspell-ffi' 
+# for spellchecking the query
 
 gem 'newrelic_rpm'
 
@@ -60,8 +61,6 @@ gem 'jquery-rails', '>= 1.0.12'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
-
-gem "devise"
 
 group :test do
 
