@@ -12,9 +12,6 @@ class SearchController < ApplicationController
 
     logger.info "Search Query: #{query}"
 
-    if(query.include?(' '))
-      query = "\"#{query}\""
-    end
 
     # TODO: Either manipulate @results to look like the old output, 
     #       or change how results are displayed
