@@ -19,6 +19,6 @@ config/dblogin.yml
 /.env
 
 # Ignore search stats for local searches
-doc/search_stats.csv
+/doc/search_stats.csv
 
 config/initializers/searchify.rb
