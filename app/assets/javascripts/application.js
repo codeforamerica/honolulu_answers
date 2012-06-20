@@ -17,4 +17,5 @@
 //= require jquery.ui.autocomplete
 //= require mustache
 //= require_tree .
+//= require home.js
 //
