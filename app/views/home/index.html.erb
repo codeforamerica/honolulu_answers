@@ -7,12 +7,19 @@
 	<!-- Honolulu header for mobile version -->
 	<p class="hnlanswers"><a class="header" href="/">Honolulu Answers</a></p>
 	
-	<form class="form-wrapper cf" autocomplete="off">
-		<input type="text" id="" placeholder="Search..." autofocus="autofocus" required>
-		<button type="submit" id="">Search</button>
+	<form class="form-wrapper cf" id="searchForm" autocomplete="off">
+		<input type="text" id="search" placeholder="Find what you are looking for..." autofocus="autofocus" required>
+		<button type="submit" id="search_btn">Search</button>
     </form>
 
-	
+	<!--
+	<form id="searchForm" autocomplete="off">
+	      <p class="hnlanswers"><a class="header" href="/">Honolulu Answers</a></p>
+	      <input type="text" id="search" />
+	      <input type="submit" id="search_btn" value="" />
+    </form>
+	-->
+
 
 	<div id="results"></div>
     <span class="exampleText">Try driver license, jobs, car registration, etc.</span>

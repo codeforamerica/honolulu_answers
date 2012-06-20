@@ -227,7 +227,7 @@ h4.disclaimer {
 	line-height:120%;
 }
 
-input#search{ 
+/*input#search{ 
   width: 90%;
   height: 32px;
   margin:15px 0 3px 0;
@@ -236,7 +236,7 @@ input#search{
 	border-radius: 10px;
 	background: #FFF;
 	font-size: 19px;
-}
+}*/
 
 input#search_btn {
 	position: relative;
