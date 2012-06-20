@@ -108,6 +108,7 @@ h4 {
   top:0px;
   background-position:0px -120px;
   padding:0px;
+	background:none;
 }
 
 #footer {
@@ -182,7 +183,7 @@ h4.disclaimer {
   width:600px;
   padding-top:40px;
   padding-bottom:10px;
-}
+}*/
 
 #searchText {
 	position: relative;
@@ -238,7 +239,7 @@ h4.disclaimer {
 	font-size: 19px;
 }*/
 
-input#search_btn {
+/*input#search_btn {
 	position: relative;
 	width: 30px;
 	height:30px;
@@ -249,9 +250,9 @@ input#search_btn {
 	bottom:9px;
 	left: -40px;
 	cursor:pointer;
-}
+}*/
 
-.headline input#search_btn {
+/*.headline input#search_btn {
 	position: relative;
 	width: 20px;
 	height:20px;
@@ -263,9 +264,9 @@ input#search_btn {
 	bottom:3px;
 	left: -30px;	
 	cursor:pointer;
-}
+}*/
 	
-.headline input#search{ 
+/*.headline input#search{ 
   width: 58%;
   height: 20px;
   margin:6px 0px 2px 0px;
@@ -274,7 +275,7 @@ input#search_btn {
   border-radius: 8px;
   background: #FFF;
   font-size: 14px;
-}
+}*/
 
 #searchstatus{ 
   margin:20px;
@@ -346,7 +347,8 @@ p.hnlanswers {
     height: 20px;
     padding: 10px 5px;
     float: left;
-    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
+		font:bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';*/
+    font: 19px;
     border: 0;
     background: #eee;
     border-radius: 3px 0 0 3px;
@@ -413,6 +415,10 @@ p.hnlanswers {
     top: 12px;
     left: -6px;
 }
+
+.headline .form-wrapper button:before {
+	top: 8px;
+}
  
 .form-wrapper button:hover:before{
     border-right-color: #e54040;
@@ -426,6 +432,12 @@ p.hnlanswers {
 .form-wrapper button::-moz-focus-inner { /* remove extra button spacing for Mozilla Firefox */
     border: 0;
     padding: 0;
+}
+
+.headline .form-wrapper {
+	padding: 5px;
+	margin: 0px;
+	border-radius: 5px;
 }
 
 /* --------- list of articles ---------*/

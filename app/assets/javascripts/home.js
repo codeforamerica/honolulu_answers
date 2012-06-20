@@ -95,17 +95,21 @@ var searchController = function(){
         $("#searchContent p.hnlanswers").fadeIn('fast');
 
         $("#mainContainer").animate({"margin-top":"120px"});
-        $("#bgTopDiv").animate({height:"87px",
+        $("#bgTopDiv").animate({height:"90px",
                                 "margin-top":"0px",
                                 "padding":"0px",
                                 "background-position":"0px -200px"});
-        $("#searchContent form").animate({"width":"600px", "padding-top":"40px", "padding-bottom":"10px"}, 200);
+        //$("#searchContent form").animate({"width":"600px", "padding-top":"40px", "padding-bottom":"10px"}, 200);
         $("#searchContent").css("text-align", "right");
         $("#searchContent form").css("margin", "auto");
+				$("#searchContent form input").animate({padding: "5px 5px"}, 200);
+				$("#searchContent form button").animate({height: "30px",
+																								font: "bold 14px 'lucida sans', 'trebuchet MS', 'Tahoma'"}, 200);
         $("#searchContent").css("background-color", "rgba(255, 198, 10, 1);");
-        $("#searchContent").animate({width:"100%",
-                                     padding: "0px",
-                                     "margin-top":"0px"}, 200);
+        $("#searchContent").animate({width: "100%",
+																			height: "50px",
+                                     	padding: "40px 0 0 0",
+                                     	"margin-top":"0px"}, 200);
     };
 
     this.transfromToHome = function(){
