@@ -23,6 +23,17 @@ class Article < ActiveRecord::Base
 
   def allContent()
     [self.title, self.content].join(" ")
+    
+    # keyword = params[:search]
+    # if keyword.empty?
+    #   # This will return all Services in IndexTank. Change 'Service' to reference your model name
+    #   keyword = "__type:Service"
+    # end
+    # @services = Service.search_tank(keyword,
+    #   :var0 => lat,
+    #   :var1 => lon,
+    #   # And we'll return all results sorted by distance
+    #   :function => 1)
   end
 
   tankit "hnlanswers-#{Rails.env}" do
