@@ -7,8 +7,8 @@
 	<!-- Honolulu header for mobile version -->
 	<p class="hnlanswers"><a class="header" href="/">Honolulu Answers</a></p>
 	
-	<form class="form-wrapper cf" id="searchForm" autocomplete="off">
-		<input type="text" id="search" placeholder="Find what you are looking for..." autofocus="autofocus" required>
+	<form class="form-wrapper cf" id="searchForm">
+		<input type="text" id="search" placeholder="Find what you are looking for..." autofocus="autofocus">
 		<button type="submit" id="search_btn">Search</button>
     </form>
 
@@ -47,11 +47,10 @@
 </div>
 
 <script type="text/javascript">
-
 $(document).ready(function(){
     // let the form be 'indextank-aware'
     $("#searchForm").indextank_Ize("http://8bpwv.api.searchify.com", "hnlanswers-production");
     // let the query box have autocomplete
-    $("#search").indextank_Autocomplete().indextank_AjaxSearch( {listeners: renderer}).indextank_InstantSearch();
+    $("#search").indextank_Autocomplete({ fieldName: "title" }).indextank_AjaxSearch( {listeners: renderer}).indextank_InstantSearch();
 });
 </script>

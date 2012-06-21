@@ -63,7 +63,7 @@
     
     $.Indextank.Autocomplete.defaultOptions = {
         fieldName: "text",
-        minLength: 2,
+        minLength: 1,
         delay: 100
     };
     
