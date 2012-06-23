@@ -33,6 +33,15 @@ class ArticlesController < ApplicationController
   end
   
   #Going to be created for missing articles - Joey
+
+  # If you like you can put this in the show method: (Phil)
+=begin    
+          if Article.find(params[:id])
+            render the article
+          else
+            render the missing article page
+          end     
+=end      
   def missing
     if :id > 15
       render :layout => 'missing'
