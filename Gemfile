@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 # If you get errors about this, run:
 #   gem uninstall bundler
+#
 #   gem install bundler --pre
 ruby '1.9.3'
 
