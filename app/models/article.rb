@@ -1,9 +1,9 @@
 include ActionView::Helpers::SanitizeHelper
 
+
 class Article < ActiveRecord::Base
   include Tanker
 
-  # has_and_belongs_to_many :locations
   belongs_to :contact
 
   after_save :update_tank_indexes
@@ -25,7 +25,12 @@ class Article < ActiveRecord::Base
     [self.title, self.content].join(" ")
   end
 
-  tankit "hnlanswers-#{Rails.env}" do
+  if Rails.env === 'production'
+    index = 'hnlanswers-production'
+  else
+    index = 'hnlanswers-development'
+  end
+  tankit index do
     indexes :title
     indexes :content
     indexes :category, :category => true
@@ -39,3 +44,21 @@ class Article < ActiveRecord::Base
   # end
 
 end
+# == Schema Information
+#
+# Table name: articles
+#
+#  id           :integer         not null, primary key
+#  updated      :datetime
+#  title        :string(255)
+#  content      :text
+#  created_at   :datetime        not null
+#  updated_at   :datetime        not null
+#  category     :string(255)
+#  content_type :integer
+#  preview      :text
+#  contact_id   :integer
+#  tags         :text
+#  service_url  :string(255)
+#
+

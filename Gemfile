@@ -13,7 +13,7 @@ gem 'thin'
 ## Deployment, maintanence, profiling, development aids
 gem 'newrelic_rpm'
 gem 'heroku'
-gem 'annotate'
+gem 'annotate', '~>2.4.1.beta'
 gem 'rails-erd'
 
 ## Admin interface
@@ -41,8 +41,8 @@ end
 
 ## Testing
 group :test, :development do
-  gem 'rspec-rails'
-  gem 'shoulda', :require => false
+  gem 'rspec-rails', '>= 2.10.1'
+  gem 'shoulda'
   gem 'capybara'
   gem 'launchy'
   gem 'guard-rspec'
@@ -50,6 +50,7 @@ group :test, :development do
   gem 'libnotify'
   gem 'spork-rails'
   gem 'guard-spork'
+  gem 'tanker'
 end
 
 
