@@ -1,70 +1,59 @@
 source 'https://rubygems.org'
 
-
-# If you get errors about this, run:
+# If you get errors about the 'ruby' line, run:
 #   gem uninstall bundler
-#
 #   gem install bundler --pre
+
+## Essentials
 ruby '1.9.3'
-
 gem 'rails', '3.2.6'
-
-gem 'heroku'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'pg'
+gem 'thin'
 
-gem 'less-rails-bootstrap'
+## Deployment, maintanence, profiling, development aids
+gem 'newrelic_rpm'
+gem 'heroku'
+gem 'annotate'
+gem 'rails-erd'
+
+## Admin interface
 gem 'rails_admin', '~> 0.0.2'
 gem 'devise', '~> 2.0'
 gem 'cancan'
-gem 'bluecloth'  
-# gem 'indextank'
+
+## Search and indexing
 gem 'tanker'
-gem 'thin'
+# gem 'hunspell-ffi'
 
+## Content and presentation
+gem 'bluecloth'  
 
-# # for spellchecking the query
-# gem 'hunspell-ffi','>= 0.1.3'
-# gem 'ffi', '1.0.11' 
-
-gem 'newrelic_rpm'
-
-# Gems used only for assets and not required
-# in production environments by default.
+## Gems used only for assets and not required
+## in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'jquery-ui-rails'
   gem 'uglifier', '>= 1.0.3'
-  
-  #gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  gem 'less-rails-bootstrap'  
+  # gem 'coffee-rails', '~> 3.2.1'
   gem 'therubyracer'
-
 end
 
-# gem 'jquery-rails', '>= 1.0.12'
+## Testing
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'shoulda', :require => false
+  gem 'capybara'
+  gem 'launchy'
+  gem 'guard-rspec'
+  gem 'factory_girl_rails'
+  gem 'libnotify'
+  gem 'spork-rails'
+  gem 'guard-spork'
+end
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test do
-
   gem "sqlite3"
-
+  gem 'database_cleaner'
 end
