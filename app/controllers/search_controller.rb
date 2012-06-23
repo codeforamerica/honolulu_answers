@@ -38,10 +38,8 @@ class SearchController < ApplicationController
     logger.info "  Results found: #{@results.size}"
 
     # Might be useful for fine-tuning search
-    CSV.open("#{Rails.root.to_s}/doc/search_stats.csv", 'a') do |csv|
-      csv << [request.env['REMOTE_ADDR'], params[:q], @results.size]
-    end 
-
+    logger.info( "#{request.env['REMOTE_ADDR']},#{params[:q]},#{@results.size]}"
+    
     render :json => @results
   end
   
