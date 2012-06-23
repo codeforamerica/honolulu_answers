@@ -17,7 +17,7 @@ gem 'heroku'
 gem 'pg'
 
 gem 'less-rails-bootstrap'
-gem 'rails_admin'
+gem 'rails_admin', '~> 0.0.2'
 gem 'devise', '~> 2.0'
 gem 'cancan'
 gem 'bluecloth'  
@@ -31,8 +31,6 @@ gem 'thin'
 # gem 'ffi', '1.0.11' 
 
 gem 'newrelic_rpm'
-
-gem 'will_paginate', '~> 3.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
