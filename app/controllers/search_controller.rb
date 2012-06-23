@@ -38,7 +38,7 @@ class SearchController < ApplicationController
     logger.info "  Results found: #{@results.size}"
 
     # Might be useful for fine-tuning search
-    logger.info( "#{request.env['REMOTE_ADDR']},#{params[:q]},#{@results.size]}"
+    logger.info( "#{request.env['REMOTE_ADDR']},#{params[:q]},#{@results.size}"
     
     render :json => @results
   end
