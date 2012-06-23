@@ -19,3 +19,5 @@ config/dblogin.yml
 /.env
 
 config/initializers/searchify.rb
+
+doc/search_stats.csv

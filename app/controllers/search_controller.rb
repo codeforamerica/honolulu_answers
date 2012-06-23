@@ -38,28 +38,9 @@ class SearchController < ApplicationController
     logger.info "  Results found: #{@results.size}"
 
     # Might be useful for fine-tuning search
-    CSV.open("#{Rails.root.to_s}/doc/search_stats.csv", 'a') do |csv|
-      csv << [request.env['REMOTE_ADDR'], params[:q], @results.size]
-    end 
-
+    logger.info( "#{request.env['REMOTE_ADDR']},#{params[:q]},#{@results.size]}"
+    
     render :json => @results
-  end
-
-  def autocomplete
-    # client = IndexTank::Client.new(ENV['SEARCHIFY_API_URL'] || '<API_URL>')
-    # index = client.indexes("hnlanswers-"+ENV['RAILS_ENV'])
-
-    
-    # if(params[:format] == "json") then
-    #   # @results = Article.search_titles(params[:q])
-    #   @results = index.search("("+params[:q]+") OR (title:"+params[:q]+ ") OR (tags:"+params[:q]+")",
-    #                           :fetch => 'title', 
-    #                           :snippet => 'text')
-    q = params[:q]
-    @results = Article.search_tank( q, :fetch => [:title], snippets[:text] )
-    
-    render :json => { :results =>@results }
-    end
   end
   
 end
