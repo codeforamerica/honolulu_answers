@@ -9,16 +9,14 @@ class Article < ActiveRecord::Base
   after_save :update_tank_indexes
   after_destroy :delete_tank_indexes
 
-  def self.search(search)
-    self.search_tank search
+  def self.search( query )
+    return Article.all if query == '' or query == ' '
+    self.search_tank query
   end
 
-  def self.search_titles(search)
-    if search      
-      where('title ILIKE ?', "%#{search}%")
-    else
-      ""
-    end
+  def self.search_titles( query )
+    return Article.all if query == '' or query == ' '
+    self.search_tank( '__type:Article', :conditions => {:title => query })
   end
 
   def allContent()
@@ -37,11 +35,6 @@ class Article < ActiveRecord::Base
     indexes :tags
     indexes :preview
   end
-  
-  # # For pagination with will_paginate
-  # def self.per_page
-  #   5
-  # end
 
 end
 # == Schema Information
