@@ -21,3 +21,5 @@ config/dblogin.yml
 config/initializers/searchify.rb
 
 doc/search_stats.csv
+
+coverage/
