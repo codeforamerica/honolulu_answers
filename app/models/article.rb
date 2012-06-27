@@ -23,6 +23,14 @@ class Article < ActiveRecord::Base
     [self.title, self.content].join(" ")
   end
 
+  def to_s
+    if self.category
+      "#{self.title} (#{self.id}) [#{self.category}]"
+    else
+      self.title + '(' + self.id + ')'
+    end
+  end
+
   if Rails.env === 'production'
     index = 'hnlanswers-production'
   else

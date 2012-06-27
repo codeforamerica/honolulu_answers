@@ -1,10 +1,26 @@
 require 'rubygems'
 require 'spork'
 require 'simplecov'
+require 'capybara/rspec'
+require 'capybara/poltergeist'
+
+def logger
+  Rails.logger
+end
+
+def saop
+  save_and_open_page
+end
+
 SimpleCov.start 'rails'
+
+# Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :webkit
+
+
+
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
-
 Spork.prefork do
   # Loading more in this block will cause your tests to run faster. However,
   # if you change any configuration or code from libraries loaded here, you'll
