@@ -11,47 +11,40 @@
 */
 
 
-#searchContent {
-	background:  rgba(255, 198, 10, 0.8);
-	width: 100%;
-	height: 70px;
-	margin: 0;
-	padding: 10px 0 0 0;
-	text-align: center;
-	position: relative;
-	
+#searchBox {
+  background:  rgba(255, 198, 10, 0.8);
+  width: 100%;
+  height: 70px;
+  margin: 0;
+  padding: 10px 0 0 0;
+  text-align: center;
+  position: relative;	
+  height:inherit;
+
 }
 
-#topDivPattern {
+#topPattern {
   display:none;
 }
 
-#searchForm{ 
+form#search{ 
   width:100%;
   margin-top:5px;
 }
-#searchContent.headline form{
+.results #searchBox form{
   width:inherit;
   padding-top:0px;
 } 
-#searchContent{ 
-  margin:0px;
-  padding:5px 0px;
-  height:inherit;
-}
-.searchForm input#search { 
+form#search input#query { 
   width:80%;
 }
-#bgTopDiv{ 
-  padding:0px 0px 50px 0px;
-}
-#bgTopDiv.mobileresults{
+#navigation{ 
   padding:0px;
-} 
-#bgTopDiv.headline{ 
+}
+.results #navigation{ 
   position:relative;
 }
-p.display{ 
+p.welcome{ 
   display:none;
 }
 p.hnlanswers{ 
@@ -59,7 +52,7 @@ p.hnlanswers{
   display:block;
 }
 
-#mainContainer {
+#content {
   background-color: #fff;
   margin: 0 auto;
   padding: 5px;
@@ -70,14 +63,13 @@ span.exampleText{
   display:none;
 }
 
-input#search{ 
+input#query{ 
   width: 200px;
   padding:5px;
   margin-top:5px;
   
 }
-
-input#search_btn {
+form#search input.btn {
 	width: 30px;
 	height: 30px;
 	cursor:pointer;
@@ -87,11 +79,11 @@ div.quickAnswer{
   margin-top:10px;
   width:inherit;
 }
-#searchstatus{ 
+#searchStatus{ 
   margin:2px;
   font-size:16px;
 }
-#searchstatus .count{ 
+#searchStatus .count{ 
   font-size:12px;
 }
 div#results ul{ 
@@ -104,7 +96,7 @@ div#results ul li{
   padding-bottom:5px;
 }
 
-#browse {
+#browse{
 	position: relative;
 	margin: 40px auto;
 	border-radius: 3px;
@@ -143,56 +135,10 @@ div.article h1{
   display: inline;
 }
 
-
-
-/* #searchstatus{ 
-  margin:20px;
-  font-size:20px;
-  display:none;
-  font-family:arial;
-  line-height:24px;
-}
-#searchstatus .count{ 
-  font-size:14px;
-  font-style:italic;
-}
-#searchstatus strong{
-  font-weight:bold;
-} 
-
-
-.articleIcon {
-	position: relative;
-	vertical-align: middle;
-}
-
-div#results ul{ 
-  margin: 1.5em 0 0 0;
-  padding: 0;
-  border-top: dashed 1px #999;
-}
-
-div#results ul li{
-  padding: 0 0 1em 0;
-  border-bottom: dashed 1px #999;
-  list-style:none;
-} 
-
-*/
-
-
-.exampleText {
-	font-family: Helvetica, sans-serif;
-	font-size: 12px;
-	font-style: italic;
-	color: #937426;
-	display: none;
-}
-
 .disclaimer {
 	padding: 0 20px;
 }
 
 #cfa_corner_ribbon {
-	visibility:hidden;
+  display:none;
 }
