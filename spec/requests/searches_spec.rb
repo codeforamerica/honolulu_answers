@@ -55,6 +55,9 @@ describe "Searches",:js => true do
       end
     end
   end
+  
+  
+  
 
 
 end
