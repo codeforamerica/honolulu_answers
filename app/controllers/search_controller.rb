@@ -40,7 +40,8 @@ class SearchController < ApplicationController
     # Might be useful for fine-tuning search
     logger.info( "#{request.env['REMOTE_ADDR']},#{params[:q]},#{@results.size}" )
     
-    render :json => @results
+    # render :json => @results
+    render @results
   end
   
 end
