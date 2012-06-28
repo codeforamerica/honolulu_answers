@@ -2,8 +2,8 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
+    @bodyclass = "results"
     @articles = Article.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @articles }
@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     begin
+      @bodyclass = "results"
       @article = Article.find(params[:id])
       @content_html = BlueCloth.new(@article.content).to_html
       respond_to do |format|

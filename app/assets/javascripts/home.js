@@ -9,18 +9,17 @@ var hnlAnswers = function (){
 
 
 $(function(){
-    $("#searchForm:not(.noanimation)").submit(function(e){       
+    $("form#search:not(.noanimation)").submit(function(e){       
         e.preventDefault();
-        var query = $("#search").val().replace(/\"/g,"");
+        var query = $("#query").val().replace(/\"/g,"");
         searchControl.startSearch(query);
         history.pushState({"query":query}, "Searching for - "+query, "/search?q="+encodeURIComponent(query));
     })
     window.onpopstate = function(event){
         if(window.location.pathname == "/"){
             // we are home.
-            searchControl.transfromToHome();   
+            searchControl.clearTransforms();   
         }else if(window.location.pathname == "/search"){
-            console.log("onpopstate");
             var params = window.location.search.replace("?", "").split("&");
             var query = null;
             for(p in params){
@@ -40,32 +39,31 @@ $(function(){
 
         if($(window).width()<=600){
             if(window.location.pathname != "/")
-                $("#bgTopDiv").addClass("mobileresults");
+                $("#navigation").addClass("mobileresults");
             searchControl.clearTransforms();
         }else{
-            $("#bgTopDiv").removeClass("mobileresults");
+            $("#navigation").removeClass("mobileresults");
         }
     });
 });
 
 
-
-
 var searchController = function(){
     var self = this;
     this.startSearch = function(query){
-        $("#searchstatus").hide();
+        $("#searchStatus").hide();
+        $("#loading").show();
         $.ajax("/search.json", {data:{q:query}, success:function(data){
             $("#results ul").empty();
             for(i=0; i < data.length;i++){
                 self.addResult(data[i]);
             }
-            $("#searchstatusloading").hide();
-            $("#searchstatus").find("strong").text(query.replace("+"," "));
-            $("#searchstatus").find("div.count").text(data.length+" result"+
+            $("#loading").hide();
+            $("#searchStatus").find("strong").text(query.replace("+"," "));
+            $("#searchStatus").find("div.count").text(data.length+" result"+
                                                       (data.length != 1 ? "s":"")
                                                       +" found");
-            $("#searchstatus").fadeIn('fast');
+            $("#searchStatus").fadeIn('fast');
             if($(window).width() <= 600)
                 $(window).scrollTop(80);
         }});
@@ -73,67 +71,12 @@ var searchController = function(){
     };
 
     this.clearTransforms = function(){
-        $('#mainContainer').removeAttr('style');
-        if(window.location.pathname != "/")
-            $('#mainContainer').show();
-        $('#bgTopDiv').removeAttr('style');
-        $('#searchContent form').removeAttr('style');
-        $('#searchContent').removeAttr('style');
+        $("body").removeClass("results");
     }
 
     this.transfromToResults = function(){
-        $("#results ul").fadeIn();
-        $("#mainContainer").fadeIn("normal");
-        $("#browse").fadeOut('fast');
-        $("#bgTopDiv").addClass("headline");
-        $("#searchContent span").fadeOut('fast');
-        $("#searchstatusloading").show();
-
-        if($(window).width()<=600){$("#bgTopDiv").addClass("mobileresults"); return;}
-
-        $("#searchContent p.display").fadeOut('fast');
-        $("#searchContent p.hnlanswers").fadeIn('fast');
-
-        $("#mainContainer").animate({"margin-top":"120px"});
-        $("#bgTopDiv").animate({height:"87px",
-                                "margin-top":"0px",
-                                "padding":"0px",
-                                "background-position":"0px -200px"});
-        $("#searchContent form").animate({"width":"600px", "padding-top":"40px", "padding-bottom":"10px"}, 200);
-        $("#searchContent").css("text-align", "right");
-        $("#searchContent form").css("margin", "auto");
-        $("#searchContent").css("background-color", "rgba(255, 198, 10, 1);");
-        $("#searchContent").animate({width:"100%",
-                                     padding: "0px",
-                                     "margin-top":"0px"}, 200);
-    };
-
-    this.transfromToHome = function(){
-        $("#searchstatus").fadeOut();
-        $("#results ul").fadeOut();
-        $("#mainContainer").fadeOut("fast");
-        $("#bgTopDiv").removeClass("headline");
-        $("#browse").fadeIn('fast');
-        $("#searchContent span").fadeIn('fast');
-        $("#searchstatusloading").hide();
-
-        if($(window).width()<=600) {$("#bgTopDiv").removeClass("mobileresults"); return;}
-        $("#searchContent p.display").fadeIn('fast');
-        $("#searchContent p.hnlanswers").fadeOut('fast');
-
-        $("#mainContainer").animate({"margin":"120px auto"});
-        $("#bgTopDiv").css("height", "");
-        $("#bgTopDiv").animate({"padding":"50px 0px 100px 0px",
-                                "background-position":"0px 0px"});
-
-        $("#searchContent form").animate({"width":"100%","margin":"0", "padding-top":"0px", "padding-bottom":"0px"}, 200);
-        $("#searchContent").css("text-align", "left");
-        $("#searchContent").css("background-color", "rgba(255, 198, 10, 1);");
-        $("#searchContent").animate({width:"50%",
-                                     padding: "25px",
-                                     "margin":"70px auto"}, 200);
-
-    };
+        $("body").addClass("results");
+   };
 
     this.addResult = function(result){
         $("#results ul").append(Mustache.render(self.resultTemplate, result).replace(/\n/g, "<br />"));
@@ -141,8 +84,6 @@ var searchController = function(){
     this.resultTemplate = "<li><h1><a href='/articles/{{id}}'>{{title}}</a></h1>"+
         "<div class='preview'>{{preview}}</div>" +
         "</li>";
-
 };
-
 
 window.searchControl = new searchController();
