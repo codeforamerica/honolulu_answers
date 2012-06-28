@@ -3,7 +3,19 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @bodyclass = "results"
+  
     @articles = Article.all
+
+    @articles_hash = {}
+    @articles.each do |article|
+      article.category = "Uncategorized" if article.category == nil
+      if @articles_hash[article.category]
+        @articles_hash[article.category] << article
+      else
+        @articles_hash[article.category] = [article]
+      end
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @articles }
