@@ -25,7 +25,7 @@ describe "Articles" do
 
     it { should have_content "All Articles" }
 
-    it 'saop' do page.driver.render "tmp/screenshot.png"; end
+    # it 'saop' do page.driver.render "tmp/screenshot.png"; end
 
     describe "an article in the list" do
       it { should have_content article.title }

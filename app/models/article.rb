@@ -2,6 +2,11 @@ include ActionView::Helpers::SanitizeHelper
 
 
 class Article < ActiveRecord::Base
+  # puts the article titles in the URL
+  def to_param
+    "#{id} #{title}".parameterize
+  end
+  
   include Tanker
 
   belongs_to :contact
@@ -9,10 +14,7 @@ class Article < ActiveRecord::Base
   after_save :update_tank_indexes
   after_destroy :delete_tank_indexes
 
-  # pus the article titles in the URL
-  def to_param
-    "#{id} #{title}".parameterize
-  end
+  
 
   def self.search( query )
     return Article.all if query == '' or query == ' '

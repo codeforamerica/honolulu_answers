@@ -39,7 +39,7 @@ class ArticlesController < ApplicationController
     
     if @article.nil?
     end
-    puts "Working this far"
+    # puts "Working this far"
     
   
 
