@@ -2,7 +2,7 @@ require 'rubygems'
 require 'spork'
 require 'simplecov'
 require 'capybara/rspec'
-require 'capybara/poltergeist'
+# require 'capybara/poltergeist'
 
 def logger
   Rails.logger

@@ -51,7 +51,7 @@ group :test, :development do
   gem 'spork-rails'
   gem 'guard-spork'
   gem 'tanker'
-  gem 'poltergeist' # JS driver for Capybara (headless)
+  # gem 'poltergeist' # JS driver for Capybara (headless)
   gem 'capybara-webkit'
 end
 

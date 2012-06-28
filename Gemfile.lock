@@ -75,8 +75,6 @@ GEM
     factory_girl_rails (3.5.0)
       factory_girl (~> 3.5.0)
       railties (>= 3.0.0)
-    faye-websocket (0.4.5)
-      eventmachine (>= 0.12.0)
     ffi (1.0.11)
     guard (1.2.1)
       listen (>= 0.4.2)
@@ -97,7 +95,6 @@ GEM
       excon (~> 0.14.0)
     hike (1.2.1)
     hpricot (0.8.6)
-    http_parser.rb (0.5.3)
     i18n (0.6.0)
     journey (1.0.4)
     jquery-rails (2.0.2)
@@ -140,12 +137,6 @@ GEM
     nokogiri (1.5.5)
     orm_adapter (0.1.0)
     pg (0.13.2)
-    poltergeist (0.6.0)
-      capybara (~> 1.0)
-      childprocess (~> 0.3)
-      faye-websocket (~> 0.4, >= 0.4.4)
-      http_parser.rb (~> 0.5.3)
-      multi_json (~> 1.0)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -286,7 +277,6 @@ DEPENDENCIES
   libnotify
   newrelic_rpm
   pg
-  poltergeist
   rails (= 3.2.6)
   rails-erd
   rails_admin (~> 0.0.2)

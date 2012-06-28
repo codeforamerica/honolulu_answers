@@ -9,16 +9,16 @@ describe "Searches",:js => true do
 
   describe "Keyword in query is a different conjugation" do
     it "returns search results for the actual keyword" do
-      fill_in 'search', :with => 'driving license'
-      click_on 'search_btn'
+      fill_in 'query', :with => 'driving license'
+      click_on 'query-btn'
       page.should have_content article.title
     end      
   end
 
   describe "Non-keyword words are synonyms of desired search results" do
     it "returns relevant search results" do
-      fill_in 'search', :with => 'what to do for a new driver license'
-      click_on 'search_btn'
+      fill_in 'query', :with => 'what to do for a new driver license'
+      click_on 'query-btn'
       page.should have_content article.title
     end
   end
@@ -33,24 +33,24 @@ describe "Searches",:js => true do
     let(:article) { FactoryGirl.create :article_no_tags }
     context "Query contains conjugations of title keywords" do
       it "search results include the article" do
-        fill_in 'search', :with => article.title.gsub(/driver/, 'driving')
-        click_on 'search_btn'
+        fill_in 'query', :with => article.title.gsub(/driver/, 'driving')
+        click_on 'query-btn'
         page.should have_content article.title
       end
     end
 
     context "Query contains synonyms for common words" do
       it "search results include the article" do
-        fill_in 'search', :with => article.title.gsub(/can/, 'do').gsub(/get/, 'have').gsub(/for the first time/, '')
-        click_on 'search_btn'
+        fill_in 'query', :with => article.title.gsub(/can/, 'do').gsub(/get/, 'have').gsub(/for the first time/, '')
+        click_on 'query-btn'
         page.should have_content article.title
       end
     end
 
     context "Query matches title exactly" do
       it "search results include the article" do
-        fill_in 'search', :with => article.title
-        click_on 'search_btn'
+        fill_in 'query', :with => article.title
+        click_on 'query-btn'
         page.should have_content article.title
       end
     end
