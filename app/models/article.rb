@@ -1,20 +1,17 @@
 include ActionView::Helpers::SanitizeHelper
 
-
-class Article < ActiveRecord::Base
-  # puts the article titles in the URL
-  def to_param
-    "#{id} #{title}".parameterize
-  end
-  
+class Article < ActiveRecord::Base  
   include Tanker
+  extend FriendlyId
+
+  # Permalinks. :slugged option means it uses the 'slug' column for the url
+  #             :history option means when you change the article title, old slugs still work
+  friendly_id :title, use: [:slugged, :history]
 
   belongs_to :contact
 
   after_save :update_tank_indexes
   after_destroy :delete_tank_indexes
-
-  
 
   def self.search( query )
     return Article.all if query == '' or query == ' '

@@ -20,7 +20,7 @@
 			</h2>
 			<% articles.each do |article| %>
 				<ul>
-					<%= content_tag( :li, link_to( article.title, article_path(article.id) ) ) %>
+					<%= content_tag( :li, link_to( article.title, article_path(article) ) ) %>
 				</ul>
 			<% end -%>
 		</div>

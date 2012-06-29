@@ -27,6 +27,7 @@ gem 'tanker'
 
 ## Content and presentation
 gem 'bluecloth'  
+gem 'friendly_id' # permalinks / descriptive URLs
 
 ## Gems used only for assets and not required
 ## in production environments by default.

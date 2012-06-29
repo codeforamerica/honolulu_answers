@@ -28,6 +28,12 @@ class ArticlesController < ApplicationController
     begin
       @bodyclass = "results"
       @article = Article.find(params[:id])
+      # redirection of old permalinks
+      if request.path != article_path( @article )
+        logger.info "Old permalink: #{request.path}"
+        return redirect_to @article, status: :moved_permanently
+      end
+
       @content_html = BlueCloth.new(@article.content).to_html
       respond_to do |format|
         format.html # show.html.erb
@@ -40,9 +46,6 @@ class ArticlesController < ApplicationController
     if @article.nil?
     end
     # puts "Working this far"
-    
-  
-
   end
   
   #Going to be created for missing articles - Joey
