@@ -103,7 +103,7 @@ RailsAdmin.config do |config|
   #   create do; end
   #   update do; end
   # end
-  # config.model Article do
+  config.model Article do
   #   list do
   #     field :is_published do
   #       visible do
@@ -112,7 +112,7 @@ RailsAdmin.config do |config|
   #       end
   #     end
   #   end
-  # end
+  end
   # config.model Contact do
   #   # Found associations:
   #   # Found columns:
