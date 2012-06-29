@@ -11,20 +11,41 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120501191040) do
+ActiveRecord::Schema.define(:version => 20120629143105) do
+
+  create_table "administrators", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.integer  "failed_attempts",        :default => 5
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+  end
+
+  add_index "administrators", ["email"], :name => "index_admins_on_email", :unique => true
+  add_index "administrators", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
 
   create_table "articles", :force => true do |t|
     t.datetime "updated"
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.string   "category"
     t.integer  "content_type"
     t.text     "preview"
     t.integer  "contact_id"
     t.text     "tags"
     t.string   "service_url"
+    t.boolean  "is_published", :default => false
   end
 
   create_table "contacts", :force => true do |t|
@@ -65,7 +86,7 @@ ActiveRecord::Schema.define(:version => 20120501191040) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.boolean  "admin"
+    t.boolean  "is_moderator"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

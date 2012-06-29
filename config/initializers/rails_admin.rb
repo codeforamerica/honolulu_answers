@@ -103,6 +103,16 @@ RailsAdmin.config do |config|
   #   create do; end
   #   update do; end
   # end
+  # config.model Article do
+  #   list do
+  #     field :is_published do
+  #       visible do
+  #         current_user.is_moderator # metacode
+  #         puts "current user is moderator => #{current_user.email}"
+  #       end
+  #     end
+  #   end
+  # end
   # config.model Contact do
   #   # Found associations:
   #   # Found columns:
@@ -123,4 +133,6 @@ RailsAdmin.config do |config|
   #   create do; end
   #   update do; end
   # end
+
+  
 end

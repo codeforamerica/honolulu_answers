@@ -53,7 +53,7 @@ gem 'jquery-rails', '>= 1.0.12'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-gem "devise"
+#gem "devise"
 
 group :test do
 

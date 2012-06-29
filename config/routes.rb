@@ -1,4 +1,6 @@
 Honoluluanswers::Application.routes.draw do
+  #devise_for :administrators
+
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users
