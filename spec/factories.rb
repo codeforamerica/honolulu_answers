@@ -9,7 +9,8 @@ FactoryGirl.define do
 
     factory :article_no_tags do
       tags ""
-    end       
+    end     
+    
   end
 
   factory :contact do

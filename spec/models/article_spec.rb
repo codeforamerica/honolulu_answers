@@ -31,23 +31,19 @@ describe Article do
       subject { Article.search ' ' }
       it { should == Article.all }
     end
-  end
 
-  describe "search titles" do
-    context "query is present in an article but not the title" do
-      subject { Article.search_titles article.preview }
-      it { should == [] }
+    describe "search titles" do
+      context "query is present in an article but not the title" do
+        subject { Article.search_titles article.preview }
+        it { should == [] }
+      end
+      context "query is present in the title" do
+        subject { Article.search_titles article.title }
+        it { should == [article] }
+      end
     end
-    context "query is present in the title" do
-      subject { Article.search_titles article.title }
-      it { should == [article] }
-    end
+
   end
-
-  
-
-
-
 
 
 end

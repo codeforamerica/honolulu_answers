@@ -34,7 +34,7 @@ class Article < ActiveRecord::Base
       self.title + '(' + self.id + ')'
     end
   end
-
+  
   if Rails.env === 'production'
     index = 'hnlanswers-production'
   else
