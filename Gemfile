@@ -23,7 +23,7 @@ gem 'cancan'
 
 ## Search and indexing
 gem 'tanker'
-# gem 'hunspell-ffi'
+gem 'hunspell-ffi'
 
 ## Content and presentation
 gem 'bluecloth'  
