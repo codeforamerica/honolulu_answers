@@ -19,5 +19,8 @@ config/dblogin.yml
 /.env
 
 config/initializers/searchify.rb
-
 doc/search_stats.csv
+coverage/
+
+# Ensures assets are precompiled during slug compilation when deployd to heroku
+public/assets

@@ -13,6 +13,7 @@ Honoluluanswers::Application.routes.draw do
   match 'search.json' => "search#index"
   match 'search' => "home#index"  
   match 'autocomplete' => "search#autocomplete"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

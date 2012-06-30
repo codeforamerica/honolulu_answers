@@ -1,5 +1,5 @@
 include ActionView::Helpers::SanitizeHelper
-# require 'hunspell-ffi'
+require 'hunspell-ffi'
 
 namespace :admin  do
   desc "create a custom dictionary file with text from the articles"

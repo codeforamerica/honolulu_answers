@@ -4,7 +4,7 @@
 
     $ bundle install
     $ rake db:create
-    $ rake db:migrate
+    $ rake db:schema:load
 
 To setup some example data:
     $ rake db:seed  
@@ -51,7 +51,7 @@ With Foreman (used to load .env):
     
     $ heroku create honoluluanswers --stack cedar
     $ git push heroku master
-    $ heroku run rake db:migrate
+    $ heroku run rake db:schema:load
     $ heroku addons:add searchify:small
 
 ## Testing
