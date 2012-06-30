@@ -7,6 +7,20 @@ describe "Searches",:js => true do
   let(:article) { FactoryGirl.create :article }
   before { visit root_path }
 
+  describe "Incorrect spelling" do
+    it "returns results for commonly misspelled terms" do
+      fill_in 'query', :with => 'driving lisence'
+      click_on 'query-btn'      
+      page.should have_content article.title
+    end
+
+    it "returns results when the query has typos" do
+      fill_in 'query', :with => 'drivnig livense'
+      click_on 'query-btn'
+      page.should have_content article.title
+    end
+  end
+
   describe "Keyword in query is a different conjugation" do
     it "returns search results for the actual keyword" do
       fill_in 'query', :with => 'driving license'

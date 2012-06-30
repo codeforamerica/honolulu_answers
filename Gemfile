@@ -56,6 +56,9 @@ group :test, :development do
   gem 'capybara-webkit'
 end
 
+# This isn't actually needed for tests, but some gems
+# use it so removing it ends up breaking stuff.
+gem 'test-unit'
 
 group :test do
   gem "sqlite3"
