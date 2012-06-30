@@ -43,7 +43,7 @@ describe "Searches",:js => true do
   end
 
 
-  describe "Articles without tags" do
+  describe "Articles without tags", :js => true do
     let(:article) { FactoryGirl.create :article_no_tags }
     context "Query contains conjugations of title keywords" do
       it "search results include the article" do
@@ -55,7 +55,7 @@ describe "Searches",:js => true do
 
     context "Query contains synonyms for common words" do
       it "search results include the article" do
-        fill_in 'query', :with => article.title.gsub(/can/, 'do').gsub(/get/, 'have').gsub(/for the first time/, '')
+        fill_in 'query', :with => article.title.gsub(/can/, 'do')
         click_on 'query-btn'
         page.should have_content article.title
       end
