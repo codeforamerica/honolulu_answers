@@ -3,11 +3,13 @@ class Ability
 
   def initialize(user)
     can :read, :all
-    if user && user.is_moderator
+    
+    if user# && user.is_moderator
       can :access, :rails_admin   # grant access to rails_admin
       can :dashboard
-      can :manage, :all
+      can :manage, [Article, Contact] #:all
     end
+
   end
   
   # def initialize(administrator)
