@@ -105,35 +105,11 @@ RailsAdmin.config do |config|
   # end
   config.model Article do
     edit do
-      field :title
-      field :content
-      field :preview
-      field :category
-      field :tags
-      field :service_url
-      field :is_published do
+      configure :is_published do
         visible do
           bindings[:view]._current_user.is_moderator # metacode
         end
       end
-    end
-    list do
-      field :title
-      field :category
-      field :tags
-      field :service_url
-      field :is_published
-      field :created_at
-      field :updated_at
-    end
-    show do
-      field :title
-      field :category
-      field :tags
-      field :service_url
-      field :is_published
-      field :created_at
-      field :updated_at
     end
   end
   # config.model Contact do
