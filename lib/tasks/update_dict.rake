@@ -30,18 +30,18 @@ namespace :admin  do
     str = str.downcase
 
     ## save in hunspell format - OVERWRITES existing file
-    custom = File.new( "#{Rails.root.to_s}/lib/assets/dict/custom/custom.dic", 'w')
+    dict = File.new( "#{Rails.root.to_s}/lib/assets/dict/custom/custom.dic", 'w')
     words = str.split.uniq!
 
     # file should begin with the word count to optimize hash bucket size etc.
-    custom.puts words.size 
+    dict.puts words.size 
     words.each do |word|
-      custom.puts word
+      dict.puts word
     end
-    custom.close()
+    dict.close()
 
     # ensure the file can be read by hunspell
-    dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/custom", 'custom')
+    Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/custom", 'custom')
   end
 
   # TODO: create a rake task to update the dictionary file, 
