@@ -64,5 +64,7 @@ end
 #  contact_id   :integer
 #  tags         :text
 #  service_url  :string(255)
+#  slug         :string(255)
+#  is_published :boolean         default(FALSE)
 #
 

@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(:version => 20120702171830) do
     t.integer  "contact_id"
     t.text     "tags"
     t.string   "service_url"
-    t.boolean  "is_published", :default => false
     t.string   "slug"
+    t.boolean  "is_published", :default => false
   end
 
   add_index "articles", ["slug"], :name => "index_articles_on_slug"
