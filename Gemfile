@@ -20,6 +20,7 @@ gem 'rails-erd'
 gem 'rails_admin', '~> 0.0.2'
 gem 'devise', '~> 2.0'
 gem 'cancan'
+gem 'activeadmin'
 
 ## Search and indexing
 gem 'tanker'
@@ -33,6 +34,7 @@ gem 'friendly_id' # permalinks / descriptive URLs
 ## in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
+  gem "meta_search",    '>= 1.1.0.pre'
   gem 'jquery-ui-rails'
   gem 'uglifier', '>= 1.0.3'
   gem 'less-rails-bootstrap'  
@@ -48,7 +50,7 @@ group :test, :development do
   gem 'launchy'
   gem 'guard-rspec'
   gem 'factory_girl_rails'
-  gem 'libnotify'
+  gem 'libnotify' if /linux/ =~ RUBY_PLATFORM
   gem 'spork-rails'
   gem 'guard-spork'
   gem 'tanker'
