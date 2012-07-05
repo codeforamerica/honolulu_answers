@@ -31,8 +31,13 @@
 
 <div id="content">
   <div id="results">
-    <div id="searchStatus">Search results for "<strong></strong>"<br />
-    <div class="count">results found</div>
+
+    <% #if @is_corrected %>
+      <div id="searchStatus">Did you mean "<strong></strong>"?<br />
+    <% #else %>
+      <!-- <div id="searchStatus">Search results for "<strong></strong>"<br /> -->
+    <% #end -%>
+    <div class="count">results foundd</div>
     </div>
     <div id="loading"> 
       Loading results...

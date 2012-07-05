@@ -12,16 +12,18 @@ class SearchController < ApplicationController
     logger.info "  Search string: '#{query}'"
 
     ## spell check the search query
+    @is_corrected = false
     dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/custom", 'custom' )
     query_corrected = []
     query.split.each do |term|
-      if dict.check?( term ) == true
+      if dict.check?( term )
         query_corrected << term
       else 
         suggestion = dict.suggest( term ).first
         if suggestion.nil? # if no suggestion, stick with the existing term
           query_corrected << term
         else
+          @is_corrected = true
           query_corrected << suggestion
         end
       end
@@ -29,7 +31,6 @@ class SearchController < ApplicationController
     query = query_corrected.join ' '
 
     logger.info "  Search string corrected: '#{query}'"
-
 
     @results = Article.search_tank( query, 
                               :fetch => [:title, :timestamp, :preview],
