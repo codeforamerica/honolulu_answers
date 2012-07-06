@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Article do
   it { should belong_to :contact}
+  it { should belong_to :category}
 
   it { should respond_to :title }
   it { should respond_to :content }
@@ -58,13 +59,13 @@ end
 #  content      :text
 #  created_at   :datetime        not null
 #  updated_at   :datetime        not null
-#  category     :string(255)
 #  content_type :integer
 #  preview      :text
 #  contact_id   :integer
 #  tags         :text
 #  service_url  :string(255)
-#  slug         :string(255)
 #  is_published :boolean         default(FALSE)
+#  slug         :string(255)
+#  category_id  :integer
 #
 

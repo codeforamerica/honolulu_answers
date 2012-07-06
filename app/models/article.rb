@@ -9,6 +9,7 @@ class Article < ActiveRecord::Base
   friendly_id :title, use: [:slugged, :history]
 
   belongs_to :contact
+  belongs_to :category
 
   after_save :update_tank_indexes
   after_destroy :delete_tank_indexes
@@ -59,13 +60,13 @@ end
 #  content      :text
 #  created_at   :datetime        not null
 #  updated_at   :datetime        not null
-#  category     :string(255)
 #  content_type :integer
 #  preview      :text
 #  contact_id   :integer
 #  tags         :text
 #  service_url  :string(255)
-#  slug         :string(255)
 #  is_published :boolean         default(FALSE)
+#  slug         :string(255)
+#  category_id  :integer
 #
 
