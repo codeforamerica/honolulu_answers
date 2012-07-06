@@ -1,6 +1,15 @@
 class Category < ActiveRecord::Base
   attr_accessible :access_count, :name
   has_many :articles
+
+  before_validation :set_access_count_if_nil
+
+  private
+
+  def set_access_count_if_nil
+    self.access_count = 0 if self.access_count.nil?
+  end
+  
 end
 # == Schema Information
 #

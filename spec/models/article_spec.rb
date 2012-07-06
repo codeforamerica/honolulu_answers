@@ -9,10 +9,12 @@ describe Article do
   it { should respond_to :category }
   it { should respond_to :preview }
   it { should respond_to :tags }
+  it { should respond_to :access_count }
 
   let(:article) { FactoryGirl.create(:article) }
   subject { article }
   it { should be_valid }
+  its(:access_count) { should_not be_nil }
 
   describe "search" do
     context "query matches articles in the database" do
@@ -67,5 +69,6 @@ end
 #  is_published :boolean         default(FALSE)
 #  slug         :string(255)
 #  category_id  :integer
+#  access_count :integer
 #
 

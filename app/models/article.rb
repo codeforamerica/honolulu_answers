@@ -11,8 +11,11 @@ class Article < ActiveRecord::Base
   belongs_to :contact
   belongs_to :category
 
+  validates_presence_of :access_count
+
   after_save :update_tank_indexes
   after_destroy :delete_tank_indexes
+  before_validation :set_access_count_if_nil
 
   def self.search( query )
     return Article.all if query == '' or query == ' '
@@ -49,6 +52,13 @@ class Article < ActiveRecord::Base
     indexes :preview
   end
 
+  private
+
+  def set_access_count_if_nil
+    self.access_count = 0 if self.access_count.nil?
+  end
+
+
 end
 # == Schema Information
 #
@@ -68,5 +78,6 @@ end
 #  is_published :boolean         default(FALSE)
 #  slug         :string(255)
 #  category_id  :integer
+#  access_count :integer
 #
 

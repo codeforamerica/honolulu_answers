@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120706173031) do
+ActiveRecord::Schema.define(:version => 20120706193649) do
 
   create_table "articles", :force => true do |t|
     t.datetime "updated"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20120706173031) do
     t.boolean  "is_published", :default => false
     t.string   "slug"
     t.integer  "category_id"
+    t.integer  "access_count"
   end
 
   add_index "articles", ["slug"], :name => "index_articles_on_slug"
