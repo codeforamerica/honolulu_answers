@@ -15,29 +15,26 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    begin
-      @bodyclass = "results"
-      @article = Article.find(params[:id])
+    return render(:template => 'articles/missing') unless Article.exists? params[:id]
+    
+    @article = Article.find(params[:id])
 
-      @article.increment! :access_count
-      @article.category.increment!(:access_count) if @article.category
+    @article.increment! :access_count
+    @article.category.increment!(:access_count) if @article.category   
 
-      # redirection of old permalinks
-      if request.path != article_path( @article )
-        logger.info "Old permalink: #{request.path}"
-        return redirect_to @article, status: :moved_permanently
-      end
-
-      @content_html = BlueCloth.new(@article.content).to_html
-      respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @article }
-      end      
-    rescue
-      render :template => 'articles/missing'
+    # redirection of old permalinks
+    if request.path != article_path( @article )
+      logger.info "Old permalink: #{request.path}"
+      return redirect_to @article, status: :moved_permanently
     end
 
-    
+    @content_html = BlueCloth.new(@article.content).to_html
+    @bodyclass = "results"
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @article }
+    end    
   end
   
   #Going to be created for missing articles - Joey
