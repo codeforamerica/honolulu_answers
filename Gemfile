@@ -21,9 +21,10 @@ gem 'rails_admin', '~> 0.0.2'
 gem 'devise', '~> 2.0'
 gem 'cancan'
 
-## Search and indexing
+## Search and indexing, NLP
 gem 'tanker'
 gem 'hunspell-ffi'
+gem 'text'
 
 ## Content and presentation
 gem 'bluecloth'  

@@ -3,6 +3,8 @@ require 'spec_helper'
 describe Article do
   it { should belong_to :contact}
   it { should belong_to :category}
+  it { should have_many(:keywords).through :wordcounts }
+  it { should have_many :wordcounts }
 
   it { should respond_to :title }
   it { should respond_to :content }
