@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
 
       @article.increment! :access_count
-      @article.category.increment!(:access_count) id @article.category
+      @article.category.increment!(:access_count) if @article.category
 
       # redirection of old permalinks
       if request.path != article_path( @article )
