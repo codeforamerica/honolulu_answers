@@ -45,9 +45,15 @@ describe Article do
         it { should == [article] }
       end
     end
-
   end
 
+  describe "access_count_increment" do
+    it "increases access_count by 1" do
+      lambda {
+        article.access_count_increment
+      }.should change(article, :access_count).by(1)
+    end
+  end
 
 end
 

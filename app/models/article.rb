@@ -38,6 +38,10 @@ class Article < ActiveRecord::Base
       self.title + '(' + self.id + ')'
     end
   end
+
+  def access_count_increment
+    self.increment! :access_count
+  end
   
   if Rails.env === 'production'
     index = 'hnlanswers-production'
@@ -51,6 +55,8 @@ class Article < ActiveRecord::Base
     indexes :tags
     indexes :preview
   end
+
+
 
   private
 

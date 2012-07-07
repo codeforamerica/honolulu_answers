@@ -4,17 +4,7 @@ class ArticlesController < ApplicationController
   def index
     @bodyclass = "results"
   
-    @articles = Article.all
-
-    @articles_hash = {}
-    @articles.each do |article|
-      article.category = "Uncategorized" if article.category == nil
-      if @articles_hash[article.category]
-        @articles_hash[article.category] << article
-      else
-        @articles_hash[article.category] = [article]
-      end
-    end
+    @categories = Category.all_by_access_count
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,6 +18,9 @@ class ArticlesController < ApplicationController
     begin
       @bodyclass = "results"
       @article = Article.find(params[:id])
+
+      @article.increment! :access_count
+
       # redirection of old permalinks
       if request.path != article_path( @article )
         logger.info "Old permalink: #{request.path}"
@@ -42,10 +35,8 @@ class ArticlesController < ApplicationController
     rescue
       render :template => 'articles/missing'
     end
+
     
-    if @article.nil?
-    end
-    # puts "Working this far"
   end
   
   #Going to be created for missing articles - Joey

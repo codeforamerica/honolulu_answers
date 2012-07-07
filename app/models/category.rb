@@ -4,6 +4,14 @@ class Category < ActiveRecord::Base
 
   before_validation :set_access_count_if_nil
 
+  def self.all_by_access_count   
+    self.all :order => 'access_count DESC'
+  end
+
+  def articles_by_access_count
+    self.articles.all(:order => 'access_count DESC')
+  end
+
   private
 
   def set_access_count_if_nil
