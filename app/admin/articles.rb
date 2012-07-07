@@ -1,16 +1,25 @@
 ActiveAdmin.register Article do
-  
-  index do # Display only specific article db columns
+
+  index do
     column :id
-    column :title
+    column "Article Title", :title do |article|
+      link_to article.title, [:admin, article]
+    end
     column :category
     column "Created", :created_at
-    column :tags
+    # column :tags
     column :slug
     column "Published", :is_published
+    default_actions # Add show, edit, delete column
   end
-  # default_actions # Add show, edit, delete column
+  
+  filter :title
+  filter :tags
+  filter :contact_id
+  filter :is_published
 end
+
+
 
 # == Schema Information
 #

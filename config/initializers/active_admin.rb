@@ -6,11 +6,19 @@ ActiveAdmin.setup do |config|
   # for each of the active admin pages.
   #
   config.site_title = "Honolulu Answers Admin"
+  
+  # config.namespace :admin do |admin|
+  #   admin.site_title = "Honolulu Answers Admin"
+  # end
+  # 
+  # config.namespace :editor do |editor|
+  #   editor.site_title = "Honolulu Answers | Editor"
+  # end
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #
-  # config.site_title_link = "/"
+  config.site_title_link = "/admin"
 
   # Set an optional image to be displayed for the header
   # instead of a string (overrides :site_title)
@@ -25,7 +33,7 @@ ActiveAdmin.setup do |config|
   # will be added to.
   #
   # eg:
-  #   config.default_namespace = :hello_world
+  # config.default_namespace = :admin
   #
   # This will create resources in the HelloWorld module and
   # will namespace routes to /hello_world/*
@@ -55,8 +63,10 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the controller.
-  config.authentication_method = :authenticate_admin_user!
-
+  config.authentication_method  = :authenticate_active_admin_user!
+  config.current_user_method    = :current_user
+  config.logout_link_path       = :destroy_user_session_path
+  config.logout_link_method     = :delete
 
   # == Current User
   #
@@ -65,7 +75,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # to return the currently logged in user.
-  config.current_user_method = :current_admin_user
+  # config.current_user_method = :current_admin_user
 
 
   # == Logging Out
@@ -78,7 +88,7 @@ ActiveAdmin.setup do |config|
   # will call the method to return the path.
   #
   # Default:
-  config.logout_link_path = :destroy_admin_user_session_path
+  # config.logout_link_path = :destroy_admin_user_session_path
 
   # This setting changes the http method used when rendering the
   # link. For example :get, :delete, :put, etc..

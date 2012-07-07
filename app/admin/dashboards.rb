@@ -1,13 +1,23 @@
 ActiveAdmin::Dashboards.build do
   
   section "Recent Articles" do
-    table_for Article.order("created_at DESC").limit(5) do
+    table_for Article.order("created_at DESC").limit(10) do
       column "Article Title", :title do |article|
         link_to article.title, [:admin, article]
       end
       column "Date Created", :created_at
     end
     strong { link_to "View All Articles", admin_articles_path }
+  end
+  
+  section "Users" do
+    table_for User.order("created_at DESC").limit(5) do
+      column "User", :email do |user|
+        user.email
+      end
+      column "Moderator", :is_moderator
+    end
+    strong { link_to "View All Users", admin_users_path }
   end
 
   # Define your dashboard sections here. Each block will be
