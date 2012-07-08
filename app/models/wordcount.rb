@@ -3,4 +3,13 @@ class Wordcount < ActiveRecord::Base
   
   belongs_to :article
   belongs_to :keyword
+
+  before_validation :set_count_if_nil
+
+  private
+
+  def set_count_if_nil
+    self.count = 0 if self.count.nil?
+  end
+
 end

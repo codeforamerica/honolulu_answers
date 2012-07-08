@@ -15,7 +15,7 @@ class Article < ActiveRecord::Base
 
   validates_presence_of :access_count
 
-  after_save :update_tank_indexes
+  after_save :update_tank_indexes # Comment this line out when running analysemodels to save time
   after_destroy :delete_tank_indexes
   before_validation :set_access_count_if_nil
 
