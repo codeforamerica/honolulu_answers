@@ -5,64 +5,64 @@ source 'https://rubygems.org'
 #   gem install bundler --pre
 
 ## Essentials
-ruby '1.9.3'
-gem 'rails', '3.2.6'
-gem 'pg'
-gem 'thin'
+ruby '1.9.3'                              # Ruby!
+gem 'rails', '3.2.6'                      # Rails!
+gem 'pg'                                  # PostgreSQL, the database server
+gem 'thin'                                # Web server
 
-## Deployment, maintanence, profiling, development aids
-gem 'newrelic_rpm', :group => :production
-gem 'heroku'
-gem 'annotate', '~>2.4.1.beta'
-gem 'rails-erd'
+## Utilities
+gem 'newrelic_rpm', :group => :production # Rails analytics - see the Heroku addon
+gem 'heroku'                              # Managed hosting solution
+gem 'annotate', '~>2.4.1.beta'            # Annotates models with database info: `bundle exec rake:annotate` 
+gem 'rails-erd'                           # Create Entity Relationship Diagrams
+gem 'progressbar'                         # Display progress bars in terminal output
+gem 'facets', :require => false           # Some extra methods for ruby
 
-## Admin interface
-gem 'rails_admin', '~> 0.0.2'
-gem 'devise', '~> 2.0'
-gem 'cancan'
+## Admin
+gem 'rails_admin', '~> 0.0.2'             # Back-end Content Management System
+gem 'devise', '~> 2.0'                    # User authentication 
+gem 'cancan'                              # User permissions
 
-## Search and indexing
-gem 'tanker'
-gem 'hunspell-ffi'
+## Search and NLP
+gem 'tanker'                              # library for interacting with Searchify
+gem 'hunspell-ffi'                        # Spellchecking library 
+gem 'text'                                # NLP algorithms
+gem 'httparty'                            # For accessing APIs directly
+gem 'json'                                # Convert between JSON and Ruby objects
+
 
 ## Content and presentation
-gem 'bluecloth'  
-gem 'friendly_id' # permalinks / descriptive URLs
+gem 'bluecloth'                           # Parse Markdown
+gem 'friendly_id'                         # Create permalinks / descriptive URLs / slugs
 
 ## Gems used only for assets and not required
 ## in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'jquery-ui-rails'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'less-rails-bootstrap'  
-  # gem 'coffee-rails', '~> 3.2.1'
-  gem 'therubyracer'
+  gem 'sass-rails',   '~> 3.2.3'          # Rails support for Sass, a CSS extension language
+  gem 'jquery-ui-rails'                   # Package jQuery for the Rails 3.1+ asset pipeline 
+  gem 'uglifier', '>= 1.0.3'              # Squash down Javascript for speed
+  gem 'less-rails-bootstrap'              # Improves the Rails / Twitter Boostrap relationship by adding support for LESS, a CSS extension language
+  gem 'therubyracer'                      # Embeds the V8 Javascript interpreter into Ruby
 end
 
 ## Testing
 group :test, :development do
-  gem 'rspec-rails', '>= 2.10.1'
-  gem 'shoulda'
-  gem 'capybara'
-  gem 'launchy'
-  gem 'guard-rspec'
-  gem 'factory_girl_rails'
-  gem 'libnotify'
-  gem 'spork-rails'
-  gem 'guard-spork'
-  gem 'tanker'
-  # gem 'poltergeist' # JS driver for Capybara (headless)
-  gem 'capybara-webkit'
+  gem 'rspec-rails', '>= 2.10.1'          # Testing framework
+  gem 'shoulda'                           # Extra RSpec matchers for Active Record Associations
+  gem 'capybara'                          # Simulates real-user behaviour for acceptance and integration testing
+  gem 'launchy'                           # Lets you 'save_and_open_page' in the middle of a test - opens up the browser and shows you the current state of the page
+  gem 'guard-rspec'                       # Guard integratio for RSpec.  Guard monitors files and automatically and intelligently runs 'rspec spec' in the background
+  gem 'factory_girl_rails'                # Create factories to test against
+  gem 'libnotify'                         # For displaying notifications about test status in Linux 
+  gem 'spork-rails'                       # Speeds up TDD by launching multiple Rails instances in the background
+  gem 'guard-spork'                       # Make guard aware of Spork - automatically restart spork if a change requires a rails restart   
+  gem 'capybara-webkit'                   # JS driver for Capybara (headless)
 end
 
-# This isn't actually needed for tests, but some gems
-# use it so removing it ends up breaking stuff.
-gem 'test-unit'
-
+gem 'test-unit'                           # Remove at your peril.  Too many other gems randomly depend on it.
 
 group :test do
-  gem "sqlite3"
-  gem 'database_cleaner'
-  gem 'simplecov', :require => false
+  gem "sqlite3"                           # Use SQLite instead of PostgreSQL for tests
+  gem 'database_cleaner'                  # Purge the test database between test runs
+  gem 'simplecov', :require => false      # Calculates code coverage and outputs info to html. 
 end

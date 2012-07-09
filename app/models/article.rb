@@ -10,10 +10,12 @@ class Article < ActiveRecord::Base
 
   belongs_to :contact
   belongs_to :category
+  has_many :wordcounts
+  has_many :keywords, :through => :wordcounts
 
   validates_presence_of :access_count
 
-  after_save :update_tank_indexes
+  after_save :update_tank_indexes # Comment this line out when running analysemodels to save time
   after_destroy :delete_tank_indexes
   before_validation :set_access_count_if_nil
 
@@ -77,6 +79,20 @@ class Article < ActiveRecord::Base
     indexes :category, :category => true
     indexes :tags
     indexes :preview
+
+    # NLP
+    indexes :metaphones do
+      keywords.map { |kw| kw.metaphone }
+    end
+    indexes :synonyms do
+      keywords.map { |kw| kw.synonyms }
+    end
+    indexes :keywords do
+      keywords.map { |kw| kw.name }
+    end
+    indexes :stems do
+      keywords.map { |kw| kw.stem }
+    end
   end
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120706193649) do
+ActiveRecord::Schema.define(:version => 20120707190634) do
 
   create_table "articles", :force => true do |t|
     t.datetime "updated"
@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(:version => 20120706193649) do
     t.integer  "contact_id"
     t.text     "tags"
     t.string   "service_url"
-    t.boolean  "is_published", :default => false
     t.string   "slug"
+    t.boolean  "is_published", :default => false
     t.integer  "category_id"
-    t.integer  "access_count"
+    t.integer  "access_count", :default => 0
   end
 
   add_index "articles", ["slug"], :name => "index_articles_on_slug"
@@ -63,6 +63,15 @@ ActiveRecord::Schema.define(:version => 20120706193649) do
   add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
 
+  create_table "keywords", :force => true do |t|
+    t.string   "name"
+    t.string   "metaphone"
+    t.string   "stem"
+    t.text     "synonyms"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
     t.string   "username"
@@ -96,5 +105,13 @@ ActiveRecord::Schema.define(:version => 20120706193649) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "wordcounts", :force => true do |t|
+    t.integer  "article_id"
+    t.integer  "keyword_id"
+    t.integer  "count"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

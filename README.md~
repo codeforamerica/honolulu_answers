@@ -14,7 +14,6 @@
 
 
 To setup some example data:
-    $ rake db:seed
     $ rake db:seed 
 
 ### Dependencies
@@ -57,7 +56,7 @@ We use [Big Huge Thesaurus](bht) in order to enhance search queries.  In order t
 
 Honolulu Answers uses Environment variables for configuration. It expects a `BHT_API_KEY`, and `SEARCHIFY_API_URL` to be set to the searchify endpoint (which can be retrived from `heroku config` once searchify is an addon for your app)
 
-`foreman` is a great tool for checking your Procfile used for heroku, and running your application locally. When running `foreman start` this will load enivronment variables from `.env` if that file is found.
+`foreman` is a great tool for checking your Procfile used for heroku, and running your application locally. When running `foreman start` this will load enivronment variables from `.env` if that file is found.  
 
 Included in this project is an example of what the `.env` file should include. In order to use this make a copy and replace the values appropriate values for your setup.
 
@@ -89,11 +88,11 @@ With Foreman (used to load .env):
     $ heroku create honoluluanswers --stack cedar
     $ git push heroku master
     $ heroku run rake db:schema:load
-    $ heroku addons:add searchify:small # WARNING: paid addon!
+    $ heroku addons:add searchify:small
 
 ## Testing
 
-`foreman run bundle exec rake spec` command will run the current tests, these test need to be expanded.
+`bundle exec rspec spec/` command will run the current tests, these test need to be expanded.
 
 ## Contributing
 In the spirit of [free software][free-sw], **everyone** is encouraged to help
