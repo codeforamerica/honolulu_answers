@@ -58,7 +58,7 @@ class Article < ActiveRecord::Base
     indexes :preview
 
     # NLP
-    indexes :metaphone do
+    indexes :metaphones do
       keywords.map { |kw| kw.metaphone }
     end
     indexes :synonyms do
@@ -67,7 +67,7 @@ class Article < ActiveRecord::Base
     indexes :keywords do
       keywords.map { |kw| kw.name }
     end
-    indexes :stem do
+    indexes :stems do
       keywords.map { |kw| kw.stem }
     end
   end
