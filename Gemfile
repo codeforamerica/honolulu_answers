@@ -11,7 +11,7 @@ gem 'pg'
 gem 'thin'
 
 ## Deployment, maintanence, profiling, development aids
-gem 'newrelic_rpm'
+gem 'newrelic_rpm', :group => :production
 gem 'heroku'
 gem 'annotate', '~>2.4.1.beta'
 gem 'rails-erd'

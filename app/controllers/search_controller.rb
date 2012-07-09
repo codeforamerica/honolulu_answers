@@ -1,47 +1,28 @@
 class SearchController < ApplicationController
 
-  def index    
-    query = params[:q].downcase
+  def index  
+    query =  params[:query] 
+    @query = query
+    logger.info "  Search query: #{query}"
 
-    ## Pre-process the search query for natural language searches
+    query = query.downcase.gsub(/[^\w]/, ' ').gsub(/ . /, ' ')
+    logger.info "  Query cleaned: #{query}"
 
-    # Remove common English words from the query
-    eng_stop_list = CSV.read( "#{Rails.root.to_s}/lib/assets/eng_stop.csv" )
-    query = (query.split - eng_stop_list.flatten).join " "
+    query = Article.remove_stop_words query
+    logger.info "  Removed stop words: #{query}"
 
-    logger.info "  Search string: '#{query}'"
+    @query_corrected = Article.spell_check query
+    logger.info "  Spell check: #{@query}"
 
-    ## spell check the search query
-    @is_corrected = false
-    dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/custom", 'custom' )
-    query_corrected = []
-    query.split.each do |term|
-      if dict.check?( term )
-        query_corrected << term
-      else 
-        suggestion = dict.suggest( term ).first
-        if suggestion.nil? # if no suggestion, stick with the existing term
-          query_corrected << term
-        else
-          @is_corrected = true
-          query_corrected << suggestion
-        end
-      end
-    end
-    query = query_corrected.join ' '
-
-    logger.info "  Search string corrected: '#{query}'"
-
-    @results = Article.search_tank( query, 
+    @results = Article.search_tank( @query_corrected, 
                               :fetch => [:title, :timestamp, :preview],
-                              :snippets => [:text] )
+                              :snippets => [:content] )
 
     logger.info "  Results found: #{@results.size}"
 
     # Might be useful for fine-tuning search
-    logger.debug( "#{request.env['REMOTE_ADDR']},#{params[:q]},#{@results.size}" )
-    
-    render :json => @results
+    logger.debug( "#{request.env['REMOTE_ADDR']},#{@query},#{@results.size}" )
+
   end
   
 end

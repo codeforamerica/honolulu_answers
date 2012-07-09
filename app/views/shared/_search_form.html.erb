@@ -1,0 +1,5 @@
+<%= form_tag('/search', :id => 'search', :method => 'get') do %>
+  <p class="hnlanswers"><a class="header" href="/">Honolulu Answers</a></p>
+  <%= text_field_tag :query, nil, :id => 'query' %>
+  <%= submit_tag 'search', :class => 'btn', :name => nil, :id => 'query-btn' %>
+<% end -%>

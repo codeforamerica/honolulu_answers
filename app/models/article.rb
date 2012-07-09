@@ -42,12 +42,35 @@ class Article < ActiveRecord::Base
   def access_count_increment
     self.increment! :access_count
   end
-  
-  if Rails.env === 'production'
-    index = 'hnlanswers-production'
-  else
-    index = 'hnlanswers-development'
+
+  def self.remove_stop_words string
+    eng_stop_list = CSV.read( "#{Rails.root.to_s}/lib/assets/eng_stop.csv" )
+    string = (string.downcase.split - eng_stop_list.flatten).join " "    
   end
+
+  def self.spell_check string
+    @is_corrected = false
+    dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/custom", 'custom' )
+    string_corrected = []
+    string.split.each do |term|
+      if dict.check?( term )
+        string_corrected << term
+      else 
+        suggestion = dict.suggest( term ).first
+        if suggestion.nil? # if no suggestion, stick with the existing term
+          string_corrected << term
+        else
+          @is_corrected = true
+          string_corrected << suggestion
+        end
+      end
+    end
+    return string_corrected.join ' '
+  end
+
+  index = 'hnlanswers-development'
+  index = 'hnlanswers-production' if Rails.env === 'production'
+  
   tankit index do
     indexes :title
     indexes :content
