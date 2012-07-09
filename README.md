@@ -7,7 +7,7 @@
     $ rake db:schema:load
 
 To setup some example data:
-    $ rake db:seed  
+    $ rake db:seed
 
 ## Configuration
 
@@ -20,7 +20,7 @@ We use the [Searchify](https://addons.heroku.com/searchify) heroku addon to powe
 
 Honolulu Answers uses Environment variables for configuration. It expects `SEARCHIFY_API_URL` to be set to the searchify endpoint (which can be retrived from `heroku config` once searchify is an addon for your app)
 
-`foreman` is a great tool for checking your Procfile used for heroku, and running your application locally. When running `foreman start` this will load enivronment variables from `.env` if that file is found.  
+`foreman` is a great tool for checking your Procfile used for heroku, and running your application locally. When running `foreman start` this will load enivronment variables from `.env` if that file is found.
 
 Included in this project is an example of what the `.env` file should include. In order to use this make a copy and replace the values appropriate values for your setup.
 
@@ -52,7 +52,7 @@ With Foreman (used to load .env):
     $ heroku create honoluluanswers --stack cedar
     $ git push heroku master
     $ heroku run rake db:schema:load
-    $ heroku addons:add searchify:small
+    $ heroku addons:add searchify:small # WARNING: paid addon!
 
 ## Testing
 
