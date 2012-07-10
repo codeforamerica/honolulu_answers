@@ -2,8 +2,8 @@ class SearchController < ApplicationController
    include RailsNlp::BigHugeThesaurus
 
   def index  
-    query =  params[:query] 
-    return redirect_to articles_path if params[:query].nil?
+    query =  params[:q] 
+    # return redirect_to articles_path if params[:query].nil?
     @query = query
 
     # remove puntuation and plurals.
@@ -32,6 +32,11 @@ class SearchController < ApplicationController
 
     # Log the search results
     logger.debug( "search-request: IP:#{request.env['REMOTE_ADDR']}, params[:query]:#{query}, QUERY:#{query_final}, FIRST_RESULT:#{@results.first.title unless @results.empty?}, RESULTS_N:#{@results.size}" )
+
+    respond_to do |format|
+      format.json { render :json => @results }
+      format.html #index.html.erb
+    end
   end
   
 end
