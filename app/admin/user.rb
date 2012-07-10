@@ -1,4 +1,6 @@
 ActiveAdmin.register User do
+  #
+  #TODO - admin can add new users
 
   form do |f|
     f.inputs "User Details" do

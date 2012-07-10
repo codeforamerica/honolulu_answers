@@ -1,5 +1,12 @@
 ActiveAdmin.register Article do
+  
+  # Filterable attributes
+  filter :title
+  filter :tags
+  filter :contact_id
+  filter :is_published
 
+  # View 
   index do
     column :id
     column "Article Title", :title do |article|
@@ -12,11 +19,7 @@ ActiveAdmin.register Article do
     column "Published", :is_published
     default_actions # Add show, edit, delete column
   end
-  
-  filter :title
-  filter :tags
-  filter :contact_id
-  filter :is_published
+
 end
 
 

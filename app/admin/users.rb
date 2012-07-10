@@ -5,8 +5,16 @@ ActiveAdmin.register User do
       column :is_moderator
       column :is_admin
       column :is_editor
+      default_actions # View/Edit/Delete column
     end
-    # default_actions # Add show, edit, delete column
+
+    # form do |f|
+    #       f.input "Create User" do
+    #         f.input :email
+    #         f.input :admin, :as => :radio
+    #       end
+    #       f.buttons
+    #     end
 end
 # == Schema Information
 #
