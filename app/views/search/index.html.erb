@@ -6,7 +6,9 @@
 <div id="content">
   <div id="results">
       Search results for: "<strong><%=@query%></strong>"<br />
-      Did you mean "<strong><%=@query_corrected%></strong>"?<br />
+      <% unless @query_corrected == @query %>
+        Did you mean "<strong><%=@query_corrected%></strong>"?<br />
+      <% end -%>
       <%=@results.count %> results found<br />
     </div>
     <ul>
