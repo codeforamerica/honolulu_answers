@@ -95,6 +95,10 @@ class Article < ActiveRecord::Base
     end
   end
 
+  def hits
+    self.access_count
+  end
+
 
 
   private
