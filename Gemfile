@@ -15,6 +15,7 @@ gem 'newrelic_rpm'
 gem 'heroku'
 gem 'annotate', '~>2.4.1.beta'
 gem 'rails-erd'
+gem 'seed_dump'
 
 ## Admin interface
 gem 'rails_admin', '~> 0.0.2'
