@@ -34,7 +34,6 @@ module RailsNlp
           # find the Keyword object for this word, or create a new one if this word is new
           keyword = Keyword.find_by_name( word )
           if keyword.nil?
-            puts word + ' not found.'
             keyword = Keyword.create!( 
               :name      => word,
               :metaphone => Text::Metaphone.double_metaphone(word),
