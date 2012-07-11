@@ -7,14 +7,39 @@ ActiveAdmin.register User do
       column :is_editor
       default_actions # View/Edit/Delete column
     end
+    
+    form do |f|   # create/edit user form
+      f.inputs "User Details" do
+        f.input :email
+        f.input :password
+        f.input :password_confirmation
+      end
+      f.inputs "Type of User" do
+        f.input :is_admin,      :label => "Administrator"
+        f.input :is_moderator,  :label => "Moderator"   
+        f.input :is_editor,     :label => "Editor"       
+      end
+      f.buttons
+    end
 
-    # form do |f|
-    #       f.input "Create User" do
-    #         f.input :email
-    #         f.input :admin, :as => :radio
-    #       end
-    #       f.buttons
-    #     end
+    # Create/edit any user
+    create_or_edit = Proc.new {
+      @user            = User.find_or_create_by_id(params[:id])
+      @user.is_admin = params[:user][:is_admin]
+      @user.attributes = params[:user].delete_if do |k, v| 
+        (k == "is_admin") ||
+        (["password", "password_confirmation"].include?(k) && v.empty? && !@user.new_record?)
+      end
+      if @user.save
+        redirect_to :action => :show, :id => @user.id
+      else
+        render active_admin_template((@user.new_record? ? 'new' : 'edit') + '.html.arb')
+      end
+    }
+    member_action :create, :method => :post, &create_or_edit
+    member_action :update, :method => :put, &create_or_edit
+
+
 end
 # == Schema Information
 #
