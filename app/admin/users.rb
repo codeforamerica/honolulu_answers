@@ -7,7 +7,7 @@ ActiveAdmin.register User do
       column :is_editor
       default_actions # View/Edit/Delete column
     end
-    
+
     form do |f|   # create/edit user form
       f.inputs "User Details" do
         f.input :email
@@ -16,8 +16,8 @@ ActiveAdmin.register User do
       end
       f.inputs "Type of User" do
         f.input :is_admin,      :label => "Administrator"
-        f.input :is_moderator,  :label => "Moderator"   
-        f.input :is_editor,     :label => "Editor"       
+        f.input :is_moderator,  :label => "Moderator"
+        f.input :is_editor,     :label => "Editor"
       end
       f.buttons
     end
@@ -26,7 +26,7 @@ ActiveAdmin.register User do
     create_or_edit = Proc.new {
       @user            = User.find_or_create_by_id(params[:id])
       @user.is_admin = params[:user][:is_admin]
-      @user.attributes = params[:user].delete_if do |k, v| 
+      @user.attributes = params[:user].delete_if do |k, v|
         (k == "is_admin") ||
         (["password", "password_confirmation"].include?(k) && v.empty? && !@user.new_record?)
       end

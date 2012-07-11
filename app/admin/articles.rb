@@ -19,11 +19,20 @@ ActiveAdmin.register Article do
     column "Published", :is_published
     default_actions # Add show, edit, delete column
   end
-
+  
+  form do |f|   # create/edit user form
+    f.inputs "Article Details" do
+      f.input :title
+      f.input :content
+      f.input :category
+      f.input :content_type
+      f.input :preview
+      f.input :tags, :as => :string
+      f.input :is_published, :label => "Publish"
+    end
+    f.buttons
+  end
 end
-
-
-
 # == Schema Information
 #
 # Table name: articles
