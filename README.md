@@ -88,7 +88,8 @@ With Foreman (used to load .env):
     
     $ heroku create honoluluanswers --stack cedar
     $ git push heroku master
-    $ heroku run rake db:schema:load
+    $ heroku run rake db:create
+    $ heroku config set LD_LIBRARY_PATH='lib/native'
     $ heroku addons:add searchify:small # WARNING: paid addon!
 
 ## Testing
