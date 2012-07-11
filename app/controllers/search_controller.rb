@@ -13,8 +13,8 @@ class SearchController < ApplicationController
     query = Article.remove_stop_words query
 
     # spell check the query
-    gon.query_corrected = Article.spell_check query
-    gon.is_corrected = gon.query_corrected ==  query ? true : false
+    @query_corrected = Article.spell_check query
+    @is_corrected? = @query_corrected? ==  query ? true : false
 
     # expand the query
     stems,metaphones,synonyms = [[],[],[]]
