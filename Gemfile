@@ -17,6 +17,7 @@ gem 'annotate', '~>2.4.1.beta'            # Annotates models with database info:
 gem 'rails-erd'                           # Create Entity Relationship Diagrams
 gem 'progressbar'                         # Display progress bars in terminal output
 gem 'facets', :require => false           # Some extra methods for ruby
+gem 'seed_dump'                           # Adds a rake task which constructs a db/seeds.rb file based on the current database state.  Super useful!
 
 ## Admin
 gem 'rails_admin', '~> 0.0.2'             # Back-end Content Management System
