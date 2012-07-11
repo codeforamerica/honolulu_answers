@@ -78,6 +78,9 @@ GEM
       railties (>= 3.0.0)
     ffi (1.0.11)
     friendly_id (4.0.7)
+    gon (3.0.5)
+      actionpack (>= 2.3.0)
+      json
     guard (1.2.1)
       listen (>= 0.4.2)
       thor (>= 0.14.6)
@@ -282,6 +285,7 @@ DEPENDENCIES
   facets
   factory_girl_rails
   friendly_id
+  gon
   guard-rspec
   guard-spork
   heroku

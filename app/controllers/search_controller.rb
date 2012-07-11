@@ -12,6 +12,10 @@ class SearchController < ApplicationController
     # remove stop words
     query = Article.remove_stop_words query
 
+    # spell check the query
+    gon.query_corrected = Article.spell_check query
+    gon.is_corrected = gon.query_corrected ==  query ? true : false
+
     # expand the query
     stems,metaphones,synonyms = [[],[],[]]
     query.split.each do |term|
@@ -30,8 +34,7 @@ class SearchController < ApplicationController
     @results = Article.search_tank( query_final, 
                               :fetch => [:title, :timestamp, :preview],
                               :snippets => [:content] )
-    # spell check the query
-    @query_corrected = Article.spell_check query
+
 
     # Log the search results
     logger.debug( "search-request: IP:#{request.env['REMOTE_ADDR']}, params[:query]:#{query}, QUERY:#{query_final}, FIRST_RESULT:#{@results.first.title unless @results.empty?}, RESULTS_N:#{@results.size}" )

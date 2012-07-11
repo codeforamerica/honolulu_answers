@@ -5,11 +5,10 @@
 
 <div id="content">
   <div id="results">
+    <div class="searchStatus">
       Search results for: "<strong><%=@query%></strong>"<br />
-      <% unless @query_corrected == @query %>
-        Did you mean "<strong><%=@query_corrected%></strong>"?<br />
-      <% end -%>
-      <%=@results.count %> results found<br />
+      <div class="count"><%=@results.count %> results found<br /></div>
+      <div id="suggestion"></div>
     </div>
     <ul>
       <% @results.each do |article| %>
@@ -19,7 +18,11 @@
         </li>
       <% end %>
     </ul>
-
-
   </div> 
 </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    if(gon.is_corrected) {
+      $('#suggestion').append("</br>Did you mean: <a href='/search?q="+gon.query_corrected+"'>"+gon.query_corrected+"</a>?" );
+  }
+</script>

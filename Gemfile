@@ -35,6 +35,7 @@ gem 'json'                                # Convert between JSON and Ruby object
 ## Content and presentation
 gem 'bluecloth'                           # Parse Markdown
 gem 'friendly_id'                         # Create permalinks / descriptive URLs / slugs
+gem 'gon'                                 # Easy passing of data from the controller to javascript files
 
 ## Gems used only for assets and not required
 ## in production environments by default.
