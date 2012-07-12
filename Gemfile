@@ -18,6 +18,7 @@ gem 'rails-erd'                           # Create Entity Relationship Diagrams
 gem 'progressbar'                         # Display progress bars in terminal output
 gem 'facets', :require => false           # Some extra methods for ruby
 gem 'seed_dump'                           # Adds a rake task which constructs a db/seeds.rb file based on the current database state.  Super useful!
+gem 'jquery-ui-rails'                     # Package jQuery for the Rails 3.1+ asset pipeline 
 
 ## Admin
 gem 'activeadmin'                         # Back-end Content Management System
@@ -41,7 +42,6 @@ gem 'gon'                                 # Easy passing of data from the contro
 group :assets do
   gem 'sass-rails',   '~> 3.2.5'          # Rails support for Sass, a CSS extension language
   gem "meta_search",    '>= 1.1.0.pre'    # Active_admin search for form_for
-  gem 'jquery-ui-rails'                   # Package jQuery for the Rails 3.1+ asset pipeline 
   gem 'uglifier', '>= 1.0.3'              # Squash down Javascript for speed
   gem 'less-rails-bootstrap'              # Improves the Rails / Twitter Boostrap relationship by adding support for LESS, a CSS extension language
   # gem 'coffee-rails', '~> 3.2.1'
