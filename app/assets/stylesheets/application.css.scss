@@ -11,4 +11,7 @@
  *= require_self
  *= require style
  *= require jquery.ui.autocomplete
+ *= require active_admin.css.scss
 */
+
+@import "active_admin.css.scss";
