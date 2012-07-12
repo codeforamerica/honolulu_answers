@@ -50,8 +50,8 @@
 
 $(document).ready(function(){
     // let the form be 'indextank-aware'
-    $("#searchForm").indextank_Ize("http://8bpwv.api.searchify.com", "hnlanswers-production");
+    $("#search").indextank_Ize("http://8bpwv.api.searchify.com", "hnlanswers-production");
     // let the query box have autocomplete
-    $("#search").indextank_Autocomplete({ fieldName: "tags" }).indextank_AjaxSearch( {listeners: renderer}).indextank_InstantSearch();
+    $("#query").indextank_Autocomplete({ fieldName: "tags" }).indextank_AjaxSearch( {listeners: renderer}).indextank_InstantSearch();
 });
 </script>
