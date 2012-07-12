@@ -20,9 +20,10 @@ gem 'facets', :require => false           # Some extra methods for ruby
 gem 'seed_dump'                           # Adds a rake task which constructs a db/seeds.rb file based on the current database state.  Super useful!
 
 ## Admin
-gem 'rails_admin', '~> 0.0.2'             # Back-end Content Management System
+#gem 'rails_admin', '~> 0.0.2'             # Back-end Content Management System
 gem 'devise', '~> 2.0'                    # User authentication 
 gem 'cancan'                              # User permissions
+gem 'activeadmin'
 
 ## Search and NLP
 gem 'tanker'                              # library for interacting with Searchify
@@ -30,7 +31,6 @@ gem 'hunspell-ffi'                        # Spellchecking library
 gem 'text'                                # NLP algorithms
 gem 'httparty'                            # For accessing APIs directly
 gem 'json'                                # Convert between JSON and Ruby objects
-
 
 ## Content and presentation
 gem 'bluecloth'                           # Parse Markdown
@@ -41,9 +41,11 @@ gem 'gon'                                 # Easy passing of data from the contro
 ## in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'          # Rails support for Sass, a CSS extension language
+  gem "meta_search",    '>= 1.1.0.pre'    # Active_admin search for form_for
   gem 'jquery-ui-rails'                   # Package jQuery for the Rails 3.1+ asset pipeline 
   gem 'uglifier', '>= 1.0.3'              # Squash down Javascript for speed
   gem 'less-rails-bootstrap'              # Improves the Rails / Twitter Boostrap relationship by adding support for LESS, a CSS extension language
+  # gem 'coffee-rails', '~> 3.2.1'
   gem 'therubyracer'                      # Embeds the V8 Javascript interpreter into Ruby
 end
 
@@ -55,7 +57,7 @@ group :test, :development do
   gem 'launchy'                           # Lets you 'save_and_open_page' in the middle of a test - opens up the browser and shows you the current state of the page
   gem 'guard-rspec'                       # Guard integratio for RSpec.  Guard monitors files and automatically and intelligently runs 'rspec spec' in the background
   gem 'factory_girl_rails'                # Create factories to test against
-  gem 'libnotify'                         # For displaying notifications about test status in Linux 
+  gem 'libnotify' if /linux/ =~ RUBY_PLATFORM                  # For displaying notifications about test status in Linux 
   gem 'spork-rails'                       # Speeds up TDD by launching multiple Rails instances in the background
   gem 'guard-spork'                       # Make guard aware of Spork - automatically restart spork if a change requires a rails restart   
   gem 'capybara-webkit'                   # JS driver for Capybara (headless)

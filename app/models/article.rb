@@ -105,6 +105,7 @@ class Article < ActiveRecord::Base
 
 
 end
+
 # == Schema Information
 #
 # Table name: articles
