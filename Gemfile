@@ -39,7 +39,7 @@ gem 'gon'                                 # Easy passing of data from the contro
 ## Gems used only for assets and not required
 ## in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'          # Rails support for Sass, a CSS extension language
+  gem 'sass-rails',   '~> 3.2.5'          # Rails support for Sass, a CSS extension language
   gem "meta_search",    '>= 1.1.0.pre'    # Active_admin search for form_for
   gem 'jquery-ui-rails'                   # Package jQuery for the Rails 3.1+ asset pipeline 
   gem 'uglifier', '>= 1.0.3'              # Squash down Javascript for speed
