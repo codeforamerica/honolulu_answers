@@ -302,7 +302,7 @@ DEPENDENCIES
   rails (= 3.2.6)
   rails-erd
   rspec-rails (>= 2.10.1)
-  sass-rails (~> 3.2.3)
+  sass-rails (~> 3.2.5)
   seed_dump
   shoulda
   simplecov
