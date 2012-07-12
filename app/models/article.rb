@@ -52,7 +52,8 @@ class Article < ActiveRecord::Base
 
   def self.spell_check string
     @is_corrected = false
-    dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/custom", 'custom' )
+    dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/blank", 'blank' )
+    Keyword.all.each{ |kw| dict.add( kw.name ) }
     string_corrected = []
     string.split.each do |term|
       if dict.check?( term )
