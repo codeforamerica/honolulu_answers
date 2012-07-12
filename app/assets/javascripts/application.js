@@ -14,7 +14,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.autocomplete
+//# require jquery.ui.autocomplete
 //= require mustache
 //= require_tree .
 //
