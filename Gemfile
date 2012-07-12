@@ -56,7 +56,7 @@ group :test, :development do
   gem 'launchy'                           # Lets you 'save_and_open_page' in the middle of a test - opens up the browser and shows you the current state of the page
   gem 'guard-rspec'                       # Guard integratio for RSpec.  Guard monitors files and automatically and intelligently runs 'rspec spec' in the background
   gem 'factory_girl_rails'                # Create factories to test against
-  gem 'libnotify', :require => false if RUBY_PLATFORM =~ /darwin/i                 # For displaying notifications about test status in Linux 
+  #gem 'libnotify', :require => false if (RUBY_PLATFORM =~ /darwin/i)                 # For displaying notifications about test status in Linux 
   gem 'spork-rails'                       # Speeds up TDD by launching multiple Rails instances in the background
   gem 'guard-spork'                       # Make guard aware of Spork - automatically restart spork if a change requires a rails restart   
   gem 'capybara-webkit'                   # JS driver for Capybara (headless)
