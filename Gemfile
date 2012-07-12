@@ -20,10 +20,9 @@ gem 'facets', :require => false           # Some extra methods for ruby
 gem 'seed_dump'                           # Adds a rake task which constructs a db/seeds.rb file based on the current database state.  Super useful!
 
 ## Admin
-#gem 'rails_admin', '~> 0.0.2'             # Back-end Content Management System
+gem 'activeadmin'                         # Back-end Content Management System
 gem 'devise', '~> 2.0'                    # User authentication 
 gem 'cancan'                              # User permissions
-gem 'activeadmin'
 
 ## Search and NLP
 gem 'tanker'                              # library for interacting with Searchify
