@@ -6,9 +6,14 @@
 <div id="content">
   <div id="results">
     <div class="searchStatus">
-      Search results for: "<strong><%=@query%></strong>"<br />
-      <div class="count"><%=@results.count %> results found<br /></div>
-      <div id="suggestion"></div>
+      Search results for: "<strong><%=@query%></strong>"
+      <% if @is_corrected %>
+        (did you mean: <a href ='/search?q=<%=@query_corrected%>'>"<%=@query_corrected%>"</a>?)
+      <% end -%>
+      <div class="count"><%=@results.count %> results found</div>
+      <br />
+
+
     </div>
     <ul>
       <% @results.each do |article| %>

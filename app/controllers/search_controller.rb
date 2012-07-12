@@ -14,7 +14,7 @@ class SearchController < ApplicationController
 
     # spell check the query
     @query_corrected = Article.spell_check query
-    @is_corrected = @query_corrected ==  query ? true : false
+    @is_corrected = @query_corrected !=  query
 
     # expand the query
     stems,metaphones,synonyms = [[],[],[]]
