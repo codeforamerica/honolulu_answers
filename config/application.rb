@@ -4,9 +4,9 @@ require 'csv'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
-  Bundler.require *Rails.groups(:assets => %w(development test))
+  # Bundler.require *Rails.groups(:assets => %w(development test))
   # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
+  Bundler.require(:default, :assets, Rails.env)
 end
 
 module Honoluluanswers
@@ -54,6 +54,11 @@ module Honoluluanswers
     config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.2.1'
+    config.assets.version = '1.2.2'
+
+    # get precompilation working on heroku:
+    config.assets.initialize_on_precompile = true
+
+    config.serve_static_assets = false
   end
 end
