@@ -1,4 +1,4 @@
-Honoluluanswers::Application.configure do
+CodeForAmerica::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
@@ -15,13 +15,10 @@ Honoluluanswers::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Generate digests for assets URLs
   config.assets.digest = true
-
-  # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( home.js style.css mobile.css.scss active_admin.js active_admin.css.scss indextank/jquery.indextank.autocomplete.js )
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
@@ -49,7 +46,7 @@ Honoluluanswers::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  # config.assets.precompile += %w( search.js )
+  config.assets.precompile += %w( home.js style.css mobile.css.scss active_admin.js active_admin.css.scss indextank/jquery.indextank.autocomplete.js )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
@@ -64,8 +61,7 @@ Honoluluanswers::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  #devise mailer
-  config.action_mailer.default_url_options = { :host => 'hnlanswers.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'hnlanswers-stage.codeforamerica.org' }
 
   config.action_mailer.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
