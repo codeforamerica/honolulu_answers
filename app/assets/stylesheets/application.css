@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require style
+ *= require mobile.css
  *= #require jquery.ui.autocomplete
 */
