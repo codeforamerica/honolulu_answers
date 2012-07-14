@@ -72,7 +72,7 @@ class Article < ActiveRecord::Base
   end
 
   index = 'hnlanswers-development'
-  index = 'hnlanswers-production'# if Rails.env === 'production'
+  index = 'hnlanswers-production' if Rails.env === 'production'
   
   tankit index do
     indexes :title
