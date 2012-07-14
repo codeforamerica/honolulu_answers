@@ -2,6 +2,8 @@ include ActionView::Helpers::SanitizeHelper
 
 class Article < ActiveRecord::Base  
   include Tanker
+  include RailsNlp::BigHugeThesaurus
+
   extend FriendlyId
 
   # Permalinks. :slugged option means it uses the 'slug' column for the url
@@ -41,10 +43,6 @@ class Article < ActiveRecord::Base
     end
   end
 
-  def access_count_increment
-    self.increment! :access_count
-  end
-
   def self.remove_stop_words string
     eng_stop_list = CSV.read( "#{Rails.root.to_s}/lib/assets/eng_stop.csv" )
     string = (string.downcase.split - eng_stop_list.flatten).join " "    
@@ -71,6 +69,29 @@ class Article < ActiveRecord::Base
     return string_corrected.join ' '
   end
 
+  def self.expand_query( query )
+    stems,metaphones,synonyms = [[],[],[]]
+    query.split.each do |term|
+      stems << Text::PorterStemming.stem(term)
+      kw = Keyword.find_by_name(term)
+      if kw # Hit the database first to prevent uneccesary API calls to BHT
+        synonyms << kw.synonyms.first(3)
+      else
+        synonyms << RailsNlp::BigHugeThesaurus.synonyms(term) 
+      end
+      metaphones << Text::Metaphone.double_metaphone(term)
+    end
+
+    query_final =      "#{'title:'      + query.split.join('^10 title:')  + '^10'}"
+    query_final << " OR #{'content:'    + query.split.join('^5 content:') + '^5'}"
+    query_final << " OR #{'tags:'       + query.split.join('^8 tags:')    + '^8'}"
+    query_final << " OR #{'stems:'      + stems.flatten.join(' OR stems:')}"
+    query_final << " OR #{'metaphones:' + metaphones.flatten.compact.join(' OR metaphones:')}"
+    query_final << " OR #{'synonyms:"'  + synonyms.flatten.first(3).join( '" OR synonyms:"') + '"'}"
+
+    return query_final
+  end
+
   index = 'hnlanswers-development'
   index = 'hnlanswers-production' if Rails.env === 'production'
   
@@ -86,7 +107,7 @@ class Article < ActiveRecord::Base
       keywords.map { |kw| kw.metaphone }
     end
     indexes :synonyms do
-      keywords.map { |kw| kw.synonyms }
+      keywords.map { |kw| kw.synonyms.first(3) }
     end
     indexes :keywords do
       keywords.map { |kw| kw.name }

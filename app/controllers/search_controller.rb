@@ -17,19 +17,9 @@ class SearchController < ApplicationController
     @is_corrected = @query_corrected !=  query
 
     # expand the query
-    stems,metaphones,synonyms = [[],[],[]]
-    query.split.each do |term|
-      stems << Text::PorterStemming.stem(term)
-      synonyms << RailsNlp::BigHugeThesaurus.synonyms(term) 
-      metaphones << Text::Metaphone.double_metaphone(term)
-    end
+    query_final = Article.expand_query( query )
 
-    query_final =      "#{'title:'      + query.split.join('^10 title:')  + '^10'}"
-    query_final << " OR #{'content:'    + query.split.join('^5 content:') + '^5'}"
-    query_final << " OR #{'tags:'       + query.split.join('^8 tags:')    + '^8'}"
-    query_final << " OR #{'stems:'      + stems.flatten.join(' OR stems:')}"
-    query_final << " OR #{'metaphones:' + metaphones.flatten.compact.join(' OR metaphones:')}"
-    query_final << " OR #{'synonyms:"'  + synonyms.flatten.first(3).join( '" OR synonyms:"') + '"'}"
+
 
     @results = Article.search_tank( query_final, 
                               :fetch => [:title, :timestamp, :preview],

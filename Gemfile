@@ -11,7 +11,7 @@ gem 'pg'                                  # PostgreSQL, the database server
 gem 'thin'                                # Web server
 
 ## Utilities
-gem 'newrelic_rpm', :group => :production # Rails analytics - see the Heroku addon
+gem 'newrelic_rpm'#, :group => :production # Rails analytics - see the Heroku addon
 gem 'heroku'                              # Managed hosting solution
 gem 'annotate', '~>2.4.1.beta'            # Annotates models with database info: `bundle exec rake:annotate` 
 gem 'rails-erd'                           # Create Entity Relationship Diagrams
@@ -19,6 +19,7 @@ gem 'progressbar'                         # Display progress bars in terminal ou
 gem 'facets', :require => false           # Some extra methods for ruby
 gem 'seed_dump'                           # Adds a rake task which constructs a db/seeds.rb file based on the current database state.  Super useful!
 gem 'jquery-ui-rails'                     # Package jQuery for the Rails 3.1+ asset pipeline 
+gem 'delayed_job_active_record'
 
 ## Admin
 gem 'activeadmin'                         # Back-end Content Management System
