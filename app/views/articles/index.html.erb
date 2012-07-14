@@ -21,7 +21,7 @@
       <% category.articles_by_access_count.each do |article| %>
 				<ul>
           <% # if article.is_published %>
-					  <%= content_tag( :li, link_to( article.title, article_path(article) ) ) %>
+					  <%= content_tag( :li, link_to( article.title, article_path(article.slug) ) ) %>
           <% # end %>
 				</ul>
 			<% end -%>
