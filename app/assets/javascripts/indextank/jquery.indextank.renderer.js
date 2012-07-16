@@ -34,7 +34,7 @@
             });
 
             base.$el.bind("Indextank.AjaxSearch.noResults", function(e, query) {
-                base.$el.html("<div class='result'> No results were found for " + query + '.</div>');
+                base.$el.html("<div class='autocomplete'> No results were found for " + query + '.</div>');
             });
             
             base.$el.bind("Indextank.AjaxSearch.failure", function(e) {
@@ -55,7 +55,7 @@
     $.Indextank.Renderer.defaultOptions = {
         format: function(item){
                     return $("<div></div>")
-                            .addClass("result")
+                            .addClass("autocomplete")
                             .append( $("<a></a>").attr("href", item.link || item.url ).text(item.title || item.name) )
                             .append( $("<span></span>").addClass("description").html(item.snippet_text || item.text) );
                     },

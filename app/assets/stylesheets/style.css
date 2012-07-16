@@ -557,3 +557,70 @@ a.header{
 	margin-top:3px;
 	display:block;
 }
+
+/*#s {
+    display: block;
+    margin: 0 auto;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 12px 48px 12px 12px;
+    border-radius: 200px;
+    width: 300px;
+    height: 16px;
+    color: #3a4449;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.3), 0 2px 0 rgba(255,255,255,.3), inset 0 1px 2px rgba(0,0,0,.2);
+    position: relative;
+    z-index: 1;
+    background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAcCAIAAACGS4oPAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAbtJREFUeNrsVd9LwlAU3ubYdudvsymUQULam2GpoWFFYFD900rh1EytB3/1lAbW1oOJgWK7HbPCh9hUbEX1cR/O/Th33+693z2HvL5tCQ4bRZLEF8PIMvQowoQeoPWTIgiK0BG/V4zW8cpGBtFLblI33jQaudx5q3UHsdvtCoW2VjyeacVIeNSLNiup+qjFbDZ1egYPf5SGMVYwju/EtsPhyZXMiNW+s0azmU6LRoQikfC63w9MpVrNZLJALi8NMU83imKGZdlYNLoZDBpfAQFMgUyLmTlb/7HTge/6/b5xEqZAttvtGQyidpAswyiKMswZT8OYpmmDwaC+9pOdYdXhdDopiqrUauNkrV4HUhAErLX8Y7yLqWIjEIAdFIul0uVVt/sEA4KLQhHEfL41PDHerO+wmNWtX65U8vlCv99XlOfhD1IGhmE4jkU8f7C/x3HcJGdoM6KhmF1LDCBJUrlclaT7wWAgCC6vd7Ver8nyA4e4w0QCIaQpZh+J2cwmcvpO3ev1ksmULMsWq/Xk+Egz32HiZ6/6YP3deBxKl4nnpyhXVtMsO5sWC2b+G/rZD2sx/536jx7jiwADANtP/9R/HghOAAAAAElFTkSuQmCC) center right no-repeat;
+
+}
+
+#s::-webkit-input-placeholder, #s:-moz-placeholder {
+    color: #607078;
+}*/
+
+.autocomplete {
+    list-style:none;
+    font-size: .725em;
+    line-height: 2;
+    background: -webkit-linear-gradient(#596369, #354044 80%);
+    padding: 5px;
+    width: 290px;
+    border-radius: 3px;
+    margin: 24px auto;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0,0,0,.2);
+    font-weight: 700;
+    box-shadow: 0 0 0 1px #19272e, inset 0 1px 0 rgba(255,255,255,.2), 0 2px 5px rgba(0,0,0,.4);
+    position: relative;
+    z-index: 1;
+}
+
+.autocomplete:before {
+    content: '';
+    display:block;
+    width: 12px;
+    height: 12px;
+    position:absolute;
+    background:#596369;
+    z-index: 2;
+    top: -6px;
+    left: 16px;
+    transform: rotate(45deg);
+    box-shadow: inset 1px 1px 0 rgba(255,255,255,.1), -1px -1px 0 #19272e;
+}
+
+.autocomplete li {
+    padding: 0 12px;
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+}
+
+.autocomplete .selected {
+    background: linear-gradient(#45a2c4, #1a729f, #14608d 90%);
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.3), inset 0 0 0 1px rgba(255,255,255,.1), inset 0 1px 0 rgba(255,255,255,.2);  
+}
