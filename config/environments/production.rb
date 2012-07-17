@@ -15,14 +15,13 @@ Honoluluanswers::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = true
-
-  # for some reason this one isn't getting precompiled
-  config.assets.precompile += ['mobile.css.scss']
-
+  config.assets.compile = false
 
   # Generate digests for assets URLs
   config.assets.digest = true
+
+  # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
+  config.assets.precompile += %w( home.js style.css mobile.css.scss active_admin.js active_admin.css.scss indextank/jquery.indextank.autocomplete.js )
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
@@ -35,7 +34,7 @@ Honoluluanswers::Application.configure do
   # config.force_ssl = true
 
   # See everything in the log (default is :info)
-  config.log_level = :debug
+  # config.log_level = :debug
 
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
@@ -44,7 +43,7 @@ Honoluluanswers::Application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production
-  # config.cache_store = :mem_cache_store
+  config.cache_store = :dalli_store, { :compress => true }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -65,7 +64,18 @@ Honoluluanswers::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  # Log the query plan for queries taking more than this (works
-  # with SQLite, MySQL, and PostgreSQL)
-  # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  #devise mailer
+  config.action_mailer.default_url_options = { :host => 'hnlanswers.herokuapp.com' }
+
+  config.action_mailer.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD'],
+    :domain         => 'heroku.com'
+  }
+
+  config.action_mailer.delivery_method = :smtp
+
 end

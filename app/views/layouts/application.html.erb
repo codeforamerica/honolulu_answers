@@ -7,6 +7,7 @@
   <link rel="apple-touch-icon" href="icons/regular_icon.png" />
   <link rel="apple-touch-icon" sizes="114x114" href="icons/retina_icon.png" />
   <link href='http://fonts.googleapis.com/css?family=PT+Sans+Caption' rel='stylesheet' type='text/css'>
+  <%= include_gon %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag    "mobile", :media => "all and (max-width: 600px)" %>
   <%= javascript_include_tag "application" %>
@@ -23,8 +24,8 @@
 
 
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<p class="notice alert alert-info"><%= notice %></p>
+<p class="alert alert-error"><%= alert %></p>
 
 <%= yield %>
 

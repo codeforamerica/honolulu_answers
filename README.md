@@ -1,26 +1,63 @@
 # Honolulu Answers
 
+*Honolulu Answers* is...
+
 ## Installation
 
+**You need bundler 1.2 or higher in order to successfully run `bundle install`**
+
+
     $ bundle install
+    # Fill in `config/dblogin.yml`
     $ rake db:create
     $ rake db:schema:load
 
+
 To setup some example data:
-    $ rake db:seed  
+    $ rake db:seed
+    $ rake db:seed 
+
+### Dependencies
+
+`bundle install` will likely fail as some of the gems require native libraries to be installed on your system.  The following gems require libraries which are not included on Ubuntu 12.04 by default:
+
+* Ruby >= 1.9 compiled with `psych`, `readline`, `zlib` and `openssl`
+* nokogiri
+  * `sudo apt-get install libxslt1-dev libxml2-dev`
+* capybara-webkit
+  * `sudo apt-get install libqt4-dev libqtwebkit-dev g++`
+* pg
+  * `sudo apt-get install libpq-dev`
+* sqlite3
+  * `sudo apt-get install sqlite3 libsqlite3-dev`
+
+One-liner for the brave:
+
+    sudo apt-get install libxslt1-dev libxml2-dev libqt4-dev libqtwebkit-dev g++ libpq-dev sqlite3 libsqlite3-dev
 
 ## Configuration
 
 ### Setting up Searchify
 
-We use the [Searchify](https://addons.heroku.com/searchify) heroku addon to power the search index for honolulu answers. In order to use this in development you can either run a copy of Indextank (which is what searchify is built on) or add the searchify addon to a heroku app, and copy the provided search api endpoint to your .env file.
+We use the [Searchify](https://addons.heroku.com/searchify) heroku addon to power the search index for honolulu answers. In order to use this in development you can either run a copy of Indextank (which is what Searchify is built on) or add the searchify addon to a heroku app, and copy the provided search api endpoint to your .env file. 
+
+Since Searchify only offer paid plans, for development you might want to check out the following free IndexTank providors and use the API key they supply: (1) [HoundSleuth](houndsleuth) (2) [IndexDen](indexden)
+
+[houndsleuth]: http://www.houndsleuth.com/
+[indexden]: http://indexden.com/
+
+### Setting up BigHugeThesaurus
+
+We use [Big Huge Thesaurus](bht) in order to enhance search queries.  In order to run this in development you will need an API key, freely available at [bht.com](bht).
+
+[bht]: http://www..com
 
 
 ### Environment Vars
 
-Honolulu Answers uses Environment variables for configuration. It expects `SEARCHIFY_API_URL` to be set to the searchify endpoint (which can be retrived from `heroku config` once searchify is an addon for your app)
+Honolulu Answers uses Environment variables for configuration. It expects a `BHT_API_KEY`, and `SEARCHIFY_API_URL` to be set to the searchify endpoint (which can be retrived from `heroku config` once searchify is an addon for your app)
 
-`foreman` is a great tool for checking your Procfile used for heroku, and running your application locally. When running `foreman start` this will load enivronment variables from `.env` if that file is found.  
+`foreman` is a great tool for checking your Procfile used for heroku, and running your application locally. When running `foreman start` this will load enivronment variables from `.env` if that file is found.
 
 Included in this project is an example of what the `.env` file should include. In order to use this make a copy and replace the values appropriate values for your setup.
 
@@ -51,12 +88,13 @@ With Foreman (used to load .env):
     
     $ heroku create honoluluanswers --stack cedar
     $ git push heroku master
-    $ heroku run rake db:schema:load
-    $ heroku addons:add searchify:small
+    $ heroku run rake db:create
+    $ heroku config set LD_LIBRARY_PATH='lib/native'
+    $ heroku addons:add searchify:small # WARNING: paid addon!
 
 ## Testing
 
-`rake` command will run the current tests, these test need to be expanded.
+`foreman run bundle exec rake spec` command will run the current tests, these test need to be expanded.
 
 ## Contributing
 In the spirit of [free software][free-sw], **everyone** is encouraged to help

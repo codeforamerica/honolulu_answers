@@ -1,12 +1,12 @@
 require File.expand_path('../boot', __FILE__)
-
 require 'rails/all'
+require 'csv'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
-  Bundler.require(*Rails.groups(:assets => %w(development test)))
+  # Bundler.require *Rails.groups(:assets => %w(development test))
   # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
+  Bundler.require(:default, :assets, Rails.env)
 end
 
 module Honoluluanswers
@@ -16,7 +16,7 @@ module Honoluluanswers
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    # config.autoload_paths += %W(#{config.root}/extras)
+    config.autoload_paths += Dir["#{config.root}/lib", "#{config.root}/lib/**/"]
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -54,6 +54,11 @@ module Honoluluanswers
     config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.2'
+    config.assets.version = '1.2.2'
+
+    # get precompilation working on heroku:
+    config.assets.initialize_on_precompile = false
+
+    config.serve_static_assets = false
   end
 end

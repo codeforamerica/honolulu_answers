@@ -16,17 +16,18 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     return render(:template => 'articles/missing') unless Article.exists? params[:id]
-    
+
     @article = Article.find(params[:id])
-
-    @article.increment! :access_count
-    @article.category.increment!(:access_count) if @article.category   
-
     # redirection of old permalinks
     if request.path != article_path( @article )
       logger.info "Old permalink: #{request.path}"
       return redirect_to @article, status: :moved_permanently
     end
+
+    @article.delay.increment! :access_count
+    @article.delay.category.increment!(:access_count) if @article.category   
+
+
 
     @content_html = BlueCloth.new(@article.content).to_html
     @bodyclass = "results"
