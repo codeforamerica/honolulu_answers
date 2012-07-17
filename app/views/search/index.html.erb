@@ -17,6 +17,7 @@
     </div>
     <ul>
       <% @results.each do |article| %>
+        <% #next unless article.is_published %>
         <li>
           <%= content_tag( :h1, link_to( article.title, article_path(article.id) ) ) %>
           <div class="preview"><%= article.preview %></div>

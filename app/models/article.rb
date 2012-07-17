@@ -3,6 +3,7 @@ include ActionView::Helpers::SanitizeHelper
 class Article < ActiveRecord::Base  
   include Tanker
   include RailsNlp::BigHugeThesaurus
+  require_dependency 'keyword'
 
   extend FriendlyId
 
