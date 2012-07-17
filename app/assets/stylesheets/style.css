@@ -187,7 +187,7 @@ input#query{
 	border: 0;
   -webkit-border-radius: 3px 0 0 3px;
 	border-radius: 3px 0 0 3px;
-  background: #EEE;
+  background: #FFF;
   font-size: 19px;
 	outline:none;
   transition: all 0.25s ease-in-out;
@@ -272,14 +272,19 @@ form#search input.btn {
   min-width:400px;
   max-width:700px;
   height: 100%;
-  margin: 20px auto;
-  padding: 0;
   display:none;
   background:#fff;
-  padding:40px;
+	display: block; 
+	-webkit-transition: opacity 1s ease-out; 
+	opacity: 0; 
+	height: 0; 
+	overflow: hidden;
 }
-#content{ 
-  display:block;
+#content.active{ 
+	margin: 20px auto;
+	padding:40px;
+  opacity: 1; 
+	height: auto;
 }
 #results ul div.preview{ 
 	margin:5px 0px 5px 30px;
