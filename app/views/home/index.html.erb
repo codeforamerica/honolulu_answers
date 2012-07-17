@@ -50,11 +50,10 @@
 <div id="getsat-widget-784"></div>
 <script type="text/javascript" src="https://loader.engage.gsfn.us/loader.js"></script>
 <script type="text/javascript">
-
 $(document).ready(function(){
     // let the form be 'indextank-aware'
     $("#search").indextank_Ize("http://8bpwv.api.searchify.com", "hnlanswers-production");
     // let the query box have autocomplete
-    $("#query").indextank_Autocomplete({ fieldName: "tags" }).indextank_AjaxSearch( {listeners: renderer}).indextank_InstantSearch();
+    $("#query").indextank_Autocomplete({ fieldName: "tags" });
 });
 </script>
