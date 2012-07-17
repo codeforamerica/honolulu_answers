@@ -72,25 +72,31 @@ class Article < ActiveRecord::Base
   def self.expand_query( query )
     stems,metaphones,synonyms = [[],[],[]]
     query.split.each do |term|
-      stems << Text::PorterStemming.stem(term)
+      # try and hit the database first, only compute stuff if we have to
       kw = Keyword.find_by_name(term)
-      if kw # Hit the database first to prevent uneccesary API calls to BHT
-        synonyms << kw.synonyms.first(3)
+      if kw 
+        stems << kw.stem
+        metaphones << kw.metaphone.compact
+        # synonyms << kw.synonyms.first(3)
       else
-        synonyms << RailsNlp::BigHugeThesaurus.synonyms(term) 
+        stems << Text::PorterStemming.stem(term)
+        metaphones << Text::Metaphone.double_metaphone(term)
+        # synonyms << RailsNlp::BigHugeThesaurus.synonyms(term)
       end
-      metaphones << Text::Metaphone.double_metaphone(term)
     end
 
+    # Construct the OR query
     query_final =      "#{'title:'      + query.split.join('^10 title:')  + '^10'}"
     query_final << " OR #{'content:'    + query.split.join('^5 content:') + '^5'}"
     query_final << " OR #{'tags:'       + query.split.join('^8 tags:')    + '^8'}"
     query_final << " OR #{'stems:'      + stems.flatten.join(' OR stems:')}"
     query_final << " OR #{'metaphones:' + metaphones.flatten.compact.join(' OR metaphones:')}"
-    query_final << " OR #{'synonyms:"'  + synonyms.flatten.first(3).join( '" OR synonyms:"') + '"'}"
+    # query_final << " OR #{'synonyms:"'  + synonyms.flatten.first(3).join( '" OR synonyms:"') + '"'}"
+    query_final << " OR #{'synonyms:"'  + query.split.join(' OR synonyms:')}"
 
     return query_final
   end
+
 
   index = 'hnlanswers-development'
   index = 'hnlanswers-production' if Rails.env === 'production'
@@ -107,7 +113,7 @@ class Article < ActiveRecord::Base
       keywords.map { |kw| kw.metaphone }
     end
     indexes :synonyms do
-      keywords.map { |kw| kw.synonyms.first(3) }
+      keywords.map { |kw| kw.synonyms }
     end
     indexes :keywords do
       keywords.map { |kw| kw.name }
