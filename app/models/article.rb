@@ -44,14 +44,18 @@ class Article < ActiveRecord::Base
   end
 
   def self.remove_stop_words string
-    eng_stop_list = CSV.read( "#{Rails.root.to_s}/lib/assets/eng_stop.csv" )
+    eng_stop_list = Rails.cache.fetch('stop_words') do
+      CSV.read( "#{Rails.root.to_s}/lib/assets/eng_stop.csv" )
+    end
     string = (string.downcase.split - eng_stop_list.flatten).join " "    
   end
 
   def self.spell_check string
     @is_corrected = false
     dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/blank", 'blank' )
-    Keyword.all.each{ |kw| dict.add( kw.name ) }
+    keywords = Rails.cache.fetch('keyword_names') { Keyword.all(:select => 'name') }
+    keywords.each{ |kw| dict.add( kw.name ) }
+
     string_corrected = []
     string.split.each do |term|
       if dict.check?( term )
