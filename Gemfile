@@ -19,7 +19,10 @@ gem 'progressbar'                         # Display progress bars in terminal ou
 gem 'facets', :require => false           # Some extra methods for ruby
 gem 'seed_dump'                           # Adds a rake task which constructs a db/seeds.rb file based on the current database state.  Super useful!
 gem 'jquery-ui-rails'                     # Package jQuery for the Rails 3.1+ asset pipeline 
-gem 'delayed_job_active_record'
+
+## Performance and optimization
+gem 'delayed_job_active_record'           # Lets you queue tasks as background jobs
+gem 'dalli'                               # memcache gem for Rails.cache
 
 ## Admin
 gem 'activeadmin'                         # Back-end Content Management System
