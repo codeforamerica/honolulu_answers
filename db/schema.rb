@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20120706193649) do
     t.boolean  "is_published", :default => false
     t.string   "slug"
     t.integer  "category_id"
-    t.integer  "access_count"
+    t.integer  "access_count", :default => 0
   end
 
   add_index "articles", ["slug"], :name => "index_articles_on_slug"
