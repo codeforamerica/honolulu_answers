@@ -3,12 +3,14 @@
 <div id="navigation">  
   <div id="searchBox">
     <p class="welcome">Welcome to Honolulu Answers, the best way to get government services and information </p>
+    
     <form id="search" autocomplete="off">
-      <p class="hnlanswers"><a class="header" href="/">Honolulu Answers</a></p>
+      <p class="hnlanswers"><a class="header" href="/">Honolulu Answers</a> </p>
       <input type="text" id="query" />
       <input type="submit" class="btn" value="" id="query-btn" />
     </form>
-	<div id="results"></div>
+
+  <div id="results"></div>
     <span class="exampleText">Try driver license, jobs, car registration, etc.</span>
   </div>
 
@@ -31,28 +33,20 @@
 
 <div id="content">
   <div id="results">
-
-    <% #if @is_corrected %>
-      <div id="searchStatus">Did you mean "<strong></strong>"?<br />
-    <% #else %>
-      <!-- <div id="searchStatus">Search results for "<strong></strong>"<br /> -->
-    <% #end -%>
-    <div class="count">results foundd</div>
+      <div id="searchStatus">Search results for: "<strong></strong>"<br />
+    <div class="count">results found</div>
     </div>
-    <div id="loading"> 
+    <div id="suggestion"></div>
+    <div id="loading">
       Loading results...
     </div>
 
-    <ul></ul> 
-  </div> 
+    <ul></ul>
+  </div>
 </div>
 
-<script type="text/javascript">
 
-$(document).ready(function(){
-    // let the form be 'indextank-aware'
-    $("#searchForm").indextank_Ize("http://8bpwv.api.searchify.com", "hnlanswers-production");
-    // let the query box have autocomplete
-    $("#search").indextank_Autocomplete({ fieldName: "tags" }).indextank_AjaxSearch( {listeners: renderer}).indextank_InstantSearch();
-});
-</script>
+<div id="getsat-widget-784"></div>
+<script type="text/javascript" src="https://loader.engage.gsfn.us/loader.js"></script>
+
+<%= render :partial => 'shared/autocomplete' %>

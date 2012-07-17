@@ -3,6 +3,8 @@ require 'spec_helper'
 describe Article do
   it { should belong_to :contact}
   it { should belong_to :category}
+  it { should have_many(:keywords).through :wordcounts }
+  it { should have_many :wordcounts }
 
   it { should respond_to :title }
   it { should respond_to :content }
@@ -22,7 +24,7 @@ describe Article do
       it { should include( article ) }
     end
     context "query does not match anything in the database" do
-      subject { Article.search( "jjzwg36n75ii42pv1uo4" ) }
+      subject { Article.search( SecureRandom.hex(16) ) }
       it { should == [] }
     end
     context "query is the empty string" do
@@ -42,7 +44,7 @@ describe Article do
       end
       context "query is present in the title" do
         subject { Article.search_titles article.title }
-        it { should == [article] }
+        it { should include(article) }
       end
     end
   end
@@ -52,6 +54,18 @@ describe Article do
       lambda {
         article.access_count_increment
       }.should change(article, :access_count).by(1)
+    end
+  end
+
+  describe "#remove_stop_words(string)" do
+    it "removes common english words from the string" do
+      Article.remove_stop_words('why am I a banana').should eq('banana')
+    end
+  end
+
+  describe "#spell_check(string)" do
+    it "corrects misspelt words in the string" do
+      Article.spell_check('renw droivr lisence').should eq('renew driver license')
     end
   end
 

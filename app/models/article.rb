@@ -2,6 +2,9 @@ include ActionView::Helpers::SanitizeHelper
 
 class Article < ActiveRecord::Base  
   include Tanker
+  include RailsNlp::BigHugeThesaurus
+  require_dependency 'keyword'
+
   extend FriendlyId
 
   # Permalinks. :slugged option means it uses the 'slug' column for the url
@@ -10,10 +13,12 @@ class Article < ActiveRecord::Base
 
   belongs_to :contact
   belongs_to :category
+  has_many :wordcounts
+  has_many :keywords, :through => :wordcounts
 
   validates_presence_of :access_count
 
-  after_save :update_tank_indexes
+  after_save :update_tank_indexes # Comment this line out when running analysemodels to save time
   after_destroy :delete_tank_indexes
   before_validation :set_access_count_if_nil
 
@@ -39,21 +44,92 @@ class Article < ActiveRecord::Base
     end
   end
 
-  def access_count_increment
-    self.increment! :access_count
+  def self.remove_stop_words string
+    eng_stop_list = Rails.cache.fetch('stop_words') do
+      CSV.read( "#{Rails.root.to_s}/lib/assets/eng_stop.csv" )
+    end
+    string = (string.downcase.split - eng_stop_list.flatten).join " "    
   end
+
+  def self.spell_check string
+    @is_corrected = false
+    dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/blank", 'blank' )
+    keywords = Rails.cache.fetch('keyword_names') { Keyword.all(:select => 'name') }
+    keywords.each{ |kw| dict.add( kw.name ) }
+
+    string_corrected = []
+    string.split.each do |term|
+      if dict.check?( term )
+        string_corrected << term
+      else 
+        suggestion = dict.suggest( term ).first
+        if suggestion.nil? # if no suggestion, stick with the existing term
+          string_corrected << term
+        else
+          @is_corrected = true
+          string_corrected << suggestion
+        end
+      end
+    end
+    return string_corrected.join ' '
+  end
+
+  def self.expand_query( query )
+    stems,metaphones,synonyms = [[],[],[]]
+    query.split.each do |term|
+      # try and hit the database first, only compute stuff if we have to
+      kw = Keyword.find_by_name(term)
+      if kw 
+        stems << kw.stem
+        metaphones << kw.metaphone.compact
+        # synonyms << kw.synonyms.first(3)
+      else
+        stems << Text::PorterStemming.stem(term)
+        metaphones << Text::Metaphone.double_metaphone(term)
+        # synonyms << RailsNlp::BigHugeThesaurus.synonyms(term)
+      end
+    end
+
+    # Construct the OR query
+    query_final =      "#{'title:'      + query.split.join('^10 title:')  + '^10'}"
+    query_final << " OR #{'content:'    + query.split.join('^5 content:') + '^5'}"
+    query_final << " OR #{'tags:'       + query.split.join('^8 tags:')    + '^8'}"
+    query_final << " OR #{'stems:'      + stems.flatten.join(' OR stems:')}"
+    query_final << " OR #{'metaphones:' + metaphones.flatten.compact.join(' OR metaphones:')}"
+    # query_final << " OR #{'synonyms:"'  + synonyms.flatten.first(3).join( '" OR synonyms:"') + '"'}"
+    query_final << " OR #{'synonyms:"'  + query.split.join(' OR synonyms:')}"
+
+    return query_final
+  end
+
+
+  index = 'hnlanswers-development'
+  index = 'hnlanswers-production' if Rails.env === 'production'
   
-  if Rails.env === 'production'
-    index = 'hnlanswers-production'
-  else
-    index = 'hnlanswers-development'
-  end
   tankit index do
     indexes :title
     indexes :content
     indexes :category, :category => true
     indexes :tags
     indexes :preview
+
+    # NLP
+    indexes :metaphones do
+      keywords.map { |kw| kw.metaphone }
+    end
+    indexes :synonyms do
+      keywords.map { |kw| kw.synonyms }
+    end
+    indexes :keywords do
+      keywords.map { |kw| kw.name }
+    end
+    indexes :stems do
+      keywords.map { |kw| kw.stem }
+    end
+  end
+
+  def hits
+    self.access_count
   end
 
 
@@ -66,6 +142,7 @@ class Article < ActiveRecord::Base
 
 
 end
+
 # == Schema Information
 #
 # Table name: articles

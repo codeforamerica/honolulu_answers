@@ -1,0 +1,29 @@
+<div id="topPattern"></div>
+<div id="navigation">
+  <%= render :partial => 'shared/search_form' %>
+</div>
+
+<div id="content">
+  <div id="results">
+    <div class="searchStatus">
+      Search results for: "<strong><%=@query%></strong>"
+      <% if @is_corrected %>
+        (did you mean: "<a href ='/search?q=<%=@query_corrected%>'><%=@query_corrected%></a>"?)
+      <% end -%>
+      <div class="count"><%=@results.count %> results found</div>
+      <br />
+
+
+    </div>
+    <ul>
+      <% @results.each do |article| %>
+        <% #next unless article.is_published %>
+        <li>
+          <%= content_tag( :h1, link_to( article.title, article_path(article.id) ) ) %>
+          <div class="preview"><%= article.preview %></div>
+        </li>
+      <% end %>
+    </ul>
+  </div> 
+</div>
+<%= render :partial => 'shared/autocomplete' %>

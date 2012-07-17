@@ -12,6 +12,7 @@ $(function(){
     $("form#search:not(.noanimation)").submit(function(e){       
         e.preventDefault();
         var query = $("#query").val().replace(/\"/g,"");
+        if(query == '') { return; }
         searchControl.startSearch(query);
         history.pushState({"query":query}, "Searching for - "+query, "/search?q="+encodeURIComponent(query));
     })
@@ -81,7 +82,7 @@ var searchController = function(){
     this.addResult = function(result){
         $("#results ul").append(Mustache.render(self.resultTemplate, result).replace(/\n/g, "<br />"));
     };
-    this.resultTemplate = "<li><h1><a href='/articles/{{id}}'>{{title}}</a></h1>"+
+    this.resultTemplate = "<li><h1><a href='/articles/{{slug}}'>{{title}}</a></h1>"+
         "<div class='preview'>{{preview}}</div>" +
         "</li>";
 };
