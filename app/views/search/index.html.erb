@@ -26,9 +26,4 @@
     </ul>
   </div> 
 </div>
-<script type="text/javascript">
-  $(document).ready(function(){
-    if(gon.is_corrected) {
-      $('#suggestion').append("</br>Did you mean: <a href='/search?q="+gon.query_corrected+"'>"+gon.query_corrected+"</a>?" );
-  }
-</script>
+<%= render :partial => 'shared/autocomplete' %>
