@@ -23,7 +23,7 @@ class SearchController < ApplicationController
     @results = Article.search_tank( query_final, :conditions => { :is_published => true } )
 
     # Log the search results
-    logger.debug( "search-request: IP:#{request.env['REMOTE_ADDR']}, params[:query]:#{query}, QUERY:#{query_final}, FIRST_RESULT:#{@results.first.title unless @results.empty?}, RESULTS_N:#{@results.size}" )
+    puts "search-request: IP:#{request.env['REMOTE_ADDR']}, params[:query]:#{query}, QUERY:#{query_final}, FIRST_RESULT:#{@results.first.title unless @results.empty?}, RESULTS_N:#{@results.size}" 
 
     respond_to do |format|
       format.json { render :json => @results }
