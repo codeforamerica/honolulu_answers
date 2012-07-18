@@ -11,11 +11,13 @@ Honoluluanswers::Application.configure do
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = true
 
+  config.static_cache_control = "public, max-age=2592000"
+
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = true # TEMPORARILY TRUE PENDING FIX OF HEROKU ASSET PRECOMPILATION ISSUE
+  config.assets.compile = false # TEMPORARILY TRUE PENDING FIX OF HEROKU ASSET PRECOMPILATION ISSUE
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -41,9 +43,6 @@ Honoluluanswers::Application.configure do
 
   # Use a different logger for distributed setups
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
-
-  # Use a different cache store in production
-  config.cache_store = :dalli_store, { :compress => true }
 
   config.action_dispatch.rack_cache = {
     :metastore    => Dalli::Client.new,

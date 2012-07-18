@@ -24,4 +24,4 @@ coverage/
 .sass-cache/
 
 # Ensures assets are precompiled during slug compilation when deployd to heroku
-public/assets
+public/assets 

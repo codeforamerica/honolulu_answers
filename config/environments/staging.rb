@@ -41,9 +41,6 @@ Honoluluanswers::Application.configure do
   # Use a different logger for distributed setups
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
-  # Use a different cache store in production
-  config.cache_store = :dalli_store, { :compress => true }
-
   config.action_dispatch.rack_cache = {
     :metastore    => Dalli::Client.new,
     :entitystore  => 'file:tmp/cache/rack/body',
