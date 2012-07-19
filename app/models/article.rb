@@ -97,7 +97,7 @@ class Article < ActiveRecord::Base
     query_final << " OR #{'stems:'      + stems.flatten.join(' OR stems:')}"
     query_final << " OR #{'metaphones:' + metaphones.flatten.compact.join(' OR metaphones:')}"
     # query_final << " OR #{'synonyms:"'  + synonyms.flatten.first(3).join( '" OR synonyms:"') + '"'}"
-    query_final << " OR #{'synonyms:"'  + query.split.join(' OR synonyms:')}"
+    query_final << " OR #{'synonyms:'  + query.split.join(' OR synonyms:')}"
 
     return query_final
   end
@@ -126,6 +126,10 @@ class Article < ActiveRecord::Base
     indexes :stems do
       keywords.map { |kw| kw.stem }
     end
+  end
+
+  def indexable?
+    self.is_published
   end
 
   def hits
