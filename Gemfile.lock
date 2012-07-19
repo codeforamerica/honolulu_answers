@@ -62,6 +62,7 @@ GEM
       ffi (~> 1.0.6)
     commonjs (0.2.6)
     daemons (1.1.8)
+    dalli (2.1.0)
     database_cleaner (0.8.0)
     delayed_job (3.0.3)
       activesupport (~> 3.0)
@@ -285,6 +286,7 @@ DEPENDENCIES
   cancan
   capybara
   capybara-webkit
+  dalli
   database_cleaner
   delayed_job_active_record
   devise (~> 2.0)
