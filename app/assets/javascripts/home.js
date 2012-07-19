@@ -77,6 +77,7 @@ var searchController = function(){
 
     this.transfromToResults = function(){
         $("body").addClass("results");
+        $("#content").toggleClass("active");
    };
 
     this.addResult = function(result){

@@ -166,7 +166,7 @@ p.alert {
 /* --------- search ---------*/
 #searchBox {
 	background:  rgba(255, 198, 10, 1);
-    border-radius:3px;
+	border-radius:3px;
 	margin: 70px auto;
 	padding: 25px;
 	position: relative;
@@ -179,10 +179,58 @@ form.search{
   display: inline-block;
 }
 
+input#query{ 
+  width: 90%;
+  height: 32px;
+  margin:15px 0 3px 0;
+  padding: 3px 5px;
+	border: 0;
+  -webkit-border-radius: 3px 0 0 3px;
+	border-radius: 3px 0 0 3px;
+  background: #FFF;
+  font-size: 19px;
+	outline:none;
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  border-radius:3px;
+  -webkit-border-radius:3px;
+  -moz-border-radius:3px;
+}
+
+input:focus#query {
+	outline: none; 
+	-moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+	-webkit-box-shadow: 0 0 2px rgba(0, 0, 0, .8) inset;
+	box-shadow: 0 0 2px rgba(0, 0, 0, .8) inset;
+	background: #FFF;
+}
+
+form#search input.btn {
+	position: relative;
+	width: 30px;
+	height:30px;
+	background: transparent url(/assets/searchIcon.png) no-repeat center center;
+	background-color:#5397B2;
+	border: none;
+	border-radius: 8px;
+	bottom:9px;
+	left: -40px;
+	cursor:pointer;
+}
+
+.results form#search input.btn {
+	width: 20px;
+	height:20px;
+	background-size: 12px 12px;
+	border-radius: 5px;
+	bottom:3px;
+	left: -30px;	
+}
+
 .results #searchBox {
   background:  rgba(255, 198, 10, 1);
   background: #ffc60a;
-
   width: 100%;
   text-align: center;
   padding:0px;
@@ -210,8 +258,6 @@ form.search{
     -webkit-transition-duration: 0.3s;
     -o-transition-property: width, padding;
     -o-transition-duration: 0.3s;
-
-
 }
 
 .description {
@@ -226,14 +272,19 @@ form.search{
   min-width:400px;
   max-width:700px;
   height: 100%;
-  margin: 20px auto;
-  padding: 0;
-  display:none;
+  /*display:none;*/
   background:#fff;
-  padding:40px;
+	display: block; 
+	-webkit-transition: opacity 1s ease-out;
+	/*opacity: 0; */
+	/*height: 0; */
+	overflow: hidden;
 }
-#content{ 
-  display:block;
+#content.active{ 
+	margin: 20px auto;
+	padding:40px;
+  opacity: 1; 
+	height: auto;
 }
 #results ul div.preview{ 
 	margin:5px 0px 5px 30px;
@@ -257,39 +308,6 @@ form.search{
 	margin-left:30px;
 	padding-top:5px;
 	line-height:120%;
-}
-
-input#query{ 
-  width: 90%;
-  height: 32px;
-  margin:15px 0 3px 0;
-  border: solid 1px #D2D2D2;
-  padding: 3px 5px;
-  border-radius: 10px;
-  background: #FFF;
-  font-size: 19px;
-}
-
-form#search input.btn {
-	position: relative;
-	width: 30px;
-	height:30px;
-	background: transparent url(/assets/searchIcon.png) no-repeat center center;
-	background-color:#5397B2;
-	border: none;
-	border-radius: 8px;
-	bottom:9px;
-	left: -40px;
-	cursor:pointer;
-}
-
-.results form#search input.btn {
-	width: 20px;
-	height:20px;
-	background-size: 12px 12px;
-	border-radius: 5px;
-	bottom:3px;
-	left: -30px;	
 }
 	
 .results input#query{ 
