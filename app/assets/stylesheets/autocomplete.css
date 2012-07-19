@@ -331,6 +331,10 @@ ul.ui-menu {
 	float: left;
 	clear: left;
 	width: 100%;
+	border-left: 1px solid #BBB;
+	border-right: 1px solid #BBB;
+	opacity: 0.9;
+	filter: alpha(opacity=90);
 }
 li:last-child.ui-menu-item {
 	-webkit-border-bottom-right-radius: 4px;
@@ -347,20 +351,39 @@ li:last-child.ui-menu-item {
 	padding:.2em .4em;
 	line-height:1.5;
 	zoom:1;
-	border-top: 1px solid #f0f0f0;
+	border-bottom: 1px solid #f0f0f0;
+	border-top: none;
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
 	border-radius: 0px;
+	background-image: linear-gradient(bottom, #FDFDFD 25%, #FFFFFF 75%);
+	background-image: -o-linear-gradient(bottom, #FDFDFD 25%, #FFFFFF 75%);
+	background-image: -moz-linear-gradient(bottom, #FDFDFD 25%, #FFFFFF 75%);
+	background-image: -webkit-linear-gradient(bottom, #FDFDFD 25%, #FFFFFF 75%);
+	background-image: -ms-linear-gradient(bottom, #FDFDFD 25%, #FFFFFF 75%);
 }
+
+.ui-menu li:last-child.ui-menu-item a {
+	border-bottom: 1px solid #999;
+	-webkit-border-bottom-right-radius: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-radius-bottomright: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
 .ui-menu .ui-menu-item a.ui-state-hover,
 .ui-menu .ui-menu-item a.ui-state-active {
+	margin-top: -1px;
+	margin-left: -1px;
+	margin-right: -1px;
 	font-weight: normal;
-	margin: 0px;
 	background: #119AE3;
 	color: #ffffff;
 	text-shadow: 0px 0px 1px #424242;
 	border: 0px;
-	border-top: 1px solid #0890D9;
+	border: 1px solid #087FBF;
 	border-radius: 0px;
 	-webkit-border-radius: 0px;
 	background-image: linear-gradient(bottom, #1199E3 25%, #12B2E3 75%);
@@ -372,6 +395,7 @@ li:last-child.ui-menu-item {
 
 .ui-menu li:last-child.ui-menu-item a.ui-state-hover,
 .ui-menu li:last-child.ui-menu-item a.ui-state-active {
+	border-bottom:1px solid #087FBF;
 	-webkit-border-bottom-right-radius: 4px;
 	-webkit-border-bottom-left-radius: 4px;
 	-moz-border-radius-bottomright: 4px;
