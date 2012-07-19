@@ -272,12 +272,12 @@ form#search input.btn {
   min-width:400px;
   max-width:700px;
   height: 100%;
-  display:none;
+  /*display:none;*/
   background:#fff;
 	display: block; 
-	-webkit-transition: opacity 1s ease-out; 
-	opacity: 0; 
-	height: 0; 
+	-webkit-transition: opacity 1s ease-out;
+	/*opacity: 0; */
+	/*height: 0; */
 	overflow: hidden;
 }
 #content.active{ 
