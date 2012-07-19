@@ -11,6 +11,21 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag    "mobile", :media => "all and (max-width: 600px)" %>
   <%= javascript_include_tag "application" %>
+  
+  <script type="text/javascript">
+    var _kmq = _kmq || [];
+    var _kmk = _kmk || '1ebcfdd765c6c564f39a5a0405f93aa6b46c64c6';
+    function _kms(u){
+      setTimeout(function(){
+        var d = document, f = d.getElementsByTagName('script')[0],
+        s = d.createElement('script');
+        s.type = 'text/javascript'; s.async = true; s.src = u;
+        f.parentNode.insertBefore(s, f);
+      }, 1);
+    }
+    _kms('//i.kissmetrics.com/i.js');
+    _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+  </script>
 
 
 <% if current_page?('/') %>
