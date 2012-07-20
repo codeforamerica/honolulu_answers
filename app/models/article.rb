@@ -90,14 +90,14 @@ class Article < ActiveRecord::Base
       end
     end
 
-    # Construct the OR query
-    query_final =      "#{'title:'      + query.split.join('^10 title:')  + '^10'}"
-    query_final << " OR #{'content:'    + query.split.join('^5 content:') + '^5'}"
-    query_final << " OR #{'tags:'       + query.split.join('^8 tags:')    + '^8'}"
-    query_final << " OR #{'stems:'      + stems.flatten.join(' OR stems:')}"
-    query_final << " OR #{'metaphones:' + metaphones.flatten.compact.join(' OR metaphones:')}"
+    ## Construct the OR query
+    query_final =      "title:(#{query.split.join(' OR ')})^10"
+    query_final << " OR content:(#{query.split.join(' OR ')})^5"
+    query_final << " OR tags:(#{query.split.join(' OR ')})^8"
+    query_final << " OR stems:(#{stems.flatten.join(' OR ')})^3"
+    query_final << " OR metaphones:(#{metaphones.flatten.compact.join(' OR ')})^2"
     # query_final << " OR #{'synonyms:"'  + synonyms.flatten.first(3).join( '" OR synonyms:"') + '"'}"
-    query_final << " OR #{'synonyms:'  + query.split.join(' OR synonyms:')}"
+    query_final << " OR synonyms:(#{query.split.join(' OR ')})"
 
     return query_final
   end
