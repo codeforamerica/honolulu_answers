@@ -3,7 +3,7 @@ class SearchController < ApplicationController
 
   def index  
     query =  params[:q] 
-    return redirect_to articles_path if params[:q].empty? 
+    return redirect_to articles_path if (params[:q].nil? || params[:q].empty?) 
     @query = query
 
     # remove puntuation and plurals.
@@ -11,6 +11,16 @@ class SearchController < ApplicationController
 
     # remove stop words
     query = Article.remove_stop_words query
+
+    # Searchify can't handle requests longer than this (because of query expansion + Tanker inefficencies.  >10 can result in >8000 byte request strings)
+    if query.split.size > 10
+      @results = []
+      @query_corrected = query
+      respond_to do |format|
+        format.json { render :json => @results }
+        format.html 
+      end and return
+    end
 
     # spell check the query
     @query_corrected = Article.spell_check query
