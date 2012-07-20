@@ -1,0 +1,93 @@
+/* Honolulu Answers CSS - V2 */
+/* Boostrap Scaffolding Included in asset pipeliene */
+
+/* General Styles */
+/* -------------- */
+
+body {
+/*  background:transparent url("/assets/background_image.jpeg") no-repeat left top;
+  min-height: 100%;
+  min-width: 1024px;
+  
+  width: 100%;
+    height: auto;
+    position: fixed;
+      top: 0;
+      left: 0;*/
+}
+
+h1 {
+  font-size: 70px;
+  color: #303030;
+  font-family: 'League Gothic', Helvetica, Arial;
+  text-transform: uppercase;
+}
+h2 {
+  /**/
+}
+h3 {
+  /**/
+}
+h4 {
+  /**/
+}
+h5 {
+  /**/
+}
+h6 {
+  /**/
+}
+a {
+  
+}
+a.hnl-logo {
+  font-size: 32px;
+  color: #FFFFFF;
+  font-family: 'League Gothic', Helvetica, Arial;
+  font-weight: bold;
+  border-bottom: 10px solid #ffde4d;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+/* Top Navbar */
+div.navbar-top {
+  width: 100%;
+  background-color: #070707;
+  height: 80px;
+}
+div.logo {
+  display: inline-block;
+}
+ul.nav-top {
+  display: inline-block;
+  list-style: none;
+}
+.nav-top > li {
+  display: block;
+  float: left;
+}
+.nav-top > li > a {
+  font-family: Helvetica, Arial;
+  color: #FFFFFF;
+  font-weight: bold;
+  float: none;
+  font-size: 14px;
+  padding: 9px 10px 11px;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Homepage Modal */
+.modal-container {
+  background-color: #fbfbfb;
+  float: none;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+div.search-ribbon {
+  background-color: #4580b4;
+  width: 100%;
+  height:60px;
+}
+div.pop-categories {
+  border-top: 10px solid #ffde4d;
+}
