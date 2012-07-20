@@ -60,8 +60,9 @@ var searchController = function(){
                 self.addResult(data[i]);
             }
             $("#loading").hide();
-            $("#searchStatus").find("strong").text(query.replace("+"," "));
-            $("#searchStatus").find("div.count").text(data.length+" result"+
+            $("#searchStatus strong").text(query.replace("+"," "));
+            console.log(query);
+            $("#searchStatus div.count").text(data.length+" result"+
                                                       (data.length != 1 ? "s":"")
                                                       +" found");
             $("#searchStatus").fadeIn('fast');
