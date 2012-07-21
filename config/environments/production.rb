@@ -50,7 +50,7 @@ Honoluluanswers::Application.configure do
     :allow_reload => false
   }
 
-    config.static_cache_control = "public, max-age=2592000"
+    config.static_cache_control = "public, max-age=10800"
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"

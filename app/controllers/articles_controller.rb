@@ -7,7 +7,9 @@ class ArticlesController < ApplicationController
   def index
     @bodyclass = "results"
   
-    @categories = Category.all_by_access_count
+    @categories = Rails.cache.fetch('category_by_access_count') do
+      Category.all_by_access_count
+    end
 
     respond_to do |format|
       format.html # index.html.erb
