@@ -11,8 +11,6 @@ Honoluluanswers::Application.configure do
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = true
 
-
-
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
@@ -48,6 +46,7 @@ Honoluluanswers::Application.configure do
     :metastore    => Dalli::Client.new,
     :entitystore  => 'file:tmp/cache/rack/body',
     :allow_reload => false
+    :default_ttl  => 10800
   }
 
     config.static_cache_control = "public, max-age=10800"

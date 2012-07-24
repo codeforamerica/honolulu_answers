@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'spork'
 
 #uncomment the following line to use spork with the debugger
