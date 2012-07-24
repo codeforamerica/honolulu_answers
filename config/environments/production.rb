@@ -47,7 +47,7 @@ Honoluluanswers::Application.configure do
   config.action_dispatch.rack_cache = {
     :metastore    => Dalli::Client.new,
     :entitystore  => 'file:tmp/cache/rack/body',
-    :allow_reload => false
+    :allow_reload => false,
     :default_ttl  => 10800
   }
 
