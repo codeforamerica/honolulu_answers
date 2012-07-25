@@ -18,6 +18,13 @@ body {
     font-style: normal;
 }
 
+/* CSS Reset */
+html, body, ul, ol, li, form, fieldset, legend { margin: 0;padding: 0; }
+h1, h2, h3, h4, h5, h6, p { margin-top: 0; }
+li { list-style: none; }
+input, textarea, select { font-size: 110%;line-height: 1.1; }
+
+
 
 h1.home-modal {
   font-size: 70px;
@@ -67,6 +74,17 @@ a.hnl-logo {
   line-height: 100%;
 }
 
+html, body {
+  height:100%;
+}
+#wrapper {
+  min-height: 100%;
+}
+
+.container-fluid.main {
+  overflow: auto;
+  padding-bottom: 80px; /* negative footer height for sticky footer */
+}
 
 /* Top Navbar */
 div.navbar-top {
@@ -220,7 +238,7 @@ input:focus#query {
   width: 100%;
   background-color: #070707;
   height: 80px;
-  margin-top:150px;
+  padding-top:15px;
 }
 ul.footer-links {
   display: inline-block;
@@ -240,7 +258,44 @@ ul.footer-links > li > a {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
+/* Search results page */
+/* ------------------- */
+.page-container {
+  background-color: #fbfbfb;
+  opacity:1;
+}
 
+.main-content {
+  background-color: #FFF;
+  padding-left: 20px;
+  opacity:1;
+}
+
+.sidebar {
+  background-color: #FFF;
+  opacity:1;
+  height: 100%;
+  padding: 10px;
+}
+.article-listing {
+  border-bottom: 1px solid #999;
+  padding: 20px 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Temporary homepage search button */
 .cupid-green {
   background-color: #7fbf4d;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #7fbf4d), color-stop(100%, #63a62f));

@@ -29,21 +29,54 @@
   </script>
 
 
-<% if current_page?('/') %>
-<!-- Show CfA ribbon -->
-<% end %>
-
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= @bodyclass %>">
+<div id="wrapper">
+  <div class="navbar-top">
+    <!-- <p class="notice alert alert-info"><%= notice %></p>
+    <p class="alert alert-error"><%= alert %></p> -->
+    <div class="container">
+      <div class="logo">
+        <a href="/" class="hnl-logo">Honolulu Answers</a>
+        <span class="bubble"><img src="/assets/beta.png" class="beta"></span>
+      </div>
+      <ul class="nav-top">
+        <li class="">
+          <a href="#">Guides</a>
+        </li>
+        <li class="">
+          <a href="#">Quick Answers</a>
+        </li>
+        <li class="">
+          <a href="#">Web Services</a>
+        </li>
+      </ul>
+    </div>
+  </div><!-- /navbar-top -->
+  <div class="container main"><!-- main content container -->
 
 
-
-
-<!-- <p class="notice alert alert-info"><%= notice %></p>
-<p class="alert alert-error"><%= alert %></p> -->
 
 <%= yield %>
+
+
+
+  </div><!-- /container-fluid -->
+</div><!-- /wrapper -->
+<div class="footer">
+  <div class="container">
+    <ul class="footer-links">
+      <li><a href="#">Guides</a></li>
+      <li><a href="#">Quick Questions</a></li>
+      <li><a href="#">Web Services</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  <div class="cfa-logos">
+    <!-- <img src="#"> -->
+  </div>
+</div><!-- /footer -->
 
 
 
