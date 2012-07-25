@@ -15,6 +15,9 @@
 
 
     </div>
+    <% if @results.count == 0 %>
+      <p>Sorry, no results found for <b><%=@query%></b>.  Please try entering less specific search terms.</p>
+    <% end %>
     <ul>
       <% @results.each do |article| %>
         <% #next unless article.is_published %>

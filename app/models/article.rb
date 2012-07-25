@@ -66,12 +66,16 @@ class Article < ActiveRecord::Base
         if suggestion.nil? # if no suggestion, stick with the existing term
           string_corrected << term
         else
-          @is_corrected = true
+          @is_corrected = true # is this being used anywhere
           string_corrected << suggestion
         end
       end
     end
-    return string_corrected.join ' '
+    string_corrected = string_corrected.join ' '
+    if @is_corrected && self.search_tank(string_corrected).count == 0
+      string_corrected = string
+    end
+    return string_corrected
   end
 
   def self.expand_query( query )
