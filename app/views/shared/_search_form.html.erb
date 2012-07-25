@@ -1,6 +1,6 @@
 <div id="searchBox">
   <%= form_tag('/search', :id => 'search', :method => 'get') do %>
-    <%= text_field_tag :query, nil, :id => 'query' %>
+    <%= text_field_tag :q, nil, :id => 'query' %>
     <%= submit_tag 'search', :class => 'btn', :name => nil, :id => 'query-btn' %>
   <% end -%>
 </div>
