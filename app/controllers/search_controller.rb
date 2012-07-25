@@ -3,7 +3,7 @@ class SearchController < ApplicationController
 
   def index  
     query =  params[:q] 
-    return redirect_to articles_path if params[:q].empty? 
+    return redirect_to articles_path if params[:q].empty?
     @query = query
 
     # remove puntuation and plurals.
