@@ -22,9 +22,8 @@ class SearchController < ApplicationController
       end and return
     end
 
-    # spell check the query
+    # spell check the query.  if no correction has taken place, this is nil.
     @query_corrected = Article.spell_check query
-    @is_corrected = @query_corrected !=  query
 
     # expand the query
     query_final = Article.expand_query( query )

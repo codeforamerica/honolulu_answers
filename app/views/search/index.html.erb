@@ -7,7 +7,7 @@
   <div id="results">
     <div class="searchStatus">
       Search results for: "<strong><%=@query%></strong>"
-      <% if @is_corrected %>
+      <% if @query_corrected %>
         (did you mean: "<a href ='/search?q=<%=@query_corrected%>'><%=@query_corrected%></a>"?)
       <% end -%>
       <div class="count"><%=@results.count %> results found</div>

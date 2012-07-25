@@ -52,7 +52,7 @@ class Article < ActiveRecord::Base
   end
 
   def self.spell_check string
-    @is_corrected = false
+    is_corrected = false
     dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/blank", 'blank' )
     keywords = Rails.cache.fetch('keyword_names') { Keyword.all(:select => 'name') }
     keywords.each{ |kw| dict.add( kw.name ) }
@@ -66,12 +66,13 @@ class Article < ActiveRecord::Base
         if suggestion.nil? # if no suggestion, stick with the existing term
           string_corrected << term
         else
-          @is_corrected = true
+          is_corrected = true
           string_corrected << suggestion
         end
       end
     end
-    return string_corrected.join ' '
+    
+    is_corrected ? string_corrected.join ' ' : nil
   end
 
   def self.expand_query( query )
