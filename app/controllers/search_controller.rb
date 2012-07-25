@@ -1,9 +1,10 @@
 class SearchController < ApplicationController
    include RailsNlp::BigHugeThesaurus
 
-  def index  
+  def index
+    puts params  
     query =  params[:q] 
-    return redirect_to articles_path if params[:q].empty?
+    return redirect_to articles_path if params[:q].empty? 
     @query = query
 
     # remove puntuation and plurals.

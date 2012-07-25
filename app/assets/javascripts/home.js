@@ -9,6 +9,7 @@ var hnlAnswers = function (){
 
 
 $(function(){
+    /*
     $("form#search:not(.noanimation)").submit(function(e){       
         e.preventDefault();
         var query = $("#query").val().replace(/\"/g,"");
@@ -32,7 +33,7 @@ $(function(){
                 searchControl.startSearch(decodeURIComponent(query));
         }
     }
-
+*/
     if($(window).width()<=600)
         searchControl.clearTransforms();
 
@@ -48,7 +49,7 @@ $(function(){
     });
 });
 
-
+/*
 var searchController = function(){
     var self = this;
     this.startSearch = function(query){
@@ -60,9 +61,8 @@ var searchController = function(){
                 self.addResult(data[i]);
             }
             $("#loading").hide();
-            $("#searchStatus strong").text(query.replace("+"," "));
-            console.log(query);
-            $("#searchStatus div.count").text(data.length+" result"+
+            $("#searchStatus").find("strong").text(query.replace("+"," "));
+            $("#searchStatus").find("div.count").text(data.length+" result"+
                                                       (data.length != 1 ? "s":"")
                                                       +" found");
             $("#searchStatus").fadeIn('fast');
