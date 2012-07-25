@@ -25,7 +25,15 @@ li { list-style: none; }
 input, textarea, select { font-size: 110%;line-height: 1.1; }
 
 
-
+/* Fonts */
+/* ----- */
+h1 {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 100%;
+  margin: 0;
+}
 h1.home-modal {
   font-size: 70px;
   color: #303030;
@@ -36,9 +44,19 @@ h1.home-modal {
   margin: 0;
   text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1), 1px 2px 5px rgba(0, 0, 0, 0.05), -1px 2px 5px rgba(0, 0, 0, 0.05);
 }
+.search-status h1 {
+  margin:0;
+}
 
 h2 {
   /**/
+}
+.sidebar h2 {
+  font-size: 18px;
+  color:#FFF;
+  background-color:#4580b4;
+  padding: 10px;
+  margin: 0;
 }
 h3.welcome {
   font-family: 'Cookie';
@@ -58,8 +76,14 @@ h6 {
 }
 p {
   font-family: Helvetica, Arial;
-  font-size: 12px;
-  color: #333333;
+  font-size: 13px;
+  color: #070707;
+}
+p.preview {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  margin-top: 10px;
 }
 a {
 }
@@ -264,10 +288,14 @@ ul.footer-links > li > a {
   background-color: #fbfbfb;
   opacity:1;
 }
+.search-status {
+  border-bottom: 10px solid #ffde4d;
+  margin-bottom:20px;
+}
 
 .main-content {
   background-color: #FFF;
-  padding-left: 20px;
+  padding: 30px;
   opacity:1;
 }
 
@@ -275,11 +303,17 @@ ul.footer-links > li > a {
   background-color: #FFF;
   opacity:1;
   height: 100%;
-  padding: 10px;
 }
 .article-listing {
-  border-bottom: 1px solid #999;
-  padding: 20px 10px;
+  border-bottom: 1px solid #DDD;
+  padding: 20px 0px;
+}
+
+.sidebar ul {
+  padding: 10px;
+}
+.sidebar ul li {
+  padding: 10px 0;
 }
 
 

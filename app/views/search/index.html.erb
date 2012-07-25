@@ -2,55 +2,50 @@
   <%= render :partial => 'shared/search_form' %>
 </div>
 
-<<<<<<< HEAD
 <div class="row">
-<div class="span12">
-<div class="page-container ">
-  <div class="searchStatus">
-    Search results for: "<strong><%=@query%></strong>"
-    <% if @is_corrected %>
-      (did you mean: "<a href ='/search?q=<%=@query_corrected%>'><%=@query_corrected%></a>"?)
-    <% end -%>
-    <div class="count"><%=@results.count %> results found</div>
-    <br />
-  </div>
-  <div class="row">
-    <div class=" span9">
-      <div class="main-content">
-        <% if @results.count == 0 %>
-          <p>Sorry, no results found for <b><%=@query%></b>.  Please try entering less specific search terms.</p>
-        <% end %>
-        <ul>
-          <% @results.each do |article| %>
-            <% #next unless article.is_published %>
-            <li class="article-listing">
-              <%= content_tag( :h1, link_to( article.title, article_path(article.id) ) ) %>
-              <div class="preview"><%= article.preview %></div>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-=======
-<div id="content">
-  <div id="results">
-    <div class="searchStatus">
-      Search results for: "<strong><%=@query%></strong>"
-      <% if @query_corrected %>
-        (did you mean: "<a href ='/search?q=<%=@query_corrected%>'><%=@query_corrected%></a>"?)
-      <% end -%>
-      <div class="count"><%=@results.count %> results found</div>
-      <br />
-
-
->>>>>>> development
-    </div>
-  </div> 
-    <div class="span3">
-      <div class="sidebar">
-        <h1>This is a sidebar!</h3>
-      </div>
+  <div class="span12">
+    <div class="page-container">
+      
+      <div class="row">
+        <div class="span9">
+          <div class="main-content">
+            <div class="search-status">
+              <h1>Search results for: "<strong><%=@query%></strong>"</h1>
+              <% if @is_corrected %>
+                (did you mean: "<a href ='/search?q=<%=@query_corrected%>'><%=@query_corrected%></a>"?)
+              <% end -%>
+              <!-- <div class="count"><%=@results.count %> results found</div> -->
+              <br />
+            </div>
+            <% if @results.count == 0 %>
+              <p>Sorry, no results found for <b><%=@query%></b>.  Please try entering less specific search terms.</p>
+            <% end %>
+            <ul>
+              <% @results.each do |article| %>
+                <% #next unless article.is_published %>
+                <li class="article-listing">
+                  <%= content_tag( :h1, link_to( article.title, article_path(article.id) ) ) %>
+                  <p class="preview"><%= article.preview %></p>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <div class="span3">
+          <div class="sidebar">
+            <div class="sidebar-content">
+              <h2 class="sidebar">Other Categories</h2>
+              <ul>
+                <li>Driver License</li>
+                <li>City Jobs</li>
+                <li>Camping</li>
+                <li>Car Registration</li>
+                <li>Transportation</li>
+            </div>
+          </div>
+        </div>
+      </div> 
     </div>
   </div>
-</div>
 </div>
 <%= render :partial => 'shared/autocomplete' %>
