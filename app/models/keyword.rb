@@ -6,4 +6,9 @@ class Keyword < ActiveRecord::Base
   has_many :wordcounts
   has_many :articles, :through => :wordcounts
 
+  # returns the total number of ocurrences of this keyword across all articles
+  def count
+    self.wordcounts.map(&:count).inject(0, :+)
+  end
+
 end

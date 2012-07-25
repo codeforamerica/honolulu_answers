@@ -2,9 +2,8 @@ class SearchController < ApplicationController
    include RailsNlp::BigHugeThesaurus
 
   def index
-    puts params  
     query =  params[:q].strip 
-    return redirect_to articles_path if params[:q].empty? 
+    return redirect_to articles_path if (params[:q].nil? || params[:q].empty?) 
     @query = query
 
     # remove puntuation and plurals.
@@ -13,9 +12,18 @@ class SearchController < ApplicationController
     # remove stop words
     query = Article.remove_stop_words query
 
-    # spell check the query
+    # Searchify can't handle requests longer than this (because of query expansion + Tanker inefficencies.  >10 can result in >8000 byte request strings)
+    if query.split.size > 10
+      @results = []
+      @query_corrected = query
+      respond_to do |format|
+        format.json { render :json => @results }
+        format.html 
+      end and return
+    end
+
+    # spell check the query.  if no correction has taken place, this is nil.
     @query_corrected = Article.spell_check query
-    @is_corrected = @query_corrected !=  query
 
     # expand the query
     query_final = Article.expand_query( query )

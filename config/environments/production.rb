@@ -47,10 +47,11 @@ Honoluluanswers::Application.configure do
   config.action_dispatch.rack_cache = {
     :metastore    => Dalli::Client.new,
     :entitystore  => 'file:tmp/cache/rack/body',
-    :allow_reload => false
+    :allow_reload => false,
+    :default_ttl  => 10800
   }
 
-    config.static_cache_control = "public, max-age=2592000"
+    config.static_cache_control = "public, max-age=10800"
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"

@@ -52,7 +52,7 @@ class Article < ActiveRecord::Base
   end
 
   def self.spell_check string
-    @is_corrected = false
+    is_corrected = false
     dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/blank", 'blank' )
     keywords = Rails.cache.fetch('keyword_names') { Keyword.all(:select => 'name') }
     keywords.each{ |kw| dict.add( kw.name ) }
@@ -66,16 +66,22 @@ class Article < ActiveRecord::Base
         if suggestion.nil? # if no suggestion, stick with the existing term
           string_corrected << term
         else
-          @is_corrected = true # is this being used anywhere
+          is_corrected = true
           string_corrected << suggestion
         end
       end
     end
+
+    # if the query has not been corrected, return nil.
+    return is_corrected ? string_corrected.join ' ' : nil
+
+    # if no results were found for the corected search query, return nil
+    # warning: possibly large performance hit + doesn't guarantee no results can be found.
     string_corrected = string_corrected.join ' '
-    if @is_corrected && self.search_tank(string_corrected).count == 0
-      string_corrected = string
+    if self.search_tank(string_corrected).count == 0
+      return nil
     end
-    return string_corrected
+
   end
 
   def self.expand_query( query )
@@ -94,14 +100,14 @@ class Article < ActiveRecord::Base
       end
     end
 
-    # Construct the OR query
-    query_final =      "#{'title:'      + query.split.join('^10 title:')  + '^10'}"
-    query_final << " OR #{'content:'    + query.split.join('^5 content:') + '^5'}"
-    query_final << " OR #{'tags:'       + query.split.join('^8 tags:')    + '^8'}"
-    query_final << " OR #{'stems:'      + stems.flatten.join(' OR stems:')}"
-    query_final << " OR #{'metaphones:' + metaphones.flatten.compact.join(' OR metaphones:')}"
+    ## Construct the OR query
+    query_final =      "title:(#{query.split.join(' OR ')})^10"
+    query_final << " OR content:(#{query.split.join(' OR ')})^5"
+    query_final << " OR tags:(#{query.split.join(' OR ')})^8"
+    query_final << " OR stems:(#{stems.flatten.join(' OR ')})^3"
+    query_final << " OR metaphones:(#{metaphones.flatten.compact.join(' OR ')})^2"
     # query_final << " OR #{'synonyms:"'  + synonyms.flatten.first(3).join( '" OR synonyms:"') + '"'}"
-    query_final << " OR #{'synonyms:'  + query.split.join(' OR synonyms:')}"
+    query_final << " OR synonyms:(#{query.split.join(' OR ')})"
 
     return query_final
   end
