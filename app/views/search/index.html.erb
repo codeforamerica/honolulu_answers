@@ -1,15 +1,13 @@
 <div id="navigation">
   <%= render :partial => 'shared/search_form' %>
 </div>
-
-<<<<<<< HEAD
 <div class="row">
 <div class="span12">
 <div class="page-container ">
   <div class="searchStatus">
     Search results for: "<strong><%=@query%></strong>"
-    <% if @is_corrected %>
-      (did you mean: "<a href ='/search?q=<%=@query_corrected%>'><%=@query_corrected%></a>"?)
+    <% if @query_corrected %>
+      <div class="suggestion">(did you mean: "<a href ='/search?q=<%=@query_corrected%>'><%=@query_corrected%></a>"?)</div>
     <% end -%>
     <div class="count"><%=@results.count %> results found</div>
     <br />
@@ -30,19 +28,6 @@
           <% end %>
         </ul>
       </div>
-=======
-<div id="content">
-  <div id="results">
-    <div class="searchStatus">
-      Search results for: "<strong><%=@query%></strong>"
-      <% if @query_corrected %>
-        (did you mean: "<a href ='/search?q=<%=@query_corrected%>'><%=@query_corrected%></a>"?)
-      <% end -%>
-      <div class="count"><%=@results.count %> results found</div>
-      <br />
-
-
->>>>>>> development
     </div>
   </div> 
     <div class="span3">

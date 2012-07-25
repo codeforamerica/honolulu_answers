@@ -74,14 +74,6 @@ class Article < ActiveRecord::Base
 
     # if the query has not been corrected, return nil.
     return is_corrected ? string_corrected.join(' ') : nil
-
-    # if no results were found for the corected search query, return nil
-    # warning: possibly large performance hit + doesn't guarantee no results can be found.
-    string_corrected = string_corrected.join ' '
-    if self.search_tank(string_corrected).count == 0
-      return nil
-    end
-
   end
 
   def self.expand_query( query )

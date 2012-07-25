@@ -34,6 +34,17 @@ $(function(){
         }
     }
 */
+
+    $(".suggestion").ready(function() {
+        //$(".suggestion a").text("djibouti");
+        var sugg = $(".suggestion a").text();
+        $.ajax("/search.json", {data:{q:sugg}, success:function(data){
+            if(data.length==0){
+                $(".suggestion").hide();
+            }
+        }});
+    });
+
     if($(window).width()<=600)
         searchControl.clearTransforms();
 
@@ -50,6 +61,7 @@ $(function(){
 });
 
 /*
+
 var searchController = function(){
     var self = this;
     this.startSearch = function(query){
@@ -90,3 +102,4 @@ var searchController = function(){
 };
 
 window.searchControl = new searchController();
+*/
