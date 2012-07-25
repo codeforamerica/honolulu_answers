@@ -3,7 +3,7 @@ class SearchController < ApplicationController
 
   def index
     puts params  
-    query =  params[:q] 
+    query =  params[:q].strip 
     return redirect_to articles_path if params[:q].empty? 
     @query = query
 
