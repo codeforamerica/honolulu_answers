@@ -4,6 +4,8 @@
 /* General Styles */
 /* -------------- */
 @import url(http://fonts.googleapis.com/css?family=Satisfy);
+@import url(http://fonts.googleapis.com/css?family=News+Cycle:700);
+
 body {
  background:transparent url("/assets/background_image.jpg") no-repeat 0 50%;
 }
@@ -29,20 +31,21 @@ input, textarea, select { font-size: 110%;line-height: 1.1; }
 /* ----- */
 h1 {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: 300;
+  /*font-weight: 300;*/
   font-size: 28px;
   line-height: 100%;
-  margin: 0;
+  /*margin: 0;*/
 }
 h1.home-modal {
-  font-size: 4.3em;
+  font-size: 6.5em;
   color: #303030;
-  font-family: 'LeagueGothicRegular', 'League Gothic', Helvetica, Arial;
+  font-family: 'News Cycle', sans-serif;
   text-transform: uppercase;
   text-align: center;
   line-height: 100%;
-  margin: 0;
-  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1), 1px 2px 5px rgba(0, 0, 0, 0.05), -1px 2px 5px rgba(0, 0, 0, 0.05);
+  margin: 0 0 20px 0;
+  /*text-shadow: 0px 50px 5px rgba(0, 0, 0, 0.1), 1px 2px 5px rgba(0, 0, 0, 0.05), -1px 2px 5px rgba(0, 0, 0, 0.05);*/
+  text-shadow: -5px 0 2px #bebebf;
 }
 .search-status h1 {
   margin:0;
@@ -156,9 +159,9 @@ ul.nav-top {
   margin-top: 50px;
   padding: 50px;
   border:1px solid #FFF;
-  -moz-box-shadow:    0px 0px 30px 1px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 0px 30px 1px rgba(0, 0, 0, 0.3);
-  box-shadow:         0px 0px 30px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow:    0px 0px 20px 1px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.4);
+  box-shadow:         0px 0px 20px 1px rgba(0, 0, 0, 0.4);
 }
 
 div.pop-heading {
@@ -170,8 +173,9 @@ div.pop-categories {
 
 }
 p.call {
-  font-size: 20px;
-  
+  font-size: 28px;
+  line-height: 34px;
+  color: #323232;  
 }
 div.category {
   padding: 20px 0;
