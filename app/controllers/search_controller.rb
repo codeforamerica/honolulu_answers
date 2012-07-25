@@ -14,10 +14,9 @@ class SearchController < ApplicationController
 
     # Searchify can't handle requests longer than this (because of query expansion + Tanker inefficencies.  >10 can result in >8000 byte request strings)
     if query.split.size > 10
-      @results = []
       @query_corrected = query
       respond_to do |format|
-        format.json { render :json => @results }
+        format.json { render :json => [] }
         format.html 
       end and return
     end
