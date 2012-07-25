@@ -73,7 +73,7 @@ class Article < ActiveRecord::Base
     end
 
     # if the query has not been corrected, return nil.
-    return is_corrected ? string_corrected.join ' ' : nil
+    return is_corrected ? string_corrected.join(' ') : nil
 
     # if no results were found for the corected search query, return nil
     # warning: possibly large performance hit + doesn't guarantee no results can be found.
