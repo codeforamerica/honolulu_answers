@@ -37,7 +37,7 @@ h1 {
   /*margin: 0;*/
 }
 h1.home-modal {
-  font-size: 6.3em;
+  font-size: 6.6em;
   color: #303030;
   font-family: 'News Cycle', sans-serif;
   text-transform: uppercase;
@@ -68,6 +68,7 @@ h3.welcome {
   text-align: center;
   line-height: 100%;
   margin:0 0 20px 0;
+  z-index: 100
 }
 h4 {
   /**/
@@ -168,6 +169,26 @@ div.main-modal{
   /*padding: 0 20px;*/
 }
 
+div#welcome-line-l{
+  position: relative;
+  float: left;
+  margin-top: 12px;
+  z-index: 1;
+  width: 35%;
+  border: 1px solid #666768;
+
+}
+
+div#welcome-line-r{
+  position: relative;
+  float: right;
+  margin-top: 12px;
+  z-index: 50;
+  width: 35%;
+  border: 1px solid #666768;
+
+}
+
 div.pop-heading {
   border-bottom: 10px solid #ffde4d;
   margin: 0 0 20px 0;
@@ -199,6 +220,8 @@ div.category.last {
   display: inline-block;
   margin-right: 60px;
 }
+
+
 
 /* Homepage Modal -- Search Ribbon*/
 /* ------------------------------ */
