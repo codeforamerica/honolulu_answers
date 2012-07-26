@@ -1,4 +1,9 @@
 ActiveAdmin.register User do
+
+  # This will authorize the Foobar class
+  # The authorization is done using the AdminAbility class
+  controller.authorize_resource
+
     index do # Display only specific article db columns
       column :id
       column :email

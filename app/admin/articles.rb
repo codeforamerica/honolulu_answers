@@ -1,4 +1,8 @@
 ActiveAdmin.register Article do
+
+  # This will authorize the Foobar class
+  # The authorization is done using the AdminAbility class
+  controller.authorize_resource
   
   # Filterable attributes
   filter :title
@@ -6,6 +10,7 @@ ActiveAdmin.register Article do
   filter :contact_id
   filter :is_published
 
+  
   # View 
   index do
     column :id
@@ -22,16 +27,19 @@ ActiveAdmin.register Article do
   
   form do |f|   # create/edit user form
     f.inputs "Article Details" do
+      if current_user.is_moderator
+        f.input :is_published, :label => "Publish?"
+      end     
       f.input :title
       f.input :content
       f.input :category
       f.input :content_type
       f.input :preview
-      f.input :tags, :as => :string
-      f.input :is_published, :label => "Publish"
+      f.input :tags, :as => :string 
     end
     f.buttons
   end
+
 end
 # == Schema Information
 #

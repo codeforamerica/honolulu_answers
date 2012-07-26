@@ -2,19 +2,22 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    #can :read, [Article,Contact]#:all
-    
-    if user# && user.is_moderator
-      can :access, :rails_admin   # grant access to rails_admin
-      can :dashboard
-      
-      if user.is_admin
-        can :manage, [User]
-      end 
 
-      if user.is_editor
-        can :manage, [Article, Contact]
-      end
+    can :read, :all
+    
+    if user.is_moderator || user.is_editor
+      can :manage, Article
+      can :manage, Contact
     end
+
+    # A manager can do the following:
+    if user.is_moderator
+      can :manage, Category
+    end
+
+    if user.is_admin
+      can :manage, User
+    end
+       
   end
 end
