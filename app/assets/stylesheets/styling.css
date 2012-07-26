@@ -488,8 +488,81 @@ ul.footer-links > li > a {
 
 
 
+/* Article#show page */
+/* ----------------- */
 
+div.article-wrapper {
+  background-color: rgba(255, 255, 255, 0.6);
+  /*padding: 10px;*/
+  margin-top: 40px;
+}
 
+div.article-inner {
+
+}
+
+div.breadcrumbs{
+  /*padding: 5px 10px 10px 20px;*/
+  margin: 15px 0 0 15px;
+  /*color: black;*/
+  font-size: 110%;
+}
+
+div.article-content {
+  padding: 5px 10px 10px 20px;
+  margin: 15px 0 15px 15px;
+  background-color: white;
+}
+
+div.content-type {
+  background: black;
+  width: 120px;
+  height: 2em;
+  text-align: center;
+  margin: 15px 0 5px -10px;
+  opacity: 1;
+}
+
+div.content-type h3{
+  color: white;
+  font-size: 1.3em;
+}
+
+div.content-title{
+  padding-top: 2p;
+}
+
+div.content-title h1{
+  border-bottom: 6px solid rgb(255,222,77); 
+  line-height: 130%;
+}
+
+/*Sidebar*/
+
+div.sidebar-article{
+  margin: 15px 15px 15px 0;
+  padding: 5px;
+}
+
+div.sidebar-element{
+  margin: 0px 10px 10px 10px;
+  background: white;
+}
+
+div.sidebar-element h2{
+  text-transform: uppercase;
+  background-color: rgb(83, 154, 216);
+  color: white;
+  opacity: 1;
+  padding: 10px
+}
+
+div.sidebar-element li{
+  color: black;
+  padding: 5px;
+}
+
+/*Breadcrumbs*/
 
 
 
