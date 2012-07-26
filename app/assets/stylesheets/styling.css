@@ -272,8 +272,8 @@ div.search-ribbon {}
   height:0;
   width:0;
   position: absolute;
-  left: -33px;
-  top: 75px;
+  left: -34px;
+  top: 83px;
   z-index: -1;
 }
 
@@ -284,8 +284,8 @@ div.search-ribbon {}
   height:0;
   width:0;
   position: absolute;
-  left: 892px;
-  top: 75px;
+  right: -34px;
+  top: 83px;
   z-index: -1;
 }
 
