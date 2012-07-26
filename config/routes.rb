@@ -10,6 +10,9 @@ Honoluluanswers::Application.routes.draw do
 
   resources :articles
 
+  # resources :categories
+  # match '/categories/:id' => 
+
   #get "home/index"
   root :to => "home#index"
 
