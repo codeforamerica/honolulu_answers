@@ -47,7 +47,7 @@ h1.home-modal {
   /*text-shadow: 0px 50px 5px rgba(0, 0, 0, 0.1), 1px 2px 5px rgba(0, 0, 0, 0.05), -1px 2px 5px rgba(0, 0, 0, 0.05);*/
   text-shadow: -5px 0 2px #bebebf;
 }
-.search-status h1 {
+.search-status h1, .categories h1 {
   margin:0;
 }
 
@@ -103,7 +103,7 @@ a.hnl-logo {
   line-height: 100%;
 }
 
-html, body {
+html, body, body .results {
   height:100%;
 }
 #wrapper {
@@ -414,11 +414,11 @@ ul.footer-links > li > a {
   background-color: #fbfbfb;
   opacity:1;
 }
-.search-status {
+.search-status, .categories h1{
   border-bottom: 10px solid #ffde4d;
   margin-bottom:20px;
 }
-
+  
 .main-content {
   background-color: #FFF;
   padding: 30px;
@@ -430,7 +430,7 @@ ul.footer-links > li > a {
   opacity:1;
   height: 100%;
 }
-.article-listing {
+.article-listing, .article-category {
   border-bottom: 1px solid #DDD;
   padding: 20px 0px;
 }
