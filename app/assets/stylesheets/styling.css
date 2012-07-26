@@ -401,11 +401,11 @@ ul.footer-links > li > a {
     background-color: #FFF;
     margin-bottom: 20px;
 }
-li.article-listing {
+li.article-listing, li.category-listing {
   border-bottom: 1px solid #DDD;
   padding: 20px 0px;
 }
-li:last-child.article-listing {
+li:last-child.article-listing, li:last-child.category-listing {
   border-bottom: none;
 }
 .sidebar-content {
@@ -417,8 +417,12 @@ li:last-child.article-listing {
 .sidebar ul li:first-child {
   padding-top: 0;
 }
-
-
+li.category-article{
+  padding:5px 0px;
+}
+.category-listing h1 {
+  padding-bottom:5px;
+}
 
 
 

@@ -12,16 +12,15 @@
             <br/>
             <ul>
               <% @categories.each do |category| %>
-                <li class="article-listing">
+                <li class="category-listing">
                   <h1><a name="<%= category.name.parameterize %>"><%= category.name %></a></h1>
-                  <% category.articles_by_access_count.each do |article| %>
-                    <ul>
+                  
+                    <ul class="category-articles">
+                    <% category.articles_by_access_count.each do |article| %>
                       <% next unless article.is_published %>
-                      <li>
-                        <%= content_tag( :h3, link_to( article.title, article_path(article.id) ) ) %>
-                      </li>
+                        <li class="category-article"><%= content_tag( :h3, link_to( article.title, article_path(article.id) ) ) %></li>
+                      <% end -%>
                     </ul>
-                  <% end -%>
                 </li>
               <% end -%>
             </ul>
