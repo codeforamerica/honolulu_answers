@@ -104,6 +104,12 @@ class Article < ActiveRecord::Base
     return query_final
   end
 
+  def related
+    Rails.cache.fetch("#{self.id}-related") {
+      Article.search_tank(self.wordcounts.all(:order => 'count DESC').first(10).map(&:keyword).map(&:name).join(" OR ")).first(4) - [self]
+    }
+  end
+
 
   index = 'hnlanswers-development'
   index = 'hnlanswers-production' if Rails.env === 'production'
