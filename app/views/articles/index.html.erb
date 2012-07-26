@@ -8,38 +8,41 @@
       <div class="row">
         <div class="span9">
           <div class="main-content">
-            <div class="categories"><h1>Listing of All Articles</h1></div>
+            <div class="header"><h1>Listing of All Articles</h1></div>
             <br/>
-            <% @categories.each do |category| %>
-              <div class="article-category">
-                <h1>
-                  <a name="<%= category.name.parameterize %>"><%= category.name %></a>
-                </h1>
-                <% category.articles_by_access_count.each do |article| %>
-                  <ul>
-                    <% next unless article.is_published %>
-                      <h3><%= content_tag( :li, link_to( article.title, article_path(article.slug) ) ) %></h3>
-                  </ul>
-                <% end -%>
-              </div>
-            <% end -%>
+            <ul>
+              <% @categories.each do |category| %>
+                <li class="article-listing">
+                  <h1><a name="<%= category.name.parameterize %>"><%= category.name %></a></h1>
+                  <% category.articles_by_access_count.each do |article| %>
+                    <ul>
+                      <% next unless article.is_published %>
+                      <li>
+                        <%= content_tag( :h3, link_to( article.title, article_path(article.id) ) ) %>
+                      </li>
+                    </ul>
+                  <% end -%>
+                </li>
+              <% end -%>
+            </ul>
           </div>
         </div>
         <div class="span3">
           <div class="sidebar">
-            <div class="sidebar-content">
-              <h2 class="sidebar">Other Categories</h2>
-              <ul>
-                <li>Driver License</li>
-                <li>City Jobs</li>
-                <li>Camping</li>
-                <li>Car Registration</li>
-                <li>Transportation</li>
-              </ul>
+            <div class="sidebar-unit">
+              <h4 class="side-head">Other Categories</h4>
+              <div class="sidebar-content">
+                <ul>
+                  <li><a href="#">Driver License</a></li>
+                  <li><a href="#">City Jobs</a></li>
+                  <li><a href="#">Camping</a></li>
+                  <li><a href="#">Car Registration</a></li>
+                  <li><a href="#">Transportation</a></li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
+        </div><!-- /span3 -->
       </div>
     </div> 
   </div>
-</div>
