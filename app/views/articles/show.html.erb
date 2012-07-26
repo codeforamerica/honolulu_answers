@@ -1,48 +1,53 @@
-<div id="topPattern"></div>
-<div id="navigation">
-  <div id="searchBox">
-    <form id="search" class="noanimation" autocomplete="off" action="/search">
-      <p class="hnlanswers"><a class="header" href="/">Honolulu Answers</a></p>
-      <input type="text" id="query" name="q" />
-      <input type="submit" class="btn" value="" />
-    </form>
+<div class="row">
+  <div class="span12">
+    <div class="outer-wrapper">
+      
+      <div class="row">
+        <div class="breadcrumbs"></div>
+      </div>
+
+      <div class="row">
+        <div class="span9">
+          <!-- main section -->
+          <div class="main-content">
+            <div class="content-type">
+              <!-- "Quick Answer" icon. -->
+            </div>
+            <div class="content-title">
+              <!-- Content title  -->
+            </div>
+            <div class="content-text">
+              <!-- the main content pane -->
+              <% unless @article.service_url.blank?  %>
+                <div class="onlineservice">
+                  <div class="servicebox">
+                    <a href="<%= @article.service_url%>"><img src="/assets/getting_started_btn.png" /></a>
+                  </div>
+                  <h3 class="service">Honolulu.gov lets you do this online! </h3>
+                  <p>This will take you directly to the online service on the honolulu.gov website.</p>
+                </div>
+              <% end %>
+              <%= raw @content_html %>
+            </div>
+          </div>
+        </div>  
+        <div class="span3">
+          <!-- sidebar -->
+          <div class="sidebar">
+            <div class="sidebar-content">
+              <% unless @article.contact.nil? %>
+                <div class="contact">
+                  <h2 class="sidebar">Need more info?</h2>
+                  <%= content_tag(:h4, link_to(@article.contact.name, @article.contact.url)) %>
+                  <%= raw @article.contact.address %>
+                  <%= raw "Phone: #{@article.contact.number}" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
-
-<p id="notice"><%= notice %></p>
-
-
-<div class="article">
-<span class="icon"><img src="/assets/quick_answers_icon.png" /></span>
-  <h2 class="quickanswer">Quick Answers</h2><br />
-  <h1><%= @article.title %></h1>
-
-  <div class="content">
-
-
-  <% if !@article.service_url.nil? and @article.service_url != ''  %>
-  <div class="onlineservice">
-    <div class="servicebox"><a href="<%= @article.service_url%>"><img src="/assets/getting_started_btn.png" /></a></div>
-    <h3 class="service">Honolulu.gov lets you do this online! </h3>
-    <p>This will take you directly to the online service on the honolulu.gov website.</p>
-  </div>
-  <% end %>
-
-  
-  
-  
-  <%= raw @content_html %>
-
-  </div>
-  <% if !@article.contact.nil? %>
-  <div class="contact">
-    <h2>Need more information?</h2>
-    <h4><strong><a href="<%= raw @article.contact.url %>"><%= raw @article.contact.name %></a></strong><br />
-    <%= raw @article.contact.address %><br />
-    Phone: <%= raw @article.contact.number %><br />
-  </div>
-  <% end %>
-
-</div>
-
-<%= render :partial => 'shared/autocomplete' %>
