@@ -1,14 +1,13 @@
-<div class="page-container">
+<div class="page-container search">
   <div class="row">
     <div class="span9">
       <div class="main-content">
-        <div class="search-status">
+        <div class="header">
           <h1>Search results for: &ldquo;<strong><%=@query%></strong>&rdquo;</h1>
           <% if @query_corrected %>
             <div class="suggestion">(did you mean: "<a href ='/search?q=<%=@query_corrected%>'><%=@query_corrected%></a>"?)</div>
           <% end -%>
           <!-- <div class="count"><%=@results.count %> results found</div> -->
-          <br />
         </div>
         <% if @results.count == 0 %>
           <p>Sorry, no results found for <b><%=@query%></b>.  Please try entering less specific search terms.</p>
@@ -26,16 +25,19 @@
     </div>
     <div class="span3">
       <div class="sidebar">
-        <div class="sidebar-content">
-          <h2 class="sidebar">Other Categories</h2>
-          <ul>
-            <li><a href="#">Driver License</a></li>
-            <li><a href="#">City Jobs</a></li>
-            <li><a href="#">Camping</a></li>
-            <li><a href="#">Car Registration</a></li>
-            <li><a href="#">Transportation</a></li>
+        <div class="sidebar-unit">
+          <h4 class="side-head">Other Categories</h4>
+          <div class="sidebar-content">
+            <ul>
+              <li><a href="#">Driver License</a></li>
+              <li><a href="#">City Jobs</a></li>
+              <li><a href="#">Camping</a></li>
+              <li><a href="#">Car Registration</a></li>
+              <li><a href="#">Transportation</a></li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </div> 
+    </div><!-- /span3 -->
+  </div>
 </div>

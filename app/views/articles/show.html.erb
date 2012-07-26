@@ -1,68 +1,57 @@
-<div class="row">
-  <div class="span12">
-    <div class="article-wrapper">
-      <div class="article-inner">
-        <div class="row">
-          <div class="span12">
-            <div class="breadcrumbs">
-              <%= link_to( "Home", root_url) %>
-              >
-              <%= @article.title %>
+<div class="page-container article">
+  <div class="breadcrumbs">
+    <%= link_to( "Home", root_url) %>
+    >
+    <%= @article.title %>
+  </div>
+  <div class="row">
+    <div class="span9">
+      <div class="main-content">
+        <h3 class="content-type">Quick Answer</h3>
+        <div class="header">
+          <%= content_tag(:h1, @article.title ) %>
+        </div>
+        <div class="content-text">
+          <% unless @article.service_url.blank? %>
+          <div class="onlineservice">
+            <div class="servicebox">
+              <a href="<%= @article.service_url%>"><img src="/assets/getting_started_btn.png" /></a>
             </div>
+            <h3 class="service">Honolulu.gov lets you do this online! </h3>
+            <p>This will take you directly to the online service on the honolulu.gov website.</p>
+          </div>
+          <% end %>
+
+          <%= raw @content_html %>
+
+        </div>
+      </div>
+    </div><!-- /span9 -->
+    
+    <div class="span3">
+      <div class="sidebar">
+        <div class="sidebar-unit">
+          <% unless @article.contact.nil? %>
+          <h4 class="side-head">Need more info?</h4>
+          <div class="sidebar-content">
+            <%= content_tag(:h4, link_to(@article.contact.name, @article.contact.url)) %>
+            <%= raw @article.contact.address %>
+            <%= raw "Phone: #{@article.contact.number}" %>
+          </div>
+          <% end %>
+        </div>
+        <div class="sidebar-unit">
+          <h4 class="side-head">Related Topics</h4>
+          <div class="sidebar-content">
+            <ul>
+              <% @article.related.each do |art| %>
+              <%= content_tag(:li, link_to(art.title, article_path(art.id)) ) %>
+              <% end -%>
+            </ul>
           </div>
         </div>
-
-        <div class="row">
-          <div class="span9">
-            <!-- main section -->
-            <div class="article-content">
-              <div class="content-type">
-                <h3>Quick Answer</h3>
-              </div>
-              <div class="content-title">
-                <%= content_tag(:h1, @article.title ) %>
-              </div>
-              <div class="content-text">
-                <!-- the main content pane -->
-                <% unless @article.service_url.blank?  %>
-                  <div class="onlineservice">
-                    <div class="servicebox">
-                      <a href="<%= @article.service_url%>"><img src="/assets/getting_started_btn.png" /></a>
-                    </div>
-                    <h3 class="service">Honolulu.gov lets you do this online! </h3>
-                    <p>This will take you directly to the online service on the honolulu.gov website.</p>
-                  </div>
-                <% end %>
-                <%= raw @content_html %>
-              </div>
-            </div>
-          </div>  
-          <div class="span3">
-            <!-- sidebar -->
-            <div class="sidebar-article">
-              <div class="sidebar-content-article">
-                <% unless @article.contact.nil? %>
-                  <div class="contact sidebar-element">
-                    <h2>Need more info?</h2>
-                    <%= content_tag(:h4, link_to(@article.contact.name, @article.contact.url)) %>
-                    <%= raw @article.contact.address %>
-                    <%= raw "Phone: #{@article.contact.number}" %>
-                  </div>
-                <% end %>
-                <div class="related-content sidebar-element">
-                  <h2>Related Topics</h2>
-                  <ul>
-                    <% @article.related.each do |art| %>
-                      <%= content_tag(:li, link_to(art.title, article_path(art.id)) ) %>
-                    <% end -%>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /inner -->
-
-    </div>
+      </div>
+    </div><!-- /span3 -->
+    
   </div>
 </div>
