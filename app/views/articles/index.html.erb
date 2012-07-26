@@ -1,29 +1,46 @@
-<div id="topPattern"></div>
 <div id="navigation">
-  <div id="searchBox">
-    <form id="search" class="noanimation" autocomplete="off" action="/search">
-      <p class="hnlanswers"><a class="header" href="/">Honolulu Answers</a></p>
-      <input type="text" id="query" name="q" />
-      <input type="submit" class="btn" value="" />
-    </form>
+  <%= render :partial => 'shared/search_form' %>
+</div>
+<div class="row">
+  <div class="span12">
+    <div class="page-container">
+      
+      <div class="row">
+        <div class="span9">
+          <div class="main-content">
+            <div class="header"><h1>Listing of All Articles</h1></div>
+            <ul>
+              <% @categories.each do |category| %>
+                <li class="category-listing">
+                  <h1><a name="<%= category.name.parameterize %>"><%= category.name %></a></h1>
+                  
+                    <ul class="category-articles">
+                    <% category.articles_by_access_count.each do |article| %>
+                      <% next unless article.is_published %>
+                        <li class="category-article"><%= content_tag( :h3, link_to( article.title, article_path(article.id) ) ) %></li>
+                      <% end -%>
+                    </ul>
+                </li>
+              <% end -%>
+            </ul>
+          </div>
+        </div>
+        <div class="span3">
+          <div class="sidebar">
+            <div class="sidebar-unit">
+              <h4 class="side-head">Other Categories</h4>
+              <div class="sidebar-content">
+                <ul>
+                  <li><a href="#">Driver License</a></li>
+                  <li><a href="#">City Jobs</a></li>
+                  <li><a href="#">Camping</a></li>
+                  <li><a href="#">Car Registration</a></li>
+                  <li><a href="#">Transportation</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div><!-- /span3 -->
+      </div>
+    </div> 
   </div>
-</div>
-
-<div class="article">
-
-  <h1 class="list">Listing of All Articles</h1>
-
-  <% @categories.each do |category| %>
-  <div class="article-section">
-      <h2>
-        <a name="<%= category.name.parameterize %>"><%= category.name %></a>
-      </h2>
-      <% category.articles_by_access_count.each do |article| %>
-        <ul>
-          <% next unless article.is_published %>
-          <%= content_tag( :li, link_to( article.title, article_path(article.slug) ) ) %>
-        </ul>
-      <% end -%>
-    </div>
-  <% end -%>
-</div>
