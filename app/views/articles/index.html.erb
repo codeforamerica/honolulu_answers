@@ -11,7 +11,7 @@
 
 <div class="article">
 
-	<h1 class="list">Listing of All Articles</h1>
+  <h1 class="list">Listing of All Articles</h1>
 
   <% @categories.each do |category| %>
   <div class="article-section">
@@ -19,11 +19,11 @@
         <a name="<%= category.name.parameterize %>"><%= category.name %></a>
       </h2>
       <% category.articles_by_access_count.each do |article| %>
-				<ul>
+        <ul>
           <% next unless article.is_published %>
-					<%= content_tag( :li, link_to( article.title, article_path(article.slug) ) ) %>
-				</ul>
-			<% end -%>
-		</div>
-	<% end -%>
+          <%= content_tag( :li, link_to( article.title, article_path(article.slug) ) ) %>
+        </ul>
+      <% end -%>
+    </div>
+  <% end -%>
 </div>
