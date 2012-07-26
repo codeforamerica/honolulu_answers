@@ -32,7 +32,7 @@
       <div class="sidebar">
         <div class="sidebar-unit">
           <% unless @article.contact.nil? %>
-          <h4 class="side-head">Need more info?</h4>
+          <h4 class="side-head">NEED MORE INFO?</h4>
           <div class="sidebar-content">
             <%= content_tag(:h4, link_to(@article.contact.name, @article.contact.url)) %>
             <%= raw @article.contact.address %>
@@ -41,7 +41,7 @@
           <% end %>
         </div>
         <div class="sidebar-unit">
-          <h4 class="side-head">Related Topics</h4>
+          <h4 class="side-head">RELATED TOPICS</h4>
           <div class="sidebar-content">
             <ul>
               <% @article.related.each do |art| %>

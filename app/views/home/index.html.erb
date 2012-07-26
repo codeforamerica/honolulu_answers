@@ -5,7 +5,7 @@
     <h3 class="welcome">Welcome To</h3>
     <h1 class="home-modal">Honolulu Answers</h1>
     <p class="call">
-      Find answers to the questions you have about Honolulu city government.
+      Find answers to your questions about Honolulu city government.
     </p>
 
     <div class="ribbon-front">
@@ -13,7 +13,7 @@
       <div class="triangle-r"></div>
       <div class="ribbon-wrapper">
         <form id="search" action="search" method="get">
-        <input type="text" name="q" id="query" placeholder="Try driver's license, jobs or registration...">
+        <input type="text" name="q" id="query" placeholder="Try driver license, jobs or registration...">
         <input class="btn-search" type="submit" value="SEARCH">
         </form>
       </div>
@@ -24,17 +24,29 @@
         <h2>Most Popular Categories:</h2>
       </div>
       <div class="pop-categories">
-        <a href="#"><div class="category">
-          <span class="left">Business</span>
-          <span class="right">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</span>
+        <div class="category">
+          <span class="left">Driver License</span>
+          <span class="right">
+            <%= link_to("Renew license", article_path(Article.find_by_title("How do I renew my driver license?")))%> - 
+            Replace a lost license - 
+            Schedule a road test
+          </span>
         </div></a>
-        <a href="#"><div class="category">
-          <span class="left">Crime</span>
-          <span class="right">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</span>
+        <div class="category">
+          <span class="left">Motor Vehicle</span>
+          <span class="right">
+            <%= link_to("Register car", article_path(Article.find_by_title("How do I register a new motor vehicle?")))%> -
+            <%= link_to("Renew license", article_path(Article.find_by_title("How do I renew my driver license?")))%> -
+            <%= link_to("Transfer ownership", article_path(Article.find_by_title("How do I transfer ownership of my vehicle or trailer?")))%> -
+            <%= link_to("Order special plates", article_path(Article.find_by_title("How do I get a personalized license plate?")))%> 
+          </span>
         </div></a>
-        <a href="#"><div class="category last">
-          <span class="left">Driving</span>
-          <span class="right">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam.</span>
+        <div class="category last">
+          <span class="left">City Jobs</span>
+          <span class="right">
+            <%= link_to("View openings", article_path(Article.find_by_title("How do I get a job at the City?")))%> - 
+            <%= link_to("See employment benefits", article_path(Article.find_by_title("What employment benefits are offered by the City?")))%> 
+          </span>
         </div></a>
       </div>
     </div><!-- /popular -->
