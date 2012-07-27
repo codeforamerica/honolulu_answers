@@ -577,7 +577,7 @@ div.content-text {
 .content-text ol, .content-text ul {
   margin: 0 12px;
   padding: 0 10px;
-  background: whitesmoke;
+  /*background: whitesmoke;*/
   /*width: 50%;*/
 }
 
