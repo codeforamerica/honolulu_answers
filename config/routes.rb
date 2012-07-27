@@ -1,4 +1,6 @@
 Honoluluanswers::Application.routes.draw do
+  get "category/index"
+
   ActiveAdmin.routes(self)
 
   #devise_for :administrators
@@ -10,6 +12,7 @@ Honoluluanswers::Application.routes.draw do
 
   resources :articles
 
+  resources :categories
   #get "home/index"
   root :to => "home#index"
 

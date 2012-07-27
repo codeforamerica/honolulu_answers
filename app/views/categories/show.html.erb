@@ -8,17 +8,17 @@
       <div class="row">
         <div class="span9">
           <div class="main-content">
-            <div class="header"><h1>Listing of All Articles</h1></div>
+            <div class="header">
+              <h1><%= @category.name %></h1>
+            </div>
+            <p><%= @category.description %></p>
+            <br/>
             <ul>
-              <% @categories.each do |category| %>
-                <li class="category-listing">
-                  <%= content_tag(:h1, link_to(category.name,category))%>
-                    <ul class="category-articles">
-                      <% category.articles_by_access_count.each do |article| %>
-                        <% next unless article.is_published %>
-                          <li class="category-article"><%= content_tag( :h3, link_to( article.title, article_path(article.id) ) ) %></li>
-                      <% end -%>
-                    </ul>
+              <% @category.articles_by_access_count.each do |article| %>
+                <% next unless article.is_published %>
+                  <li class="article-listing">
+                    <%= content_tag( :h2, link_to( article.title, article_path(article.id) ) ) %>
+                    <p class="preview"><%= article.preview %></p>
                 </li>
               <% end -%>
             </ul>

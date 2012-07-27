@@ -8,21 +8,17 @@
       <div class="row">
         <div class="span9">
           <div class="main-content">
-            <div class="header"><h1>Listing of All Articles</h1></div>
-            <ul>
-              <% @categories.each do |category| %>
-                <li class="category-listing">
-                  <%= content_tag(:h1, link_to(category.name,category))%>
-                    <ul class="category-articles">
-                      <% category.articles_by_access_count.each do |article| %>
-                        <% next unless article.is_published %>
-                          <li class="category-article"><%= content_tag( :h3, link_to( article.title, article_path(article.id) ) ) %></li>
-                      <% end -%>
-                    </ul>
-                </li>
-              <% end -%>
-            </ul>
-          </div>
+            <div class="header"><h1>Sorry we can't find what you are looking for.</h1></div>
+	            <div class="article-section">
+					<p>We are working to aggregate as much info from the City of Honolulu as we can. Unfortunately it is an ongoing process and we don't yet have the category you are looking for.</p>
+			
+					<h2>In the meantime we recommend:</h2>
+					<ul>
+						<li>Searching the <a href"http://www.honolulu.gov/government/">honolulu.gov</a> site for more information.</li>
+						<li>Checking back in a few weeks!</li>
+					</ul>
+				</div>
+            </div>
         </div>
         <div class="span3">
           <div class="sidebar">
@@ -43,3 +39,4 @@
       </div>
     </div> 
   </div>
+</div>
