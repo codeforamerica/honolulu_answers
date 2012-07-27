@@ -37,21 +37,28 @@
     <!-- <p class="notice alert alert-info"><%= notice %></p>
     <p class="alert alert-error"><%= alert %></p> -->
     <div class="container">
-      <div class="logo">
-        <a href="/" class="hnl-logo">Honolulu Answers</a>
-        <span class="bubble"><img src="/assets/beta.png" class="beta"></span>
-      </div>
-      <ul class="nav-top">
-        <li class="">
-          <a href="/assets/hnl_answers_wguide.jpg">Guides</a>
-        </li>
-        <li class="">
-          <%= link_to("Quick Answers", articles_path) %></a>
-        </li>
-        <li class="">
-          <a href="#">Web Services</a>
-        </li>
-      </ul>
+      <div class="row">
+        <div class="logo span4">
+          <a href="/" class="hnl-logo">Honolulu Answers</a>
+          <span class="bubble"><img src="/assets/beta.png" class="beta"></span>
+        </div>
+        <ul class="nav-top span4">  
+          <li class="">
+            <a href="/assets/hnl_answers_wguide.jpg">Guides</a>
+          </li>
+          <li class="">
+            <%= link_to("Quick Answers", articles_path) %></a>
+          </li>
+          <li class="">
+            <a href="#">Web Services</a>
+          </li>
+        </ul>
+        <% if !current_page?('/')  %>
+        <div class="header-search span4">
+          <%= render :partial => 'shared/search_form' %>
+        </div>
+        <% end %>
+      </div><!-- /row -->
     </div>
   </div><!-- /navbar-top -->
   <div class="container main clearfix"><!-- main content container -->
