@@ -16,7 +16,7 @@ ol, ul, li { list-style: none; }
 /* Sticky Footer */
 html, body, #wrapper { height:100%; }
 body > #wrapper { height:auto; min-height: 100%; }
-.container.main { padding-bottom: 80px; /* negative footer height for sticky footer */ }
+.container.main { padding-bottom: 50px; /* negative footer height for sticky footer */ }
 .clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 .clearfix { display: inline-block; }
 * html .clearfix { height: 1%; }
@@ -123,7 +123,7 @@ a:hover {
 }
 
 a.hnl-logo {
-  font-size: 32px;
+  font-size: 28px;
   color: #FFFFFF;
   font-family: "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
   font-weight: bold;
@@ -151,7 +151,7 @@ div.navbar-top {
 }
 div.logo {
   display: inline-block;
-  padding-top:30px;
+  padding-top:35px;
 }
 img.beta {
   margin-top: -65px;
@@ -177,6 +177,31 @@ ul.nav-top {
 
 .nav-top li a:hover {
   border-bottom: 1px solid #ffde4d;
+}
+div.header-search {
+  padding-top: 35px;
+}
+.header-search form.right {
+  float:right;
+}
+.header-search input:focus#query {
+  background-color: #FFF;
+  border: 1px solid #FFDE4D;
+}
+.header-search input#query {
+  height: 30%;
+  width: 70%;
+  padding: 0;
+  border: 1px solid #FFF;
+  background-color: #EEE;
+}
+.header-search input.btn-search {
+  font-size: 1em;
+  padding: 4px 5px;
+  margin: 0;
+  -moz-border-radius:     2px;
+  -webkit-border-radius:  2px;
+  border-radius:          2px;
 }
 
 
@@ -268,7 +293,6 @@ div.category a:hover{
 
 /* Homepage Modal -- Search Ribbon*/
 /* ------------------------------ */
-
 div.search-ribbon {}
 .ribbon-wrapper {
   position: relative;
@@ -412,7 +436,7 @@ input:hover#query { }
   height: 50px;
   padding-top:15px;
   padding-bottom:15px;
-  margin-top: -80px;
+  margin-top: -50px;
   clear: both;
 }
 ul.footer-links {
