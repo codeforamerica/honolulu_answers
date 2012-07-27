@@ -16,7 +16,7 @@ ol, ul, li { list-style: none; }
 /* Sticky Footer */
 html, body, #wrapper { height:100%; }
 body > #wrapper { height:auto; min-height: 100%; }
-.container.main { padding-bottom: 80px; /* negative footer height for sticky footer */ }
+.container.main { padding-bottom: 50px; /* negative footer height for sticky footer */ }
 .clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 .clearfix { display: inline-block; }
 * html .clearfix { height: 1%; }
@@ -412,7 +412,7 @@ input:hover#query { }
   height: 50px;
   padding-top:15px;
   padding-bottom:15px;
-  margin-top: -80px;
+  margin-top: -50px;
   clear: both;
 }
 ul.footer-links {
