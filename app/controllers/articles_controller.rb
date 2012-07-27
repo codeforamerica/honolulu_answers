@@ -43,7 +43,7 @@ class ArticlesController < ApplicationController
     end    
   end
   
-  
+  #TODO
   #Going to be created for missing articles - Joey
 
   # If you like you can put this in the show method: (Phil)
@@ -53,7 +53,7 @@ class ArticlesController < ApplicationController
           else
             render the missing article page
           end     
-=end      
+=end
   def missing
     if :id > 15
       render :layout => 'missing'
