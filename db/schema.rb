@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(:version => 20120727124910) do
     t.integer  "contact_id"
     t.text     "tags"
     t.string   "service_url"
-    t.string   "slug"
     t.boolean  "is_published",            :default => false
+    t.string   "slug"
     t.integer  "category_id"
     t.integer  "access_count",            :default => 0
     t.string   "author_pic_file_name"

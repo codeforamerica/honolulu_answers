@@ -1,6 +1,4 @@
 Honoluluanswers::Application.routes.draw do
-  # devise_for :admin_users, ActiveAdmin::Devise.config
-
   get "category/index"
 
   ActiveAdmin.routes(self)
@@ -20,7 +18,6 @@ Honoluluanswers::Application.routes.draw do
 
   match '/search/' => "search#index" , :as => :search, :via => [:get, :post] 
   match 'autocomplete' => "search#autocomplete"
-  match '/articles/article-type/:content_type' => "articles#article_type"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
