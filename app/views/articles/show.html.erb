@@ -40,16 +40,18 @@
           </div>
           <% end %>
         </div>
-        <div class="sidebar-unit">
-          <h4 class="side-head">RELATED TOPICS</h4>
-          <div class="sidebar-content">
-            <ul>
-              <% @article.related.each do |art| %>
-              <%= content_tag(:li, link_to(art.title, article_path(art.id)) ) %>
-              <% end -%>
-            </ul>
+        <% unless @article.related.empty? %>
+          <div class="sidebar-unit">
+            <h4 class="side-head">RELATED TOPICS</h4>
+            <div class="sidebar-content">
+              <ul>
+                <% @article.related.each do |art| %>
+                <%= content_tag(:li, link_to(art.title, article_path(art.id)) ) %>
+                <% end -%>
+              </ul>
+            </div>
           </div>
-        </div>
+        <% end -%>
       </div>
     </div><!-- /span3 -->
     
