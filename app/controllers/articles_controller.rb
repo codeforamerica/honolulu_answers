@@ -43,6 +43,7 @@ class ArticlesController < ApplicationController
     end    
   end
   
+  
   #Going to be created for missing articles - Joey
 
   # If you like you can put this in the show method: (Phil)

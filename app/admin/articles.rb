@@ -18,6 +18,7 @@ ActiveAdmin.register Article do
       link_to article.title, [:admin, article]
     end
     column :category
+    column :content_type
     column "Created", :created_at
     # column :tags
     column :slug
@@ -33,7 +34,7 @@ ActiveAdmin.register Article do
       f.input :title
       f.input :content
       f.input :category
-      f.input :content_type
+      f.input :content_type,  :as => :select, :collection => ["Quick Answer", "Web Service", "Guide"]
       f.input :preview
       f.input :tags, :as => :string 
     end

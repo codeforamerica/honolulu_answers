@@ -32,6 +32,10 @@ class Article < ActiveRecord::Base
     self.search_tank( '__type:Article', :conditions => {:title => query })
   end
 
+  def self.find_by_content_type( content_type )
+    return Article.where(:content_type => content_type).order('access_count DESC')
+  end
+
   def allContent()
     [self.title, self.content].join(" ")
   end
