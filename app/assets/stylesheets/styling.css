@@ -599,11 +599,29 @@ div.quick_top{
   padding: 20px;
 }
 
-.quick_top strong{
-  /*line-height: 190%;*/
+/* TABLE */
 
+table, th, td {
+  padding: 5px;
 }
 
+table {
+  width: 80%;
+  margin: auto;
+}
+
+th {
+  text-align: left;
+  background-color: #ddd;
+  /*font:  14px Helvetica, Arial, sans-serif;*/
+}
+
+td {
+  /*font-size: 12px;*/
+  text-align: left;
+  background-color: #ededed;
+  margin: 1px;
+}
 
 
 
