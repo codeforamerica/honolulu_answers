@@ -96,7 +96,31 @@ p.preview {
   margin-bottom: 0px;
 }
 
-a { }
+p a,h1 a,h2 a,h3 a,h4 a,li a{
+  color: rgb(0,136,204);
+  border-bottom: none;
+}
+
+p a:hover{
+  color: rgb(0,136,204);
+  border-bottom: 1px solid #ffde4d;
+}
+
+.breadcrumbs a{
+  color: rgb(0,136,204);
+  border-bottom: none;
+}
+
+
+a { 
+  border-bottom: 1px solid #ffde4d;
+}
+
+a:hover {
+  border-bottom: 1px solid #ffde4d;
+  text-decoration: none;
+  color: rgb(0,136,204);
+}
 
 a.hnl-logo {
   font-size: 32px;
@@ -107,6 +131,10 @@ a.hnl-logo {
   text-decoration: none;
   text-transform: uppercase;
   line-height: 100%;
+}
+
+a.hnl-logo:hover {
+  border-bottom: 10px solid #ffde4d;
 }
 
 .sidebar-content > ul > li > a {
@@ -142,8 +170,13 @@ ul.nav-top {
   font-weight: bold;
   float: none;
   font-size: 14px;
-  padding: 9px 10px 5px;
+  padding: 9px 10px 2px;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-bottom: none;
+}
+
+.nav-top li a:hover {
+  border-bottom: 1px solid #ffde4d;
 }
 
 
@@ -224,7 +257,7 @@ div.category a{
 }
 
 div.category a:hover{
-  color: black;
+  color: rgb(69, 128, 180);
 }
 
 .category .right{
@@ -396,9 +429,15 @@ ul.footer-links > li > a {
   font-weight: bold;
   float: none;
   font-size: 14px;
-  padding: 9px 10px 11px;
+  padding: 9px 10px 2px;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-bottom: none;
 }
+
+ul.footer-links li a:hover {
+  border-bottom: 1px solid #ffde4d;
+}
+
 .cfa-logos {
   float: right;
 }
@@ -471,6 +510,26 @@ li.category-article{
   padding-bottom:5px;
 }
 
+li.article-listing a:hover{
+  color: rgb(0,136,204);
+  border-bottom: 1px solid #FFDE4D;
+}
+
+li.article-listing a{
+  color: rgb(0,136,204);
+}
+
+li.article-listing p{
+  color: #303030;
+}
+
+li.article-listing p:hover{
+  color: #303030;
+  border-bottom: none;
+}
+
+
+
 
 
 
@@ -482,7 +541,6 @@ div.breadcrumbs {
   font-size: 90%;
   padding: 12px 0 8px 0;
   color: #777;
-  text-shadow: 1px 1px 1px white;
 }
 
 div.content-text {
@@ -547,22 +605,22 @@ div.content-text {
 
 /* Sidebar related articles */
 
-.sidebar-content {
-  display: in/*l*/ine;
+.sidebar {
 }
-.sidebar-content a {
-  color: black;
+.sidebar a {
+  color: #303030;
+  border-bottom: 1px solid #FFDE4D;
+}
+
+.sidebar a:hover{
+  color: #4580B4;
 }
 
 .sidebar-content h4 {
   font-weight: bold;
 }
 
-a:hover {
-  border-bottom: 2px solid #ffde4d;
-  text-decoration: none;
-  /*background: */
-}
+
 
 
 

@@ -20,6 +20,9 @@ ActiveAdmin.register Article do
     column :category
     column :content_type
     column "Created", :created_at
+    column "Author name", :author_name
+    column "Author picture", :author_pic
+    column "Author URL", :author_link
     # column :tags
     column :slug
     column "Published", :is_published

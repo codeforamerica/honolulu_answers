@@ -1,4 +1,6 @@
 Honoluluanswers::Application.routes.draw do
+  # devise_for :admin_users, ActiveAdmin::Devise.config
+
   get "category/index"
 
   ActiveAdmin.routes(self)

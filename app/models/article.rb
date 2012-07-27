@@ -16,6 +16,8 @@ class Article < ActiveRecord::Base
   has_many :wordcounts
   has_many :keywords, :through => :wordcounts
 
+  has_attached_file :author_pic, :styles => { :thumb => "100x100" }
+
   validates_presence_of :access_count
 
   after_save :update_tank_indexes # Comment this line out when running analysemodels to save time
@@ -110,7 +112,7 @@ class Article < ActiveRecord::Base
 
   def related
     Rails.cache.fetch("#{self.id}-related") {
-      Article.search_tank(self.wordcounts.all(:order => 'count DESC').first(10).map(&:keyword).map(&:name).join(" OR ")).first(4) - [self]
+      (Article.search_tank(self.wordcounts.all(:order => 'count DESC').first(10).map(&:keyword).map(&:name).join(" OR ")) - [self]).first(4)
     }
   end
 

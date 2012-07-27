@@ -60,6 +60,7 @@ GEM
       json
     childprocess (0.3.2)
       ffi (~> 1.0.6)
+    cocaine (0.2.1)
     commonjs (0.2.6)
     dalli (2.1.0)
     database_cleaner (0.8.0)
@@ -164,6 +165,12 @@ GEM
     newrelic_rpm (3.4.0)
     nokogiri (1.5.5)
     orm_adapter (0.1.0)
+    paperclip (3.1.2)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (>= 0.0.2)
+      mime-types
     pg (0.13.2)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
@@ -305,6 +312,7 @@ DEPENDENCIES
   less-rails-bootstrap
   meta_search (>= 1.1.0.pre)
   newrelic_rpm
+  paperclip (~> 3.0)
   pg
   progressbar
   rails (= 3.2.6)
