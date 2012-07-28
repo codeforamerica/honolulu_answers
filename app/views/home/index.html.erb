@@ -38,7 +38,6 @@
           <span class="left"><%= link_to( category.name, category_path(category.id) ) %></span>
           <span class="right">
             <%= link_to("Register car", article_path(Article.find_by_title("How do I register a new motor vehicle?")))%> -
-            <%= link_to("Renew registration", article_path(Article.find_by_title("How do I renew the registration for my motor vehicle?")))%> -
             <%= link_to("Transfer ownership", article_path(Article.find_by_title("How do I transfer ownership of my vehicle or trailer?")))%> -
             <%= link_to("Order special plates", article_path(Article.find_by_title("How do I get a personalized license plate?")))%> 
           </span>
