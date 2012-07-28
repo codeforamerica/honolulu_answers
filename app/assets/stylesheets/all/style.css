@@ -24,6 +24,13 @@ body > #wrapper { height:auto; min-height: 100%; }
 
 
 
+/* Get Satisfaction tweaks */
+a.gsfn-jqmClose {
+  border-bottom: none;
+}
+
+
+
 /* General Styles */
 /* -------------- */
 body {
