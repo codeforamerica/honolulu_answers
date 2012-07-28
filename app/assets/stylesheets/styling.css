@@ -111,6 +111,9 @@ p a:hover{
   border-bottom: none;
 }
 
+table a{
+  border-bottom: none;
+}
 
 a { 
   border-bottom: 1px solid #ffde4d;
@@ -552,7 +555,9 @@ li.article-listing p:hover{
   border-bottom: none;
 }
 
-
+.suggestion {
+  padding-top: 10px; 
+}
 
 
 
