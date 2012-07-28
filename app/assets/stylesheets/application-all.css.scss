@@ -8,10 +8,10 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *
+ *
+ * application-all.css.scss
+ *
  *= require_self
- *= require style
- *= require autocomplete
+ *= require_tree ./all
 */
-
-/*@import "active_admin.css.scss";*/
-
