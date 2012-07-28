@@ -44,8 +44,8 @@ class ArticlesController < ApplicationController
   
 
   def article_type
-     @article_type = params[:content_type]
-     @articles = Article.find_by_content_type(@article_type)
+    @article_type = params[:content_type]
+    @articles = Article.find_by_content_type(@article_type)
 
     respond_to do |format|
       format.html # index.html.erb
