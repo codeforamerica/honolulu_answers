@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @articles }
+      format.json { render json: @categories }
     end
   end
   def show
