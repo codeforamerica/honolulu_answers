@@ -1,6 +1,8 @@
-# Honolulu Answers
+## THANK YOU!
 
-*Honolulu Answers* is...
+* Search results are aided by a thesaurus service provided by [bht](words.bighugelabs.com).
+* Background photo courtesy of [http://royalrealtyllc.com/](Royal Realty)
+
 
 ## Installation
 
