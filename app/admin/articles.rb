@@ -40,6 +40,10 @@ ActiveAdmin.register Article do
       f.input :content_type,  :as => :select, :collection => ["Quick Answer", "Web Service", "Guide"]
       f.input :preview
       f.input :tags, :as => :string 
+      f.input :author_link
+      f.input :author_pic
+      f.input :author_name
+
     end
     f.buttons
   end
