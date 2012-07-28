@@ -1,9 +1,8 @@
 class CategoriesController < ApplicationController
   def index
   	@bodyclass = "results"
-  
-    Category.all_by_access_count
 
+    @categories = Category.all_by_access_count
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @categories }
