@@ -11,7 +11,7 @@
         </div>
        
           <% if @results.count == 0 %>
-            <p>Sorry, no results found for <b><%=@query%></b>.  Please try rephrasing your search terms.</p>
+            <p>Sorry, no results found for "<%=@query%>".  Please try rephrasing your search terms.</p>
           <% end %>
           <ul>
             <% @results.each do |article| %>
