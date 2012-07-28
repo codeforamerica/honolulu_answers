@@ -5,7 +5,7 @@
         <div class="header">
           <h1>Search results for: &ldquo;<strong><%=@query%></strong>&rdquo;</h1>
           <% if @query_corrected %>
-            <div class="suggestion">(did you mean: "<a href ='/search?q=<%=@query_corrected%>'><%=@query_corrected%></a>"?)</div>
+            <div class="suggestion">(Did you mean: "<a href ='/search?q=<%=@query_corrected%>'><%=@query_corrected%></a>"?)</div>
           <% end -%>
           <!-- <div class="count"><%=@results.count %> results found</div> -->
         </div>
