@@ -31,7 +31,10 @@ class Article < ActiveRecord::Base
 
   validates_presence_of :access_count
 
-  after_save :update_tank_indexes # Comment this line out when running analysemodels to save time
+  after_save do
+    update_tank_indexes # Comment this line out when running analysemodels to save time
+    ActionController::Base.expire_page :controller => 'articles', :action => 'show'
+  end
   after_destroy :delete_tank_indexes
   before_validation :set_access_count_if_nil
 
