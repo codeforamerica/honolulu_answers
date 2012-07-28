@@ -25,7 +25,8 @@
       </div>
       <div class="pop-categories">
         <div class="category">
-          <span class="left">Driver License</span>
+          <% category = category_by_name("Driver License") %>
+          <span class="left"><%= link_to( category.name, category_path(category.id) ) %></span>
           <span class="right">
             <%= link_to("Renew license", article_path(Article.find_by_title("How do I renew my driver license?")))%> - 
             Replace a lost license - 
@@ -33,7 +34,8 @@
           </span>
         </div></a>
         <div class="category">
-          <span class="left">Motor Vehicle</span>
+          <% category = category_by_name("Motor Vehicle")  %>
+          <span class="left"><%= link_to( category.name, category_path(category.id) ) %></span>
           <span class="right">
             <%= link_to("Register car", article_path(Article.find_by_title("How do I register a new motor vehicle?")))%> -
             <%= link_to("Renew license", article_path(Article.find_by_title("How do I renew my driver license?")))%> -
@@ -42,7 +44,8 @@
           </span>
         </div></a>
         <div class="category last">
-          <span class="left">City Jobs</span>
+          <% category = category_by_name("City Jobs") %>
+          <span class="left"><%= link_to( category.name, category_path(category.id) ) %></span>
           <span class="right">
             <%= link_to("View openings", article_path(Article.find_by_title("How do I get a job at the City?")))%> - 
             <%= link_to("See employment benefits", article_path(Article.find_by_title("What employment benefits are offered by the City?")))%> 
