@@ -23,7 +23,7 @@ class SearchController < ApplicationController
     # spell check the query.  if no correction has taken place, this is nil.
     @query_corrected = Article.spell_check query
     
-    if @query_corrected
+    if query.length > 0
       # expand the query
       query_final = Article.expand_query( query )
       
