@@ -24,6 +24,7 @@
 
           <%= raw @content_html %>
 
+
         </div>
       </div>
     </div><!-- /span9 -->
@@ -52,6 +53,25 @@
             </div>
           </div>
         <% end -%>
+
+        <% unless @article.author_name.blank? %>
+          <div class="sidebar-unit">
+            <h4 class="side-head">THANKS!</h4>
+            <div class="sidebar-content">
+              <ul>
+                <% if @article.author_link.blank? %>
+                  <%= content_tag(:li, @article.author_name ) %>
+                <% else %>
+                  <%= content_tag(:li, link_to(@article.author_name, @article.author_link) ) %>
+                <% end -%>
+                <% if @article.author_pic? %>
+                  <li><%= image_tag(@article.author_pic.url(:thumb) ) %></li>
+                <% end -%>
+              </ul>
+            </div>
+          </div>
+          <% end -%>
+
       </div>
     </div><!-- /span3 -->
     
