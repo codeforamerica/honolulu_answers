@@ -7,7 +7,6 @@ Honoluluanswers::Application.routes.draw do
 
   #devise_for :administrators
 
-
   devise_for :users
 
   resources :contacts

@@ -4,13 +4,9 @@
   <title>Honolulu Answers</title>
   <meta name="viewport" content="width=device-width,initial-scale =1, user-scalable = no" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <link rel="apple-touch-icon" href="icons/regular_icon.png" />
-  <link rel="apple-touch-icon" sizes="114x114" href="icons/retina_icon.png" />
-  <link href='http://fonts.googleapis.com/css?family=PT+Sans+Caption' rel='stylesheet' type='text/css'>
   <%= include_gon %>
-  <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
-  <%= stylesheet_link_tag    "styling", :media => "all" %>
-  <%= stylesheet_link_tag    "mobile", :media => "all and (max-width: 600px)" %>
+  <%= stylesheet_link_tag    "application-all", :media => "all" %>
+  <%= stylesheet_link_tag    "application-mobile", :media => "all and (max-width: 600px)" %>
   <%= javascript_include_tag "application" %>
   
   <script type="text/javascript">
@@ -42,7 +38,7 @@
           <a href="/" class="hnl-logo">Honolulu Answers</a>
           <span class="bubble"><img src="/assets/beta.png" class="beta"></span>
         </div>
-        <ul class="nav-top span4">  
+        <ul class="nav-top span4">
           <li class="">
             <!-- %= link_to("Guides", "/articles/article-type/Guide") % -->
             <a href="/assets/hnl_answers_wguide.jpg">Guides</a>
@@ -75,8 +71,8 @@
 <div class="footer">
   <div class="container">
     <ul class="footer-links">
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="http://codeforamerica.org/2012-partners/honolulu/">About</a></li>
+      <li><a href="mailto:honolulu@codeforamerica.org">Contact</a></li>
       <li><a href="https://github.com/codeforamerica/honolulu_answers">Contribute</a></li>
     </ul>
   <div class="cfa-logos">
@@ -87,6 +83,11 @@
 </div><!-- /footer -->
 
 
+<div id="getsat-widget-784"></div>
+<script type="text/javascript" src="https://loader.engage.gsfn.us/loader.js"></script>
+<script type="text/javascript">
+if (typeof GSFN !== "undefined") { GSFN.loadWidget(784,{"containerId":"getsat-widget-784"}); }
+</script>
 
 <script type="text/javascript">
   var _gaq = _gaq || [];
@@ -99,5 +100,6 @@
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script>
+
 </body>
 </html>

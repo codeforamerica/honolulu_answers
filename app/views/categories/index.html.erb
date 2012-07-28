@@ -2,8 +2,11 @@
   <%= render :partial => 'shared/search_form' %>
 </div> -->
 <div class="page-container">
+  <div class="breadcrumbs">
+    <%= link_to( "Home", root_url) %>
+    > Categories
+  </div>
   <div class="row">
-
     <div class="span9">
       <div class="main-content">
         <div class="header">
@@ -11,6 +14,7 @@
         </div>
         <ul>
           <% @categories.each do |category| %>
+          <% next unless article.is_published %>
             <li class="category-listing">
               <%= content_tag( :h2, link_to( category.name, category_path(category.id) ) ) %>
               <p class="preview"><%= category.description %></p>

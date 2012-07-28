@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
 
-  # caches_page :index
+  caches_page :show
 
   def index
     @bodyclass = "results"
