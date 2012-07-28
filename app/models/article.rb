@@ -17,12 +17,17 @@ class Article < ActiveRecord::Base
   has_many :keywords, :through => :wordcounts
 
   has_attached_file :author_pic, 
+                    :storage => :s3,
                     :bucket => 'hnlanswers-production',
-                    :styles => { :thumb => "100x100" }, 
                     :s3_credentials => {
                       :access_key_id => ENV['S3_KEY'],
                       :secret_access_key => ENV['S3_SECRET']
-                    }
+                    },
+                    :path => "/:style/:id/:filename",
+                    :styles => { :thumb => "100x100" } 
+
+  validates_attachment_size :author_pic, :less_than => 5.megabytes  
+  validates_attachment_content_type :author_pic, :content_type => ['image/jpeg', 'image/png']                      
 
   validates_presence_of :access_count
 
