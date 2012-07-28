@@ -36,9 +36,11 @@ ActiveAdmin.register Article do
       end     
       f.input :title
       f.input :content
+      f.input :preview
       f.input :category
       f.input :content_type,  :as => :select, :collection => ["Quick Answer", "Web Service", "Guide"]
-      f.input :preview
+      f.input :contact
+      f.input :service_url
       f.input :tags, :as => :string 
     end
     f.buttons

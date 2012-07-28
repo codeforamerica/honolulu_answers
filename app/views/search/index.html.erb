@@ -7,20 +7,21 @@
           <% if @query_corrected %>
             <div class="suggestion">(Did you mean: "<a href ='/search?q=<%=@query_corrected%>'><%=@query_corrected%></a>"?)</div>
           <% end -%>
-          <!-- <div class="count"><%=@results.count %> results found</div> -->
+          <!-- <div class="count">< % = #@results.count % > results found</div> -->
         </div>
-        <% if @results.count == 0 %>
-          <p>Sorry, no results found for <b><%=@query%></b>.  Please try entering less specific search terms.</p>
-        <% end %>
-        <ul>
-          <% @results.each do |article| %>
-            <% #next unless article.is_published %>
-            <li class="article-listing">
-              <%= content_tag( :h1, link_to( article.title, article_path(article.id) ) ) %>
-              <p class="preview"><%= article.preview %></p>
-            </li>
+       
+          <% if @results.count == 0 %>
+            <p>Sorry, no results found for <b><%=@query%></b>.  Please try rephrasing your search terms.</p>
           <% end %>
-        </ul>
+          <ul>
+            <% @results.each do |article| %>
+              <% #next unless article.is_published %>
+              <li class="article-listing">
+                <%= content_tag( :h1, link_to( article.title, article_path(article.id) ) ) %>
+                <p class="preview"><%= article.preview %></p>
+              </li>
+            <% end %>
+          </ul>
       </div>
     </div>
     <div class="span3">
