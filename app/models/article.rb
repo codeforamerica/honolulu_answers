@@ -35,7 +35,7 @@ class Article < ActiveRecord::Base
   end
 
   def self.find_by_content_type( content_type )
-    return Article.where(:content_type => content_type).order('access_count DESC')
+    return Article.where(:content_type => content_type).order('category_id').order('access_count DESC')
   end
 
   def allContent()

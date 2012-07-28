@@ -1,35 +1,30 @@
-<div id="navigation">
-</div>
-<div class="row">
-  <div class="span12">
-    <div class="page-container">
-      <div class="breadcrumbs">
-        <%= link_to( "Home", root_url) %>
-        >
-        All Quick Answers
-      </div>
-      <div class="row">
-        <div class="span9">
-          <div class="main-content">
-            <div class="header"><h1>All Quick Answers</h1></div>
-            <ul>
-              <% @categories.each do |category| %>
-                <li class="category-listing">
-                  <%= content_tag(:h1, link_to(category.name,category))%>
-                    <ul class="category-articles">
-                      <% category.articles_by_access_count.each do |article| %>
-                        <% next unless article.is_published %>
-                          <li class="category-article"><%= content_tag( :h3, link_to( article.title, article_path(article.id) ) ) %></li>
-                      <% end -%>
-                    </ul>
-                </li>
-              <% end -%>
-            </ul>
-          </div>
-        </div>
-        <div class="span3">
-          <%= render :partial => 'shared/categories_sidebar' %>
-        </div><!-- /span3 -->
-      </div>
-    </div> 
+<div class="page-container">
+  <div class="breadcrumbs">
+    <%= link_to( "Home", root_url) %>
+    >
+    All Articles
   </div>
+  <div class="row">
+    <div class="span9">
+      <div class="main-content">
+        <div class="header"><h1>All Articles</h1></div>
+        <ul>
+          <% @categories.each do |category| %>
+            <li class="category-listing">
+              <%= content_tag(:h1, link_to(category.name,category))%>
+                <ul class="category-articles">
+                  <% category.articles_by_access_count.each do |article| %>
+                    <% next unless article.is_published %>
+                      <li class="category-article"><%= content_tag( :h3, link_to( article.title, article_path(article.id) ) ) %></li>
+                  <% end -%>
+                </ul>
+            </li>
+          <% end -%>
+        </ul>
+      </div>
+    </div>
+    <div class="span3">
+      <%= render :partial => 'shared/categories_sidebar' %>
+    </div><!-- /span3 -->
+  </div>
+</div> 
