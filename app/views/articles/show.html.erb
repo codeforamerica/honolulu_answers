@@ -41,19 +41,20 @@
           </div>
           <% end %>
         </div>
-        <% unless @article.related.empty? %>
-          <div class="sidebar-unit">
-            <h4 class="side-head">RELATED TOPICS</h4>
-            <div class="sidebar-content">
-              <ul>
-                <% @article.related.each do |art| %>
-                <%= content_tag(:li, link_to(art.title, article_path(art.id)) ) %>
-                <% end -%>
-              </ul>
+        <% if @article.keywords.count > 0 %>
+          <% unless @article.related.empty? %>
+            <div class="sidebar-unit">
+              <h4 class="side-head">RELATED TOPICS</h4>
+              <div class="sidebar-content">
+                <ul>
+                  <% @article.related.each do |art| %>
+                  <%= content_tag(:li, link_to(art.title, article_path(art.id)) ) %>
+                  <% end -%>
+                </ul>
+              </div>
             </div>
-          </div>
+          <% end -%>
         <% end -%>
-
         <% unless @article.author_name.blank? %>
           <div class="sidebar-unit">
             <h4 class="side-head">THANKS!</h4>
