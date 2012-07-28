@@ -33,7 +33,7 @@ class Article < ActiveRecord::Base
 
   after_save do
     update_tank_indexes # Comment this line out when running analysemodels to save time
-    ActionController::Base.expire_page :controller => 'articles', :action => 'show'
+    Rails.cache.clear
   end
   after_destroy :delete_tank_indexes
   before_validation :set_access_count_if_nil
