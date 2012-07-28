@@ -2,9 +2,7 @@ class CategoriesController < ApplicationController
   def index
   	@bodyclass = "results"
   
-    @categories = Rails.cache.fetch('category_by_access_count') do
-      Category.all_by_access_count
-    end
+    Category.all_by_access_count
 
     respond_to do |format|
       format.html # index.html.erb
