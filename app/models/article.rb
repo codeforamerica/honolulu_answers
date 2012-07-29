@@ -73,9 +73,12 @@ class Article < ActiveRecord::Base
 
   def self.spell_check string
     is_corrected = false
-    dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/blank", 'blank' )
-    keywords = Rails.cache.fetch('keyword_names') { Keyword.all(:select => 'name') }
-    keywords.each{ |kw| dict.add( kw.name ) }
+    dict = Rails.cache.fetch('dict') do
+      dictionary = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/blank", 'blank' )
+      Keyword.all(:select => 'name').each{ |kw| dictionary.add( kw.name )
+      dictionary
+    end
+
 
     string_corrected = []
     string.split.each do |term|
