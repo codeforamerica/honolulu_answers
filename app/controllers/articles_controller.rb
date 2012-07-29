@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
 
-  caches_page :show
+  # caches_page :show # TODO: make the cache expire when an article is updated.  Currently can't get the cache to clear properly.
 
   def index
     @bodyclass = "results"
