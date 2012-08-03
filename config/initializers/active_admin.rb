@@ -138,7 +138,7 @@ ActiveAdmin.setup do |config|
   #   config.register_javascript 'my_javascript.js'
   
   # Load TinyMCE Editor
-  config.register_javscript '/javascripts/tiny_mce/tiny_mce.js'
+  config.register_javascript 'tiny_mce/tiny_mce.js'
   
   
 end
