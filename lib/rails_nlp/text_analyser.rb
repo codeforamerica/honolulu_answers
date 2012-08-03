@@ -55,7 +55,7 @@ module RailsNlp
     def words_to_keywords( words )
       keywords = []
       words.each do |word|
-        # keywords << Keyword.find_or_create_by_name( word )
+        keywords << Keyword.find_or_create_by_name( word )
       end
     end
 
