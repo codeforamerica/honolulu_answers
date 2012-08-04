@@ -35,7 +35,7 @@
           <% unless @article.contact.nil? %>
           <h4 class="side-head">NEED MORE INFO?</h4>
           <div class="sidebar-content">
-            <%= content_tag(:h4, link_to(@article.contact.name, @article.contact.url)) %>
+            <%= content_tag(:h4, link_to_unless(@article.contact.url.blank?, @article.contact.name, @article.contact.url)) %>
             <%= raw @article.contact.address %>
             <%= raw "Phone: #{@article.contact.number}" %>
           </div>
