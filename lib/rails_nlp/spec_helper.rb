@@ -1,1 +1,1 @@
-require './rails_nlp'
+require 'big_huge_thesaurus'

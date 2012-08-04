@@ -1,4 +1,4 @@
-require 'spec_helper'
+require './spec_helper'
 
 describe Keyword do
   it { should have_many :wordcounts }
