@@ -1,4 +1,4 @@
-require './spec_helper'
+require 'spec_helper'
 
 describe Wordcount do
   it { should belong_to :article }
