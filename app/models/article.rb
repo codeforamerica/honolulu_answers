@@ -141,10 +141,13 @@ class Article < ActiveRecord::Base
     self.access_count
   end
 
+  def analyse
+    qm_after_create
+  end
 
-
-
-
+  def self.analyse_all
+    Article.all.each { |a| a.analyse }
+  end
 
 
   private
