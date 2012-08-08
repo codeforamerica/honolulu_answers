@@ -10,9 +10,9 @@
           <!-- <div class="count">< % = #@results.count % > results found</div> -->
         </div>
        
-          <% if @results.count == 0 %>
+          <% if @results.blank? or @results.count == 0 %>
             <p>Sorry, no results found for "<%=@query%>".  Please try rephrasing your search terms.</p>
-          <% end %>
+          <% else %>
           <ul>
             <% @results.each do |article| %>
               <% #next unless article.is_published %>
@@ -22,6 +22,7 @@
               </li>
             <% end %>
           </ul>
+          <% end -%>
       </div>
     </div>
     <div class="span3">

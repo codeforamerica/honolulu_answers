@@ -210,25 +210,18 @@ class Article < ActiveRecord::Base
     # "This currently assumes valid XHTML, which means no free < or > characters."
     # https://github.com/rails/rails/blob/master/actionpack/lib/action_controller/vendor/html-scanner/html/tokenizer.rb
     str = ActionView::Helpers::SanitizeHelper.strip_tags str
-
     # # replace control characters like \n and \t with a space
     str.gsub!(/[[:cntrl:]]+/, ' ')
-
     # remove plurals and posessives
     str.gsub!(/'(\S+)/, '')
-
     # remove anything that isn't a letter or a space
     str.gsub!(/[^\p{Word} ]/, '')
-
     # remove single characters
     str.gsub!(/(\s|\A)\S(\s|\z)/, ' ')
-
     # remove numbers
     str.gsub!(/\s\d+\s/, ' ')
-
     # downcase
     str.downcase!
-
     str
   end
 
@@ -253,34 +246,56 @@ class Article < ActiveRecord::Base
   #   2) For each word in text, kw = Keyword.find_or_create_by_name(word).(i)
   #   3) Create a new Wordcount row with :keyword_id => kw.id, :article_id => article.id and count as the frequency of the keyword in the article.
   def qm_after_create
-    text = collect_text(:model => self, :fields => ['title',
-                                                    'content',
-                                                    'preview',
-                                                    'tags',
-                                                    'category.name'])
-    text = clean( text )
-    wordcounts = count_words( text )
-    wordcounts.each do |word, frequency|
-      kw = Keyword.find_or_create_by_name( word )
-      Wordcount.create!(:keyword_id => kw.id, :article_id => self.id, :count => frequency)
+    begin
+      text = collect_text(:model => self, :fields => ['title',
+                                                      'content',
+                                                      'preview',
+                                                      'tags',
+                                                      'category.name'])
+      text = clean( text )
+      wordcounts = count_words( text )
+      wordcounts.each do |word, frequency|
+        kw = Keyword.find_or_create_by_name( word )
+        Wordcount.create!(:keyword_id => kw.id, :article_id => self.id, :count => frequency)
+      end
+    rescue => e
+      puts "ERROR: error after article creation; could not update keywords and wordcounts for article with id #{self.id unless self.id.blank?}"
+      puts e.message
+      puts e.backtrace 
     end
   end
+  handle_asynchronously :qm_after_create
 
   # 1) remove all wordcount rows for this article
   # 2) treat the article as a new article
   # 3) remove keywords where keyword.id isn't present in column Wordcount#keyword_id
   def qm_after_update
-    self.wordcounts.destroy_all
-    qm_after_create
-    delete_orphaned_keywords
+    begin
+      self.wordcounts.destroy_all
+      qm_after_create
+      delete_orphaned_keywords
+    rescue => e
+      puts "ERROR: error after article update; could not update keywords and wordcounts for article with id #{self.id unless self.id.blank?}"
+      puts e.message
+      puts e.backtrace 
+    end
   end
+  handle_asynchronously :qm_after_update
 
   # 1) remove all wordcount rows for this article
   # 2) remove keywords where keyword.id isn't present in column Wordcount#keyword_id
   def qm_after_destroy
-    self.wordcounts.destroy_all
-    delete_orphaned_keywords
+    begin
+      self.wordcounts.destroy_all
+      delete_orphaned_keywords
+    rescue => e
+      puts "ERROR: error after article destruction; could not update keywords and wordcounts for article with id #{self.id unless self.id.blank?}"
+      puts e.message
+      puts e.backtrace 
+    end
   end
+  handle_asynchronously :qm_after_destroy
+
 
 
 end

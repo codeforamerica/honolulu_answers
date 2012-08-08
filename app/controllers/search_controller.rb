@@ -1,5 +1,4 @@
 class SearchController < ApplicationController
-   include RailsNlp::BigHugeThesaurus
 
   def index
     query =  params[:q].strip 
@@ -37,10 +36,10 @@ class SearchController < ApplicationController
       @results = []
     end
 
-    respond_to do |format|
-      format.json { render :json => @results }
-      format.html #index.html.erb
-    end
+    # respond_to do |format|
+    #   format.json { render :json => @results }
+    #   format.html #index.html.erb
+    # end
   end
   
 end

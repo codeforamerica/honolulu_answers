@@ -20,6 +20,7 @@ class Keyword < ActiveRecord::Base
     self.metaphone = Text::Metaphone.double_metaphone( self.name )
     self.synonyms = BigHugeThesaurus.synonyms( self.name )
     self.save
+    Rails.cache.delete('dict')
   end
 
 
