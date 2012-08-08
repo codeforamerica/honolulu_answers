@@ -79,7 +79,7 @@ class Article < ActiveRecord::Base
   def self.spell_check string
     is_corrected = false
     dict = Rails.cache.fetch('dict') do
-      dictionary = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/blank", 'blank' )
+      dictionary = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/en_US", 'en_US' )
       Keyword.all(:select => 'name').each{ |kw| dictionary.add( kw.name ) }
       dictionary
     end
