@@ -9,6 +9,7 @@ ruby '1.9.3'                              # Ruby!
 gem 'rails', '3.2.6'                      # Rails!
 gem 'pg'                                  # PostgreSQL, the database server
 gem 'thin'                                # Web server
+# gem 'unicorn'                           # Web server
 
 ## Utilities
 gem 'newrelic_rpm', :group => [:production, :development] # Rails analytics - see the Heroku addon
