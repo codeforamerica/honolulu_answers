@@ -11,7 +11,7 @@ gem 'pg'                                  # PostgreSQL, the database server
 gem 'unicorn'                                # Web server
 
 ## Utilities
-gem 'newrelic_rpm'#, :group => :production # Rails analytics - see the Heroku addon
+gem 'newrelic_rpm', :group => [:production, :development] # Rails analytics - see the Heroku addon
 gem 'heroku'                              # Managed hosting solution
 gem 'annotate', '~>2.4.1.beta'            # Annotates models with database info: `bundle exec rake:annotate` 
 gem 'rails-erd'                           # Create Entity Relationship Diagrams

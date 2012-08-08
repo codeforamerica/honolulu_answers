@@ -20,4 +20,13 @@ describe Keyword do
   it 'deserialised the synonyms field' do
     keyword.reload.synonyms.should include('enrollment')
   end
+
+  describe "creating a new Keyword" do
+    let(:kw) { Keyword.create!(:name => 'example') }
+    subject { kw }
+    its(:name) { should eq('example') }
+    its(:stem) { should eq('exampl') }
+    its(:metaphone) { should eq(["AKSM", nil]) }
+    its(:synonyms) { should eq(["illustration", "instance", "representative", "model", "exemplar", "good example", "deterrent example", "lesson", "object lesson", "case", "exercise", "admonition", "happening", "ideal", "information", "internal representation", "mental representation", "monition", "natural event", "occurrence", "occurrent", "representation", "warning", "word of advice"]) }
+  end
 end

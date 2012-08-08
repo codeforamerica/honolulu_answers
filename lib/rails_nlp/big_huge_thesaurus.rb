@@ -1,4 +1,4 @@
-module RailsNlp
+# module RailsNlp
   module BigHugeThesaurus
     require 'json'
     require 'httparty'
@@ -25,4 +25,4 @@ module RailsNlp
       synonyms.flatten.uniq
     end
   end
-end
+# end
