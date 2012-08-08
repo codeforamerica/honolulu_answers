@@ -17,7 +17,8 @@ class SearchController < ApplicationController
     if query.split.size > 10 || query.blank?
       @query_corrected = query
       @results = []
-    end and return
+      return
+    end
 
     # expand the query
     query_final = Article.expand_query( query )
