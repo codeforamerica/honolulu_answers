@@ -1,0 +1,41 @@
+<div class="page-container">
+  <div class="breadcrumbs">
+    <%= link_to( "Home", root_url) %>
+    >
+    All <%= @article_type %>s
+  </div>
+  <div class="row">
+    <div class="span9">
+      <div class="main-content">
+        <div class="header"><h1><%= @article_type %>s</h1></div>
+        <ul>
+          <% category = nil %>
+          <% @articles.each do |article| %>
+          <% next unless article.is_published %>
+            
+              <% if( article.category != category) %>
+                <% if(category) %>
+                    </ul>
+                <% end %>
+                  <% category = article.category %>
+                  <li class="category-listing">
+                  <%= content_tag(:h1, link_to(article.category.name,article.category)) %>
+                   <ul class="category-articles">
+              <% end %>      
+                    
+                      <li class="article-listing">
+                        <%= content_tag(:h2, link_to(article.title,article))%>
+                        <p class="preview"><%= article.preview %></p>
+                      </li>
+          <% end %>
+          <% if(category) %>
+            </ul>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="span3">
+      <%= render :partial => 'shared/categories_sidebar' %>
+    </div><!-- /span3 -->
+  </div>
+</div> 

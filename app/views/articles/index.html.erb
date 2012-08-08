@@ -1,29 +1,30 @@
-<div id="topPattern"></div>
-<div id="navigation">
-  <div id="searchBox">
-    <form id="search" class="noanimation" autocomplete="off" action="/search">
-      <p class="hnlanswers"><a class="header" href="/">Honolulu Answers</a></p>
-      <input type="text" id="query" name="q" />
-      <input type="submit" class="btn" value="" />
-    </form>
+<div class="page-container">
+  <div class="breadcrumbs">
+    <%= link_to( "Home", root_url) %>
+    >
+    All Articles
   </div>
-</div>
-
-<div class="article">
-
-	<h1 class="list">Listing of All Articles</h1>
-
-  <% @categories.each do |category| %>
-  <div class="article-section">
-      <h2>
-        <a name="<%= category.name.parameterize %>"><%= category.name %></a>
-      </h2>
-      <% category.articles_by_access_count.each do |article| %>
-				<ul>
-          <% next unless article.is_published %>
-					<%= content_tag( :li, link_to( article.title, article_path(article.slug) ) ) %>
-				</ul>
-			<% end -%>
-		</div>
-	<% end -%>
-</div>
+  <div class="row">
+    <div class="span9">
+      <div class="main-content">
+        <div class="header"><h1>All Articles</h1></div>
+        <ul>
+          <% @categories.each do |category| %>
+            <li class="category-listing">
+              <%= content_tag(:h1, link_to(category.name,category))%>
+                <ul class="category-articles">
+                  <% category.articles_by_access_count.each do |article| %>
+                    <% next unless article.is_published %>
+                      <li class="category-article"><%= content_tag( :h3, link_to( article.title, article_path(article.id) ) ) %></li>
+                  <% end -%>
+                </ul>
+            </li>
+          <% end -%>
+        </ul>
+      </div>
+    </div>
+    <div class="span3">
+      <%= render :partial => 'shared/categories_sidebar' %>
+    </div><!-- /span3 -->
+  </div>
+</div> 

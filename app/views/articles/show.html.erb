@@ -1,48 +1,80 @@
-<div id="topPattern"></div>
-<div id="navigation">
-  <div id="searchBox">
-    <form id="search" class="noanimation" autocomplete="off" action="/search">
-      <p class="hnlanswers"><a class="header" href="/">Honolulu Answers</a></p>
-      <input type="text" id="query" name="q" />
-      <input type="submit" class="btn" value="" />
-    </form>
+<div class="page-container article">
+  <div class="breadcrumbs">
+    <%= link_to( "Home", root_url) %>
+    >
+    <%= @article.title %>
+  </div>
+  <div class="row">
+    <div class="span9">
+      <div class="main-content">
+        <h3 class="content-type"><%= @article.content_type %></h3>
+        <div class="header">
+          <%= content_tag(:h1, @article.title ) %>
+        </div>
+        <div class="content-text">
+          <% unless @article.service_url.blank? %>
+          <div class="onlineservice">
+            <div class="servicebox">
+              <a href="<%= @article.service_url%>"><img src="/assets/getting_started_btn.png" /></a>
+            </div>
+            <h3 class="service">Honolulu.gov lets you do this online! </h3>
+            <p>This will take you directly to the online service on the honolulu.gov website.</p>
+          </div>
+          <% end %>
+
+          <%= raw @content_html %>
+
+
+        </div>
+      </div>
+    </div><!-- /span9 -->
+    
+    <div class="span3">
+      <div class="sidebar">
+        <div class="sidebar-unit">
+          <% unless @article.contact.nil? %>
+          <h4 class="side-head">NEED MORE INFO?</h4>
+          <div class="sidebar-content">
+            <%= content_tag(:h4, link_to_unless(@article.contact.url.blank?, @article.contact.name, @article.contact.url)) %>
+            <%= raw @article.contact.address %>
+            <%= raw "Phone: #{@article.contact.number}" %>
+          </div>
+          <% end %>
+        </div>
+        <% if @article.keywords.count > 0 %>
+          <% unless @article.related.empty? %>
+            <div class="sidebar-unit">
+              <h4 class="side-head">RELATED TOPICS</h4>
+              <div class="sidebar-content">
+                <ul>
+                  <% @article.related.each do |art| %>
+                  <%= content_tag(:li, link_to(art.title, article_path(art.id)) ) %>
+                  <% end -%>
+                </ul>
+              </div>
+            </div>
+          <% end -%>
+        <% end -%>
+        <% unless @article.author_name.blank? %>
+          <div class="sidebar-unit">
+            <h4 class="side-head">AUTHORED BY</h4>
+            <div class="sidebar-content">
+              <ul>
+                <% if @article.author_link.blank? %>
+                  <%= content_tag(:li, @article.author_name ) %>
+                <% else %>
+                  <%= content_tag(:li, link_to(@article.author_name, @article.author_link) ) %>
+                <% end -%>
+                <% if @article.author_pic? %>
+                  <li><%= image_tag(@article.author_pic.url(:thumb) ) %></li>
+                <% end -%>
+              </ul>
+            </div>
+          </div>
+          <% end -%>
+
+      </div>
+    </div><!-- /span3 -->
+    
   </div>
 </div>
-
-<p id="notice"><%= notice %></p>
-
-
-<div class="article">
-<span class="icon"><img src="/assets/quick_answers_icon.png" /></span>
-  <h2 class="quickanswer">Quick Answers</h2><br />
-  <h1><%= @article.title %></h1>
-
-  <div class="content">
-
-
-  <% if !@article.service_url.nil? and @article.service_url != ''  %>
-  <div class="onlineservice">
-    <div class="servicebox"><a href="<%= @article.service_url%>"><img src="/assets/getting_started_btn.png" /></a></div>
-    <h3 class="service">Honolulu.gov lets you do this online! </h3>
-    <p>This will take you directly to the online service on the honolulu.gov website.</p>
-  </div>
-  <% end %>
-
-  
-  
-  
-  <%= raw @content_html %>
-
-  </div>
-  <% if !@article.contact.nil? %>
-  <div class="contact">
-    <h2>Need more information?</h2>
-    <h4><strong><a href="<%= raw @article.contact.url %>"><%= raw @article.contact.name %></a></strong><br />
-    <%= raw @article.contact.address %><br />
-    Phone: <%= raw @article.contact.number %><br />
-  </div>
-  <% end %>
-
-</div>
-
-<%= render :partial => 'shared/autocomplete' %>

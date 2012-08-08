@@ -4,12 +4,9 @@
   <title>Honolulu Answers</title>
   <meta name="viewport" content="width=device-width,initial-scale =1, user-scalable = no" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <link rel="apple-touch-icon" href="icons/regular_icon.png" />
-  <link rel="apple-touch-icon" sizes="114x114" href="icons/retina_icon.png" />
-  <link href='http://fonts.googleapis.com/css?family=PT+Sans+Caption' rel='stylesheet' type='text/css'>
   <%= include_gon %>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= stylesheet_link_tag    "mobile", :media => "all and (max-width: 600px)" %>
+  <%= stylesheet_link_tag    "application-all", :media => "all" %>
+  <%= stylesheet_link_tag    "application-mobile", :media => "all and (max-width: 600px)" %>
   <%= javascript_include_tag "application" %>
   
   <script type="text/javascript">
@@ -28,27 +25,70 @@
   </script>
 
 
-<% if current_page?('/') %>
-<!-- Show CfA ribbon -->
-<% end %>
-
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= @bodyclass %>">
+<div id="wrapper">
+  <div class="navbar-top">
+    <!-- <p class="notice alert alert-info"><%= notice %></p>
+    <p class="alert alert-error"><%= alert %></p> -->
+    <div class="container">
+      <div class="row">
+        <div class="logo span4">
+          <a href="/" class="hnl-logo">Honolulu Answers</a>
+          <span class="bubble"><img src="/assets/beta.png" class="beta"></span>
+        </div>
+        <ul class="nav-top span4">
+          <li class="">
+            <!-- %= link_to("Guides", "/articles/article-type/Guide") % -->
+            <a href="/assets/hnl_answers_wguide.jpg">Guides</a>
+          </li>
+          <li class="">
+            <%= link_to("Quick Answers", "/articles/article-type/Quick Answer") %>
+          </li>
+          <li class="">
+            <%= link_to("Web Services", "/articles/article-type/Web Service") %>
+          </li>
+        </ul>
+        <% if !current_page?('/')  %>
+        <div class="header-search span4">
+          <%= render :partial => 'shared/search_form' %>
+        </div>
+        <% end %>
+      </div><!-- /row -->
+    </div>
+  </div><!-- /navbar-top -->
+  <div class="container main clearfix"><!-- main content container -->
 
 
-
-
-<p class="notice alert alert-info"><%= notice %></p>
-<p class="alert alert-error"><%= alert %></p>
 
 <%= yield %>
 
 
 
-<div id="footer">
-  <h4 class="disclaimer">This is a beta test website, so some information may be inaccurate. Please visit the official <a target="_blank" href="http://honolulu.gov">honolulu.gov</a> for complete information.</a>.</h4>
-</div>
+  </div><!-- /container-fluid -->
+</div><!-- /wrapper -->
+<div class="footer">
+  <div class="container">
+    <ul class="footer-links">
+      <li><a href="http://codeforamerica.org/2012-partners/honolulu/">About</a></li>
+      <li><a href="mailto:honolulu@codeforamerica.org">Contact</a></li>
+      <li><a href="https://github.com/codeforamerica/honolulu_answers">Contribute</a></li>
+    </ul>
+  <div class="cfa-logos">
+    <a href="http://codeforamerica.org/"><img src="/assets/cfa_logo_footer.png" class="right"></a>
+    <span class="plus">&#43;</span>
+    <a href="http://honolulu.gov"><img src="/assets/hnl_gov.png" class="right"></a>
+  </div>
+</div><!-- /footer -->
+
+
+<div id="getsat-widget-784"></div>
+<script type="text/javascript" src="https://loader.engage.gsfn.us/loader.js"></script>
+<script type="text/javascript">
+if (typeof GSFN !== "undefined") { GSFN.loadWidget(784,{"containerId":"getsat-widget-784"}); }
+</script>
+
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-20825280-8']);
@@ -60,5 +100,6 @@
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script>
+
 </body>
 </html>

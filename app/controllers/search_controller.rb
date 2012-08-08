@@ -1,9 +1,9 @@
 class SearchController < ApplicationController
    include RailsNlp::BigHugeThesaurus
 
-  def index  
-    query =  params[:q] 
-    return redirect_to articles_path if (params[:q].nil? || params[:q].empty?) 
+  def index
+    query =  params[:q].strip 
+    return redirect_to root_path if (params[:q].nil? || params[:q].empty?) 
     @query = query
 
     # remove puntuation and plurals.
@@ -14,26 +14,28 @@ class SearchController < ApplicationController
 
     # Searchify can't handle requests longer than this (because of query expansion + Tanker inefficencies.  >10 can result in >8000 byte request strings)
     if query.split.size > 10
-      @results = []
       @query_corrected = query
       respond_to do |format|
-        format.json { render :json => @results }
+        format.json { render :json => [] }
         format.html 
       end and return
     end
-
-    # spell check the query
+    # spell check the query.  if no correction has taken place, this is nil.
     @query_corrected = Article.spell_check query
-    @is_corrected = @query_corrected !=  query
+    
+    if query.length > 0
+      # expand the query
+      query_final = Article.expand_query( query )
+      
+      # perform the search
+      @results = Article.search_tank( query_final, :conditions => { :is_published => true } )
 
-    # expand the query
-    query_final = Article.expand_query( query )
+      # Log the search results
+      puts "search-request: IP:#{request.env['REMOTE_ADDR']}, params[:query]:#{query}, QUERY:#{query_final}, FIRST_RESULT:#{@results.first.title unless @results.empty?}, RESULTS_N:#{@results.size}" 
 
-    # perform the search
-    @results = Article.search_tank( query_final, :conditions => { :is_published => true } )
-
-    # Log the search results
-    puts "search-request: IP:#{request.env['REMOTE_ADDR']}, params[:query]:#{query}, QUERY:#{query_final}, FIRST_RESULT:#{@results.first.title unless @results.empty?}, RESULTS_N:#{@results.size}" 
+    else
+      @results = []
+    end
 
     respond_to do |format|
       format.json { render :json => @results }

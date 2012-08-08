@@ -18,6 +18,3 @@
 //= require mustache
 //= require_tree .
 //
-if (typeof GSFN !== "undefined") {
-	GSFN.loadWidget(784, { "containerId":"getsat-widget-784" }); 
-}

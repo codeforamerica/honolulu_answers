@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
 
-  # caches_page :index
+  # caches_page :show # TODO: make the cache expire when an article is updated.  Currently can't get the cache to clear properly.
 
   def index
     @bodyclass = "results"
@@ -10,10 +10,9 @@ class ArticlesController < ApplicationController
     @categories = Rails.cache.fetch('category_by_access_count') do
       Category.all_by_access_count
     end
-
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @articles }
+      format.json { render json: @categories }
     end
   end
 
@@ -43,6 +42,17 @@ class ArticlesController < ApplicationController
     end    
   end
   
+
+  def article_type
+    @article_type = params[:content_type]
+    @articles = Article.find_by_content_type(@article_type)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @articles }
+    end
+  end
+  #TODO
   #Going to be created for missing articles - Joey
 
   # If you like you can put this in the show method: (Phil)
@@ -52,7 +62,7 @@ class ArticlesController < ApplicationController
           else
             render the missing article page
           end     
-=end      
+=end
   def missing
     if :id > 15
       render :layout => 'missing'

@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  attr_accessible :access_count, :name
+  attr_accessible :access_count, :name, :description
   has_many :articles
 
   before_validation :set_access_count_if_nil

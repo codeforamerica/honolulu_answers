@@ -16,9 +16,25 @@ class Article < ActiveRecord::Base
   has_many :wordcounts
   has_many :keywords, :through => :wordcounts
 
+  has_attached_file :author_pic, 
+                    :storage => :s3,
+                    :bucket => 'hnlanswers-production',
+                    :s3_credentials => {
+                      :access_key_id => ENV['S3_KEY'],
+                      :secret_access_key => ENV['S3_SECRET']
+                    },
+                    :path => "/:style/:id/:filename",
+                    :styles => { :thumb => "100x100" } 
+
+  validates_attachment_size :author_pic, :less_than => 5.megabytes  
+  validates_attachment_content_type :author_pic, :content_type => ['image/jpeg', 'image/png']                      
+
   validates_presence_of :access_count
 
-  after_save :update_tank_indexes # Comment this line out when running analysemodels to save time
+  after_save do
+    update_tank_indexes # Comment this line out when running analysemodels to save time
+    Rails.cache.clear
+  end
   after_destroy :delete_tank_indexes
   before_validation :set_access_count_if_nil
 
@@ -35,6 +51,10 @@ class Article < ActiveRecord::Base
   def self.search_titles( query )
     return Article.all if query == '' or query == ' '
     self.search_tank( '__type:Article', :conditions => {:title => query })
+  end
+
+  def self.find_by_content_type( content_type )
+    return Article.where(:content_type => content_type).order('category_id').order('access_count DESC')
   end
 
   def allContent()
@@ -57,10 +77,13 @@ class Article < ActiveRecord::Base
   end
 
   def self.spell_check string
-    @is_corrected = false
-    dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/blank", 'blank' )
-    keywords = Rails.cache.fetch('keyword_names') { Keyword.all(:select => 'name') }
-    keywords.each{ |kw| dict.add( kw.name ) }
+    is_corrected = false
+    dict = Rails.cache.fetch('dict') do
+      dictionary = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/blank", 'blank' )
+      Keyword.all(:select => 'name').each{ |kw| dictionary.add( kw.name ) }
+      dictionary
+    end
+
 
     string_corrected = []
     string.split.each do |term|
@@ -71,12 +94,14 @@ class Article < ActiveRecord::Base
         if suggestion.nil? # if no suggestion, stick with the existing term
           string_corrected << term
         else
-          @is_corrected = true
+          is_corrected = true
           string_corrected << suggestion
         end
       end
     end
-    return string_corrected.join ' '
+
+    # if the query has not been corrected, return nil.
+    return is_corrected ? string_corrected.join(' ') : nil
   end
 
   def self.expand_query( query )
@@ -105,6 +130,12 @@ class Article < ActiveRecord::Base
     query_final << " OR synonyms:(#{query.split.join(' OR ')})"
 
     return query_final
+  end
+
+  def related
+    Rails.cache.fetch("#{self.id}-related") {
+      (Article.search_tank(self.wordcounts.all(:order => 'count DESC').first(10).map(&:keyword).map(&:name).join(" OR ")) - [self]).first(4)
+    }
   end
 
 

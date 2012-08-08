@@ -9,6 +9,7 @@ var hnlAnswers = function (){
 
 
 $(function(){
+    /*
     $("form#search:not(.noanimation)").submit(function(e){       
         e.preventDefault();
         var query = $("#query").val().replace(/\"/g,"");
@@ -32,6 +33,17 @@ $(function(){
                 searchControl.startSearch(decodeURIComponent(query));
         }
     }
+*/
+
+    $(".suggestion").ready(function() {
+        //$(".suggestion a").text("djibouti");
+        var sugg = $(".suggestion a").text();
+        $.ajax("/search.json", {data:{q:sugg}, success:function(data){
+            if(data.length==0){
+                $(".suggestion").hide();
+            }
+        }});
+    });
 
     if($(window).width()<=600)
         searchControl.clearTransforms();
@@ -48,6 +60,7 @@ $(function(){
     });
 });
 
+/*
 
 var searchController = function(){
     var self = this;
@@ -89,3 +102,4 @@ var searchController = function(){
 };
 
 window.searchControl = new searchController();
+*/
