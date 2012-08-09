@@ -80,8 +80,22 @@ class Article < ActiveRecord::Base
     is_corrected = false
     # dict = Rails.cache.fetch('dict') do
       dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/en_US", 'en_US' )
-      Keyword.all(:select => 'name').each{ |kw| dict.add( kw.name ) }
-    # end
+
+      # Add words found in content on our site to the dictionary
+      additional_words = Rails.cache.fetch('additional_words') do
+        custom_words = []
+        Keyword.all(:select => ['name', 'synonyms']).each do |kw|
+          next if kw.name.blank?
+          custom_words << kw.name unless dict.spell( kw.name )
+          next if kw.synonyms.blank?
+          kw.synonyms.each do |syn|
+            syn.split.each do |word|
+              custom_words << word unless dict.spell( word )
+            end
+          end
+        end
+        custom_words
+      end
 
 
     string_corrected = []
