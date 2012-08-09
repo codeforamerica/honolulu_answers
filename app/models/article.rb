@@ -120,13 +120,13 @@ class Article < ActiveRecord::Base
     end
 
     ## Construct the OR query
-    query_final =      "title:(#{query.split.join(' OR ')})^20"
+    query_final =      "title:(#{query.split.join(' OR ')})^10"
     query_final << " OR content:(#{query.split.join(' OR ')})^5"
-    query_final << " OR tags:(#{query.split.join(' OR ')})^20"
+    query_final << " OR tags:(#{query.split.join(' OR ')})^8"
     query_final << " OR stems:(#{stems.flatten.join(' OR ')})^3"
-    query_final << " OR metaphones:(#{metaphones.flatten.compact.join(' OR ')})"
+    query_final << " OR metaphones:(#{metaphones.flatten.compact.join(' OR ')})^2"
     # query_final << " OR #{'synonyms:"'  + synonyms.flatten.first(3).join( '" OR synonyms:"') + '"'}"
-    query_final << " OR synonyms:(#{query.split.join(' OR ')})^10"
+    query_final << " OR synonyms:(#{query.split.join(' OR ')})"
 
     return query_final
   end
@@ -137,7 +137,9 @@ class Article < ActiveRecord::Base
     }
   end
 
-  index = Rails.env == 'production' ? 'hnlanswers-production' : 'hnlanswers-development'
+
+  index = 'hnlanswers-development'
+  index = 'hnlanswers-production' if Rails.env === 'production'
   
   tankit index do
     indexes :title
@@ -174,12 +176,6 @@ class Article < ActiveRecord::Base
   end
 
   def self.analyse_all
-    Article.all.each { |a| a.analyse }
-  end
-
-  def self.analyse_all!
-    Keyword.destroy_all
-    Wordcount.destroy_all
     Article.all.each { |a| a.analyse }
   end
 
@@ -267,7 +263,7 @@ class Article < ActiveRecord::Base
       puts e.backtrace 
     end
   end
-  # handle_asynchronously :qm_after_create
+  handle_asynchronously :qm_after_create
 
   # 1) remove all wordcount rows for this article
   # 2) treat the article as a new article
@@ -283,7 +279,7 @@ class Article < ActiveRecord::Base
       puts e.backtrace 
     end
   end
-  # handle_asynchronously :qm_after_update
+  handle_asynchronously :qm_after_update
 
   # 1) remove all wordcount rows for this article
   # 2) remove keywords where keyword.id isn't present in column Wordcount#keyword_id
@@ -297,7 +293,7 @@ class Article < ActiveRecord::Base
       puts e.backtrace 
     end
   end
-  # handle_asynchronously :qm_after_destroy
+  handle_asynchronously :qm_after_destroy
 
 
 

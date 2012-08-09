@@ -1,6 +1,4 @@
 Honoluluanswers::Application.configure do
-  $stdout.sync = true
-  STDOUT.sync = true
   # Settings specified here will take precedence over those in config/application.rb
 
 
