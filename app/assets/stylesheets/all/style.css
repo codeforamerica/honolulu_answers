@@ -683,15 +683,33 @@ td {
   margin-bottom: 20px;
 }
 
+.vtabs-tab-column {
+  width: 200px;
+  float: left;
+}
+.vtabs-content-column{
+  width: 590px;
+}
 
+.vtabs{
+  display:block;
+}
+.vtabs-tab-column li.closed a{
+  color: grey;
+}
 
+.vtabs-tab-column li.open a{
+  color: #fff;
+}
 
+.vtabs-tab-column li.open{
+  background-color: #f38200;
+}
 
-
-
-
-
-
+h2.vtab-content-header{
+  border-bottom: 5px solid gray;
+  font-size: 25px;
+}
 
 
 

@@ -1,0 +1,2 @@
+class QuickAnswer < Article
+end

@@ -1,0 +1,135 @@
+<div class="page-container article">
+  <div class="breadcrumbs">
+    <%= link_to( "Home", root_url) %>
+    >
+    <%= @guide.title %>
+  </div>
+  <div class="row">
+    <div class="span9">
+      <div class="main-content">
+        <!-- h3 class="content-type">< %= #@guide.content_type %></h3 -->
+        <div class="header">
+          <%= content_tag(:h1, @guide.title ) %>
+        </div>
+        <div class="content-text">
+          
+          <%= raw @content_html %>
+
+
+        </div>
+<script type="text/javascript">
+$(document).ready(function(){
+
+  $("#vtabs").jVertTabs({
+    equalHeights: true
+  });
+  // $("#vtabs2").jVertTabs({
+  //   selected: 1
+  // });
+  // $("#vtabs3").jVertTabs({
+  //   select: function(index){
+  //     alert("You clicked tab " + index);
+  //   }
+  // });
+  // $("#vtabs4").jVertTabs();
+  // $("#vtabs5").jVertTabs({
+  //   equalHeights: true
+  // });
+  // $("#vtabs6").jVertTabs({
+  //   select: function(index){
+  //     alert("tab " + index + " opened.");
+  //   }
+  // });
+  // $("#vtabs6").jVertTabs('selected',3); // select 4th tab, 0-based.
+  // $("#vtabs7").jVertTabs({
+  //   selected: 1
+  // });
+  // $("#vtabs8").jVertTabs();
+  // $("#vtabs8").jVertTabs('selected',2); // select 3rd tab, 0-based.
+    
+  // add click events for open tab buttons
+  // $("input[id^=openTab]").each(function(index){
+  //   $(this).click(function(){
+  //     openTab("#vtabs6",index);
+  //     return false;
+  //   });
+  // }); 
+  function openTab(tabId,index){
+    $(tabId).jVertTabs('selected',index);
+  }
+});
+</script>
+
+<!-- begin vertical tabs demo -->
+<div id="vtabs">
+  <div>
+    <ul>
+      <% @guide.guide_steps.each do |step| %>
+        <li><a href="#vtabs-content"><%= "#{step.step.to_s}. #{step.title}" %></a></li>
+      <% end %>
+    </ul>
+  </div>
+  <div>
+    <% @guide.guide_steps.each do |step| %>
+      <div id="#vtabs-content">
+        <h2 class="vtab-content-header"><%= step.title %></h2>
+        <%= step.content %>
+      </div>
+    <% end %> 
+  </div>
+</div>
+  <!-- -->
+
+
+      </div>
+    </div><!-- /span9 -->
+    
+    <div class="span3">
+      <div class="sidebar">
+        <div class="sidebar-unit">
+          <% unless @guide.contact.nil? %>
+          <h4 class="side-head">NEED MORE INFO?</h4>
+          <div class="sidebar-content">
+            <%= content_tag(:h4, link_to_unless(@guide.contact.url.blank?, @guide.contact.name, @guide.contact.url)) %>
+            <%= raw @guide.contact.address %>
+            <%= raw "Phone: #{@guide.contact.number}" %>
+          </div>
+          <% end %>
+        </div>
+        <% if @guide.keywords.count > 0 %>
+          <% unless @guide.related.empty? %>
+            <div class="sidebar-unit">
+              <h4 class="side-head">RELATED TOPICS</h4>
+              <div class="sidebar-content">
+                <ul>
+                  <% @guide.related.each do |art| %>
+                  <%= content_tag(:li, link_to(art.title, article_path(art.id)) ) %>
+                  <% end -%>
+                </ul>
+              </div>
+            </div>
+          <% end -%>
+        <% end -%>
+        <% unless @guide.author_name.blank? %>
+          <div class="sidebar-unit">
+            <h4 class="side-head">AUTHORED BY</h4>
+            <div class="sidebar-content">
+              <ul>
+                <% if @guide.author_link.blank? %>
+                  <%= content_tag(:li, @guide.author_name ) %>
+                <% else %>
+                  <%= content_tag(:li, link_to(@guide.author_name, @guide.author_link) ) %>
+                <% end -%>
+                <% if @guide.author_pic? %>
+                  <li><%= image_tag(@guide.author_pic.url(:thumb) ) %></li>
+                <% end -%>
+              </ul>
+            </div>
+          </div>
+          <% end -%>
+
+      </div>
+    </div><!-- /span3 -->
+    
+  </div>
+</div>

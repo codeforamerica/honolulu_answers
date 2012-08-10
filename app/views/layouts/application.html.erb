@@ -41,13 +41,13 @@
         <ul class="nav-top span4">
           <li class="">
             <!-- %= link_to("Guides", "/articles/article-type/Guide") % -->
-            <a href="/assets/hnl_answers_wguide.jpg">Guides</a>
+            <%= link_to("Guides", "/articles/article-type/Guide") %>
           </li>
           <li class="">
-            <%= link_to("Quick Answers", "/articles/article-type/Quick Answer") %>
+            <%= link_to("Quick Answers", "/articles/article-type/QuickAnswer") %>
           </li>
           <li class="">
-            <%= link_to("Web Services", "/articles/article-type/Web Service") %>
+            <%= link_to("Web Services", "/articles/article-type/WebService") %>
           </li>
         </ul>
         <% if !current_page?('/')  %>
