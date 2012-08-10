@@ -684,11 +684,12 @@ td {
 }
 
 .vtabs-tab-column {
-  width: 200px;
+  width: 160px;
   float: left;
 }
 .vtabs-content-column{
-  width: 590px;
+  width: 620px;
+  padding-left: 10px;
 }
 
 .vtabs{
@@ -702,15 +703,19 @@ td {
   color: #fff;
 }
 
+.vtabs-tab-column li.open a:after{
+  content: "\2794";
+  padding-left: 5px;
+}
 .vtabs-tab-column li.open{
   background-color: #f38200;
+  height: 27px;
 }
 
 h2.vtab-content-header{
-  border-bottom: 5px solid gray;
+  border-bottom: 2px solid gray;
   font-size: 25px;
 }
-
 
 
 
