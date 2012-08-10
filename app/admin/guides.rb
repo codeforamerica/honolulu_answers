@@ -48,4 +48,22 @@ ActiveAdmin.register Guide do
     end
     f.buttons
   end
+
+  show do |guide|
+    attributes_table do
+      row :title
+      row :content
+      row :preview
+      row :category
+      row :contact
+      row :created_at
+      row :updated_at
+      row :is_published
+      table_for guide.guide_steps do
+        column "Guide Steps" do |step|
+          link_to step.step.to_s << ". " << step.title, admin_guide_step_path(step)
+        end
+      end
+    end
+  end
 end
