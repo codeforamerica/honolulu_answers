@@ -683,16 +683,39 @@ td {
   margin-bottom: 20px;
 }
 
+.vtabs-tab-column {
+  width: 160px;
+  float: left;
+}
+.vtabs-content-column{
+  width: 620px;
+  padding-left: 10px;
+}
 
+.vtabs{
+  display:block;
+}
+.vtabs-tab-column li.closed a{
+  color: grey;
+}
 
+.vtabs-tab-column li.open a{
+  color: #fff;
+}
 
+.vtabs-tab-column li.open a:after{
+  content: "\2794";
+  padding-left: 5px;
+}
+.vtabs-tab-column li.open{
+  background-color: #f38200;
+  height: 27px;
+}
 
-
-
-
-
-
-
+h2.vtab-content-header{
+  border-bottom: 2px solid gray;
+  font-size: 25px;
+}
 
 
 

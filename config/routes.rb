@@ -1,4 +1,6 @@
 Honoluluanswers::Application.routes.draw do
+  get "quick_answer/show"
+
   # devise_for :admin_users, ActiveAdmin::Devise.config
 
   get "category/index"
@@ -14,6 +16,12 @@ Honoluluanswers::Application.routes.draw do
   resources :articles
 
   resources :categories
+
+  resources :guides
+
+  resources :web_services
+
+  resources :quick_answers
   #get "home/index"
   root :to => "home#index"
 

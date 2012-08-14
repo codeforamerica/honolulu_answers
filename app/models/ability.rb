@@ -8,6 +8,10 @@ class Ability
     if user.is_moderator || user.is_editor
       can :manage, Article
       can :manage, Contact
+      can :manage, Guide
+      can :manage, GuideStep
+      # can :manage, QuickAnswer
+      # can :manage, WebService
     end
 
     # A manager can do the following:

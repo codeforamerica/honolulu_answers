@@ -3,6 +3,7 @@ include ActionView::Helpers::SanitizeHelper
 class Article < ActiveRecord::Base  
   include Tanker
   include RailsNlp
+
   require_dependency 'keyword'
 
   extend FriendlyId
@@ -31,17 +32,26 @@ class Article < ActiveRecord::Base
 
   validates_presence_of :access_count
 
+  attr_accessible :title, :content, :preview, :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic_file_nameauthor_pic_content_type, :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link, :type
+
   after_save do
-    update_tank_indexes # Comment this line out when running analysemodels to save time
+    :update_tank_indexes
     Rails.cache.clear
   end
-  after_destroy :delete_tank_indexes
-  before_validation :set_access_count_if_nil
+
 
   # query-magic callbacks
   after_create  :qm_after_create
   after_update  :qm_after_update
   after_destroy :qm_after_destroy
+
+
+  after_destroy do
+   :delete_tank_indexes
+  end
+  before_validation do
+    :set_access_count_if_nil
+  end
 
   def self.search( query )
     return Article.all if query == '' or query == ' '
@@ -53,8 +63,8 @@ class Article < ActiveRecord::Base
     self.search_tank( '__type:Article', :conditions => {:title => query })
   end
 
-  def self.find_by_content_type( content_type )
-    return Article.where(:content_type => content_type).order('category_id').order('access_count DESC')
+  def self.find_by_type( content_type )
+    return Article.where(:type => content_type).order('category_id').order('access_count DESC')
   end
 
   def allContent()
@@ -141,7 +151,7 @@ class Article < ActiveRecord::Base
   index = 'hnlanswers-development'
   index = 'hnlanswers-production' if Rails.env === 'production'
   
-  tankit index do
+  tankit 'my_index', :as => 'Article' do
     indexes :title
     indexes :content
     indexes :category, :category => true
@@ -295,9 +305,9 @@ class Article < ActiveRecord::Base
   end
   handle_asynchronously :qm_after_destroy
 
-
-
 end
+
+
 
 # == Schema Information
 #
