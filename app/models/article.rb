@@ -1,6 +1,7 @@
 include ActionView::Helpers::SanitizeHelper
 
 class Article < ActiveRecord::Base  
+  include TankerArticleDefaults
   include Tanker
   include RailsNlp
 
@@ -34,8 +35,8 @@ class Article < ActiveRecord::Base
 
   attr_accessible :title, :content, :preview, :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic_file_nameauthor_pic_content_type, :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link, :type
 
-  after_save do
-    :update_tank_indexes
+  after_save do 
+    update_tank_indexes
     Rails.cache.clear
   end
 
@@ -145,32 +146,6 @@ class Article < ActiveRecord::Base
     Rails.cache.fetch("#{self.id}-related") {
       (Article.search_tank(self.wordcounts.all(:order => 'count DESC').first(10).map(&:keyword).map(&:name).join(" OR ")) - [self]).first(4)
     }
-  end
-
-
-  index = 'hnlanswers-development'
-  index = 'hnlanswers-production' if Rails.env === 'production'
-  
-  tankit 'my_index', :as => 'Article' do
-    indexes :title
-    indexes :content
-    indexes :category, :category => true
-    indexes :tags
-    indexes :preview
-
-    # NLP
-    indexes :metaphones do
-      keywords.map { |kw| kw.metaphone }
-    end
-    indexes :synonyms do
-      keywords.map { |kw| kw.synonyms }
-    end
-    indexes :keywords do
-      keywords.map { |kw| kw.name }
-    end
-    indexes :stems do
-      keywords.map { |kw| kw.stem }
-    end
   end
 
   def indexable?
