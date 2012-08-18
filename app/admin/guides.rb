@@ -17,10 +17,9 @@ ActiveAdmin.register Guide do
       link_to guide.title, [:admin, guide]
     end
     column :category
-    column :content_type
+    column :contact
     column "Created", :created_at
     column "Author name", :author_name
-    column "Author picture", :author_pic
     column "Author URL", :author_link
     # column :tags
     column :slug
@@ -56,6 +55,7 @@ ActiveAdmin.register Guide do
       row :preview
       row :category
       row :contact
+      row :slug
       row :created_at
       row :updated_at
       row :is_published

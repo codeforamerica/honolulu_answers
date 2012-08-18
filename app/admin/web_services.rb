@@ -17,10 +17,9 @@ ActiveAdmin.register WebService do
       link_to article.title, [:admin, article]
     end
     column :category
-    column :content_type
+    column :contact
     column "Created", :created_at
     column "Author name", :author_name
-    column "Author picture", :author_pic
     column "Author URL", :author_link
     # column :tags
     column :slug
