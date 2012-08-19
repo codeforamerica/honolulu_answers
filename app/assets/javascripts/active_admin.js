@@ -6,12 +6,3 @@ $(document).ready(function() {
           editor_selector : "editor"
   });
 });
-
-function load_editors(){
-  $('.editor').tinyMC({
-    theme : "advanced",
-            mode : "textareas",
-            plugins : "fullpage",
-            theme_advanced_buttons3_add : "fullpage"
-  });
-}

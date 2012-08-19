@@ -1,7 +1,11 @@
 ActiveAdmin.register GuideStep do
-	controller.authorize_resource  
+  controller.authorize_resource
 
-	# View 
+  # Add to :parent Dropdown menu
+  menu :parent => "Articles"
+  # menu :priority => 4
+
+  # View 
   index do
     column :id
     column "Title", :title do |guide_step|
@@ -13,7 +17,7 @@ ActiveAdmin.register GuideStep do
     default_actions # Add show, edit, delete column
   end
 
-	show do |step|
+  show do |step|
       attributes_table do
         row :title
         row :content

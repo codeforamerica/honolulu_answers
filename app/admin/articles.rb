@@ -4,6 +4,10 @@ ActiveAdmin.register Article do
   # The authorization is done using the AdminAbility class
   controller.authorize_resource
   
+  # Add to :parent Dropdown menu
+  # menu :parent => "Articles"
+  # menu :priority => 1
+  
   # Filterable attributes
   filter :title
   filter :tags
@@ -22,10 +26,10 @@ ActiveAdmin.register Article do
     column :type
     column "Created", :created_at
     column "Author name", :author_name
-    column "Author picture", :author_pic
-    column "Author URL", :author_link
+    # column "Author picture", :author_pic
+    # column "Author URL", :author_link
     # column :tags
-    column :slug
+    # column :slug
     column "Published", :is_published
     default_actions # Add show, edit, delete column
   end
