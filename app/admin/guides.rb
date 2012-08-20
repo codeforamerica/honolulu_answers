@@ -6,6 +6,9 @@ ActiveAdmin.register Guide do
   # Add to :parent Dropdown menu
   menu :parent => "Articles"
   # menu :priority => 3
+  # Initialize tinymce
+  # tinymce_assets
+  # tinymce
   
   # Filterable attributes
   filter :title

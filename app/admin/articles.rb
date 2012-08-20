@@ -7,6 +7,9 @@ ActiveAdmin.register Article do
   # Add to :parent Dropdown menu
   # menu :parent => "Articles"
   # menu :priority => 1
+  # Initialize tinymce
+  # tinymce_assets
+  # tinymce
   
   # Filterable attributes
   filter :title
@@ -51,7 +54,6 @@ ActiveAdmin.register Article do
       f.input :author_link
       f.input :author_pic
       f.input :author_name
-
     end
     f.buttons
   end

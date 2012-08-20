@@ -19,7 +19,7 @@ gem 'rails-erd'                           # Create Entity Relationship Diagrams
 gem 'progressbar'                         # Display progress bars in terminal output
 gem 'facets', :require => false           # Some extra methods for ruby
 gem 'seed_dump'                           # Adds a rake task which constructs a db/seeds.rb file based on the current database state.  Super useful!
-gem 'jquery-ui-rails'                     # Package jQuery for the Rails 3.1+ asset pipeline 
+gem 'jquery-ui-rails'                     # Package jQuery for the Rails 3.1+ asset pipeline
 
 ## Performance and optimization
 gem 'delayed_job_active_record'           # Lets you queue tasks as background jobs
@@ -29,6 +29,7 @@ gem 'dalli'                               # memcache gem for Rails.cache
 gem 'activeadmin'                         # Back-end Content Management System
 gem 'devise', '~> 2.0'                    # User authentication 
 gem 'cancan'                              # User permissions
+gem 'tinymce-rails'                       # WYSIWYG editor for edit form fields
 
 ## Search and NLP
 gem 'tanker'                              # library for interacting with Searchify
