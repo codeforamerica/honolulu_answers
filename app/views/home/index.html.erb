@@ -28,8 +28,8 @@
           <% category = category_by_name("Driver License") %>
           <span class="left"><%= link_to( category.name, category_path(category.id) ) %></span>
           <span class="right">
-            <%= link_to("Renew license", article_path(Article.find_by_title("How do I renew my driver license?")))%> - 
-            <%= link_to("Find a Satellite City Hall", article_path(Article.find_by_title("Where do I go to apply for a driver license?")) ) %> -
+            <%= link_to("Renew license", article_path(Article.find("how-do-i-renew-my-driver-license")))%> - 
+            <%= link_to("Find a Satellite City Hall", article_path(Article.find("where-do-i-go-to-apply-for-a-driver-license")) ) %> -
             Schedule a road test
           </span>
         </div>
@@ -37,17 +37,17 @@
           <% category = category_by_name("Motor Vehicle")  %>
           <span class="left"><%= link_to( category.name, category_path(category.id) ) %></span>
           <span class="right">
-            <%= link_to("Register car", article_path(Article.find_by_title("How do I register a new motor vehicle?")))%> -
-            <%= link_to("Transfer ownership", article_path(Article.find_by_title("How do I transfer ownership of my vehicle or trailer?")))%> -
-            <%= link_to("Order special plates", article_path(Article.find_by_title("How do I get a personalized license plate?")))%> 
+            <%= link_to("Register car", article_path(Article.find("how-do-i-register-a-new-motor-vehicle")))%> -
+            <%= link_to("Transfer ownership", article_path(Article.find("how-do-i-transfer-ownership-of-my-vehicle-or-trailer")))%> -
+            <%= link_to("Order special plates", article_path(Article.find("how-do-i-get-a-personalized-license-plate")))%> 
           </span>
         </div>
         <div class="category last">
           <% category = category_by_name("City Jobs") %>
           <span class="left"><%= link_to( category.name, category_path(category.id) ) %></span>
           <span class="right">
-            <%= link_to("View openings", article_path(Article.find_by_title("How do I get a job at the City?")))%> - 
-            <%= link_to("See employment benefits", article_path(Article.find_by_title("What employment benefits are offered by the City?")))%> 
+            <%= link_to("View openings", article_path(Article.find("how-do-i-get-a-job-at-the-city")))%> - 
+            <%= link_to("See employment benefits", article_path(Article.find("what-employment-benefits-are-offered-by-the-city")))%> 
           </span>
         </div>
       </div>
