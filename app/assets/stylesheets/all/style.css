@@ -11,6 +11,13 @@ html, body, div, span, ul, ol, li, form, fieldset, legend, label, h1, h2, h3, h4
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
 ol, ul, li { list-style: none; }
 
+/* Removing outline border on active links (WCAG safe - active state links handled explicitly below) */
+a:focus, a:active { 
+  outline: 0;
+  background-color: rgb(255,222,77);
+  color: black;
+}
+
 
 
 /* Sticky Footer */
@@ -126,7 +133,7 @@ a {
   border-bottom: 1px solid #ffde4d;
 }
 
-a:hover {
+a:hover{
   border-bottom: 1px solid #ffde4d;
   text-decoration: none;
   color: rgb(0,136,204);
@@ -171,23 +178,27 @@ ul.nav-top {
   display: inline-block;
   padding-top: 35px;
 }
-.nav-top > li {
+.nav-top li {
   display: block;
   float: left;
 }
-.nav-top > li > a {
+.nav-top li a {
   color: #FFFFFF;
   font-weight: bold;
   float: none;
   font-size: 14px;
   margin: 9px 10px 2px;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   border-bottom: none;
 }
 
 .nav-top li a:hover {
   border-bottom: 1px solid #ffde4d;
 }
+
+.nav-top li a:active, .nav-top li a:focus{
+  color: black;
+}
+
 div.header-search {
   padding-top: 35px;
 }
@@ -379,6 +390,8 @@ input#query {
 }
 input:focus#query {
   outline: none; 
+  box-shadow: 0px 0px 7px #303030;
+  border: 1px solid #303030;
 }
 
 input:hover#query { }
@@ -419,7 +432,7 @@ input:hover#query { }
   -moz-box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.2); 
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.2);
 }
-.btn-search:hover {
+.btn-search:hover, .btn-search:focus {
    
    background-image: -webkit-linear-gradient(top,   rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)); 
    background-image: -moz-linear-gradient(top,      rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
@@ -464,7 +477,6 @@ ul.footer-links > li > a {
   float: none;
   font-size: 14px;
   margin: 9px 10px 2px;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   border-bottom: none;
 }
 
@@ -481,6 +493,11 @@ ul.footer-links li a:hover {
   text-decoration: none;
   border: none;
 }
+
+.cfa-logos a:focus {
+  outline: 1;
+}
+
 .cfa-logos img {
   height: 50px;
   margin: 0 10px;
@@ -683,12 +700,18 @@ td {
   margin-bottom: 20px;
 }
 
+a:focus, a:active { 
+  color: black;
+}
 
+/* Style external links */
+a[href ^= "http"]:after {
+     content: " " url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII=);    
+}
 
-
-
-
-
+div.footer a[href ^= "http"]:after {
+     content: none;
+}
 
 
 
