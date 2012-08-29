@@ -4,6 +4,13 @@ ActiveAdmin.register Article do
   # The authorization is done using the AdminAbility class
   controller.authorize_resource
   
+  # Add to :parent Dropdown menu
+  # menu :parent => "Articles"
+  # menu :priority => 1
+  # Initialize tinymce
+  # tinymce_assets
+  # tinymce
+  
   # Filterable attributes
   filter :title
   filter :tags
@@ -22,10 +29,10 @@ ActiveAdmin.register Article do
     column :type
     column "Created", :created_at
     column "Author name", :author_name
-    column "Author picture", :author_pic
-    column "Author URL", :author_link
+    # column "Author picture", :author_pic
+    # column "Author URL", :author_link
     # column :tags
-    column :slug
+    # column :slug
     column "Published", :is_published
     default_actions # Add show, edit, delete column
   end
@@ -36,7 +43,7 @@ ActiveAdmin.register Article do
         f.input :is_published, :label => "Publish?"
       end     
       f.input :title
-      f.input :content# , :input_html => {:class => 'editor'}
+      f.input :content, :input_html => {:class => 'editor'}
       f.input :preview
       f.input :category
       f.input :content_type,  :as => :select, :collection => ["Quick Answer", "Web Service", "Guide"]
@@ -47,7 +54,6 @@ ActiveAdmin.register Article do
       f.input :author_link
       f.input :author_pic
       f.input :author_name
-
     end
     f.buttons
   end

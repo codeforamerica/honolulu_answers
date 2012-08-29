@@ -3,6 +3,10 @@ ActiveAdmin.register QuickAnswer do
   # The authorization is done using the AdminAbility class
   controller.authorize_resource
   
+  # Add to :parent Dropdown menu
+  menu :parent => "Articles"
+  # menu :priority => 2
+  
   # Filterable attributes
   filter :title
   filter :tags
@@ -17,10 +21,9 @@ ActiveAdmin.register QuickAnswer do
       link_to article.title, [:admin, article]
     end
     column :category
-    column :content_type
+    column :contact
     column "Created", :created_at
     column "Author name", :author_name
-    column "Author picture", :author_pic
     column "Author URL", :author_link
     # column :tags
     column :slug
@@ -34,7 +37,7 @@ ActiveAdmin.register QuickAnswer do
         f.input :is_published, :label => "Publish?"
       end     
       f.input :title
-      f.input :content# , :input_html => {:class => 'editor'}
+      f.input :content, :input_html => {:class => 'editor'}
       f.input :preview
       f.input :category
       #f.input :content_type,  :as => :select, :collection => ["Quick Answer", "Web Service", "Guide"]

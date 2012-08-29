@@ -138,8 +138,7 @@ ActiveAdmin.setup do |config|
   #   config.register_javascript 'my_javascript.js'
   
   # Load TinyMCE Editor
-  config.register_javascript 'tiny_mce/tiny_mce.js'
-  
+  config.register_javascript '/assets/tinymce.js'
   
 end
 ActiveAdmin::ResourceController.class_eval do

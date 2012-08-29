@@ -19,7 +19,11 @@
                 <% end %>
                   <% category = article.category %>
                   <li class="category-listing">
+                  <% unless article.category %>
+                    <%= content_tag(:h1, "Miscellaneous") %>
+                  <% else %>
                   <%= content_tag(:h1, link_to(article.category.name,article.category)) %>
+                  <% end %>
                    <ul class="category-articles">
               <% end %>      
                     

@@ -2,14 +2,14 @@
   <div class="breadcrumbs">
     <%= link_to( "Home", root_url) %>
     >
-    <%= @guide.title %>
+    <%= @article.title %>
   </div>
   <div class="row">
     <div class="span9">
       <div class="main-content">
-        <!-- h3 class="content-type">< %= #@guide.content_type %></h3 -->
+        <!-- h3 class="content-type">< %= #@article.content_type %></h3 -->
         <div class="header">
-          <%= content_tag(:h1, @guide.title ) %>
+          <%= content_tag(:h1, @article.title ) %>
         </div>
         <div class="content-text">
           
@@ -64,13 +64,13 @@ $(document).ready(function(){
 <div id="vtabs">
   <div>
     <ul>
-      <% @guide.guide_steps.each do |step| %>
+      <% @article.guide_steps.each do |step| %>
         <li><a href="#vtabs-content"><%= "#{step.step.to_s}. #{step.title}" %></a></li>
       <% end %>
     </ul>
   </div>
   <div>
-    <% @guide.guide_steps.each do |step| %>
+    <% @article.guide_steps.each do |step| %>
       <div id="#vtabs-content">
         <h2 class="vtab-content-header"><%= step.title %></h2>
         <%= step.content %>
@@ -85,50 +85,7 @@ $(document).ready(function(){
     </div><!-- /span9 -->
     
     <div class="span3">
-      <div class="sidebar">
-        <div class="sidebar-unit">
-          <% unless @guide.contact.nil? %>
-          <h4 class="side-head">NEED MORE INFO?</h4>
-          <div class="sidebar-content">
-            <%= content_tag(:h4, link_to_unless(@guide.contact.url.blank?, @guide.contact.name, @guide.contact.url)) %>
-            <%= raw @guide.contact.address %>
-            <%= raw "Phone: #{@guide.contact.number}" %>
-          </div>
-          <% end %>
-        </div>
-        <% if @guide.keywords.count > 0 %>
-          <% unless @guide.related.empty? %>
-            <div class="sidebar-unit">
-              <h4 class="side-head">RELATED TOPICS</h4>
-              <div class="sidebar-content">
-                <ul>
-                  <% @guide.related.each do |art| %>
-                  <%= content_tag(:li, link_to(art.title, article_path(art.id)) ) %>
-                  <% end -%>
-                </ul>
-              </div>
-            </div>
-          <% end -%>
-        <% end -%>
-        <% unless @guide.author_name.blank? %>
-          <div class="sidebar-unit">
-            <h4 class="side-head">AUTHORED BY</h4>
-            <div class="sidebar-content">
-              <ul>
-                <% if @guide.author_link.blank? %>
-                  <%= content_tag(:li, @guide.author_name ) %>
-                <% else %>
-                  <%= content_tag(:li, link_to(@guide.author_name, @guide.author_link) ) %>
-                <% end -%>
-                <% if @guide.author_pic? %>
-                  <li><%= image_tag(@guide.author_pic.url(:thumb) ) %></li>
-                <% end -%>
-              </ul>
-            </div>
-          </div>
-          <% end -%>
-
-      </div>
+      <%= render :partial => 'shared/articles_sidebar' %>
     </div><!-- /span3 -->
     
   </div>
