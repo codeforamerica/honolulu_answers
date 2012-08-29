@@ -90,8 +90,22 @@ class Article < ActiveRecord::Base
     is_corrected = false
     # dict = Rails.cache.fetch('dict') do
       dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/en_US", 'en_US' )
-      Keyword.all(:select => 'name').each{ |kw| dict.add( kw.name ) }
-    # end
+
+      # Add words found in content on our site to the dictionary
+      additional_words = Rails.cache.fetch('additional_words') do
+        custom_words = []
+        Keyword.all(:select => ['name', 'synonyms']).each do |kw|
+          next if kw.name.blank?
+          custom_words << kw.name unless dict.spell( kw.name )
+          next if kw.synonyms.blank?
+          kw.synonyms.each do |syn|
+            syn.split.each do |word|
+              custom_words << word unless dict.spell( word )
+            end
+          end
+        end
+        custom_words
+      end
 
 
     string_corrected = []
@@ -313,20 +327,26 @@ end
 #
 # Table name: articles
 #
-#  id           :integer         not null, primary key
-#  updated      :datetime
-#  title        :string(255)
-#  content      :text
-#  created_at   :datetime        not null
-#  updated_at   :datetime        not null
-#  content_type :integer
-#  preview      :text
-#  contact_id   :integer
-#  tags         :text
-#  service_url  :string(255)
-#  is_published :boolean         default(FALSE)
-#  slug         :string(255)
-#  category_id  :integer
-#  access_count :integer
+#  id                      :integer         not null, primary key
+#  updated                 :datetime
+#  title                   :string(255)
+#  content                 :text
+#  created_at              :datetime        not null
+#  updated_at              :datetime        not null
+#  content_type            :string(255)
+#  preview                 :text
+#  contact_id              :integer
+#  tags                    :text
+#  service_url             :string(255)
+#  is_published            :boolean         default(FALSE)
+#  slug                    :string(255)
+#  category_id             :integer
+#  access_count            :integer         default(0)
+#  author_pic_file_name    :string(255)
+#  author_pic_content_type :string(255)
+#  author_pic_file_size    :integer
+#  author_pic_updated_at   :datetime
+#  author_name             :string(255)
+#  author_link             :string(255)
 #
 

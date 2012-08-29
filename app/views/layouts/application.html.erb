@@ -36,18 +36,18 @@
       <div class="row">
         <div class="logo span4">
           <a href="/" class="hnl-logo">Honolulu Answers</a>
-          <span class="bubble"><img src="/assets/beta.png" class="beta"></span>
+          <span class="bubble"><img src="/assets/beta.png" class="beta" alt="beta"></span>
         </div>
         <ul class="nav-top span4">
           <li class="">
-            <!-- %= link_to("Guides", "/articles/article-type/Guide") % -->
-            <%= link_to("Guides", "/articles/article-type/Guide") %>
+            <!-- %= link_to("Guides", "/articles/article-type/guide") % -->
+            <a href="/assets/hnl_answers_wguide.jpg">Guides</a>
           </li>
           <li class="">
-            <%= link_to("Quick Answers", "/articles/article-type/QuickAnswer") %>
+            <%= link_to("Quick Answers", "/articles/article-type/quick-answer") %>
           </li>
           <li class="">
-            <%= link_to("Web Services", "/articles/article-type/WebService") %>
+            <%= link_to("Web Services", "/articles/article-type/web-service") %>
           </li>
         </ul>
         <% if !current_page?('/')  %>
@@ -75,10 +75,11 @@
       <li><a href="mailto:honolulu@codeforamerica.org">Contact</a></li>
       <li><a href="https://github.com/codeforamerica/honolulu_answers">Contribute</a></li>
     </ul>
-  <div class="cfa-logos">
-    <a href="http://codeforamerica.org/"><img src="/assets/cfa_logo_footer.png" class="right"></a>
-    <span class="plus">&#43;</span>
-    <a href="http://honolulu.gov"><img src="/assets/hnl_gov.png" class="right"></a>
+    <div class="cfa-logos">
+      <a href="http://codeforamerica.org/"><img src="/assets/cfa_logo_footer.png" class="right" alt="Code for America"></a>
+      <span class="plus">&#43;</span>
+      <a href="http://honolulu.gov"><img src="/assets/hnl_gov.png" class="right" alt="City and County of Honolulu - State of Hawaii"></a>
+    </div>
   </div>
 </div><!-- /footer -->
 

@@ -45,14 +45,18 @@ class ArticlesController < ApplicationController
 
   def article_type
     @article_type = params[:content_type]
-    @articles = Article.find_by_type(@article_type)
+
+    # convert paramaterized url
+    @article_type = @article_type.gsub(/-/, ' ').titlecase
+
+    @articles = Article.find_by_content_type(@article_type)
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @articles }
     end
   end
-  #TODO
+  #TODO can we just delete this now?
   #Going to be created for missing articles - Joey
 
   # If you like you can put this in the show method: (Phil)

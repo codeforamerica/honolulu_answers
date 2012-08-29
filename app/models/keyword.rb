@@ -9,6 +9,10 @@ class Keyword < ActiveRecord::Base
 
   after_create :analyse
 
+  after_save do 
+    Rails.cache.clear
+  end
+
   # returns the total number of ocurrences of this keyword across all articles
   def count
     self.wordcounts.map(&:count).inject(0, :+)
@@ -20,7 +24,6 @@ class Keyword < ActiveRecord::Base
     self.metaphone = Text::Metaphone.double_metaphone( self.name )
     self.synonyms = BigHugeThesaurus.synonyms( self.name )
     self.save
-    Rails.cache.delete('dict')
   end
 
 
@@ -36,3 +39,16 @@ class Keyword < ActiveRecord::Base
   # end
 
 end
+# == Schema Information
+#
+# Table name: keywords
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)
+#  metaphone  :string(255)
+#  stem       :string(255)
+#  synonyms   :text
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+
