@@ -215,6 +215,9 @@ div.header-search {
   padding: 0;
   border: 1px solid #FFF;
   background-color: #EEE;
+ 
+  float: right;
+  width: 60%;
 }
 .header-search input.btn-search {
   font-size: 1em;
