@@ -14,10 +14,6 @@
  *= require_self
 */
 
-html{
-  color: #f00;
-}
-
 .triangle-l{
   display: none;
 }
@@ -25,9 +21,25 @@ html{
   display: none;
 }
 
-.welcome-line-l{
-  display: none;
+div#welcome-line-l{
+  border: none !important;
+  border-bottom: 2px solid #666768 !important;
 }
-.welcome-line-r{
-  display: none;
+div#welcome-line-r{
+  border: none !important;
+  border-bottom: 2px solid #666768 !important;
+}
+
+h3.welcome{
+  font-family: 'Satisfy', Arial, sans-serif;
+}
+
+div.navbar-top{
+  height: none !important;
+  padding-bottom: 20px;
+  line-height: 260%;
+}
+
+.ribbon-front{
+  width: 100%;
 }
