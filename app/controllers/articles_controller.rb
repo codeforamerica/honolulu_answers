@@ -50,10 +50,7 @@ class ArticlesController < ApplicationController
 
     @articles = Article.find_by_type(@article_type)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @articles }
-    end
+  end
 
   #TODO can we just delete this now?
   def missing
