@@ -49,7 +49,7 @@ class ArticlesController < ApplicationController
     # convert paramaterized url
     @article_type = @article_type.gsub(/-/, ' ').titlecase
 
-    @articles = Article.find_by_content_type(@article_type)
+    @articles = Article.find_by_type(@article_type)
 
     respond_to do |format|
       format.html # index.html.erb
