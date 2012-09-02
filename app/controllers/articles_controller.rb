@@ -49,7 +49,6 @@ class ArticlesController < ApplicationController
     @article_type = @article_type.gsub(/-/, ' ').titlecase
 
     @articles = Article.find_by_type(@article_type)
-
   end
 
   #TODO can we just delete this now?
