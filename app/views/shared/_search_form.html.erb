@@ -1,5 +1,4 @@
-
   <%= form_tag('/search', :id => 'search', :class => 'right', :method => 'get') do %>
-    <%= submit_tag 'Search', :class => 'btn-search', :name => nil, :id => 'query-btn' %>
-    <%= text_field_tag :q, nil, :id => 'query', :size => '20', :width => '100', :placeholder => 'Search...' %>
+    <%= submit_tag 'Search', :class => 'btn-search', :name => nil, :id => 'query-btn', :style => 'float:right;' %>
+    <%= text_field_tag :q, nil, :id => 'query', :class => 'x-large', :size => 20, :width => '160', :placeholder => 'Search...', :style => 'float:right;width:50%;' %>
   <% end %>
