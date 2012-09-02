@@ -215,6 +215,9 @@ div.header-search {
   padding: 0;
   border: 1px solid #FFF;
   background-color: #EEE;
+ 
+  float: right;
+  width: 60%;
 }
 .header-search input.btn-search {
   font-size: 1em;
@@ -223,6 +226,8 @@ div.header-search {
   -moz-border-radius:     2px;
   -webkit-border-radius:  2px;
   border-radius:          2px;
+  float:right;
+  margin-left: 5px;
 }
 
 
@@ -362,7 +367,7 @@ div.search-ribbon {}
 /* ---------- */
 
 input#query {
-  width: 75%;
+  width: 50%;
   height: 40px;
   padding: 3px 5px;
   border: 1px solid #3198DA;

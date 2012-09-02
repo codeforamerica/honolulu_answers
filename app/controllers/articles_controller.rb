@@ -45,7 +45,6 @@ class ArticlesController < ApplicationController
 
   def article_type
     @article_type = params[:content_type]
-
     # convert paramaterized url
     @article_type = @article_type.gsub(/-/, ' ').titlecase
 
@@ -55,18 +54,8 @@ class ArticlesController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @articles }
     end
-  end
-  #TODO can we just delete this now?
-  #Going to be created for missing articles - Joey
 
-  # If you like you can put this in the show method: (Phil)
-=begin    
-          if Article.find(params[:id])
-            render the article
-          else
-            render the missing article page
-          end     
-=end
+  #TODO can we just delete this now?
   def missing
     if :id > 15
       render :layout => 'missing'

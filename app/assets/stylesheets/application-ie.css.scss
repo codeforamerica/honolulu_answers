@@ -1,0 +1,49 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *
+ *
+ *
+ *= require_self
+*/
+
+.header-search input#query{
+  width: 160px !important;
+}
+
+.triangle-l{
+  display: none;
+}
+.triangle-r{
+  display: none;
+}
+
+div#welcome-line-l{
+  border: none !important;
+  border-bottom: 2px solid #666768 !important;
+}
+div#welcome-line-r{
+  border: none !important;
+  border-bottom: 2px solid #666768 !important;
+}
+
+h3.welcome{
+  font-family: 'Satisfy', Arial, sans-serif;
+}
+
+div.navbar-top{
+  height: none !important;
+  padding-bottom: 20px;
+  line-height: 260%;
+}
+
+.ribbon-front{
+  width: 100%;
+}
