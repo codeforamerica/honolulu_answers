@@ -28,10 +28,9 @@ class ArticlesController < ApplicationController
       return redirect_to @article, status: :moved_permanently
     end
 
-    @article.delay.increment! :access_count
-    @article.delay.category.increment!(:access_count) if @article.category   
-
-
+    time_to_run = Time.new(Date.tomorrow.year, Date.tomorrow.month, Date.tomorrow.day, 02, 00)
+    @article.delay(:run_at => time_to_run).increment! :access_count
+    @article.delay(:run_at => time_to_run).category.increment!(:access_count) if @article.category   
 
     @content_html = BlueCloth.new(@article.content).to_html
     @bodyclass = "results"
