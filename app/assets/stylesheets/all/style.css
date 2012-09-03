@@ -216,7 +216,6 @@ div.header-search {
   border: 1px solid #FFF;
   background-color: #EEE;
  
-  float: right;
   width: 60%;
 }
 .header-search input.btn-search {
@@ -226,7 +225,6 @@ div.header-search {
   -moz-border-radius:     2px;
   -webkit-border-radius:  2px;
   border-radius:          2px;
-  float:right;
   margin-left: 5px;
 }
 
