@@ -2,12 +2,12 @@
   <div class="breadcrumbs">
     <%= link_to( "Home", root_url) %>
     >
-    All <%= @article_type %>s
+    All <%= @article_type.split(/(?=[A-Z])/).join(' ') %>s
   </div>
   <div class="row">
     <div class="span9">
       <div class="main-content">
-        <div class="header"><h1><%= @article_type %>s</h1></div>
+        <div class="header"><h1><%= @article_type.split(/(?=[A-Z])/).join(' ') %>s</h1></div>
         <ul>
           <% category = nil %>
           <% @articles.each do |article| %>

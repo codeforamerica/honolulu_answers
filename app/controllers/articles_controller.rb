@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
   def article_type
     @article_type = params[:content_type]
     # convert paramaterized url
-    @article_type = @article_type.gsub(/-/, ' ').titlecase
+    @article_type = @article_type.gsub(/-/, ' ').titlecase.gsub(/ /, '')
 
     @articles = Article.find_by_type(@article_type)
   end
