@@ -14,6 +14,15 @@
  *= require_self
 */
 
+
+
+ul.nav-top{
+  white-space: nowrap;
+}
+ul.nav-top li a{
+  white-space: nowrap;
+}
+
 .header-search input#query{
   width: 160px !important;
 }
