@@ -383,7 +383,7 @@ input#query {
 }
 input:focus#query {
   outline: none; 
-  box-shadow: 0px 0px 7px #303030;
+  box-shadow: 0px 0px 5px #ffde4d;
   border: 1px solid #303030;
 }
 
@@ -425,7 +425,7 @@ input:hover#query { }
   -moz-box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.2); 
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.2);
 }
-.btn-search:hover, .btn-search:focus {
+.btn-search:hover,  {
    
    background-image: -webkit-linear-gradient(top,   rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)); 
    background-image: -moz-linear-gradient(top,      rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
@@ -433,12 +433,10 @@ input:hover#query { }
    background-image: -ms-linear-gradient(top,       rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
    background-image: linear-gradient(top,           rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0)); /*Shadow*/
 }
-.btn-search:active {
-  background-image: -webkit-linear-gradient(top,    rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1)); 
-   background-image: -moz-linear-gradient(top,      rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
-   background-image: -o-linear-gradient(top,        rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1)); 
-   background-image: -ms-linear-gradient(top,       rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
-   background-image: linear-gradient(top,           rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1)); /*Shadow*/
+
+.btn-search:active, .btn-search:focus {
+  background-color: rgb(255,222,77);
+  color: black;     
 }
 
 
@@ -699,6 +697,10 @@ a[href ^= "http"]:after {
 }
 
 div.footer a[href ^= "http"]:after {
+     content: none;
+}
+
+div.breadcrumbs a[href ^= "http"]:after {
      content: none;
 }
 
