@@ -1,12 +1,13 @@
 <div class="page-container article">
   <div class="breadcrumbs">
     <%= link_to( "Home", root_url) %>
+    >
     <%= @article.title %>
   </div>
   <div class="row">
     <div class="span9">
       <div class="main-content">
-        <h3 class="content-type"><%= @article.class %></h3>
+        <h3 class="content-type"><%= @article.class.to_s.split(/(?=[A-Z])/).join(' ') %></h3>
         <div class="header">
           <%= content_tag(:h1, @article.title ) %>
         </div>
