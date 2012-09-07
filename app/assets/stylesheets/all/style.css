@@ -365,7 +365,7 @@ div.search-ribbon {}
 /* ---------- */
 
 input#query {
-  width: 50%;
+  width: 70%;
   height: 40px;
   padding: 3px 5px;
   border: 1px solid #3198DA;
@@ -380,6 +380,9 @@ input#query {
   border-radius:          3px;
   -webkit-border-radius:  3px;
   -moz-border-radius:     3px;
+}
+.header-search input#query {
+  width: 65%;
 }
 input:focus#query {
   outline: none; 
