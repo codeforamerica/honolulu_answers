@@ -706,12 +706,3 @@ div.footer a[href ^= "http"]:after {
 div.breadcrumbs a[href ^= "http"]:after {
      content: none;
 }
-
-.logo {
-  width: auto !important;
-}
-@media (max-width: 979px) and (min-width: 768px) {
-  .nav-top {
-    width: auto !important;
-  }
-}
