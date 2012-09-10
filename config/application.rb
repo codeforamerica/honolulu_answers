@@ -62,5 +62,8 @@ module Honoluluanswers
     config.assets.initialize_on_precompile = false
 
     config.serve_static_assets = false
+
+    # Enable tables in the content fields for Articles
+    config.action_view.sanitized_allowed_tags = 'table', 'tr', 'td'
   end
 end
