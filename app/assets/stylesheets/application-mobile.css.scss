@@ -40,11 +40,17 @@
     text-align: center;
   }
   #query{
-    width: 70%;
+    width: 70% !important;
+  }
+  #search{
+    text-align: center;
+  }
+  .btn-search{
+    vertical-align: bottom;
   }
   /* move the main part down a bit */
   .main{
-    margin-top: 150px;
+    margin-top: 150px !important;
   }
   /* fix the footer */
   .footer{
