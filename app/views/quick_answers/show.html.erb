@@ -12,7 +12,7 @@
           <%= content_tag(:h1, @article.title ) %>
         </div>
         <div class="content-text">
-          <%= raw @content_html %>
+          <%= sanitize @content_html %>
         </div>
       </div>
     </div><!-- /span9 -->
