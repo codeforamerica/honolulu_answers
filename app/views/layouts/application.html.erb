@@ -44,7 +44,7 @@
           <a href="/" class="hnl-logo">Honolulu Answers</a>
           <span class="bubble"><img src="/assets/beta.png" class="beta" alt="beta"></span>
         </div>
-        <ul class="nav-top span4">
+        <ul class="nav-top span5">
           <li class="">
             <%= link_to("Guides", "/articles/article-type/guide") %>
           </li>
@@ -56,7 +56,7 @@
           </li>
         </ul>
         <% if !current_page?('/')  %>
-        <div class="header-search span4">
+        <div class="header-search span3">
           <%= render :partial => 'shared/search_form' %>
         </div>
         <% end %>
