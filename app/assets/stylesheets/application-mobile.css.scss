@@ -46,7 +46,7 @@
     text-align: center !important;
   }
   .btn-search{
-    vertical-align: bottom;
+    vertical-align: bottom !important;
   }
   /* homepage: remove lines, welcome text. fix search bar */
   #welcome-line-l{
@@ -65,12 +65,12 @@
     text-align: center !important;
     width: 100% !important;
   }
-  form#search input#query{
-    width: 65%;
+  .ribbon-front input#query{
+    width: 55% !important;
   }
-  form#search .btn-search{
-    font-size: 70%;
-    height: 50px;
+  .ribbon-front .btn-search{
+    font-size: 70% !important;
+    height: 50px !important;
   }
   /* move the main part down a bit */
   .main{
@@ -78,24 +78,24 @@
   }
   /* adjust sidebar margins when they're one column */
   .sidebar{
-    margin-left: 20px;
-    margin-right: 0px;
+    margin-left: 20px !important;
+    margin-right: 0px !important;
   }
   /* fix the footer */
   .footer{
-    height: 150px;
+    height: 150px !important;
   }
   .footer .container{
     text-align: center;
   }
   .cfa-logos{
-    float: none;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15px;
+    float: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 15px !important;
   }
-  /* don't break links */
-  a{
+  /* don't break links on homepage */
+  .category a{
     white-space: nowrap;
   }
 }
