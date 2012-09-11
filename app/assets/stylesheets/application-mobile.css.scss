@@ -15,3 +15,54 @@
  *= require_self
  *= require_tree ./mobile
 */
+
+@media only screen and (max-width: 600px), only screen and (max-device-width: 600px)  {
+  /* remove feedback side-tab */
+  .gsfn-widget-tab{
+    display: none !important; 
+  }
+  /* center Honolulu Answers title */
+  .navbar-top .container{
+    text-align: center;
+  }
+  /* make the nav work */
+  .nav-top{
+    background-color: #000;
+    width: 100%;
+    padding-left: 10%;
+    margin-bottom: -10px;
+  }
+  /* show the search */
+  .header-search{
+    display: block;
+    background-color: #000;
+    padding-bottom: 60px;
+    text-align: center;
+  }
+  #query{
+    width: 70% !important;
+  }
+  #search{
+    text-align: center;
+  }
+  .btn-search{
+    vertical-align: bottom;
+  }
+  /* move the main part down a bit */
+  .main{
+    margin-top: 150px !important;
+  }
+  /* fix the footer */
+  .footer{
+    height: 100px;
+  }
+  .footer .container{
+    text-align: center;
+  }
+  .cfa-logos{
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+  }
+}
