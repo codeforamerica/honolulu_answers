@@ -33,7 +33,7 @@
 
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= @bodyclass %>" onload="document.search.q.focus();">
+<body class="<%= @bodyclass %>" onload="if($){ $('#query').focus(); }">
 <div id="wrapper">
   <div class="navbar-top">
     <!-- <p class="notice alert alert-info"><%= notice %></p>
