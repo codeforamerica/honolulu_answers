@@ -28,7 +28,7 @@
   /* make the nav work */
   .nav-top{
     background-color: #000;
-    width: 100%;
+    width: 90%;
     padding-left: 10%;
     margin-bottom: -10px;
   }
@@ -43,18 +43,47 @@
     width: 70% !important;
   }
   #search{
-    text-align: center;
+    text-align: center !important;
   }
   .btn-search{
     vertical-align: bottom;
+  }
+  /* homepage: remove lines, welcome text. fix search bar */
+  #welcome-line-l{
+    display: none !important; 
+  }
+  #welcome-line-r{
+    display: none !important;
+  }
+  .welcome{
+    display: none !important;
+  }
+  .home-modal{
+    display: none !important;
+  }
+  .ribbon-wrapper{
+    text-align: center !important;
+    width: 100% !important;
+  }
+  form#search input#query{
+    width: 65%;
+  }
+  form#search .btn-search{
+    font-size: 70%;
+    height: 50px;
   }
   /* move the main part down a bit */
   .main{
     margin-top: 150px !important;
   }
+  /* adjust sidebar margins when they're one column */
+  .sidebar{
+    margin-left: 20px;
+    margin-right: 0px;
+  }
   /* fix the footer */
   .footer{
-    height: 100px;
+    height: 150px;
   }
   .footer .container{
     text-align: center;
@@ -64,5 +93,9 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 15px;
+  }
+  /* don't break links */
+  a{
+    white-space: nowrap;
   }
 }
