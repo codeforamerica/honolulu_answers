@@ -28,7 +28,7 @@
   /* make the nav work */
   .nav-top{
     background-color: #000;
-    width: 100%;
+    width: 90%;
     padding-left: 10%;
     margin-bottom: -10px;
   }
@@ -43,26 +43,59 @@
     width: 70% !important;
   }
   #search{
-    text-align: center;
+    text-align: center !important;
   }
   .btn-search{
-    vertical-align: bottom;
+    vertical-align: bottom !important;
+  }
+  /* homepage: remove lines, welcome text. fix search bar */
+  #welcome-line-l{
+    display: none !important; 
+  }
+  #welcome-line-r{
+    display: none !important;
+  }
+  .welcome{
+    display: none !important;
+  }
+  .home-modal{
+    display: none !important;
+  }
+  .ribbon-wrapper{
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .ribbon-front input#query{
+    width: 55% !important;
+  }
+  .ribbon-front .btn-search{
+    font-size: 70% !important;
+    height: 50px !important;
   }
   /* move the main part down a bit */
   .main{
     margin-top: 150px !important;
   }
+  /* adjust sidebar margins when they're one column */
+  .sidebar{
+    margin-left: 20px !important;
+    margin-right: 0px !important;
+  }
   /* fix the footer */
   .footer{
-    height: 100px;
+    height: 150px !important;
   }
   .footer .container{
     text-align: center;
   }
   .cfa-logos{
-    float: none;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15px;
+    float: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 15px !important;
+  }
+  /* don't break links on homepage */
+  .category a{
+    white-space: nowrap;
   }
 }
