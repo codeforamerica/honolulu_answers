@@ -39,17 +39,17 @@ ul.nav-top li a{
 div#welcome-line-l{
   border: none !important;
   border-top: 2px solid #666768 !important;
-  margin-top: -4px !important;
+  margin-top: 2px !important;
 }
 
-li.article-listing, li.category-listing{
+li.category-listing{
   border-bottom: none !important;
 }
 
 div#welcome-line-r{
   border: none !important;
   border-top: 2px solid #666768 !important;
-  margin-top: -4px !important;
+  margin-top: 2px !important;
 }
 
 h3.welcome{
@@ -67,10 +67,10 @@ div.navbar-top{
 }
 
 .header-search input#query {
-  width: 50% !important;
+  width: 160px !important;
 }
 .cfa-logos{
-  margin-top: -15px !important;  
+  margin-top: -22px !important;  
 }
 
 .page-container .row .span3{
