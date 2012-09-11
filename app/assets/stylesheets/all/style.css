@@ -133,6 +133,10 @@ a {
   border-bottom: 1px solid #ffde4d;
 }
 
+.category p a{ 
+  border-bottom: 1px solid #ffde4d;
+}
+
 a:hover{
   border-bottom: 1px solid #ffde4d;
   text-decoration: none;
