@@ -28,9 +28,9 @@
   /* make the nav work */
   .nav-top{
     background-color: #000;
-    width: 90%;
-    padding-left: 10%;
     margin-bottom: -10px;
+    margin-left: auto;
+    margin-right: auto;
   }
   /* show the search */
   .header-search{
@@ -97,5 +97,17 @@
   /* don't break links on homepage */
   .category a{
     white-space: nowrap;
+  }
+  
+  .modal-container{
+    max-width: 100%;
+  }
+  .ribbon-front{
+    max-width: 98%;
+  }
+  .navbar-top .container .row{
+    width: 100%
+    background-color: #000;
+    padding-bottom: 10px;
   }
 }
