@@ -83,14 +83,14 @@
     text-align: center;
   }
   #query{
-    width: 100% !important;
+    width: 70% !important;
   }
   #search{
     text-align: center !important;
     width: 100% !important;
   }
   .btn-search{
-    display: none !important;
+    vertical-align: bottom !important;
   }
   /* homepage: remove lines, welcome text. fix search bar */
   #welcome-line-l{
@@ -110,11 +110,10 @@
     width: 100% !important;
   }
   .ribbon-front input#query{
-    width: 55% !important;
+    width: 100% !important;
   }
   .ribbon-front .btn-search{
-    font-size: 70% !important;
-    height: 50px !important;
+    display: none;
   }
   /* move the main part down a bit */
   .page-container{
