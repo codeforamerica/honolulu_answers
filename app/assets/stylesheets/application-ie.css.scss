@@ -14,12 +14,6 @@
  *= require_self
 */
 
-.breadcrumbs{
-  background-color: #fff !important;
-  display: inline-block !important;
-  padding: 4px !important;
-}
-
 ul.nav-top{
   white-space: nowrap;
 }
@@ -41,7 +35,11 @@ ul.nav-top li a{
 div#welcome-line-l{
   border: none !important;
   border-top: 2px solid #666768 !important;
-  margin-top: 1px !important;
+  margin-top: 11px !important;
+}
+
+.side-head{
+  font-size: 15px !important;
 }
 
 li.category-listing{
@@ -51,7 +49,7 @@ li.category-listing{
 div#welcome-line-r{
   border: none !important;
   border-top: 2px solid #666768 !important;
-  margin-top: 1px !important;
+  margin-top: 11px !important;
 }
 
 h3.welcome{
