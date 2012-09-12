@@ -16,6 +16,7 @@
 
 .breadcrumbs{
   background-color: #fff !important;
+  width: 70% !important;
 }
 
 ul.nav-top{
@@ -39,7 +40,7 @@ ul.nav-top li a{
 div#welcome-line-l{
   border: none !important;
   border-top: 2px solid #666768 !important;
-  margin-top: 2px !important;
+  margin-top: -2px !important;
 }
 
 li.category-listing{
@@ -49,7 +50,7 @@ li.category-listing{
 div#welcome-line-r{
   border: none !important;
   border-top: 2px solid #666768 !important;
-  margin-top: 2px !important;
+  margin-top: -2px !important;
 }
 
 h3.welcome{
@@ -67,7 +68,7 @@ div.navbar-top{
 }
 
 .header-search input#query {
-  width: 160px !important;
+  width: 100px !important;
 }
 .cfa-logos{
   margin-top: -22px !important;  
