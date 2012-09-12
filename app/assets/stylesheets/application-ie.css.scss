@@ -16,7 +16,8 @@
 
 .breadcrumbs{
   background-color: #fff !important;
-  width: 70% !important;
+  display: inline-block !important;
+  padding: 4px !important;
 }
 
 ul.nav-top{
@@ -40,7 +41,7 @@ ul.nav-top li a{
 div#welcome-line-l{
   border: none !important;
   border-top: 2px solid #666768 !important;
-  margin-top: -2px !important;
+  margin-top: 1px !important;
 }
 
 li.category-listing{
@@ -50,7 +51,7 @@ li.category-listing{
 div#welcome-line-r{
   border: none !important;
   border-top: 2px solid #666768 !important;
-  margin-top: -2px !important;
+  margin-top: 1px !important;
 }
 
 h3.welcome{
@@ -79,5 +80,5 @@ div.navbar-top{
 }
 
 .navbar-top .container .row{
-  margin-left: 0px !important;
+  _margin-left: 0px !important;
 }
