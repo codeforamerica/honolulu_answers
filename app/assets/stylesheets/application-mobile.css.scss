@@ -16,6 +16,31 @@
  *= require_tree ./mobile
 */
 
+
+/* tablet */
+@media (min-width:768px) and (max-width:979px){
+  .bubble{
+    display: none;
+  }
+  .hnl-logo{
+    border-bottom: none !important;
+  }
+  .navbar-top{
+    height: auto !important;
+  }
+  .ribbon-wrapper{
+    max-width: 100%;
+  }
+  .nav-top{
+    width: 330px !important;
+  }
+  .logo{
+    width: 180px !important;
+  }
+}
+
+/* phone */
+
 @media only screen and (max-width: 600px), only screen and (max-device-width: 600px)  {
   /* remove feedback side-tab */
   .gsfn-widget-tab{
@@ -73,7 +98,7 @@
     height: 50px !important;
   }
   /* move the main part down a bit */
-  .main{
+  .page-container{
     margin-top: 150px !important;
   }
   /* adjust sidebar margins when they're one column */
