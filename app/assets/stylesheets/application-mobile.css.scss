@@ -53,6 +53,13 @@
 /* phone */
 
 @media only screen and (max-width: 600px), only screen and (max-device-width: 600px)  {
+  .modal-container{
+    padding-top: 15px !important;
+  }
+  .ribbon-front{
+    padding-top: 5px !important;
+    padding-bottom: 20px !important;
+  }
   /* remove feedback side-tab */
   .gsfn-widget-tab{
     display: none !important; 
@@ -76,13 +83,14 @@
     text-align: center;
   }
   #query{
-    width: 70% !important;
+    width: 100% !important;
   }
   #search{
     text-align: center !important;
+    width: 100% !important;
   }
   .btn-search{
-    vertical-align: bottom !important;
+    display: none !important;`
   }
   /* homepage: remove lines, welcome text. fix search bar */
   #welcome-line-l{
