@@ -98,12 +98,11 @@
   .category a{
     white-space: nowrap;
   }
-  
+  a.hnl-logo{
+    border-bottom: none !important;
+  }
   .modal-container{
     max-width: 100%;
-  }
-  .ribbon-front{
-    max-width: 98%;
   }
   .navbar-top .container .row{
     width: 100%;
