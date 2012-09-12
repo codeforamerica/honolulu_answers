@@ -33,9 +33,20 @@
   }
   .nav-top{
     width: 330px !important;
+    padding-top: 50px !important;
   }
   .logo{
     width: 180px !important;
+  }
+  .header-search{
+    padding-top: 40px !important;
+  }
+  .ribbon-wrapper #query{
+    width: 60% !important;
+  }
+  #query{
+    vertical-align: bottom;
+    
   }
 }
 
