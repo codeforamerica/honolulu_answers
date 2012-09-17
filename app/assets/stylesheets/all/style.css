@@ -50,7 +50,7 @@ body {
 
 /* Fonts */
 /* ----- */
-h1, h2, h3, h4, h5, h6 { font: 100%/1.5 Helvetica, "Helvetica Neue", Tahoma, Arial, sans-serif; line-height: 100%; }
+h1, h2, h3, h4, h5, h6 { font: 100%/1.5 "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif; line-height: 100%; }
 
 
 h1 {
