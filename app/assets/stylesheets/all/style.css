@@ -3,6 +3,7 @@
 
 /* Font-Face Declarations */
 @import url(http://fonts.googleapis.com/css?family=Satisfy);
+@import url(https://github.com/theleagueof/league-gothic/blob/master/LeagueGothic-Regular.otf?raw=true);
 @import url(http://fonts.googleapis.com/css?family=News+Cycle:700);
 
 /* CSS Reset - Eric Meyer */
@@ -59,11 +60,12 @@ h1 {
 h1.home-modal {
   font-size: 5.2em;
   color: #303030;
-  font-family: "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
+  font-family: "League Gothic", "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
   text-transform: uppercase;
   text-align: center;
   margin: 0 0 30px 0;
-  text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1), 1px 2px 5px rgba(0, 0, 0, 0.05), -1px 2px 5px rgba(0, 0, 0, 0.05);
+  /*text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1), 1px 2px 5px rgba(0, 0, 0, 0.05), -1px 2px 5px rgba(0, 0, 0, 0.05);*/
+text-shadow: 5px -0.7px rgba(0, 0, 0, 0.25);
 }
 h2 {
   font-size: 18px;
@@ -146,7 +148,7 @@ a:hover{
 a.hnl-logo {
   font-size: 28px;
   color: #FFFFFF;
-  font-family: "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
+  font-family: "League Gothic", "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
   font-weight: bold;
   border-bottom: 10px solid #ffde4d;
   text-decoration: none;
@@ -421,8 +423,8 @@ input:hover#query { }
   border-radius:3px;
   display:inline-block;
   color:#ffffff;
-  font-family:arial;
-  font-size:1.5em;
+  font-family:Helvetica, Arial;
+  font-size:1.3em;
   font-weight:bold;
   padding: 10px 12px;
   text-decoration:none;
