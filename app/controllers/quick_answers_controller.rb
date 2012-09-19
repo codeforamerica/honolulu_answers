@@ -6,6 +6,9 @@ class QuickAnswersController < ApplicationController
     return render(:template => 'articles/missing') unless QuickAnswer.exists? params[:id]
     
     @article = QuickAnswer.find(params[:id])
+    
+    return render(:template => 'articles/missing') unless @article.is_published
+
     #redirection of old permalinks
     if request.path != quick_answer_path( @article )
       logger.info "Old permalink: #{request.path}"
