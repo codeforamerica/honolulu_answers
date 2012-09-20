@@ -25,6 +25,7 @@ Honoluluanswers::Application.routes.draw do
   #get "home/index"
   root :to => "home#index"
 
+  match '/about' => "home#about" , :as => :about
   match '/search/' => "search#index" , :as => :search, :via => [:get, :post] 
   match 'autocomplete' => "search#autocomplete"
   match '/articles/article-type/:content_type' => "articles#article_type"

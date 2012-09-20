@@ -711,3 +711,88 @@ div.footer a[href ^= "http"]:after {
 div.breadcrumbs a[href ^= "http"]:after {
      content: none;
 }
+
+
+/* STYLE FOR ABOUT PAGE */
+.container{
+	width:940px;
+}
+
+.container{margin-left:auto;margin-right:auto;*zoom:1;}.container:before,.container:after{display:table;content:"";}
+.container:after{clear:both;}
+.container-fluid{padding-left:20px;padding-right:20px;*zoom:1;}.container-fluid:before,.container-fluid:after{display:table;content:"";}
+.container-fluid:after{clear:both;}
+.row{margin-left:-20px;*zoom:1;}.row:before,.row:after{display:table;content:"";}
+.row:after{clear:both;}
+.row-fluid{width:100%;*zoom:1;}.row-fluid:before,.row-fluid:after{display:table;content:"";}
+.row-fluid:after{clear:both;}
+.row-fluid>[class*="span"]{float:left;margin-left:2.127659574%;}
+.row-fluid>[class*="span"]:first-child{margin-left:0;}
+.row-fluid > .span12{width:99.99999998999999%;}
+.row-fluid > .span11{width:91.489361693%;}
+.row-fluid > .span10{width:82.97872339599999%;}
+.row-fluid > .span9{width:74.468085099%;}
+.row-fluid > .span8{width:65.95744680199999%;}
+.row-fluid > .span7{width:57.446808505%;}
+.row-fluid > .span6{width:48.93617020799999%;}
+.row-fluid > .span5{width:40.425531911%;}
+.row-fluid > .span4{width:31.914893614%;}
+.row-fluid > .span3{width:23.404255317%;}
+.row-fluid > .span2{width:14.89361702%;}
+.row-fluid > .span1{width:6.382978723%;}
+.span12{width:940px;}
+.row-fluid > .span12{width:99.99999998999999%;}
+input.span12, textarea.span12, .uneditable-input.span12{width:930px;}
+table .span12{float:none;width:924px;margin-left:0;}
+
+.shoutout {
+width: 90px;
+height: 134px;
+margin-right: 20px;
+margin-bottom: 20px;
+margin-top: 5px;
+background-color: #EFEFEF;
+border: 1px solid #DDD;
+color: #666;
+text-align: middle;
+float: left;
+}
+
+.biopic {
+width: 80px;
+height: 80px;
+margin: 5px 0 0 5px;
+}
+
+h2 {
+font-family: 'Signika Negative', Helvetica, Arial, sans-serif;
+font-size: 175%;
+font-weight: normal;
+margin: 0.8em 0 -0.1em 0;
+}
+
+.clearfix::before, .clearfix::after {
+display: table;
+content: "";
+}
+.shoutout em {
+color: #666;
+width: 90px;
+display: table-cell;
+vertical-align: middle;
+font-size: 90%;
+font-style: normal;
+height: 52px;
+vertical-align: middle;
+line-height: 110%;
+overflow: hidden;
+text-align: center;
+}
+.comment {
+color: #666;
+font-weight: bold;
+}
+.twittershare {
+margin-left: 30px;
+margin-top: 16px;
+}
