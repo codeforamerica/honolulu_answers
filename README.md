@@ -1,7 +1,7 @@
 ## First, a big Thank You:
 
-* Search results are aided by a thesaurus service provided by [http://words.bighugelabs.com/](words.bighugelabs.com).
-* Background photo courtesy of [http://royalrealtyllc.com/](Royal Realty)
+* Search results are aided by a thesaurus service provided by [words.bighugelabs.com](http://words.bighugelabs.com/).
+* Background photo courtesy of [Royal Realty](http://royalrealtyllc.com/)
 
 
 ## Installation
@@ -10,9 +10,9 @@
 
 Mac OS X is best supported by Honolulu Answers, since it is what most of us at Code for America use. Ubuntu (and therefore presumeably other linux distributions) are also supported.  Windows is currently unsupported and untested.  
 
-[https://github.com/codeforamerica/honolulu_answers/wiki/Installation-Instructions-for-OS-X-10.8-Mountain-Lion](Installation Instructions for OS X 10.8 Mountain Lion)
+[Installation Instructions for OS X 10.8 Mountain Lion](https://github.com/codeforamerica/honolulu_answers/wiki/Installation-Instructions-for-OS-X-10.8-Mountain-Lion)
 
-Slightly outdated Ubuntu instructions are available [https://github.com/codeforamerica/honolulu_answers/wiki/Installation-Instructions-for-Ubuntu-12.04-Precise](here).
+Slightly outdated Ubuntu instructions are available [here](https://github.com/codeforamerica/honolulu_answers/wiki/Installation-Instructions-for-Ubuntu-12.04-Precise).
 
 
 ## Usage
