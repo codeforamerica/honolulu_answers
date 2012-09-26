@@ -1,88 +1,21 @@
 ## First, a big Thank You:
 
-* Search results are aided by a thesaurus service provided by [bht](words.bighugelabs.com).
+* Search results are aided by a thesaurus service provided by [http://words.bighugelabs.com/](words.bighugelabs.com).
 * Background photo courtesy of [http://royalrealtyllc.com/](Royal Realty)
 
 
 ## Installation
 
-**You need bundler 1.2 or higher in order to successfully run `bundle install`**
+**If you are using OS X Snow Leopard, Lion or Mountain Lion, please follow this guide which will take you through the setup procedure**
 
+Mac OS X is best supported by Honolulu Answers, since it is what most of us at Code for America use. Ubuntu (and therefore presumeably other linux distributions) are also supported.  Windows is currently unsupported and untested.  
 
-    $ bundle install
-    # Fill in `config/dblogin.yml`
-    $ rake db:create
-    $ rake db:schema:load
+[https://github.com/codeforamerica/honolulu_answers/wiki/Installation-Instructions-for-OS-X-10.8-Mountain-Lion](Installation Instructions for OS X 10.8 Mountain Lion)
 
-
-To setup some example data:
-    $ rake db:seed
-    $ rake db:seed 
-
-### Dependencies
-
-`bundle install` will likely fail as some of the gems require native libraries to be installed on your system.  The following gems require libraries which are not included on Ubuntu 12.04 by default:
-
-* Ruby >= 1.9 compiled with `psych`, `readline`, `zlib` and `openssl`
-* nokogiri
-  * `sudo apt-get install libxslt1-dev libxml2-dev`
-* capybara-webkit
-  * `sudo apt-get install libqt4-dev libqtwebkit-dev g++`
-* pg
-  * `sudo apt-get install libpq-dev`
-* sqlite3
-  * `sudo apt-get install sqlite3 libsqlite3-dev`
-
-One-liner for the brave:
-
-    sudo apt-get install libxslt1-dev libxml2-dev libqt4-dev libqtwebkit-dev g++ libpq-dev sqlite3 libsqlite3-dev
-
-## Configuration
-
-### Setting up Searchify
-
-We use the [Searchify](https://addons.heroku.com/searchify) heroku addon to power the search index for honolulu answers. In order to use this in development you can either run a copy of Indextank (which is what Searchify is built on) or add the searchify addon to a heroku app, and copy the provided search api endpoint to your .env file. 
-
-Since Searchify only offer paid plans, for development you might want to check out the following free IndexTank providors and use the API key they supply: (1) [HoundSleuth](houndsleuth) (2) [IndexDen](indexden)
-
-[houndsleuth]: http://www.houndsleuth.com/
-[indexden]: http://indexden.com/
-
-### Setting up BigHugeThesaurus
-
-We use [Big Huge Thesaurus](bht) in order to enhance search queries.  In order to run this in development you will need an API key, freely available at [bht.com](bht).
-
-[bht]: http://www..com
-
-
-### Environment Vars
-
-Honolulu Answers uses Environment variables for configuration. It expects a `BHT_API_KEY`, and `SEARCHIFY_API_URL` to be set to the searchify endpoint (which can be retrived from `heroku config` once searchify is an addon for your app)
-
-`foreman` is a great tool for checking your Procfile used for heroku, and running your application locally. When running `foreman start` this will load enivronment variables from `.env` if that file is found.
-
-Included in this project is an example of what the `.env` file should include. In order to use this make a copy and replace the values appropriate values for your setup.
-
-    $ cp .env.sample .env
-
-Now edit `.env` to set the correct url to the searchify endpoint.
-
-### DB Login
-
-Also included `config/dblogin.yml.sample` copy this file too
-
-    $ cp config/dblogin.yml.sample config/dblogin.yml
-
-Now if you need to set login credentials for your database that that are different then the default, you can do it in `config/dblogin.yml`
-
-Both `config/dblogin.yml` and `.env` are added to the `.gitignore` so changes should not be committed, dont commit passwords :)
+Slightly outdated Ubuntu instructions are available [https://github.com/codeforamerica/honolulu_answers/wiki/Installation-Instructions-for-Ubuntu-12.04-Precise](here).
 
 
 ## Usage
-    
-    $ rails s
-
-With Foreman (used to load .env):
     
     $ foreman start
 
@@ -90,9 +23,12 @@ With Foreman (used to load .env):
     
     $ heroku create honoluluanswers --stack cedar
     $ git push heroku master
-    $ heroku run rake db:create
+    $ heroku config push
     $ heroku config set LD_LIBRARY_PATH='lib/native'
     $ heroku addons:add searchify:small # WARNING: paid addon!
+    $ heroku addons:add memcache
+    $ heroku addons:add newrelic:standard
+    $ heroku run rake db:setup
 
 ## Testing
 
