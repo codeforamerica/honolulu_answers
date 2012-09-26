@@ -15,6 +15,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: honoluluanswers_dev
+  host: localhost
   pool: 5
   timeout: 5000
   <<: *login
@@ -32,6 +33,7 @@ production:
   adapter: postgresql
   encoding: unicode
   database: honoluluanswers
+  host: localhost
   pool: 5
   timeout: 5000
   <<: *login
