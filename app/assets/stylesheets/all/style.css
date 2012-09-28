@@ -54,7 +54,7 @@ h2, h3, h4, h5, h6 { font: 100%/1.5 "Helvetica Neue", Helvetica, Tahoma, Arial, 
 
 
 h1 {
-  font: 100%/1.5 "LeagueGothic", "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif; line-height: 100%;
+  font: "LeagueGothic", "News Cycle", "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif; line-height: 100%;
   font-size: 1.6em;
   font-size: 28px; /* TODO */
 }
@@ -762,12 +762,13 @@ height: 80px;
 margin: 5px 0 0 5px;
 }
 
+/*
 h2 {
-font-family: 'Signika Negative', Helvetica, Arial, sans-serif;
 font-size: 175%;
 font-weight: normal;
 margin: 0.8em 0 -0.1em 0;
 }
+*/
 
 .clearfix::before, .clearfix::after {
 display: table;
