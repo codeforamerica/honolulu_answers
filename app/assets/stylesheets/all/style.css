@@ -54,14 +54,14 @@ h2, h3, h4, h5, h6 { font: 100%/1.5 "Helvetica Neue", Helvetica, Tahoma, Arial, 
 
 
 h1 {
-  font: "LeagueGothic", "News Cycle", "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif; line-height: 100%;
+  font: Oswald, "News Cycle", "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif; line-height: 100%;
   font-size: 1.6em;
   font-size: 28px; /* TODO */
 }
 h1.home-modal {
   font-size: 5.2em;
   color: #303030;
-  font-family: "League Gothic", "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
+  font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
   text-transform: uppercase;
   text-align: center;
   margin: 0 0 30px 0;
@@ -87,12 +87,12 @@ h3.content-type {
   text-transform: uppercase;
   margin-left: -30px;
   margin-bottom: 15px;
-  font-family: "League Gothic", "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
+  font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
   font-size: 18px;
 }
 
 h4.side-head {
-  font-family: "League Gothic", "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
+  font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
   font-size: 24px;
   font-weight: bold;
   color: #FFF;
