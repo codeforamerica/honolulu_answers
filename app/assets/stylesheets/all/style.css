@@ -6,6 +6,7 @@
 @import url(http://fonts.googleapis.com/css?family=Oswald);
 @import url(https://github.com/theleagueof/league-gothic/blob/master/LeagueGothic-Regular.otf?raw=true);
 @import url(http://fonts.googleapis.com/css?family=News+Cycle);
+@import url(http://fonts.googleapis.com/css?family=Archivo+Narrow);
 
 
 /* CSS Reset - Eric Meyer */
@@ -56,15 +57,15 @@ h2, h3, h4, h5, h6 { font: 100%/1.5 "Helvetica Neue", Helvetica, Tahoma, Arial, 
 
 
 h1 {
-  font-family: "News Cycle", "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif; line-height: 100%;
+  font-family: "Archivo Narrow", "News Cycle", "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif; line-height: 100%;
   font-size: 30px; 
-  font-weight: bold;
-  /*font-size: 1.6em;
+  /*font-weight: bold;
+  font-size: 1.6em;
   line-height: 60%;
   letter-spacing: 0.04em;*/
 }
 h1.home-modal {
-  font-size: 5.2em;
+  font-size: 5.4em;
   color: #303030;
   font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
   text-transform: uppercase;
@@ -94,6 +95,7 @@ h3.content-type {
   margin-bottom: 15px;
   font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
   font-size: 14px;
+  letter-spacing: 0.07em;
 }
 
 h4.side-head {
