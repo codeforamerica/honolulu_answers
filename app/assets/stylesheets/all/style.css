@@ -3,8 +3,10 @@
 
 /* Font-Face Declarations */
 @import url(http://fonts.googleapis.com/css?family=Satisfy);
+@import url(http://fonts.googleapis.com/css?family=Oswald);
 @import url(https://github.com/theleagueof/league-gothic/blob/master/LeagueGothic-Regular.otf?raw=true);
-@import url(http://fonts.googleapis.com/css?family=News+Cycle:700);
+@import url(http://fonts.googleapis.com/css?family=News+Cycle);
+
 
 /* CSS Reset - Eric Meyer */
 html, body, div, span, ul, ol, li, form, fieldset, legend, label, h1, h2, h3, h4, h5, h6, p, a { 
@@ -54,9 +56,12 @@ h2, h3, h4, h5, h6 { font: 100%/1.5 "Helvetica Neue", Helvetica, Tahoma, Arial, 
 
 
 h1 {
-  font: Oswald, "News Cycle", "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif; line-height: 100%;
-  font-size: 1.6em;
-  font-size: 28px; /* TODO */
+  font-family: "News Cycle", "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif; line-height: 100%;
+  font-size: 30px; 
+  font-weight: bold;
+  /*font-size: 1.6em;
+  line-height: 60%;
+  letter-spacing: 0.04em;*/
 }
 h1.home-modal {
   font-size: 5.2em;
@@ -88,17 +93,17 @@ h3.content-type {
   margin-left: -30px;
   margin-bottom: 15px;
   font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 h4.side-head {
   font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 18px;
   color: #FFF;
   background-color:#4580b4;
   padding: 10px 15px;
   margin: 0;
+  letter-spacing: 0.075em;
 }
 
 h5 { }
@@ -151,8 +156,8 @@ a:hover{
 a.hnl-logo {
   font-size: 28px;
   color: #FFFFFF;
-  font-family: "League Gothic", "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
-  font-weight: bold;
+  font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
+  letter-spacing:0.04em;
   border-bottom: 10px solid #ffde4d;
   text-decoration: none;
   text-transform: uppercase;
@@ -706,6 +711,10 @@ a:focus, a:active {
 /* Style external links */
 a[href ^= "http"]:after {
      content: " " url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII=);    
+}
+
+.container a[href ^= "http"]:after {
+     content: "";    
 }
 
 div.footer a[href ^= "http"]:after {
