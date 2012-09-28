@@ -87,14 +87,13 @@ h3.content-type {
   text-transform: uppercase;
   margin-left: -30px;
   margin-bottom: 15px;
-  font-size: 14px;
-}
-h3{
-	font-family: "League Gothic", "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
-}
-h4.side-head {
   font-family: "League Gothic", "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
   font-size: 18px;
+}
+
+h4.side-head {
+  font-family: "League Gothic", "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
+  font-size: 24px;
   font-weight: bold;
   color: #FFF;
   background-color:#4580b4;
