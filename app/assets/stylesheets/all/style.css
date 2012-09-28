@@ -719,7 +719,7 @@ div.breadcrumbs a[href ^= "http"]:after {
 .container:after{clear:both;}
 .container-fluid{padding-left:20px;padding-right:20px;*zoom:1;}.container-fluid:before,.container-fluid:after{display:table;content:"";}
 .container-fluid:after{clear:both;}
-.row{margin-left:-20px;*zoom:1;}.row:before,.row:after{display:table;content:"";}
+.row{*zoom:1;}.row:before,.row:after{display:table;content:"";}
 .row:after{clear:both;}
 .row-fluid{width:100%;*zoom:1;}.row-fluid:before,.row-fluid:after{display:table;content:"";}
 .row-fluid:after{clear:both;}
