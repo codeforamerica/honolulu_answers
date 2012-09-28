@@ -1,15 +1,14 @@
 source 'https://rubygems.org'
 
-# If you get errors about the 'ruby' line, run:
-#   gem uninstall bundler
-#   gem install bundler --pre
+gem 'bundler', '>= 1.2.1'		  # Bundler 1.2 required in order to specify Ruby version here and on Heroku.
 
 ## Essentials
 ruby '1.9.3'                              # Ruby!
 gem 'rails', '3.2.6'                      # Rails!
 gem 'pg'                                  # PostgreSQL, the database server
 gem 'thin'                                # Web server
-# gem 'unicorn'                           # Web server
+gem 'foreman'				  # For launching with the Procfile and keeping track of environment variables from .env
+
 
 ## Utilities
 gem 'newrelic_rpm', :group => [:production, :development] # Rails analytics - see the Heroku addon

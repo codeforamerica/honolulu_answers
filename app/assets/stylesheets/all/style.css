@@ -714,9 +714,6 @@ div.breadcrumbs a[href ^= "http"]:after {
 
 
 /* STYLE FOR ABOUT PAGE */
-.container{
-	width:940px;
-}
 
 .container{margin-left:auto;margin-right:auto;*zoom:1;}.container:before,.container:after{display:table;content:"";}
 .container:after{clear:both;}
