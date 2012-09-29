@@ -788,6 +788,7 @@ margin: 0.8em 0 -0.1em 0;
 display: table;
 content: "";
 }
+
 .shoutout em {
 color: #666;
 width: 90px;
@@ -801,11 +802,23 @@ line-height: 110%;
 overflow: hidden;
 text-align: center;
 }
+
 .comment {
-color: #666;
+font-family: "News Cycle", Helvetica;
 font-weight: bold;
 }
-.twittershare {
-margin-left: 30px;
-margin-top: 16px;
+
+.title-spacing {
+margin-top: 30px;
+}
+
+ul.about-list li {
+	list-style-type: square;
+	padding: 0px;
+	margin-left: 40px;
+	font-family: "News Cycle", Helvetica;
+}
+
+.highlight {
+	font-weight:bold;
 }
