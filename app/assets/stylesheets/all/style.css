@@ -3,7 +3,11 @@
 
 /* Font-Face Declarations */
 @import url(http://fonts.googleapis.com/css?family=Satisfy);
-@import url(http://fonts.googleapis.com/css?family=News+Cycle:700);
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+@import url(https://github.com/theleagueof/league-gothic/blob/master/LeagueGothic-Regular.otf?raw=true);
+@import url(http://fonts.googleapis.com/css?family=News+Cycle);
+@import url(http://fonts.googleapis.com/css?family=Archivo+Narrow);
+
 
 /* CSS Reset - Eric Meyer */
 html, body, div, span, ul, ol, li, form, fieldset, legend, label, h1, h2, h3, h4, h5, h6, p, a { 
@@ -49,17 +53,21 @@ body {
 
 /* Fonts */
 /* ----- */
-h1, h2, h3, h4, h5, h6 { font: 100%/1.5 "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif; line-height: 100%; }
+h2, h3, h4, h5, h6 { font: 100%/1.5 "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif; line-height: 100%; }
 
 
 h1 {
+  font-family: "Archivo Narrow", "News Cycle", "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif; line-height: 100%;
+  font-size: 30px; 
+  /*font-weight: bold;
   font-size: 1.6em;
-  font-size: 28px; /* TODO */
+  line-height: 60%;
+  letter-spacing: 0.04em;*/
 }
 h1.home-modal {
-  font-size: 5.2em;
+  font-size: 5.4em;
   color: #303030;
-  font-family: "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
+  font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
   text-transform: uppercase;
   text-align: center;
   margin: 0 0 30px 0;
@@ -85,15 +93,19 @@ h3.content-type {
   text-transform: uppercase;
   margin-left: -30px;
   margin-bottom: 15px;
+  font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
   font-size: 14px;
+  letter-spacing: 0.07em;
 }
+
 h4.side-head {
+  font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
   font-size: 18px;
-  font-weight: bold;
   color: #FFF;
   background-color:#4580b4;
   padding: 10px 15px;
   margin: 0;
+  letter-spacing: 0.075em;
 }
 
 h5 { }
@@ -146,8 +158,8 @@ a:hover{
 a.hnl-logo {
   font-size: 28px;
   color: #FFFFFF;
-  font-family: "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
-  font-weight: bold;
+  font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
+  letter-spacing:0.04em;
   border-bottom: 10px solid #ffde4d;
   text-decoration: none;
   text-transform: uppercase;
@@ -421,8 +433,8 @@ input:hover#query { }
   border-radius:3px;
   display:inline-block;
   color:#ffffff;
-  font-family:arial;
-  font-size:1.5em;
+  font-family:Helvetica, Arial;
+  font-size:1.3em;
   font-weight:bold;
   padding: 10px 12px;
   text-decoration:none;
@@ -703,10 +715,110 @@ a[href ^= "http"]:after {
      content: " " url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII=);    
 }
 
+.container a[href ^= "http"]:after {
+     content: "";    
+}
+
 div.footer a[href ^= "http"]:after {
      content: none;
 }
 
 div.breadcrumbs a[href ^= "http"]:after {
      content: none;
+}
+
+
+/* STYLE FOR ABOUT PAGE */
+
+.container{margin-left:auto;margin-right:auto;*zoom:1;}.container:before,.container:after{display:table;content:"";}
+.container:after{clear:both;}
+.container-fluid{padding-left:20px;padding-right:20px;*zoom:1;}.container-fluid:before,.container-fluid:after{display:table;content:"";}
+.container-fluid:after{clear:both;}
+.row{*zoom:1;}.row:before,.row:after{display:table;content:"";}
+.row:after{clear:both;}
+.row-fluid{width:100%;*zoom:1;}.row-fluid:before,.row-fluid:after{display:table;content:"";}
+.row-fluid:after{clear:both;}
+.row-fluid>[class*="span"]{float:left;margin-left:2.127659574%;}
+.row-fluid>[class*="span"]:first-child{margin-left:0;}
+.row-fluid > .span12{width:99.99999998999999%;}
+.row-fluid > .span11{width:91.489361693%;}
+.row-fluid > .span10{width:82.97872339599999%;}
+.row-fluid > .span9{width:74.468085099%;}
+.row-fluid > .span8{width:65.95744680199999%;}
+.row-fluid > .span7{width:57.446808505%;}
+.row-fluid > .span6{width:48.93617020799999%;}
+.row-fluid > .span5{width:40.425531911%;}
+.row-fluid > .span4{width:31.914893614%;}
+.row-fluid > .span3{width:23.404255317%;}
+.row-fluid > .span2{width:14.89361702%;}
+.row-fluid > .span1{width:6.382978723%;}
+.span12{width:940px;}
+.row-fluid > .span12{width:99.99999998999999%;}
+input.span12, textarea.span12, .uneditable-input.span12{width:930px;}
+table .span12{float:none;width:924px;margin-left:0;}
+
+.shoutout {
+width: 90px;
+height: 134px;
+margin-right: 20px;
+margin-bottom: 20px;
+margin-top: 5px;
+background-color: #EFEFEF;
+border: 1px solid #DDD;
+color: #666;
+text-align: middle;
+float: left;
+}
+
+.biopic {
+width: 80px;
+height: 80px;
+margin: 5px 0 0 5px;
+}
+
+/*
+h2 {
+font-size: 175%;
+font-weight: normal;
+margin: 0.8em 0 -0.1em 0;
+}
+*/
+
+.clearfix::before, .clearfix::after {
+display: table;
+content: "";
+}
+
+.shoutout em {
+color: #666;
+width: 90px;
+display: table-cell;
+vertical-align: middle;
+font-size: 90%;
+font-style: normal;
+height: 52px;
+vertical-align: middle;
+line-height: 110%;
+overflow: hidden;
+text-align: center;
+}
+
+.comment {
+font-family: "News Cycle", Helvetica;
+font-weight: bold;
+}
+
+.title-spacing {
+margin-top: 30px;
+}
+
+ul.about-list li {
+	list-style-type: square;
+	padding: 0px;
+	margin-left: 40px;
+	font-family: "News Cycle", Helvetica;
+}
+
+.highlight {
+	font-weight:bold;
 }

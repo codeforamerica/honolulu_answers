@@ -24,7 +24,7 @@ class SearchController < ApplicationController
     query_final = Article.expand_query( query )
     
     # perform the search
-    @results = Article.search_tank( query_final, :conditions => { :is_published => true } )
+    @results = Article.search_tank( query_final)#, :conditions => { :is_published => true } )
 
     # Log the search results
     puts "search-request: IP:#{request.env['REMOTE_ADDR']}, params[:query]:#{query}, QUERY:#{query_final}, FIRST_RESULT:#{@results.first.title unless @results.empty?}, RESULTS_N:#{@results.size}" 
