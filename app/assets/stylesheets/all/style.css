@@ -72,7 +72,7 @@ h1.home-modal {
   font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
   text-transform: uppercase;
   text-align: center;
-  margin: 0 0 30px 0;
+  margin: 35px 0 30px 0;
   text-shadow: -5px 5px 5px rgba(0, 0, 0, 0.1), -5px 2px 5px rgba(0, 0, 0, 0.05), -5px 2px 5px rgba(0, 0, 0, 0.05);
 }
 h2 {
@@ -85,6 +85,7 @@ h3.welcome {
   text-align: center;
   line-height: 100%;
   z-index: 100;
+  margin-top: 15px;
   margin-bottom: 10px;
 }
 h3.content-type {
