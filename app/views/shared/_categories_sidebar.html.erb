@@ -4,7 +4,7 @@
     <h4 class="side-head">ALL CATEGORIES</h4>
     <div class="sidebar-content">
        <ul>
-        <% Category.all_by_access_count.each do |c| %>
+        <% Category.order(:name).each do |c| %>
           <%= content_tag( :li, link_to(c.name, category_path(c.id))) %>
         <% end -%>
        </ul>
