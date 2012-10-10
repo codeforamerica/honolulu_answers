@@ -54,6 +54,14 @@ class Article < ActiveRecord::Base
     :set_access_count_if_nil
   end
 
+  def self.find_by_friendly_id( friendly_id )
+    begin
+      find( friendly_id )
+    rescue ActiveRecord::RecordNotFound => e
+      nil
+    end
+  end
+
   def self.search( query )
     return Article.all if query == '' or query == ' '
     self.search_tank query
