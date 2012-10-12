@@ -33,18 +33,23 @@
   <% default_content = @article.content_md.blank? ? @article.content_to_markdown : @article.content_md %>
   editor.importFile('answer-content-<%=j @article.id.to_s%>', "<%=j default_content%>");
 
-  $('#epiceditor_previewer').append(editor.getElement('previewer').body);
+  $('#epiceditor-preview').append(editor.getElement('previewer').body);
   editor.preview();
   editor.edit();
+
+  editor.on('preview', function() {
+    editor.edit();
+  })
 
   // hide the content_md input element
   $('#quick_answer_content_md_input').hide();
   $('#web_service_content_md_input').hide();
   $('#guide_content_md_input').hide();
 
+  <% button_name = @article.class.to_s.split(/(?=[A-Z])/).join('_').downcase %>
   // Save the contents of the epiceditor editor into the article's content_md form field so that data is saves server-side
-  $('#quick_answer_submit').click(function(){
-    $('textarea#quick_answer_content_md').val( editor.exportFile() );
+  $('#<%= j button_name %>_submit').click(function(){
+    $('textarea#<%= j button_name %>_content_md').val( editor.exportFile() );
   });
 
   

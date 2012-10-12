@@ -6,8 +6,10 @@
       <%= f.input :is_published, :label => "Publish?"%>
     <% end   %>  
     <%=f.input :title %>
-    <div id="epiceditor"></div>
-    <div id="epiceditor_previewer"></div>
+    <div class="row">
+      <div id="epiceditor" class='span6'></div>
+      <div id="epiceditor-preview" class='span6'></div>
+    </div>
     <%=f.input :preview %>
     <%=f.input :category %>
     <%=f.input :contact %>
