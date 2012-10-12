@@ -4,6 +4,7 @@ class Article < ActiveRecord::Base
   include TankerArticleDefaults
   include Tanker
   include RailsNlp
+  include Markdownifier
 
   require_dependency 'keyword'
 
@@ -33,7 +34,7 @@ class Article < ActiveRecord::Base
 
   validates_presence_of :access_count
 
-  attr_accessible :title, :content, :preview, :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic_file_nameauthor_pic_content_type, :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link, :type
+  attr_accessible :title, :content, :content_md, :preview, :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic_file_nameauthor_pic_content_type, :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link, :type
 
   after_save do 
     update_tank_indexes
@@ -86,6 +87,15 @@ class Article < ActiveRecord::Base
     else
       self.title + '(' + self.id + ')'
     end
+  end
+
+  def content_to_markdown
+    Markdownifier.new.html_to_markdown( self.content )
+  end
+
+  def content_md_to_html
+    # add logic to replace custom syntax for quick-top etc
+    BlueCloth.new(self.content_md).to_html
   end
 
   def self.remove_stop_words string

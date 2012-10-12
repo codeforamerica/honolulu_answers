@@ -1,0 +1,61 @@
+<!-- Allows the epiceditor partial to be used for all form partials -->
+<% @article = @web_service || @quick_answer || @guide %>
+
+<script src="/assets/epiceditor/js/epiceditor.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    // The example below uses all options and their defaults
+    var opts = {
+      container: 'epiceditor',
+      basePath: '/assets/epiceditor/',
+      clientSideStorage: true,
+      localStorageName: 'epiceditor',
+      parser: marked,
+      file: {
+        name: 'epiceditor',
+        defaultContent: '',
+        autoSave: 100
+      },
+      theme: {
+        base:'themes/base/epiceditor.css',
+        preview:'themes/preview/github.css',
+        editor:'themes/editor/epic-light.css'
+      },
+      focusOnLoad: false,
+      shortcut: {
+        modifier: 18,
+        fullscreen: 70,
+        preview: 80,
+        edit: 79
+    }
+  }
+  var editor = new EpicEditor(opts).load();
+  <% default_content = @article.content_md.blank? ? @article.content_to_markdown : @article.content_md %>
+  editor.importFile('answer-content-<%=j @article.id.to_s%>', "<%=j default_content%>");
+
+  $('#epiceditor_previewer').append(editor.getElement('previewer').body);
+  editor.preview();
+  editor.edit();
+
+  // hide the content_md input element
+  $('#quick_answer_content_md_input').hide();
+  $('#web_service_content_md_input').hide();
+  $('#guide_content_md_input').hide();
+
+  // Save the contents of the epiceditor editor into the article's content_md form field so that data is saves server-side
+  $('#quick_answer_submit').click(function(){
+    $('textarea#quick_answer_content_md').val( editor.exportFile() );
+  });
+
+  
+  });
+
+
+</script>
+
+
+
+
+
+
+

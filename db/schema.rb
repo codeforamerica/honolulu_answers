@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120817231009) do
+ActiveRecord::Schema.define(:version => 20121010140714) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20120817231009) do
     t.string   "author_name"
     t.string   "author_link"
     t.string   "type"
+    t.text     "content_md"
   end
 
   add_index "articles", ["slug"], :name => "index_articles_on_slug"
@@ -129,7 +130,7 @@ ActiveRecord::Schema.define(:version => 20120817231009) do
     t.string   "username"
     t.integer  "item"
     t.string   "table"
-    t.integer  "month"
+    t.integer  "month",      :limit => 2
     t.integer  "year",       :limit => 8
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
