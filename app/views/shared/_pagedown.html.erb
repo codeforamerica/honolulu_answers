@@ -24,7 +24,7 @@
   	
   // });
 
-  // Save the contents of the epiceditor editor into the article's content_md form field so that data is saves server-side
+  // Save the contents of the pagedown editor into the article's content_md form field so that data is saves server-side
   <% button_name = @article.class.to_s.split(/(?=[A-Z])/).join('_').downcase %>
   $('#<%= j button_name %>_submit').click(function(){
     $('NBNBNBNBNB').clone().appendTo('<%= j button_name %>_content_md');

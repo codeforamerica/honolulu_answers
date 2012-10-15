@@ -6,8 +6,7 @@
       <%= f.input :is_published, :label => "Publish?"%>
     <% end   %>  
     <%=f.input :title %>
-    <div id="epiceditor"></div>
-    <div id="epiceditor-preview"></div>
+
     <%=f.input :preview %>
     <%=f.input :category %>
     <%=f.input :contact %>
@@ -20,3 +19,9 @@
   <%end%>
   <%=f.buttons :commit %>
 <% end %>
+
+<div class="wmd-panel">
+  <div id="wmd-button-bar"></div>
+  <textarea class="wmd-input" id="wmd-input"></textarea>
+</div>
+<div id="wmd-preview" class="wmd-panel wmd-preview"></div>
