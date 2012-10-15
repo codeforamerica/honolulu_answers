@@ -25,3 +25,7 @@ coverage/
 
 # Ensures assets are precompiled during slug compilation when deployd to heroku
 public/assets 
+
+# Ignore files created by RubyMine IDE (CCHNL Specific)
+/.idea
+.rvmrc
