@@ -7,7 +7,7 @@ ruby '1.9.3'                              # Ruby!
 gem 'rails', '3.2.6'                      # Rails!
 gem 'pg'                                  # PostgreSQL, the database server
 gem 'thin'                                # Web server
-gem 'foreman'				  # For launching with the Procfile and keeping track of environment variables from .env
+gem 'foreman'				                      # For launching with the Procfile and keeping track of environment variables from .env
 
 
 ## Utilities
@@ -43,6 +43,7 @@ gem 'friendly_id'                         # Create permalinks / descriptive URLs
 gem 'gon'                                 # Easy passing of data from the controller to javascript files
 gem 'paperclip', '~> 3.0'                 # Easy file attachment library for ActiveRecord
 gem 'aws-sdk', '~> 1.3.4'                 # Upload files to Amazon S3
+gem 'pagedown-rails'                      # Markdown editor
 
 ## Gems used only for assets and not required
 ## in production environments by default.
