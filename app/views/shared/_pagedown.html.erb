@@ -1,3 +1,5 @@
+<%# encoding: utf-8 %>
+
 <!-- Allows the partial to be used for all form partials -->
 <% @article = @web_service || @quick_answer || @guide %>
 
@@ -32,6 +34,10 @@
 
 
   // NB: the text area isn't updated, so instead we need to look for somethign like converter.exportMarkdown();
+
+  // OLD
+  //   $('#<%= j button_name %>_submit').click(function(){
+  //   $('textarea#<%= j button_name %>_content_md').val( editor.exportFile() );
 
 
 
