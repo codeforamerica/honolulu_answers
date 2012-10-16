@@ -8,39 +8,12 @@
 <script type="text/javascript">
   $(document).ready(function() {
 
-  // hide the content_md input element
-  // $('#quick_answer_content_md_input').hide();
-  // $('#web_service_content_md_input').hide();
-  // $('#guide_content_md_input').hide();
-
   // instantiate pagedown 
   var converter = new Markdown.getSanitizingConverter();
   var editor = new Markdown.Editor(converter);
   editor.run();
-
-  <% @default_content = @article.content_md.blank? ? @article.content_to_markdown : @article.content_md %>
-  $('#wmd-input').val( "<%= j @default_content %>" );
-
-  // copy the contents of the textarea into the hidden content_md input element each time a change is made
-  // converter.hooks.set("preConversion", function(text) {
-  	
-  // });
-
-  // Save the contents of the pagedown editor into the article's content_md form field so that data is saves server-side
-  <% button_name = @article.class.to_s.split(/(?=[A-Z])/).join('_').downcase %>
-  $('#<%= j button_name %>_submit').click(function(){
-    $('NBNBNBNBNB').clone().appendTo('<%= j button_name %>_content_md');
-  });
-
-
-  // NB: the text area isn't updated, so instead we need to look for somethign like converter.exportMarkdown();
-
-  // OLD
-  //   $('#<%= j button_name %>_submit').click(function(){
-  //   $('textarea#<%= j button_name %>_content_md').val( editor.exportFile() );
-
-
-
+  
+    
 });
  </script>
 
