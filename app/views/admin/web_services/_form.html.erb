@@ -15,7 +15,11 @@
     <%=f.input :author_pic %>
     <%=f.input :author_name %>
     <!-- this will be hidden  -->
-    <%=f.input :content_md %>
+    <div class="">
+      <div id="wmd-button-bar"></div>
+      <%=f.input :content_md, :input_html => { :class => 'wmd-input', :id => 'wmd-input } %>
+    </div>
+
   <%end%>
   <%=f.buttons :commit %>
 <% end %>
