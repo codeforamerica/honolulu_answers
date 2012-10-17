@@ -20,7 +20,7 @@ class Article < ActiveRecord::Base
 
   has_attached_file :author_pic, 
                     :storage => :s3,
-                    :bucket => 'hnlanswers-production',
+                    :bucket => 'honolulu-answers-prod',
                     :s3_credentials => {
                       :access_key_id => ENV['S3_KEY'],
                       :secret_access_key => ENV['S3_SECRET']
