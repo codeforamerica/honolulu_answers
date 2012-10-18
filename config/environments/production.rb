@@ -41,10 +41,10 @@ Honoluluanswers::Application.configure do
 
   # Use a different logger for distributed setups
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
-
+  dalli_store = Dalli::Client.new()
   config.action_dispatch.rack_cache = {
-    :metastore    => Dalli::Client.new,
-    :entitystore  => 'file:tmp/cache/rack/body',
+    :metastore    => dalli_store,
+    :entitystore  => dalli_store,
     :allow_reload => true,
     :default_ttl  => 10800
   }
