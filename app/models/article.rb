@@ -38,7 +38,7 @@ class Article < ActiveRecord::Base
 
   after_save do 
     update_tank_indexes
-    Rails.cache.clear
+    #Rails.cache.clear
   end
 
 
@@ -263,11 +263,9 @@ class Article < ActiveRecord::Base
   #   3) Create a new Wordcount row with :keyword_id => kw.id, :article_id => article.id and count as the frequency of the keyword in the article.
   def qm_after_create
     begin
-      text = collect_text(:model => self, :fields => ['title',
-                                                      'content',
-                                                      'preview',
-                                                      'tags',
-                                                      'category.name'])
+      text = collect_text(
+        :model => self,
+        :fields => ['title','content','preview','tags','category.name'])
       text = clean( text )
       wordcounts = count_words( text )
       wordcounts.each do |word, frequency|

@@ -11,6 +11,7 @@ gem 'foreman'				                      # For launching with the Procfile and kee
 
 
 ## Utilities
+gem 'pry'                                 # Better 'rails console'
 gem 'newrelic_rpm', :group => [:production, :development] # Rails analytics - see the Heroku addon
 gem 'heroku'                              # Managed hosting solution
 gem 'annotate', '~>2.4.1.beta'            # Annotates models with database info: `bundle exec rake:annotate` 

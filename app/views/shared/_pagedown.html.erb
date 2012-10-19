@@ -6,16 +6,27 @@
 
 <% @button_name = @article.class.to_s.split(/(?=[A-Z])/).join('_').downcase %>
 <script type="text/javascript">
-  $(document).ready(function() {
+$(document).ready(function() {
 
   // instantiate pagedown 
   var converter = new Markdown.getSanitizingConverter();
   var editor = new Markdown.Editor(converter);
   editor.run();
-  
-    
+
+  // Add support for quick-top in markdown
+ <%# converter.hooks.set("postConversion", function (text) {%>
+    <%#// if <hr> is found:%>
+    <%#// 1) replace <hr> with </div>%>
+    <%#// 2) insert at the top of the text, <div class='quick-top'>%>
+    <%#var hr = /<hr( \/)?>/;%>
+    <%#if( text.match(hr) ) {%>
+      <%#text = text.replace(hr, "</div>");%>
+      <%#text = "<div class='quick-top'>".concat(text);%>
+    <%#}%>
+  <%#});%>
+
 });
- </script>
+</script>
 
 
 
