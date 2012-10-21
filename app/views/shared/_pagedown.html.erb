@@ -14,16 +14,17 @@ $(document).ready(function() {
   editor.run();
 
   // Add support for quick-top in markdown
- <%# converter.hooks.set("postConversion", function (text) {%>
-    <%#// if <hr> is found:%>
-    <%#// 1) replace <hr> with </div>%>
-    <%#// 2) insert at the top of the text, <div class='quick-top'>%>
-    <%#var hr = /<hr( \/)?>/;%>
-    <%#if( text.match(hr) ) {%>
-      <%#text = text.replace(hr, "</div>");%>
-      <%#text = "<div class='quick-top'>".concat(text);%>
-    <%#}%>
-  <%#});%>
+  converter.hooks.chain("postConversion", function (text) {
+    // if <hr> is found:
+    // 1) replace <hr> with </div>
+    // 2) insert at the top of the text, <div class='quick-top'>
+    var hr = /<hr( \/)?>/;
+    if( text.match(hr) ) {
+      text = text.replace(hr, "</div>");
+      text = "<div class='quick-top'>".concat(text);
+    }
+    return text;
+  });
 
 });
 </script>

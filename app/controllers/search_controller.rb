@@ -4,11 +4,11 @@ class SearchController < ApplicationController
     return redirect_to root_path if params[:q].blank? 
     @query = query
 
+    # spell check the query. 
+    @query_corrected = Article.spell_check query
+
     # remove puntuation and plurals.
     query = query.downcase.gsub(/[^\w]/, ' ').gsub(/ . /, ' ')
-
-    # spell check the query.  if no correction has taken place, this is nil.
-    @query_corrected = Article.spell_check query
 
     # remove stop words
     query = Article.remove_stop_words query
