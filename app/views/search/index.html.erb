@@ -1,14 +1,22 @@
+<script>
+$(document).ready(function () {
+  $.get("search/spell_check.json?string='<%=j @query %>'", function(data) {
+    $('#sug').append(data.responseText);
+  });
+});
+</script>
+
 <div class="page-container search">
   <div class="row">
     <div class="span9">
       <div class="main-content">
         <div class="header">
           <h1>Search results for: &ldquo;<strong><%=@query%></strong>&rdquo;</h1>
-          <% if @query_corrected != @query %>
-            <div class="suggestion">(Did you mean: "<a href ='/search?q=<%= @query_corrected.gsub(/ /, '+') %>'><%=@query_corrected%></a>"?)</div>
-          <% end -%>
-          <!-- <div class="count">< % = #@results.count % > results found</div> -->
-        </div>
+
+        <% if @query_corrected != @query %>
+          <div class="suggestion">(Did you mean: "<a href ='/search?q=<%= @query_corrected.gsub(/ /, '+') %>'><%=@query_corrected%></a>"?)</div>
+        <% end %>
+
        
           <% if @results.blank? or @results.count == 0 %>
             <p>Sorry, no results found for "<%=@query%>".  Please try rephrasing your search terms.</p>

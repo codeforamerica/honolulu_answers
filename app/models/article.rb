@@ -100,20 +100,17 @@ class Article < ActiveRecord::Base
     string = (string.downcase.split - eng_stop_list.flatten).join " "    
   end
 
-  # Given a word, tells you if it's spelled correctly or not.  If it is returns true, if it isn't 
-  def self.correct_spelling word
-    nil 
-  end
-
-
   def self.spell_check string
     dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/en_US", 'en_US' )
 
     dict_custom = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/blank", 'blank' )
     Keyword.all(:select => ['name', 'synonyms']).each do |kw|
       dict_custom.add kw.name
-      kw.synonyms.each{ |syn| dict_custom.add syn }
     end
+    stop_words ||= Rails.cache.fetch('stop_words') do
+      CSV.read( "lib/assets/eng_stop.csv" ).flatten
+    end
+    stop_words.each{ |sw| dict_custom.add sw }
    
     string_corrected = string.split.map do |word|
       if dict.spell(word) or dict_custom.spell(word) # word is correct
