@@ -29,3 +29,5 @@ public/assets
 # Ignore files created by RubyMine IDE (CCHNL Specific)
 /.idea
 .rvmrc
+
+*tags
