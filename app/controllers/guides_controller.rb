@@ -13,7 +13,7 @@ class GuidesController < ApplicationController
 	    @article.delay.increment! :access_count
 	    @article.delay.category.increment!(:access_count) if @article.category   
 
-	    @content_html = BlueCloth.new(@article.content).to_html
+	    @content_html = BlueCloth.new(@article.content_md).to_html
 	    @bodyclass = "results"
 
 	    respond_to do |format|

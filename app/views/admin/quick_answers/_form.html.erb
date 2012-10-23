@@ -1,0 +1,26 @@
+<%= render :partial => 'shared/pagedown' %>
+
+<%= semantic_form_for [:admin, @quick_answer] do |f| %>
+ <%= f.inputs "Quick Answer Details" do %>
+    <%if current_user.is_moderator%>
+      <%= f.input :is_published, :label => "Publish?"%>
+    <% end   %>  
+    <%=f.input :title %>
+
+    <%=f.input :preview %>
+    <%=f.input :category %>
+    <%=f.input :contact %>
+    <%=f.input :tags, :as => :string %>
+    <%=f.input :author_link %>
+    <%=f.input :author_pic %>
+    <%=f.input :author_name %>
+    <!-- this will be hidden  -->
+    <div class="">
+      <div id="wmd-button-bar"></div>
+      <%=f.input :content_md, :input_html => { :class => 'wmd-input', :id => 'wmd-input'} %>
+    </div>
+  <%end%>
+  <%=f.buttons :commit %>
+<% end %>
+
+<div id="wmd-preview" class="wmd-panel wmd-preview"></div>

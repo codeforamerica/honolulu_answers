@@ -136,9 +136,7 @@ ActiveAdmin.setup do |config|
   #
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
-  
-  # Load TinyMCE Editor
-  config.register_javascript '/assets/tinymce.js'
+
   
 end
 ActiveAdmin::ResourceController.class_eval do

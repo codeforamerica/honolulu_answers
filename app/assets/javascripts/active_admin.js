@@ -1,11 +1,7 @@
 //= require active_admin/base
+//= require jquery
+//= require markdown.converter
+//= require markdown.sanitizer
+//= require markdown.editor
 
-$(document).ready(function() {
-  if(typeof tinyMCE !== 'undefined'){
-    tinyMCE.init({
-          mode: 'specific_textareas',
-          editor_selector : 'editor',
-          theme: 'advanced'
-    });
-  }
-});
+
