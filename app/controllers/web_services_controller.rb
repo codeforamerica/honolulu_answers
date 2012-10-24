@@ -19,6 +19,14 @@ class WebServicesController < ApplicationController
     @content_html = BlueCloth.new(@article.content_md).to_html
     @bodyclass = "results"
 
+    # Add support for quick-top in markdown
+    hr = /<hr( \/)?>/
+    if @content_html.match hr
+      @content_html.gsub!(hr,"</div>")
+      @content_html = "<div class='quick_top'>" + @content_html
+    end
+
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @article }

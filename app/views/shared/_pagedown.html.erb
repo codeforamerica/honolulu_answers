@@ -21,7 +21,7 @@ $(document).ready(function() {
     var hr = /<hr( \/)?>/;
     if( text.match(hr) ) {
       text = text.replace(hr, "</div>");
-      text = "<div class='quick-top'>".concat(text);
+      text = "<div class='quick_top'>".concat(text);
     }
     return text;
   });

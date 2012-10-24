@@ -25,7 +25,7 @@ class QuickAnswersController < ApplicationController
     hr = /<hr( \/)?>/
     if @content_html.match hr
       @content_html.gsub!(hr,"</div>")
-      @content_html = "<div class='quick-top'>" + @content_html
+      @content_html = "<div class='quick_top'>" + @content_html
     end
 
     @bodyclass = "results"
