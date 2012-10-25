@@ -30,6 +30,8 @@ Honoluluanswers::Application.routes.draw do
   match 'autocomplete' => "search#autocomplete"
   match '/articles/article-type/:content_type' => "articles#article_type"
 
+  match '/search/spell_check' => 'search#spell_check', :as => :spell_check, :via => :get
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

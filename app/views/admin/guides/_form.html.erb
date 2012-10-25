@@ -4,10 +4,9 @@
     <%= f.inputs "Guide Details" do %>
     <%if current_user.is_moderator%>
       <%= f.input :is_published, :label => "Publish?"%>
-    <% end   %>  
+    <% end %>
     <%=f.input :title %>
-
-    <%=f.input :preview %>
+    <%=f.input :preview, :input_html => { :rows => 4 } %>
     <%=f.input :category %>
     <%=f.input :contact %>
     <%=f.input :tags, :as => :string %>

@@ -11,6 +11,9 @@ gem 'foreman'				                      # For launching with the Procfile and kee
 
 
 ## Utilities
+gem 'pry-rails', :group => :development   # Better 'rails console'
+#gem 'pry-exception_explorer', :group => :development # Puts you in the console when an exception is raised
+gem 'pry-debugger'                             # Adds next, step and continue to Pry for debugging
 gem 'newrelic_rpm', :group => [:production, :development] # Rails analytics - see the Heroku addon
 gem 'heroku'                              # Managed hosting solution
 gem 'annotate', '~>2.4.1.beta'            # Annotates models with database info: `bundle exec rake:annotate` 
@@ -19,6 +22,7 @@ gem 'progressbar'                         # Display progress bars in terminal ou
 gem 'facets', :require => false           # Some extra methods for ruby
 gem 'seed_dump'                           # Adds a rake task which constructs a db/seeds.rb file based on the current database state.  Super useful!
 gem 'jquery-ui-rails'                     # Package jQuery for the Rails 3.1+ asset pipeline
+gem 'ruby-prof'                           # ruby profiler
 
 ## Performance and optimization
 gem 'delayed_job_active_record'           # Lets you queue tasks as background jobs
