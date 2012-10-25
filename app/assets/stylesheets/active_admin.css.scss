@@ -7,7 +7,18 @@
 
 
 // Pagedown style
-
+#guide_preview
+{
+	height:50px;
+}
+#web_service_preview
+{
+	height:50px;
+}
+#quick_answer_preview
+{
+	height:50px;
+}
 .wmd-panel
 {
 	/*margin-left: 25%;*/
@@ -24,6 +35,8 @@
 
 .wmd-input 
 { 
+	width: 50%;
+	float:left;
 	/*height: 300px;*/
 	/*width: 100%;*/
 	/*background-color: Gainsboro;*/
@@ -32,7 +45,10 @@
 
 .wmd-preview 
 { 
-	background-color: #c0e0ff; 
+	background-color: #c0e0ff;
+	width: 40%; 
+	float:left;
+	margin-left: 10px;
 }
 
 .wmd-button-row 
@@ -51,7 +67,6 @@
 	width: 1px; 
 	height: 20px; 
 	margin-left: 14px;
-	
 	position: absolute;
 	background-color: Silver;
 	display: inline-block; 
@@ -90,10 +105,6 @@
 {
     left: 300px;
 }
-
-
-
-
 .wmd-prompt-background
 {
 	background-color: Black;
