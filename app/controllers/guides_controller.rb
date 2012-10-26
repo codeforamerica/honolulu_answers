@@ -13,8 +13,8 @@ class GuidesController < ApplicationController
 	    @article.delay.increment! :access_count
 	    @article.delay.category.increment!(:access_count) if @article.category   
 
-	    @content_html = BlueCloth.new(@article.content_md).to_html
-	    @bodyclass = "results"
+        content = @article.render_markdown ? @article.content_md : @article.content
+	    @content_html = BlueCloth.new(content).to_html
 
         # Add support for quick-top in markdown
         hr = /<hr( \/)?>/

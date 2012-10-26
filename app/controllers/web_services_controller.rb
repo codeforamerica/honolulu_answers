@@ -1,5 +1,5 @@
 class WebServicesController < ApplicationController
-  caches_page :show
+  #caches_page :show
   
   def show
     return render(:template => 'articles/missing') unless WebService.exists? params[:id]
@@ -16,8 +16,8 @@ class WebServicesController < ApplicationController
     @article.delay.increment! :access_count
     @article.delay.category.increment!(:access_count) if @article.category   
 
-    @content_html = BlueCloth.new(@article.content_md).to_html
-    @bodyclass = "results"
+    content = @article.render_markdown ? @article.content_md : @article.content
+    @content_html = BlueCloth.new(content).to_html
 
     # Add support for quick-top in markdown
     hr = /<hr( \/)?>/

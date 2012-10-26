@@ -18,8 +18,8 @@ class QuickAnswersController < ApplicationController
     @article.delay.increment! :access_count
     @article.delay.category.increment!(:access_count) if @article.category   
 
-    # @content_html = BlueCloth.new(@article.content).to_html
-    @content_html = BlueCloth.new(@article.content_md).to_html
+    content = @article.render_markdown ? @article.content_md : @article.content
+    @content_html = BlueCloth.new(content).to_html
     
     # Add support for quick-top in markdown
     hr = /<hr( \/)?>/
@@ -27,8 +27,6 @@ class QuickAnswersController < ApplicationController
       @content_html.gsub!(hr,"</div>")
       @content_html = "<div class='quick_top'>" + @content_html
     end
-
-    @bodyclass = "results"
 
     respond_to do |format|
       format.html # show.html.erb
