@@ -14,7 +14,7 @@ login: &login
 development:
   adapter: postgresql
   encoding: unicode
-  database: honoluluanswers_dev
+  database: wmgg_dev
   host: localhost
   pool: 5
   timeout: 5000
