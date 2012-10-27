@@ -4,6 +4,13 @@
   <title>West Michigan Green Guide</title>
   <meta name="viewport" content="width=device-width,initial-scale =1,maximum-scale=1,user-scalable=no" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <!-- facebook and twitter buttons -->
+    <meta property="og:title" content="West Michigan Green Guide"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="here's gonna be the url"/>
+  <!-- facebook and twitter buttons -->
+
   <%= include_gon %>
   <%= stylesheet_link_tag    "application-all", :media => "all" %>
   <%= stylesheet_link_tag    "application-mobile", :media => "all and (max-width: 969px)" %>
@@ -50,7 +57,7 @@
             <%= link_to("Guides", "/articles/article-type/guide") %>
           </li>
           <li class="">
-            <%= link_to("Web Services", "/articles/article-type/web-service") %>
+            <%= link_to("Resources", "/articles/article-type/resource") %>
           </li>
         </ul>
         <% if !current_page?('/')  %>
@@ -78,32 +85,15 @@
       <li><a href="mailto:dschoonmaker@wmeac.org">Contact</a></li>
       <li><a href="https://github.com/friendlycode/wmgg">Contribute</a></li>
     </ul>
-    <div class="cfa-logos">
-      <a href="http://codeforamerica.org/"><img src="/assets/cfa_logo_footer.png" class="right" alt="Code for America"></a>
-      <span class="plus">&#43;</span>
-      <a href="http://honolulu.gov"><img src="/assets/hnl_gov.png" class="right" alt="City and County of Honolulu"></a>
+    <div class="WMEAClogo">
+      <%= image_tag("wmeaclogo.png", :alt =>"logo") %>
+
     </div>
   </div>
 </div><!-- /footer -->
 
 
-<div id="getsat-widget-784"></div>
-<script type="text/javascript" src="https://loader.engage.gsfn.us/loader.js"></script>
-<script type="text/javascript">
-if (typeof GSFN !== "undefined") { GSFN.loadWidget(784,{"containerId":"getsat-widget-784"}); }
-</script>
 
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-20825280-8']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
 
 </body>
 </html>

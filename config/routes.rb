@@ -19,7 +19,7 @@ Honoluluanswers::Application.routes.draw do
 
   resources :guides
 
-  resources :web_services
+  resources :resources
 
   resources :questions, :only => [:new, :get]
 

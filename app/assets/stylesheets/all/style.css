@@ -816,7 +816,7 @@ margin-top: 30px;
 }
 
 ul.about-list li {
-	list-style-type: square;
+	list-style-type: disc;
 	padding: 0px;
 	margin-left: 40px;
 	font-family: "News Cycle", Helvetica;
@@ -824,9 +824,14 @@ ul.about-list li {
 
 .about-list {
 	font-family: "News Cycle", Helvetica;
-	font-size: 80%;
+	font-size: 99%;
+  font-weight: bold;
+
 }
 
 .highlight {
 	font-weight:bold;
+}
+.WMEAClogo {
+  float:  right;
 }

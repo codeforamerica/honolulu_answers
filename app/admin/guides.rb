@@ -45,8 +45,7 @@ ActiveAdmin.register Guide do
       f.input :category
       #f.input :content_type,  :as => :select, :collection => ["Quick Answer", "Web Service", "Guide"]
       f.input :contact
-      #f.input :service_url
-      f.input :tags, :as => :string 
+      f.input :tags, :as => :string, :label => "Keywords"
       f.input :author_link
       f.input :author_pic
       f.input :author_name
