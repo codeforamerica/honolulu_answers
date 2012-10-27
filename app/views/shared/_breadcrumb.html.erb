@@ -1,0 +1,9 @@
+<%= link_to( "Home", root_url) %>
+>
+<% if !@article.category.nil? %>
+<%= link_to(@article.category.name, @article.category) %>
+<% else %>
+Miscellaneous
+<% end %>
+>
+<%= @article.title %>
