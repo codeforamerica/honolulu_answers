@@ -21,12 +21,14 @@ Honoluluanswers::Application.routes.draw do
 
   resources :web_services
 
+  resources :questions
+
   resources :quick_answers
   #get "home/index"
   root :to => "home#index"
 
   match '/about' => "home#about" , :as => :about
-  match '/search/' => "search#index" , :as => :search, :via => [:get, :post] 
+  match '/search/' => "search#index" , :as => :search, :via => [:get, :post]
   match 'autocomplete' => "search#autocomplete"
   match '/articles/article-type/:content_type' => "articles#article_type"
 
