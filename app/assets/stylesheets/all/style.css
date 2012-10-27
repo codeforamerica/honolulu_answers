@@ -250,10 +250,19 @@ div.header-search {
 
 /* Homepage Modal */
 /* -------------- */
+.home-flash {
+  padding: 10px;
+  background-color: rgb(91, 143, 72);
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
 .container.main {
   margin-top: 50px;
   margin-bottom: 50px;
 }
+
 .modal-container {
   background-color: #fbfbfb;
   float: none;

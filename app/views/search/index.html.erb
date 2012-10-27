@@ -9,7 +9,7 @@
           <% end -%>
           <!-- <div class="count">< % = #@results.count % > results found</div> -->
         </div>
-       
+
           <% if @results.blank? or @results.count == 0 %>
             <p>Sorry, no results found for "<%=@query%>".  Please try rephrasing your search terms.</p>
           <% else %>
@@ -22,7 +22,9 @@
               </li>
             <% end %>
           </ul>
-          <% end -%>
+          <% end %>
+
+        <p>If you can't find an answer, you can ask usk us <%= link_to( 'here', new_question_path) %>.</p>
       </div>
     </div>
     <div class="span3">

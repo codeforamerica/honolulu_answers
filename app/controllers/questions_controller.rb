@@ -4,18 +4,27 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(
-      :question => params[:question],
-      :name     => params[:name],
-      :email    => params[:email],
-      :context  => params[:context],
-      :location => params[:location],
-      :urgency  => params[:urgency]
+    submitted = params[:question]
+
+    @question = Question.create(
+      :question => submitted[:question],
+      :context  => submitted[:context],
+      :urgency  => submitted[:urgency],
+      :name     => submitted[:name],
+      :email    => submitted[:email],
+      :location => submitted[:location]
     )
-    @question.save!
+    # @question.save!
+
+    flash[:success] = "Thanks for submitting a question! We'll review it and try to answer it as best as we can."
+    redirect_to :root
   end
 
-  def index
-    @questions = Question.all
+  def working
+    @questions = Question.where(:status => 'working')
+  end
+
+  def answered
+    @questions = Question.where(:status => 'answered')
   end
 end

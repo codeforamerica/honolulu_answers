@@ -4,45 +4,52 @@
     >
     Ask a Question
   </div>
-  <div class="main-content">
-    <h1>Ask a Question</h1>
+  <div class="row">
+    <div class="span-9">
+      <div class="main-content">
+        <h1>Ask a Question</h1>
 
-    <%= form_for @question do |f| %>
+        <%= form_for @question do |f| %>
 
-       <div class="field">
-        <%= f.label :question %><br />
-        <%= f.text_field :question %>
-      </div>
-      <div class="field">
-        <%= f.label :name %><br />
-        <%= f.text_field :name %>
-      </div>
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email %>
-      </div>
-      <div class="field">
-        <%= f.label :context %><br />
-        <%= f.text_area :context %>
-      </div>
-      <div class="field">
-        <%= f.label :location %><br />
-        <%= f.text_field :location %>
-      </div>
-      <div class="field">
-        <%= f.label :urgency %><br />
-        <%= select_tag :urgency, options_for_select([
-          ["Critical (I have oil leaking into the ground right now!)", 'critical'],
-          ["Timely (I need help in making a decision or working on a project.)", 'elevated'],
-          ["Curious (This is something I've been interested about.)"]
-        ]) %>
-      </div>
+           <div class="field">
+            <%= f.label :question %><br />
+            <%= f.text_field :question %>
+          </div>
+          <div class="field">
+            <%= f.label :context %><br />
+            <%= f.text_area :context %>
+          </div>
+          <div class="field">
+            <%= f.label :urgency %><br />
+            <%= select_tag :urgency, options_for_select([
+              ["Critical (I have oil leaking into the ground right now!)", 'critical'],
+              ["Timely (I need help in making a decision or working on a project.)", 'elevated'],
+              ["Curious (This is something I've been interested about.)"]
+            ]) %>
+          </div>
 
-      <div class="submit">
-        <%= f.submit %><br />
-      </div>
-    <% end %><br />
+          <h2>About You</h2>
 
-    <%= link_to 'Back', questions_path %>
+          <div class="field">
+            <%= f.label :name %><br />
+            <%= f.text_field :name %>
+          </div>
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email %>
+          </div>
+          <div class="field">
+            <%= f.label :location %><br />
+            <%= f.text_field :location %>
+          </div>
+
+
+          <div class="submit">
+            <%= f.submit %><br />
+          </div>
+        <% end %><br />
+
+      </div>
+    </div>
   </div>
 </div>

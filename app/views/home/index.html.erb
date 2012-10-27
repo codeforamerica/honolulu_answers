@@ -1,5 +1,12 @@
 <div class="modal-container span8">
   <div class="main-modal">
+
+    <% if flash[:success] %>
+      <div class="home-flash">
+        <h3 class="info_box"><%= flash[:success] %></h3>
+      </div>
+    <% end %>
+
     <div id="welcome-line-l"></div>
     <div id="welcome-line-r"></div>
     <h3 class="welcome">Welcome To the</h3>
