@@ -11,7 +11,7 @@ class Ability
       can :manage, Guide
       can :manage, GuideStep
       # can :manage, QuickAnswer
-      # can :manage, WebService
+      # can :manage, Resource
     end
 
     # A manager can do the following:

@@ -19,7 +19,7 @@ Honoluluanswers::Application.routes.draw do
 
   resources :guides
 
-  resources :web_services
+  resources :resources
 
   resources :quick_answers
   #get "home/index"

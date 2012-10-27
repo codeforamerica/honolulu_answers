@@ -73,6 +73,7 @@ class Article < ActiveRecord::Base
   end
 
   def self.find_by_type( content_type )
+    puts "#{content_type}"
     return Article.where(:type => content_type).order('category_id').order('access_count DESC')
   end
 

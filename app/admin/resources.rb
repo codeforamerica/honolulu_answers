@@ -1,4 +1,4 @@
-ActiveAdmin.register WebService do
+ActiveAdmin.register Resource do
 	# This will authorize the Foobar class
   # The authorization is done using the AdminAbility class
   controller.authorize_resource
@@ -17,7 +17,7 @@ ActiveAdmin.register WebService do
   # View 
   index do
     column :id
-    column "Web Service Title", :title do |article|
+    column "Resource Title", :title do |article|
       link_to article.title, [:admin, article]
     end
     column :category
@@ -32,7 +32,7 @@ ActiveAdmin.register WebService do
   end
   
   form do |f|   # create/edit user form
-    f.inputs "Web Service Details" do
+    f.inputs "Resource Details" do
       if current_user.is_moderator
         f.input :is_published, :label => "Publish?"
       end     
