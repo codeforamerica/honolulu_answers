@@ -3,9 +3,9 @@
 #
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
-login: &login
-  username: pichot
-  password: test44
+#login: &login
+#  username: pichot
+#  password: test44
 
 # This line is not compatible with the gem 'taps' used to sync the dataabse with heroku
 <%= file = File.join(Rails.root, "config", "dblogin.yml")
@@ -35,4 +35,4 @@ production:
   host: localhost
   pool: 5
   timeout: 5000
-  <<: *login
+#  <<: *login
