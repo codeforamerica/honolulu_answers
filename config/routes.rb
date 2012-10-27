@@ -21,7 +21,7 @@ Honoluluanswers::Application.routes.draw do
 
   resources :web_services
 
-  resources :questions
+  resources :questions, :only => [:new, :get]
 
   resources :quick_answers
   #get "home/index"

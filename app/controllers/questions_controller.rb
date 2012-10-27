@@ -12,5 +12,10 @@ class QuestionsController < ApplicationController
       :location => params[:location],
       :urgency  => params[:urgency]
     )
+    @question.save!
+  end
+
+  def index
+    @questions = Question.all
   end
 end
