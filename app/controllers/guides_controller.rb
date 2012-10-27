@@ -1,5 +1,5 @@
 class GuidesController < ApplicationController
-	caches_page :show
+	# caches_page :show
 	def show
 		@article = Guide.find(params[:id])
 

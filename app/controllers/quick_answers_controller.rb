@@ -1,6 +1,6 @@
 class QuickAnswersController < ApplicationController
 
-  caches_page :show
+  # caches_page :show
 
   def show
     return render(:template => 'articles/missing') unless QuickAnswer.exists? params[:id]
