@@ -19,38 +19,22 @@ class Article < ActiveRecord::Base
   has_many :wordcounts
   has_many :keywords, :through => :wordcounts
 
-<<<<<<< HEAD
-  has_attached_file :author_pic,
-                    :storage => :s3,
-                    :bucket => ENV['S3_BUCKET'],
-                    :s3_credentials => {
-                        :access_key_id => ENV['S3_KEY'],
-                        :secret_access_key => ENV['S3_SECRET']
-                    },
-                    :path => "/:style/:id/:filename",
-                    :styles => { :thumb => "100x100" }
-=======
   has_attached_file :author_pic, 
     :storage => :s3,
-    :bucket => 'hnlanswers-production',
+    :bucket => ENV['S3_BUCKET'],
     :s3_credentials => {
       :access_key_id => ENV['S3_KEY'],
       :secret_access_key => ENV['S3_SECRET']
     },
     :path => "/:style/:id/:filename",
     :styles => { :thumb => "100x100" } 
->>>>>>> cms
 
   validates_attachment_size :author_pic, :less_than => 5.megabytes  
   validates_attachment_content_type :author_pic, :content_type => ['image/jpeg', 'image/png']                      
 
   validates_presence_of :access_count
 
-<<<<<<< HEAD
-  attr_accessible :title, :content, :preview, :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic, :author_pic_file_name, :author_pic_content_type, :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link, :type
-=======
-  attr_accessible :title, :content, :content_md, :render_markdown, :preview, :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic_file_nameauthor_pic_content_type, :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link, :type
->>>>>>> cms
+  attr_accessible :title, :content, :content_md, :render_markdown, :preview, :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic, :author_pic_file_name, :author_pic_content_type, :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link, :type
 
   # Tanker callbacks to update the search index
   after_save :update_tank_indexes 
