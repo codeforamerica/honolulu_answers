@@ -50,7 +50,7 @@ ActiveAdmin.register Article do
       f.input :type,  :as => :select, :collection => ["QuickAnswer", "Resource", "Guide"]
       f.input :contact
       f.input :service_url
-      f.input :tags, :as => :string 
+      f.input :tags, :as => :string, :label => "Keywords"
       f.input :author_link
       f.input :author_pic
       f.input :author_name
