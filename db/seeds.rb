@@ -68,11 +68,11 @@ Category.create([
                 ])
 
 Contact.create([
-#                { :name => "Driver Licensing", 
-#                  :subname => "", 
-#                  :number => "(808) 532-7730", 
-#                  :url => "http://www1.honolulu.gov/csd/vehicle/dlrequirements.htm", 
-#                  :address => "", 
-#                  :department => "", 
-#                  :description => "For more information about driver licensing, go to the existing Honolulu.gov website. Or contact the city's Customer Service Department at (808) 532-7730." }
-])
+                { :name => "Friends of Grand Rapids Parks", 
+                  :subname => "", 
+                  :number => "", 
+                  :url => "http://www.friendsofgrparks.org", 
+                  :address => "", 
+                  :department => "", 
+                  :description => "A citizen driven nonprofit, separate from the City, but working closely to protect, enhance and expand our community parks." }
+               ])
