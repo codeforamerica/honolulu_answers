@@ -1,4 +1,4 @@
-      <div class="sidebar">  
+      <div class="sidebar">
         <% unless @article.contact.nil? %>
           <div class="sidebar-unit">
             <h4 class="side-head">NEED MORE INFO?</h4>
@@ -25,7 +25,6 @@
             </div>
           <% end -%>
         <% end -%>
-        <%= render :partial => "shared/donation_sidebar" %>
         <% unless @article.author_name.blank? %>
           <div class="sidebar-unit">
             <h4 class="side-head">AUTHORED BY</h4>
@@ -43,4 +42,5 @@
             </div>
           </div>
         <% end -%>
+        <%= render :partial => "shared/donation_sidebar" %>
       </div>
