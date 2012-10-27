@@ -36,13 +36,25 @@ WebService.create([
 
 # ORDER IS IMPORTANT
 Category.create([
-  { :name => "Driver License" },
-  { :name => "Motor Vehicle" },
-  { :name => "Camping"  },
-  { :name => "Trailers" },
-  { :name => "License Plates" },
-  { :name => "City Jobs" }
-])
+                 { :name => "Air Quality" },
+                 { :name => "Farming and Gardening" },
+                 { :name => "Getting Involved" },
+                 { :name => "Green Jobs" },
+                 { :name => "Green Living and Home Improvement" },
+                 { :name => "Green Space and Canopy" },
+                 { :name => "Government" },
+                 { :name => "Health" },
+                 { :name => "Land Conservation" },
+                 { :name => "Recreation" },
+                 { :name => "Renewable Energy" },
+                 { :name => "Recycling" },
+                 { :name => "Sustainable Communities" },
+                 { :name => "Transportation and Transit" },
+                 { :name => "Water Conservation" },
+                 { :name => "Water Quality" },
+                 { :name => "Wildlife" },
+                 { :name => "Waste" }
+                ])
 
 Contact.create([
   { :name => "Driver Licensing", :subname => "", :number => "(808) 532-7730", :url => "http://www1.honolulu.gov/csd/vehicle/dlrequirements.htm", :address => "", :department => "", :description => "For more information about driver licensing, go to the existing Honolulu.gov website. Or contact the city's Customer Service Department at (808) 532-7730." },
