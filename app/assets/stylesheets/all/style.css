@@ -107,7 +107,7 @@ h4.side-head {
   font-size: 18px;
   color: #FFF;
   background-color: rgb(91, 143, 71);
-  
+
   padding: 10px 15px;
   margin: 0;
   letter-spacing: 0.075em;
@@ -148,6 +148,10 @@ table a{
 
 a {
   border-bottom: 1px solid #ffde4d;
+}
+
+a.no-underline {
+  border-bottom: none;
 }
 
 .category p a{
