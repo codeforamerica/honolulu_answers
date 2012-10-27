@@ -33,7 +33,7 @@ class Article < ActiveRecord::Base
 
   validates_presence_of :access_count
 
-  attr_accessible :title, :content, :preview, :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic_file_nameauthor_pic_content_type, :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link, :type, :service_url
+  attr_accessible :title, :content, :preview, :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic_file_nameauthor_pic_content_type, :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link, :type
 
   after_save do 
     update_tank_indexes
@@ -320,7 +320,6 @@ end
 #  preview                 :text
 #  contact_id              :integer
 #  tags                    :text
-#  service_url             :string(255)
 #  is_published            :boolean         default(FALSE)
 #  slug                    :string(255)
 #  category_id             :integer
