@@ -23,7 +23,9 @@ doc/search_stats.csv
 coverage/
 .sass-cache/
 
-# Ensures assets are precompiled during slug compilation when deployd to heroku
-public/assets 
-.idea/
+# Ignore files created by RubyMine IDE (CCHNL Specific)
+/.idea
+.rvmrc
+
+
 *tags

@@ -57,11 +57,27 @@ describe Article do
 
   describe "#spell_check(string)" do
     it "corrects misspelt words in the string" do
+      Keyword.create_all( ['renew', 'driver', 'license'] )
       Article.spell_check('renw droivr lisence').should eq('renew driver license')
     end
   end
 
 end
+
+#  describe "spell checking" do
+    #context "well formed clean strings" do
+      #it "corrects simple spelling mistakes like typos" do
+      #end
+
+      #it "only suggests words which occur in the database" do
+      #end
+    #end
+
+    #context "problem strings" do
+      #xit "leaves a correctly spelled string with punctuation in tact" do
+      #end
+    #end
+  #end
 
 # == Schema Information
 #

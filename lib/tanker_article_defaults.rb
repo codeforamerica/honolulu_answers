@@ -7,7 +7,7 @@ module TankerArticleDefaults
     
     base.tankit index, :as => 'Article' do
         indexes :title
-	    indexes :content
+	    indexes :content_md
 	    indexes :category, :category => true
 	    indexes :tags
 	    indexes :preview
@@ -17,7 +17,7 @@ module TankerArticleDefaults
 	      keywords.map { |kw| kw.metaphone }
 	    end
 	    indexes :synonyms do
-	      keywords.map { |kw| kw.synonyms }
+	      keywords.map { |kw| kw.synonyms.first(5) }
 	    end
 	    indexes :keywords do
 	      keywords.map { |kw| kw.name }

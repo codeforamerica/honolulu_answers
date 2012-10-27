@@ -4,6 +4,7 @@ class Article < ActiveRecord::Base
   include TankerArticleDefaults
   include Tanker
   include RailsNlp
+  include Markdownifier
 
   require_dependency 'keyword'
 
@@ -19,45 +20,41 @@ class Article < ActiveRecord::Base
   has_many :keywords, :through => :wordcounts
 
   has_attached_file :author_pic, 
-                    :storage => :s3,
-                    :bucket => 'hnlanswers-production',
-                    :s3_credentials => {
-                      :access_key_id => ENV['S3_KEY'],
-                      :secret_access_key => ENV['S3_SECRET']
-                    },
-                    :path => "/:style/:id/:filename",
-                    :styles => { :thumb => "100x100" } 
+    :storage => :s3,
+    :bucket => ENV['S3_BUCKET'],
+    :s3_credentials => {
+      :access_key_id => ENV['S3_KEY'],
+      :secret_access_key => ENV['S3_SECRET']
+    },
+    :path => "/:style/:id/:filename",
+    :styles => { :thumb => "100x100" } 
 
   validates_attachment_size :author_pic, :less_than => 5.megabytes  
   validates_attachment_content_type :author_pic, :content_type => ['image/jpeg', 'image/png']                      
 
   validates_presence_of :access_count
 
-  attr_accessible :title, :content, :preview, :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic_file_nameauthor_pic_content_type, :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link, :type
+  attr_accessible :title, :content, :content_md, :render_markdown, :preview, :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic, :author_pic_file_name, :author_pic_content_type, :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link, :type
 
-  after_save do 
-    update_tank_indexes
-    Rails.cache.clear
-  end
+  # Tanker callbacks to update the search index
+  after_save :update_tank_indexes 
+  after_destroy :delete_tank_indexes
 
+  handle_asynchronously :update_tank_indexes
+  handle_asynchronously :delete_tank_indexes
 
-  # query-magic callbacks
-  after_create  :qm_after_create
-  after_update  :qm_after_update
+  # query_magic callbacks to update keywords and wordcounts tables (The gem will be called query_magic --hale)
+  after_create :qm_after_create
+  after_update :qm_after_update
   after_destroy :qm_after_destroy
 
-
-  after_destroy do
-   :delete_tank_indexes
-  end
-  before_validation do
-    :set_access_count_if_nil
-  end
+  before_validation :set_access_count_if_nil
 
   def self.find_by_friendly_id( friendly_id )
     begin
       find( friendly_id )
     rescue ActiveRecord::RecordNotFound => e
+      Rails.logger.debug e.to_s
       nil
     end
   end
@@ -84,8 +81,16 @@ class Article < ActiveRecord::Base
     if self.category
       "#{self.title} (#{self.id}) [#{self.category}]"
     else
-      self.title + '(' + self.id + ')'
     end
+  end
+
+  def content_to_markdown
+    Markdownifier.new.html_to_markdown( self.content )
+  end
+
+  def content_md_to_html
+    # add logic to replace custom syntax for quick-top etc
+    BlueCloth.new(self.content_md).to_html
   end
 
   def self.remove_stop_words string
@@ -96,44 +101,27 @@ class Article < ActiveRecord::Base
   end
 
   def self.spell_check string
-    is_corrected = false
-    # dict = Rails.cache.fetch('dict') do
-      dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/en_US", 'en_US' )
+    dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/en_US", 'en_US' )
 
-      # Add words found in content on our site to the dictionary
-      additional_words = Rails.cache.fetch('additional_words') do
-        custom_words = []
-        Keyword.all(:select => ['name', 'synonyms']).each do |kw|
-          next if kw.name.blank?
-          custom_words << kw.name unless dict.spell( kw.name )
-          next if kw.synonyms.blank?
-          kw.synonyms.each do |syn|
-            syn.split.each do |word|
-              custom_words << word unless dict.spell( word )
-            end
-          end
-        end
-        custom_words
-      end
-
-
-    string_corrected = []
-    string.split.each do |term|
-      if dict.check?( term )
-        string_corrected << term
-      else 
-        suggestion = dict.suggest( term ).first
-        if suggestion.nil? # if no suggestion, stick with the existing term
-          string_corrected << term
-        else
-          is_corrected = true
-          string_corrected << suggestion
-        end
+    dict_custom = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/blank", 'blank' )
+    Keyword.all(:select => ['name', 'synonyms']).each do |kw|
+      dict_custom.add kw.name
+    end
+    stop_words ||= Rails.cache.fetch('stop_words') do
+      CSV.read( "lib/assets/eng_stop.csv" ).flatten
+    end
+    stop_words.each{ |sw| dict_custom.add sw }
+   
+    string_corrected = string.split.map do |word|
+      if dict.spell(word) or dict_custom.spell(word) # word is correct
+        word
+      else
+        suggestion = dict_custom.suggest( word ).first
+        suggestion.nil? ? word : suggestion
       end
     end
 
-    # if the query has not been corrected, return nil.
-    return is_corrected ? string_corrected.join(' ') : nil
+    string_corrected.join ' '
   end
 
   def self.expand_query( query )
@@ -187,7 +175,7 @@ class Article < ActiveRecord::Base
   end
 
 
-  private
+  protected
 
   def set_access_count_if_nil
     self.access_count = 0 if self.access_count.nil?
@@ -234,14 +222,14 @@ class Article < ActiveRecord::Base
   def count_words words
     words = words.split
     words = words - @@STOP_WORDS
-    
+
     # Ruby Facets - http://www.webcitation.org/69k1oBjmR    
     return words.frequency
   end
 
   def delete_orphaned_keywords
     orphan_kw_ids = Keyword.all( :select => 'id' ).map{ |kw| kw.id } - 
-                    Wordcount.all( :select => 'keyword_id' ).map{ |wc| wc.keyword_id }
+      Wordcount.all( :select => 'keyword_id' ).map{ |wc| wc.keyword_id }
     Keyword.destroy( orphan_kw_ids )
   end
 
@@ -253,17 +241,15 @@ class Article < ActiveRecord::Base
   #   3) Create a new Wordcount row with :keyword_id => kw.id, :article_id => article.id and count as the frequency of the keyword in the article.
   def qm_after_create
     begin
-      text = collect_text(:model => self, :fields => ['title',
-                                                      'content',
-                                                      'preview',
-                                                      'tags',
-                                                      'category.name'])
-      text = clean( text )
-      wordcounts = count_words( text )
-      wordcounts.each do |word, frequency|
-        kw = Keyword.find_or_create_by_name( word )
-        Wordcount.create!(:keyword_id => kw.id, :article_id => self.id, :count => frequency)
-      end
+      text = collect_text(
+        :model => self,
+        :fields => ['title','content_md','preview','tags','category.name'])
+        text = clean( text )
+        wordcounts = count_words( text )
+        wordcounts.each do |word, frequency|
+          kw = Keyword.find_or_create_by_name( word )
+          Wordcount.create!(:keyword_id => kw.id, :article_id => self.id, :count => frequency)
+        end
     rescue => e
       puts "ERROR: error after article creation; could not update keywords and wordcounts for article with id #{self.id unless self.id.blank?}"
       puts e.message
@@ -276,8 +262,9 @@ class Article < ActiveRecord::Base
   # 2) treat the article as a new article
   # 3) remove keywords where keyword.id isn't present in column Wordcount#keyword_id
   def qm_after_update
+    #binding.pry
     begin
-      self.wordcounts.destroy_all
+      wordcounts.destroy_all
       qm_after_create
       delete_orphaned_keywords
     rescue => e
@@ -292,7 +279,7 @@ class Article < ActiveRecord::Base
   # 2) remove keywords where keyword.id isn't present in column Wordcount#keyword_id
   def qm_after_destroy
     begin
-      self.wordcounts.destroy_all
+      wordcounts.destroy_all
       delete_orphaned_keywords
     rescue => e
       puts "ERROR: error after article destruction; could not update keywords and wordcounts for article with id #{self.id unless self.id.blank?}"

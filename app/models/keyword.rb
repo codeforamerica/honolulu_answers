@@ -26,6 +26,10 @@ class Keyword < ActiveRecord::Base
     self.save
   end
 
+  def self.create_all( words )
+    words.each { |word| create(:name => word )}
+  end
+
 
   private
 

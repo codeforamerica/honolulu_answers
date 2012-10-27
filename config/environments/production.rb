@@ -14,6 +14,9 @@ Honoluluanswers::Application.configure do
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
+  # get assets working on Heroku
+  config.assets.initialize_on_precompile = false
+
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = true # TEMPORARILY TRUE PENDING FIX OF HEROKU ASSET PRECOMPILATION ISSUE
 
@@ -41,15 +44,15 @@ Honoluluanswers::Application.configure do
 
   # Use a different logger for distributed setups
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
+  #dalli_store = Dalli::Client.new()
+  #config.action_dispatch.rack_cache = {
+    #:metastore    => dalli_store,
+    #:entitystore  => dalli_store,config.serve_static_assets configures Rails itself to serve static assets. Defaults to true, but in the production environment is turned off as the server software (e.g. Nginx or Apache) used to run the application should serve static assets instead. Unlike the default setting set this to true when running (absolutely not recommended!) or testing your app in production mode using WEBrick. Otherwise you won´t be able use page caching and requests for files that exist regularly under the public directory will anyway hit your Rails app.
+    #:allow_reload => true,
+    #:default_ttl  => 10800
+  #}
 
-  config.action_dispatch.rack_cache = {
-    :metastore    => Dalli::Client.new,
-    :entitystore  => 'file:tmp/cache/rack/body',
-    :allow_reload => true,
-    :default_ttl  => 10800
-  }
-
-    config.static_cache_control = "public, max-age=10800"
+    #config.static_cache_control = "public, max-age=10800"
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"

@@ -1,0 +1,234 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+authenticate_active_admin_user!	app/controllers/application_controller.rb	/^  def authenticate_active_admin_user!$/;"	f	class:ApplicationController
+ArticlesController	app/controllers/articles_controller.rb	/^class ArticlesController < ApplicationController$/;"	c
+index	app/controllers/articles_controller.rb	/^  def index$/;"	f	class:ArticlesController
+show	app/controllers/articles_controller.rb	/^  def show$/;"	f	class:ArticlesController
+article_type	app/controllers/articles_controller.rb	/^  def article_type$/;"	f	class:ArticlesController
+missing	app/controllers/articles_controller.rb	/^  def missing$/;"	f	class:ArticlesController
+CategoriesController	app/controllers/categories_controller.rb	/^class CategoriesController < ApplicationController$/;"	c
+index	app/controllers/categories_controller.rb	/^  def index$/;"	f	class:CategoriesController
+show	app/controllers/categories_controller.rb	/^  def show$/;"	f	class:CategoriesController
+missing	app/controllers/categories_controller.rb	/^  def missing$/;"	f	class:CategoriesController
+ContactsController	app/controllers/contacts_controller.rb	/^class ContactsController < ApplicationController$/;"	c
+index	app/controllers/contacts_controller.rb	/^  def index$/;"	f	class:ContactsController
+show	app/controllers/contacts_controller.rb	/^  def show$/;"	f	class:ContactsController
+GuidesController	app/controllers/guides_controller.rb	/^class GuidesController < ApplicationController$/;"	c
+show	app/controllers/guides_controller.rb	/^	def show$/;"	f	class:GuidesController
+HomeController	app/controllers/home_controller.rb	/^class HomeController < ApplicationController$/;"	c
+index	app/controllers/home_controller.rb	/^  def index$/;"	f	class:HomeController
+about	app/controllers/home_controller.rb	/^   def about$/;"	f	class:HomeController
+QuickAnswersController	app/controllers/quick_answers_controller.rb	/^class QuickAnswersController < ApplicationController$/;"	c
+show	app/controllers/quick_answers_controller.rb	/^  def show$/;"	f	class:QuickAnswersController
+SearchController	app/controllers/search_controller.rb	/^class SearchController < ApplicationController$/;"	c
+index	app/controllers/search_controller.rb	/^  def index$/;"	f	class:SearchController
+WebServicesController	app/controllers/web_services_controller.rb	/^class WebServicesController < ApplicationController$/;"	c
+show	app/controllers/web_services_controller.rb	/^  def show$/;"	f	class:WebServicesController
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+categories_list	app/helpers/application_helper.rb	/^	def categories_list$/;"	f	class:ApplicationHelper
+category_by_name	app/helpers/application_helper.rb	/^	def category_by_name(name)$/;"	f	class:ApplicationHelper
+ArticlesHelper	app/helpers/articles_helper.rb	/^module ArticlesHelper$/;"	m
+article_list_tag	app/helpers/articles_helper.rb	/^  def article_list_tag(article_id, description)$/;"	f	class:ArticlesHelper
+missing_article_list_tag	app/helpers/articles_helper.rb	/^  def missing_article_list_tag(article_id, description)$/;"	f	class:ArticlesHelper
+CategoryHelper	app/helpers/category_helper.rb	/^module CategoryHelper$/;"	m
+ContactsHelper	app/helpers/contacts_helper.rb	/^module ContactsHelper$/;"	m
+GuidesHelper	app/helpers/guides_helper.rb	/^module GuidesHelper$/;"	m
+HomeHelper	app/helpers/home_helper.rb	/^module HomeHelper$/;"	m
+QuickAnswerHelper	app/helpers/quick_answer_helper.rb	/^module QuickAnswerHelper$/;"	m
+SearchHelper	app/helpers/search_helper.rb	/^module SearchHelper$/;"	m
+WebServicesHelper	app/helpers/web_services_helper.rb	/^module WebServicesHelper$/;"	m
+Ability	app/models/ability.rb	/^class Ability$/;"	c
+initialize	app/models/ability.rb	/^  def initialize(user)$/;"	f	class:Ability
+Administrator	app/models/administrator.rb	/^class Administrator < ActiveRecord::Base$/;"	c
+Article	app/models/article.rb	/^class Article < ActiveRecord::Base  $/;"	c
+find_by_friendly_id	app/models/article.rb	/^  def self.find_by_friendly_id( friendly_id )$/;"	F	class:Article
+search	app/models/article.rb	/^  def self.search( query )$/;"	F	class:Article
+search_titles	app/models/article.rb	/^  def self.search_titles( query )$/;"	F	class:Article
+find_by_type	app/models/article.rb	/^  def self.find_by_type( content_type )$/;"	F	class:Article
+allContent	app/models/article.rb	/^  def allContent()$/;"	f	class:Article
+to_s	app/models/article.rb	/^  def to_s$/;"	f	class:Article
+content_to_markdown	app/models/article.rb	/^  def content_to_markdown$/;"	f	class:Article
+content_md_to_html	app/models/article.rb	/^  def content_md_to_html$/;"	f	class:Article
+remove_stop_words	app/models/article.rb	/^  def self.remove_stop_words string$/;"	F	class:Article
+spell_check	app/models/article.rb	/^  def self.spell_check string$/;"	F	class:Article
+expand_query	app/models/article.rb	/^  def self.expand_query( query )$/;"	F	class:Article
+related	app/models/article.rb	/^  def related$/;"	f	class:Article
+indexable?	app/models/article.rb	/^  def indexable?$/;"	f	class:Article
+hits	app/models/article.rb	/^  def hits$/;"	f	class:Article
+analyse	app/models/article.rb	/^  def analyse$/;"	f	class:Article
+analyse_all	app/models/article.rb	/^  def self.analyse_all$/;"	F	class:Article
+set_access_count_if_nil	app/models/article.rb	/^  def set_access_count_if_nil$/;"	f	class:Article
+collect_text	app/models/article.rb	/^  def collect_text( options )$/;"	f	class:Article
+clean	app/models/article.rb	/^  def clean str$/;"	f	class:Article
+count_words	app/models/article.rb	/^  def count_words words$/;"	f	class:Article
+delete_orphaned_keywords	app/models/article.rb	/^  def delete_orphaned_keywords$/;"	f	class:Article
+qm_after_create	app/models/article.rb	/^  def qm_after_create$/;"	f	class:Article
+qm_after_update	app/models/article.rb	/^  def qm_after_update$/;"	f	class:Article
+qm_after_destroy	app/models/article.rb	/^  def qm_after_destroy$/;"	f	class:Article
+Category	app/models/category.rb	/^class Category < ActiveRecord::Base$/;"	c
+all_by_access_count	app/models/category.rb	/^  def self.all_by_access_count   $/;"	F	class:Category
+articles_by_access_count	app/models/category.rb	/^  def articles_by_access_count$/;"	f	class:Category
+hits	app/models/category.rb	/^  def hits$/;"	f	class:Category
+set_access_count_if_nil	app/models/category.rb	/^  def set_access_count_if_nil$/;"	f	class:Category
+Contact	app/models/contact.rb	/^class Contact < ActiveRecord::Base$/;"	c
+Guide	app/models/guide.rb	/^class Guide < Article$/;"	c
+guide_steps	app/models/guide.rb	/^	def guide_steps$/;"	f	class:Guide
+GuideStep	app/models/guide_step.rb	/^class GuideStep < ActiveRecord::Base$/;"	c
+Keyword	app/models/keyword.rb	/^class Keyword < ActiveRecord::Base$/;"	c
+count	app/models/keyword.rb	/^  def count$/;"	f	class:Keyword
+analyse	app/models/keyword.rb	/^  def analyse$/;"	f	class:Keyword
+QuickAnswer	app/models/quick_answer.rb	/^class QuickAnswer < Article$/;"	c
+User	app/models/user.rb	/^class User < ActiveRecord::Base$/;"	c
+WebService	app/models/web_service.rb	/^class WebService < Article$/;"	c
+Wordcount	app/models/wordcount.rb	/^class Wordcount < ActiveRecord::Base$/;"	c
+set_count_if_nil	app/models/wordcount.rb	/^  def set_count_if_nil$/;"	f	class:Wordcount
+Honoluluanswers	config/application.rb	/^module Honoluluanswers$/;"	m
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:Honoluluanswers
+current_ability	config/initializers/active_admin.rb	/^  def current_ability$/;"	f
+WillPaginate	config/initializers/will_paginate.rb	/^  module WillPaginate$/;"	m
+ActiveRecord	config/initializers/will_paginate.rb	/^    module ActiveRecord$/;"	m	class:WillPaginate
+RelationMethods	config/initializers/will_paginate.rb	/^      module RelationMethods$/;"	m	class:WillPaginate.ActiveRecord
+per	config/initializers/will_paginate.rb	/^        def per(value = nil) per_page(value) end$/;"	f	class:WillPaginate.ActiveRecord.RelationMethods
+total_count	config/initializers/will_paginate.rb	/^        def total_count() count end$/;"	f	class:WillPaginate.ActiveRecord.RelationMethods
+CollectionMethods	config/initializers/will_paginate.rb	/^    module CollectionMethods$/;"	m	class:WillPaginate
+CreateArticles	db/migrate/20120416181217_create_articles.rb	/^class CreateArticles < ActiveRecord::Migration$/;"	c
+change	db/migrate/20120416181217_create_articles.rb	/^  def change$/;"	f	class:CreateArticles
+CreateContacts	db/migrate/20120424172229_create_contacts.rb	/^class CreateContacts < ActiveRecord::Migration$/;"	c
+change	db/migrate/20120424172229_create_contacts.rb	/^  def change$/;"	f	class:CreateContacts
+AddFieldsToArticle	db/migrate/20120430224632_add_fields_to_article.rb	/^class AddFieldsToArticle < ActiveRecord::Migration$/;"	c
+change	db/migrate/20120430224632_add_fields_to_article.rb	/^  def change$/;"	f	class:AddFieldsToArticle
+RenameTypeToContentType	db/migrate/20120430232605_rename_type_to_content_type.rb	/^class RenameTypeToContentType < ActiveRecord::Migration$/;"	c
+up	db/migrate/20120430232605_rename_type_to_content_type.rb	/^  def up$/;"	f	class:RenameTypeToContentType
+down	db/migrate/20120430232605_rename_type_to_content_type.rb	/^  def down$/;"	f	class:RenameTypeToContentType
+DeviseCreateUsers	db/migrate/20120501181542_devise_create_users.rb	/^class DeviseCreateUsers < ActiveRecord::Migration$/;"	c
+change	db/migrate/20120501181542_devise_create_users.rb	/^  def change$/;"	f	class:DeviseCreateUsers
+CreateRailsAdminHistoriesTable	db/migrate/20120501181544_create_rails_admin_histories_table.rb	/^class CreateRailsAdminHistoriesTable < ActiveRecord::Migration$/;"	c
+up	db/migrate/20120501181544_create_rails_admin_histories_table.rb	/^   def self.up$/;"	F	class:CreateRailsAdminHistoriesTable
+down	db/migrate/20120501181544_create_rails_admin_histories_table.rb	/^  def self.down$/;"	F	class:CreateRailsAdminHistoriesTable
+AddAdminToUsers	db/migrate/20120501191040_add_admin_to_users.rb	/^class AddAdminToUsers < ActiveRecord::Migration$/;"	c
+change	db/migrate/20120501191040_add_admin_to_users.rb	/^  def change$/;"	f	class:AddAdminToUsers
+AddPublishedToArticle	db/migrate/20120628194351_add_published_to_article.rb	/^class AddPublishedToArticle < ActiveRecord::Migration$/;"	c
+up	db/migrate/20120628194351_add_published_to_article.rb	/^  def up$/;"	f	class:AddPublishedToArticle
+down	db/migrate/20120628194351_add_published_to_article.rb	/^  def down$/;"	f	class:AddPublishedToArticle
+DeviseCreateAdmins	db/migrate/20120628200512_devise_create_admins.rb	/^class DeviseCreateAdmins < ActiveRecord::Migration$/;"	c
+change	db/migrate/20120628200512_devise_create_admins.rb	/^  def change$/;"	f	class:DeviseCreateAdmins
+ModifyAdmin	db/migrate/20120628203747_modify_admin.rb	/^class ModifyAdmin < ActiveRecord::Migration$/;"	c
+up	db/migrate/20120628203747_modify_admin.rb	/^  def up$/;"	f	class:ModifyAdmin
+down	db/migrate/20120628203747_modify_admin.rb	/^  def down$/;"	f	class:ModifyAdmin
+AddSlugToArticles	db/migrate/20120629070448_add_slug_to_articles.rb	/^class AddSlugToArticles < ActiveRecord::Migration$/;"	c
+change	db/migrate/20120629070448_add_slug_to_articles.rb	/^  def change$/;"	f	class:AddSlugToArticles
+CreateFriendlyIdSlugs	db/migrate/20120629072846_create_friendly_id_slugs.rb	/^class CreateFriendlyIdSlugs < ActiveRecord::Migration$/;"	c
+up	db/migrate/20120629072846_create_friendly_id_slugs.rb	/^  def self.up$/;"	F	class:CreateFriendlyIdSlugs
+down	db/migrate/20120629072846_create_friendly_id_slugs.rb	/^  def self.down$/;"	F	class:CreateFriendlyIdSlugs
+ChangeAdminToPublisherUsers	db/migrate/20120629140930_change_admin_to_publisher_users.rb	/^class ChangeAdminToPublisherUsers < ActiveRecord::Migration$/;"	c
+up	db/migrate/20120629140930_change_admin_to_publisher_users.rb	/^  def up$/;"	f	class:ChangeAdminToPublisherUsers
+down	db/migrate/20120629140930_change_admin_to_publisher_users.rb	/^  def down$/;"	f	class:ChangeAdminToPublisherUsers
+RenameAdminsToAdministrators	db/migrate/20120629143105_rename_admins_to_administrators.rb	/^class RenameAdminsToAdministrators < ActiveRecord::Migration$/;"	c
+up	db/migrate/20120629143105_rename_admins_to_administrators.rb	/^  def up$/;"	f	class:RenameAdminsToAdministrators
+down	db/migrate/20120629143105_rename_admins_to_administrators.rb	/^  def down$/;"	f	class:RenameAdminsToAdministrators
+AddIsAdminToUsers	db/migrate/20120701155314_add_is_admin_to_users.rb	/^class AddIsAdminToUsers < ActiveRecord::Migration$/;"	c
+up	db/migrate/20120701155314_add_is_admin_to_users.rb	/^  def up$/;"	f	class:AddIsAdminToUsers
+down	db/migrate/20120701155314_add_is_admin_to_users.rb	/^  def down$/;"	f	class:AddIsAdminToUsers
+CreateAdminNotes	db/migrate/20120702150748_create_admin_notes.rb	/^class CreateAdminNotes < ActiveRecord::Migration$/;"	c
+up	db/migrate/20120702150748_create_admin_notes.rb	/^  def self.up$/;"	F	class:CreateAdminNotes
+down	db/migrate/20120702150748_create_admin_notes.rb	/^  def self.down$/;"	F	class:CreateAdminNotes
+MoveAdminNotesToComments	db/migrate/20120702150749_move_admin_notes_to_comments.rb	/^class MoveAdminNotesToComments < ActiveRecord::Migration$/;"	c
+up	db/migrate/20120702150749_move_admin_notes_to_comments.rb	/^  def self.up$/;"	F	class:MoveAdminNotesToComments
+down	db/migrate/20120702150749_move_admin_notes_to_comments.rb	/^  def self.down$/;"	F	class:MoveAdminNotesToComments
+DropAdministratorTable	db/migrate/20120702165334_drop_administrator_table.rb	/^class DropAdministratorTable < ActiveRecord::Migration$/;"	c
+up	db/migrate/20120702165334_drop_administrator_table.rb	/^  def up$/;"	f	class:DropAdministratorTable
+down	db/migrate/20120702165334_drop_administrator_table.rb	/^  def down$/;"	f	class:DropAdministratorTable
+AddIsEditorToUsers	db/migrate/20120702171830_add_is_editor_to_users.rb	/^class AddIsEditorToUsers < ActiveRecord::Migration$/;"	c
+up	db/migrate/20120702171830_add_is_editor_to_users.rb	/^  def up$/;"	f	class:AddIsEditorToUsers
+down	db/migrate/20120702171830_add_is_editor_to_users.rb	/^  def down$/;"	f	class:AddIsEditorToUsers
+CreateCategories	db/migrate/20120706171506_create_categories.rb	/^class CreateCategories < ActiveRecord::Migration$/;"	c
+change	db/migrate/20120706171506_create_categories.rb	/^  def change$/;"	f	class:CreateCategories
+AddCategoryReferencesToArticles	db/migrate/20120706172717_add_category_references_to_articles.rb	/^class AddCategoryReferencesToArticles < ActiveRecord::Migration$/;"	c
+up	db/migrate/20120706172717_add_category_references_to_articles.rb	/^  def up$/;"	f	class:AddCategoryReferencesToArticles
+down	db/migrate/20120706172717_add_category_references_to_articles.rb	/^  def down$/;"	f	class:AddCategoryReferencesToArticles
+AddArticleReferencesToCategory	db/migrate/20120706173031_add_article_references_to_category.rb	/^class AddArticleReferencesToCategory < ActiveRecord::Migration$/;"	c
+change	db/migrate/20120706173031_add_article_references_to_category.rb	/^  def change$/;"	f	class:AddArticleReferencesToCategory
+AddAccessCountToArticles	db/migrate/20120706193649_add_access_count_to_articles.rb	/^class AddAccessCountToArticles < ActiveRecord::Migration$/;"	c
+change	db/migrate/20120706193649_add_access_count_to_articles.rb	/^  def change$/;"	f	class:AddAccessCountToArticles
+CreateKeywords	db/migrate/20120707184743_create_keywords.rb	/^class CreateKeywords < ActiveRecord::Migration$/;"	c
+change	db/migrate/20120707184743_create_keywords.rb	/^  def change$/;"	f	class:CreateKeywords
+CreateWordcounts	db/migrate/20120707190634_create_wordcounts.rb	/^class CreateWordcounts < ActiveRecord::Migration$/;"	c
+change	db/migrate/20120707190634_create_wordcounts.rb	/^  def change$/;"	f	class:CreateWordcounts
+CreateDelayedJobs	db/migrate/20120714144317_create_delayed_jobs.rb	/^class CreateDelayedJobs < ActiveRecord::Migration$/;"	c
+up	db/migrate/20120714144317_create_delayed_jobs.rb	/^  def self.up$/;"	F	class:CreateDelayedJobs
+down	db/migrate/20120714144317_create_delayed_jobs.rb	/^  def self.down$/;"	F	class:CreateDelayedJobs
+AddDescriptionToCategory	db/migrate/20120727004822_add_description_to_category.rb	/^class AddDescriptionToCategory < ActiveRecord::Migration$/;"	c
+change	db/migrate/20120727004822_add_description_to_category.rb	/^  def change$/;"	f	class:AddDescriptionToCategory
+ChangeContentTypeArticles	db/migrate/20120727052215_change_content_type_articles.rb	/^class ChangeContentTypeArticles < ActiveRecord::Migration$/;"	c
+up	db/migrate/20120727052215_change_content_type_articles.rb	/^  def up$/;"	f	class:ChangeContentTypeArticles
+down	db/migrate/20120727052215_change_content_type_articles.rb	/^  def down$/;"	f	class:ChangeContentTypeArticles
+AddAuthorPictureNameToArticles	db/migrate/20120727124910_add_author_picture_name_to_articles.rb	/^class AddAuthorPictureNameToArticles < ActiveRecord::Migration$/;"	c
+up	db/migrate/20120727124910_add_author_picture_name_to_articles.rb	/^  def up$/;"	f	class:AddAuthorPictureNameToArticles
+down	db/migrate/20120727124910_add_author_picture_name_to_articles.rb	/^  def down$/;"	f	class:AddAuthorPictureNameToArticles
+CreateGuides	db/migrate/20120730225526_create_guides.rb	/^class CreateGuides < ActiveRecord::Migration$/;"	c
+change	db/migrate/20120730225526_create_guides.rb	/^  def change$/;"	f	class:CreateGuides
+AddTypeToArticles	db/migrate/20120807200215_add_type_to_articles.rb	/^class AddTypeToArticles < ActiveRecord::Migration$/;"	c
+up	db/migrate/20120807200215_add_type_to_articles.rb	/^  def up$/;"	f	class:AddTypeToArticles
+down	db/migrate/20120807200215_add_type_to_articles.rb	/^  def down$/;"	f	class:AddTypeToArticles
+CreateGuideSteps	db/migrate/20120807233918_create_guide_steps.rb	/^class CreateGuideSteps < ActiveRecord::Migration$/;"	c
+change	db/migrate/20120807233918_create_guide_steps.rb	/^  def change$/;"	f	class:CreateGuideSteps
+DropGuidesTable	db/migrate/20120807235112_drop_guides_table.rb	/^class DropGuidesTable < ActiveRecord::Migration$/;"	c
+change	db/migrate/20120807235112_drop_guides_table.rb	/^  def change$/;"	f	class:DropGuidesTable
+AddSlugsToCategories	db/migrate/20120817231009_add_slugs_to_categories.rb	/^class AddSlugsToCategories < ActiveRecord::Migration$/;"	c
+change	db/migrate/20120817231009_add_slugs_to_categories.rb	/^  def change$/;"	f	class:AddSlugsToCategories
+AddContentMarkdownToArticles	db/migrate/20121010140714_add_content_markdown_to_articles.rb	/^class AddContentMarkdownToArticles < ActiveRecord::Migration$/;"	c
+change	db/migrate/20121010140714_add_content_markdown_to_articles.rb	/^  def change$/;"	f	class:AddContentMarkdownToArticles
+AddVotingToArticles	doc/20120728012731_add_voting_to_articles.rb	/^class AddVotingToArticles < ActiveRecord::Migration$/;"	c
+change	doc/20120728012731_add_voting_to_articles.rb	/^  def change$/;"	f	class:AddVotingToArticles
+Markdownifier	lib/markdownifier.rb	/^module Markdownifier$/;"	m
+Markdownifier	lib/markdownifier.rb	/^  class Markdownifier$/;"	c	class:Markdownifier
+html_to_markdown	lib/markdownifier.rb	/^    def html_to_markdown( html, options = {} )$/;"	f	class:Markdownifier.Markdownifier
+LIBHUNSPELL_DLL_EXPORTED	lib/native/hunspell-1.3/include/hunspell/affentry.hxx	/^class LIBHUNSPELL_DLL_EXPORTED PfxEntry : protected AffEntry$/;"	c
+LIBHUNSPELL_DLL_EXPORTED	lib/native/hunspell-1.3/include/hunspell/affentry.hxx	/^class LIBHUNSPELL_DLL_EXPORTED SfxEntry : protected AffEntry$/;"	c	class:LIBHUNSPELL_DLL_EXPORTED
+PfxEntry	lib/native/hunspell-1.3/include/hunspell/affixmgr.hxx	/^class PfxEntry;$/;"	c
+SfxEntry	lib/native/hunspell-1.3/include/hunspell/affixmgr.hxx	/^class SfxEntry;$/;"	c	class:PfxEntry
+LIBHUNSPELL_DLL_EXPORTED	lib/native/hunspell-1.3/include/hunspell/affixmgr.hxx	/^class LIBHUNSPELL_DLL_EXPORTED AffixMgr$/;"	c	class:PfxEntry.SfxEntry
+LIBHUNSPELL_DLL_EXPORTED	lib/native/hunspell-1.3/include/hunspell/baseaffix.hxx	/^class LIBHUNSPELL_DLL_EXPORTED AffEntry$/;"	c
+LIBHUNSPELL_DLL_EXPORTED	lib/native/hunspell-1.3/include/hunspell/dictmgr.hxx	/^class LIBHUNSPELL_DLL_EXPORTED DictMgr$/;"	c
+LIBHUNSPELL_DLL_EXPORTED	lib/native/hunspell-1.3/include/hunspell/filemgr.hxx	/^class LIBHUNSPELL_DLL_EXPORTED FileMgr$/;"	c
+LIBHUNSPELL_DLL_EXPORTED	lib/native/hunspell-1.3/include/hunspell/hashmgr.hxx	/^class LIBHUNSPELL_DLL_EXPORTED HashMgr$/;"	c
+LIBHUNSPELL_DLL_EXPORTED	lib/native/hunspell-1.3/include/hunspell/hunspell.hxx	/^class LIBHUNSPELL_DLL_EXPORTED Hunspell$/;"	c
+LIBHUNSPELL_DLL_EXPORTED	lib/native/hunspell-1.3/include/hunspell/hunzip.hxx	/^class LIBHUNSPELL_DLL_EXPORTED Hunzip$/;"	c
+LIBHUNSPELL_DLL_EXPORTED	lib/native/hunspell-1.3/include/hunspell/replist.hxx	/^class LIBHUNSPELL_DLL_EXPORTED RepList$/;"	c
+LIBHUNSPELL_DLL_EXPORTED	lib/native/hunspell-1.3/include/hunspell/suggestmgr.hxx	/^class LIBHUNSPELL_DLL_EXPORTED SuggestMgr$/;"	c
+BigHugeThesaurus	lib/rails_nlp/big_huge_thesaurus.rb	/^  module BigHugeThesaurus$/;"	m
+synonyms	lib/rails_nlp/big_huge_thesaurus.rb	/^    def self.synonyms word$/;"	F	class:BigHugeThesaurus
+AssocModel	lib/rails_nlp/rails_nlp_spec.rb	/^      class AssocModel$/;"	c
+name	lib/rails_nlp/rails_nlp_spec.rb	/^        def name$/;"	f	class:AssocModel
+FakeModel	lib/rails_nlp/rails_nlp_spec.rb	/^      class FakeModel$/;"	c
+assoc_model	lib/rails_nlp/rails_nlp_spec.rb	/^        def assoc_model$/;"	f	class:FakeModel
+name	lib/rails_nlp/rails_nlp_spec.rb	/^        def name$/;"	f	class:FakeModel
+player_class	lib/rails_nlp/rails_nlp_spec.rb	/^        def player_class$/;"	f	class:FakeModel
+level	lib/rails_nlp/rails_nlp_spec.rb	/^        def level$/;"	f	class:FakeModel
+description	lib/rails_nlp/rails_nlp_spec.rb	/^        def description$/;"	f	class:FakeModel
+private	lib/rails_nlp/rails_nlp_spec.rb	/^        def private$/;"	f	class:FakeModel
+PretendKeyword	lib/rails_nlp/rails_nlp_spec.rb	/^    class PretendKeyword $/;"	c
+RailsNlp	lib/rails_nlp/text_analyser.rb	/^module RailsNlp$/;"	m
+TextAnalyser	lib/rails_nlp/text_analyser.rb	/^  class TextAnalyser$/;"	c	class:RailsNlp
+collect_text	lib/rails_nlp/text_analyser.rb	/^    def collect_text( options )$/;"	f	class:RailsNlp.TextAnalyser
+clean	lib/rails_nlp/text_analyser.rb	/^    def clean str$/;"	f	class:RailsNlp.TextAnalyser
+freq_map	lib/rails_nlp/text_analyser.rb	/^    def freq_map words$/;"	f	class:RailsNlp.TextAnalyser
+words_to_keywords	lib/rails_nlp/text_analyser.rb	/^    def words_to_keywords( words )$/;"	f	class:RailsNlp.TextAnalyser
+TankerArticleDefaults	lib/tanker_article_defaults.rb	/^module TankerArticleDefaults$/;"	m
+included	lib/tanker_article_defaults.rb	/^  def self.included(base)$/;"	F	class:TankerArticleDefaults
+logger	spec/spec_helper.rb	/^  def logger$/;"	f
+saop	spec/spec_helper.rb	/^  def saop$/;"	f
+wait_for_ajax	spec/support/wait_for_ajax_helper.rb	/^def wait_for_ajax(timeout = Capybara.default_wait_time)$/;"	f
+wait_for_dom	spec/support/wait_for_dom_helper.rb	/^def wait_for_dom(timeout = Capybara.default_wait_time)$/;"	f
+AdminTest	test/unit/admin_test.rb	/^class AdminTest < ActiveSupport::TestCase$/;"	c
+=	tmp/cache/assets/CDB/040/sprockets%2Fc732474e67003a4eb840eb44c5ca9385	/^            def = def.replace(\/^[ ]{0,3}\\[(\\d+)\\]:\/, "  [" + refNumber + "]:");$/;"	f
+=	tmp/cache/assets/D38/540/sprockets%2F86e1ad844bc9df4491a2a52b870421db	/^            def = def.replace(\/^[ ]{0,3}\\[(\\d+)\\]:\/, "  [" + refNumber + "]:");$/;"	f
+=	tmp/cache/assets/D4A/E90/sprockets%2F3bd51c461892cfbef1383c8f6a2828f7	/^            def = def.replace(\/^[ ]{0,3}\\[(\\d+)\\]:\/, "  [" + refNumber + "]:");$/;"	f
+=	tmp/cache/assets/D5E/A20/sprockets%2Fa0857ab8a70b52b522bc8ee22dc23d38	/^            def = def.replace(\/^[ ]{0,3}\\[(\\d+)\\]:\/, "  [" + refNumber + "]:");$/;"	f
+=	tmp/cache/assets/DDC/400/sprockets%2Fcffd775d018f68ce5dba1ee0d951a994	/^            def = def.replace(\/^[ ]{0,3}\\[(\\d+)\\]:\/, "  [" + refNumber + "]:");$/;"	f
+=	tmp/cache/assets/E04/890/sprockets%2F2f5173deea6c795b8fdde723bb4b63af	/^            def = def.replace(\/^[ ]{0,3}\\[(\\d+)\\]:\/, "  [" + refNumber + "]:");$/;"	f

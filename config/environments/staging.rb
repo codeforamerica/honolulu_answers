@@ -14,6 +14,9 @@ Honoluluanswers::Application.configure do
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
+  # get assets working on Heroku
+  config.assets.initialize_on_precompile = false
+
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = true
 
@@ -44,13 +47,14 @@ Honoluluanswers::Application.configure do
 
   # Use a different logger for distributed setups
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
-
-  config.action_dispatch.rack_cache = {
-    :metastore    => Dalli::Client.new,
-    :entitystore  => 'file:tmp/cache/rack/body',
-    :allow_reload => false
-  }
-
+  #dalli_store = Dalli::Client.new()
+  #config.action_dispatch.rack_cache = {
+    #:metastore    => dalli_store,
+    #:entitystore  => dalli_store,
+    #:allow_reload => true,
+    #:default_ttl  => 10800
+  #}
+  
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
 
