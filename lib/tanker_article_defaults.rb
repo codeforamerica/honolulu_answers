@@ -1,11 +1,12 @@
 module TankerArticleDefaults
+
+  # Use a different index in production
+  INDEX = Rails.env === 'production' ? 'wmgg_prod' : 'wmgg_dev'
+  
   def self.included(base)
     base.send(:include, ::Tanker)
-
-    index = 'wmgg_dev'
-    index = 'wmgg_prod' if Rails.env === 'production'
     
-    base.tankit index, :as => 'Article' do
+    base.tankit INDEX, :as => 'Article' do
       indexes :title
       indexes :content
       indexes :category, :category => true

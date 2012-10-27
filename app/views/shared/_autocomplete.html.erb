@@ -1,7 +1,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
     // let the form be 'indextank-aware'
-    $("#search").indextank_Ize("http://aremaz.api.indexden.com", "wmgg_dev");
+    $("#search").indextank_Ize("http://aremaz.api.indexden.com", "<%= TankerArticleDefaults::INDEX %>");
     // let the query box have autocomplete
     $("#query").indextank_Autocomplete({ fieldName: "tags" });
 });
