@@ -77,7 +77,6 @@ end
 #  preview                 :text
 #  contact_id              :integer
 #  tags                    :text
-#  service_url             :string(255)
 #  is_published            :boolean         default(FALSE)
 #  slug                    :string(255)
 #  category_id             :integer

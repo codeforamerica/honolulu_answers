@@ -18,19 +18,7 @@
           <%= content_tag(:h1, @article.title ) %>
         </div>
         <div class="content-text">
-          <% unless @article.service_url.blank? %>
-          <div class="onlineservice">
-            <div class="servicebox">
-              <a href="<%= @article.service_url%>"><img src="/assets/getting_started_btn.png" alt="Get Started on the Honolulu.gov website." /></a>
-            </div>
-            <h3 class="service">Honolulu.gov lets you do this online! </h3>
-            <p>This will take you directly to the online service on the honolulu.gov website.</p>
-          </div>
-          <% end %>
-
           <%= raw @content_html %>
-
-
         </div>
       </div>
     </div><!-- /span9 -->
