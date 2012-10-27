@@ -57,13 +57,11 @@ Category.create([
                 ])
 
 Contact.create([
-  { :name => "Driver Licensing", :subname => "", :number => "(808) 532-7730", :url => "http://www1.honolulu.gov/csd/vehicle/dlrequirements.htm", :address => "", :department => "", :description => "For more information about driver licensing, go to the existing Honolulu.gov website. Or contact the city's Customer Service Department at (808) 532-7730." },
-  { :name => "Satellite City Halls", :subname => "", :number => "(808) 768-3798", :url => "http://www1.honolulu.gov/csd/satellite/index.htm", :address => "", :department => "", :description => "Visit the existing Honolulu.gov website or contact the Customer Service Department for more information about Satellite City Halls." },
-  { :name => "Registration Fees", :subname => "", :number => "(808) 768-3798", :url => "http://www3.honolulu.gov/mvrfeeinq/", :address => "", :department => "", :description => "Use our online service to find out the registration fee, or renewal fee, for your motor vehicle or trailer." },
-  { :name => "Motor Vehicle Registration", :subname => "", :number => "(808) 768-3798", :url => "http://www1.honolulu.gov/csd/vehicle/mvehicle.htm", :address => "", :department => "", :description => "For more information about your motor vehicle registration, go to the existing Honolulu.gov website. Or contact the city's Customer Service Department at (808) 768-3798." },
-  { :name => "Trailer Registration", :subname => "", :number => "(808) 768-3798", :url => "http://www1.honolulu.gov/csd/vehicle/registering_trailers.pdf", :address => "", :department => "", :description => "For more information about renewing your trailer registration, go to the existing Honolulu.gov website. Or contact the city's Customer Service Department at (808) 768-3798." },
-  { :name => "Transfer Ownership", :subname => "", :number => "(808) 768-3798", :url => "http://www1.honolulu.gov/csd/vehicle/mvtransfers.htm", :address => "", :department => "", :description => "" },
-  { :name => "Personalized License Plates", :subname => "", :number => "(808) 768-3798", :url => "http://www4.honolulu.gov/specialplates/", :address => "", :department => "", :description => "" },
-  { :name => "City Jobs", :subname => "", :number => "(808) 768-8536", :url => "http://agency.governmentjobs.com/honolulu/default.cfm?action=jobs", :address => "<br />650 South King St, 10th Floor<br />Honolulu, HI 96813<br />", :department => "", :description => "" },
-  { :name => "City Employment Benefits", :subname => "", :number => "(808) 768-8540", :url => "http://www1.honolulu.gov/hr/benefits.htm", :address => "650 South King St, 10th Floor<br>Honolulu, HI 96813", :department => "", :description => "" }
+#                { :name => "Driver Licensing", 
+#                  :subname => "", 
+#                  :number => "(808) 532-7730", 
+#                  :url => "http://www1.honolulu.gov/csd/vehicle/dlrequirements.htm", 
+#                  :address => "", 
+#                  :department => "", 
+#                  :description => "For more information about driver licensing, go to the existing Honolulu.gov website. Or contact the city's Customer Service Department at (808) 532-7730." }
 ])
