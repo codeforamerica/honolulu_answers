@@ -6,9 +6,13 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
 
   <!-- facebook and twitter buttons -->
-    <meta property="og:title" content="West Michigan Green Guide"/>
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="here's gonna be the url"/>
+    <meta content="West Michigan Green Guide" property="og:title"/>
+    <meta content="website" property="og:type"/>
+    <meta content="West Michigan Green Guide" property="og:site_name"/>
+    <meta content="290079217769194" property="fb:app_id" />
+    <% if !@quick_answer.nil? %>
+      <meta content="http://wmgreenguide.com" property="og:url" /> <!-- /quick_answers/#{@quick_answer.id}" property="og:url" /> -->
+    <% end %>
   <!-- facebook and twitter buttons -->
 
   <%= include_gon %>
