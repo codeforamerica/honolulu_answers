@@ -5,14 +5,17 @@
   <meta name="viewport" content="width=device-width,initial-scale =1,maximum-scale=1,user-scalable=no" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
 
-  <!-- facebook and twitter buttons -->
-    <meta content="West Michigan Green Guide" property="og:title"/>
-    <meta content="website" property="og:type"/>
-    <meta content="West Michigan Green Guide" property="og:site_name"/>
-    <meta content="290079217769194" property="fb:app_id" />
+  <!-- facebook open graph sharing meta tags -->
     <% if !@quick_answer.nil? %>
-      <meta content="http://wmgreenguide.com" property="og:url" /> <!-- /quick_answers/#{@quick_answer.id}" property="og:url" /> -->
+      <meta content="<%= @quick_answer.title %>" property="og:site_name"/>
+      <meta content="<%= @quick_answer.title %>" property="og:title"/>
+    <% else %>
+      <meta content="West Michigan Green Guide" property="og:site_name"/>
+      <meta content="West Michigan Green Guide" property="og:title"/>
     <% end %>
+    <meta content="website" property="og:type"/>
+    <meta content="290079217769194" property="fb:app_id" />
+    <meta content="http://wmgreenguide.com" property="og:url" />
   <!-- facebook and twitter buttons -->
 
   <%= include_gon %>
@@ -24,30 +27,12 @@
   <![endif]-->
   <%= javascript_include_tag "application" %>
 
-  <script type="text/javascript">
-    var _kmq = _kmq || [];
-    var _kmk = _kmk || "<%= ENV['KISSMETRICS_API_KEY'] %>";
-    function _kms(u){
-      setTimeout(function(){
-        var d = document, f = d.getElementsByTagName('script')[0],
-        s = d.createElement('script');
-        s.type = 'text/javascript'; s.async = true; s.src = u;
-        f.parentNode.insertBefore(s, f);
-      }, 1);
-    }
-    _kms('//i.kissmetrics.com/i.js');
-    _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
-  </script>
-
-
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= @bodyclass %>" onload="if($){ $('#query').focus(); }">
+<body class="<%= @bodyclass %>">
 
 <div id="wrapper">
   <div class="navbar-top">
-    <!-- <p class="notice alert alert-info"><%= notice %></p>
-    <p class="alert alert-error"><%= alert %></p> -->
     <div class="container">
       <div class="row">
         <div class="logo span4">
@@ -63,6 +48,9 @@
           </li>
           <li class="">
             <%= link_to("Resources", "/articles/article-type/resource") %>
+          </li>
+          <li class="">
+            <%= link_to("Pending Questions", "https://trello.com/board/questions-to-answer/508b388ea13b5a2204001dfe") %>
           </li>
         </ul>
         <% if !current_page?('/')  %>
@@ -86,7 +74,7 @@
   <div class="container">
     <ul class="footer-links">
       <li><%=link_to("About", about_path)%></li>
-      <li><a href="mailto:dschoonmaker@wmeac.org">Contact</a></li>
+      <li><a href="mailto:contact@wmgreenguide.com">Contact</a></li>
       <li><a href="https://github.com/friendlycode/wmgg">Contribute</a></li>
     </ul>
     <div class="WMEAClogo">
