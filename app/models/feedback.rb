@@ -13,6 +13,10 @@ class Feedback < ActiveRecord::Base
     self.no_count += 1
   end
 
+  def to_s
+    self.yes_count.to_s + "/" + (self.no_count + self.yes_count).to_s
+  end
+
   private
     def init
       self.yes_count ||= 0

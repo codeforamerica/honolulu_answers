@@ -16,6 +16,8 @@ class QuestionsController < ApplicationController
     )
 
     flash[:success] = "Thanks for submitting a question! We'll review it and try to answer it as best as we can."
+    QuestionMailer.submitted_question(@question).deliver
+
     redirect_to :root
   end
 end
