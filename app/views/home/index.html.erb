@@ -22,10 +22,18 @@
 
     <div class="popular">
       <div class="pop-heading">
-        <h2>Featured Categories</h2>
+        <h2>Most Popular Answers</h2>
       </div>
       <div class="pop-categories">
-        <!-- /needs to be dynamic -->
+        <% popular_articles.each do |a| %>
+          <div class="category">
+            <span class="left"><%= link_to( a.title, article_path(a.id) ) %></span>
+            <!-- <p class="right">
+              <%= link_to( "Renew license", Article.find_by_friendly_id("how-do-i-renew-my-driver-license"))%> -
+              <%= link_to( "Find licensing stations", Article.find_by_friendly_id("where-do-i-go-to-apply-for-a-driver-license"))%> - <%= link_to( "Schedule road test", Article.find_by_friendly_id("how-do-i-schedule-a-road-test-for-my-driver-license"))%>
+            </p> -->
+          </div>
+        <% end %>
       </div>
     </div><!-- /popular -->
   </div><!-- /main-modal -->
