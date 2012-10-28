@@ -10,7 +10,7 @@ ActiveAdmin.register Contact do
     column "Name", :name do |contact|
       link_to contact.name, [:admin, contact]
     end
-    column :department
+    #column :department
     column :url
     column "Created", :created_at
     # column :tags
