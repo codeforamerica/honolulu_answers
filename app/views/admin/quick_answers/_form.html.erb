@@ -14,10 +14,24 @@
     <%=f.input :author_pic %>
     <%=f.input :author_name %>
     <%=f.input :render_markdown, :as => :radio, :collection => [["Markdown", true], ["HTML", false]] %> 
+    <hr />
     <div class="">
-      <div id="wmd-button-bar"></div>
-      <%=f.input :content_md, :input_html => { :class => 'wmd-input', :id => 'wmd-input'} %>
-      <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
+      <div id="wmd-button-bar-content_main"></div>
+      <%= f.input :content_main, :input_html => { 
+        :class => 'wmd-input', :id => 'wmd-input-content_main'} %>
+      <div id="wmd-preview-content_main" class="wmd-panel wmd-preview"></div>
+    </div>
+    <div class="">
+      <div id="wmd-button-bar-content_main_extra"></div>
+      <%= f.input :content_main_extra, :input_html => {
+        :class => 'wmd-input', :id => 'wmd-input-content_main_extra'}  %>
+      <div id="wmd-preview-content_main_extra" class="wmd-panel wmd-preview"></div>
+    </div>
+    <div class="">
+      <div id="wmd-button-bar-content_need_to_know"></div>
+      <%= f.input :content_need_to_know, :input_html => {
+        :class => 'wmd-input', :id => 'wmd-input-content_need_to_know'} %>
+      <div id="wmd-preview-content_need_to_know" class="wmd-panel wmd-preview"></div>
     </div>
   <%end%>
   <%=f.buttons :commit %>

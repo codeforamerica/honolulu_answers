@@ -151,6 +151,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
+    kramdown (0.14.0)
     launchy (2.1.1)
       addressable (~> 2.3)
     less (2.2.1)
@@ -347,6 +348,7 @@ DEPENDENCIES
   hunspell-ffi
   jquery-ui-rails
   json
+  kramdown
   launchy
   less-rails-bootstrap
   meta_search (>= 1.1.0.pre)

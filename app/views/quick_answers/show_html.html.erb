@@ -14,14 +14,7 @@
           <%= content_tag(:h1, @article.title ) %>
         </div>
         <div class="content-text">
-          <div class="quick_top">
-            <%= @content_main.html_safe %>
-          </div>
-          <%= @content_main_extra.html_safe %>
-          <div class="quick_bottom">
-            <h3>What You Need to Know</h3>
-            <%= @content_need_to_know.html_safe %>
-          </div>
+          <%= raw @content_html %>
         </div>
       </div>
     </div><!-- /span9 -->

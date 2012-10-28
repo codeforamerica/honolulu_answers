@@ -34,7 +34,12 @@ class Article < ActiveRecord::Base
 
   validates_presence_of :access_count
 
-  attr_accessible :title, :content, :content_md, :render_markdown, :preview, :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic, :author_pic_file_name, :author_pic_content_type, :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link, :type
+  attr_accessible :title, :content, :content_md, :content_main, :content_main_extra, :content_need_to_know, :render_markdown, :preview, :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic, :author_pic_file_name, :author_pic_content_type, :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link, :type
+
+  # A note on the content fields:
+  # *  Originally the content for the articles was stored as HTML in Article#content.
+  # *  We then moved to Markdown for content storage, resulting in Article#content_md.
+  # *  Most recently, the QuickAnswers were split into three distinct sections: content_main, content_main_extra and content_need_to_know. All these use Markdown.
 
   # Tanker callbacks to update the search index
   after_save :update_tank_indexes 
@@ -175,7 +180,7 @@ class Article < ActiveRecord::Base
   end
 
 
-  protected
+  #protected
 
   def set_access_count_if_nil
     self.access_count = 0 if self.access_count.nil?
@@ -243,7 +248,7 @@ class Article < ActiveRecord::Base
     begin
       text = collect_text(
         :model => self,
-        :fields => ['title','content_md','preview','tags','category.name'])
+        :fields => ['title','content_main','content_main_extra','content_need_to_know','preview','tags','category.name'])
         text = clean( text )
         wordcounts = count_words( text )
         wordcounts.each do |word, frequency|
