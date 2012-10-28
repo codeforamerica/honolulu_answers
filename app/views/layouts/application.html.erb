@@ -20,22 +20,6 @@
   <![endif]-->
   <%= javascript_include_tag "application" %>
 
-  <script type="text/javascript">
-    var _kmq = _kmq || [];
-    var _kmk = _kmk || "<%= ENV['KISSMETRICS_API_KEY'] %>";
-    function _kms(u){
-      setTimeout(function(){
-        var d = document, f = d.getElementsByTagName('script')[0],
-        s = d.createElement('script');
-        s.type = 'text/javascript'; s.async = true; s.src = u;
-        f.parentNode.insertBefore(s, f);
-      }, 1);
-    }
-    _kms('//i.kissmetrics.com/i.js');
-    _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
-  </script>
-
-
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= @bodyclass %>" onload="if($){ $('#query').focus(); }">
@@ -47,7 +31,8 @@
     <div class="container">
       <div class="row">
         <div class="logo span4">
-          <a href="/" class="hnl-logo">West Michigan Green Guide</a>
+          <%= image_tag("WhiteLetter.png", :alt =>"logo", :class => "toplogo") %>
+          <!--<a href="/" class="hnl-logo">West Michigan Green Guide</a>-->
           <span class="bubble"><img src="/assets/beta.png" class="beta" alt="beta"></span>
         </div>
         <ul class="nav-top span5">
