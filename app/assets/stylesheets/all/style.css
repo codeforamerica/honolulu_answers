@@ -154,6 +154,10 @@ a.no-underline {
   border-bottom: none;
 }
 
+a:hover.no-underline {
+  border-bottom: none;
+}
+
 .category p a{
   border-bottom: 1px solid #ffde4d;
 }
