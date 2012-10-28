@@ -34,3 +34,8 @@
 .sidebar-contact {
   font-weight: 300;
 }
+.logo a {
+  &, &:hover, &:focus {
+    border: none;
+  }
+}
