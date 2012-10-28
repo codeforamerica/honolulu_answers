@@ -47,7 +47,7 @@ ActiveAdmin.register Resource do
       f.input :contact
       f.input :tags, :as => :string, :label => "Keywords"
       f.input :author_link
-      f.input :author_pic
+      #f.input :author_pic
       f.input :author_name
     end
     f.buttons
