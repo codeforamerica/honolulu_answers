@@ -5,10 +5,18 @@
   <meta name="viewport" content="width=device-width,initial-scale =1,maximum-scale=1,user-scalable=no" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
 
-  <!-- facebook and twitter buttons -->
-    <meta property="og:title" content="West Michigan Green Guide"/>
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="here's gonna be the url"/>
+  <!-- facebook open graph sharing meta tags -->
+    <% if !@quick_answer.nil? %>
+      <meta content="<%= @quick_answer.title %>" property="og:site_name"/>
+      <meta content="<%= @quick_answer.title %>" property="og:title"/>
+    <% else %>
+      <meta content="West Michigan Green Guide" property="og:site_name"/>
+      <meta content="West Michigan Green Guide" property="og:title"/>
+    <% end %>
+    <!-- <meta content='' property=''/> -->
+    <meta content="website" property="og:type"/>
+    <meta content="290079217769194" property="fb:app_id" />
+    <meta content="http://wmgreenguide.com" property="og:url" />
   <!-- facebook and twitter buttons -->
 
   <%= include_gon %>
@@ -22,12 +30,10 @@
 
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= @bodyclass %>" onload="if($){ $('#query').focus(); }">
+<body class="<%= @bodyclass %>">
 
 <div id="wrapper">
   <div class="navbar-top">
-    <!-- <p class="notice alert alert-info"><%= notice %></p>
-    <p class="alert alert-error"><%= alert %></p> -->
     <div class="container">
       <div class="row">
         <div class="logo span4">
@@ -67,8 +73,9 @@
   <div class="container">
     <ul class="footer-links">
       <li><%=link_to("About", about_path)%></li>
-      <li><a href="mailto:dschoonmaker@wmeac.org">Contact</a></li>
-      <li><a href="https://github.com/friendlycode/wmgg">Contribute</a></li>
+      <li><a href="mailto:contact@wmgreenguide.com" target=_blank>Contact</a></li>
+      <li><a href="https://github.com/friendlycode/wmgg">Code</a></li>
+      <li><a href="https://trello.com/board/questions-to-answer/508b388ea13b5a2204001dfe">Pending Questions</a></li>
     </ul>
     <div class="WMEAClogo">
       <%= link_to(image_tag("wmeaclogo.png", :alt =>"logo"), 'http://www.wmeac.org', {:class => 'no-underline'}) %>

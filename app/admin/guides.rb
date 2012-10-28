@@ -16,6 +16,9 @@ ActiveAdmin.register Guide do
   filter :contact_id
   filter :is_published
 
+  scope :all, :default => true do |articles|
+    articles.includes [:category, :feedback]
+  end  
   
   # View 
   index do
@@ -23,7 +26,7 @@ ActiveAdmin.register Guide do
     column "Guide Title", :title do |guide|
       link_to guide.title, [:admin, guide]
     end
-    column :category
+    column :category, :sortable => 'categories.name'
     column :contact
     column "Created", :created_at
     column "Author name", :author_name
@@ -47,7 +50,7 @@ ActiveAdmin.register Guide do
       f.input :contact
       f.input :tags, :as => :string, :label => "Keywords"
       f.input :author_link
-      f.input :author_pic
+      #f.input :author_pic
       f.input :author_name
 
     end

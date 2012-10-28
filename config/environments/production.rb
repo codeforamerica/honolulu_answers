@@ -49,7 +49,7 @@ Honoluluanswers::Application.configure do
     :default_ttl  => 10800
   }
 
-    config.static_cache_control = "public, max-age=10800"
+  config.static_cache_control = "public, max-age=10800"
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -71,7 +71,7 @@ Honoluluanswers::Application.configure do
   config.active_support.deprecation = :notify
 
   #devise mailer
-  config.action_mailer.default_url_options = { :host => 'hnlanswers.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'www.wmgreenguide.com' }
 
   config.action_mailer.smtp_settings = {
     :address        => 'smtp.sendgrid.net',

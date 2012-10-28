@@ -1,12 +1,6 @@
 <div class="modal-container span8">
   <div class="main-modal">
 
-    <% if flash[:success] %>
-      <div class="home-flash">
-        <h3 class="info_box"><%= flash[:success] %></h3>
-      </div>
-    <% end %>
-
     <div id="welcome-line-l"></div>
     <div id="welcome-line-r"></div>
     <h3 class="welcome">Welcome To The</h3>
@@ -28,10 +22,16 @@
 
     <div class="popular">
       <div class="pop-heading">
-        <h2>Featured Categories</h2>
+        <h2>Most Popular Answers</h2>
       </div>
       <div class="pop-categories">
-        <!-- /needs to be dynamic -->
+        <% popular_articles.each do |a| %>
+          <div class="category">
+            <div class="front">
+              <%= link_to( a.title, article_path(a.id) ) %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div><!-- /popular -->
   </div><!-- /main-modal -->

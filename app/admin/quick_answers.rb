@@ -13,6 +13,9 @@ ActiveAdmin.register QuickAnswer do
   filter :contact_id
   filter :is_published
 
+  scope :all, :default => true do |articles|
+    articles.includes [:category, :feedback]
+  end
   
   # View 
   index do
@@ -20,13 +23,14 @@ ActiveAdmin.register QuickAnswer do
     column "Quick Answer Title", :title do |article|
       link_to article.title, [:admin, article]
     end
-    column :category
+    column :category, :sortable => 'categories.name'
     column :contact
     column "Created", :created_at
     column "Author name", :author_name
     column "Author URL", :author_link
     # column :tags
     column :slug
+    column "Helpful?", :feedback, :sortable => 'feedbacks.yes_count'
     column "Published", :is_published
     default_actions # Add show, edit, delete column
   end
@@ -44,7 +48,7 @@ ActiveAdmin.register QuickAnswer do
       f.input :contact
       f.input :tags, :as => :string, :label => "Keywords"
       f.input :author_link
-      f.input :author_pic
+      #f.input :author_pic
       f.input :author_name
 
     end

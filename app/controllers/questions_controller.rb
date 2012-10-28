@@ -15,15 +15,9 @@ class QuestionsController < ApplicationController
       :location => submitted[:location]
     )
 
-    flash[:success] = "Thanks for submitting a question! We'll review it and try to answer it as best as we can."
+    flash.now[:success] = "Thanks for submitting a question! We'll review it and try to answer it as best as we can."
+    QuestionMailer.submitted_question(@question).deliver
+
     redirect_to :root
-  end
-
-  def working
-    @questions = Question.where(:status => 'working')
-  end
-
-  def answered
-    @questions = Question.where(:status => 'answered')
   end
 end
