@@ -27,7 +27,7 @@ class FeedbacksController < ApplicationController
 
     def update_feedback
       if @feedback.save
-        flash[:notice] = "Thanks for your feedback."
+        flash[:success] = "Thanks for your feedback."
       end
       redirect_to quick_answer_path(@article)
     end
