@@ -27,7 +27,9 @@
       <div class="pop-categories">
         <% popular_articles.each do |a| %>
           <div class="category">
-            <%= link_to( a.title, article_path(a.id) ) %>
+            <div class="front">
+              <%= link_to( a.title, article_path(a.id) ) %>
+            </div>
           </div>
         <% end %>
       </div>

@@ -329,11 +329,9 @@ div.category.last {
   font-size: 14px;
   color: #333;
 }
-.category .left {
+.category .front {
   font-size: 20px;
-  width: 130px;
   display: inline-block;
-  margin-right: 60px;
 }
 
 div.category a{

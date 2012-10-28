@@ -49,9 +49,6 @@
           <li class="">
             <%= link_to("Resources", "/articles/article-type/resource") %>
           </li>
-          <li class="">
-            <%= link_to("Pending Questions", "https://trello.com/board/questions-to-answer/508b388ea13b5a2204001dfe") %>
-          </li>
         </ul>
         <% if !current_page?('/')  %>
         <div class="header-search span3">
@@ -75,7 +72,8 @@
     <ul class="footer-links">
       <li><%=link_to("About", about_path)%></li>
       <li><a href="mailto:contact@wmgreenguide.com">Contact</a></li>
-      <li><a href="https://github.com/friendlycode/wmgg">Contribute</a></li>
+      <li><a href="https://github.com/friendlycode/wmgg">Code</a></li>
+      <li><a href="https://trello.com/board/questions-to-answer/508b388ea13b5a2204001dfe">Pending Questions</a></li>
     </ul>
     <div class="WMEAClogo">
       <%= link_to(image_tag("wmeaclogo.png", :alt =>"logo"), 'http://www.wmeac.org', {:class => 'no-underline'}) %>
