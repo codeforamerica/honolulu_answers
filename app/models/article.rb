@@ -17,6 +17,7 @@ class Article < ActiveRecord::Base
   belongs_to :category
   has_many :wordcounts
   has_many :keywords, :through => :wordcounts
+  has_one :feedback, :dependent => :destroy
 
   has_attached_file :author_pic, 
                     :storage => :s3,
