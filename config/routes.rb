@@ -8,7 +8,7 @@ Honoluluanswers::Application.routes.draw do
   get "quick_answer/show"
   get "category/index"
 
-  resources :questions, :via => [:get, :post] do
+  resources :questions do
     collection do
       get 'working'
       get 'answered'

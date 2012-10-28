@@ -7,7 +7,7 @@ ActiveAdmin.register Question do
     column :email
     column :name
     column :location
-    column :status
+    column "Status", :question_status
     column "Created", :created_at
     default_actions # Add show, edit, delete column
   end
@@ -19,7 +19,7 @@ ActiveAdmin.register Question do
       f.input :email
       f.input :name
       f.input :location
-      f.input :status
+      f.input :question_status
     end
     f.buttons
   end
