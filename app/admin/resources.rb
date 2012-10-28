@@ -30,7 +30,6 @@ ActiveAdmin.register Resource do
     column "Author URL", :author_link
     # column :tags
     column :slug
-    column "Helpful?", :feedback, :sortable => 'feedbacks.yes_count'
     column "Published", :is_published
     default_actions # Add show, edit, delete column
   end

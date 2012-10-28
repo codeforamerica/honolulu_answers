@@ -18,9 +18,9 @@ class FeedbacksController < ApplicationController
 
     def receive_feedback
       @feedback = @article.feedback
-      if params[:yes_feedback] == "Like"
+      if params[:yes_feedback] == "yes"
         @feedback.yes_feedback
-      elsif params[:no_feedback] == "Dislike"
+      elsif params[:no_feedback] == "no"
         @feedback.no_feedback
       end
     end
