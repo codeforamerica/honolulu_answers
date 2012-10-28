@@ -17,7 +17,7 @@ ActiveAdmin.register Article do
   filter :contact_id
   filter :is_published
 
-  scope :joined, :default => true do |articles|
+  scope :all, :default => true do |articles|
     articles.includes [:category, :feedback]
   end
   
@@ -28,7 +28,6 @@ ActiveAdmin.register Article do
       link_to article.title, [:admin, article]
     end
     column :category, :sortable => 'categories.name'
-    column :content_type
     column :type
     column "Created", :created_at
     column "Author name", :author_name
