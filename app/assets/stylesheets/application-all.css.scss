@@ -16,3 +16,11 @@
  *= require autocomplete
  *= require_tree ./all
 */
+
+.feedback-form {
+  margin-top: 1em;
+  font-size: 0.8333em;
+  input {
+    vertical-align: middle;
+  }
+}

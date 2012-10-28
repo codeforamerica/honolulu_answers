@@ -1,15 +1,14 @@
 <div class="feedback-form">
-  <span>Did you like this answer?</span> 
   <%= form_for([@article, @feedback]) do |f| %>
-    <%= f.submit "Like", :name => "yes_feedback" %>
-    <%= f.submit "Dislike", :name => "no_feedback" %>
+    <span>Did you find this information helpful?</span> 
+    <%= f.submit "yes", :name => "yes_feedback" %>
+    <%= f.submit "no", :name => "no_feedback" %>
+    <span class="feedback-form-summary">
+      <% # we're going to lie because the author and the director always find it helpful ;-) %>
+      <%= (@feedback.yes_count + 2).to_s + " people" %> say it is.
+    </span>
   <% end %>
-</div>
-<div class="feedback-history">
-  <table summary="feedback history">
-    <tr>
-      <td><span><%= @feedback.yes_count %> Likes!</span></td>
-      <td><span><%= @feedback.no_count %> Dislikes!</span></td>
-    </tr>
-  </table>
+  <div class="feedback-correction">
+    If you have specific feedback or a correction, <a href="mailto:contact@wmgreenguide.com">send us an email</a>.
+  </div>
 </div>
