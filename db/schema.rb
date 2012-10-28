@@ -132,6 +132,20 @@ ActiveRecord::Schema.define(:version => 20121027204602) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "questions", :force => true do |t|
+    t.string   "question"
+    t.string   "name"
+    t.string   "email"
+    t.string   "location"
+    t.string   "context"
+    t.string   "urgency"
+    t.string   "status"
+    t.integer  "answer"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "title"
+  end
+
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
     t.string   "username"

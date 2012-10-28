@@ -1,8 +1,15 @@
 <div class="modal-container span8">
   <div class="main-modal">
+
+    <% if flash[:success] %>
+      <div class="home-flash">
+        <h3 class="info_box"><%= flash[:success] %></h3>
+      </div>
+    <% end %>
+
     <div id="welcome-line-l"></div>
     <div id="welcome-line-r"></div>
-    <h3 class="welcome">Welcome To the</h3>
+    <h3 class="welcome">Welcome To The</h3>
     <h1 class="home-modal">West Michigan Green Guide</h1>
     <p class="call">
       Find answers to your environmental questions.
@@ -21,7 +28,7 @@
 
     <div class="popular">
       <div class="pop-heading">
-        <h2>Most Popular Categories:</h2>
+        <h2>Featured Categories</h2>
       </div>
       <div class="pop-categories">
         <!-- /needs to be dynamic -->
