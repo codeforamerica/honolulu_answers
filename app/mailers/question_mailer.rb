@@ -3,6 +3,6 @@ class QuestionMailer < ActionMailer::Base
 
   def submitted_question(question)
     @question = Question.find(question.id)
-    mail(:to => 'dschoonmaker@wmeac.org', :subject => "[WMGG] New question by #{question.name}")
+    mail(:to => 'contact@wmgreenguide.com', :subject => "[WMGG] New question by #{question.name}")
   end
 end
