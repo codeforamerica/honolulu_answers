@@ -6,7 +6,11 @@ class QuickAnswersController < ApplicationController
     return render(:template => 'articles/missing') unless QuickAnswer.exists? params[:id]
     
     @article = QuickAnswer.find(params[:id])
-    
+    @feedback = @article.feedback
+    if @feedback.nil?
+      @feedback = @article.create_feedback!
+    end
+
     return render(:template => 'articles/missing') unless @article.is_published
 
     #redirection of old permalinks

@@ -1,0 +1,7 @@
+<div class="feedback-form">
+  <span>Did you like this answer?</span> 
+  <%= form_for([@article, @feedback]) do |f| %>
+    <%= f.submit "Like", :name => "yes_feedback" %>
+    <%= f.submit "Dislike", :name => "no_feedback" %>
+  <% end %>
+</div>

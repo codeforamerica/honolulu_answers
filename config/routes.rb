@@ -15,6 +15,10 @@ Honoluluanswers::Application.routes.draw do
     end
   end
 
+  resources :quick_answers do
+    resources :feedbacks
+  end
+
   root :to => "home#index"
 
   match '/about' => "home#about" , :as => :about
