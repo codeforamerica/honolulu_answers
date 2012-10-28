@@ -5,3 +5,11 @@
     <%= f.submit "Dislike", :name => "no_feedback" %>
   <% end %>
 </div>
+<div class="feedback-history">
+  <table summary="feedback history">
+    <tr>
+      <td><span><%= @feedback.yes_count %> Likes!</span></td>
+      <td><span><%= @feedback.no_count %> Dislikes!</span></td>
+    </tr>
+  </table>
+</div>

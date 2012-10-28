@@ -14,7 +14,6 @@ class QuestionsController < ApplicationController
       :email    => submitted[:email],
       :location => submitted[:location]
     )
-    # @question.save!
 
     flash[:success] = "Thanks for submitting a question! We'll review it and try to answer it as best as we can."
     redirect_to :root

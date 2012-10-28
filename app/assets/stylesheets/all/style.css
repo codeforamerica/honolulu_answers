@@ -107,7 +107,7 @@ h4.side-head {
   font-size: 18px;
   color: #FFF;
   background-color: rgb(91, 143, 71);
-  
+
   padding: 10px 15px;
   margin: 0;
   letter-spacing: 0.075em;
@@ -148,6 +148,10 @@ table a{
 
 a {
   border-bottom: 1px solid #ffde4d;
+}
+
+a.no-underline {
+  border-bottom: none;
 }
 
 .category p a{
@@ -854,4 +858,15 @@ ul.about-list li {
 #indexden {
   float:  right;
   padding: 0 8% 4% 8%;
+}
+
+/* flash messages */
+
+.success {
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 2px solid #ddd;
+  background: #E6EFC2;
+  color: #264409;
+  border-color: #C6D880;
 }

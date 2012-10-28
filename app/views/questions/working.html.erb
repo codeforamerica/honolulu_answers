@@ -4,3 +4,22 @@
     >
     Questions > Working on It
   </div>
+  <div class="row">
+    <div class="span9">
+      <div class="main-content">
+        <% if @questions.empty? %>
+          <p>We're currently not working on any questions. Check back soon!</p>
+        <% else %>
+          <% @questions.each do |q| %>
+            <h2><%= q.question %></h2>
+            <p><%= q.context %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="span3">
+      <%= render :partial => 'shared/donation_sidebar' %>
+    </div><!-- /span3 -->
+  </div>
+</div>

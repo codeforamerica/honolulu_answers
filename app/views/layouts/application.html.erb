@@ -71,6 +71,9 @@
   </div><!-- /navbar-top -->
 
   <div class="container main clearfix"><!-- main content container -->
+    <% flash.each do |key, value| %>
+      <div class="<%= key %>"><%= value %></div>
+    <% end %>
     <%= yield %>
   </div><!-- /container-fluid -->
 </div><!-- /wrapper -->
@@ -83,7 +86,7 @@
       <li><a href="https://github.com/friendlycode/wmgg">Contribute</a></li>
     </ul>
     <div class="WMEAClogo">
-      <%= image_tag("wmeaclogo.png", :alt =>"logo") %>
+      <%= link_to(image_tag("wmeaclogo.png", :alt =>"logo"), 'http://www.wmeac.org', {:class => 'no-underline'}) %>
     </div>
   </div>
 </div><!-- /footer -->
