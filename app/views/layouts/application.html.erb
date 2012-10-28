@@ -37,7 +37,8 @@
     <div class="container">
       <div class="row">
         <div class="logo span4">
-          <a href="/" class="hnl-logo">West Michigan Green Guide</a>
+          <%= image_tag("WhiteLetter.png", :alt =>"logo", :class => "toplogo") %>
+          <!--<a href="/" class="hnl-logo">West Michigan Green Guide</a>-->
           <span class="bubble"><img src="/assets/beta.png" class="beta" alt="beta"></span>
         </div>
         <ul class="nav-top span5">
@@ -49,9 +50,6 @@
           </li>
           <li class="">
             <%= link_to("Resources", "/articles/article-type/resource") %>
-          </li>
-          <li class="">
-            <%= link_to("Pending Questions", "https://trello.com/board/questions-to-answer/508b388ea13b5a2204001dfe") %>
           </li>
         </ul>
         <% if !current_page?('/')  %>
@@ -75,8 +73,9 @@
   <div class="container">
     <ul class="footer-links">
       <li><%=link_to("About", about_path)%></li>
-      <li><a href="mailto:contact@wmgreenguide.com">Contact</a></li>
-      <li><a href="https://github.com/friendlycode/wmgg">Contribute</a></li>
+      <li><a href="mailto:contact@wmgreenguide.com" target=_blank>Contact</a></li>
+      <li><a href="https://github.com/friendlycode/wmgg">Code</a></li>
+      <li><a href="https://trello.com/board/questions-to-answer/508b388ea13b5a2204001dfe">Pending Questions</a></li>
     </ul>
     <div class="WMEAClogo">
       <%= link_to(image_tag("wmeaclogo.png", :alt =>"logo"), 'http://www.wmeac.org', {:class => 'no-underline'}) %>

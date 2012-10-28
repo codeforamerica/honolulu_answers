@@ -1,12 +1,21 @@
       <div class="sidebar">
         <% unless @article.contact.nil? %>
-          <div class="sidebar-unit">
+          <div class="sidebar-unit sidebar-contact">
             <h4 class="side-head">NEED MORE INFO?</h4>
             <div class="sidebar-content">
               <%= content_tag(:h4, link_to_unless(@article.contact.url.blank?, @article.contact.name, @article.contact.url, :target => "_blank")) %>
-              <%= raw @article.contact.address %>
+              <p><%= raw @article.contact.description %></p>
+              <% if @article.contact.address.length > 0 %>
+              <div><%= raw @article.contact.address %></div>
+              <% end %>              
+              <% if @article.contact.department.length > 0 %>
+              <div><%= raw @article.contact.department %></div>
+              <% end %>
               <% if @article.contact.number.length > 0 %>
-                <%= raw "Phone: #{@article.contact.number}" %>
+              <div><%= raw "#{@article.contact.number}" %></div>
+              <% end %>
+              <% if @article.contact.subname.length > 0 %>
+              <div><%= link_to(@article.contact.subname, "mailto:#{@article.contact.subname}") %></div>
               <% end %>
             </div>
           </div>
