@@ -39,6 +39,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= @bodyclass %>" onload="if($){ $('#query').focus(); }">
+
 <div id="wrapper">
   <div class="navbar-top">
     <!-- <p class="notice alert alert-info"><%= notice %></p>
@@ -68,16 +69,12 @@
       </div><!-- /row -->
     </div>
   </div><!-- /navbar-top -->
+
   <div class="container main clearfix"><!-- main content container -->
-
-
-
-<%= yield %>
-
-
-
+    <%= yield %>
   </div><!-- /container-fluid -->
 </div><!-- /wrapper -->
+
 <div class="footer">
   <div class="container">
     <ul class="footer-links">
@@ -87,14 +84,10 @@
     </ul>
     <div class="WMEAClogo">
       <%= image_tag("wmeaclogo.png", :alt =>"logo") %>
-
     </div>
   </div>
 </div><!-- /footer -->
-
-
-
   <!-- this should be the last line before </body> -->
-  <%= render :partial => "layouts/footer" %> 
+  <%= render :partial => "layouts/footer" %>
 </body>
 </html>

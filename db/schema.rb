@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120817231009) do
+ActiveRecord::Schema.define(:version => 20121027160235) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -122,6 +122,20 @@ ActiveRecord::Schema.define(:version => 20120817231009) do
     t.text     "synonyms"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "questions", :force => true do |t|
+    t.string   "question"
+    t.string   "name"
+    t.string   "email"
+    t.string   "location"
+    t.string   "context"
+    t.string   "urgency"
+    t.string   "status"
+    t.integer  "answer"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "title"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
