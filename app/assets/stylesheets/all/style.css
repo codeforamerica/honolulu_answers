@@ -200,8 +200,8 @@ div.navbar-top {
 }
 div.logo {
   display: inline-block;
-  /*padding-top:35px;*/
- size: 80%;
+  padding-top:35px;
+  size: 80%;
 }
 img.beta {
   margin-top: -55px;
