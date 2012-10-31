@@ -17,24 +17,24 @@
     <div class="wmd-panel">
       <div id="wmd-button-bar-content_main" class="wmd-button-bar"></div>
       <%= f.input :content_main, :label => "Content", :input_html => {
-          :class => 'wmd-input article', :id => 'wmd-input-content_main'} %>
-      <div id="wmd-preview-content_main" class="wmd-preview"></div>
+          :class => 'wmd-input', :id => 'wmd-input-content_main'} %>
+      <div id="wmd-preview-content_main" class="wmd-preview article"></div>
     </div>
     <div style="clear: both;"></div>
 
     <div class="wmd-panel">
       <div id="wmd-button-bar-content_main_extra" class="wmd-button-bar"></div>
       <%= f.input :content_main_extra, :input_html => {
-        :class => 'wmd-input article', :id => 'wmd-input-content_main_extra'}  %>
-      <div id="wmd-preview-content_main_extra" class="wmd-preview"></div>
+        :class => 'wmd-input', :id => 'wmd-input-content_main_extra'}  %>
+      <div id="wmd-preview-content_main_extra" class="wmd-preview article"></div>
     </div>
 
     <div style="clear: both;"></div>
     <div class="wmd-panel">
       <div id="wmd-button-bar-content_need_to_know" class="wmd-button-bar"></div>
       <%= f.input :content_need_to_know, :input_html => {
-        :class => 'wmd-input article', :id => 'wmd-input-content_need_to_know'} %>
-      <div id="wmd-preview-content_need_to_know" class="wmd-preview"></div>
+        :class => 'wmd-input', :id => 'wmd-input-content_need_to_know'} %>
+      <div id="wmd-preview-content_need_to_know" class="wmd-preview article"></div>
     </div>
   <%end%>
   <%=f.buttons :commit %>
