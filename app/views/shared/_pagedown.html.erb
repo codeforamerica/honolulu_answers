@@ -5,6 +5,195 @@
 
 
 <% @button_name = @article.class.to_s.split(/(?=[A-Z])/).join('_').downcase %>
+
+<style type="text/css">
+@import url(http://fonts.googleapis.com/css?family=Satisfy);
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+@import url(https://github.com/theleagueof/league-gothic/blob/master/LeagueGothic-Regular.otf?raw=true);
+@import url(http://fonts.googleapis.com/css?family=News+Cycle);
+@import url(http://fonts.googleapis.com/css?family=Archivo+Narrow);
+
+h2, h3, h4, h5, h6 { font: 100%/1.5 "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif; line-height: 100%; }
+
+
+h1 {
+  font-family: "Archivo Narrow", "News Cycle", "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif; line-height: 100%;
+  font-size: 30px; 
+  /*font-weight: bold;
+  font-size: 1.6em;
+  line-height: 60%;
+  letter-spacing: 0.04em;*/
+}
+h1.home-modal {
+  font-size: 5.4em;
+  font-weight: 580;
+  letter-spacing: 0.04em;
+  color: #303030;
+  font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 35px 0 30px 0;
+  text-shadow: -5px 5px 5px rgba(0, 0, 0, 0.1), -5px 2px 5px rgba(0, 0, 0, 0.05), -5px 2px 5px rgba(0, 0, 0, 0.05);
+}
+h2 {
+  font-size: 18px;
+}
+h3.welcome {
+  font-family: "Satisfy", cursive;
+  color: #303030;
+  font-size:36px;
+  text-align: center;
+  line-height: 100%;
+  z-index: 100;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+h3.content-type {
+  padding: 10px 15px;
+  color: #FFF;
+  background-color: #000;
+  display: inline-block;
+  text-transform: uppercase;
+  margin-left: -30px;
+  margin-bottom: 15px;
+  font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.07em;
+}
+
+h4.side-head {
+  font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
+  font-size: 18px;
+  color: #FFF;
+  background-color:#4580b4;
+  padding: 10px 15px;
+  margin: 0;
+  letter-spacing: 0.075em;
+}
+
+h5 { }
+h6 { }
+
+p {
+  /*font-size: 1.1em;*/
+  color: #070707;
+  font-weight: 300;
+  margin: 10px 0;
+}
+p.preview {
+  font-weight: 300;
+  margin-bottom: 0px;
+}
+
+p a,h1 a,h2 a,h3 a,h4 a,li a{
+  color: rgb(0,136,204);
+  border-bottom: none;
+}
+
+p a:hover{
+  color: rgb(0,136,204);
+  border-bottom: 1px solid #ffde4d;
+}
+
+.breadcrumbs a{
+  color: rgb(0,136,204);
+  border-bottom: none;
+}
+
+table a{
+  border-bottom: none;
+}
+
+a { 
+  border-bottom: 1px solid #ffde4d;
+}
+
+.category p a{ 
+  border-bottom: 1px solid #ffde4d;
+}
+
+a:hover{
+  border-bottom: 1px solid #ffde4d;
+  text-decoration: none;
+  color: rgb(0,136,204);
+}
+
+a.hnl-logo {
+  font-size: 20px;
+  color: #FFFFFF;
+  font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
+  letter-spacing:0.08em;
+  border-bottom: 7px solid #ffde4d;
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: 70%;
+}
+
+a.hnl-logo:hover {
+  border-bottom: 10px solid #ffde4d;
+}
+
+.sidebar-content  {
+  font-size: 14px;
+}
+
+div.content-text {
+  padding-top: 20px;
+  font-weight: 300;
+}
+.article .content-text h2 {
+  margin-bottom: 20px;
+  font-weight: bold;
+  line-height: 150%;
+}
+.article .content-text h3 {
+  margin-top: 40px;
+  text-transform: uppercase;
+  font-weight: bold;
+
+}
+.content-text p {
+  color: rgb(51, 51, 51);
+  margin-bottom: 12px;
+}
+.content-text ol, .content-text ul {
+  margin: 0 12px;
+  padding: 0 10px;
+}
+.content-text ol li, .content-text ul li{
+  margin: 0 0 12px 30px;
+  padding-left: 5px;
+} 
+.content-text ol li {  
+  list-style-type: decimal;
+}
+.content-text ul li {
+  list-style-type: disc;
+}
+div.quick_top{
+  background: whitesmoke;
+  padding: 20px;
+}
+
+/* TABLE */
+table, th, td {
+  padding: 5px;
+}
+table {
+  width: 80%;
+  margin: auto;
+}
+th {
+  text-align: left;
+  background-color: #ddd;
+}
+td {
+  text-align: left;
+  background-color: #ededed;
+  margin: 1px;
+}
+</style>
+
 <script type="text/javascript">
 $(document).ready(function() {
 
