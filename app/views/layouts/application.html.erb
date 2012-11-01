@@ -14,34 +14,10 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <script type="text/javascript">
+// open external links in a new window
 $(document).ready(function(){
-  // open external links in a new window
   $("a:[href^='http']").attr("target","_blank");
   $("a:[href^='http://answers.honolulu.gov']").attr("target","");
-  
-  // replace links to .png, .jpg, and .gif with actual images
-  $('a').each(function(){
-    var ext = getfileextension(this.href).toLowerCase();
-    switch(ext){
-      case '.gif':
-      case '.png':
-      case '.jpg':
-      case '.jpeg':
-      case '.bmp':
-        var img = $('<img>',{src: this.href, style: "max-width:400px;"});
-        $(this).replaceWith(img);
-        break;
-    }
-  });
-  function getfileextension(filename){ 
-    var dot = filename.lastIndexOf("."); 
-    if( dot == -1 ) return "";
-    var extension = filename.substr(dot,filename.length); 
-    if(extension.indexOf("?") > -1){
-      extension = extension.substr(0, extension.indexOf("?"));
-    }
-    return extension; 
-  }
 });
   </script>
 </head>
