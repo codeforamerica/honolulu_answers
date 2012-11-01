@@ -8,18 +8,20 @@
     <%=f.input :title %>
     <%=f.input :preview, :input_html => { :rows => 4 } %>
     <%=f.input :category %>
-    <%=f.input :contact %>
-    <%=f.input :service_url %>
+    <%=f.input :contact, :label => "Contact / More Info" %>
+    <%=f.input :service_url, :label => "Web Service link" %>
     <%=f.input :tags, :as => :string %>
     <%=f.input :author_link %>
     <%=f.input :author_pic %>
     <%=f.input :author_name %>
-    <%=f.input :render_markdown, :as => :radio, :collection => [["Markdown", true], ["HTML", false]] %>   
-    <div class="">
-      <div id="wmd-button-bar"></div>
-      <%=f.input :content_md, :input_html => { :class => 'wmd-input', :id => 'wmd-input' } %> 
-      <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
+    <%=f.input :render_markdown, :as => :radio, :collection => [["Markdown", true], ["HTML", false]] %>
+    <div class="wmd-panel">
+      <div id="wmd-button-bar-content_main" class="wmd-button-bar"></div>
+      <%= f.input :content_main, :label => "Content", :input_html => {
+          :class => 'wmd-input', :id => 'wmd-input-content_main'} %>
+      <div id="wmd-preview-content_main" class="wmd-preview"></div>
     </div>
+    <div style="clear: both;"></div>
   <%end%>
   <%=f.buttons :commit %>
 <% end %>
