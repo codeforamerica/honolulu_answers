@@ -13,6 +13,13 @@
   <![endif]-->
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript">
+// open external links in a new window
+$(document).ready(function(){
+  $("a:[href^='http']").attr("target","_blank");
+  $("a:[href^='http://answers.honolulu.gov']").attr("target","");
+});
+  </script>
 </head>
 <body class="<%= @bodyclass %>" onload="if($){ $('#query').focus(); }">
 <div id="wrapper">
