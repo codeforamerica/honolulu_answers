@@ -600,6 +600,38 @@ if(is.ua.indexOf('gecko')>=0){is.ie=is.ns=false;is.gecko=true;}
   editor_content_main_extra.run();
   editor_content_need_to_know.run();
 
+  var getfileextension = function(filename){ 
+    var dot = filename.lastIndexOf("."); 
+    if( dot == -1 ) return "";
+    var extension = filename.substr(dot,filename.length); 
+    if(extension.indexOf("?") > -1){
+      extension = extension.substr(0, extension.indexOf("?"));
+    }
+    return extension; 
+  };
+  
+  var imgLinks = function(text){
+    $(text, 'a').each(function(){
+      var ext = getfileextension(this.href).toLowerCase();
+      switch(ext){
+        case '.gif':
+        case '.png':
+        case '.jpg':
+        case '.jpeg':
+        case '.bmp':
+        var img = $('<img>',{src: this.href, style: "max-width:400px;"});
+        $(this).replaceWith(img);
+        break;
+      }
+    });
+
+    return text;
+  };
+  
+  converter_content_main.hooks.chain("postConversion", imgLinks);
+  converter_content_main_extra.hooks.chain("postConversion", imgLinks);
+  converter_content_need_to_know.hooks.chain("postConversion", imgLinks);
+
  //  // Add support for quick-top in markdown
  // converter.hooks.chain("postConversion", function (text) {
  //   // if <hr> is found:
