@@ -18,10 +18,12 @@
             <%= @content_main.html_safe %>
           </div>
           <%= @content_main_extra.html_safe %>
-          <div class="quick_bottom">
-            <h3>What You Need to Know</h3>
-            <%= @content_need_to_know.html_safe %>
-          </div>
+          <% if @content_need_to_know.html_safe != "" %>
+            <div class="quick_bottom">
+              <h3>What You Need to Know</h3>
+              <%= @content_need_to_know.html_safe %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div><!-- /span9 -->
