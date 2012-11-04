@@ -2,11 +2,11 @@ module TankerArticleDefaults
   def self.included(base)
     base.send(:include, ::Tanker)
 
-    index = 'hnlanswers-development'
-  	index = 'hnlanswers-production' if Rails.env === 'production'
+    index = ENV['SEARCHIFY_API_INDEX']
+  	#index = 'hnlanswers-production' if Rails.env === 'production'
     
     base.tankit index, :as => 'Article' do
-        indexes :title
+      indexes :title
 	    indexes :content_md
 	    indexes :category, :category => true
 	    indexes :tags
