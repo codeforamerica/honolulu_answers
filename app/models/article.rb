@@ -1,3 +1,4 @@
+# encoding: utf-8
 include ActionView::Helpers::SanitizeHelper
 
 class Article < ActiveRecord::Base  

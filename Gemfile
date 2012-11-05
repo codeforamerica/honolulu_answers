@@ -14,7 +14,7 @@ gem 'foreman'				                      # For launching with the Procfile and kee
 gem 'pry-rails', :group => :development   # Better 'rails console'
 #gem 'pry-exception_explorer', :group => :development # Puts you in the console when an exception is raised
 gem 'pry-debugger'                             # Adds next, step and continue to Pry for debugging
-gem 'newrelic_rpm', :group => [:production, :development] # Rails analytics - see the Heroku addon
+gem 'newrelic_rpm', :group => [:production, :staging, :development] # Rails analytics - see the Heroku addon
 gem 'heroku'                              # Managed hosting solution
 gem 'annotate', '~>2.4.1.beta'            # Annotates models with database info: `bundle exec rake:annotate` 
 gem 'rails-erd'                           # Create Entity Relationship Diagrams
