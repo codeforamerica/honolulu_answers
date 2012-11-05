@@ -10,8 +10,10 @@
         <div class="header">
           <h1><%= @category.name %></h1>
         </div>
-        <p><%= @category.description %></p>
-        <br/>
+        <% if @category.description.trim != "" %>
+          <p><%= @category.description %></p>
+          <br/>
+        <% end %>
         <ul>
           <% @category.articles_by_access_count.each do |article| %>
             <% next unless article.is_published %>
