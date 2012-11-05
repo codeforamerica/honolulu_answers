@@ -10,7 +10,7 @@
         <div class="header">
           <h1><%= @category.name %></h1>
         </div>
-        <% if @category.description.trim != "" %>
+        <% if @category.description.strip != "" %>
           <p><%= @category.description %></p>
           <br/>
         <% end %>
