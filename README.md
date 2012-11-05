@@ -4,7 +4,7 @@ Honolulu Answers is designed to be very user-friendly. It declutters the govt we
 
 ## This is not the latest code repo!
 
-The most up-to-date repository for Honolulu Answers is the fork at **[Honolulu/honolulu_answers](https://github.com/Honolulu/honolulu_answers)**. Use that one!
+**The most up-to-date repository for Honolulu Answers is the fork at [Honolulu/honolulu_answers](https://github.com/Honolulu/honolulu_answers)**. Use that one!
 
 ## First, a big Thank You:
 
