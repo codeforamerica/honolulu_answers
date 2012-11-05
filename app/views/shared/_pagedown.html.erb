@@ -256,8 +256,8 @@ if(!doNotUnhash){end=grafsOut.length;for(var i=0;i<end;i++){var foundAny=true;wh
 return grafsOut.join("\n\n");}
 function _EncodeAmpsAndAngles(text){text=text.replace(/&(?!#?[xX]?(?:[0-9a-fA-F]+|\w+);)/g,"&amp;");text=text.replace(/<(?![a-z\/?\$!])/gi,"&lt;");return text;}
 function _EncodeBackslashEscapes(text){text=text.replace(/\\(\\)/g,escapeCharacters_callback);text=text.replace(/\\([`*_{}\[\]()>#+-.!])/g,escapeCharacters_callback);return text;}
-function _DoAutoLinks(text){text=text.replace(/(^|\s)(https?|ftp|mailto)(:\/\/[-A-Z0-9+&@#\/%?=~_|\[\]\(\)!:,\.;]*[-A-Z0-9+&@#\/%=~_|\[\]])($|\W)/gi,"$1<$2$3>$4");var replacer=function(wholematch,m1){return"<a href=\""+m1+"\">"+pluginHooks.plainLinkText(m1)+"</a>";}
-text=text.replace(/<((https?|ftp):[^'">\s]+)>/gi,replacer);return text;}
+function _DoAutoLinks(text){text=text.replace(/(^|\s)(https?|ftp|mailto)(:\/?\/?[-A-Z0-9+&@#\/%?=~_|\[\]\(\)!:,\.;]*[-A-Z0-9+&@#\/%=~_|\[\]])($|\W)/gi,"$1<$2$3>$4");var replacer=function(wholematch,m1){return"<a href=\""+m1+"\">"+pluginHooks.plainLinkText(m1)+"</a>";}
+text=text.replace(/<((https?|ftp|mailto):[^'">\s]+)>/gi,replacer);return text;}
 function _UnescapeSpecialChars(text){text=text.replace(/~E(\d+)E/g,function(wholeMatch,m1){var charCodeToReplace=parseInt(m1);return String.fromCharCode(charCodeToReplace);});return text;}
 function _Outdent(text){text=text.replace(/^(\t|[ ]{1,4})/gm,"~0");text=text.replace(/~0/g,"")
 return text;}
@@ -274,7 +274,7 @@ var regex=new RegExp(regexString,"g");text=text.replace(regex,escapeCharacters_c
 function escapeCharacters_callback(wholeMatch,m1){var charCodeToEscape=m1.charCodeAt(0);return"~E"+charCodeToEscape+"E";}};})();(function(){var output,Converter;if(typeof exports==="object"&&typeof require==="function"){output=exports;Converter=require("./Markdown.Converter").Converter;}else{output=window.Markdown;Converter=output.Converter;}
 output.getSanitizingConverter=function(){var converter=new Converter();converter.hooks.chain("postConversion",sanitizeHtml);converter.hooks.chain("postConversion",balanceTags);return converter;}
 function sanitizeHtml(html){return html.replace(/<[^>]*>?/gi,sanitizeTag);}
-var basic_tag_whitelist=/^(<\/?(table|thead|tr|th|tbody|td|b|blockquote|code|del|dd|dl|dt|em|h1|h2|h3|h4|h5|h6|i|kbd|li|ol|p|pre|s|sup|sub|strong|strike|ul)>|<(br|hr)\s?\/?>)$/i;var a_white=/^(<a\shref="(((https?|ftp):\/\/|\/))?[-A-Za-z0-9+&@#\/%?=~_|!:,.;\(\)]+"(\stitle="[^"<>]+")?\s?>|<\/a>)$/i;var img_white=/^(<img\ssrc="(https?:\/\/|\/)[-A-Za-z0-9+&@#\/%?=~_|!:,.;\(\)]+"(\swidth="\d{1,3}")?(\sheight="\d{1,3}")?(\salt="[^"<>]*")?(\stitle="[^"<>]*")?\s?\/?>)$/i;function sanitizeTag(tag){if(tag.match(basic_tag_whitelist)||tag.match(a_white)||tag.match(img_white))
+var basic_tag_whitelist=/^(<\/?(table|thead|tr|th|tbody|td|b|blockquote|code|del|dd|dl|dt|em|h1|h2|h3|h4|h5|h6|i|kbd|li|ol|p|pre|s|sup|sub|strong|strike|ul)>|<(br|hr)\s?\/?>)$/i;var a_white=/^(<a\shref="(((https?|ftp|mailto):\/?\/?|\/))?[-A-Za-z0-9+&@#\/%?=~_|!:,.;\(\)]+"(\stitle="[^"<>]+")?\s?>|<\/a>)$/i;var img_white=/^(<img\ssrc="(https?:\/\/|\/)[-A-Za-z0-9+&@#\/%?=~_|!:,.;\(\)]+"(\swidth="\d{1,3}")?(\sheight="\d{1,3}")?(\salt="[^"<>]*")?(\stitle="[^"<>]*")?\s?\/?>)$/i;function sanitizeTag(tag){if(tag.match(basic_tag_whitelist)||tag.match(a_white)||tag.match(img_white))
 return tag;else
 return"";}
 function balanceTags(html){if(html=="")
