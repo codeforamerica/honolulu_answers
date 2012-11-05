@@ -256,7 +256,7 @@ if(!doNotUnhash){end=grafsOut.length;for(var i=0;i<end;i++){var foundAny=true;wh
 return grafsOut.join("\n\n");}
 function _EncodeAmpsAndAngles(text){text=text.replace(/&(?!#?[xX]?(?:[0-9a-fA-F]+|\w+);)/g,"&amp;");text=text.replace(/<(?![a-z\/?\$!])/gi,"&lt;");return text;}
 function _EncodeBackslashEscapes(text){text=text.replace(/\\(\\)/g,escapeCharacters_callback);text=text.replace(/\\([`*_{}\[\]()>#+-.!])/g,escapeCharacters_callback);return text;}
-function _DoAutoLinks(text){text=text.replace(/(^|\s)(https?|ftp)(:\/\/[-A-Z0-9+&@#\/%?=~_|\[\]\(\)!:,\.;]*[-A-Z0-9+&@#\/%=~_|\[\]])($|\W)/gi,"$1<$2$3>$4");var replacer=function(wholematch,m1){return"<a href=\""+m1+"\">"+pluginHooks.plainLinkText(m1)+"</a>";}
+function _DoAutoLinks(text){text=text.replace(/(^|\s)(https?|ftp|mailto)(:\/\/[-A-Z0-9+&@#\/%?=~_|\[\]\(\)!:,\.;]*[-A-Z0-9+&@#\/%=~_|\[\]])($|\W)/gi,"$1<$2$3>$4");var replacer=function(wholematch,m1){return"<a href=\""+m1+"\">"+pluginHooks.plainLinkText(m1)+"</a>";}
 text=text.replace(/<((https?|ftp):[^'">\s]+)>/gi,replacer);return text;}
 function _UnescapeSpecialChars(text){text=text.replace(/~E(\d+)E/g,function(wholeMatch,m1){var charCodeToReplace=parseInt(m1);return String.fromCharCode(charCodeToReplace);});return text;}
 function _Outdent(text){text=text.replace(/^(\t|[ ]{1,4})/gm,"~0");text=text.replace(/~0/g,"")
