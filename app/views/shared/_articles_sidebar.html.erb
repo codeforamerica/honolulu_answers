@@ -8,9 +8,10 @@
               <% elsif !(@article.contact.url.blank?) %>
                 <%= content_tag(:h4, @article.contact.name) %>
                 <% ( @article.contact.url.split(',') ).each do |multiurl| %>
-                  <%= link_to(multiurl, multiurl) %>
+                  <%= link_to(multiurl.strip, multiurl.strip) %>
                   <br/>
                 <% end %>
+                <br/>
               <% end %>
               <%= raw @article.contact.address %>
               <% if @article.contact.number.length > 0 %>
