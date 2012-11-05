@@ -9,6 +9,7 @@
                 <%= content_tag(:h4, @article.contact.name) %>
                 <% ( @article.contact.url.split(',') ).each do |multiurl| %>
                   <%= link_to(multiurl, multiurl) %>
+                  <br/>
                 <% end %>
               <% end %>
               <%= raw @article.contact.address %>
