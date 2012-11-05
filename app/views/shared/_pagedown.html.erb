@@ -225,7 +225,7 @@ text=text.replace(rgx_leading_pipe,_doTable_leadingPipe_callback);var rgx_no_lea
 text=text.replace(rgx_no_leading_pipe,_DoTable_callback);return text;}
 function _EscapeSpecialCharsWithinTagAttributes(text){var regex=/(<[a-z\/!$]("[^"]*"|'[^']*'|[^'">])*>|<!(--(?:|(?:[^>-]|-[^>])(?:[^-]|-[^-])*)--)>)/gi;text=text.replace(regex,function(wholeMatch){var tag=wholeMatch.replace(/(.)<\/?code>(?=.)/g,"$1`");tag=escapeCharacters(tag,wholeMatch.charAt(1)=="!"?"\\`*_/":"\\`*_");return tag;});return text;}
 function _DoAnchors(text){text=text.replace(/(\[((?:\[[^\]]*\]|[^\[\]])*)\][ ]?(?:\n[ ]*)?\[(.*?)\])()()()()/g,writeAnchorTag);text=text.replace(/(\[((?:\[[^\]]*\]|[^\[\]])*)\]\([ \t]*()<?((?:\([^)]*\)|[^()\s])*?)>?[ \t]*((['"])(.*?)\6[ \t]*)?\))/g,writeAnchorTag);text=text.replace(/(\[([^\[\]]+)\])()()()()()/g,writeAnchorTag);return text;}
-function writeAnchorTag(wholeMatch,m1,m2,m3,m4,m5,m6,m7){if(m7==undefined)m7="";var whole_match=m1;var link_text=m2.replace(/:\/\//g,"~P");var link_id=m3.toLowerCase();var url=m4.replace('%3a',':');var title=m7;if(url==""){if(link_id==""){link_id=link_text.toLowerCase().replace(/ ?\n/g," ");}
+function writeAnchorTag(wholeMatch,m1,m2,m3,m4,m5,m6,m7){if(m7==undefined)m7="";var whole_match=m1;var link_text=m2.replace(/:\/\//g,"~P");var link_id=m3.toLowerCase();var url=m4;var title=m7;if(url==""){if(link_id==""){link_id=link_text.toLowerCase().replace(/ ?\n/g," ");}
 url="#"+link_id;if(g_urls.get(link_id)!=undefined){url=g_urls.get(link_id);if(g_titles.get(link_id)!=undefined){title=g_titles.get(link_id);}}
 else{if(whole_match.search(/\(\s*\)$/m)>-1){url="";}else{return whole_match;}}}
 url=encodeProblemUrlChars(url);url=escapeCharacters(url,"*_");var result="<a href=\""+url+"\"";if(title!=""){title=attributeEncode(title);title=escapeCharacters(title,"*_");result+=" title=\""+title+"\"";}
@@ -266,7 +266,7 @@ return text;var spaces=["    ","   ","  "," "],skew=0,v;return text.replace(/[\n
 v=(offset-skew)%4;skew=offset+1;return spaces[v];});}
 var _problemUrlChars=/(?:["'*()[\]:]|~D)/g;function encodeProblemUrlChars(url){if(!url)
 return"";var len=url.length;return url.replace(_problemUrlChars,function(match,offset){if(match=="~D")
-return"%24";if(match==":"){if(offset==len-1||/[0-9\/]/.test(url.charAt(offset+1)))
+return"%24";if(match==":"){if(offset==len-1||/[0-9\/]/.test(url.charAt(offset+1)) || url.indexOf("mailto") > -1)
 return":"}
 return"%"+match.charCodeAt(0).toString(16);});}
 function escapeCharacters(text,charsToEscape,afterBackslash){var regexString="(["+charsToEscape.replace(/([\[\]\\])/g,"\\$1")+"])";if(afterBackslash){regexString="\\\\"+regexString;}
