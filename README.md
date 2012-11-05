@@ -2,6 +2,9 @@
 
 Honolulu Answers is designed to be very user-friendly. It declutters the govt website experience, and it solves a problem people ordinarily have. And we hope it makes people's lives easier. Inspired by Gov.uk, Honolulu Answers is a first-of-its-kind for municipal government, a partnership between Code for America and the City & County of Honolulu.
 
+## This is not the most up-to-date repo!
+
+* The most up-to-date repository for Honolulu Answers is the fork at **Honolulu/honolulu_answers**. Use that one!
 
 ## First, a big Thank You:
 
