@@ -3,7 +3,14 @@
           <div class="sidebar-unit">
             <h4 class="side-head">NEED MORE INFO?</h4>
             <div class="sidebar-content">
-              <%= content_tag(:h4, link_to_unless(@article.contact.url.blank?, @article.contact.name, @article.contact.url, :target => "_blank")) %>
+              <% if @article.contact.url.index(',') == nil %>
+                <%= content_tag(:h4, link_to_unless(@article.contact.url.blank?, @article.contact.name, @article.contact.url, :target => "_blank")) %>
+              <% elsif !(@article.contact.url.blank?) %>
+                <%= content_tag(:h4, @article.contact.name) %>
+                <% ( @article.contact.url.split(',') ).each do |multiurl| %>
+                  <%= link_to(multiurl, multiurl) %>
+                <% end %>
+              <% end %>
               <%= raw @article.contact.address %>
               <% if @article.contact.number.length > 0 %>
                 <%= raw "Phone: #{@article.contact.number}" %>
