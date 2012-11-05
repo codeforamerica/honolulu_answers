@@ -266,7 +266,7 @@ return text;var spaces=["    ","   ","  "," "],skew=0,v;return text.replace(/[\n
 v=(offset-skew)%4;skew=offset+1;return spaces[v];});}
 var _problemUrlChars=/(?:["'*()[\]:]|~D)/g;function encodeProblemUrlChars(url){if(!url)
 return"";var len=url.length;return url.replace(_problemUrlChars,function(match,offset){if(match=="~D")
-return"%24";if(match==":"){if(offset==len-1||/[0-9\/]/.test(url.charAt(offset+1)))
+return"%24";if(match==":"){if(offset==len-1||/[0-9\/]/.test(url.charAt(offset+1)) || url.indexOf("mailto") > -1)
 return":"}
 return"%"+match.charCodeAt(0).toString(16);});}
 function escapeCharacters(text,charsToEscape,afterBackslash){var regexString="(["+charsToEscape.replace(/([\[\]\\])/g,"\\$1")+"])";if(afterBackslash){regexString="\\\\"+regexString;}
