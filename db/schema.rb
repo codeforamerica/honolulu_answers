@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121026145929) do
+ActiveRecord::Schema.define(:version => 20121028193745) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -52,6 +52,9 @@ ActiveRecord::Schema.define(:version => 20121026145929) do
     t.string   "type"
     t.text     "content_md"
     t.boolean  "render_markdown",         :default => true
+    t.text     "content_main"
+    t.text     "content_main_extra"
+    t.text     "content_need_to_know"
   end
 
   add_index "articles", ["slug"], :name => "index_articles_on_slug"

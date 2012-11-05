@@ -43,6 +43,7 @@ gem 'json'                                # Convert between JSON and Ruby object
 
 ## Content and presentation
 gem 'bluecloth'                           # Parse Markdown
+gem 'kramdown'                            # Better markdown parser with support for markdown-extra
 gem 'friendly_id'                         # Create permalinks / descriptive URLs / slugs
 gem 'gon'                                 # Easy passing of data from the controller to javascript files
 gem 'paperclip', '~> 3.0'                 # Easy file attachment library for ActiveRecord

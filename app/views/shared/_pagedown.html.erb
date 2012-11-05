@@ -9,22 +9,35 @@
 $(document).ready(function() {
 
   // instantiate pagedown 
-  var converter = new Markdown.getSanitizingConverter();
-  var editor = new Markdown.Editor(converter);
-  editor.run();
+  var converter_content_main         = new Markdown.getSanitizingConverter();
+  var converter_content_main_extra   = new Markdown.getSanitizingConverter();
+  var converter_content_need_to_know = new Markdown.getSanitizingConverter();
+  
+  var editor_content_main = new Markdown.Editor(
+  converter_content_main, "-content_main");
+    
+  var editor_content_main_extra = new Markdown.Editor(
+    converter_content_main_extra, "-content_main_extra");
+    
+  var editor_content_need_to_know = new Markdown.Editor(
+    converter_content_need_to_know, "-content_need_to_know");
 
-  // Add support for quick-top in markdown
-  converter.hooks.chain("postConversion", function (text) {
-    // if <hr> is found:
-    // 1) replace <hr> with </div>
-    // 2) insert at the top of the text, <div class='quick-top'>
-    var hr = /<hr( \/)?>/;
-    if( text.match(hr) ) {
-      text = text.replace(hr, "</div>");
-      text = "<div class='quick_top'>".concat(text);
-    }
-    return text;
-  });
+  editor_content_main.run();
+  editor_content_main_extra.run();
+  editor_content_need_to_know.run();
+
+ //  // Add support for quick-top in markdown
+ // converter.hooks.chain("postConversion", function (text) {
+ //   // if <hr> is found:
+ //   // 1) replace <hr> with </div>
+ //   // 2) insert at the top of the text, <div class='quick-top'>
+ //   var hr = /<hr( \/)?>/;
+ //   if( text.match(hr) ) {
+ //     text = text.replace(hr, "</div>");
+ //     text = "<div class='quick_top'>".concat(text);
+ //   }
+ //   return text;
+ // });
 
 });
 </script>
