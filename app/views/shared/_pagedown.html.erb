@@ -17,12 +17,6 @@
 @import url(http://fonts.googleapis.com/css?family=News+Cycle);
 @import url(http://fonts.googleapis.com/css?family=Archivo+Narrow);
 
-
-/* CSS Reset - Eric Meyer */
-.article span, .article ul, .article ol, .article h1, .article h2, .article h3, .article h4, .article h5, .article h6, .article p, .article a { 
-  margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
-.article ol, .article ul, .article li { list-style: none; }
-
 /* Removing outline border on active links (WCAG safe - active state links handled explicitly below) */
 .article a:focus, .article a:active { 
   outline: 0;
@@ -128,10 +122,16 @@
   margin: 0 0 12px 30px;
   padding-left: 5px;
 } 
-.article .content-text ol li {  
+.article ul li {
+  list-style-type: disc;
+}
+.article ol li {  
   list-style-type: decimal;
 }
-.article .content-text ul li {
+.article ul ol > li {  
+  list-style-type: decimal;
+}
+.article ol ul > li {
   list-style-type: disc;
 }
 .article div.quick_top{
@@ -160,19 +160,6 @@
 /*accessibility*/
 .article a:focus, .article a:active { 
   color: black;
-}
-
-/* Style external links */
-a[href ^= "http"]:after {
-     content: " " url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII=);    
-}
-
-.container a[href ^= "http"]:after {
-     content: "";    
-}
-
-div.footer a[href ^= "http"]:after {
-     content: none;
 }
 
 .article .highlight {
