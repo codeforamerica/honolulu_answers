@@ -18,6 +18,7 @@ ActiveAdmin.register User do
         f.input :email
         f.input :password
         f.input :password_confirmation
+        f.input :department
       end
       f.inputs "Type of User" do
         f.input :is_admin,      :label => "Administrator"
