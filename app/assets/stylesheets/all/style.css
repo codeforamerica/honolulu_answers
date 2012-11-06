@@ -633,7 +633,7 @@ div.content-text {
   margin-bottom: 12px;
 }
 .content-text ol, .content-text ul {
-  margin: 20px 12px;
+  margin: 15px 12px 0 12px;
   padding: 0 10px;
 }
 .content-text ol li, .content-text ul li{
