@@ -1,0 +1,11 @@
+<%= render :partial => 'shared/pagedown' %>
+
+<%= semantic_form_for [:admin, @guide_step] do |f| %>
+  <%= f.inputs "Guide Steps Details" do %>
+    <%=f.input :guide %>
+    <%=f.input :title %>
+    <%=f.input :content %>
+    <%=f.input :step %>
+  <%end%>
+  <%=f.buttons :commit %>
+<% end %>
