@@ -281,18 +281,26 @@ if(is.ua.indexOf('gecko')>=0){is.ie=is.ns=false;is.gecko=true;}
   var converter_content_main_extra   = new Markdown.getSanitizingConverter();
   var converter_content_need_to_know = new Markdown.getSanitizingConverter();
   
+try{
   var editor_content_main = new Markdown.Editor(
   converter_content_main, "-content_main");
-    
+  editor_content_main.run();    
+}
+catch(e){}
+
+try{
   var editor_content_main_extra = new Markdown.Editor(
     converter_content_main_extra, "-content_main_extra");
-    
+  editor_content_main_extra.run();
+}
+catch(e){}
+
+try{    
   var editor_content_need_to_know = new Markdown.Editor(
     converter_content_need_to_know, "-content_need_to_know");
-
-  editor_content_main.run();
-  editor_content_main_extra.run();
   editor_content_need_to_know.run();
+}
+catch(e){}
 
  //  // Add support for quick-top in markdown
  // converter.hooks.chain("postConversion", function (text) {
