@@ -28,7 +28,6 @@ gem 'ruby-prof'                           # ruby profiler
 gem 'delayed_job_active_record'           # Lets you queue tasks as background jobs
 gem 'dalli'                               # memcache gem for Rails.cache
 gem 'kgio'
-gem 'memcached'
 
 ## Admin
 gem 'activeadmin'                         # Back-end Content Management System
@@ -75,6 +74,7 @@ group :test, :development do
   gem 'spork-rails'                       # Speeds up TDD by launching multiple Rails instances in the background
   gem 'guard-spork'                       # Make guard aware of Spork - automatically restart spork if a change requires a rails restart   
   gem 'capybara-webkit'                   # JS driver for Capybara (headless)
+  gem 'memcached'                         # Local memcache
 end
 
 gem 'test-unit'                           # Remove at your peril.  Too many other gems randomly depend on it.
