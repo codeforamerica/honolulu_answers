@@ -12,14 +12,8 @@
     <%= stylesheet_link_tag    "application-ie", :media=> "all" %>
   <![endif]-->
   <%= javascript_include_tag "application" %>
+
   <%= csrf_meta_tags %>
-  <script type="text/javascript">
-// open external links in a new window
-$(document).ready(function(){
-  $("a:[href^='http']").attr("target","_blank");
-  $("a:[href^='http://answers.honolulu.gov']").attr("target","");
-});
-  </script>
 </head>
 <body class="<%= @bodyclass %>" onload="if($){ $('#query').focus(); }">
 <div id="wrapper">
@@ -66,8 +60,8 @@ $(document).ready(function(){
     <ul class="footer-links">
       <li><%=link_to("About", about_path)%></li>
       <li><a href="mailto:honolulu@codeforamerica.org">Contact</a></li>
-      <li><a href="https://github.com/codeforamerica/honolulu_answers">Contribute</a></li>
-      <li><%=link_to("Sign In", admin_dashboard_path)%></li>
+      <li><a href="https://github.com/honolulu/honolulu_answers">Contribute</a></li>
+      <li><%= link_to("Sign In", admin_dashboard_path) %></li>
     </ul>
     <div class="cfa-logos">
       <a href="http://codeforamerica.org/"><img src="/assets/cfa_logo_footer.png" class="right" alt="Code for America"></a>
@@ -79,7 +73,7 @@ $(document).ready(function(){
 
 <script type="text/javascript">
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', '<%= ENV['GOOGLE_ANALYTICS_KEY'] %>']);
+  _gaq.push(['_setAccount', '<%=ENV['GOOGLE_ANALYTICS_KEY']%>']);
   _gaq.push(['_trackPageview']);
   
   (function() {
