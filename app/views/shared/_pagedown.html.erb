@@ -122,10 +122,16 @@
   margin: 0 0 12px 30px;
   padding-left: 5px;
 } 
-.article ol li {  
+ul li {
+  list-style-type: disc;
+}
+ol li {  
   list-style-type: decimal;
 }
-.article ul li {
+ul ol > li {  
+  list-style-type: decimal;
+}
+ol ul > li {
   list-style-type: disc;
 }
 .article div.quick_top{
