@@ -27,6 +27,8 @@ gem 'ruby-prof'                           # ruby profiler
 ## Performance and optimization
 gem 'delayed_job_active_record'           # Lets you queue tasks as background jobs
 gem 'dalli'                               # memcache gem for Rails.cache
+gem 'kgio'
+gem 'memcached'
 
 ## Admin
 gem 'activeadmin'                         # Back-end Content Management System
