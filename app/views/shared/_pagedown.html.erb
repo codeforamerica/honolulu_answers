@@ -5,6 +5,180 @@
 
 
 <% @button_name = @article.class.to_s.split(/(?=[A-Z])/).join('_').downcase %>
+
+<style type="text/css">
+/* Honolulu Answers CSS - V2 */
+/* Boostrap Scaffolding Included in asset pipeliene */
+
+/* Font-Face Declarations */
+@import url(http://fonts.googleapis.com/css?family=Satisfy);
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+@import url(https://github.com/theleagueof/league-gothic/blob/master/LeagueGothic-Regular.otf?raw=true);
+@import url(http://fonts.googleapis.com/css?family=News+Cycle);
+@import url(http://fonts.googleapis.com/css?family=Archivo+Narrow);
+
+/* Removing outline border on active links (WCAG safe - active state links handled explicitly below) */
+.article a:focus, .article a:active { 
+  outline: 0;
+  background-color: rgb(255,222,77);
+  color: black;
+}
+
+.article .clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.article .clearfix { display: inline-block; }
+* html .clearfix { height: 1%; }
+.article .clearfix { display: block; }
+.article {
+ font: 100%/1.5 "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
+}
+.article h2, .article h3, .article h4, .article h5, .article h6 { font: 100%/1.5 "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif; line-height: 100%; }
+.article h1 {
+  font-family: "Archivo Narrow", "News Cycle", "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif; line-height: 100%;
+  font-size: 30px; 
+}
+.article h2 {
+  font-size: 18px;
+}
+.article h3.content-type {
+  padding: 10px 15px;
+  color: #FFF;
+  background-color: #000;
+  display: inline-block;
+  text-transform: uppercase;
+  margin-left: -30px;
+  margin-bottom: 15px;
+  font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.07em;
+}
+.article p {
+  /*font-size: 1.1em;*/
+  color: #070707;
+  font-weight: 300;
+  margin: 10px 0;
+}
+.article p.preview {
+  font-weight: 300;
+  margin-bottom: 0px;
+}
+
+.article p a, .article h1 a, .article h2 a, .article h3 a, .article h4 a, .article li a{
+  color: rgb(0,136,204);
+  border-bottom: none;
+}
+
+.article p a:hover{
+  color: rgb(0,136,204);
+  border-bottom: 1px solid #ffde4d;
+}
+
+.article table a{
+  border-bottom: none;
+}
+
+.article a { 
+  border-bottom: 1px solid #ffde4d;
+}
+
+.article a:hover{
+  border-bottom: 1px solid #ffde4d;
+  text-decoration: none;
+  color: rgb(0,136,204);
+}
+.article p.call {
+  font-size: 20px; 
+  margin-bottom: 20px;
+  text-align: center;
+}
+.article .pop-heading h2 {
+  font-size:20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.article div.content-text {
+  padding-top: 20px;
+  font-weight: 300;
+}
+.article .content-text h2 {
+  margin-bottom: 20px;
+  font-weight: bold;
+  line-height: 150%;
+}
+.article .content-text h3 {
+  margin-top: 40px;
+  text-transform: uppercase;
+  font-weight: bold;
+
+}
+.article .content-text p {
+  color: rgb(51, 51, 51);
+  margin-bottom: 12px;
+}
+.article .content-text ol, .content-text ul {
+  margin: 0 12px;
+  padding: 0 10px;
+}
+.article .content-text ol li, .content-text ul li{
+  margin: 0 0 12px 30px;
+  padding-left: 5px;
+} 
+.article ul li {
+  list-style-type: disc;
+}
+.article ol li {  
+  list-style-type: decimal;
+}
+.article ul ol > li {  
+  list-style-type: decimal;
+}
+.article ol ul > li {
+  list-style-type: disc;
+}
+.article div.quick_top{
+  background: whitesmoke;
+  padding: 20px;
+}
+
+/* TABLE */
+.article table, .article th, .article td {
+  padding: 5px;
+}
+.article table {
+  width: 80%;
+  margin: auto;
+}
+.article th {
+  text-align: left;
+  background-color: #f8f8f8;
+}
+.article td {
+  text-align: left;
+  background-color: #ededed;
+  margin: 1px;
+}
+
+/*accessibility*/
+.article a:focus, .article a:active { 
+  color: black;
+}
+
+.article .highlight {
+	font-weight:bold;
+}
+
+.article > ol li, .article > ul li{
+    margin: 2px 44px;
+}
+
+.article blockquote{
+  font-style: normal;
+}
+
+.article th{
+  background-color: #f8f8f8;
+}
+</style>
+
 <script type="text/javascript">
 $(document).ready(function() {
 
@@ -79,7 +253,7 @@ return text;var spaces=["    ","   ","  "," "],skew=0,v;return text.replace(/[\n
 v=(offset-skew)%4;skew=offset+1;return spaces[v];});}
 var _problemUrlChars=/(?:["'*()[\]:]|~D)/g;function encodeProblemUrlChars(url){if(!url)
 return"";var len=url.length;return url.replace(_problemUrlChars,function(match,offset){if(match=="~D")
-return"%24";if(match==":"){if(offset==len-1||/[0-9\/]/.test(url.charAt(offset+1)))
+return"%24";if(match==":"){if(offset==len-1||/[0-9\/]/.test(url.charAt(offset+1)) || url.indexOf("mailto") > -1)
 return":"}
 return"%"+match.charCodeAt(0).toString(16);});}
 function escapeCharacters(text,charsToEscape,afterBackslash){var regexString="(["+charsToEscape.replace(/([\[\]\\])/g,"\\$1")+"])";if(afterBackslash){regexString="\\\\"+regexString;}
@@ -107,18 +281,26 @@ if(is.ua.indexOf('gecko')>=0){is.ie=is.ns=false;is.gecko=true;}
   var converter_content_main_extra   = new Markdown.getSanitizingConverter();
   var converter_content_need_to_know = new Markdown.getSanitizingConverter();
   
+try{
   var editor_content_main = new Markdown.Editor(
   converter_content_main, "-content_main");
-    
+  editor_content_main.run();    
+}
+catch(e){}
+
+try{
   var editor_content_main_extra = new Markdown.Editor(
     converter_content_main_extra, "-content_main_extra");
-    
+  editor_content_main_extra.run();
+}
+catch(e){}
+
+try{    
   var editor_content_need_to_know = new Markdown.Editor(
     converter_content_need_to_know, "-content_need_to_know");
-
-  editor_content_main.run();
-  editor_content_main_extra.run();
   editor_content_need_to_know.run();
+}
+catch(e){}
 
  //  // Add support for quick-top in markdown
  // converter.hooks.chain("postConversion", function (text) {

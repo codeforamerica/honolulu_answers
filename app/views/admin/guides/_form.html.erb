@@ -8,20 +8,12 @@
     <%=f.input :title %>
     <%=f.input :preview, :input_html => { :rows => 4 } %>
     <%=f.input :category %>
-    <%=f.input :contact %>
+    <%=f.input :contact, :label => "Contact / More Info" %>
     <%=f.input :tags, :as => :string %>
     <%=f.input :author_link %>
     <%=f.input :author_pic %>
     <%=f.input :author_name %>
-    <%=f.input :render_markdown, :as => :radio, :collection => [["Markdown", true], ["HTML", false]] %> 
-    <div class="">
-      <div id="wmd-button-bar"></div>
-      <%=f.input :content_md, :input_html => { :class => 'wmd-input', :id => 'wmd-input' } %>
-      <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
-    </div>
-      
+    <%=f.input :render_markdown, :as => :radio, :collection => [["Markdown", true], ["HTML", false]] %>
   <%end%>
   <%=f.buttons :commit %>
 <% end %>
-
-

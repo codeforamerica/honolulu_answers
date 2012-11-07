@@ -14,7 +14,7 @@ gem 'foreman'				                      # For launching with the Procfile and kee
 gem 'pry-rails', :group => :development   # Better 'rails console'
 #gem 'pry-exception_explorer', :group => :development # Puts you in the console when an exception is raised
 gem 'pry-debugger'                             # Adds next, step and continue to Pry for debugging
-gem 'newrelic_rpm', :group => [:production, :development] # Rails analytics - see the Heroku addon
+gem 'newrelic_rpm', :group => [:production, :staging, :development] # Rails analytics - see the Heroku addon
 gem 'heroku'                              # Managed hosting solution
 gem 'annotate', '~>2.4.1.beta'            # Annotates models with database info: `bundle exec rake:annotate` 
 gem 'rails-erd'                           # Create Entity Relationship Diagrams
@@ -27,6 +27,7 @@ gem 'ruby-prof'                           # ruby profiler
 ## Performance and optimization
 gem 'delayed_job_active_record'           # Lets you queue tasks as background jobs
 gem 'dalli'                               # memcache gem for Rails.cache
+gem 'kgio'
 
 ## Admin
 gem 'activeadmin'                         # Back-end Content Management System
@@ -73,6 +74,7 @@ group :test, :development do
   gem 'spork-rails'                       # Speeds up TDD by launching multiple Rails instances in the background
   gem 'guard-spork'                       # Make guard aware of Spork - automatically restart spork if a change requires a rails restart   
   gem 'capybara-webkit'                   # JS driver for Capybara (headless)
+  gem 'memcached'                         # Local memcache
 end
 
 gem 'test-unit'                           # Remove at your peril.  Too many other gems randomly depend on it.

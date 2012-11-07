@@ -74,7 +74,7 @@ Honoluluanswers::Application.configure do
   config.active_support.deprecation = :notify
 
   #devise mailer
-  config.action_mailer.default_url_options = { :host => 'hnlanswers.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => ENV['ACTION_MAILER_URL_PRODUCTION'] }
 
   config.action_mailer.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
@@ -87,4 +87,5 @@ Honoluluanswers::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
 
+  config.cache_store = :dalli_store
 end
