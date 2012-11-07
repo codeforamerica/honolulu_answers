@@ -300,6 +300,8 @@ class Article < ActiveRecord::Base
   def set_is_published
     if status == 'Published'
       self.is_published = true
+    else
+      self.is_published = false
     end
   end
 
