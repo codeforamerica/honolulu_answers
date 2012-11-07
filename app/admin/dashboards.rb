@@ -17,7 +17,7 @@ ActiveAdmin::Dashboards.build do
   section("Users", :if => proc{ current_user.is_admin? }) do
     table_for User.order("created_at DESC").limit(5) do
       column "User", :email do |user|
-        user.email
+        link_to user.email, [:admin, user]
       end
       column "Department", :department
       column "Editor", :is_editor
