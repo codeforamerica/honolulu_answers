@@ -52,7 +52,7 @@ class Article < ActiveRecord::Base
 
   # query_magic callbacks to update keywords and wordcounts tables (The gem will be called query_magic --hale)
   after_create :qm_after_create
-  before_update :set_is_published
+  before_save :set_is_published
   after_update :qm_after_update
   after_destroy :qm_after_destroy
 
