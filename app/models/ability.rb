@@ -5,7 +5,7 @@ class Ability
 
     can :read, :all
     
-    if user.is_moderator || user.is_editor
+    if user.is_editor || user.is_writer
       can :manage, Article
       can :manage, Contact
       can :manage, Guide
@@ -15,7 +15,7 @@ class Ability
     end
 
     # A manager can do the following:
-    if user.is_moderator
+    if user.is_editor
       can :manage, Category
     end
 

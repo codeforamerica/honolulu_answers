@@ -2,7 +2,7 @@
 
 <%= semantic_form_for [:admin, @guide] do |f| %>
     <%= f.inputs "Guide Details" do %>
-    <%if current_user.is_moderator%>
+    <%if current_user.is_editor %>
       <%= f.input :is_published, :label => "Publish?"%>
     <% end %>
     <%=f.input :title %>

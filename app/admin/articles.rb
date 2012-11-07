@@ -39,7 +39,7 @@ ActiveAdmin.register Article do
   
   form do |f|   # create/edit user form
     f.inputs "Article Details" do
-      if current_user.is_moderator
+      if current_user.is_editor
         f.input :is_published, :label => "Publish?"
       end     
       f.input :title
