@@ -40,7 +40,7 @@ ActiveAdmin.register Article do
   form do |f|   # create/edit user form
     f.inputs "Article Details" do
       if params[:action] == 'new'
-        f.input :user, :as => :hidden, :input_html => { :value => current_user.id }
+        f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
       end
       f.input :status,  :as => :select, :collection => ["Draft", "Pending Review", "Published"]
       f.input :title
