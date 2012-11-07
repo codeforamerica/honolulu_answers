@@ -1,32 +1,28 @@
 ActiveAdmin::Dashboards.build do
   
-  section("Recent Articles", :if => proc {current_user.is_admin? || current_user.is_editor? }) do
-    table_for Article.order("created_at DESC").limit(5) do
+  section "Recent Articles" do
+    table_for Article.order("created_at DESC").limit(10) do
       column "Article Title", :title do |article|
         link_to article.title, [:admin, article]
       end
-      column "Author", :author_name
       column "Date Created", :created_at
-      column "Date Updated", :updated_at
     end
     strong { link_to "View All Articles", admin_articles_path }
     strong {'|'}
     strong { link_to "New Article", new_admin_article_path }
   end
   
-  section("Users", :if => proc{ current_user.is_admin? }) do
+  section "Users" do
     table_for User.order("created_at DESC").limit(5) do
       column "User", :email do |user|
         user.email
       end
-      column "Department", :department
-      column "Editor", :is_editor
+      column "Moderator", :is_moderator
     end
     strong { link_to "View All Users", admin_users_path }
     strong {'|'}
     strong { link_to "New User", new_admin_user_path }
   end
-  
 
   # Define your dashboard sections here. Each block will be
   # rendered on the dashboard in the context of the view. So just
