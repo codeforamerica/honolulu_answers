@@ -10,6 +10,8 @@ ActiveAdmin::Dashboards.build do
       column "Date Updated", :updated_at
     end
     strong { link_to "View All Articles", admin_articles_path }
+    strong {'|'}
+    strong { link_to "New Article", new_admin_article_path }
   end
   
   section("Users", :if => proc{ current_user.is_admin? }) do
@@ -21,6 +23,8 @@ ActiveAdmin::Dashboards.build do
       column "Editor", :is_editor
     end
     strong { link_to "View All Users", admin_users_path }
+    strong {'|'}
+    strong { link_to "New User", new_admin_user_path }
   end
   
 
