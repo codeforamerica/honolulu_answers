@@ -6,6 +6,7 @@ ActiveAdmin::Dashboards.build do
         link_to article.title, [:admin, article]
       end
       column "Author", :author_name
+      column "Status", :status
       column "Date Created", :created_at
       column "Date Updated", :updated_at
     end
