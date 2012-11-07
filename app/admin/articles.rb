@@ -39,9 +39,10 @@ ActiveAdmin.register Article do
   
   form do |f|   # create/edit user form
     f.inputs "Article Details" do
-      if current_user.is_editor
-        f.input :is_published, :label => "Publish?"
-      end     
+      if params[:action] == 'new'
+        f.input :user, :as => :hidden, :input_html => { :value => current_user.id }
+      end
+      f.input :status,  :as => :select, :collection => ["Draft", "Pending Review", "Published"]
       f.input :title
       f.input :content, :input_html => {:class => 'editor'}
       f.input :preview

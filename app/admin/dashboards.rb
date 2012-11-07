@@ -15,6 +15,19 @@ ActiveAdmin::Dashboards.build do
     strong { link_to "New Article", new_admin_article_path }
   end
   
+  section("Your Articles", :if => proc {current_user.is_writer? }) do
+    table_for current_user.articles.order("created_at DESC") do
+      column "Article Title", :title do |article|
+        link_to article.title, [:admin, article]
+      end
+      column "Author", :author_name
+      column "Status", :status
+      column "Date Created", :created_at
+      column "Date Updated", :updated_at
+    end
+    strong { link_to "New Article", new_admin_article_path }
+  end
+  
   section("Users", :if => proc{ current_user.is_admin? }) do
     table_for User.order("created_at DESC").limit(5) do
       column "User", :email do |user|

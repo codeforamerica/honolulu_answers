@@ -17,6 +17,7 @@ class Article < ActiveRecord::Base
 
   belongs_to :contact
   belongs_to :category
+  belongs_to :user
   has_many :wordcounts
   has_many :keywords, :through => :wordcounts
 
@@ -51,6 +52,7 @@ class Article < ActiveRecord::Base
 
   # query_magic callbacks to update keywords and wordcounts tables (The gem will be called query_magic --hale)
   after_create :qm_after_create
+  before_update :set_is_published
   after_update :qm_after_update
   after_destroy :qm_after_destroy
 
@@ -294,6 +296,12 @@ class Article < ActiveRecord::Base
     end
   end
   handle_asynchronously :qm_after_destroy
+  
+  def set_is_published
+    if status == 'Published'
+      self.is_published = true
+    end
+  end
 
 end
 
