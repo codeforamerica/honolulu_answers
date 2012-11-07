@@ -1,14 +1,14 @@
 <%= render :partial => 'shared/pagedown' %>
 
 <%= semantic_form_for [:admin, @quick_answer] do |f| %>
- <%= f.inputs "Quick Answer Details" do %>
+  <%= f.inputs "Quick Answer Details" do %>
     <% if params[:action] == 'new' %>
-      <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+     <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
     <% end %>
-    <% if current_user.is_writer? %>
-      <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review"] %>
+    <% if current_user.is_admin? || current_user.is_editor? %>
+     <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review", "Published"] %>
     <% else %>
-      <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review", "Published"] %>
+     <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review"] %>
     <% end %>
     <%=f.input :title %>
     <%=f.input :preview, :input_html => { :rows => 4 } %>
