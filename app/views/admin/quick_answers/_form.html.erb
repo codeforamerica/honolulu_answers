@@ -2,8 +2,13 @@
 
 <%= semantic_form_for [:admin, @quick_answer] do |f| %>
  <%= f.inputs "Quick Answer Details" do %>
-    <%if current_user.is_editor %>
-      <%= f.input :is_published, :label => "Publish?"%>
+    <% if params[:action] == 'new' %>
+      <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+    <% end %>
+    <% if current_user.is_writer? %>
+      <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review"] %>
+    <% else %>
+      <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review", "Published"] %>
     <% end %>
     <%=f.input :title %>
     <%=f.input :preview, :input_html => { :rows => 4 } %>

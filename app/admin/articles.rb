@@ -42,7 +42,11 @@ ActiveAdmin.register Article do
       if params[:action] == 'new'
         f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
       end
-      f.input :status,  :as => :select, :collection => ["Draft", "Pending Review", "Published"]
+      if current_user.is_writer?
+        f.input :status,  :as => :select, :collection => ["Draft", "Pending Review"]
+      else
+        f.input :status,  :as => :select, :collection => ["Draft", "Pending Review", "Published"]
+      end
       f.input :title
       f.input :content, :input_html => {:class => 'editor'}
       f.input :preview

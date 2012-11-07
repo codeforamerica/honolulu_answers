@@ -10,9 +10,7 @@ ActiveAdmin::Dashboards.build do
       column "Date Created", :created_at
       column "Date Updated", :updated_at
     end
-    strong { link_to "View All Articles", admin_articles_path }
-    strong {'|'}
-    strong { link_to "New Article", new_admin_article_path }
+    strong { link_to "View All Articles", admin_quick_answers_path }
   end
   
   section("Your Articles", :if => proc {current_user.is_writer? }) do
@@ -25,7 +23,6 @@ ActiveAdmin::Dashboards.build do
       column "Date Created", :created_at
       column "Date Updated", :updated_at
     end
-    strong { link_to "New Article", new_admin_article_path }
   end
   
   section("Users", :if => proc{ current_user.is_admin? }) do
