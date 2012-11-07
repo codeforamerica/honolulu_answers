@@ -8,8 +8,6 @@ ActiveAdmin::Dashboards.build do
       column "Date Created", :created_at
     end
     strong { link_to "View All Articles", admin_articles_path }
-    strong {'|'}
-    strong { link_to "New Article", new_admin_article_path }
   end
   
   section "Users" do
@@ -20,8 +18,6 @@ ActiveAdmin::Dashboards.build do
       column "Moderator", :is_moderator
     end
     strong { link_to "View All Users", admin_users_path }
-    strong {'|'}
-    strong { link_to "New User", new_admin_user_path }
   end
 
   # Define your dashboard sections here. Each block will be
