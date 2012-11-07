@@ -52,7 +52,6 @@ class Article < ActiveRecord::Base
 
   # query_magic callbacks to update keywords and wordcounts tables (The gem will be called query_magic --hale)
   after_create :qm_after_create
-  before_save :set_is_published
   after_update :qm_after_update
   after_destroy :qm_after_destroy
 
@@ -89,6 +88,14 @@ class Article < ActiveRecord::Base
     if self.category
       "#{self.title} (#{self.id}) [#{self.category}]"
     else
+    end
+  end
+  
+  def published?
+    if status == "Published"
+      return true
+    else
+      return false
     end
   end
 
@@ -184,6 +191,7 @@ class Article < ActiveRecord::Base
 
 
   #protected
+
 
   def set_access_count_if_nil
     self.access_count = 0 if self.access_count.nil?
@@ -296,14 +304,6 @@ class Article < ActiveRecord::Base
     end
   end
   handle_asynchronously :qm_after_destroy
-  
-  def set_is_published
-    if status == 'Published'
-      self.is_published = true
-    else
-      self.is_published = false
-    end
-  end
 
 end
 

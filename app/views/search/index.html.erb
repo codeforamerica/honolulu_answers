@@ -30,7 +30,7 @@ $(document).ready(function () {
           <% else %>
             <ul>
               <% @results.each do |article| %>
-                <% next unless article.is_published %>
+                <% next unless article.published? %>
                   <li class="article-listing">
                     <%= content_tag( :h2, link_to( article.title, article_path(article.id) ) ) %>
                     <p class="preview"><%= article.preview %></p>

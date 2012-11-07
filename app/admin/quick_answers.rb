@@ -1,7 +1,7 @@
 ActiveAdmin.register QuickAnswer do
 	# This will authorize the Foobar class
   # The authorization is done using the AdminAbility class
-  controller.authorize_resource
+  # controller.authorize_resource
   
   # Add to :parent Dropdown menu
   menu :parent => "Articles"
@@ -11,7 +11,7 @@ ActiveAdmin.register QuickAnswer do
   filter :title
   filter :tags
   filter :contact_id
-  filter :is_published
+  filter :status
 
   
   # View 
@@ -27,7 +27,7 @@ ActiveAdmin.register QuickAnswer do
     column "Author URL", :author_link
     # column :tags
     column :slug
-    column "Published", :is_published
+    column "Status", :status
     default_actions # Add show, edit, delete column
   end
 

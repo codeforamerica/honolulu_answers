@@ -14,7 +14,7 @@
         </div>
         <ul>
           <% @categories.each do |category| %>
-          <% next unless article.is_published %>
+          <% next unless article.published? %>
             <li class="category-listing">
               <%= content_tag( :h2, link_to( category.name, category_path(category.id) ) ) %>
               <p class="preview"><%= category.description %></p>
