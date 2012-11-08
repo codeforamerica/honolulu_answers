@@ -15,7 +15,7 @@ ActiveAdmin.register Article do
   filter :title
   filter :tags
   filter :contact_id
-  filter :is_published
+  filter :status
 
   
   # View 
@@ -33,15 +33,20 @@ ActiveAdmin.register Article do
     # column "Author URL", :author_link
     # column :tags
     # column :slug
-    column "Published", :is_published
+    column "Status", :status
     default_actions # Add show, edit, delete column
   end
   
   form do |f|   # create/edit user form
     f.inputs "Article Details" do
-      if current_user.is_editor
-        f.input :is_published, :label => "Publish?"
-      end     
+      if params[:action] == 'new'
+        f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
+      end
+      if current_user.is_writer?
+        f.input :status,  :as => :select, :collection => ["Draft", "Pending Review"]
+      else
+        f.input :status,  :as => :select, :collection => ["Draft", "Pending Review", "Published"]
+      end
       f.input :title
       f.input :content, :input_html => {:class => 'editor'}
       f.input :preview

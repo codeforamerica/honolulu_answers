@@ -17,6 +17,7 @@ class Article < ActiveRecord::Base
 
   belongs_to :contact
   belongs_to :category
+  belongs_to :user
   has_many :wordcounts
   has_many :keywords, :through => :wordcounts
 
@@ -35,7 +36,7 @@ class Article < ActiveRecord::Base
 
   validates_presence_of :access_count
 
-  attr_accessible :title, :content, :content_md, :content_main, :content_main_extra, :content_need_to_know, :render_markdown, :preview, :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic, :author_pic_file_name, :author_pic_content_type, :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link, :type, :service_url
+  attr_accessible :title, :content, :content_md, :content_main, :content_main_extra, :content_need_to_know, :render_markdown, :preview, :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic, :author_pic_file_name, :author_pic_content_type, :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link, :type, :service_url, :user_id, :status
 
   # A note on the content fields:
   # *  Originally the content for the articles was stored as HTML in Article#content.
@@ -87,6 +88,14 @@ class Article < ActiveRecord::Base
     if self.category
       "#{self.title} (#{self.id}) [#{self.category}]"
     else
+    end
+  end
+  
+  def published?
+    if status == "Published"
+      return true
+    else
+      return false
     end
   end
 
@@ -182,6 +191,7 @@ class Article < ActiveRecord::Base
 
 
   #protected
+
 
   def set_access_count_if_nil
     self.access_count = 0 if self.access_count.nil?

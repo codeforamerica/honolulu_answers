@@ -3,7 +3,7 @@ class GuidesController < ApplicationController
 	def show
 		@article = Guide.find(params[:id])
 
-		return render(:template => 'articles/missing') unless @article.is_published
+		return render(:template => 'articles/missing') unless @article.published?
 	    #redirection of old permalinks
 	    if request.path != guide_path( @article )
 	      logger.info "Old permalink: #{request.path}"

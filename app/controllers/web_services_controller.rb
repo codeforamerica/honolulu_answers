@@ -6,7 +6,7 @@ class WebServicesController < ApplicationController
     
     @article = WebService.find(params[:id])
 
-    return render(:template => 'articles/missing') unless @article.is_published
+    return render(:template => 'articles/missing') unless @article.published?
     #redirection of old permalinks
     if request.path != web_service_path( @article )
       logger.info "Old permalink: #{request.path}"

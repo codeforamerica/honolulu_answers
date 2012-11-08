@@ -2,8 +2,13 @@
 
 <%= semantic_form_for [:admin, @guide] do |f| %>
     <%= f.inputs "Guide Details" do %>
-    <%if current_user.is_editor %>
-      <%= f.input :is_published, :label => "Publish?"%>
+    <% if params[:action] == 'new' %>
+      <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+    <% end %>
+    <% if current_user.is_admin? || current_user.is_editor? %>
+      <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review", "Published"] %>
+    <% else %>
+      <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review"] %>
     <% end %>
     <%=f.input :title %>
     <%=f.input :preview, :input_html => { :rows => 4 } %>

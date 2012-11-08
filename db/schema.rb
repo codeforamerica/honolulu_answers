@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121107003920) do
+ActiveRecord::Schema.define(:version => 20121107020439) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(:version => 20121107003920) do
     t.datetime "updated"
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.string   "content_type"
     t.text     "preview"
     t.integer  "contact_id"
@@ -73,9 +73,12 @@ ActiveRecord::Schema.define(:version => 20121107003920) do
     t.text     "content_main"
     t.text     "content_main_extra"
     t.text     "content_need_to_know"
+    t.string   "status",                  :default => "Draft"
+    t.integer  "user_id"
   end
 
   add_index "articles", ["slug"], :name => "index_articles_on_slug"
+  add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
