@@ -18,7 +18,7 @@
             <%= @content_main.html_safe %>
           </div>
           <%= @content_main_extra.html_safe %>
-          <% unless @content_need_to_know.blank? %>
+          <% unless @content_need_to_know.strip.blank? %>
             <div class="quick_bottom">
               <h3>What You Need to Know</h3>
               <%= @content_need_to_know.html_safe %>

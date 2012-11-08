@@ -2,11 +2,10 @@ module TankerArticleDefaults
   def self.included(base)
     base.send(:include, ::Tanker)
 
-    index = 'hnlanswers-development'
-  	index = 'hnlanswers-production' if Rails.env === 'production'
+    index = 'hnlgovanswers'
     
     base.tankit index, :as => 'Article' do
-        indexes :title
+      indexes :title
 	    indexes :content_md
 	    indexes :category, :category => true
 	    indexes :tags

@@ -11,7 +11,7 @@ ActiveAdmin.register WebService do
   filter :title
   filter :tags
   filter :contact_id
-  filter :is_published
+  filter :status
 
   
   # View 
@@ -27,7 +27,7 @@ ActiveAdmin.register WebService do
     column "Author URL", :author_link
     # column :tags
     column :slug
-    column "Published", :is_published
+    column "Status", :status
     default_actions # Add show, edit, delete column
   end
   

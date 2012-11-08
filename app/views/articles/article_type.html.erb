@@ -11,7 +11,7 @@
         <ul>
           <% category = nil %>
           <% @articles.each do |article| %>
-          <% next unless article.is_published %>
+          <% next unless article.published? %>
             
               <% if( article.category != category) %>
                 <% if(category) %>

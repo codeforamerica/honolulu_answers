@@ -74,7 +74,7 @@ Honoluluanswers::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.action_mailer.default_url_options = { host: 'hnlanswers-stage.codeforamerica.org' }
+  config.action_mailer.default_url_options = { :host => ENV['ACTION_MAILER_URL_STAGING'] }
 
   config.action_mailer.smtp_settings = {
     :address        => 'smtp.sendgrid.net',

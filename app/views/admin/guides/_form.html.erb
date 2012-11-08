@@ -2,26 +2,23 @@
 
 <%= semantic_form_for [:admin, @guide] do |f| %>
     <%= f.inputs "Guide Details" do %>
-    <%if current_user.is_moderator%>
-      <%= f.input :is_published, :label => "Publish?"%>
+    <% if params[:action] == 'new' %>
+      <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+    <% end %>
+    <% if current_user.is_admin? || current_user.is_editor? %>
+      <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review", "Published"] %>
+    <% else %>
+      <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review"] %>
     <% end %>
     <%=f.input :title %>
     <%=f.input :preview, :input_html => { :rows => 4 } %>
     <%=f.input :category %>
-    <%=f.input :contact %>
+    <%=f.input :contact, :label => "Contact / More Info" %>
     <%=f.input :tags, :as => :string %>
     <%=f.input :author_link %>
     <%=f.input :author_pic %>
     <%=f.input :author_name %>
-    <%=f.input :render_markdown, :as => :radio, :collection => [["Markdown", true], ["HTML", false]] %> 
-    <div class="">
-      <div id="wmd-button-bar"></div>
-      <%=f.input :content_md, :input_html => { :class => 'wmd-input', :id => 'wmd-input' } %>
-      <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
-    </div>
-      
+    <%=f.input :render_markdown, :as => :radio, :collection => [["Markdown", true], ["HTML", false]] %>
   <%end%>
   <%=f.buttons :commit %>
 <% end %>
-
-

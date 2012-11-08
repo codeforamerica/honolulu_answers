@@ -8,7 +8,7 @@ puts 'SETTING UP DEFAULT USER LOGIN'
 print "Enter admin email: "
 admin_email = STDIN.gets.to_s
 
-user = User.create! :email => admin_email, :password => 'Mahalo43', :password_confirmation => 'Mahalo43', :is_admin => true, :is_moderator => true, :is_editor => true
+user = User.create! :email => admin_email, :password => 'Mahalo43', :password_confirmation => 'Mahalo43', :is_admin => true, :is_editor => true, :is_writer => true
 puts 'New user created: ' << user.email
 puts "Admin password has been set to: Mahalo43"
 

@@ -2,41 +2,45 @@
 
 <%= semantic_form_for [:admin, @web_service] do |f| %>
  <%= f.inputs "Web Service Details" do %>
-    <%if current_user.is_moderator%>
-      <%= f.input :is_published, :label => "Publish?"%>
+    <% if params[:action] == 'new' %>
+      <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+    <% end %>
+    <% if current_user.is_admin? || current_user.is_editor? %>
+      <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review", "Published"] %>
+    <% else %>
+      <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review"] %>
     <% end %>
     <%=f.input :title %>
     <%=f.input :preview, :input_html => { :rows => 4 } %>
     <%=f.input :category %>
-    <%=f.input :contact %>
-    <%=f.input :service_url %>
+    <%=f.input :contact, :label => "Contact / More Info" %>
+    <%=f.input :service_url, :label => "Web Service link" %>
     <%=f.input :tags, :as => :string %>
     <%=f.input :author_link %>
     <%=f.input :author_pic %>
     <%=f.input :author_name %>
     <%=f.input :render_markdown, :as => :radio, :collection => [["Markdown", true], ["HTML", false]] %>   
-    <hr />
-    <div class="">
-      <div id="wmd-button-bar-content_main"></div>
-      <%= f.input :content_main, :input_html => { 
-        :class => 'wmd-input', :id => 'wmd-input-content_main'} %>
-      <div id="wmd-preview-content_main" class="wmd-panel wmd-preview"></div>
+    <div class="wmd-panel">
+      <div id="wmd-button-bar-content_main" class="wmd-button-bar"></div>
+      <%= f.input :content_main, :label => "Content", :input_html => {
+          :class => 'wmd-input', :id => 'wmd-input-content_main'} %>
+      <div id="wmd-preview-content_main" class="wmd-preview article"></div>
     </div>
-<br/>
-<div style="clear:both;"></div>
-    <div class="">
-      <div id="wmd-button-bar-content_main_extra"></div>
+    <div class="clear"></div>
+
+    <div class="wmd-panel">
+      <div id="wmd-button-bar-content_main_extra" class="wmd-button-bar"></div>
       <%= f.input :content_main_extra, :input_html => {
         :class => 'wmd-input', :id => 'wmd-input-content_main_extra'}  %>
-      <div id="wmd-preview-content_main_extra" class="wmd-panel wmd-preview"></div>
+      <div id="wmd-preview-content_main_extra" class="wmd-preview article"></div>
     </div>
-<br/>
-<div style="clear:both;"></div>
-    <div class="">
-      <div id="wmd-button-bar-content_need_to_know"></div>
+
+    <div class="clear"></div>
+    <div class="wmd-panel">
+      <div id="wmd-button-bar-content_need_to_know" class="wmd-button-bar"></div>
       <%= f.input :content_need_to_know, :input_html => {
         :class => 'wmd-input', :id => 'wmd-input-content_need_to_know'} %>
-      <div id="wmd-preview-content_need_to_know" class="wmd-panel wmd-preview"></div>
+      <div id="wmd-preview-content_need_to_know" class="wmd-preview article"></div>
     </div>
 
   <%end%>
