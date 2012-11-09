@@ -25,10 +25,9 @@
           <% end %>
 
           <div class="quick_top">
-            <%= @content_main.html_safe %>
+            <%= @content_main.html_safe unless @content_main.strip.blank? %>
           </div>
 
-          <%= @content_main_extra.html_safe %>
 
           <% unless @content_need_to_know.blank? %>
             <div class="quick_bottom">
