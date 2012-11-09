@@ -24,13 +24,16 @@ class WebServicesController < ApplicationController
       render :show_html and return
     end
 
-    @content_main = Kramdown::Document.new( @article.content_main, :auto_ids => false ).to_html
-    @content_main_extra = Kramdown::Document.new( @article.content_main_extra, :auto_ids => false ).to_html
-    @content_need_to_know = Kramdown::Document.new( @article.content_need_to_know, :auto_ids => false ).to_html
+    @content_main =  @article.md_to_html( :content_main )
+    @content_main_extra = @article.md_to_html( :content_main_extra )
+    @content_need_to_know =  @article.md_to_html( :content_need_to_know )
+
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @article }
     end    
   end	
+
+  
 end

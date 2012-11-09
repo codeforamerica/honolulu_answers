@@ -14,9 +14,11 @@
           <%= content_tag(:h1, @article.title ) %>
         </div>
         <div class="content-text">
-          <div class="quick_top">
-            <%= @content_main.html_safe %>
-          </div>
+          <% unless @content_main.strip.blank? %>
+            <div class="quick_top">
+              <%= @content_main.html_safe %>
+            </div>
+          <% end %>
           <%= @content_main_extra.html_safe %>
           <% unless @content_need_to_know.strip.blank? %>
             <div class="quick_bottom">

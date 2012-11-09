@@ -24,9 +24,11 @@
             </div>
           <% end %>
 
-          <div class="quick_top">
-            <%= @content_main.html_safe unless @content_main.strip.blank? %>
-          </div>
+          <% unless @content_main.strip.blank? %>
+            <div class="quick_top">
+              <%= @content_main.html_safe %>
+            </div>
+          <% end %>
 
 
           <% unless @content_need_to_know.blank? %>
