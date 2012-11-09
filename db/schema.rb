@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121107020439) do
+ActiveRecord::Schema.define(:version => 20121108074632) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(:version => 20121107020439) do
     t.integer  "contact_id"
     t.text     "tags"
     t.string   "service_url"
-    t.boolean  "is_published",            :default => false
     t.string   "slug"
     t.integer  "category_id"
     t.integer  "access_count",            :default => 0
