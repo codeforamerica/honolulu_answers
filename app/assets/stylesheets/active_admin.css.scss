@@ -8,7 +8,7 @@
 
 // Pagedown style
 
-#wmd-panel {
+.wmd-panel {
 	padding: 0 10px 0 10px;
 }
 
@@ -159,4 +159,16 @@
   font-size: 1.0em;
   font-weight: bold;
   color: #5E6469;
+}
+
+blockquote{
+  font-style: normal;
+}
+
+.clear {
+  clear: both;
+}
+
+table.dashboard > tbody > tr > td {
+  display:block;
 }

@@ -13,22 +13,6 @@
   <![endif]-->
   <%= javascript_include_tag "application" %>
 
-  <script type="text/javascript">
-    var _kmq = _kmq || [];
-    var _kmk = _kmk || "<%= ENV['KISSMETRICS_API_KEY'] %>";
-    function _kms(u){
-      setTimeout(function(){
-        var d = document, f = d.getElementsByTagName('script')[0],
-        s = d.createElement('script');
-        s.type = 'text/javascript'; s.async = true; s.src = u;
-        f.parentNode.insertBefore(s, f);
-      }, 1);
-    }
-    _kms('//i.kissmetrics.com/i.js');
-    _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
-  </script>
-
-
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= @bodyclass %>" onload="if($){ $('#query').focus(); }">
@@ -76,8 +60,8 @@
     <ul class="footer-links">
       <li><%=link_to("About", about_path)%></li>
       <li><a href="mailto:honolulu@codeforamerica.org">Contact</a></li>
-      <li><a href="https://github.com/codeforamerica/honolulu_answers">Contribute</a></li>
-      <li><%=link_to("Sign In", admin_dashboard_path)%></li>
+      <li><a href="https://github.com/honolulu/honolulu_answers">Contribute</a></li>
+      <li><%= link_to("Sign In", admin_dashboard_path) %></li>
     </ul>
     <div class="cfa-logos">
       <a href="http://codeforamerica.org/"><img src="/assets/cfa_logo_footer.png" class="right" alt="Code for America"></a>
@@ -87,16 +71,9 @@
   </div>
 </div><!-- /footer -->
 
-
-<div id="getsat-widget-784"></div>
-<script type="text/javascript" src="https://loader.engage.gsfn.us/loader.js"></script>
-<script type="text/javascript">
-if (typeof GSFN !== "undefined") { GSFN.loadWidget(784,{"containerId":"getsat-widget-784"}); }
-</script>
-
 <script type="text/javascript">
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-20825280-8']);
+  _gaq.push(['_setAccount', '<%=ENV['GOOGLE_ANALYTICS_KEY']%>']);
   _gaq.push(['_trackPageview']);
   
   (function() {

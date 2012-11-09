@@ -14,7 +14,7 @@ ActiveAdmin.register Guide do
   filter :title
   filter :tags
   filter :contact_id
-  filter :is_published
+  filter :status
 
   
   # View 
@@ -30,7 +30,7 @@ ActiveAdmin.register Guide do
     column "Author URL", :author_link
     # column :tags
     column :slug
-    column "Published", :is_published
+    column "Status", :status
     default_actions # Add show, edit, delete column
   end
   
@@ -47,7 +47,7 @@ ActiveAdmin.register Guide do
       row :slug
       row :created_at
       row :updated_at
-      row :is_published
+      row :status
       table_for guide.guide_steps do
         column "Guide Steps" do |step|
           link_to step.step.to_s << ". " << step.title, admin_guide_step_path(step)

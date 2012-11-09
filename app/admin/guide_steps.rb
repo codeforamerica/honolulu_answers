@@ -17,6 +17,8 @@ ActiveAdmin.register GuideStep do
     default_actions # Add show, edit, delete column
   end
 
+  form :partial => "form"
+
   show do |step|
       attributes_table do
         row :title

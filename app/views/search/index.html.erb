@@ -23,15 +23,16 @@ $(document).ready(function () {
            </div>
           <% end %>
 
+          <br/>
        
           <% if @results.blank? or @results.count == 0 %>
             <p>Sorry, no results found for "<%=@query%>".  Please try rephrasing your search terms.</p>
           <% else %>
             <ul>
               <% @results.each do |article| %>
-                <% next unless article.is_published %>
+                <% next unless article.published? %>
                   <li class="article-listing">
-                    <%= content_tag( :h1, link_to( article.title, article_path(article.id) ) ) %>
+                    <%= content_tag( :h2, link_to( article.title, article_path(article.id) ) ) %>
                     <p class="preview"><%= article.preview %></p>
                   </li>
                 <% end %>
