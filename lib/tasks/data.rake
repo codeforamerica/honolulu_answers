@@ -33,7 +33,7 @@ namespace :data do
     Department.create! :name => 'Honolulu Fire Department', :acronym => 'HFD'
     Department.create! :name => 'Honolulu Police Department', :acronym => 'HPD'
     Department.create! :name => 'Liquor Commission', :acronym => 'LIQ'
-    Department.create! :name => "Mayor's Office of Culture and the Arts".gsub(/\\/, '\&\&').gsub(/'/, "''"), :acronym => 'MOCA'
+    Department.create! :name => "Mayor's Office of Culture and the Arts".gsub(/'/, "'"), :acronym => 'MOCA'
     Department.create! :name => 'Neighborhood Commission Office', :acronym => 'NCO'
     Department.create! :name => 'Oahu Metropolitan Planning Organization', :acronym => 'OMPO'
     Department.create! :name => 'Office of Council Services', :acronym => 'OCS'
