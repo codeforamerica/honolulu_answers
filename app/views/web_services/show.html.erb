@@ -15,17 +15,28 @@
         </div>
         <div class="content-text">
           <% unless @article.service_url.blank? %>
-          <div class="onlineservice">
-            <div class="servicebox">
-              <a href="<%= @article.service_url%>" target="_blank"><img src="/assets/getting_started_btn.png" /></a>
+            <div class="onlineservice">
+              <div class="servicebox">
+                <a href="<%= @article.service_url%>" target="_blank"><img src="/assets/getting_started_btn.png" /></a>
+              </div>
+              <h3 class="service">Honolulu.gov lets you do this online! </h3>
+              <p>This will take you directly to the online service on the honolulu.gov website.</p>
             </div>
-            <h3 class="service">Honolulu.gov lets you do this online! </h3>
-            <p>This will take you directly to the online service on the honolulu.gov website.</p>
-          </div>
           <% end %>
 
-          <%= raw @content_html %>
+          <% unless @content_main.strip.blank? %>
+            <div class="quick_top">
+              <%= @content_main.html_safe %>
+            </div>
+          <% end %>
 
+
+          <% unless @content_need_to_know.blank? %>
+            <div class="quick_bottom">
+              <h3>What You Need to Know</h3>
+              <%= @content_need_to_know.html_safe %>
+            </div>
+          <% end %>
 
         </div>
       </div>

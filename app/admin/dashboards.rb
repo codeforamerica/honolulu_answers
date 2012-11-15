@@ -5,9 +5,9 @@ ActiveAdmin::Dashboards.build do
       column "Article Title", :title do |article|
         link_to article.title, [:admin, article]
       end
-<<<<<<< HEAD
-=======
-      column "Author", :author_name
+      column "Author", :user do |article|
+        article.user.try(:email)
+      end
       column "Status", :status
       column "Date Created", :created_at
       column "Date Updated", :updated_at
@@ -20,15 +20,12 @@ ActiveAdmin::Dashboards.build do
       column "Article Title", :title do |article|
         link_to article.title, [:admin, article]
       end
-      column "Author", :author_name
+      column "Author", :user do |article|
+        article.user.try(:email)
+      end      
       column "Status", :status
->>>>>>> 5aae32e457562741be3cc3d35a28dc0aee2335e8
       column "Date Created", :created_at
     end
-<<<<<<< HEAD
-    strong { link_to "View All Articles", admin_articles_path }
-=======
->>>>>>> 5aae32e457562741be3cc3d35a28dc0aee2335e8
   end
   
   section "Users" do

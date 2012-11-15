@@ -80,6 +80,7 @@ class Article < ActiveRecord::Base
     return Article.where(:type => content_type).order('category_id').order('access_count DESC')
   end
 
+  # legacy
   def allContent()
     [self.title, self.content].join(" ")
   end
@@ -92,19 +93,27 @@ class Article < ActiveRecord::Base
   end
   
   def published?
-    if status == "Published"
-      return true
-    else
-      return false
-    end
+    status == "Published"
   end
+
+  # TODO do not perform article analysis (`qm_after_update`) when the status field changes.
+  def publish
+    self.status = 'Published'
+    save
+  end
+
+  def md_to_html( field )
+    return '' if instance_eval(field.to_s).blank?
+    Kramdown::Document.new( instance_eval(field.to_s), :auto_ids => false).to_html
+  end
+
 
   def content_to_markdown
     Markdownifier.new.html_to_markdown( self.content )
   end
-
+  
+  # legacy
   def content_md_to_html
-    # add logic to replace custom syntax for quick-top etc
     BlueCloth.new(self.content_md).to_html
   end
 
@@ -169,12 +178,13 @@ class Article < ActiveRecord::Base
 
   def related
     Rails.cache.fetch("#{self.id}-related") {
+      return [] if wordcounts.empty?
       (Article.search_tank(self.wordcounts.all(:order => 'count DESC').first(10).map(&:keyword).map(&:name).join(" OR ")) - [self]).first(4)
     }
   end
 
   def indexable?
-    self.is_published
+    self.published?
   end
 
   def hits

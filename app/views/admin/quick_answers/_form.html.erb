@@ -6,9 +6,9 @@
      <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
     <% end %>
     <% if current_user.is_admin? || current_user.is_editor? %>
-     <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review", "Published"] %>
+     <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review", "Published"], :include_blank => false %>
     <% else %>
-     <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review"] %>
+     <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review"], :include_blank => false %>
     <% end %>
     <%=f.input :title %>
     <%=f.input :preview, :input_html => { :rows => 4 } %>
