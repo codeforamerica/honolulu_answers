@@ -44,6 +44,7 @@ namespace :data do
     Department.create! :name => 'Office of the Mayor', :acronym => 'MAY'
     Department.create! :name => 'Royal Hawaiian Band', :acronym => 'RHB'
     Department.create! :name => 'Other', :acronym => 'Other'
+    Department.create! :name => 'CfA Brigade', :acronym => 'CFA'
     p 'Departments Created'
   end
 end
