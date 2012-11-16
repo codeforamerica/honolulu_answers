@@ -4,7 +4,16 @@
 
 // To customize the Active Admin interfaces, add your
 // styles here:
+.status {
+  font-size: 12px;
+  letter-spacing: normal
+}
 
+td.status {
+  color: #323537;
+  text-transform: capitalize;
+  letter-spacing: normal
+}
 
 // Pagedown style
 
