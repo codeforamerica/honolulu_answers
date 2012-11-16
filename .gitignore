@@ -29,3 +29,5 @@ coverage/
 
 
 *tags
+
+config/database.yml
