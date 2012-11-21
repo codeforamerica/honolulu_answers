@@ -108,7 +108,7 @@ class Article < ActiveRecord::Base
   end
 
   def raw_md_to_html( field )
-    return '' if instance_eval(field.to_s).blank?
+    return '' if field.to_s.blank?
     Kramdown::Document.new( field.to_s, :auto_ids => false).to_html
   end
 
