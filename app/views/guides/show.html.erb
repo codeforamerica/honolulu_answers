@@ -75,7 +75,7 @@ $(document).ready(function(){
     <% @article.guide_steps.each do |step| %>
       <div id="#vtabs-content">
         <h2 class="vtab-content-header"><%= step.title %></h2>
-        <%= @article.md_to_html( :step.content ) %>
+        <%= @article.raw_md_to_html( step.content ) %>
       </div>
     <% end %> 
   </div>
