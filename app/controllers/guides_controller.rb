@@ -31,7 +31,7 @@ class GuidesController < ApplicationController
 
    		@content_main =  @article.md_to_html( @article.content )
    		@article.guide_steps.each do |step|
-   		  step.content = @article.md_to_html( step.content )
+   		  step.content = @article.md_to_html( step.content.to_s )
    		end
 
 	    respond_to do |format|
