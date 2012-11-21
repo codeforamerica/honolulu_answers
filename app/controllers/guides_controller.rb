@@ -1,6 +1,8 @@
 class GuidesController < ApplicationController
 	# caches_page :show
 	def show
+		return render(:template => 'articles/missing') unless Guide.exists? params[:id]
+
 		@article = Guide.find(params[:id])
 
 		return render(:template => 'articles/missing') unless @article.published?
@@ -13,15 +15,21 @@ class GuidesController < ApplicationController
 	    @article.delay.increment! :access_count
 	    @article.delay.category.increment!(:access_count) if @article.category   
 
-    	content = @article.render_markdown ? @article.content_md : @article.content
-	    @content_html = BlueCloth.new(content).to_html
-
-        # Add support for quick-top in markdown
-        hr = /<hr( \/)?>/
+	    unless @article.render_markdown
+	      @content_html = @article.content
+  	      hr = /<hr( \/)?>/
           if @content_html.match hr
             @content_html.gsub!(hr,"</div>")
             @content_html = "<div class='quick_top'>" + @content_html
           end
+	      render :show_html and return
+	    end
+    	#content = @article.render_markdown ? @article.content_md : @article.content
+	    #@content_html = BlueCloth.new(content).to_html
+
+        # Add support for quick-top in markdown
+
+   		@content_main =  @article.md_to_html( @article.content )
 
 	    respond_to do |format|
 	      format.html # show.html.erb
