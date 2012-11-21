@@ -136,8 +136,6 @@
 				
 				/* add click events to all li elements */
 				$(this).click(function() {
-					console.log(this);
-					console.log(this.hasClass);
 					if($(this).hasClass("open")){
 						// this tab is already open
 						return false;
