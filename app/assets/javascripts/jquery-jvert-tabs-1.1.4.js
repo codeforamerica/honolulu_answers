@@ -136,6 +136,10 @@
 				
 				/* add click events to all li elements */
 				$(this).click(function() {
+					if($(this).hasClass("open")){
+						// this tab is already open
+						return false;
+					}
 					handleTabClick($(this),i,tabRoot,true);
 					return false;
 				});

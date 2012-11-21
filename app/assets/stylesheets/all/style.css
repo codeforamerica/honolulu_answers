@@ -706,7 +706,8 @@ td {
 }
 .vtabs-tab-column li.open{
   background-color: #f38200;
-  height: 27px;
+  /* height: 27px; */
+  padding: 5px;
 }
 h2.vtab-content-header{
   border-bottom: 2px solid gray;
