@@ -30,9 +30,6 @@ class GuidesController < ApplicationController
         # Add support for quick-top in markdown
 
    		@content_main =  @article.md_to_html( @article.content )
-   		@article.guide_steps.each do |step|
-   		  step.content = @article.md_to_html( step.content.to_s )
-   		end
 
 	    respond_to do |format|
 	      format.html # show.html.erb
