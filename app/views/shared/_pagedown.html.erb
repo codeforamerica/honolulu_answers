@@ -178,7 +178,7 @@
   background-color: #f8f8f8;
 }
 
-.content em strong {
+#wmd-preview-content_main em strong
     padding: 20px;
     border: 7px solid #F6D;
     background-color: #fff;
@@ -315,9 +315,9 @@ try{
 catch(e){}
 
 try{
-  var editor_content_main = new Markdown.Editor(
-  converter_content_main, "-content");
-  editor_content_main.run();
+  var editor_content = new Markdown.Editor(
+  converter_content, "-content");
+  editor_content.run();
 }
 catch(e){}
 

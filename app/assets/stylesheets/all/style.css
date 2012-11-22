@@ -849,3 +849,15 @@ ul.about-list li {
 	margin-left: 20px;
 	margin-right: 20px;
 }
+
+.vtabs-content-panel strong em {
+    padding: 20px;
+    border: 7px solid #F6D;
+    background-color: #fff;
+    line-height: 50px;
+    font-weight: normal;
+    font-style: normal;
+	font-size: 140%;
+	margin-left: 20px;
+	margin-right: 20px;
+}
