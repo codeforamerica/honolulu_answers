@@ -48,7 +48,9 @@
   <% if current_user.is_admin? || current_user.is_editor? %>
     <%= f.commit_button "Save" %>
     <%= f.commit_button "Ask Writer to Revise" %>
-    <%= f.commit_button "Publish" %>
+    <% if :status != "Draft"  %>
+      <%= f.commit_button "Publish" %>
+    <% end %>
   <% else %>
     <%= f.commit_button "Save Draft" %>
     <%= f.commit_button "Ready to Review" %>
