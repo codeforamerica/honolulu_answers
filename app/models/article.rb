@@ -271,8 +271,7 @@ class Article < ActiveRecord::Base
   #   3) Create a new Wordcount row with :keyword_id => kw.id, :article_id => article.id and count as the frequency of the keyword in the article.
   def qm_after_create
     begin
-      if self.is_published
-        puts "NOTE: article reads as published, indexing"
+      if self.published?
         text = collect_text(
           :model => self,
           :fields => ['title','content_main','content_main_extra','content_need_to_know','preview','tags','category.name'])
@@ -282,8 +281,6 @@ class Article < ActiveRecord::Base
             kw = Keyword.find_or_create_by_name( word )
             Wordcount.create!(:keyword_id => kw.id, :article_id => self.id, :count => frequency)
           end
-      else
-        puts "NOTE: article was not published, not indexed"
       end
     rescue => e
       puts "ERROR: error after article creation; could not update keywords and wordcounts for article with id #{self.id unless self.id.blank?}"
