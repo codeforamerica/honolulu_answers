@@ -272,6 +272,7 @@ class Article < ActiveRecord::Base
   def qm_after_create
     begin
       if self.is_published
+        puts "NOTE: article reads as published, indexing"
         text = collect_text(
           :model => self,
           :fields => ['title','content_main','content_main_extra','content_need_to_know','preview','tags','category.name'])
