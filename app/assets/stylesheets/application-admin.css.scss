@@ -15,3 +15,7 @@
  *= require_self
  *= require_tree ./admin
 */
+
+#header ul#tabs > li{
+  display: inline !important;
+}
