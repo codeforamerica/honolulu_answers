@@ -5,11 +5,13 @@
     <% if params[:action] == 'new' %>
      <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
     <% end %>
+    
     <% if current_user.is_admin? || current_user.is_editor? %>
      <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review", "Published"], :include_blank => false %>
     <% else %>
      <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review"], :include_blank => false %>
     <% end %>
+
     <%=f.input :title %>
     <%=f.input :preview, :input_html => { :rows => 4 } %>
     <%=f.input :category %>
@@ -42,5 +44,14 @@
       <div id="wmd-preview-content_need_to_know" class="wmd-preview article"></div>
     </div>
   <%end%>
-  <%=f.buttons :commit %>
+
+  <% if current_user.is_admin? || current_user.is_editor? %>
+    <%= f.commit_button "Save" %>
+    <%= f.commit_button "Ask Writer to Revise" %>
+    <%= f.commit_button "Publish" %>
+  <% else %>
+    <%= f.commit_button "Save Draft" %>
+    <%= f.commit_button "Ready to Review" %>
+  <% end %>
+
 <% end %>

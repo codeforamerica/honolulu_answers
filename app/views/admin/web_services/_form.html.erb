@@ -11,7 +11,7 @@
     <% else %>
       <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review"], :include_blank => false %>
     <% end %>
-    
+     
     <%=f.input :title %>
     <%=f.input :preview, :input_html => { :rows => 4 } %>
     <%=f.input :category %>
