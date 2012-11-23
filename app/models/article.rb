@@ -271,7 +271,7 @@ class Article < ActiveRecord::Base
   #   3) Create a new Wordcount row with :keyword_id => kw.id, :article_id => article.id and count as the frequency of the keyword in the article.
   def qm_after_create
     begin
-      if self.published?
+      if self.status == "Published"
         text = collect_text(
           :model => self,
           :fields => ['title','content_main','content_main_extra','content_need_to_know','preview','tags','category.name'])
