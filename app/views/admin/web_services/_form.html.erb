@@ -52,11 +52,11 @@ function statusToSave(){
 }
 function statusToRevise(){
 	// status changed from 
-	$("#quick_answer_status").val("Draft");
+	$("#web_service_status").val("Draft");
 	$("form")[0].submit();
 }
 function statusToPublish(){
-	$("#quick_answer_status").val("Published");
+	$("#web_service_status").val("Published");
 	$("form")[0].submit();
 }
 	  	</script>
@@ -64,11 +64,9 @@ function statusToPublish(){
 	    	<li class="commit button">
 	    	<input type="button" value="Save" onclick="statusToSave();"/>
 	    	</li>
-	    	<% if :status == "Pending Review"  %>
-		    	<li class="commit button">
-		    	<input type="button" value="Ask Writer to Revise" onclick="statusToRevise();"/>
-		    	</li>
-		    <% end %>
+	    	<li class="commit button">
+		    <input type="button" value="Ask Writer to Revise" onclick="statusToRevise();"/>
+		    </li>
 	    	<% if :status != "Draft"  %>
 		    	<li class="commit button">
 	      		<input type="button" value="Publish" onclick="statusToPublish();"/>
@@ -83,7 +81,7 @@ function statusToSave(){
 }
 function statusToReview(){
 	// status changed from draft to Pending Review
-	$("#quick_answer_status").val("Pending Review");
+	$("#web_service_status").val("Pending Review");
 	$("form")[0].submit();
 }
 	  	</script>

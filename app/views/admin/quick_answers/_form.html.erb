@@ -70,11 +70,9 @@ function statusToPublish(){
 	    	<li class="commit button">
 	    	<input type="button" value="Save" onclick="statusToSave();"/>
 	    	</li>
-	    	<% if :status == "Pending Review"  %>
-		    	<li class="commit button">
-		    	<input type="button" value="Ask Writer to Revise" onclick="statusToRevise();"/>
-		    	</li>
-		    <% end %>
+	    	<li class="commit button">
+		    <input type="button" value="Ask Writer to Revise" onclick="statusToRevise();"/>
+		    </li>
 	    	<% if :status != "Draft"  %>
 		    	<li class="commit button">
 	      		<input type="button" value="Publish" onclick="statusToPublish();"/>
