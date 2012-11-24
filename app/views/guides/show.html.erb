@@ -60,6 +60,25 @@ $(document).ready(function(){
     $(tabId).jVertTabs('selected',index);
   }
 });
+
+function prevTab(){
+	var tabs = $($(".open")[0].parentElement).children();
+	for(var t=0;t<tabs.length-1;t++){
+		if( $(tabs[t+1]).hasClass("open") ){
+			$(tabs[t]).click();
+			break;
+		}
+	}
+}
+function nextTab(){
+	var tabs = $($(".open")[0].parentElement).children();
+	for(var t=0;t<tabs.length-1;t++){
+		if( $(tabs[t]).hasClass("open") ){
+			$(tabs[t+1]).click();
+			break;
+		}
+	}
+}
 </script>
 
 <!-- begin vertical tabs demo -->
@@ -81,7 +100,7 @@ $(document).ready(function(){
   </div>
 </div>
   <!-- -->
-
+	<a id="prev">&larr; Previous</a> | <a id="next">Next &rarr;</a>
 
       </div>
     </div><!-- /span9 -->
