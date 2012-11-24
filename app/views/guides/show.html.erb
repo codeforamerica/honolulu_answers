@@ -97,10 +97,13 @@ function nextTab(){
         <%= raw @article.raw_md_to_html( step.content ) %>
       </div>
     <% end %> 
+    <br/>
+    <br/>
+    <a class="btn" href="#" onclick="prevTab();" id="prev">&larr; Previous</a> | <a class="btn" href="#" onclick="nextTab();" id="next">Next &rarr;</a>
+    
   </div>
 </div>
   <!-- -->
-	<a id="prev">&larr; Previous</a> | <a id="next">Next &rarr;</a>
 
       </div>
     </div><!-- /span9 -->
