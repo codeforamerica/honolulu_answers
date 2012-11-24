@@ -6,11 +6,13 @@
      <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
     <% end %>
     
-    <% if current_user.is_admin? || current_user.is_editor? %>
-     <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review", "Published"], :include_blank => false %>
-    <% else %>
-     <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review"], :include_blank => false %>
-    <% end %>
+	<div style="display:none;">
+	    <% if current_user.is_admin? || current_user.is_editor? %>
+	     <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review", "Published"], :include_blank => false %>
+	    <% else %>
+	     <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review"], :include_blank => false %>
+	    <% end %>
+	</div>
 
     <%=f.input :title %>
     <%=f.input :preview, :input_html => { :rows => 4 } %>
@@ -47,15 +49,57 @@
     </div>
   <%end%>
 
-  <% if current_user.is_admin? || current_user.is_editor? %>
-    <%= f.commit_button "Save" %>
-    <%= f.commit_button "Ask Writer to Revise" %>
-    <% if :status != "Draft"  %>
-      <%= f.commit_button "Publish" %>
-    <% end %>
-  <% else %>
-    <%= f.commit_button "Save Draft" %>
-    <%= f.commit_button "Ready to Review" %>
-  <% end %>
 
+	  <% if current_user.is_admin? || current_user.is_editor? %>
+	  	<script type="text/javascript">
+function statusToSave(){
+	// status does not change
+	$("form")[0].submit();
+}
+function statusToRevise(){
+	// status changed from 
+	$("#quick_answer_status").val("Draft");
+	$("form")[0].submit();
+}
+function statusToPublish(){
+	$("#quick_answer_status").val("Published");
+	$("form")[0].submit();
+}
+	  	</script>
+	  	<ol>
+	    	<li class="commit button">
+	    	<input type="button" value="Save" onclick="statusToSave();"/>
+	    	</li>
+	    	<% if :status == "Pending Review"  %>
+		    	<li class="commit button">
+		    	<input type="button" value="Ask Writer to Revise" onclick="statusToRevise();"/>
+		    	</li>
+		    <% end %>
+	    	<% if :status != "Draft"  %>
+		    	<li class="commit button">
+	      		<input type="button" value="Publish" onclick="statusToPublish();"/>
+	      		</li>
+	    	<% end %>
+	    </ol>
+	  <% else %>
+	  	<script type="text/javascript">
+function statusToSave(){
+	// status does not change
+	$("form")[0].submit();
+}
+function statusToReview(){
+	// status changed from draft to Pending Review
+	$("#quick_answer_status").val("Pending Review");
+	$("form")[0].submit();
+}
+	  	</script>
+	  	<ol>
+	    	<li class="commit button">
+	    	<input type="button" value="Save Draft" onclick="statusToSave();"/>
+	    	</li>
+	    	<li class="commit button">
+	    	<input type="button" value="Ready to Review" onclick="statusToReview();"/>
+	    	</li>
+	    </ol>
+	  <% end %>
 <% end %>
