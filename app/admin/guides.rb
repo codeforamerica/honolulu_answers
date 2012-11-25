@@ -26,7 +26,7 @@ ActiveAdmin.register Guide do
     column :category
     column :contact
     column "Created", :created_at
-    column "Author name", :author_name
+    column "Write-a-thon Author Name", :author_name
     column "Write-a-thon Author Link", :author_link
     # column :tags
     column :slug
