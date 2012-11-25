@@ -23,8 +23,8 @@ ActiveAdmin.register QuickAnswer do
     column :category
     column :contact
     column "Created", :created_at
-    column "Write-a-thon Author Name", :author_name
-    column "Write-a-thon Author Link", :author_link
+    column "Writer", :author_name
+    column "Writer link", :author_link
     # column :tags
     column :slug
     column "Status", :status
