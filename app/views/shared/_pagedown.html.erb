@@ -329,6 +329,7 @@ is.mac=is.ua.indexOf('mac')>=0;if(is.ua.indexOf('opera')>=0){is.ie=is.ns=false;i
 if(is.ua.indexOf('gecko')>=0){is.ie=is.ns=false;is.gecko=true;}
 
   // instantiate pagedown 
+  var converter_content         	 = new Markdown.getSanitizingConverter();
   var converter_content_main         = new Markdown.getSanitizingConverter();
   var converter_content_main_extra   = new Markdown.getSanitizingConverter();
   var converter_content_need_to_know = new Markdown.getSanitizingConverter();
