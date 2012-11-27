@@ -11,6 +11,15 @@ $(document).ready(function(){
 		$("a[href $= '#']").next().css({ "display": "block" });
 	});
 	
+	setInterval(function(){
+		var arrows = $(".guidearrow");
+		if(arrows.length){
+			for(var a=0;a<arrows.length;a++){
+				$(arrows[a]).css({ "display": "inline" });
+			}
+		}
+	}, 250);
+	
 	/* if( $("#page_title").text() == "Dashboard"){
 		var headers = $("thead th");
 		for(var h=0;h<headers.length;h++){
