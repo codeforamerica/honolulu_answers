@@ -3,3 +3,7 @@
 //= require markdown.converter
 //= require markdown.sanitizer
 //= require markdown.editor
+
+$(document).ready(function(){
+	$("a[href $= '/admin/articles']").attr("href","#");
+});
