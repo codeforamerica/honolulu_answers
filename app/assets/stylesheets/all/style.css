@@ -838,26 +838,26 @@ ul.about-list li {
 }
 
 /* attempt a callout style */
-.vtabs-content-panel em strong {
+.vtabs .vtabs-content-column .vtabs-content-panel em strong {
     padding: 20px;
     background-color: #D5E8F3;
     line-height: 70px;
     font-weight: normal;
     font-style: normal;
-	font-size: 140%;
+	font-size: 110%;
 	margin-left: 20px;
 	margin-right: 20px;
 	margin-top: 14px;
 	margin-bottom: 14px;
 }
 
-.vtabs-content-panel strong em {
+.vtabs .vtabs-content-column .vtabs-content-panel strong em {
     padding: 20px;
     background-color: #D5E8F3;
     line-height: 70px;
     font-weight: normal;
     font-style: normal;
-	font-size: 140%;
+	font-size: 110%;
 	margin-left: 20px;
 	margin-right: 20px;
 	margin-top: 14px;
