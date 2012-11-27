@@ -11,14 +11,14 @@ $(document).ready(function(){
 		$("a[href $= '#']").next().css({ "display": "block" });
 	});
 	
-	setInterval(function(){
-		var arrows = $(".guidearrow");
-		if(arrows.length){
+	var arrows = $(".guidearrow");
+	if(arrows.length){
+		setInterval(function(){
 			for(var a=0;a<arrows.length;a++){
 				$(arrows[a]).css({ "display": "inline" });
 			}
-		}
-	}, 250);
+		}, 250);
+	}
 	
 	/* if( $("#page_title").text() == "Dashboard"){
 		var headers = $("thead th");
