@@ -840,9 +840,8 @@ ul.about-list li {
 /* attempt a callout style */
 .vtabs-content-panel em strong {
     padding: 20px;
-    border: 7px solid #F6D;
-    background-color: #fff;
-    line-height: 50px;
+    background-color: #D5E8F3;
+    line-height: 70px;
     font-weight: normal;
     font-style: normal;
 	font-size: 140%;
@@ -854,9 +853,8 @@ ul.about-list li {
 
 .vtabs-content-panel strong em {
     padding: 20px;
-    border: 7px solid #F6D;
-    background-color: #fff;
-    line-height: 50px;
+    background-color: #D5E8F3;
+    line-height: 70px;
     font-weight: normal;
     font-style: normal;
 	font-size: 140%;
