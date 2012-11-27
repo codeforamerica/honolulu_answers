@@ -5,5 +5,9 @@
 //= require markdown.editor
 
 $(document).ready(function(){
+	// Clicking Articles link on dashboard > open up context menu
 	$("a[href $= '/admin/articles']").attr("href","#");
+	$("a[href $= '#']").click(function(e){
+		$("a[href $= '#']").next().css();
+	});
 });
