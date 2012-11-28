@@ -8,9 +8,9 @@
     
 	<div style="display:none;">
 	    <% if current_user.is_admin? || current_user.is_editor? %>
-	     <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review", "Published"], :include_blank => false %>
+	     <%= f.input :status,  :value => "", :include_blank => false %>
 	    <% else %>
-	     <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review"], :include_blank => false %>
+	     <%= f.input :status,  :value => "", :include_blank => false %>
 	    <% end %>
 	</div>
 
@@ -55,6 +55,9 @@
 	  	<script type="text/javascript">
 function statusToSave(){
 	// status does not change
+	$("#quick_answer_status").val("Review by "
+		<%= current_user.email %>
+	);
 	$("form")[0].submit();
 }
 function statusToRevise(){
@@ -69,7 +72,7 @@ function statusToPublish(){
 	  	</script>
 	  	<ol>
 	    	<li class="commit button">
-	    	<input type="button" value="Save" onclick="statusToSave();"/>
+	    	<input type="button" value="Save / Continue Editing" onclick="statusToSave();"/>
 	    	</li>
 	    	<li class="commit button">
 		    <input type="button" value="Ask Writer to Revise" onclick="statusToRevise();"/>
