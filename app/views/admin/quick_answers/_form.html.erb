@@ -55,9 +55,7 @@
 	  	<script type="text/javascript">
 function statusToSave(){
 	// status does not change
-	$("#quick_answer_status").val("Review by "
-		<%= current_user.email %>
-	);
+	$("#quick_answer_status").val("Review by <%= current_user.email %>");
 	$("form")[0].submit();
 }
 function statusToRevise(){
