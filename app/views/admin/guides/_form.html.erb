@@ -8,9 +8,9 @@
     
     <div style="display:none;">
 	    <% if current_user.is_admin? || current_user.is_editor? %>
-	      <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review", "Published"], :include_blank => false %>
+	      <%= f.input :status, :include_blank => false %>
 	    <% else %>
-	      <%= f.input :status,  :as => :select, :collection => ["Draft", "Pending Review"], :include_blank => false %>
+	      <%= f.input :status, :include_blank => false %>
 	    <% end %>
     </div>
     
@@ -31,6 +31,7 @@
 	  	<script type="text/javascript">
 function statusToSave(){
 	// status does not change
+	$("#guide_status").val("Review by <%= current_user.email %>");
 	$("form")[0].submit();
 }
 function statusToRevise(){

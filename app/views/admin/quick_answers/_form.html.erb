@@ -8,9 +8,9 @@
     
 	<div style="display:none;">
 	    <% if current_user.is_admin? || current_user.is_editor? %>
-	     <%= f.input :status,  :value => "", :include_blank => false %>
+	     <%= f.input :status, :include_blank => false %>
 	    <% else %>
-	     <%= f.input :status,  :value => "", :include_blank => false %>
+	     <%= f.input :status, :include_blank => false %>
 	    <% end %>
 	</div>
 
