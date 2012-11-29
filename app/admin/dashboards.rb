@@ -12,7 +12,6 @@ ActiveAdmin::Dashboards.build do
       column "Date Created", :created_at
       column "Date Updated", :updated_at
     end
-    strong { link_to "View All Articles", admin_quick_answers_path }
   end
 
   section("Your Articles", :if => proc {current_user.is_writer? }, :priority => 2) do
