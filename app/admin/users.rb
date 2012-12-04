@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
 
-  menu :if => proc{ current_user.is_admin? }, :label => 'Users'
+  menu :if => proc{ current_user.is_admin? || current_user.is_editor? }, :label => 'Users'
 
   # This will authorize the Foobar class
   # The authorization is done using the AdminAbility class
