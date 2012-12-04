@@ -12,6 +12,7 @@ ActiveAdmin.register User do
       column :is_admin
       column :is_editor
       column :is_writer
+      column :department
       default_actions # View/Edit/Delete column
     end
 
