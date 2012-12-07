@@ -7,7 +7,7 @@ ActiveAdmin.register User do
   controller.authorize_resource
 
     index do # Display only specific article db columns
-      column :id
+      #column :id
       column :email
       column :is_admin
       column :is_editor

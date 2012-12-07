@@ -19,7 +19,7 @@ ActiveAdmin.register Guide do
   
   # View 
   index do
-    column :id
+    #column :id
     column "Guide Title", :title do |guide|
       link_to guide.title, [:admin, guide]
     end

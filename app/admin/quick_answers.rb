@@ -16,7 +16,7 @@ ActiveAdmin.register QuickAnswer do
   
   # View 
   index do
-    column :id
+    #column :id
     column "Quick Answer Title", :title do |article|
       link_to article.title, [:admin, article]
     end

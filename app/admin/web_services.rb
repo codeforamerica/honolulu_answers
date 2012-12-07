@@ -16,7 +16,7 @@ ActiveAdmin.register WebService do
   
   # View 
   index do
-    column :id
+    #column :id
     column "Web Service Title", :title do |article|
       link_to article.title, [:admin, article]
     end

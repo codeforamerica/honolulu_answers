@@ -6,10 +6,8 @@ ActiveAdmin.register Contact do
 
    # View 
   index do
-    column :id
-    column "Name", :name do |contact|
-      link_to contact.name, [:admin, contact]
-    end
+    #column :id
+    column "Name", :name
     column :department
     column :url
     column "Created", :created_at
