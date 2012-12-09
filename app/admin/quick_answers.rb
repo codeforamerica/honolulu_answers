@@ -12,7 +12,7 @@ ActiveAdmin.register QuickAnswer do
   filter :tags
   filter :contact_id
   filter :status
-
+  filter :author_name
   
   # View 
   index do
@@ -24,7 +24,6 @@ ActiveAdmin.register QuickAnswer do
     column :contact
     column "Created", :created_at
     column "Writer", :author_name
-    column "Writer link", :author_link
     # column :tags
     column :slug
     column "Status", :status
