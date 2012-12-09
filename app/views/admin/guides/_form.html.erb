@@ -38,7 +38,14 @@
 	  	<script type="text/javascript">
 function statusToSave(){
 	// status does not change
-	$("#guide_status").val("Review by <%= current_user.email %>");
+	if( $("#isediting").val() ){
+	  // acting as an editor
+	  $("#guide_status").val("Review by <%= current_user.email %>");
+	}
+	else{
+	  // acting as a writer
+	  $("#guide_status").val("Pending Review");
+	}
 	$("form")[0].submit();
 }
 function statusToRevise(){
@@ -51,12 +58,24 @@ function statusToPublish(){
 	$("form")[0].submit();
 }
 	  	</script>
+	  	
+	  	    <h4>Are you editing or writing this article?</h4>
+	  	    <label>
+	  	      <input id="isediting" type="radio" name="role" value="editor" selected="selected"/>
+	  	      I commit to editing
+	    	</label>
+	    	|
+	  	    <label>
+	  	      <input id="iswriting" type="radio" name="role" value="writer"/>
+	  	      I am writing
+	    	</label>
+	    	<hr/>
 	  	<ol>
 	    	<li class="commit button">
-	    	<input type="button" value="Save / Commit to Edit" onclick="statusToSave();"/>
+	    	  <input type="button" value="Save" onclick="statusToSave();"/>
 	    	</li>
 		    <li class="commit button">
-		    <input type="button" value="Ask Writer to Revise" onclick="statusToRevise();"/>
+		      <input type="button" value="Ask Writer to Revise" onclick="statusToRevise();"/>
 		    </li>
 	    	<% if :status != "Draft"  %>
 		    	<li class="commit button">
