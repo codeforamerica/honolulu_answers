@@ -55,7 +55,7 @@
 	  	<script type="text/javascript">
 function statusToSave(){
 	// status does not change
-	if( $("#isediting").val() ){
+	if( typeof $("#isediting:checked").val() != "undefined" ){
 	  // acting as an editor
 	  $("#web_service_status").val("Review by <%= current_user.email %>");
 	}
@@ -77,15 +77,16 @@ function statusToPublish(){
 	  	</script>
 	  	    <h4>Are you editing or writing this article?</h4>
 	  	    <label>
-	  	      <input id="isediting" type="radio" name="role" value="editor" selected="selected"/>
+	  	      <input id="isediting" type="radio" name="role" value="editor" checked="checked"/>
 	  	      I commit to editing
 	    	</label>
-	    	|
+	    	--
 	  	    <label>
 	  	      <input id="iswriting" type="radio" name="role" value="writer"/>
 	  	      I am writing
 	    	</label>
-	    	<hr/>
+	    	<br/>
+	    	<br/>
 	  	<ol>
 	    	<li class="commit button">
 	    	<input type="button" value="Save" onclick="statusToSave();"/>
