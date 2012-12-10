@@ -14,6 +14,7 @@ ActiveAdmin.register GuideStep do
     column :guide
     column :content
     column :step
+    column "Author", :user_id
     column "Updated", :updated_at
     default_actions # Add show, edit, delete column
   end

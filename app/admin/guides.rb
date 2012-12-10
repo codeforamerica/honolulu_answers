@@ -15,6 +15,7 @@ ActiveAdmin.register Guide do
   filter :tags
   filter :contact_id
   filter :status
+  filter :user_id
 
   
   # View 
@@ -26,7 +27,7 @@ ActiveAdmin.register Guide do
     column :category
     column :contact
     column "Created", :created_at
-    column "Writer", :author_name
+    column "Author", :user_id
     # column :tags
     column :slug
     column "Status", :status
