@@ -839,12 +839,9 @@ ul.about-list li {
 
 /* attempt a callout style */
 .vtabs .vtabs-content-column .vtabs-content-panel em strong {
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
     background-color: #D5E8F3;
-    line-height: 55px;
+    line-height: 30px;
     font-weight: normal;
     font-style: normal;
 	margin-right: 20px;
@@ -855,12 +852,9 @@ ul.about-list li {
 }
 
 .vtabs .vtabs-content-column .vtabs-content-panel strong em {
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
     background-color: #D5E8F3;
-    line-height: 55px;
+    line-height: 30px;
     font-weight: normal;
     font-style: normal;
 	margin-right: 20px;
