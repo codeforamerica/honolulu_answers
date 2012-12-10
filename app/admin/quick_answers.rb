@@ -23,7 +23,11 @@ ActiveAdmin.register QuickAnswer do
     column :contact
     column "Created", :created_at
     column "Author", :user do |article|
-      (article.user.try(:email) || "") + ", " + (article.user.try(:department).name || "")
+      if(article.user.try(:department))
+        (article.user.try(:email) || "") + ", " + (article.user.try(:department).name || "")        
+      else
+        (article.user.try(:email) || "")
+      end
     end
     # column :tags
     column :slug
