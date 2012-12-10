@@ -23,7 +23,7 @@ ActiveAdmin.register WebService do
     column :contact
     column "Created", :created_at
     column "Author", :user do |article|
-      (article.user.try(:email) || "") + ", " + (article.user.try(:department) || { :name => "" }).name
+      (article.user.try(:email) || "") + ", " + (article.user.try(:department).name || "")
     end
     # column :tags
     column :slug
