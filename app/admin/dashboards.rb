@@ -31,7 +31,7 @@ ActiveAdmin::Dashboards.build do
       column "User", :email do |user|
         link_to user.email, [:admin, user]
       end
-      column "Moderator", :is_moderator
+      #column "Moderator", :is_moderator
     end
     strong { link_to "View All Users", admin_users_path }
   end
