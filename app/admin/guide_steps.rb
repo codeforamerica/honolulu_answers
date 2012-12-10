@@ -7,10 +7,11 @@ ActiveAdmin.register GuideStep do
 
   # View 
   index do
-    column :id
+    #column :id
     column "Title", :title do |guide_step|
       link_to guide_step.title, [:admin, guide_step]
     end
+    column :guide
     column :content
     column :step
     column "Updated", :updated_at

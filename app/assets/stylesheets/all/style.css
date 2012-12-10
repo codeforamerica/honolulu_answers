@@ -706,7 +706,8 @@ td {
 }
 .vtabs-tab-column li.open{
   background-color: #f38200;
-  height: 27px;
+  /* height: 27px; */
+  padding: 5px;
 }
 h2.vtab-content-header{
   border-bottom: 2px solid gray;
@@ -834,4 +835,37 @@ ul.about-list li {
 
 .highlight {
 	font-weight:bold;
+}
+
+/* attempt a callout style */
+.vtabs .vtabs-content-column .vtabs-content-panel em strong {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #D5E8F3;
+    line-height: 55px;
+    font-weight: normal;
+    font-style: normal;
+	margin-right: 20px;
+	margin-left: 20px;
+	margin-top: 14px;
+	display: block;
+	margin-bottom: 14px;
+}
+
+.vtabs .vtabs-content-column .vtabs-content-panel strong em {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #D5E8F3;
+    line-height: 55px;
+    font-weight: normal;
+    font-style: normal;
+	margin-right: 20px;
+	margin-left: 20px;
+	margin-top: 14px;
+	display: block;
+	margin-bottom: 14px;
 }

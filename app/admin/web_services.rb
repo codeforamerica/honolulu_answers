@@ -16,15 +16,14 @@ ActiveAdmin.register WebService do
   
   # View 
   index do
-    column :id
+    #column :id
     column "Web Service Title", :title do |article|
       link_to article.title, [:admin, article]
     end
     column :category
     column :contact
     column "Created", :created_at
-    column "Author name", :author_name
-    column "Author URL", :author_link
+    column "Writer", :author_name
     # column :tags
     column :slug
     column "Status", :status

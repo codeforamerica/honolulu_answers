@@ -10,12 +10,22 @@
  *
  *
  *
- * application-admin.css.scss
+ * application-mobile.css.scss
  *
  *= require_self
- *= require_tree ./admin
+ *= require_tree ./mobile
 */
 
-#header ul#tabs > li{
-  display: inline !important;
+
+/* make all guide steps show up */
+.vtabs-content-panel{
+	display: block !important;
+	padding-bottom: 30px;
+	border-bottom: 1px solid silver;
+	margin-bottom: 30px;
+}
+
+/* hide footer */
+.footer{
+	display: none;
 }

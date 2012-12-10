@@ -7,6 +7,7 @@
   <%= include_gon %>
   <%= stylesheet_link_tag    "application-all", :media => "all" %>
   <%= stylesheet_link_tag    "application-mobile", :media => "all and (max-width: 969px)" %>
+  <%= stylesheet_link_tag    "application-print", :media => "print" %>
   
   <!--[if lte IE 8]>
     <%= stylesheet_link_tag    "application-ie", :media=> "all" %>
@@ -59,7 +60,7 @@
   <div class="container">
     <ul class="footer-links">
       <li><%=link_to("About", about_path)%></li>
-      <li><a href="mailto:honolulu@codeforamerica.org">Contact</a></li>
+      <li><a href="mailto:hnlanswerseditors@honolulu.gov">Contact</a></li>
       <li><a href="https://github.com/honolulu/honolulu_answers">Contribute</a></li>
       <li><%= link_to("Sign In", admin_dashboard_path) %></li>
     </ul>

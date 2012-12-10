@@ -19,15 +19,14 @@ ActiveAdmin.register Guide do
   
   # View 
   index do
-    column :id
+    #column :id
     column "Guide Title", :title do |guide|
       link_to guide.title, [:admin, guide]
     end
     column :category
     column :contact
     column "Created", :created_at
-    column "Author name", :author_name
-    column "Author URL", :author_link
+    column "Writer", :author_name
     # column :tags
     column :slug
     column "Status", :status

@@ -6,6 +6,8 @@ class Category < ActiveRecord::Base
   before_validation :set_access_count_if_nil
 
   friendly_id :name, use: [:slugged, :history]
+
+  default_scope order('name ASC')
   
   def self.all_by_access_count   
     self.all :order => 'access_count DESC'
