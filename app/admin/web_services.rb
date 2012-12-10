@@ -22,7 +22,9 @@ ActiveAdmin.register WebService do
     column :category
     column :contact
     column "Created", :created_at
-    column "Author", :user.try(:email)
+    column "Author", :user do |article|
+      article.user.try(:email)
+    end
     # column :tags
     column :slug
     column "Status", :status
