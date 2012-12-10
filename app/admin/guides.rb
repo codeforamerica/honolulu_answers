@@ -27,7 +27,7 @@ ActiveAdmin.register Guide do
     column :category
     column :contact
     column "Created", :created_at
-    column "Author", :user_id
+    column "Author", :user.try(:email)
     # column :tags
     column :slug
     column "Status", :status
