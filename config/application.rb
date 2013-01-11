@@ -65,8 +65,5 @@ module Honoluluanswers
 
     # Enable tables in the content fields for Articles
     config.action_view.sanitized_allowed_tags = 'table', 'tr', 'td'
-
-    # Security Patch Fix CVE-2013-0156
-    ActionDispatch::ParamsParser::DEFAULT_PARSERS.delete(Mime::XML)
   end
 end
