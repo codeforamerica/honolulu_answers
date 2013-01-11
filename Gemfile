@@ -4,7 +4,7 @@ gem 'bundler', '>= 1.2.1'		  # Bundler 1.2 required in order to specify Ruby ver
 
 ## Essentials
 ruby '1.9.3'                              # Ruby!
-gem 'rails', '3.2.6'                      # Rails!
+gem 'rails', '3.2.11'                     # Rails!
 gem 'pg'                                  # PostgreSQL, the database server
 gem 'thin'                                # Web server
 gem 'foreman'				  # For launching with the Procfile and keeping track of environment variables from .env
@@ -13,7 +13,7 @@ gem 'foreman'				  # For launching with the Procfile and keeping track of enviro
 ## Utilities
 gem 'newrelic_rpm', :group => [:production, :development] # Rails analytics - see the Heroku addon
 gem 'heroku'                              # Managed hosting solution
-gem 'annotate', '~>2.4.1.beta'            # Annotates models with database info: `bundle exec rake:annotate` 
+gem 'annotate', '~>2.4.1.beta'            # Annotates models with database info: `bundle exec rake:annotate`
 gem 'rails-erd'                           # Create Entity Relationship Diagrams
 gem 'progressbar'                         # Display progress bars in terminal output
 gem 'facets', :require => false           # Some extra methods for ruby
@@ -26,13 +26,13 @@ gem 'dalli'                               # memcache gem for Rails.cache
 
 ## Admin
 gem 'activeadmin'                         # Back-end Content Management System
-gem 'devise', '~> 2.0'                    # User authentication 
+gem 'devise', '~> 2.0'                    # User authentication
 gem 'cancan'                              # User permissions
 gem 'tinymce-rails'                       # WYSIWYG editor for edit form fields
 
 ## Search and NLP
 gem 'tanker'                              # library for interacting with Searchify
-gem 'hunspell-ffi'                        # Spellchecking library 
+gem 'hunspell-ffi'                        # Spellchecking library
 gem 'text'                                # NLP algorithms
 gem 'httparty'                            # For accessing APIs directly
 gem 'json'                                # Convert between JSON and Ruby objects
@@ -63,9 +63,9 @@ group :test, :development do
   gem 'launchy'                           # Lets you 'save_and_open_page' in the middle of a test - opens up the browser and shows you the current state of the page
   gem 'guard-rspec'                       # Guard integratio for RSpec.  Guard monitors files and automatically and intelligently runs 'rspec spec' in the background
   gem 'factory_girl_rails'                # Create factories to test against
-  #gem 'libnotify', :require => false if (RUBY_PLATFORM =~ /darwin/i)                 # For displaying notifications about test status in Linux 
+  #gem 'libnotify', :require => false if (RUBY_PLATFORM =~ /darwin/i)                 # For displaying notifications about test status in Linux
   gem 'spork-rails'                       # Speeds up TDD by launching multiple Rails instances in the background
-  gem 'guard-spork'                       # Make guard aware of Spork - automatically restart spork if a change requires a rails restart   
+  gem 'guard-spork'                       # Make guard aware of Spork - automatically restart spork if a change requires a rails restart
   gem 'capybara-webkit'                   # JS driver for Capybara (headless)
 end
 
@@ -74,5 +74,5 @@ gem 'test-unit'                           # Remove at your peril.  Too many othe
 group :test do
   gem "sqlite3"                           # Use SQLite instead of PostgreSQL for tests
   gem 'database_cleaner'                  # Purge the test database between test runs
-  gem 'simplecov', :require => false      # Calculates code coverage and outputs info to html. 
+  gem 'simplecov', :require => false      # Calculates code coverage and outputs info to html.
 end
