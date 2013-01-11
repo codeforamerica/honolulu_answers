@@ -4,7 +4,7 @@ gem 'bundler', '>= 1.2.1'		  # Bundler 1.2 required in order to specify Ruby ver
 
 ## Essentials
 ruby '1.9.3'                              # Ruby!
-gem 'rails', '3.2.6'                      # Rails!
+gem 'rails', '3.2.11'                     # Rails!
 gem 'pg'                                  # PostgreSQL, the database server
 gem 'thin'                                # Web server
 gem 'foreman'				                      # For launching with the Procfile and keeping track of environment variables from .env
@@ -15,7 +15,7 @@ gem 'pry-rails', :group => :development   # Better 'rails console'
 #gem 'pry-exception_explorer', :group => :development # Puts you in the console when an exception is raised
 gem 'pry-debugger'                             # Adds next, step and continue to Pry for debugging
 gem 'newrelic_rpm', :group => [:production, :staging, :development] # Rails analytics - see the Heroku addon
-gem 'heroku'                              # Managed hosting solution
+#gem 'heroku'                              # Managed hosting solution
 gem 'annotate', '~>2.4.1.beta'            # Annotates models with database info: `bundle exec rake:annotate` 
 gem 'rails-erd'                           # Create Entity Relationship Diagrams
 gem 'progressbar'                         # Display progress bars in terminal output
@@ -30,7 +30,7 @@ gem 'dalli'                               # memcache gem for Rails.cache
 gem 'kgio'
 
 ## Admin
-gem 'activeadmin'                         # Back-end Content Management System
+gem 'activeadmin', '0.4.4'                # Back-end Content Management System
 gem 'devise', '~> 2.0'                    # User authentication 
 gem 'cancan'                              # User permissions
 gem 'tinymce-rails'                       # WYSIWYG editor for edit form fields
@@ -58,7 +58,7 @@ group :assets do
   gem "meta_search",    '>= 1.1.0.pre'    # Active_admin search for form_for
   gem 'uglifier', '>= 1.0.3'              # Squash down Javascript for speed
   gem 'less-rails-bootstrap'              # Improves the Rails / Twitter Boostrap relationship by adding support for LESS, a CSS extension language
-  # gem 'coffee-rails', '~> 3.2.1'
+  gem 'coffee-rails', '~> 3.2.1'
   gem 'therubyracer'                      # Embeds the V8 Javascript interpreter into Ruby
 end
 
