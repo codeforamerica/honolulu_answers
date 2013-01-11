@@ -33,7 +33,7 @@ gem 'kgio'
 gem 'activeadmin', '0.4.4'                # Back-end Content Management System
 gem 'devise', '~> 2.0'                    # User authentication 
 gem 'cancan'                              # User permissions
-gem 'tinymce-rails'                       # WYSIWYG editor for edit form fields
+#gem 'tinymce-rails'                       # WYSIWYG editor for edit form fields
 
 ## Search and NLP
 gem 'tanker'                              # library for interacting with Searchify
@@ -49,7 +49,7 @@ gem 'friendly_id'                         # Create permalinks / descriptive URLs
 gem 'gon'                                 # Easy passing of data from the controller to javascript files
 gem 'paperclip', '~> 3.0'                 # Easy file attachment library for ActiveRecord
 gem 'aws-sdk', '~> 1.3.4'                 # Upload files to Amazon S3
-gem 'pagedown-rails'                      # Markdown editor
+gem 'pagedown-rails', '1.0.0'             # Markdown editor
 
 ## Gems used only for assets and not required
 ## in production environments by default.
