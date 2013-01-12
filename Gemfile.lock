@@ -99,7 +99,7 @@ GEM
       thor (>= 0.13.6)
     formtastic (2.1.1)
       actionpack (~> 3.0)
-    friendly_id (4.0.8)
+    friendly_id (4.0.9)
     gon (4.0.0)
       actionpack (>= 2.3.0)
       json
@@ -316,7 +316,7 @@ DEPENDENCIES
   facets
   factory_girl_rails
   foreman
-  friendly_id
+  friendly_id (~> 4.0.9)
   gon
   guard-rspec
   guard-spork
