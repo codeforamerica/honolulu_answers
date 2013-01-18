@@ -5,7 +5,7 @@ $(document).ready(function () {
   });
 });
 </script>
-
+<% set_meta_tags :description => "Search results for #{@query}.", :canonical => "http://answers.honolulu.gov#{request.fullpath}", :title => "Search results for #{@query}." %>
 <div class="page-container search">
   <div class="row">
     <div class="span9">

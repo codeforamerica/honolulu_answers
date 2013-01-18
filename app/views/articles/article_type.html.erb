@@ -1,8 +1,9 @@
+<% set_meta_tags :description => "All #{@article_type.split(/(?=[A-Z])/).join(' ')} questions.", :canonical => "http://answers.honolulu.gov#{request.fullpath}" %>
 <div class="page-container">
   <div class="breadcrumbs">
     <%= link_to( "Home", root_url) %>
     >
-    All <%= @article_type.split(/(?=[A-Z])/).join(' ') %>s
+    <%= title "All #{@article_type.split(/(?=[A-Z])/).join(' ')}s" %>
   </div>
   <div class="row">
     <div class="span9">
@@ -42,4 +43,4 @@
       <%= render :partial => 'shared/categories_sidebar' %>
     </div><!-- /span3 -->
   </div>
-</div> 
+</div>

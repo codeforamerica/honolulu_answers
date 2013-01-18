@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'bundler', '>= 1.2.1'		  # Bundler 1.2 required in order to specify Ruby version here and on Heroku.
+gem 'bundler', '~> 1.3.0.pre.5'		        # Bundler version to match what is used on Heroku.
 
 ## Essentials
 ruby '1.9.3'                              # Ruby!
@@ -9,13 +9,12 @@ gem 'pg'                                  # PostgreSQL, the database server
 gem 'thin'                                # Web server
 gem 'foreman'				                      # For launching with the Procfile and keeping track of environment variables from .env
 
-
 ## Utilities
 gem 'pry-rails', :group => :development   # Better 'rails console'
 #gem 'pry-exception_explorer', :group => :development # Puts you in the console when an exception is raised
-gem 'pry-debugger'                             # Adds next, step and continue to Pry for debugging
+gem 'pry-debugger'                        # Adds next, step and continue to Pry for debugging
 gem 'newrelic_rpm', :group => [:production, :staging, :development] # Rails analytics - see the Heroku addon
-#gem 'heroku'                              # Managed hosting solution
+#gem 'heroku'                             # Managed hosting solution
 gem 'annotate', '~>2.4.1.beta'            # Annotates models with database info: `bundle exec rake:annotate` 
 gem 'rails-erd'                           # Create Entity Relationship Diagrams
 gem 'progressbar'                         # Display progress bars in terminal output
@@ -23,6 +22,9 @@ gem 'facets', :require => false           # Some extra methods for ruby
 gem 'seed_dump'                           # Adds a rake task which constructs a db/seeds.rb file based on the current database state.  Super useful!
 gem 'jquery-ui-rails'                     # Package jQuery for the Rails 3.1+ asset pipeline
 gem 'ruby-prof'                           # ruby profiler
+
+## SEO
+gem 'meta-tags', :require => 'meta_tags'  # Search Engine Optimization (SEO) plugin for Ruby on Rails applications.
 
 ## Performance and optimization
 gem 'delayed_job_active_record'           # Lets you queue tasks as background jobs
@@ -54,8 +56,8 @@ gem 'pagedown-rails', '1.0.0'             # Markdown editor
 ## Gems used only for assets and not required
 ## in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.5'          # Rails support for Sass, a CSS extension language
-  gem "meta_search",    '>= 1.1.0.pre'    # Active_admin search for form_for
+  gem 'sass-rails', '~> 3.2.5'            # Rails support for Sass, a CSS extension language
+  gem "meta_search", '>= 1.1.0.pre'       # Active_admin search for form_for
   gem 'uglifier', '>= 1.0.3'              # Squash down Javascript for speed
   gem 'less-rails-bootstrap'              # Improves the Rails / Twitter Boostrap relationship by adding support for LESS, a CSS extension language
   gem 'coffee-rails', '~> 3.2.1'
