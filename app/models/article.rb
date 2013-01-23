@@ -32,7 +32,7 @@ class Article < ActiveRecord::Base
     :styles => { :thumb => "100x100" } 
 
   validates_attachment_size :author_pic, :less_than => 5.megabytes  
-  validates_attachment_content_type :author_pic, :content_type => ['image/jpeg', 'image/png']                      
+  validates_attachment_content_type :author_pic, :content_type => ['image/jpeg', 'image/png']
 
   validates_presence_of :access_count
 
@@ -183,12 +183,12 @@ class Article < ActiveRecord::Base
   def related
     Rails.cache.fetch("#{self.id}-related") {
       return [] if wordcounts.empty?
-      (Article.search_tank(self.wordcounts.all(:order => 'count DESC').first(10).map(&:keyword).map(&:name).join(" OR ")) - [self]).first(4)
+      (Article.search_tank(self.wordcounts.all(:order => 'count DESC', :limit => 10).map(&:keyword).map(&:name).join(" OR ")) - [self]).first(4)
     }
   end
 
   def indexable?
-    self.published?
+    self.status == "Published"
   end
 
   def hits
