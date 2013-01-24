@@ -22,6 +22,7 @@ class Article < ActiveRecord::Base
   has_many :keywords, :through => :wordcounts
 
   scope :by_access_count, order('access_count DESC')
+  scope :with_category, lambda { |category| where('categories.name = ?', category).joins(:category) }
 
   has_attached_file :author_pic,
     :storage => :s3,
