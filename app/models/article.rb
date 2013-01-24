@@ -21,7 +21,9 @@ class Article < ActiveRecord::Base
   has_many :wordcounts
   has_many :keywords, :through => :wordcounts
 
-  has_attached_file :author_pic, 
+  scope :by_access_count, order('access_count DESC')
+
+  has_attached_file :author_pic,
     :storage => :s3,
     :bucket => ENV['S3_BUCKET'],
     :s3_credentials => {
@@ -29,9 +31,9 @@ class Article < ActiveRecord::Base
       :secret_access_key => ENV['S3_SECRET']
     },
     :path => "/:style/:id/:filename",
-    :styles => { :thumb => "100x100" } 
+    :styles => { :thumb => "100x100" }
 
-  validates_attachment_size :author_pic, :less_than => 5.megabytes  
+  validates_attachment_size :author_pic, :less_than => 5.megabytes
   validates_attachment_content_type :author_pic, :content_type => ['image/jpeg', 'image/png']
 
   validates_presence_of :access_count
