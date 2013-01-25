@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'bundler', '~> 1.3.0.pre.5'		        # Bundler version to match what is used on Heroku.
+#gem 'bundler', '~> 1.3.0.pre.5'		        # Bundler version to match what is used on Heroku.
 
 ## Essentials
 ruby '1.9.3'                              # Ruby!
@@ -35,7 +35,6 @@ gem 'kgio'
 gem 'activeadmin', '0.4.4'                # Back-end Content Management System
 gem 'devise', '~> 2.0'                    # User authentication 
 gem 'cancan'                              # User permissions
-#gem 'tinymce-rails'                       # WYSIWYG editor for edit form fields
 
 ## Search and NLP
 gem 'tanker'                              # library for interacting with Searchify
@@ -72,11 +71,11 @@ group :test, :development do
   gem 'launchy'                           # Lets you 'save_and_open_page' in the middle of a test - opens up the browser and shows you the current state of the page
   gem 'guard-rspec'                       # Guard integratio for RSpec.  Guard monitors files and automatically and intelligently runs 'rspec spec' in the background
   gem 'factory_girl_rails'                # Create factories to test against
-  #gem 'libnotify', :require => false if (RUBY_PLATFORM =~ /darwin/i)                 # For displaying notifications about test status in Linux 
   gem 'spork-rails'                       # Speeds up TDD by launching multiple Rails instances in the background
   gem 'guard-spork'                       # Make guard aware of Spork - automatically restart spork if a change requires a rails restart   
   gem 'capybara-webkit'                   # JS driver for Capybara (headless)
   gem 'memcached'                         # Local memcache
+  gem 'sextant'                           # visit /rails/routes in the browser for nicer 'rake routes'
 end
 
 gem 'test-unit'                           # Remove at your peril.  Too many other gems randomly depend on it.
