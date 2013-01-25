@@ -284,13 +284,29 @@ div#welcome-line-r {
   width: 35%;
   border: 1px solid #666768;
 }
-
+ 
 div.pop-heading {
   border-bottom: 10px solid #ffde4d;
   margin: 0 0 20px 0;
 }
 
-div.pop-categories { }
+div.pop-categories p a {
+}
+
+div.pop-categories li:not(:last-child):after {
+  /*content: " - ";*/
+}
+
+div.pop-categories li+li:before {
+  content: '- ';
+}
+
+div.pop-categories li {
+  display: inline;
+  font-size: 120%;
+  list-style: 
+}
+
 
 p.call {
   font-size: 20px; 
@@ -315,7 +331,6 @@ div.category.last {
 }
 .category .left {
   font-size: 20px;
-  width: 130px;
   display: inline-block;
   margin-right: 60px;
 }
