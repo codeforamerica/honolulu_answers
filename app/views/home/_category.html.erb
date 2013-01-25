@@ -1,6 +1,8 @@
 <div class="category">
   <span class="left"><%= link_to( category.name, category_path(category.id) ) %></span>
   <p class="right">
-  <%= render :partial => 'home/article', :collection => category.articles.by_access_count.limit(3) %>
+  <ul>
+    <%= render :partial => 'home/article', :collection => category.articles.by_access_count.limit(3) %>
+  </ul>
   </p>
 </div>
