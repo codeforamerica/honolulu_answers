@@ -1,0 +1,2 @@
+module ActiveAdmin::ViewsHelper
+end

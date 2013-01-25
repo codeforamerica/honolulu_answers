@@ -51,8 +51,8 @@ ActiveAdmin.register Category do
           column :status
         end
 
-      end
-    end
+      end #panel
+    end #div
 
   end #show
 
