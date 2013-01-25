@@ -46,7 +46,7 @@ ActiveAdmin.register Category do
 
           column :title
           column :type
-          column :category
+          column :contact
           column :user
           column :status
         end
