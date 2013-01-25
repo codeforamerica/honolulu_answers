@@ -32,9 +32,11 @@ ActiveAdmin.register Contact do
         table_for(contact.articles) do
           column "" do |article|
             if article.is_a? QuickAnswer
-              link_to( "Edit", edit_admin_quick_answer_path)
+              link_to( "Edit", edit_admin_quick_answer_path(article))
             elsif article.is_a? WebService
               link_to( "Edit", edit_admin_web_service_path(article) )
+            elsif article.is_a? Guide
+              link_to( "Edit", admin_guide_path(article))
             end
           end
           column "" do |article|
