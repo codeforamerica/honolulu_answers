@@ -1,19 +1,44 @@
 <%= render :partial => 'shared/pagedown' %>
 
+<script type="text/javascript">
+  $('li#article_reviewer_input').hide()
+</script>
+
+
 <%= semantic_form_for [:admin, @quick_answer] do |f| %>
-  <%= f.inputs "Quick Answer Details" do %>
-    <% if params[:action] == 'new' %>
-      <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+
+  <% if current_user.is_admin? %>
+    <%= f.inputs "Administration" do%>
+      <%= f.input :status, :as => :select, :collection => ([@quick_answer.status] + ["Published", "Review by...", "Pending Review", "Draft"]).uniq, :include_blank => false %>
+      <li class="select input optional" id="article_reviewer_input">
+        <label class="label">Reviewer</label>
+        <select id="article_reviewer">
+          <% User.all.each do |u| %>
+            <option value="<%= u.email %>"><%=u.email%></option>
+          <% end %>
+        </select>
+      </li>
+      <%= f.input :user, :label => "Writer / editor" %>
     <% end %>
+    <script type="text/javascript">
+  $('li#article_reviewer_input').hide()
+      $('select#quick_answer_status').change(function(ev) {
+        var selected = ev.delegateTarget.value;
+        if ( selected == "Review by...") {
+          $('li#article_reviewer_input').show();
+        } else {
+          $('li#article_reviewer_input').hide();
+        }
+      });
+      $('select#article_reviewer').change(function(ev) {
+        var reviewer = ev.delegateTarget.value;
+        var new_status = "Review by " + reviewer;
+        $('select#quick_answer_status').append('<option value="' + new_status + '" selected="selected">' + new_status + '</option>')
+      })
+    </script>
+  <% end %> <!-- admin -->
 
-    <div style="display:none;">
-      <% if current_user.is_admin? || current_user.is_editor? %>
-        <%= f.input :status, :include_blank => false %>
-      <% else %>
-        <%= f.input :status, :include_blank => false %>
-      <% end %>
-    </div>
-
+  <%= f.inputs "Quick Answer Details" do %>
     <%=f.input :title %>
     <%=f.input :preview, :input_html => { :rows => 4 } %>
     <%=f.input :category %>
@@ -29,8 +54,10 @@
       </li>
     <% end %>
     <%=f.input :author_name, :label => "Write-a-thon Author Name" %>
+  <% end %> <!-- details -->
 
-    <% unless @article.render_markdown%>
+  <%= f.inputs "Content" do %>
+    <% if @article.legacy? %>
       <h2 style="line-height: 2em; padding-left: 15em;"><strong>This article was written before Honolulu Answers migrated to Markdown.  In order to edit its contents, change the below selection to "No", and make sure the content boxes are properly formatted.</strong></h2>
       <%=f.input :render_markdown, :label => "Legacy article?", :as => :radio, :collection => [["No", true], ["Yes", false]] %>
     <% end %>
@@ -57,10 +84,10 @@
           :class => 'wmd-input', :id => 'wmd-input-content_need_to_know'} %>
       <div id="wmd-preview-content_need_to_know" class="wmd-preview article"></div>
     </div>
-  <%end%>
+  <%end%> <!-- content -->
 
-
-  <% if current_user.is_admin? || current_user.is_editor? %>
+  <!-- editor actions -->
+  <% if current_user.is_editor? %>
     <script type="text/javascript">
       function statusToSave(){
         // status does not change
@@ -84,6 +111,7 @@
         $("form")[0].submit();
       }
     </script>
+
     <h4>Are you editing or writing this article?</h4>
     <label>
       <input id="isediting" type="radio" name="role" value="editor" checked="checked"/>
@@ -109,7 +137,10 @@
         </li>
       <% end %>
     </ol>
-  <% else %>
+  <% end %> <!-- editor actions -->
+
+  <!-- writer actions -->
+  <% if current_user.is_writer? %>
     <script type="text/javascript">
       function statusToSave(){
         // status does not change
@@ -129,5 +160,11 @@
         <input type="button" value="Ready to Review" onclick="statusToReview();"/>
       </li>
     </ol>
-  <% end %>
+  <% end %> <!-- writer actions -->
+
+  <!-- admin actions -->
+  <% if current_user.is_admin? %>
+    <%= f.buttons :commit %>
+  <% end %> <!-- admin actions -->
+
 <% end %>

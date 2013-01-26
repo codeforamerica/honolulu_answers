@@ -64,6 +64,10 @@ class Article < ActiveRecord::Base
 
   before_validation :set_access_count_if_nil
 
+  def legacy?
+    !render_markdown
+  end
+
   def self.find_by_friendly_id( friendly_id )
     begin
       find( friendly_id )
