@@ -146,6 +146,6 @@ ActiveAdmin::ResourceController.class_eval do
   protected
 
   def current_ability
-    @current_ability ||= Ability.new(current_user)
+    Ability.new(current_user)
   end
 end
