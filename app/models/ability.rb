@@ -3,21 +3,28 @@ class Ability
 
   def initialize(user)
 
+    @articles = [QuickAnswer, WebService, Guide]
+
+    # We operate with three role levels
+    #  - Admin
+    #  - Editor
+    #  - Writer
+
     can :read, :all
-    
-    if user.is_editor || user.is_writer
-      can :manage, Article
-      can :manage, Category
-      can :manage, Contact
-      can :manage, Guide
-      can :manage, GuideStep
-      # can :manage, QuickAnswer
-      # can :manage, WebService
-    end
 
     if user.is_admin
-      can :manage, User
+      can :manage, :all
     end
-       
+
+    if user.is_editor
+      can :manage, @articles + [Category, Contact], + [GuideStep]
+    end
+
+    if user.is_writer
+      can :create, @articles + [Category, Contact] + [GuideStep]
+      can [:update, :destroy], @articles, status: "Draft", user_id: user.id
+      can [:update, :destroy], GuideStep, guide: { user_id: user.id, status: "Draft" }
+    end
+
   end
 end
