@@ -1,0 +1,29 @@
+<%= render :partial => 'shared/pagedown' %>
+
+<script type="text/javascript">
+  $('li#article_reviewer_input').hide()
+</script>
+
+<%# allow us to write the form in modules %>
+<% @article = @quick_answer if @quick_answer %>
+<% @article = @web_service if @web_service %>
+<% @article = @guide if @guide %>
+
+<%= semantic_form_for [:admin, @article] do |f| %>
+
+  <%= render :partial => "shared/admin/administration", locals: { :f => f, :article => @article } %>
+  <% if !current_user.is_admin? %>
+    <script type="text/javascript">
+      $('fieldset#edit_article_admin').hide();
+    </script>
+  <% end %>
+
+  <%= render :partial => "shared/admin/article_details", locals: { :f => f, :article => @article } %>
+
+  <% if (@article.is_a?(WebService) || @article.is_a?(QuickAnswer)) %>
+    <%= render :partial => "shared/admin/article_content", locals: { :f => f, :article => @article } %>
+  <% end %>
+
+  <%= render "shared/admin/article_actions" %>
+
+<% end %>

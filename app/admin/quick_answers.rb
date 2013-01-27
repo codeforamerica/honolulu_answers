@@ -35,5 +35,5 @@ ActiveAdmin.register QuickAnswer do
     default_actions # Add show, edit, delete column
   end
 
-  form :partial => "form"
+  form :partial => "shared/admin/article_form"
 end

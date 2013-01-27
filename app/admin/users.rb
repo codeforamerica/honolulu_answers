@@ -24,9 +24,9 @@ ActiveAdmin.register User do
         f.input :department
       end
       f.inputs "Type of User" do
-        f.input :is_admin,      :label => "Administrator"
+        f.input :is_admin,   :label => "Administrator"
         f.input :is_editor,  :label => "Editor"
-        f.input :is_writer,     :label => "Writer"
+        f.input :is_writer,  :label => "Writer"
       end
       f.buttons
     end

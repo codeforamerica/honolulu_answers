@@ -1,7 +1,7 @@
 ActiveAdmin.register WebService do
 	# This will authorize the Foobar class
   # The authorization is done using the AdminAbility class
-  controller.authorize_resource
+  #controller.authorize_resource
   
   # Add to :parent Dropdown menu
   menu :parent => "Articles"
@@ -35,7 +35,7 @@ ActiveAdmin.register WebService do
     default_actions # Add show, edit, delete column
   end
   
-    form :partial => "form"
+  form :partial => "shared/admin/article_form"
 
 
 end

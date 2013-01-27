@@ -1,5 +1,5 @@
 ActiveAdmin.register GuideStep do
-  controller.authorize_resource
+  #controller.authorize_resource
 
   # Add to :parent Dropdown menu
   menu :parent => "Articles"

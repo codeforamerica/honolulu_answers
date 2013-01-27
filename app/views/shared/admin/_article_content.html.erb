@@ -1,0 +1,34 @@
+<%= f.inputs "Content" do %>
+  <% if @article.legacy? %>
+    <h2 style="line-height: 2em; padding-left: 15em;">
+      <strong>This article was written before Honolulu Answers migrated to Markdown.  In order to edit its contents, change the below selection to "No", and make sure the content boxes are properly formatted.</strong>
+  </h2>
+    <%=f.input :render_markdown, :label => "Legacy article?", :as => :radio,
+      :collection => [["No", true], ["Yes", false]] %>
+  <% end %>
+
+  <% main_content_label = (@article.is_a? QuickAnswer) ? "Content for Gray Box" : "Content main extra" %>
+  <div class="wmd-panel">
+    <div id="wmd-button-bar-content_main" class="wmd-button-bar"></div>
+      <%= f.input :content_main, :label => main_content_label, :input_html => {
+        :class => 'wmd-input', :id => 'wmd-input-content_main'} %>
+    <div id="wmd-preview-content_main" class="wmd-preview article"></div>
+  </div>
+  <div class="clear"></div>
+
+  <div class="wmd-panel">
+    <div id="wmd-button-bar-content_main_extra" class="wmd-button-bar"></div>
+    <%= f.input :content_main_extra, :input_html => {
+        :class => 'wmd-input', :id => 'wmd-input-content_main_extra'}  %>
+    <div id="wmd-preview-content_main_extra" class="wmd-preview article"></div>
+  </div>
+
+  <div class="clear"></div>
+  <div class="wmd-panel">
+    <div id="wmd-button-bar-content_need_to_know" class="wmd-button-bar"></div>
+    <%= f.input :content_need_to_know, :input_html => {
+        :class => 'wmd-input', :id => 'wmd-input-content_need_to_know'} %>
+    <div id="wmd-preview-content_need_to_know" class="wmd-preview article"></div>
+  </div>
+<%end%>
+
