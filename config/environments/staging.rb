@@ -27,7 +27,7 @@ Honoluluanswers::Application.configure do
   config.assets.precompile += %w( home.js style.css mobile.css.scss tiny_mce/* active_admin.js active_admin.css.scss indextank/jquery.indextank.autocomplete.js )
   config.assets.precompile << '*.js'
 
-  config.static_cache_control = "public, max-age=2592000"
+  #config.static_cache_control = "public, max-age=2592000"
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
