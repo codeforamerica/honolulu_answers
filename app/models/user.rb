@@ -7,7 +7,24 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :is_admin, :is_editor, :is_writer #:admin
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :is_admin, :is_editor, :is_writer, :department_id #:admin
+
+  after_validation :make_roles_exclusive
+
+  def to_s
+    email
+  end
+
+  private
+
+  def make_roles_exclusive
+    if is_admin
+      self.is_editor = false
+      self.is_writer = false
+    elsif is_editor
+      self.is_writer = false
+    end
+  end
 
 end
 # == Schema Information
@@ -30,5 +47,5 @@ end
 #  is_moderator           :boolean
 #  is_admin               :boolean         default(FALSE)
 #  is_editor              :boolean         default(FALSE)
-#
+#  department_id
 

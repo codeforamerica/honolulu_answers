@@ -4,7 +4,7 @@
 /* Font-Face Declarations */
 @import url(http://fonts.googleapis.com/css?family=Satisfy);
 @import url(http://fonts.googleapis.com/css?family=Oswald);
-@import url(https://github.com/theleagueof/league-gothic/blob/master/LeagueGothic-Regular.otf?raw=true);
+/*@import url(https://github.com/theleagueof/league-gothic/blob/master/LeagueGothic-Regular.otf?raw=true);*/
 @import url(http://fonts.googleapis.com/css?family=News+Cycle);
 @import url(http://fonts.googleapis.com/css?family=Archivo+Narrow);
 
@@ -284,13 +284,28 @@ div#welcome-line-r {
   width: 35%;
   border: 1px solid #666768;
 }
-
+ 
 div.pop-heading {
   border-bottom: 10px solid #ffde4d;
   margin: 0 0 20px 0;
 }
 
-div.pop-categories { }
+div.pop-categories p a {
+}
+
+div.pop-categories li:not(:last-child):after {
+  /*content: " - ";*/
+}
+
+div.pop-categories li+li:before {
+  content: '- ';
+}
+
+div.pop-categories li {
+  display: inline;
+  font-size: 120%;
+}
+
 
 p.call {
   font-size: 20px; 
@@ -315,7 +330,6 @@ div.category.last {
 }
 .category .left {
   font-size: 20px;
-  width: 130px;
   display: inline-block;
   margin-right: 60px;
 }
@@ -498,7 +512,7 @@ ul.footer-links li a:hover {
 .cfa-logos {
   float: right;
   display: block;
-  width: 250px;
+  width: 425px;
 }
 .cfa-logos a, .cfa-logos a:hover {
   text-decoration: none;
@@ -706,7 +720,8 @@ td {
 }
 .vtabs-tab-column li.open{
   background-color: #f38200;
-  height: 27px;
+  /* height: 27px; */
+  padding: 5px;
 }
 h2.vtab-content-header{
   border-bottom: 2px solid gray;
@@ -834,4 +849,31 @@ ul.about-list li {
 
 .highlight {
 	font-weight:bold;
+}
+
+/* attempt a callout style */
+.vtabs .vtabs-content-column .vtabs-content-panel em strong {
+    padding: 10px;
+    background-color: #D5E8F3;
+    line-height: 30px;
+    font-weight: normal;
+    font-style: normal;
+	margin-right: 20px;
+	margin-left: 20px;
+	margin-top: 14px;
+	display: block;
+	margin-bottom: 14px;
+}
+
+.vtabs .vtabs-content-column .vtabs-content-panel strong em {
+    padding: 10px;
+    background-color: #D5E8F3;
+    line-height: 30px;
+    font-weight: normal;
+    font-style: normal;
+	margin-right: 20px;
+	margin-left: 20px;
+	margin-top: 14px;
+	display: block;
+	margin-bottom: 14px;
 }

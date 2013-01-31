@@ -12,24 +12,28 @@ ActiveAdmin.register QuickAnswer do
   filter :tags
   filter :contact_id
   filter :status
-
   
   # View 
   index do
-    column :id
+    #column :id
     column "Quick Answer Title", :title do |article|
       link_to article.title, [:admin, article]
     end
     column :category
     column :contact
     column "Created", :created_at
-    column "Author name", :author_name
-    column "Author URL", :author_link
+    column "Author", :user do |article|
+      if(article.user.try(:department))
+        (article.user.try(:email) || "") + ", " + (article.user.try(:department).name || "")
+      else
+        (article.user.try(:email) || "")
+      end
+    end
     # column :tags
     column :slug
     column "Status", :status
     default_actions # Add show, edit, delete column
   end
 
-  form :partial => "form"
+  form :partial => "shared/admin/article_form"
 end

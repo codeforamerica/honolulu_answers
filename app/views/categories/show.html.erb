@@ -1,8 +1,9 @@
+<% set_meta_tags :description => "Questions related to #{@category.name}.", :canonical => "http://answers.honolulu.gov#{request.fullpath}" %>
 <div class="page-container">
   <div class="breadcrumbs">
     <%= link_to( "Home", root_url) %>
     >
-    <%= @category.name %>
+    <%= title @category.name %>
   </div>
   <div class="row">
     <div class="span9">
@@ -15,7 +16,7 @@
           <br/>
         <% end %>
         <ul>
-          <% @category.articles_by_access_count.each do |article| %>
+          <% @category.articles.by_access_count.each do |article| %>
             <% next unless article.published? %>
               <li class="article-listing">
                 <%= content_tag( :h2, link_to( article.title, article_path(article.id) ) ) %>

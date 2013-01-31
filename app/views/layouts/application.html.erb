@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Honolulu Answers</title>
+  <%= display_meta_tags :site => "Honolulu Answers" %>
+  <meta name="robots" content="index,nofollow" />
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale =1,maximum-scale=1,user-scalable=no" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <%= include_gon %>
   <%= stylesheet_link_tag    "application-all", :media => "all" %>
   <%= stylesheet_link_tag    "application-mobile", :media => "all and (max-width: 969px)" %>
+  <%= stylesheet_link_tag    "application-print", :media => "print" %>
   
   <!--[if lte IE 8]>
     <%= stylesheet_link_tag    "application-ie", :media=> "all" %>
@@ -59,14 +62,17 @@
   <div class="container">
     <ul class="footer-links">
       <li><%=link_to("About", about_path)%></li>
-      <li><a href="mailto:honolulu@codeforamerica.org">Contact</a></li>
+      <li><a href="mailto:hnlanswerseditors@honolulu.gov">Contact</a></li>
       <li><a href="https://github.com/honolulu/honolulu_answers">Contribute</a></li>
       <li><%= link_to("Sign In", admin_dashboard_path) %></li>
     </ul>
     <div class="cfa-logos">
-      <a href="http://codeforamerica.org/"><img src="/assets/cfa_logo_footer.png" class="right" alt="Code for America"></a>
+      <a href="http://ixda.org/">
+        <img src="/assets/HNLAnswers_2013InteractionAwards_WinnerConnecting.png" alt="Interaction Awards Winner for facilitating communication between people and communities." />
+      </a>
+      <a href="http://codeforamerica.org/"><img src="/assets/cfa_logo_footer.png" class="right" alt="Code for America" /></a>
       <span class="plus">&#43;</span>
-      <a href="http://honolulu.gov"><img src="/assets/hnl_gov.png" class="right" alt="City and County of Honolulu"></a>
+      <a href="http://honolulu.gov"><img src="/assets/hnl_gov.png" class="right" alt="City and County of Honolulu" /></a>
     </div>
   </div>
 </div><!-- /footer -->

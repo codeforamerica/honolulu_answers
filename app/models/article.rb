@@ -21,7 +21,10 @@ class Article < ActiveRecord::Base
   has_many :wordcounts
   has_many :keywords, :through => :wordcounts
 
-  has_attached_file :author_pic, 
+  scope :by_access_count, order('access_count DESC')
+  scope :with_category, lambda { |category| where('categories.name = ?', category).joins(:category) }
+
+  has_attached_file :author_pic,
     :storage => :s3,
     :bucket => ENV['S3_BUCKET'],
     :s3_credentials => {
@@ -29,14 +32,18 @@ class Article < ActiveRecord::Base
       :secret_access_key => ENV['S3_SECRET']
     },
     :path => "/:style/:id/:filename",
-    :styles => { :thumb => "100x100" } 
+    :styles => { :thumb => "100x100" }
 
-  validates_attachment_size :author_pic, :less_than => 5.megabytes  
-  validates_attachment_content_type :author_pic, :content_type => ['image/jpeg', 'image/png']                      
+  validates_attachment_size :author_pic, :less_than => 5.megabytes
+  validates_attachment_content_type :author_pic, :content_type => ['image/jpeg', 'image/png']
 
   validates_presence_of :access_count
 
-  attr_accessible :title, :content, :content_md, :content_main, :content_main_extra, :content_need_to_know, :render_markdown, :preview, :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic, :author_pic_file_name, :author_pic_content_type, :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link, :type, :service_url, :user_id, :status
+  attr_accessible :title, :content, :content_md, :content_main, :content_main_extra,
+    :content_need_to_know, :render_markdown, :preview, :contact_id, :tags, 
+    :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic,
+    :author_pic_file_name, :author_pic_content_type, :author_pic_file_size, 
+    :author_pic_updated_at, :author_name, :author_link, :type, :service_url, :user_id, :status
 
   # A note on the content fields:
   # *  Originally the content for the articles was stored as HTML in Article#content.
@@ -56,6 +63,10 @@ class Article < ActiveRecord::Base
   after_destroy :qm_after_destroy
 
   before_validation :set_access_count_if_nil
+
+  def legacy?
+    !render_markdown
+  end
 
   def self.find_by_friendly_id( friendly_id )
     begin
@@ -107,6 +118,10 @@ class Article < ActiveRecord::Base
     Kramdown::Document.new( instance_eval(field.to_s), :auto_ids => false).to_html
   end
 
+  def raw_md_to_html( field )
+    return '' if field.to_s.blank?
+    Kramdown::Document.new( field.to_s, :auto_ids => false).to_html
+  end
 
   def content_to_markdown
     Markdownifier.new.html_to_markdown( self.content )
@@ -179,12 +194,12 @@ class Article < ActiveRecord::Base
   def related
     Rails.cache.fetch("#{self.id}-related") {
       return [] if wordcounts.empty?
-      (Article.search_tank(self.wordcounts.all(:order => 'count DESC').first(10).map(&:keyword).map(&:name).join(" OR ")) - [self]).first(4)
+      (Article.search_tank(self.wordcounts.all(:order => 'count DESC', :limit => 10).map(&:keyword).map(&:name).join(" OR ")) - [self]).first(4)
     }
   end
 
   def indexable?
-    self.published?
+    self.status == "Published"
   end
 
   def hits
@@ -267,15 +282,17 @@ class Article < ActiveRecord::Base
   #   3) Create a new Wordcount row with :keyword_id => kw.id, :article_id => article.id and count as the frequency of the keyword in the article.
   def qm_after_create
     begin
-      text = collect_text(
-        :model => self,
-        :fields => ['title','content_main','content_main_extra','content_need_to_know','preview','tags','category.name'])
-        text = clean( text )
-        wordcounts = count_words( text )
-        wordcounts.each do |word, frequency|
-          kw = Keyword.find_or_create_by_name( word )
-          Wordcount.create!(:keyword_id => kw.id, :article_id => self.id, :count => frequency)
-        end
+      if self.status == "Published"
+        text = collect_text(
+          :model => self,
+          :fields => ['title','content_main','content_main_extra','content_need_to_know','preview','tags','category.name'])
+          text = clean( text )
+          wordcounts = count_words( text )
+          wordcounts.each do |word, frequency|
+            kw = Keyword.find_or_create_by_name( word )
+            Wordcount.create!(:keyword_id => kw.id, :article_id => self.id, :count => frequency)
+          end
+      end
     rescue => e
       puts "ERROR: error after article creation; could not update keywords and wordcounts for article with id #{self.try(:id)}"
       puts e.message

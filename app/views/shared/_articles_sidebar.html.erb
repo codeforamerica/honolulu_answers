@@ -27,7 +27,8 @@
               <div class="sidebar-content">
                 <ul>
                   <% @article.related.each do |art| %>
-                  <%= content_tag(:li, link_to(art.title, article_path(art.id)) ) %>
+                    <% next unless art.indexable? %>
+                    <%= content_tag(:li, link_to(art.title, article_path(art.id)) ) %>
                   <% end -%>
                 </ul>
               </div>

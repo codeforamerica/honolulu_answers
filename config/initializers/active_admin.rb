@@ -5,7 +5,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Honolulu Answers Admin"
+  config.site_title = "Honolulu Answers CMS"
   
   # config.namespace :admin do |admin|
   #   admin.site_title = "Honolulu Answers Admin"
@@ -136,6 +136,9 @@ ActiveAdmin.setup do |config|
   #
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
+  
+  config.clear_stylesheets!
+  config.register_stylesheet 'active_admin_custom.css'
 
   
 end

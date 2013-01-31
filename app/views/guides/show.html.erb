@@ -1,3 +1,6 @@
+<% set_meta_tags :description => @article.preview,
+                 :canonical => "http://answers.honolulu.gov#{request.fullpath}",
+                 :title => [@article.category.name, @article.title] %>
 <div class="page-container article">
   <div class="breadcrumbs">
     <%= link_to( "Home", root_url) %>
@@ -60,6 +63,25 @@ $(document).ready(function(){
     $(tabId).jVertTabs('selected',index);
   }
 });
+
+function prevTab(){
+	var tabs = $($(".open")[0].parentElement).children();
+	for(var t=0;t<tabs.length-1;t++){
+		if( $(tabs[t+1]).hasClass("open") ){
+			$(tabs[t]).click();
+			break;
+		}
+	}
+}
+function nextTab(){
+	var tabs = $($(".open")[0].parentElement).children();
+	for(var t=0;t<tabs.length-1;t++){
+		if( $(tabs[t]).hasClass("open") ){
+			$(tabs[t+1]).click();
+			break;
+		}
+	}
+}
 </script>
 
 <!-- begin vertical tabs demo -->
@@ -75,13 +97,22 @@ $(document).ready(function(){
     <% @article.guide_steps.each do |step| %>
       <div id="#vtabs-content">
         <h2 class="vtab-content-header"><%= step.title %></h2>
-        <%= step.content %>
+        <%= raw @article.raw_md_to_html( step.content ) %>
       </div>
     <% end %> 
+    <br/>
+    <br/>
+    <p style="margin-left:auto;margin-right:auto;text-align:center;display:block;">
+	    <a class="btn guidearrow" href="#" onclick="prevTab();" id="prev" style="display:inline;">&larr; Previous</a>
+	    &nbsp;&nbsp;&nbsp;&nbsp;
+	    |
+	    &nbsp;&nbsp;&nbsp;&nbsp;	    
+	    <a class="btn guidearrow" href="#" onclick="nextTab();" id="next" style="display:inline;">Next &rarr;</a>
+	</p>
+    
   </div>
 </div>
   <!-- -->
-
 
       </div>
     </div><!-- /span9 -->

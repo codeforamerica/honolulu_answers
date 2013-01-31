@@ -1,3 +1,6 @@
+<% set_meta_tags :description => @article.preview,
+                 :canonical => "http://answers.honolulu.gov#{request.fullpath}",
+                 :title => [@article.category.name, @article.title] %>
 <div class="page-container article">
   <div class="breadcrumbs">
     <%= link_to( "Home", root_url) %>

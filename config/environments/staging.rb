@@ -27,7 +27,7 @@ Honoluluanswers::Application.configure do
   config.assets.precompile += %w( home.js style.css mobile.css.scss tiny_mce/* active_admin.js active_admin.css.scss indextank/jquery.indextank.autocomplete.js )
   config.assets.precompile << '*.js'
 
-  config.static_cache_control = "public, max-age=2592000"
+  #config.static_cache_control = "public, max-age=2592000"
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
@@ -78,12 +78,14 @@ Honoluluanswers::Application.configure do
 
   config.action_mailer.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
-    :port           => '587',
+    :port           => '25',
     :authentication => :plain,
     :user_name      => ENV['SENDGRID_USERNAME'],
     :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'heroku.com'
+    :domain         => ENV['SENDGRID_DOMAIN']
   }
 
   config.action_mailer.delivery_method = :smtp
+
+  config.cache_store = :dalli_store
 end

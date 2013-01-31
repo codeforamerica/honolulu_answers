@@ -20,7 +20,7 @@ ActiveAdmin.register Article do
   
   # View 
   index do
-    column :id
+    #column :id
     column "Article Title", :title do |article|
       link_to article.title, [:admin, article]
     end

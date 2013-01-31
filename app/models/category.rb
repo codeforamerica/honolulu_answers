@@ -6,14 +6,9 @@ class Category < ActiveRecord::Base
   before_validation :set_access_count_if_nil
 
   friendly_id :name, use: [:slugged, :history]
-  
-  def self.all_by_access_count   
-    self.all :order => 'access_count DESC'
-  end
 
-  def articles_by_access_count
-    self.articles.all(:order => 'access_count DESC')
-  end
+  default_scope order('name ASC')
+  scope :by_access_count, order('access_count DESC')
 
   private
 
@@ -24,7 +19,7 @@ class Category < ActiveRecord::Base
   def set_access_count_if_nil
     self.access_count = 0 if self.access_count.nil?
   end
-  
+
 end
 # == Schema Information
 #
