@@ -16,12 +16,14 @@
   </div>
   <div class="clear"></div>
 
-  <div class="wmd-panel">
-    <div id="wmd-button-bar-content_main_extra" class="wmd-button-bar"></div>
-    <%= f.input :content_main_extra, :input_html => {
-        :class => 'wmd-input', :id => 'wmd-input-content_main_extra'}  %>
-    <div id="wmd-preview-content_main_extra" class="wmd-preview article"></div>
-  </div>
+  <% if @article.is_a? QuickAnswer %>
+    <div class="wmd-panel">
+      <div id="wmd-button-bar-content_main_extra" class="wmd-button-bar"></div>
+      <%= f.input :content_main_extra, :input_html => {
+          :class => 'wmd-input', :id => 'wmd-input-content_main_extra'}  %>
+      <div id="wmd-preview-content_main_extra" class="wmd-preview article"></div>
+    </div>
+  <% end %>
 
   <div class="clear"></div>
   <div class="wmd-panel">
