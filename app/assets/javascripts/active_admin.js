@@ -1,8 +1,9 @@
 //= require active_admin/base
 //= require jquery
-//= require markdown.converter
-//= require markdown.sanitizer
-//= require markdown.editor
+//= require ./pagedown/Markdown.Converter.js
+//= require ./pagedown/Markdown.Editor.js
+//= require ./pagedown/Markdown.Sanitizer.js
+//= require ./Markdown.Extra.js
 
 $(document).ready(function(){
 	// Clicking Articles link on dashboard > open up context menu
@@ -10,7 +11,7 @@ $(document).ready(function(){
 	$("a[href $= '#']").click(function(e){
 		$("a[href $= '#']").next().css({ "display": "block" });
 	});
-	
+
 	var arrows = $(".guidearrow");
 	if(arrows.length){
 		setInterval(function(){
@@ -19,7 +20,7 @@ $(document).ready(function(){
 			}
 		}, 250);
 	}
-	
+
 	/* if( $("#page_title").text() == "Dashboard"){
 		var headers = $("thead th");
 		for(var h=0;h<headers.length;h++){
