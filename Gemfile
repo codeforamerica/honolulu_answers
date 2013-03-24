@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 ## Essentials
 ruby '1.9.3'                              # Ruby!
-gem 'rails', '3.2.18'                     # Rails!
+gem 'rails', '3.2.13'                     # Rails!
 gem 'pg'                                  # PostgreSQL, the database server
 gem 'thin'                                # Web server
 gem 'foreman'                             # For launching with the Procfile and keeping track of environment variables from .env
