@@ -263,7 +263,7 @@ GEM
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
     ruby-graphviz (1.0.8)
-    ruby-prof (0.12.0)
+    ruby-prof (0.12.2)
     rubyzip (0.9.9)
     sass (3.2.5)
     sass-rails (3.2.5)
@@ -371,7 +371,7 @@ DEPENDENCIES
   rails (= 3.2.11)
   rails-erd
   rspec-rails (>= 2.10.1)
-  ruby-prof
+  ruby-prof (~> 0.12.2)
   sass-rails (~> 3.2.5)
   seed_dump
   sextant
