@@ -5,11 +5,6 @@ class Ability
 
     @articles = [QuickAnswer, WebService, Guide]
 
-    # We operate with three role levels
-    #  - Admin
-    #  - Editor
-    #  - Writer
-
     can :read, :all
 
     if user.is_admin
@@ -17,11 +12,11 @@ class Ability
     end
 
     if user.is_editor
-      can :manage, @articles + [Category, Contact], + [GuideStep]
+      can :manage, @articles + [Category, Contact, GuideStep]
     end
 
     if user.is_writer
-      can :create, @articles + [Category, Contact] + [GuideStep]
+      can :create, @articles + [Category, Contact, GuideStep]
       can [:update, :destroy], @articles, status: "Draft", user_id: user.id
       can [:update, :destroy], GuideStep, guide: { user_id: user.id, status: "Draft" }
     end
