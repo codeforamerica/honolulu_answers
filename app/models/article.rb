@@ -294,7 +294,7 @@ class Article < ActiveRecord::Base
           end
       end
     rescue => e
-      puts "ERROR: error after article creation; could not update keywords and wordcounts for article with id #{self.id unless self.id.blank?}"
+      puts "ERROR: error after article creation; could not update keywords and wordcounts for article with id #{self.try(:id)}"
       puts e.message
       puts e.backtrace 
     end
