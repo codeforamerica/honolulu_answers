@@ -4,9 +4,10 @@ class QuickAnswersController < ApplicationController
     return render(:template => 'articles/missing') unless QuickAnswer.exists? params[:id]
     
     @article = QuickAnswer.find(params[:id])
-    
-    # refuse to display unpublished articles
-    return render(:template => 'articles/missing') unless @article.published?
+
+    authorize! :read, @article
+    #refuse to display unpublished articles
+    #return render(:template => 'articles/missing') unless @article.published? or current_user can 
 
     #redirection of old permalinks
     if request.path != quick_answer_path( @article )
