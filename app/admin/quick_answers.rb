@@ -8,7 +8,8 @@ ActiveAdmin.register QuickAnswer do
 
     def create
       if params[:commit] == "Preview"
-        redirect_to preview_quick_answer_path(request.parameters)
+        max_id = Article.maximum('id')
+        redirect_to preview_quick_answer_path(request.parameters.merge(id: max_id + 1))
       else
         @quick_answer = QuickAnswer.new(params[:quick_answer])
         super
