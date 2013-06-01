@@ -620,6 +620,10 @@ li.article-listing p:hover{
 
 /* Article#show page */
 /* ----------------- */
+img#draft_watermark {
+  position: absolute;
+  opacity: 0.13;
+}
 div.breadcrumbs {
   height: 20px;
   margin-left: 20px;
