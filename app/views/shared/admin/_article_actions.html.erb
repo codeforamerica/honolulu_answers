@@ -85,10 +85,13 @@
   </fieldset>
 <% end %> <!-- admin actions -->
 
-<fieldset class="buttons">
-  <ol>
-    <li class="commit button">
-    <input class="preview" name="commit" type="submit" value="Preview" target="_blank"/>
-    </li>
-  </ol>
-</fieldset>
+<!-- to preview the guide, preview the guide steps. -->
+<% unless @article.is_a?(Guide) %>
+  <fieldset class="buttons">
+    <ol>
+      <li class="commit button">
+      <input class="preview" name="commit" type="submit" value="Preview" target="_blank"/>
+      </li>
+    </ol>
+  </fieldset>
+<% end %>

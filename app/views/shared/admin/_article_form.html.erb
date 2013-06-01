@@ -24,6 +24,6 @@
     </script>
   <% end %>
 
-  <%= render :partial => "shared/admin/article_actions" %>
+  <%= render :partial => "shared/admin/article_actions", locals: { :article => @article } %>
 
 <% end %>
