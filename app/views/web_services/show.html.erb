@@ -9,6 +9,7 @@
     >
     <%= @article.title %>
   </div>
+  <%= image_tag("draft_watermark.png", :id => "draft_watermark") if @preview %>
   <div class="row">
     <div class="span9">
       <div class="main-content">

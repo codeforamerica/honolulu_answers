@@ -35,5 +35,17 @@ class WebServicesController < ApplicationController
     end    
   end	
 
+  def preview
+    @article = WebService.new(params[:web_service])
+    authorize! :preview, @article
+
+    @content_main =  @article.md_to_html( :content_main )
+    @content_main_extra = @article.md_to_html( :content_main_extra )
+    @content_need_to_know =  @article.md_to_html( :content_need_to_know )
+
+    @preview = true
+    render 'show'
+  end
+
   
 end

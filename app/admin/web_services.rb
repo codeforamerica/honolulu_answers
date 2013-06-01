@@ -5,6 +5,24 @@ ActiveAdmin.register WebService do
       def scoped_collection
         end_of_association_chain.accessible_by(current_ability)
       end
+    def create
+      if params[:commit] == "Preview"
+        max_id = Article.maximum('id')
+        redirect_to preview_web_service_path(request.parameters.merge(id: max_id + 1))
+      else
+        @web_service = WebService.new(params[:quick_answer])
+        super
+      end
+    end
+
+    def update
+      if params[:commit] == "Preview"
+        redirect_to preview_web_service_path(request.parameters)
+      else
+        @web_service = WebService.find(params[:id])
+        super
+      end
+    end
    end
 
   # Add to :parent Dropdown menu
