@@ -9,6 +9,7 @@ class Ability
       can :read, :all, :status => "Published"
     else
       can :read, :all
+      can :preview, :all
 
       if user.is_admin
         can :manage, :all

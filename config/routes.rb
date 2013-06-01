@@ -21,7 +21,12 @@ Honoluluanswers::Application.routes.draw do
 
   resources :web_services
 
-  resources :quick_answers
+  resources :quick_answers do
+    member do
+      get 'preview'
+    end
+  end
+
   #get "home/index"
   root :to => "home#index"
 
