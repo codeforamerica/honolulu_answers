@@ -2,8 +2,7 @@ module TankerArticleDefaults
   def self.included(base)
     base.send(:include, ::Tanker)
 
-    index = 'hnlgovanswers-development'
-    index = 'hnlgovanswers' if Rails.env === 'production'
+    index = ENV['SEARCHIFY_API_INDEX']
     
     base.tankit index, :as => 'Article' do
       indexes :title
