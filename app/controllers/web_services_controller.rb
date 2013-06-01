@@ -36,7 +36,7 @@ class WebServicesController < ApplicationController
   end	
 
   def preview
-    @article = WebService.new(params[:web_service])
+    @article = WebService.new(session[:article_preview])
     authorize! :preview, @article
 
     @content_main =  @article.md_to_html( :content_main )

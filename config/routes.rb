@@ -20,13 +20,13 @@ Honoluluanswers::Application.routes.draw do
   resources :guides
 
   resources :web_services do
-    member do
+    collection do
       get 'preview'
     end
   end
 
   resources :quick_answers do
-    member do
+    collection do
       get 'preview'
     end
   end

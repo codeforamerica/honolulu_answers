@@ -8,7 +8,8 @@ ActiveAdmin.register WebService do
     def create
       if params[:commit] == "Preview"
         max_id = Article.maximum('id')
-        redirect_to preview_web_service_path(request.parameters.merge(id: max_id + 1))
+        session[:article_preview] = request.parameters[:web_service].merge(id: max_id+1)
+        redirect_to preview_web_services_path
       else
         @web_service = WebService.new(params[:quick_answer])
         super
@@ -17,7 +18,8 @@ ActiveAdmin.register WebService do
 
     def update
       if params[:commit] == "Preview"
-        redirect_to preview_web_service_path(request.parameters)
+        session[:article_preview] = request.parameters[:web_service]
+        redirect_to preview_web_services_path
       else
         @web_service = WebService.find(params[:id])
         super

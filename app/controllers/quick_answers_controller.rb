@@ -36,7 +36,7 @@ class QuickAnswersController < ApplicationController
   end
 
   def preview
-    @article = QuickAnswer.new(params[:quick_answer])
+    @article = QuickAnswer.new session[:article_preview]
     authorize! :preview, @article
 
     @content_main =  @article.md_to_html( :content_main )
