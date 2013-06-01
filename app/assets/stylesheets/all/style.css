@@ -622,7 +622,8 @@ li.article-listing p:hover{
 /* ----------------- */
 img#draft_watermark {
   position: absolute;
-  opacity: 0.13;
+  left: 50%;
+  height: 20%;
 }
 div.breadcrumbs {
   height: 20px;
