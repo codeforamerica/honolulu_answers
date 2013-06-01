@@ -626,6 +626,17 @@ img#draft_watermark {
   height: 20%;
   opacity: 0.7;
 }
+div#draft_watermark {
+  position: absolute;
+  right: 40%;
+  opacity: 0.5;
+  color: red;
+  font-family: monospace;
+  font-size: 3em;
+  border: 6px solid red;
+  border-radius: 12px;
+  padding: 0px 10px 0px 10px;
+}
 div.breadcrumbs {
   height: 20px;
   margin-left: 20px;
