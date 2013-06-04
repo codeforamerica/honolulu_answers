@@ -18,7 +18,7 @@ ol, ul, li { list-style: none; }
 /* Removing outline border on active links (WCAG safe - active state links handled explicitly below) */
 a:focus, a:active {
   outline: 0;
-  background-color: rgb(91, 143, 71);
+  background-color: #ffde4d;
   color: black;
 }
 
@@ -45,7 +45,7 @@ a.gsfn-jqmClose {
 /* General Styles */
 /* -------------- */
 body {
- background:transparent url("/assets/beach.jpg") no-repeat 0 50%;
+ background:transparent url("/assets/background_image.jpg") no-repeat 0 50%;
  background-attachment: fixed;
  font: 100%/1.5 "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
 }
@@ -106,7 +106,7 @@ h4.side-head {
   font-family: Oswald, "News Cycle", Helvetica, Tahoma, Arial, sans-serif;
   font-size: 18px;
   color: #FFF;
-  background-color: rgb(91, 143, 71);
+  background-color: #4580b4;
 
   padding: 10px 15px;
   margin: 0;
@@ -225,8 +225,7 @@ ul.nav-top {
 }
 
 .nav-top li a:hover {
-  /*border-bottom: 1px solid #ffde4d;*/
-  border-bottom:  1px solid rgb(91, 143, 71);
+  border-bottom: 1px solid #ffde4d;
 }
 
 .nav-top li a:active, .nav-top li a:focus{
@@ -310,7 +309,7 @@ div#welcome-line-r {
 }
  
 div.pop-heading {
-  border-bottom: 10px solid rgb(69, 130, 185);
+  border-bottom: 10px solid #ffde4d;
   margin: 0 0 20px 0;
 }
 
@@ -386,14 +385,14 @@ div.search-ribbon {}
   position: relative;
   padding: 25px 70px;
   margin: 0 -78px 50px -78px;
-  background-color: rgb(91, 143, 71);
+  background-color: #4580b4;
   color: white;
   text-shadow: 0 1px 1px #155B88;
   box-shadow: 2px 1px 6px -3px rgba(0, 0, 0, 0.5), -2px 0px 5px -3px rgba(0, 0, 0, 0.5), 0px 5px 10px -4px rgba(0, 0, 0, 0.3);
 }
 
 .ribbon-front .triangle-l {
-  border-color: transparent rgb(91, 143, 71) transparent transparent;
+  border-color: transparent #4580b4 transparent transparent;
   border-style:solid;
   border-width:34px;
   height:0;
@@ -405,7 +404,7 @@ div.search-ribbon {}
 }
 
 .ribbon-front .triangle-r {
-  border-color: transparent transparent transparent rgb(91, 143, 71);
+  border-color: transparent transparent transparent #4580b4;
   border-style:solid;
   border-width:34px;
   height:0;
@@ -467,7 +466,7 @@ input:hover#query { }
 /* Search Button */
 /* ------------- */
 .btn-search {
-  background-color:rgb(69, 130, 185);
+  background-color: #F38200;
   -moz-border-radius:3px;
   -webkit-border-radius:3px;
   border-radius:3px;
@@ -529,7 +528,7 @@ ul.footer-links > li > a {
 }
 
 ul.footer-links li a:hover {
-  border-bottom: 1px solid rgb(91, 143, 71);
+  border-bottom: 1px solid #4580b4;
 }
 
 .cfa-logos {
@@ -619,7 +618,7 @@ li.category-article{
 
 li.article-listing a:hover{
   color: rgb(0,136,204);
-  border-bottom: 1px solid rgb(91, 143, 71);
+  border-bottom: 1px solid #ffde4d;
 }
 
 li.article-listing a{
@@ -641,15 +640,10 @@ li.article-listing p:hover{
 
 /* Article#show page */
 /* ----------------- */
-img#draft_watermark {
-  position: absolute;
-  left: 50%;
-  height: 20%;
-  opacity: 0.7;
-}
-div#draft_watermark {
+div#preview_watermark {
   position: absolute;
   right: 40%;
+  top: 30%;
   opacity: 0.5;
   color: red;
   font-family: monospace;
@@ -727,7 +721,7 @@ td {
 }
 .sidebar a {
   color: #303030;
-  border-bottom: 1px solid rgb(69, 130, 185);
+  border-bottom: 1px solid #ffde4d;
 }
 .sidebar a:hover{
   /*color: #4580B4;*/

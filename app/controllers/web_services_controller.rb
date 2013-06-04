@@ -4,12 +4,15 @@ class WebServicesController < ApplicationController
     return render(:template => 'articles/missing') unless WebService.exists? params[:id]
 
     @article = WebService.find(params[:id])
+    authorize! :read, @article
 
-    # refuse to display unpublished articles
-    return render(:template => 'articles/missing') unless @article.published?
+    @feedback = @article.feedback
+    if @feedback.nil?
+      @feedback = @article.create_feedback!
+    end
 
     #redirection of old permalinks
-    if request.path != resource_path( @article )
+    if request.path != web_service_path( @article )
       logger.info "Old permalink: #{request.path}"
       return redirect_to @article, status: :moved_permanently
     end
@@ -38,6 +41,11 @@ class WebServicesController < ApplicationController
   def preview
     @article = WebService.new(session[:article_preview])
     authorize! :preview, @article
+
+    @feedback = @article.feedback
+    if @feedback.nil?
+      @feedback = @article.create_feedback!
+    end
 
     @content_main =  @article.md_to_html( :content_main )
     @content_main_extra = @article.md_to_html( :content_main_extra )

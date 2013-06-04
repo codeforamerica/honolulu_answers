@@ -62,7 +62,6 @@ ActiveAdmin.register QuickAnswer do
     column :slug
     column "Status", :status
     column "Helpful?", :feedback, :sortable => 'feedbacks.yes_count'
-    column "Published", :is_published
     default_actions # Add show, edit, delete column
   end
 

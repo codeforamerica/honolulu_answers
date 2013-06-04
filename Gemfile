@@ -71,6 +71,8 @@ group :test, :development do
   gem 'capybara-webkit'                   # JS driver for Capybara (headless)
   gem 'memcached'                         # Local memcache
   gem 'sextant'                           # visit /rails/routes in the browser for nicer 'rake routes'
+  gem 'better_errors'                     # more information in the browser when rails errors.
+  gem 'binding_of_caller'                 # improves better_errors
 end
 
 gem 'test-unit'                           # Remove at your peril.  Too many other gems randomly depend on it.

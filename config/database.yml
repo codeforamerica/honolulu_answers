@@ -6,13 +6,13 @@
 #   gem 'sqlite3'
 
 login: &login
-  username: ENV["DB_LOGIN_NAME"]
-  password: ENV["DB_LOGIN_PASS"]
+  username: <%= ENV["DB_LOGIN_NAME"] %>
+  password: <%= ENV["DB_LOGIN_PASS"] %>
 
 development:
   adapter: postgresql
   encoding: unicode
-  database: ENV["DB_NAME_DEV"]
+  database: <%= ENV["DB_NAME_DEV"] %>
   host: localhost
   pool: 5
   timeout: 5000

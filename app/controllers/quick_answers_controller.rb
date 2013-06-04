@@ -41,6 +41,11 @@ class QuickAnswersController < ApplicationController
     @article = QuickAnswer.new session[:article_preview]
     authorize! :preview, @article
 
+    @feedback = @article.feedback
+    if @feedback.nil?
+      @feedback = @article.create_feedback!
+    end
+
     @content_main =  @article.md_to_html( :content_main )
     @content_main_extra = @article.md_to_html( :content_main_extra )
     @content_need_to_know =  @article.md_to_html( :content_need_to_know )
