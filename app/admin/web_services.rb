@@ -1,10 +1,10 @@
 ActiveAdmin.register WebService do
-  # as per https://github.com/gregbell/active_admin/wiki/Enforce-CanCan-constraints
   controller do
+  # as per https://github.com/gregbell/active_admin/wiki/Enforce-CanCan-constraints
     load_and_authorize_resource :except => :index
-      def scoped_collection
-        end_of_association_chain.accessible_by(current_ability)
-      end
+    def scoped_collection
+      end_of_association_chain.accessible_by(current_ability)
+    end
     def create
       if params[:commit] == "Preview"
         max_id = Article.maximum('id')
@@ -36,13 +36,15 @@ ActiveAdmin.register WebService do
   filter :contact_id
   filter :status
 
-  # View
+  scope :all, :default => true do |articles|
+    articles.includes [:category, :feedback]
+  end
+
   index do
-    #column :id
+    column :id
     column "Web Service Title", :title do |article|
       link_to article.title, [:admin, article]
     end
-    column :category
     column :contact
     column "Created", :created_at
     column "Author", :user do |article|
@@ -57,8 +59,7 @@ ActiveAdmin.register WebService do
     column "Status", :status
     default_actions # Add show, edit, delete column
   end
-  
-  form :partial => "shared/admin/article_form"
 
+  form :partial => "shared/admin/article_form"
 
 end

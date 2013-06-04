@@ -20,6 +20,7 @@ class Article < ActiveRecord::Base
   belongs_to :user
   has_many :wordcounts
   has_many :keywords, :through => :wordcounts
+  has_one :feedback, :dependent => :destroy
 
   scope :by_access_count, order('access_count DESC')
   scope :with_category, lambda { |category| where('categories.name = ?', category).joins(:category) }
@@ -357,7 +358,6 @@ end
 #  preview                 :text
 #  contact_id              :integer
 #  tags                    :text
-#  service_url             :string(255)
 #  is_published            :boolean         default(FALSE)
 #  slug                    :string(255)
 #  category_id             :integer

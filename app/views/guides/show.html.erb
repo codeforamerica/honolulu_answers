@@ -3,11 +3,7 @@
                  :title => [@article.category.name, @article.title] %>
 <div class="page-container article">
   <div class="breadcrumbs">
-    <%= link_to( "Home", root_url) %>
-    >
-    <%= link_to(@article.category.name, @article.category) %>
-    >
-    <%= @article.title %>
+    <%= render :partial => 'shared/breadcrumb' %>
   </div>
   <div class="row">
     <div class="span9">

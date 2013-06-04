@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-#gem 'bundler', '~> 1.3.0.pre.5'		        # Bundler version to match what is used on Heroku.
-
 ## Essentials
 ruby '1.9.3'                              # Ruby!
 gem 'rails', '3.2.13'                     # Rails!
@@ -10,12 +8,9 @@ gem 'thin'                                # Web server
 gem 'foreman'                             # For launching with the Procfile and keeping track of environment variables from .env
 
 ## Utilities
-#gem 'pry-rails', :group => :development   # Better 'rails console'
-#gem 'pry-exception_explorer', :group => :development # Puts you in the console when an exception is raised
-#gem 'pry-debugger'                        # Adds next, step and continue to Pry for debugging
-
 gem 'newrelic_rpm', :group => [:production, :staging, :development] # Rails analytics - see the Heroku addon
-gem 'annotate', '~>2.4.1.beta'            # Annotates models with database info: `bundle exec rake:annotate` 
+gem 'heroku'                              # Managed hosting solution
+gem 'annotate', '~>2.4.1.beta'            # Annotates models with database info: `bundle exec rake:annotate`
 gem 'rails-erd'                           # Create Entity Relationship Diagrams
 gem 'progressbar'                         # Display progress bars in terminal output
 gem 'facets', :require => false           # Some extra methods for ruby
@@ -38,7 +33,7 @@ gem 'cancan'                              # User permissions
 
 ## Search and NLP
 gem 'tanker'                              # library for interacting with Searchify
-gem 'hunspell-ffi'                        # Spellchecking library 
+gem 'hunspell-ffi'                        # Spellchecking library
 gem 'text'                                # NLP algorithms
 gem 'httparty'                            # For accessing APIs directly
 gem 'json'                                # Convert between JSON and Ruby objects
@@ -46,7 +41,7 @@ gem 'json'                                # Convert between JSON and Ruby object
 ## Content and presentation
 gem 'bluecloth'                           # Parse Markdown
 gem 'kramdown'                            # Better markdown parser with support for markdown-extra
-gem 'friendly_id'                         # Create permalinks / descriptive URLs / slugs
+gem 'friendly_id', '~> 4.0.9'             # Create permalinks / descriptive URLs / slugs
 gem 'gon'                                 # Easy passing of data from the controller to javascript files
 gem 'paperclip', '~> 3.0'                 # Easy file attachment library for ActiveRecord
 gem 'aws-sdk', '~> 1.3.4'                 # Upload files to Amazon S3
@@ -72,7 +67,7 @@ group :test, :development do
   gem 'guard-rspec'                       # Guard integratio for RSpec.  Guard monitors files and automatically and intelligently runs 'rspec spec' in the background
   gem 'factory_girl_rails'                # Create factories to test against
   gem 'spork-rails'                       # Speeds up TDD by launching multiple Rails instances in the background
-  gem 'guard-spork'                       # Make guard aware of Spork - automatically restart spork if a change requires a rails restart   
+  gem 'guard-spork'                       # Make guard aware of Spork - automatically restart spork if a change requires a rails restart
   gem 'capybara-webkit'                   # JS driver for Capybara (headless)
   gem 'memcached'                         # Local memcache
   gem 'sextant'                           # visit /rails/routes in the browser for nicer 'rake routes'

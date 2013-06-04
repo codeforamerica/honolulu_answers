@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601202003) do
+ActiveRecord::Schema.define(:version => 20130601202005) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -126,6 +126,14 @@ ActiveRecord::Schema.define(:version => 20130601202003) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "feedbacks", :force => true do |t|
+    t.integer  "yes_count"
+    t.integer  "no_count"
+    t.integer  "article_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "friendly_id_slugs", :force => true do |t|
     t.string   "slug",                         :null => false
     t.integer  "sluggable_id",                 :null => false
@@ -156,12 +164,24 @@ ActiveRecord::Schema.define(:version => 20130601202003) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "questions", :force => true do |t|
+    t.string   "question"
+    t.string   "name"
+    t.string   "email"
+    t.string   "location"
+    t.string   "context"
+    t.string   "urgency"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.string   "question_status", :default => "new"
+  end
+
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
     t.string   "username"
     t.integer  "item"
     t.string   "table"
-    t.integer  "month"
+    t.integer  "month",      :limit => 2
     t.integer  "year",       :limit => 8
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false

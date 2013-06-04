@@ -39,12 +39,16 @@ ActiveAdmin.register QuickAnswer do
   filter :status
 
   # View
+  scope :all, :default => true do |articles|
+    articles.includes [:category, :feedback]
+  end
+
   index do
     #column :id
     column "Quick Answer Title", :title do |article|
       link_to article.title, [:admin, article]
     end
-    column :category
+    column :category, :sortable => 'categories.name'
     column :contact
     column "Created", :created_at
     column "Author", :user do |article|
@@ -57,6 +61,8 @@ ActiveAdmin.register QuickAnswer do
     # column :tags
     column :slug
     column "Status", :status
+    column "Helpful?", :feedback, :sortable => 'feedbacks.yes_count'
+    column "Published", :is_published
     default_actions # Add show, edit, delete column
   end
 
