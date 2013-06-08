@@ -8,8 +8,7 @@ gem 'thin'                                # Web server
 gem 'foreman'                             # For launching with the Procfile and keeping track of environment variables from .env
 
 ## Utilities
-gem 'newrelic_rpm', :group => [:production, :staging, :development] # Rails analytics - see the Heroku addon
-gem 'heroku'                              # Managed hosting solution
+gem 'newrelic_rpm', :group => [:production, :staging, :development] # Rails analytics
 gem 'annotate', '~>2.4.1.beta'            # Annotates models with database info: `bundle exec rake:annotate`
 gem 'rails-erd'                           # Create Entity Relationship Diagrams
 gem 'progressbar'                         # Display progress bars in terminal output
