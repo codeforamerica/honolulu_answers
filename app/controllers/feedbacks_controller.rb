@@ -1,5 +1,5 @@
 class FeedbacksController < ApplicationController
-  before_filter :find_artilce_of_feedback
+  before_filter :find_article_of_feedback
 
   def create
     receive_feedback
@@ -12,8 +12,12 @@ class FeedbacksController < ApplicationController
   end
 
   private
-    def find_artilce_of_feedback
-      @article = Article.find(params[:quick_answer_id])
+    def find_article_of_feedback
+      if params[:quick_answer_id]
+        @article = Article.find(params[:quick_answer_id])
+      elsif params[:web_service_id]
+        @article = Article.find(params[:web_service_id])
+      end
     end
 
     def receive_feedback
@@ -29,7 +33,7 @@ class FeedbacksController < ApplicationController
       if @feedback.save
         flash[:success] = "Thanks for your feedback."
       end
-      redirect_to quick_answer_path(@article)
+      redirect_to article_path(@article)
     end
 
 end

@@ -20,6 +20,7 @@ class ArticlesController < ApplicationController
   def show
     # redirect to the new paths (such as /quick_answers/1 instead of /articles/1)
     @article = Article.find(params[:id])
+    flash.keep
     return redirect_to @article, status: :moved_permanently
   end
   
