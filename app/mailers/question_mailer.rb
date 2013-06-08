@@ -1,5 +1,5 @@
 class QuestionMailer < ActionMailer::Base
-  default from: "feedback@answers.honolulu.gov"
+  default from: ENV['QUESTION_EMAIL_FROM']
 
   def submitted_question(question)
     @question = Question.find(question.id)

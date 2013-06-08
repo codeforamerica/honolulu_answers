@@ -15,8 +15,11 @@ class QuestionsController < ApplicationController
       :location => submitted[:location]
     )
 
-    flash.now[:success] = "Thanks for submitting a question! We'll review it and try to answer it as best as we can."
-    QuestionMailer.submitted_question(@question).deliver
+    if QuestionMailer.submitted_question(@question).deliver
+      flash[:success] = "Thanks for submitting a question! We'll review it and try to answer it as best as we can."
+    else
+      flash[:success] = "I'm sorry but your question couldn't be sent.  Please contact #{ENV['CONTACT_EMAIL']}"
+    end
 
     redirect_to :root
   end
