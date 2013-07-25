@@ -7,5 +7,5 @@ module ArticlesHelper
   def missing_article_list_tag(article_id, description)
     content_tag(:li, description, :class => "missing-article")
   end
-  
+ 
 end

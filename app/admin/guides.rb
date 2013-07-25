@@ -13,20 +13,25 @@ ActiveAdmin.register Guide do
   # Initialize tinymce
   # tinymce_assets
   # tinymce
-  
+
   # Filterable attributes
   filter :title
   filter :tags
   filter :contact_id
   filter :status
-  
-  # View 
+  filter :is_published
+
+  scope :all, :default => true do |articles|
+    articles.includes [:category, :feedback]
+  end
+
+  # View
   index do
     #column :id
     column "Guide Title", :title do |guide|
       link_to guide.title, [:admin, guide]
     end
-    column :category
+    column :category, :sortable => 'categories.name'
     column :contact
     column "Created", :created_at
     column "Author", :user do |article|
@@ -41,9 +46,8 @@ ActiveAdmin.register Guide do
     column "Status", :status
     default_actions # Add show, edit, delete column
   end
-  
-  form :partial => "shared/admin/article_form"
 
+  form :partial => "shared/admin/article_form"
 
   show do |guide|
     attributes_table do

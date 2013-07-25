@@ -11,19 +11,18 @@
           Sorry, we can't find what you are looking for.
         </div>
         <div class="content-text">
-          <p>We are working to aggregate as much info from the City of Honolulu as we can.
-            Unfortunately it is an ongoing process and we don't yet have the article you are looking for.</p>
-          <p>In the meantime we recommend:</p>
+          <p>We are working to aggregate as much info to answer your questions.</p>
+          <h2>In the meantime we recommend:</h2>
           <ul>
-            <li>Searching the <a href="http://www.honolulu.gov/government/">honolulu.gov</a> site for more information.</li>
+            <li>Searching the <%= link_to ENV['SITE_NAME'], ENV['SITE_URL'] %> site for more information.</li>
             <li>Checking back in a few weeks!</li>
           </ul>
-        </div>
-      </div>
-    </div><!-- /span9 -->
+        </div><!-- /span9 -->
 
-    <div class="span3">
-      <%= render :partial => 'shared/categories_sidebar' %>
-    </div><!-- /span3 -->
+        <div class="span3">
+          <%= render :partial => 'shared/categories_sidebar' %>
+        </div><!-- /span3 -->
+      </div>
+    </div>
   </div>
 </div>

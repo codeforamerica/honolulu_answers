@@ -1,0 +1,23 @@
+<div class="page-container article">
+  <div class="breadcrumbs">
+    <%= render :partial => 'shared/breadcrumb' %>
+  </div>
+  <div class="row">
+    <div class="span9">
+      <div class="main-content">
+        <h3 class="content-type"><%= @article.class.to_s.split(/(?=[A-Z])/).join(' ') %></h3>
+        <div class="header">
+          <%= content_tag(:h1, @article.title ) %>
+        </div>
+        <div class="content-text">
+          <%= raw @content_html %>
+        </div>
+      </div>
+    </div><!-- /span9 -->
+    
+    <div class="span3">
+      <%= render :partial => 'shared/articles_sidebar' %>
+    </div><!-- /span3 -->
+    
+  </div>
+</div>

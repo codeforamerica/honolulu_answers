@@ -17,6 +17,9 @@ ActiveAdmin.register Article do
   filter :contact_id
   filter :status
 
+  scope :all, :default => true do |articles|
+    articles.includes [:category, :feedback]
+  end
   
   # View 
   index do
@@ -24,8 +27,7 @@ ActiveAdmin.register Article do
     column "Article Title", :title do |article|
       link_to article.title, [:admin, article]
     end
-    column :category
-    column :content_type
+    column :category, :sortable => 'categories.name'
     column :type
     column "Created", :created_at
     column "Author name", :author_name
@@ -52,12 +54,11 @@ ActiveAdmin.register Article do
       f.input :preview
       f.input :category
       #f.input :content_type,  :as => :select, :collection => ["Quick Answer", "Web Service", "Guide"]
-      f.input :type,  :as => :select, :collection => ["QuickAnswer", "WebService", "Guide"]
+      f.input :type,  :as => :select, :collection => ["QuickAnswer", "Resource", "Guide"]
       f.input :contact
-      f.input :service_url
-      f.input :tags, :as => :string 
+      f.input :tags, :as => :string, :label => "Keywords"
       f.input :author_link
-      f.input :author_pic
+      #f.input :author_pic
       f.input :author_name
     end
     f.buttons
@@ -79,5 +80,4 @@ end
 #  preview      :text
 #  contact_id   :integer
 #  tags         :text
-#  service_url  :string(255)
 #

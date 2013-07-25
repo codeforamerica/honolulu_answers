@@ -11,6 +11,12 @@
 
 <%= semantic_form_for [:admin, @article] do |f| %>
 
+  <%= render :partial => "shared/admin/article_details", locals: { :f => f, :article => @article } %>
+
+  <% if (@article.is_a?(WebService) || @article.is_a?(QuickAnswer)) %>
+    <%= render :partial => "shared/admin/article_content", locals: { :f => f, :article => @article } %>
+  <% end %>
+
   <%= render :partial => "shared/admin/administration", locals: { :f => f, :article => @article } %>
   <% if !current_user.is_admin? %>
     <script type="text/javascript">
@@ -18,12 +24,6 @@
     </script>
   <% end %>
 
-  <%= render :partial => "shared/admin/article_details", locals: { :f => f, :article => @article } %>
-
-  <% if (@article.is_a?(WebService) || @article.is_a?(QuickAnswer)) %>
-    <%= render :partial => "shared/admin/article_content", locals: { :f => f, :article => @article } %>
-  <% end %>
-
-  <%= render "shared/admin/article_actions" %>
+  <%= render :partial => "shared/admin/article_actions", locals: { :article => @article } %>
 
 <% end %>

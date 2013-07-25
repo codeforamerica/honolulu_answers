@@ -13,5 +13,29 @@
  * application-all.css.scss
  *
  *= require_self
+ *= require autocomplete
  *= require_tree ./all
 */
+
+.feedback-form {
+  margin-top: 1em;
+  font-size: 0.8333em;
+  input {
+    vertical-align: middle;
+  }
+}
+
+.social-media-share {
+  float: right;
+}
+.social-media-button {
+}
+
+.sidebar-contact {
+  font-weight: 300;
+}
+.logo a {
+  &, &:hover, &:focus {
+    border: none;
+  }
+}

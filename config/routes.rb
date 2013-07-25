@@ -1,32 +1,43 @@
 Honoluluanswers::Application.routes.draw do
-  get "quick_answer/show"
-
-  # devise_for :admin_users, ActiveAdmin::Devise.config
-
-  get "category/index"
 
   ActiveAdmin.routes(self)
 
-  #devise_for :administrators
-
   devise_for :users, :controllers => { :sessions => "sessions" }
 
-  resources :contacts
+  resources :contacts, :articles, :categories
 
-  resources :articles
+  get "quick_answer/show"
+  get "category/index"
 
-  resources :categories
+  resources :questions do
+    collection do
+      get 'working'
+      get 'answered'
+    end
+  end
 
-  resources :guides
+  resources :web_services do
+    collection do
+      get 'preview'
+    end
+    resources :feedbacks
+  end
 
-  resources :web_services
+  resources :quick_answers do
+    collection do
+      get 'preview'
+    end
+    resources :feedbacks
+  end
 
-  resources :quick_answers
-  #get "home/index"
+  resources :guides do
+    resources :feedbacks
+  end
+
   root :to => "home#index"
 
   match '/about' => "home#about" , :as => :about
-  match '/search/' => "search#index" , :as => :search, :via => [:get, :post] 
+  match '/search/' => "search#index" , :as => :search, :via => [:get, :post]
   match 'autocomplete' => "search#autocomplete"
   match '/articles/article-type/:content_type' => "articles#article_type"
 

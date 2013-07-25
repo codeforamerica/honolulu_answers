@@ -3,7 +3,7 @@
 //= require ./pagedown/Markdown.Converter.js
 //= require ./pagedown/Markdown.Editor.js
 //= require ./pagedown/Markdown.Sanitizer.js
-//= require ./Markdown.Extra.js
+//= require ./pagedown/Markdown.Extra.js
 
 $(document).ready(function(){
 	// Clicking Articles link on dashboard > open up context menu

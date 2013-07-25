@@ -1,12 +1,15 @@
 class WebServicesController < ApplicationController
-  
+
   def show
     return render(:template => 'articles/missing') unless WebService.exists? params[:id]
-    
-    @article = WebService.find(params[:id])
 
-    # refuse to display unpublished articles
-    return render(:template => 'articles/missing') unless @article.published?
+    @article = WebService.find(params[:id])
+    authorize! :read, @article
+
+    @feedback = @article.feedback
+    if @feedback.nil?
+      @feedback = @article.create_feedback!
+    end
 
     #redirection of old permalinks
     if request.path != web_service_path( @article )
@@ -34,6 +37,23 @@ class WebServicesController < ApplicationController
       format.json { render json: @article }
     end    
   end	
+
+  def preview
+    @article = WebService.new(session[:article_preview])
+    authorize! :preview, @article
+
+    @feedback = @article.feedback
+    if @feedback.nil?
+      @feedback = @article.create_feedback!
+    end
+
+    @content_main =  @article.md_to_html( :content_main )
+    @content_main_extra = @article.md_to_html( :content_main_extra )
+    @content_need_to_know =  @article.md_to_html( :content_need_to_know )
+
+    @preview = true
+    render 'show'
+  end
 
   
 end

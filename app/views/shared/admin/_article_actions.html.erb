@@ -1,41 +1,41 @@
 <!-- editor actions -->
-<% if current_user.is_editor? %>
-  <script type="text/javascript">
-    function statusToSave(){
-      // status does not change
-      if( typeof $("#isediting:checked").val() != "undefined" ){
-        // acting as an editor
-        $("select.cms_article_status").val("Review by <%= current_user.email %>");
+<ol>
+  <% if current_user.is_editor? %>
+    <script type="text/javascript">
+      function statusToSave(){
+        // status does not change
+        if( typeof $("#isediting:checked").val() != "undefined" ){
+          // acting as an editor
+          $("select.cms_article_status").val("Review by <%= current_user.email %>");
+        }
+        else{
+          // acting as a writer
+          $("select.cms_article_status").val("Pending Review");
+        }
+        $("form")[0].submit();
       }
-      else{
-        // acting as a writer
-        $("select.cms_article_status").val("Pending Review");
+      function statusToRevise(){
+        // status changed from
+        $("select.cms_article_status").val("Draft");
+        $("form")[0].submit();
       }
-      $("form")[0].submit();
-    }
-    function statusToRevise(){
-      // status changed from
-      $("select.cms_article_status").val("Draft");
-      $("form")[0].submit();
-    }
-    function statusToPublish(){
-      $("select.cms_article_status").val("Published");
-      $("form")[0].submit();
-    }
-  </script>
-  <h4>Are you editing or writing this article?</h4>
-  <label>
-    <input id="isediting" type="radio" name="role" value="editor" checked="checked"/>
-    I commit to editing
-  </label>
-  --
-  <label>
-    <input id="iswriting" type="radio" name="role" value="writer"/>
-    I am writing
-  </label>
-  <br/>
-  <br/>
-  <ol>
+      function statusToPublish(){
+        $("select.cms_article_status").val("Published");
+        $("form")[0].submit();
+      }
+    </script>
+    <h4>Are you editing or writing this article?</h4>
+    <label>
+      <input id="isediting" type="radio" name="role" value="editor" checked="checked"/>
+      I commit to editing
+    </label>
+    --
+    <label>
+      <input id="iswriting" type="radio" name="role" value="writer"/>
+      I am writing
+    </label>
+    <br/>
+    <br/>
     <li class="commit button">
       <input type="button" value="Save" onclick="statusToSave();"/>
     </li>
@@ -47,41 +47,40 @@
         <input type="button" value="Publish" onclick="statusToPublish();"/>
       </li>
     <% end %>
-  </ol>
-<% end %> <!-- editor actions -->
+  <% end %> <!-- editor actions -->
 
-<!-- writer actions -->
-<% if current_user.is_writer? %>
-  <script type="text/javascript">
-    function statusToSave(){
-      // status does not change
-      $("form")[0].submit();
-    }
-    function statusToReview(){
-      // status changed from draft to Pending Review
-      $("select.cms_article_status").val("Pending Review");
-      $("form")[0].submit();
-    }
-  </script>
-  <ol>
+  <!-- writer actions -->
+  <% if current_user.is_writer? %>
+    <script type="text/javascript">
+      function statusToSave(){
+        // status does not change
+        $("form")[0].submit();
+      }
+      function statusToReview(){
+        // status changed from draft to Pending Review
+        $("select.cms_article_status").val("Pending Review");
+        $("form")[0].submit();
+      }
+    </script>
     <li class="commit button">
       <input type="button" value="Save Draft" onclick="statusToSave();"/>
     </li>
     <li class="commit button">
       <input type="button" value="Ready to Review" onclick="statusToReview();"/>
     </li>
-  </ol>
-<% end %> <!-- writer actions -->
+  <% end %> <!-- writer actions -->
 
-<!-- admin actions -->
-<% if current_user.is_admin? %>
-  <fieldset class="buttons">
-    <ol>
-      <li class="commit button">
-      <input class="update" id="submit" name="commit" type="submit"
-      value="Update Quick answer">
-      </li>
-    </ol>
-  </fieldset>
-<% end %> <!-- admin actions -->
+  <!-- admin actions -->
+  <% if current_user.is_admin? %>
+    <li class="commit button">
+      <input class="update" id="submit" name="commit" type="submit" value="Save">
+    </li>
+  <% end %> <!-- admin actions -->
 
+  <!-- to preview the guide, preview the guide steps. -->
+  <% unless @article.is_a?(Guide) %>
+    <li class="commit button">
+      <input class="preview" name="commit" type="submit" value="Preview" target="_blank"/>
+    </li>
+  <% end %>
+</ol>

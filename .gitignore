@@ -22,6 +22,7 @@ config/initializers/searchify.rb
 doc/search_stats.csv
 coverage/
 .sass-cache/
+/.rvmrc
 
 # Ignore files created by RubyMine IDE (CCHNL Specific)
 /.idea
@@ -32,3 +33,5 @@ coverage/
 tags
 
 config/database.yml
+# Ensures assets are precompiled during slug compilation when deployd to heroku
+public/assets

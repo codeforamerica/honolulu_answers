@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121108074632) do
+ActiveRecord::Schema.define(:version => 20130601202003) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -108,6 +108,14 @@ ActiveRecord::Schema.define(:version => 20121108074632) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "feedbacks", :force => true do |t|
+    t.integer  "yes_count"
+    t.integer  "no_count"
+    t.integer  "article_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "friendly_id_slugs", :force => true do |t|
     t.string   "slug",                         :null => false
     t.integer  "sluggable_id",                 :null => false
@@ -138,6 +146,18 @@ ActiveRecord::Schema.define(:version => 20121108074632) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "questions", :force => true do |t|
+    t.string   "question"
+    t.string   "name"
+    t.string   "email"
+    t.string   "location"
+    t.string   "context"
+    t.string   "urgency"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.string   "question_status", :default => "new"
+  end
+
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
     t.string   "username"
@@ -150,6 +170,16 @@ ActiveRecord::Schema.define(:version => 20121108074632) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false

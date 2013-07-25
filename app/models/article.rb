@@ -20,6 +20,7 @@ class Article < ActiveRecord::Base
   belongs_to :user
   has_many :wordcounts
   has_many :keywords, :through => :wordcounts
+  has_one :feedback, :dependent => :destroy
 
   scope :by_access_count, order('access_count DESC')
   scope :with_category, lambda { |category| where('categories.name = ?', category).joins(:category) }
@@ -48,7 +49,9 @@ class Article < ActiveRecord::Base
   # A note on the content fields:
   # *  Originally the content for the articles was stored as HTML in Article#content.
   # *  We then moved to Markdown for content storage, resulting in Article#content_md.
-  # *  Most recently, the QuickAnswers were split into three distinct sections: content_main, content_main_extra and content_need_to_know. All these use Markdown.
+  # *  Most recently, the QuickAnswers were split into three distinct sections:
+  #    content_main, content_main_extra and content_need_to_know. All these use
+  #    Markdown.
 
   # Tanker callbacks to update the search index
   after_save :update_tank_indexes 
@@ -102,7 +105,7 @@ class Article < ActiveRecord::Base
     else
     end
   end
-  
+
   def published?
     status == "Published"
   end
@@ -126,7 +129,7 @@ class Article < ActiveRecord::Base
   def content_to_markdown
     Markdownifier.new.html_to_markdown( self.content )
   end
-  
+
   # legacy
   def content_md_to_html
     BlueCloth.new(self.content_md).to_html
@@ -150,7 +153,7 @@ class Article < ActiveRecord::Base
       CSV.read( "lib/assets/eng_stop.csv" ).flatten
     end
     stop_words.each{ |sw| dict_custom.add sw }
-   
+
     string_corrected = string.split.map do |word|
       if dict.spell(word) or dict_custom.spell(word) # word is correct
         word
@@ -194,7 +197,9 @@ class Article < ActiveRecord::Base
   def related
     Rails.cache.fetch("#{self.id}-related") {
       return [] if wordcounts.empty?
-      (Article.search_tank(self.wordcounts.all(:order => 'count DESC', :limit => 10).map(&:keyword).map(&:name).join(" OR ")) - [self]).first(4)
+      query = self.wordcounts.all(:order => 'count DESC', :limit => 10).map(&:keyword).map(&:name).join(" OR ")
+      (Article.search_tank(query) - [self]).first(4)
+
     }
   end
 
@@ -285,13 +290,16 @@ class Article < ActiveRecord::Base
       if self.status == "Published"
         text = collect_text(
           :model => self,
-          :fields => ['title','content_main','content_main_extra','content_need_to_know','preview','tags','category.name'])
-          text = clean( text )
-          wordcounts = count_words( text )
-          wordcounts.each do |word, frequency|
-            kw = Keyword.find_or_create_by_name( word )
-            Wordcount.create!(:keyword_id => kw.id, :article_id => self.id, :count => frequency)
-          end
+          :fields =>
+          ['title', 'content_main', 'content_main_extra',
+            'content_need_to_know', 'preview', 'tags', 'category.name']
+        )
+        text = clean( text )
+        wordcounts = count_words( text )
+        wordcounts.each do |word, frequency|
+          kw = Keyword.find_or_create_by_name( word )
+          Wordcount.create!(:keyword_id => kw.id, :article_id => self.id, :count => frequency)
+        end
       end
     rescue => e
       puts "ERROR: error after article creation; could not update keywords and wordcounts for article with id #{self.try(:id)}"
@@ -350,7 +358,6 @@ end
 #  preview                 :text
 #  contact_id              :integer
 #  tags                    :text
-#  service_url             :string(255)
 #  is_published            :boolean         default(FALSE)
 #  slug                    :string(255)
 #  category_id             :integer

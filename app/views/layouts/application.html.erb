@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%= display_meta_tags :site => "Honolulu Answers" %>
+  <%= display_meta_tags :site => ENV["SITE_NAME"] %>
   <meta name="robots" content="index,nofollow" />
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= ENV["SITE_NAME"] %></title>
   <meta name="viewport" content="width=device-width,initial-scale =1,maximum-scale=1,user-scalable=no" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <%= include_gon %>
+
+  <!-- facebook open graph sharing meta tags -->
+    <% if !@quick_answer.nil? %>
+      <meta content="<%= @quick_answer.title %>" property="og:site_name"/>
+      <meta content="<%= @quick_answer.title %>" property="og:title"/>
+    <% else %>
+      <meta content="<%= ENV['SITE_NAME'] %>" property="og:site_name"/>
+      <meta content="<%= ENV['SITE_NAME'] %>" property="og:title"/>
+    <% end %>
+    <meta content="<%= asset_path('logo.png') %>" property="og:image" />
+    <meta content="website" property="og:type" />
+    <meta content="290079217769194" property="fb:app_id" />
+    <meta content="<%= ENV['SITE_URL'] %>" property="og:url" />
+  <!-- facebook and twitter buttons -->
+
   <%= stylesheet_link_tag    "application-all", :media => "all" %>
   <%= stylesheet_link_tag    "application-mobile", :media => "all and (max-width: 969px)" %>
   <%= stylesheet_link_tag    "application-print", :media => "print" %>
-  
+
   <!--[if lte IE 8]>
     <%= stylesheet_link_tag    "application-ie", :media=> "all" %>
   <![endif]-->
@@ -18,15 +33,14 @@
 
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= @bodyclass %>" onload="if($){ $('#query').focus(); }">
+<body class="<%= @bodyclass %>">
+
 <div id="wrapper">
   <div class="navbar-top">
-    <!-- <p class="notice alert alert-info"><%= notice %></p>
-    <p class="alert alert-error"><%= alert %></p> -->
     <div class="container">
       <div class="row">
         <div class="logo span4">
-          <a href="/" class="hnl-logo">Honolulu Answers</a>
+          <a href="/" class="hnl-logo"><%= ENV["SITE_NAME"] %></a>
           <span class="bubble"><img src="/assets/beta.png" class="beta" alt="beta"></span>
         </div>
         <ul class="nav-top span5">
@@ -48,23 +62,23 @@
       </div><!-- /row -->
     </div>
   </div><!-- /navbar-top -->
+
   <div class="container main clearfix"><!-- main content container -->
-
-
-
-<%= yield %>
-
-
-
+    <% flash.each do |key, value| %>
+      <div class="<%= key %>"><%= value %></div>
+    <% end %>
+    <%= yield %>
   </div><!-- /container-fluid -->
 </div><!-- /wrapper -->
+
 <div class="footer">
   <div class="container">
     <ul class="footer-links">
       <li><%=link_to("About", about_path)%></li>
-      <li><a href="mailto:hnlanswerseditors@honolulu.gov">Contact</a></li>
-      <li><a href="https://github.com/honolulu/honolulu_answers">Contribute</a></li>
+      <li><a href="mailto:<%= ENV['CONTACT_EMAIL'] %>">Contact</a></li>
+      <li><a href="<%= ENV['GITHUB_URL'] %>">Contribute</a></li>
       <li><%= link_to("Sign In", admin_dashboard_path) %></li>
+      <li><a href="https://trello.com/b/UY8F2Zwd" target="_blank">Pending Questions</li>
     </ul>
     <div class="cfa-logos">
       <a href="http://ixda.org/">
@@ -81,7 +95,7 @@
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '<%=ENV['GOOGLE_ANALYTICS_KEY']%>']);
   _gaq.push(['_trackPageview']);
-  
+
   (function() {
   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
@@ -89,5 +103,7 @@
   })();
 </script>
 
+  <!-- this should be the last line before </body> -->
+  <%= render :partial => "layouts/footer" %>
 </body>
 </html>

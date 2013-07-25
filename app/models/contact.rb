@@ -1,3 +1,14 @@
+#
+#
+# NOTE: As a last minute hack, the following fields are being reused instead of recreated.
+#
+# subname => emailaddress
+# department => address2
+#
+# The field labels have been changed in app/admin/contacts.rb
+#
+# -Andy
+#
 class Contact < ActiveRecord::Base
   default_scope order('name ASC')
 

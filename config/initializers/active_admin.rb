@@ -5,12 +5,12 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Honolulu Answers CMS"
-  
+  config.site_title = ENV["ACTIVE_ADMIN_SITE_TITLE"]
+
   # config.namespace :admin do |admin|
   #   admin.site_title = "Honolulu Answers Admin"
   # end
-  # 
+  #
   # config.namespace :editor do |editor|
   #   editor.site_title = "Honolulu Answers | Editor"
   # end
@@ -136,11 +136,9 @@ ActiveAdmin.setup do |config|
   #
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
-  
   config.clear_stylesheets!
   config.register_stylesheet 'active_admin_custom.css'
 
-  
 end
 ActiveAdmin::ResourceController.class_eval do
   protected
