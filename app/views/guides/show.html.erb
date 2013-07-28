@@ -14,7 +14,10 @@
       <div class="main-content">
         <!-- h3 class="content-type">< %= #@article.content_type %></h3 -->
         <div class="header">
-          <%= content_tag(:h1, @article.title ) %>
+          <h1>
+            <%= @article.title %>
+            <%= render :partial => "shared/twitter_share" %>
+          </h1>
         </div>
         <div class="content-text">
           
@@ -28,37 +31,6 @@ $(document).ready(function(){
   $("#vtabs").jVertTabs({
     equalHeights: true
   });
-  // $("#vtabs2").jVertTabs({
-  //   selected: 1
-  // });
-  // $("#vtabs3").jVertTabs({
-  //   select: function(index){
-  //     alert("You clicked tab " + index);
-  //   }
-  // });
-  // $("#vtabs4").jVertTabs();
-  // $("#vtabs5").jVertTabs({
-  //   equalHeights: true
-  // });
-  // $("#vtabs6").jVertTabs({
-  //   select: function(index){
-  //     alert("tab " + index + " opened.");
-  //   }
-  // });
-  // $("#vtabs6").jVertTabs('selected',3); // select 4th tab, 0-based.
-  // $("#vtabs7").jVertTabs({
-  //   selected: 1
-  // });
-  // $("#vtabs8").jVertTabs();
-  // $("#vtabs8").jVertTabs('selected',2); // select 3rd tab, 0-based.
-    
-  // add click events for open tab buttons
-  // $("input[id^=openTab]").each(function(index){
-  //   $(this).click(function(){
-  //     openTab("#vtabs6",index);
-  //     return false;
-  //   });
-  // }); 
   function openTab(tabId,index){
     $(tabId).jVertTabs('selected',index);
   }
