@@ -17,5 +17,6 @@
 //# = require jquery.ui.autocomplete
 //= jquery-jvert-tabs-1.1.4
 //= require mustache
-//= require_tree .
+//= require ./external_links_in_new_window
 //
+//= require_tree .
