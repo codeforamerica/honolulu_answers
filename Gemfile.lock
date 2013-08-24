@@ -356,7 +356,7 @@ DEPENDENCIES
   progressbar
   rails (= 3.2.14)
   rails-erd
-  rollbar
+  rollbar (~> 0.10.11)
   rspec-rails (>= 2.10.1)
   ruby-prof (~> 0.12.2)
   sass-rails (~> 3.2.5)
