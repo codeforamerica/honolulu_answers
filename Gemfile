@@ -22,7 +22,7 @@ gem 'facets', :require => false           # Some extra methods for ruby
 gem 'seed_dump'                           # Adds a rake task which constructs a db/seeds.rb file based on the current database state.  Super useful!
 gem 'jquery-ui-rails'                     # Package jQuery for the Rails 3.1+ asset pipeline
 gem 'ruby-prof', '~>0.12.2'               # ruby profiler
-gem 'rollbar', '~> 0.10.11'               # SaaS to track exceptions
+gem 'rollbar', '~>0.10.11'               # SaaS to track exceptions
 ## SEO
 gem 'meta-tags', :require => 'meta_tags'  # Search Engine Optimization (SEO) plugin for Ruby on Rails applications.
 
