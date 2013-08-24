@@ -233,6 +233,8 @@ GEM
     ref (1.0.2)
     responders (0.9.3)
       railties (~> 3.1)
+    rollbar (0.10.11)
+      multi_json (~> 1.5)
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
@@ -354,6 +356,7 @@ DEPENDENCIES
   progressbar
   rails (= 3.2.14)
   rails-erd
+  rollbar (~> 0.10.11)
   rspec-rails (>= 2.10.1)
   ruby-prof (~> 0.12.2)
   sass-rails (~> 3.2.5)
