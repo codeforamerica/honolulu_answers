@@ -14,7 +14,10 @@
       <div class="main-content">
         <h3 class="content-type"><%= @article.class.to_s.split(/(?=[A-Z])/).join(' ') %></h3>
         <div class="header">
-          <%= content_tag(:h1, @article.title ) %>
+          <h1>
+            <%= @article.title %>
+            <%= render :partial => "shared/twitter_share" %>
+          </h1>
         </div>
         <div class="content-text">
           <% unless @article.service_url.blank? %>

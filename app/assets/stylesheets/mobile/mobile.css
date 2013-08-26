@@ -132,7 +132,7 @@ div.article h1{
   font-size:32px;
   color:#333;
   font-weight:normal;
-  display: inline;
+  display: inline-block;
 }
 
 .disclaimer {
