@@ -32,11 +32,4 @@ class ArticlesController < ApplicationController
     @articles = Article.find_by_type(@article_type)
   end
 
-  #TODO can we just delete this now?
-  def missing
-    if :id > 15
-      render :layout => 'missing'
-    end
-  end
-
 end
