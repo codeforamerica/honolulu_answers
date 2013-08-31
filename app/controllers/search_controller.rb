@@ -27,32 +27,4 @@ class SearchController < ApplicationController
       format.html
     end
   end
-
-  def spell_check
-    string = params[:string]
-
-    # set up the en_US and custom dictionaries
-    dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/en_US", 'en_US' )
-    dict_custom = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/blank", 'blank' )
-    Keyword.all(:select => 'name').each do |kw|
-      dict_custom.add kw.name
-    end
-    stop_words.each{ |sw| dict_custom.add(sw) }
-
-    # perform the spell check
-    string_corrected = string.split.map do |word|
-      if dict.spell(word) or dict_custom.spell(word) # word is correct
-        word
-      else
-        suggestion = dict_custom.suggest( word ).first
-        suggestion.nil? ? word : suggestion
-      end
-    end
-
-
-    respond_to do |format|
-      format.json { render :json => string_corrected.join(' ') }
-    end
-  end
-  
 end

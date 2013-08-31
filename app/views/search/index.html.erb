@@ -1,10 +1,3 @@
-<script>
-$(document).ready(function () {
-  $.get("search/spell_check.json?string='<%=j @query %>'", function(data) {
-    $('#sug').append(data.responseText);
-  });
-});
-</script>
 <% set_meta_tags :description => "Search results for #{@query}.", :canonical => "http://answers.honolulu.gov#{request.fullpath}", :title => "Search results for #{@query}." %>
 <div class="page-container search">
   <div class="row">
