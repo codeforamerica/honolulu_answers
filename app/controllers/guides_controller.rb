@@ -4,9 +4,9 @@ class GuidesController < ApplicationController
 
     @article = Guide.find(params[:id])
 
-    return render(:template => 'articles/missing') unless @article.published?
+    authorize! :read, @article
     #redirection of old permalinks
-    if request.path != guide_path(@article)
+    if request.path != guide_path( @article )
       logger.info "Old permalink: #{request.path}"
       return redirect_to @article, status: :moved_permanently
     end

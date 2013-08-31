@@ -4,8 +4,7 @@ class WebServicesController < ApplicationController
 
     @article = WebService.find(params[:id])
 
-    # refuse to display unpublished articles
-    return render(:template => 'articles/missing') unless @article.published?
+    authorize! :read, @article
 
     #redirection of old permalinks
     if request.path != web_service_path(@article)
