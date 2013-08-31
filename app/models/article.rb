@@ -78,13 +78,12 @@ class Article < ActiveRecord::Base
   end
 
   def self.search( query )
-    return Article.all if query == '' or query == ' '
-    self.search_tank query
-  end
-
-  def self.search_titles( query )
-    return Article.all if query == '' or query == ' '
-    self.search_tank( '__type:Article', :conditions => {:title => query })
+    begin
+      self.search_tank query
+    rescue SocketError
+      logger.error "Could not communicate with IndexTank service"
+      []
+    end
   end
 
   def self.find_by_type( content_type )
@@ -194,7 +193,7 @@ class Article < ActiveRecord::Base
   def related
     Rails.cache.fetch("#{self.id}-related") {
       return [] if wordcounts.empty?
-      (Article.search_tank(self.wordcounts.all(:order => 'count DESC', :limit => 10).map(&:keyword).map(&:name).join(" OR ")) - [self]).first(4)
+      (Article.search(self.wordcounts.all(:order => 'count DESC', :limit => 10).map(&:keyword).map(&:name).join(" OR ")) - [self]).first(4)
     }
   end
 
