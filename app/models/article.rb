@@ -22,7 +22,6 @@ class Article < ActiveRecord::Base
   has_many :keywords, :through => :wordcounts
 
   scope :by_access_count, order('access_count DESC')
-  scope :with_category, lambda { |category| where('categories.name = ?', category).joins(:category) }
 
   has_attached_file :author_pic,
     :storage => :s3,
@@ -68,15 +67,6 @@ class Article < ActiveRecord::Base
     !render_markdown
   end
 
-  def self.find_by_friendly_id( friendly_id )
-    begin
-      find( friendly_id )
-    rescue ActiveRecord::RecordNotFound => e
-      Rails.logger.debug e.to_s
-      nil
-    end
-  end
-
   def self.search( query )
     begin
       self.search_tank query
@@ -90,26 +80,15 @@ class Article < ActiveRecord::Base
     return Article.where(:type => content_type).order('category_id').order('access_count DESC')
   end
 
-  # legacy
-  def allContent()
-    [self.title, self.content].join(" ")
-  end
-
   def to_s
     if self.category
       "#{self.title} (#{self.id}) [#{self.category}]"
     else
     end
   end
-  
+
   def published?
     status == "Published"
-  end
-
-  # TODO do not perform article analysis (`qm_after_update`) when the status field changes.
-  def publish
-    self.status = 'Published'
-    save
   end
 
   def md_to_html( field )
@@ -120,15 +99,6 @@ class Article < ActiveRecord::Base
   def raw_md_to_html( field )
     return '' if field.to_s.blank?
     Kramdown::Document.new( field.to_s, :auto_ids => false).to_html
-  end
-
-  def content_to_markdown
-    Markdownifier.new.html_to_markdown( self.content )
-  end
-  
-  # legacy
-  def content_md_to_html
-    BlueCloth.new(self.content_md).to_html
   end
 
   def self.remove_stop_words string
@@ -201,21 +171,9 @@ class Article < ActiveRecord::Base
     self.status == "Published"
   end
 
-  def hits
-    self.access_count
-  end
-
   def analyse
     qm_after_create
   end
-
-  def self.analyse_all
-    Article.all.each { |a| a.analyse }
-  end
-
-
-  #protected
-
 
   def set_access_count_if_nil
     self.access_count = 0 if self.access_count.nil?

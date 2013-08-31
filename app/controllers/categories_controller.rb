@@ -28,8 +28,4 @@ class CategoriesController < ApplicationController
       format.json { render json: @category }
     end
   end
-
-  def missing
-    render :layout => 'missing'
-  end
 end
