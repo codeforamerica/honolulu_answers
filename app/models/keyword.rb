@@ -26,22 +26,6 @@ class Keyword < ActiveRecord::Base
     self.save
   end
 
-  def self.create_all( words )
-    words.each { |word| create(:name => word )}
-  end
-
-
-  private
-
-  # def stem string
-  # end
-
-  # def metaphone string
-  # end
-
-  # def synonyms
-  # end
-
 end
 # == Schema Information
 #

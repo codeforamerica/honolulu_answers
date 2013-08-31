@@ -12,10 +12,6 @@ class Category < ActiveRecord::Base
 
   private
 
-  def hits
-    self.access_count
-  end
-
   def set_access_count_if_nil
     self.access_count = 0 if self.access_count.nil?
   end
