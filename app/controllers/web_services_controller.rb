@@ -1,15 +1,15 @@
 class WebServicesController < ApplicationController
-  
+
   def show
     return render(:template => 'articles/missing') unless WebService.exists? params[:id]
-    
+
     @article = WebService.find(params[:id])
 
     # refuse to display unpublished articles
     return render(:template => 'articles/missing') unless @article.published?
 
     #redirection of old permalinks
-    if request.path != web_service_path( @article )
+    if request.path != web_service_path(@article)
       logger.info "Old permalink: #{request.path}"
       return redirect_to @article, status: :moved_permanently
     end
@@ -24,16 +24,14 @@ class WebServicesController < ApplicationController
       render :show_html and return
     end
 
-    @content_main =  @article.md_to_html( :content_main )
-    @content_main_extra = @article.md_to_html( :content_main_extra )
-    @content_need_to_know =  @article.md_to_html( :content_need_to_know )
-
+    @content_main =  @article.md_to_html(:content_main)
+    @content_main_extra = @article.md_to_html(:content_main_extra)
+    @content_need_to_know =  @article.md_to_html(:content_need_to_know)
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @article }
-    end    
-  end	
+    end
+  end
 
-  
 end

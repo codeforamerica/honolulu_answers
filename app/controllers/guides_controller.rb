@@ -6,7 +6,7 @@ class GuidesController < ApplicationController
 
     return render(:template => 'articles/missing') unless @article.published?
     #redirection of old permalinks
-    if request.path != guide_path( @article )
+    if request.path != guide_path(@article)
       logger.info "Old permalink: #{request.path}"
       return redirect_to @article, status: :moved_permanently
     end
@@ -24,7 +24,7 @@ class GuidesController < ApplicationController
       render :show_html and return
     end
 
-    @content_main = @article.md_to_html( @article.content )
+    @content_main = @article.md_to_html(@article.content)
 
     respond_to do |format|
       format.html # show.html.erb
