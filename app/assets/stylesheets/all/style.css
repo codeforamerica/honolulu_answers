@@ -2,11 +2,10 @@
 /* Boostrap Scaffolding Included in asset pipeliene */
 
 /* Font-Face Declarations */
-@import url(http://fonts.googleapis.com/css?family=Satisfy);
-@import url(http://fonts.googleapis.com/css?family=Oswald);
-/*@import url(https://github.com/theleagueof/league-gothic/blob/master/LeagueGothic-Regular.otf?raw=true);*/
-@import url(http://fonts.googleapis.com/css?family=News+Cycle);
-@import url(http://fonts.googleapis.com/css?family=Archivo+Narrow);
+@import url(https://fonts.googleapis.com/css?family=Satisfy);
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+@import url(https://fonts.googleapis.com/css?family=News+Cycle);
+@import url(https://fonts.googleapis.com/css?family=Archivo+Narrow);
 
 
 /* CSS Reset - Eric Meyer */
