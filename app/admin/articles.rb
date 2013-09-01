@@ -64,20 +64,3 @@ ActiveAdmin.register Article do
   end
 
 end
-# == Schema Information
-#
-# Table name: articles
-#
-#  id           :integer         not null, primary key
-#  updated      :datetime
-#  title        :string(255)
-#  content      :text
-#  created_at   :datetime        not null
-#  updated_at   :datetime        not null
-#  category     :string(255)
-#  content_type :integer
-#  preview      :text
-#  contact_id   :integer
-#  tags         :text
-#  service_url  :string(255)
-#
