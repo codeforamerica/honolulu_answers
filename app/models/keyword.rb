@@ -4,7 +4,6 @@ class Keyword < ActiveRecord::Base
   serialize :synonyms, Array
 
   has_many :wordcounts
-  #  TODO: set this via metaprogramming for whatever the AR model is called that has keywords.
   has_many :articles, :through => :wordcounts
 
   after_create :analyse

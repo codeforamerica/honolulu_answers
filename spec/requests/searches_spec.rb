@@ -1,8 +1,5 @@
 require 'spec_helper'
 
-# TODO: change this so that instead of hardcoding variations, use regex.  
-# THEN: refactor so there's a more logical and DRY structure
-
 describe "Searches" do
 
   describe "index.html.erb the search results page" do

@@ -15,7 +15,6 @@ ActiveAdmin.register Contact do
     default_actions # Add show, edit, delete column
   end
 
-  # FIXME: not working
   show :title => proc { contact.name } do
   end
 

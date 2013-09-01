@@ -2,13 +2,11 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
 
-  # caches_page :show # TODO: make the cache expire when an article is updated.  Currently can't get the cache to clear properly.
-
   def index
     @bodyclass = "results"
-  
+
     @categories = Category.by_access_count
-    
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @categories }
@@ -22,7 +20,6 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     return redirect_to @article, status: :moved_permanently
   end
-  
 
   def article_type
     @article_type = params[:content_type]
