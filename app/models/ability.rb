@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
 
-    @articles = [QuickAnswer, WebService, Guide]
+  articles = [QuickAnswer, WebService, Guide]
 
     can :read, :all
 
@@ -12,12 +12,12 @@ class Ability
     end
 
     if user.is_editor
-      can :manage, @articles + [Category, Contact, GuideStep]
+      can :manage, articles + [Category, Contact, GuideStep]
     end
 
     if user.is_writer
-      can :create, @articles + [Category, Contact, GuideStep]
-      can [:update, :destroy], @articles, status: "Draft", user_id: user.id
+      can :create, articles + [Category, Contact, GuideStep]
+      can [:update, :destroy], articles, status: "Draft", user_id: user.id
       can [:update, :destroy], GuideStep, guide: { user_id: user.id, status: "Draft" }
     end
 
