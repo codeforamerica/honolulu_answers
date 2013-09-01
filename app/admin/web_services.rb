@@ -2,9 +2,9 @@ ActiveAdmin.register WebService do
   # as per https://github.com/gregbell/active_admin/wiki/Enforce-CanCan-constraints
   controller do
     load_and_authorize_resource :except => :index
-      def scoped_collection
-        end_of_association_chain.accessible_by(current_ability)
-      end
+    def scoped_collection
+      end_of_association_chain.accessible_by(current_ability)
+    end
    end
 
   # Add to :parent Dropdown menu
@@ -18,7 +18,6 @@ ActiveAdmin.register WebService do
 
   # View
   index do
-    #column :id
     column "Web Service Title", :title do |article|
       link_to article.title, [:admin, article]
     end
@@ -32,13 +31,10 @@ ActiveAdmin.register WebService do
         (article.user.try(:email) || "")
       end
     end
-    # column :tags
     column :slug
     column "Status", :status
     default_actions # Add show, edit, delete column
   end
-  
+
   form :partial => "shared/admin/article_form"
-
-
 end

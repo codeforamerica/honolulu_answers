@@ -1,13 +1,10 @@
 ActiveAdmin.register User do
-
   menu :if => proc{ current_user.is_admin? || current_user.is_editor? }, :label => 'Users'
 
-  # This will authorize the Foobar class
   # The authorization is done using the AdminAbility class
   controller.authorize_resource
 
-    index do # Display only specific article db columns
-      #column :id
+    index do
       column :email
       column :is_admin
       column :is_editor
@@ -16,7 +13,7 @@ ActiveAdmin.register User do
       default_actions # View/Edit/Delete column
     end
 
-    form do |f|   # create/edit user form
+    form do |f|
       f.inputs "User Details" do
         f.input :email
         f.input :password
@@ -47,6 +44,5 @@ ActiveAdmin.register User do
     }
     member_action :create, :method => :post, &create_or_edit
     member_action :update, :method => :put, &create_or_edit
-
 
 end
