@@ -1,4 +1,5 @@
 <% set_meta_tags :description => "Find answers to your questions about Honolulu City Services." %>
+
 <div class="modal-container span8">
   <div class="main-modal">
     <div id="welcome-line-l"></div>
@@ -14,11 +15,13 @@
       <div class="triangle-r"></div>
       <div class="ribbon-wrapper">
         <form id="search" action="search" name="search" method="get">
-          <input type="text" name="q" id="query" title='query' placeholder="Try driver license, jobs, or registration...">
-          <input class="btn-search" id="home-search" type="submit" value="SEARCH" title="Search">
+          <input type="text" name="q" id="query" title='query'
+            placeholder="Try driver license, jobs, or registration...">
+          <input class="btn-search" id="home-search" type="submit" value="SEARCH"
+            title="Search">
         </form>
       </div>
-    </div><!-- /ribbon-wrapper -->
+    </div>
 
     <div class="popular">
       <div class="pop-heading">
@@ -27,9 +30,7 @@
       <div class="pop-categories">
         <%= render :partial => 'home/category', :collection => @popular_categories %>
       </div>
-    </div><!-- /popular -->
+    </div>
 
   </div><!-- /main-modal -->
 </div><!-- /modal-container -->
-
-<!--<%= render :partial => 'shared/autocomplete' %>-->
