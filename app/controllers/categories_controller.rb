@@ -11,6 +11,7 @@ class CategoriesController < ApplicationController
 
   def show
     return render(:template => 'categories/missing') unless Category.exists? params[:id]
+    @bodyclass = "results"
 
     @category = Category.find(params[:id])
     # redirection of old permalinks
@@ -20,9 +21,6 @@ class CategoriesController < ApplicationController
     end
 
     @category.delay.increment! :access_count
-
-    @content_html = BlueCloth.new(@category.name).to_html
-    @bodyclass = "results"
 
     respond_to do |format|
       format.html # show.html.erb
