@@ -4,7 +4,7 @@ namespace :admin do
   task :analysemodels => :environment do
     pbar = ProgressBar.new("Please wait...", Article.count)
     Article.all.each do |article|
-      article.analyse
+      article.analyse_now
       pbar.inc
     end
   end
