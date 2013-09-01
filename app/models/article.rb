@@ -1,7 +1,7 @@
 # encoding: utf-8
 include ActionView::Helpers::SanitizeHelper
 
-class Article < ActiveRecord::Base  
+class Article < ActiveRecord::Base
   include TankerArticleDefaults
   include Tanker
   include RailsNlp
@@ -39,9 +39,9 @@ class Article < ActiveRecord::Base
   validates_presence_of :access_count
 
   attr_accessible :title, :content, :content_md, :content_main, :content_main_extra,
-    :content_need_to_know, :render_markdown, :preview, :contact_id, :tags, 
+    :content_need_to_know, :render_markdown, :preview, :contact_id, :tags,
     :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic,
-    :author_pic_file_name, :author_pic_content_type, :author_pic_file_size, 
+    :author_pic_file_name, :author_pic_content_type, :author_pic_file_size,
     :author_pic_updated_at, :author_name, :author_link, :type, :service_url, :user_id, :status
 
   # A note on the content fields:
@@ -50,7 +50,7 @@ class Article < ActiveRecord::Base
   # *  Most recently, the QuickAnswers were split into three distinct sections: content_main, content_main_extra and content_need_to_know. All these use Markdown.
 
   # Tanker callbacks to update the search index
-  after_save :update_tank_indexes 
+  after_save :update_tank_indexes
   after_destroy :delete_tank_indexes
 
   handle_asynchronously :update_tank_indexes
@@ -105,7 +105,7 @@ class Article < ActiveRecord::Base
     eng_stop_list = Rails.cache.fetch('stop_words') do
       CSV.read( "#{Rails.root.to_s}/lib/assets/eng_stop.csv" )
     end
-    string = (string.downcase.split - eng_stop_list.flatten).join " "    
+    string = (string.downcase.split - eng_stop_list.flatten).join " "
   end
 
   def self.spell_check string
@@ -119,7 +119,7 @@ class Article < ActiveRecord::Base
       CSV.read( "lib/assets/eng_stop.csv" ).flatten
     end
     stop_words.each{ |sw| dict_custom.add sw }
-   
+
     string_corrected = string.split.map do |word|
       if dict.spell(word) or dict_custom.spell(word) # word is correct
         word
@@ -137,7 +137,7 @@ class Article < ActiveRecord::Base
     query.split.each do |term|
       # try and hit the database first, only compute stuff if we have to
       kw = Keyword.find_by_name(term)
-      if kw 
+      if kw
         stems << kw.stem
         metaphones << kw.metaphone.compact
         # synonyms << kw.synonyms.first(3)
@@ -221,12 +221,12 @@ class Article < ActiveRecord::Base
     words = words.split
     words = words - @@STOP_WORDS
 
-    # Ruby Facets - http://www.webcitation.org/69k1oBjmR    
+    # Ruby Facets - http://www.webcitation.org/69k1oBjmR
     return words.frequency
   end
 
   def delete_orphaned_keywords
-    orphan_kw_ids = Keyword.all( :select => 'id' ).map{ |kw| kw.id } - 
+    orphan_kw_ids = Keyword.all( :select => 'id' ).map{ |kw| kw.id } -
       Wordcount.all( :select => 'keyword_id' ).map{ |wc| wc.keyword_id }
     Keyword.destroy( orphan_kw_ids )
   end
@@ -253,7 +253,7 @@ class Article < ActiveRecord::Base
     rescue => e
       puts "ERROR: error after article creation; could not update keywords and wordcounts for article with id #{self.try(:id)}"
       puts e.message
-      puts e.backtrace 
+      puts e.backtrace
     end
   end
   handle_asynchronously :qm_after_create
@@ -270,7 +270,7 @@ class Article < ActiveRecord::Base
     rescue => e
       puts "ERROR: error after article update; could not update keywords and wordcounts for article with id #{self.id unless self.id.blank?}"
       puts e.message
-      puts e.backtrace 
+      puts e.backtrace
     end
   end
   handle_asynchronously :qm_after_update
@@ -284,7 +284,7 @@ class Article < ActiveRecord::Base
     rescue => e
       puts "ERROR: error after article destruction; could not update keywords and wordcounts for article with id #{self.id unless self.id.blank?}"
       puts e.message
-      puts e.backtrace 
+      puts e.backtrace
     end
   end
   handle_asynchronously :qm_after_destroy
