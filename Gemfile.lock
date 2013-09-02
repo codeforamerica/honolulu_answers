@@ -78,7 +78,6 @@ GEM
     commonjs (0.2.6)
     daemons (1.1.9)
     dalli (2.6.0)
-    database_cleaner (0.9.1)
     delayed_job (3.0.4)
       activesupport (~> 3.0)
     delayed_job_active_record (0.3.3)
@@ -113,10 +112,6 @@ GEM
     guard-rspec (2.3.3)
       guard (>= 1.1)
       rspec (~> 2.11)
-    guard-spork (1.4.1)
-      childprocess (>= 0.2.3)
-      guard (>= 1.1)
-      spork (>= 0.8.4)
     has_scope (0.5.1)
     hike (1.2.3)
     httparty (0.10.0)
@@ -264,10 +259,6 @@ GEM
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
     slop (3.3.3)
-    spork (1.0.0rc3)
-    spork-rails (3.2.1)
-      rails (>= 3.0.0, < 3.3.0)
-      spork (>= 1.0rc0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -312,14 +303,12 @@ DEPENDENCIES
   capybara-webkit
   coffee-rails (~> 3.2.1)
   dalli
-  database_cleaner
   delayed_job_active_record
   devise (~> 2.0)
   facets
   factory_girl_rails
   friendly_id
   guard-rspec
-  guard-spork
   httparty
   hunspell-ffi
   jquery-ui-rails
@@ -343,7 +332,6 @@ DEPENDENCIES
   sextant
   shoulda
   simplecov
-  spork-rails
   sqlite3
   tanker
   test-unit

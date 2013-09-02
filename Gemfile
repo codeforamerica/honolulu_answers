@@ -60,8 +60,6 @@ group :test, :development do
   gem 'launchy'                           # Lets you 'save_and_open_page' in the middle of a test - opens up the browser and shows you the current state of the page
   gem 'guard-rspec'                       # Guard integratio for RSpec.  Guard monitors files and automatically and intelligently runs 'rspec spec' in the background
   gem 'factory_girl_rails'                # Create factories to test against
-  gem 'spork-rails'                       # Speeds up TDD by launching multiple Rails instances in the background
-  gem 'guard-spork'                       # Make guard aware of Spork - automatically restart spork if a change requires a rails restart
   gem 'capybara-webkit'                   # JS driver for Capybara (headless)
   gem 'memcached'                         # Local memcache
   gem 'sextant'                           # visit /rails/routes in the browser for nicer 'rake routes'
@@ -71,6 +69,5 @@ gem 'test-unit'                           # Remove at your peril.  Too many othe
 
 group :test do
   gem "sqlite3"                           # Use SQLite instead of PostgreSQL for tests
-  gem 'database_cleaner'                  # Purge the test database between test runs
   gem 'simplecov', :require => false      # Calculates code coverage and outputs info to html.
 end
