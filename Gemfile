@@ -47,7 +47,6 @@ group :assets do
   gem 'sass-rails', '~> 3.2.5'            # Rails support for Sass, a CSS extension language
   gem "meta_search", '>= 1.1.0.pre'       # Active_admin search for form_for
   gem 'uglifier', '>= 1.0.3'              # Squash down Javascript for speed
-  gem 'less-rails-bootstrap'              # Improves the Rails / Twitter Boostrap relationship by adding support for LESS, a CSS extension language
   gem 'coffee-rails', '~> 3.2.1'
   gem 'therubyracer'                      # Embeds the V8 Javascript interpreter into Ruby
 end
