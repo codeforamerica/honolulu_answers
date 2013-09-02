@@ -30,16 +30,3 @@ describe Keyword do
     its(:synonyms) { should eq(["illustration", "instance", "representative", "model", "exemplar", "good example", "deterrent example", "lesson", "object lesson", "case", "exercise", "admonition", "happening", "ideal", "information", "internal representation", "mental representation", "monition", "natural event", "occurrence", "occurrent", "representation", "warning", "word of advice"]) }
   end
 end
-# == Schema Information
-#
-# Table name: keywords
-#
-#  id         :integer         not null, primary key
-#  name       :string(255)
-#  metaphone  :string(255)
-#  stem       :string(255)
-#  synonyms   :text
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
-#
-

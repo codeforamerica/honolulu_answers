@@ -1,8 +1,0 @@
-<script type="text/javascript">
-$(document).ready(function(){
-    // let the form be 'indextank-aware'
-    $("#search").indextank_Ize("<%= ENV['SEARCHIFY_API_URL'] %>", "<%= ENV['SEARCHIFY_API_URL'] %>");
-    // let the query box have autocomplete
-    $("#query").indextank_Autocomplete({ fieldName: "tags" });
-});
-</script>

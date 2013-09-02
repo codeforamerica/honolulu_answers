@@ -1,3 +1,3 @@
 class QuickAnswer < Article
-	include TankerArticleDefaults
+  include TankerArticleDefaults
 end

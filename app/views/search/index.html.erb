@@ -1,11 +1,5 @@
-<script>
-$(document).ready(function () {
-  $.get("search/spell_check.json?string='<%=j @query %>'", function(data) {
-    $('#sug').append(data.responseText);
-  });
-});
-</script>
 <% set_meta_tags :description => "Search results for #{@query}.", :canonical => "http://answers.honolulu.gov#{request.fullpath}", :title => "Search results for #{@query}." %>
+
 <div class="page-container search">
   <div class="row">
     <div class="span9">
@@ -13,31 +7,34 @@ $(document).ready(function () {
         <div class="header">
           <h1>Search results for: &ldquo;<strong><%=@query%></strong>&rdquo;</h1>
 
-          <% if @query_corrected != @query %>
+          <% unless (@query_corrected == @query) || (@query_corrected.blank?) %>
             <div class="suggestion">
-              (Did you mean:"
-              <a href ='/search?q=<%= @query_corrected.gsub(/ /, '+') %>'>
-                <%=@query_corrected%>
-              </a>
-              "?)
+              Did you mean:"
+              <%= link_to @query_corrected, search_path(:q => @query_corrected) %>
+              "?
            </div>
           <% end %>
 
           <br/>
-       
-          <% if @results.blank? or @results.count == 0 %>
-            <p>Sorry, no results found for "<%=@query%>".  Please try rephrasing your search terms.</p>
+          <% if @results.blank? %>
+            <p>
+              Sorry, no results found for "<%=@query%>". Please try rephrasing
+              your search terms.
+            </p>
           <% else %>
             <ul>
               <% @results.each do |article| %>
                 <% next unless article.published? %>
                   <li class="article-listing">
-                    <%= content_tag( :h2, link_to( article.title, article_path(article.id) ) ) %>
+                    <h2>
+                      <%= link_to article.title, article_path(article.id) %>
+                    </h2>
                     <p class="preview"><%= article.preview %></p>
                   </li>
                 <% end %>
             </ul>
           <% end -%>
+
         </div>
       </div>
     </div>

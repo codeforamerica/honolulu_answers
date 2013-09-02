@@ -1,7 +1,7 @@
 # encoding: utf-8
 include ActionView::Helpers::SanitizeHelper
 
-class Article < ActiveRecord::Base  
+class Article < ActiveRecord::Base
   include TankerArticleDefaults
   include Tanker
   include RailsNlp
@@ -22,7 +22,6 @@ class Article < ActiveRecord::Base
   has_many :keywords, :through => :wordcounts
 
   scope :by_access_count, order('access_count DESC')
-  scope :with_category, lambda { |category| where('categories.name = ?', category).joins(:category) }
 
   has_attached_file :author_pic,
     :storage => :s3,
@@ -31,6 +30,7 @@ class Article < ActiveRecord::Base
       :access_key_id => ENV['S3_KEY'],
       :secret_access_key => ENV['S3_SECRET']
     },
+    :s3_protocol => :https,
     :path => "/:style/:id/:filename",
     :styles => { :thumb => "100x100" }
 
@@ -40,9 +40,9 @@ class Article < ActiveRecord::Base
   validates_presence_of :access_count
 
   attr_accessible :title, :content, :content_md, :content_main, :content_main_extra,
-    :content_need_to_know, :render_markdown, :preview, :contact_id, :tags, 
+    :content_need_to_know, :render_markdown, :preview, :contact_id, :tags,
     :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic,
-    :author_pic_file_name, :author_pic_content_type, :author_pic_file_size, 
+    :author_pic_file_name, :author_pic_content_type, :author_pic_file_size,
     :author_pic_updated_at, :author_name, :author_link, :type, :service_url, :user_id, :status
 
   # A note on the content fields:
@@ -51,7 +51,7 @@ class Article < ActiveRecord::Base
   # *  Most recently, the QuickAnswers were split into three distinct sections: content_main, content_main_extra and content_need_to_know. All these use Markdown.
 
   # Tanker callbacks to update the search index
-  after_save :update_tank_indexes 
+  after_save :update_tank_indexes
   after_destroy :delete_tank_indexes
 
   handle_asynchronously :update_tank_indexes
@@ -68,32 +68,17 @@ class Article < ActiveRecord::Base
     !render_markdown
   end
 
-  def self.find_by_friendly_id( friendly_id )
-    begin
-      find( friendly_id )
-    rescue ActiveRecord::RecordNotFound => e
-      Rails.logger.debug e.to_s
-      nil
-    end
-  end
-
   def self.search( query )
-    return Article.all if query == '' or query == ' '
-    self.search_tank query
-  end
-
-  def self.search_titles( query )
-    return Article.all if query == '' or query == ' '
-    self.search_tank( '__type:Article', :conditions => {:title => query })
+    begin
+      self.search_tank query
+    rescue SocketError
+      logger.error "Could not communicate with IndexTank service"
+      []
+    end
   end
 
   def self.find_by_type( content_type )
     return Article.where(:type => content_type).order('category_id').order('access_count DESC')
-  end
-
-  # legacy
-  def allContent()
-    [self.title, self.content].join(" ")
   end
 
   def to_s
@@ -102,15 +87,9 @@ class Article < ActiveRecord::Base
     else
     end
   end
-  
+
   def published?
     status == "Published"
-  end
-
-  # TODO do not perform article analysis (`qm_after_update`) when the status field changes.
-  def publish
-    self.status = 'Published'
-    save
   end
 
   def md_to_html( field )
@@ -123,20 +102,11 @@ class Article < ActiveRecord::Base
     Kramdown::Document.new( field.to_s, :auto_ids => false).to_html
   end
 
-  def content_to_markdown
-    Markdownifier.new.html_to_markdown( self.content )
-  end
-  
-  # legacy
-  def content_md_to_html
-    BlueCloth.new(self.content_md).to_html
-  end
-
   def self.remove_stop_words string
     eng_stop_list = Rails.cache.fetch('stop_words') do
       CSV.read( "#{Rails.root.to_s}/lib/assets/eng_stop.csv" )
     end
-    string = (string.downcase.split - eng_stop_list.flatten).join " "    
+    string = (string.downcase.split - eng_stop_list.flatten).join " "
   end
 
   def self.spell_check string
@@ -150,7 +120,7 @@ class Article < ActiveRecord::Base
       CSV.read( "lib/assets/eng_stop.csv" ).flatten
     end
     stop_words.each{ |sw| dict_custom.add sw }
-   
+
     string_corrected = string.split.map do |word|
       if dict.spell(word) or dict_custom.spell(word) # word is correct
         word
@@ -168,7 +138,7 @@ class Article < ActiveRecord::Base
     query.split.each do |term|
       # try and hit the database first, only compute stuff if we have to
       kw = Keyword.find_by_name(term)
-      if kw 
+      if kw
         stems << kw.stem
         metaphones << kw.metaphone.compact
         # synonyms << kw.synonyms.first(3)
@@ -194,7 +164,7 @@ class Article < ActiveRecord::Base
   def related
     Rails.cache.fetch("#{self.id}-related") {
       return [] if wordcounts.empty?
-      (Article.search_tank(self.wordcounts.all(:order => 'count DESC', :limit => 10).map(&:keyword).map(&:name).join(" OR ")) - [self]).first(4)
+      (Article.search(self.wordcounts.all(:order => 'count DESC', :limit => 10).map(&:keyword).map(&:name).join(" OR ")) - [self]).first(4)
     }
   end
 
@@ -202,21 +172,13 @@ class Article < ActiveRecord::Base
     self.status == "Published"
   end
 
-  def hits
-    self.access_count
-  end
-
   def analyse
     qm_after_create
   end
 
-  def self.analyse_all
-    Article.all.each { |a| a.analyse }
+  def analyse_now
+    qm_after_create_without_delay
   end
-
-
-  #protected
-
 
   def set_access_count_if_nil
     self.access_count = 0 if self.access_count.nil?
@@ -264,12 +226,12 @@ class Article < ActiveRecord::Base
     words = words.split
     words = words - @@STOP_WORDS
 
-    # Ruby Facets - http://www.webcitation.org/69k1oBjmR    
+    # Ruby Facets - http://www.webcitation.org/69k1oBjmR
     return words.frequency
   end
 
   def delete_orphaned_keywords
-    orphan_kw_ids = Keyword.all( :select => 'id' ).map{ |kw| kw.id } - 
+    orphan_kw_ids = Keyword.all( :select => 'id' ).map{ |kw| kw.id } -
       Wordcount.all( :select => 'keyword_id' ).map{ |wc| wc.keyword_id }
     Keyword.destroy( orphan_kw_ids )
   end
@@ -296,7 +258,7 @@ class Article < ActiveRecord::Base
     rescue => e
       puts "ERROR: error after article creation; could not update keywords and wordcounts for article with id #{self.try(:id)}"
       puts e.message
-      puts e.backtrace 
+      puts e.backtrace
     end
   end
   handle_asynchronously :qm_after_create
@@ -313,7 +275,7 @@ class Article < ActiveRecord::Base
     rescue => e
       puts "ERROR: error after article update; could not update keywords and wordcounts for article with id #{self.id unless self.id.blank?}"
       puts e.message
-      puts e.backtrace 
+      puts e.backtrace
     end
   end
   handle_asynchronously :qm_after_update
@@ -327,39 +289,9 @@ class Article < ActiveRecord::Base
     rescue => e
       puts "ERROR: error after article destruction; could not update keywords and wordcounts for article with id #{self.id unless self.id.blank?}"
       puts e.message
-      puts e.backtrace 
+      puts e.backtrace
     end
   end
   handle_asynchronously :qm_after_destroy
 
 end
-
-
-
-# == Schema Information
-#
-# Table name: articles
-#
-#  id                      :integer         not null, primary key
-#  updated                 :datetime
-#  title                   :string(255)
-#  content                 :text
-#  created_at              :datetime        not null
-#  updated_at              :datetime        not null
-#  content_type            :string(255)
-#  preview                 :text
-#  contact_id              :integer
-#  tags                    :text
-#  service_url             :string(255)
-#  is_published            :boolean         default(FALSE)
-#  slug                    :string(255)
-#  category_id             :integer
-#  access_count            :integer         default(0)
-#  author_pic_file_name    :string(255)
-#  author_pic_content_type :string(255)
-#  author_pic_file_size    :integer
-#  author_pic_updated_at   :datetime
-#  author_name             :string(255)
-#  author_link             :string(255)
-#
-
