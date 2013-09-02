@@ -3,20 +3,9 @@
 <!-- Allows the partial to be used for all form partials -->
 <% @article = @web_service || @quick_answer || @guide %>
 
-
 <% @button_name = @article.class.to_s.split(/(?=[A-Z])/).join('_').downcase %>
 
 <style type="text/css">
-/* Honolulu Answers CSS - V2 */
-/* Boostrap Scaffolding Included in asset pipeliene */
-
-/* Font-Face Declarations */
-/*@import url(http://fonts.googleapis.com/css?family=Satisfy);
-@import url(http://fonts.googleapis.com/css?family=Oswald);
-@import url(https://github.com/theleagueof/league-gothic/blob/master/LeagueGothic-Regular.otf?raw=true);
-@import url(http://fonts.googleapis.com/css?family=News+Cycle);
-@import url(http://fonts.googleapis.com/css?family=Archivo+Narrow);*/
-
 /* Removing outline border on active links (WCAG safe - active state links handled explicitly below) */
 .article a:focus, .article a:active { 
   outline: 0;
@@ -179,82 +168,73 @@
 }
 
 #wmd-preview-content em strong {
-    padding: 10px;
-    background-color: #D5E8F3;
-    line-height: 30px;
-    font-weight: normal;
-    font-style: normal;
-	margin-right: 20px;
-	margin-left: 20px;
-	margin-top: 14px;
-	display: block;
-	margin-bottom: 14px;
+  padding: 10px;
+  background-color: #D5E8F3;
+  line-height: 30px;
+  font-weight: normal;
+  font-style: normal;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 14px;
+  display: block;
+  margin-bottom: 14px;
 }
 
 #wmd-preview-content strong em {
-    padding: 10px;
-    background-color: #D5E8F3;
-    line-height: 30px;
-    font-weight: normal;
-    font-style: normal;
-	margin-right: 20px;
-	margin-left: 20px;
-	margin-top: 14px;
-	display: block;
-	margin-bottom: 14px;
+  padding: 10px;
+  background-color: #D5E8F3;
+  line-height: 30px;
+  font-weight: normal;
+  font-style: normal;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 14px;
+  display: block;
+  margin-bottom: 14px;
 }
 
 .commit{
-	display: inline;
-	margin: 12px;
-	list-style-type: none;
+  display: inline;
+  margin: 12px;
+  list-style-type: none;
 }
 
 form input[type="button"] {
-	background: #838A90;
-	background: -webkit-gradient(linear, left top, left bottom, from(#838A90), to(#414549));
-	background: -moz-linear-gradient(-90deg, #838A90, #414549);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#838a90, endColorstr=#414549);
-	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#838a90, endColorstr=#414549);
-	-webkit-border-radius: 200px;
-	-moz-border-radius: 200px;
-	border-radius: 200px;
-	text-shadow: #000 0 1px 0;
-	-webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1),0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-	box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1),0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-	border: solid 1px #484E53;
-	border-color: #484E53;
-	border-top-color: #616A71;
-	border-right-color: #484E53;
-	border-bottom-color: #363B3F;
-	border-left-color: #484E53;
-	color: #EFEFEF;
-	display: inline-block;
-	font-weight: bold;
-	font-size: 1.0em;
-	font-family: Helvetica, Arial, sans-serif;
-	line-height: 12px;
-	margin-right: 3px;
-	padding: 7px 16px 6px;
-	text-decoration: none;
-	-webkit-font-smoothing: antialiased;
-	cursor: pointer;
-	*display: inline;
-	_display: inline;
+  background: #838A90;
+  background: -webkit-gradient(linear, left top, left bottom, from(#838A90), to(#414549));
+  background: -moz-linear-gradient(-90deg, #838A90, #414549);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#838a90, endColorstr=#414549);
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#838a90, endColorstr=#414549);
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border-radius: 200px;
+  text-shadow: #000 0 1px 0;
+  -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1),0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1),0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  border: solid 1px #484E53;
+  border-color: #484E53;
+  border-top-color: #616A71;
+  border-right-color: #484E53;
+  border-bottom-color: #363B3F;
+  border-left-color: #484E53;
+  color: #EFEFEF;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.0em;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 12px;
+  margin-right: 3px;
+  padding: 7px 16px 6px;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+  *display: inline;
+  _display: inline;
 }
 
 </style>
 
 <script type="text/javascript">
-$(document).ready(function() {
-
-
-
-
-});
-</script>
-<script type="text/javascript">
-
 $(document).ready(function() {
 
   // instantiate pagedown 
@@ -296,9 +276,5 @@ $(document).ready(function() {
   }
   catch(e){}
 
-
 });
 </script>
-
-
-
