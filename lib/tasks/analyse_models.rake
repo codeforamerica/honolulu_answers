@@ -3,6 +3,8 @@ namespace :admin do
 
   task :analysemodels => :environment do
     pbar = ProgressBar.new("Please wait...", Article.count)
+    Keyword.destroy_all
+    Wordcount.destroy_all
     Article.all.each do |article|
       article.analyse_now
       pbar.inc
