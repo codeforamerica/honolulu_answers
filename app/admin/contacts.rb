@@ -1,6 +1,4 @@
 ActiveAdmin.register Contact do
-  # The authorization is done using the AdminAbility class
-  controller.authorize_resource
 
   # View
   index do

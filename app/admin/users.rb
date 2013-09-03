@@ -1,9 +1,6 @@
 ActiveAdmin.register User do
   menu :if => proc{ current_user.is_admin? || current_user.is_editor? }, :label => 'Users'
 
-  # The authorization is done using the AdminAbility class
-  controller.authorize_resource
-
     index do
       column :email
       column :is_admin
