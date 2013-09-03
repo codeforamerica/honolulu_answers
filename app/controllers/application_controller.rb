@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    render(:template => 'articles/missing')
+  end
+
 end
