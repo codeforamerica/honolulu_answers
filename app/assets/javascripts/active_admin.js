@@ -13,12 +13,4 @@ $(document).ready(function(){
     e.preventDefaults();
   });
 
-  var arrows = $(".guidearrow");
-  if(arrows.length){
-    setInterval(function(){
-      for(var a=0;a<arrows.length;a++){
-        $(arrows[a]).css({ "display": "inline" });
-      }
-    }, 250);
-  }
 });
