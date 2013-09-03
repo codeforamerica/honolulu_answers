@@ -1,5 +1,4 @@
 class QuickAnswersController < ApplicationController
-
   def show
     return render(:template => 'articles/missing') unless QuickAnswer.exists? params[:id]
 
