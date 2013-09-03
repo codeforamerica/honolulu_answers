@@ -71,8 +71,8 @@ class Article < ActiveRecord::Base
   def self.search( query )
     begin
       self.search_tank query
-    rescue SocketError
-      logger.error "Could not communicate with IndexTank service"
+    rescue Exception => exception
+      ErrorService.report(exception)
       []
     end
   end
