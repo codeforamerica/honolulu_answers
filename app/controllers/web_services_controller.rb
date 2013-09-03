@@ -1,5 +1,4 @@
 class WebServicesController < ApplicationController
-
   def show
     return render(:template => 'articles/missing') unless WebService.exists? params[:id]
 
@@ -33,5 +32,4 @@ class WebServicesController < ApplicationController
       format.json { render json: @article }
     end
   end
-
 end

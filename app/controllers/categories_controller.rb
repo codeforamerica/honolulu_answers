@@ -1,14 +1,4 @@
 class CategoriesController < ApplicationController
-  def index
-    @bodyclass = "results"
-
-    @categories = Category.by_access_count
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @categories }
-    end
-  end
-
   def show
     return render(:template => 'categories/missing') unless Category.exists? params[:id]
     @bodyclass = "results"
