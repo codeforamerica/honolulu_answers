@@ -1,4 +1,5 @@
       <div class="sidebar">  
+        <%= content_tag(:div, flash[:info], :class => "alert alert-info") if flash[:info] %>
         <% unless @article.contact.nil? %>
           <div class="sidebar-unit">
             <h4 class="side-head">NEED MORE INFO?</h4>
