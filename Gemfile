@@ -24,7 +24,7 @@ gem 'dalli'                               # memcache gem for Rails.cache
 gem 'kgio'                                # gives 20~30% performance boost to Dalli
 
 ## Admin
-gem 'activeadmin', '0.4.4'                # Back-end Content Management System
+gem 'activeadmin', '0.6.0'                # Back-end Content Management System
 gem 'devise', '~> 2.0'                    # User authentication
 gem 'cancan'                              # User permissions
 
