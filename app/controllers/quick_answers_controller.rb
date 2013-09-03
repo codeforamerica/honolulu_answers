@@ -16,6 +16,10 @@ class QuickAnswersController < ApplicationController
     @article.delay.increment! :access_count
     @article.delay.category.increment!(:access_count) if @article.category
 
+    unless @article.published?
+      flash.now[:info] = "This article has not been published."
+    end
+
     # handle old html articles
     unless @article.render_markdown
       @content_html = @article.content
