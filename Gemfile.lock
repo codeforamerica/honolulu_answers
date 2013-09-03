@@ -75,7 +75,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
-    commonjs (0.2.6)
     daemons (1.1.9)
     dalli (2.6.0)
     delayed_job (3.0.4)
@@ -138,13 +137,6 @@ GEM
     kramdown (0.14.1)
     launchy (2.1.2)
       addressable (~> 2.3)
-    less (2.2.2)
-      commonjs (~> 0.2.6)
-    less-rails (2.2.6)
-      actionpack (>= 3.1)
-      less (~> 2.2.0)
-    less-rails-bootstrap (2.2.0)
-      less-rails (~> 2.2.0)
     libv8 (3.11.8.13)
     libwebsocket (0.1.7.1)
       addressable
@@ -316,7 +308,6 @@ DEPENDENCIES
   kgio
   kramdown
   launchy
-  less-rails-bootstrap
   memcached
   meta-tags
   meta_search (>= 1.1.0.pre)
