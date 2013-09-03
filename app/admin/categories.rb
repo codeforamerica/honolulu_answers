@@ -32,9 +32,9 @@ ActiveAdmin.register Category do
 
           column "" do |article|
             if article.status == Article::PUBLISHED
-              link_to "View", article
+              link_to "Open", article
             else
-              "Draft"
+              link_to "Preview", article
             end
           end
 

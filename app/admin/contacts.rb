@@ -35,11 +35,12 @@ ActiveAdmin.register Contact do
               link_to( "Edit", admin_guide_path(article))
             end
           end
+
           column "" do |article|
             if article.status == Article::PUBLISHED
-              link_to "View", article
+              link_to "Open", article
             else
-              "Draft"
+              link_to "Preview", article
             end
           end
 
