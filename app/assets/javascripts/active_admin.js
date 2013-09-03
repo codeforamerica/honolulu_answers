@@ -6,10 +6,11 @@
 //= require ./Markdown.Extra.js
 
 $(document).ready(function(){
-  // Clicking Articles link on dashboard > open up context menu
-  $("a[href $= '/admin/articles']").attr("href","#");
-  $("a[href $= '#']").click(function(e){
-    $("a[href $= '#']").next().css({ "display": "block" });
+
+  // Prevent people from visiting the articles page
+  $("a[href $= '/admin/articles']").addClass('articles_link');
+  $(".articles_link").attr("href","#").click(function(e){
+    e.preventDefaults();
   });
 
   var arrows = $(".guidearrow");
