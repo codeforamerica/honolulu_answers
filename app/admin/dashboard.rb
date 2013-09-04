@@ -31,6 +31,19 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end if current_user.is_writer?
 
+        panel "Pending review" do
+          table_for Article.pending_review.order("created_at ASC") do
+            column "Article Title", :title do |article|
+              link_to article.title, [:admin, article]
+            end
+            column "Author", :user do |article|
+              article.user.try(:email)
+            end
+            column "Status", :status
+            column "Date Created", :created_at
+          end
+        end if current_user.is_editor?
+
         panel "Users" do
           table_for User.order("created_at DESC").limit(5) do
             column "User", :email do |user|
