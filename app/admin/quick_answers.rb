@@ -1,11 +1,4 @@
 ActiveAdmin.register QuickAnswer do
-  # as per https://github.com/gregbell/active_admin/wiki/Enforce-CanCan-constraints
-  controller do
-    load_and_authorize_resource :except => :index
-    def scoped_collection
-      end_of_association_chain.accessible_by(current_ability)
-    end
-   end
 
   # Add to :parent Dropdown menu
   menu :parent => "Articles"

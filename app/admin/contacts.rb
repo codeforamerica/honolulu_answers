@@ -1,6 +1,4 @@
 ActiveAdmin.register Contact do
-  # The authorization is done using the AdminAbility class
-  controller.authorize_resource
 
   # View
   index do
@@ -38,9 +36,9 @@ ActiveAdmin.register Contact do
             end
           end
           column "" do |article|
-            if article.status=="Published"
+            if article.status == Article::PUBLISHED
               link_to "View", article
-            else 
+            else
               "Draft"
             end
           end

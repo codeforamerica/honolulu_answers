@@ -17,8 +17,8 @@ class Ability
 
     if user.is_writer
       can :create, articles + [Category, Contact, GuideStep]
-      can [:update, :destroy], articles, :status => "Draft"
-      can [:update, :destroy], GuideStep, :guide =>  { status: "Draft" }
+      can [:update, :destroy], articles, :status => Article::DRAFT
+      can [:update, :destroy], GuideStep, :guide =>  { status: Article::DRAFT }
     end
 
   end

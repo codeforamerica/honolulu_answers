@@ -1,6 +1,4 @@
 ActiveAdmin.register Category do
-  # The authorization is done using the AdminAbility class
-  controller.authorize_resource
 
   # View
   index do
@@ -33,7 +31,7 @@ ActiveAdmin.register Category do
           end
 
           column "" do |article|
-            if article.status=="Published"
+            if article.status == Article::PUBLISHED
               link_to "View", article
             else
               "Draft"
