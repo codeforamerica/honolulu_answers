@@ -1,6 +1,6 @@
   <%= f.inputs "Administration", id: 'edit_article_admin' do %>
     <%= f.input :status, :as => :select,
-      :collection => ([@article.status] + ["Published", "Review by...", "Pending Review", "Draft"]).uniq,
+      :collection => Article::STATUS,
       :include_blank => false,
       :input_html => { :class => "cms_article_status" } %>
     <li class="select input optional" id="article_reviewer_input">

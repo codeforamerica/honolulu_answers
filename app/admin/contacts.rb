@@ -36,9 +36,9 @@ ActiveAdmin.register Contact do
             end
           end
           column "" do |article|
-            if article.status=="Published"
+            if article.status == Article::PUBLISHED
               link_to "View", article
-            else 
+            else
               "Draft"
             end
           end

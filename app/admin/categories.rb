@@ -31,7 +31,7 @@ ActiveAdmin.register Category do
           end
 
           column "" do |article|
-            if article.status=="Published"
+            if article.status == Article::PUBLISHED
               link_to "View", article
             else
               "Draft"
