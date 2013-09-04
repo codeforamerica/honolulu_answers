@@ -18,16 +18,6 @@ class GuidesController < ApplicationController
       flash.now[:info] = "This article has not been published."
     end
 
-    unless @article.render_markdown
-      @content_html = @article.content
-        hr = /<hr( \/)?>/
-        if @content_html.match hr
-          @content_html.gsub!(hr,"</div>")
-          @content_html = "<div class='quick_top'>" + @content_html
-        end
-      render :show_html and return
-    end
-
     @content_main = @article.md_to_html(@article.content)
 
     respond_to do |format|
