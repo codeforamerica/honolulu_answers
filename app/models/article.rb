@@ -22,6 +22,7 @@ class Article < ActiveRecord::Base
   has_many :keywords, :through => :wordcounts
 
   scope :by_access_count, order('access_count DESC')
+  scope :pending_review, where(:status => "Pending Review")
 
   has_attached_file :author_pic,
     :storage => :s3,
@@ -64,6 +65,12 @@ class Article < ActiveRecord::Base
 
   before_validation :set_access_count_if_nil
 
+  STATUS = [
+    DRAFT = "Draft",
+    PENDING_REVIEW = "Pending Review",
+    PUBLISHED = "Published"
+  ]
+
   def legacy?
     !render_markdown
   end
@@ -89,7 +96,15 @@ class Article < ActiveRecord::Base
   end
 
   def published?
-    status == "Published"
+    status == PUBLISHED
+  end
+
+  def pending_review?
+    status == PENDING_REVIEW
+  end
+
+  def draft?
+    status == DRAFT
   end
 
   def md_to_html( field )
@@ -169,7 +184,7 @@ class Article < ActiveRecord::Base
   end
 
   def indexable?
-    self.status == "Published"
+    status == PUBLISHED
   end
 
   def analyse
@@ -244,7 +259,7 @@ class Article < ActiveRecord::Base
   #   3) Create a new Wordcount row with :keyword_id => kw.id, :article_id => article.id and count as the frequency of the keyword in the article.
   def qm_after_create
     begin
-      if self.status == "Published"
+      if self.status == Article::PUBLISHED
         text = collect_text(
           :model => self,
           :fields => ['title','content_main','content_main_extra','content_need_to_know','preview','tags','category.name'])

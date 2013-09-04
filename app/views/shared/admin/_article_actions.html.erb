@@ -1,76 +1,85 @@
 <!-- editor actions -->
 <% if current_user.is_editor? %>
+  <%= f.inputs "Administration" do %>
+    <%= f.input :user, :label => "Writer" %>
+    <li>
+      <label class="label">Status</label>
+      <p>This article is in <%= article.status %> state.</p>
+    </li>
+  <% end %>
+  <fieldset class="buttons">
+    <ol>
+      <% if article.draft? %>
+        <li class="commit button">
+          <input class="update" type="submit" value="Update" />
+        </li>
+        <li class="commit button">
+          <input id="publish_btn" class="update" type="submit" value="Publish" />
+        </li>
+      <% elsif article.pending_review? %>
+        <li class="commit button">
+          <input class="update" type="submit" value="Update" />
+        </li>
+        <li class="commit button">
+          <input id="ask_revise_btn" class="update" type="submit" value="Ask Writer to Revise" />
+        </li>
+        <li class="commit button">
+          <input id="publish_btn" class="update" type="submit" value="Publish" />
+        </li>
+      <% elsif article.published? %>
+        <li class="commit button">
+          <input class="update" type="submit" value="Update" />
+        </li>
+        <li class="commit button">
+          <input id="unpublish_btn" class="update" type="submit" value="Unpublish" />
+        </li>
+      <% end %>
+    </ol>
+  </fieldset>
   <script type="text/javascript">
-    function statusToSave(){
-      // status does not change
-      if( typeof $("#isediting:checked").val() != "undefined" ){
-        // acting as an editor
-        $("select.cms_article_status").val("Review by <%= current_user.email %>");
-      }
-      else{
-        // acting as a writer
-        $("select.cms_article_status").val("Pending Review");
-      }
+    $('#ask_revise_btn').on("click", function(e) {
+      e.preventDefault();
+      $("select.cms_article_status").val("<%= Article::DRAFT %>");
       $("form")[0].submit();
-    }
-    function statusToRevise(){
-      // status changed from
-      $("select.cms_article_status").val("Draft");
+    });
+    $('#unpublish_btn').on("click", function(e) {
+      e.preventDefault();
+      $("select.cms_article_status").val("<%= Article::PENDING_REVIEW %>");
       $("form")[0].submit();
-    }
-    function statusToPublish(){
-      $("select.cms_article_status").val("Published");
+    });
+    $('#publish_btn').on("click", function(e) {
+      e.preventDefault();
+      $("select.cms_article_status").val("<%= Article::PUBLISHED %>");
       $("form")[0].submit();
-    }
+    });
   </script>
-  <h4>Are you editing or writing this article?</h4>
-  <label>
-    <input id="isediting" type="radio" name="role" value="editor" checked="checked"/>
-    I commit to editing
-  </label>
-  --
-  <label>
-    <input id="iswriting" type="radio" name="role" value="writer"/>
-    I am writing
-  </label>
-  <br/>
-  <br/>
-  <ol>
-    <li class="commit button">
-      <input type="button" value="Save" onclick="statusToSave();"/>
-    </li>
-    <li class="commit button">
-      <input type="button" value="Ask Writer to Revise" onclick="statusToRevise();"/>
-    </li>
-    <% if :status != "Draft"  %>
-      <li class="commit button">
-        <input type="button" value="Publish" onclick="statusToPublish();"/>
-      </li>
-    <% end %>
-  </ol>
 <% end %> <!-- editor actions -->
 
 <!-- writer actions -->
 <% if current_user.is_writer? %>
-  <script type="text/javascript">
-    function statusToSave(){
-      // status does not change
-      $("form")[0].submit();
-    }
-    function statusToReview(){
-      // status changed from draft to Pending Review
-      $("select.cms_article_status").val("Pending Review");
-      $("form")[0].submit();
-    }
-  </script>
+  <fieldset class="buttons">
   <ol>
     <li class="commit button">
-      <input type="button" value="Save Draft" onclick="statusToSave();"/>
+      <input id="save_draft_btn" class="update" type="submit" value="Save Draft" />
     </li>
     <li class="commit button">
-      <input type="button" value="Ready to Review" onclick="statusToReview();"/>
+      <input id="review_btn" class="update" type="submit" value="Ready to Review" />
     </li>
   </ol>
+  </fieldset>
+  <script type="text/javascript">
+    // status does not change
+    $('#save_draft_btn').on("click", function(e) {
+      e.preventDefault();
+      $("form")[0].submit();
+    });
+    // status changed from draft to Pending Review
+    $('#review_btn').on("click", function(e) {
+      e.preventDefault();
+      $("select.cms_article_status").val("<%= Article::PENDING_REVIEW %>");
+      $("form")[0].submit();
+    });
+  </script>
 <% end %> <!-- writer actions -->
 
 <!-- admin actions -->
