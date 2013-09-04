@@ -3,36 +3,6 @@
       :collection => Article::STATUS,
       :include_blank => false,
       :input_html => { :class => "cms_article_status" } %>
-    <li class="select input optional" id="article_reviewer_input">
-      <label class="label">Reviewer</label>
-      <select id="article_reviewer">
-        <% User.all.each do |u| %>
-          <option value="<%= u.email %>"><%=u.email%></option>
-        <% end %>
-      </select>
-    </li>
     <%= f.input :user, :label => "Writer" %>
   <% end %>
-  <script type="text/javascript">
-    $('li#article_reviewer_input').hide();
-    $('select.cms_article_status').change(function(ev) {
-      var selected = ev.delegateTarget.value;
-      if ( selected == "Review by...") {
-        $('li#article_reviewer_input').show();
-        var reviewer = $('select#article_reviewer').val()
-        updateStatusWithReviewer(reviewer);
-      } else {
-        $('li#article_reviewer_input').hide();
-      }
-    });
-    $('select#article_reviewer').change(function(ev) {
-      var reviewer = ev.delegateTarget.value;
-      updateStatusWithReviewer(reviewer);
-    })
-
-    function updateStatusWithReviewer(reviewer) {
-      var new_status = "Review by " + reviewer;
-      $('select.cms_article_status').append('<option value="' + new_status + '" selected="selected">' + new_status + '</option>')
-    }
-  </script>
 
