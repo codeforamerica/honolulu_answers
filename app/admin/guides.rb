@@ -25,7 +25,10 @@ ActiveAdmin.register Guide do
     end
     column :slug
     column "Status", :status
-    default_actions # Add show, edit, delete column
+    actions :defaults => true do |article|
+      show_on_site_text = article.published? ? "Open" : "Preview"
+      link_to show_on_site_text, article_path(article)
+    end
   end
 
   form :partial => "shared/admin/article_form"

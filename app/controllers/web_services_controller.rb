@@ -4,8 +4,7 @@ class WebServicesController < ApplicationController
 
     @article = WebService.find(params[:id])
 
-    # refuse to display unpublished articles
-    return render(:template => 'articles/missing') unless @article.published?
+    authorize! :read, @article
 
     #redirection of old permalinks
     if request.path != web_service_path(@article)
@@ -16,6 +15,10 @@ class WebServicesController < ApplicationController
     # basic statistics on how many times an article has been accessed
     @article.delay.increment! :access_count
     @article.delay.category.increment!(:access_count) if @article.category
+
+    unless @article.published?
+      flash.now[:info] = "This article has not been published."
+    end
 
   # handle old html articles
     unless @article.render_markdown
