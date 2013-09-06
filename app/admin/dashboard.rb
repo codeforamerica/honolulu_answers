@@ -44,6 +44,20 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end if current_user.is_editor?
 
+        panel "Legacy articles" do
+          table_for Article.where(:status => Article::PUBLISHED) do
+            column "Article Title", :title
+            column "Status", :status
+            column "" do |article|
+              show_on_site_text = article.published? ? "Open on site" : "Preview on site"
+              link_to show_on_site_text, article_path(article)
+            end
+            column "" do |article|
+              link_to "edit", [:admin, article]
+            end
+          end
+        end if current_user.is_admin?
+
         panel "Users" do
           table_for User.order("created_at DESC").limit(5) do
             column "User", :email do |user|
