@@ -770,6 +770,7 @@ a[href*="http"]:after {
 div.footer a[href*="http"]:after { content: none; }
 div.breadcrumbs a[href*="http"]:after { content: none; }
 div.servicebox a[href*="http"]:after { content: none; }
+div.about-page a[href*="http"]:after { content: none; }
 
 /* ABOUT PAGE */
 .container{margin-left:auto;margin-right:auto;*zoom:1;}.container:before,.container:after{display:table;content:"";}
