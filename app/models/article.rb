@@ -62,7 +62,8 @@ class Article < ActiveRecord::Base
     category.try(:name) || "Uncategorized"
   end
 
-  has_paper_trail :class_name => 'ArticleVersion'
+  has_paper_trail :class_name => 'ArticleVersion',
+    :ignore => [:access_count]
 
   def legacy?
     !render_markdown
