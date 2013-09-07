@@ -5,7 +5,6 @@ class Article < ActiveRecord::Base
   include TankerArticleDefaults
   include Tanker
   include RailsNlp
-  include Markdownifier
 
   require_dependency 'keyword'
 

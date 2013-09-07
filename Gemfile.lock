@@ -235,7 +235,7 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    seed_dump (0.4.2)
+    seed_dump (0.6.0)
     selenium-webdriver (2.27.2)
       childprocess (>= 0.2.5)
       libwebsocket (~> 0.1.3)
@@ -324,7 +324,7 @@ DEPENDENCIES
   rollbar (~> 0.10.11)
   rspec-rails (>= 2.10.1)
   sass-rails (~> 3.2.5)
-  seed_dump
+  seed_dump (~> 0.6.0)
   sextant
   shoulda
   simplecov
