@@ -11,7 +11,6 @@ gem 'thin'                                # Web server
 gem 'newrelic_rpm', :group => [:production, :staging, :development] # Rails analytics - see the Heroku addon
 gem 'progressbar'                         # Display progress bars in terminal output
 gem 'facets', :require => false           # Some extra methods for ruby
-gem 'seed_dump', '~> 0.6.0'               # Adds rake db:seed:dump to generate db/seeds.rb
 gem 'jquery-ui-rails'                     # Package jQuery for the Rails 3.1+ asset pipeline
 gem 'rollbar', '~>0.10.11'                # SaaS to track exceptions
 
@@ -62,6 +61,7 @@ group :test, :development do
   gem 'capybara-webkit'                   # JS driver for Capybara (headless)
   gem 'memcached'                         # Local memcache
   gem 'sextant'                           # visit /rails/routes in the browser for nicer 'rake routes'
+  gem 'seed_dump', '~> 0.6.0'             # Adds rake db:seed:dump to generate db/seeds.rb
 end
 
 gem 'test-unit'                           # Remove at your peril.  Too many other gems randomly depend on it.
