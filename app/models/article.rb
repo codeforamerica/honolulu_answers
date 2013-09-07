@@ -64,7 +64,8 @@ class Article < ActiveRecord::Base
 
   before_validation :set_access_count_if_nil
 
-  has_paper_trail :class_name => 'ArticleVersion'
+  has_paper_trail :class_name => 'ArticleVersion',
+    :ignore => [:access_count]
 
   STATUS = [
     DRAFT = "Draft",
