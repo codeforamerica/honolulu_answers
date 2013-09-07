@@ -28,9 +28,24 @@ ActiveRecord::Schema.define(:version => 20131001150637) do
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
+  create_table "article_versions", :force => true do |t|
+    t.string   "item_type",  :null => false
+    t.integer  "item_id",    :null => false
+    t.string   "event",      :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "article_versions", ["item_type", "item_id"], :name => "index_article_versions_on_item_type_and_item_id"
+
   create_table "articles", :force => true do |t|
     t.datetime "updated"
     t.string   "title"
+<<<<<<< HEAD
+=======
+    t.text     "content"
+>>>>>>> [#47] Initial integration with Papertrail - Articles now have versions
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.string   "content_type"
@@ -54,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20131001150637) do
     t.integer  "user_id"
     t.boolean  "published"
     t.boolean  "pending_review"
+    t.boolean  "draft"
   end
 
   add_index "articles", ["slug"], :name => "index_articles_on_slug"

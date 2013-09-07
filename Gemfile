@@ -13,6 +13,7 @@ gem 'progressbar'                         # Display progress bars in terminal ou
 gem 'facets', :require => false           # Some extra methods for ruby
 gem 'jquery-ui-rails'                     # Package jQuery for the Rails 3.1+ asset pipeline
 gem 'rollbar', '~>0.10.11'                # SaaS to track exceptions
+gem 'paper_trail', '~> 2.7'               # Versioning gem tracks changes to models
 
 ## SEO
 gem 'meta-tags', :require => 'meta_tags'  # Search Engine Optimization (SEO) plugin for Ruby on Rails applications.
