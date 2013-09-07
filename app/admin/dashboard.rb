@@ -45,7 +45,7 @@ ActiveAdmin.register_page "Dashboard" do
         end if current_user.is_editor?
 
         panel "Legacy articles" do
-          table_for Article.where(:status => Article::PUBLISHED) do
+          table_for Article.where(:render_markdown => false) do
             column "Article Title", :title
             column "Status", :status
             column "" do |article|
