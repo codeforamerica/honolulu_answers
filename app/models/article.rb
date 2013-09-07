@@ -110,6 +110,11 @@ class Article < ActiveRecord::Base
     status == DRAFT
   end
 
+  def latest_published_version
+    version = ArticleVersion.where(:item_id => id, :status => PUBLISHED).order('created_at DESC').first
+    version ? version.reify : self
+  end
+
   def md_to_html( field )
     return '' if instance_eval(field.to_s).blank?
     Kramdown::Document.new( instance_eval(field.to_s), :auto_ids => false).to_html

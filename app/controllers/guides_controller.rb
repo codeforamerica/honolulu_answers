@@ -2,7 +2,7 @@ class GuidesController < ApplicationController
   def show
     return render(:template => 'articles/missing') unless Guide.exists? params[:id]
 
-    @article = Guide.find(params[:id])
+    @article = Guide.find(params[:id]).latest_published_version
 
     authorize! :read, @article
     #redirection of old permalinks

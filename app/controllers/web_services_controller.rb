@@ -2,7 +2,7 @@ class WebServicesController < ApplicationController
   def show
     return render(:template => 'articles/missing') unless WebService.exists? params[:id]
 
-    @article = WebService.find(params[:id])
+    @article = WebService.find(params[:id]).latest_published_version
 
     authorize! :read, @article
 

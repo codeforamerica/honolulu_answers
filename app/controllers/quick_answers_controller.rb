@@ -2,7 +2,7 @@ class QuickAnswersController < ApplicationController
   def show
     return render(:template => 'articles/missing') unless QuickAnswer.exists? params[:id]
 
-    @article = QuickAnswer.find(params[:id])
+    @article = QuickAnswer.find(params[:id]).latest_published_version
 
     authorize! :read, @article
 
