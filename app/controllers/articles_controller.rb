@@ -3,7 +3,13 @@ class ArticlesController < ApplicationController
   def show
     return render(:template => 'articles/missing') unless Article.exists? params[:id]
     @article = Article.find(params[:id])
-    return redirect_to @article, status: :moved_permanently
+    redirect_to @article, status: :moved_permanently
+  end
+
+  def preview
+    return render(:template => 'articles/missing') unless Article.exists? params[:id]
+    @article = Article.find(params[:id])
+    redirect_to url_for([:preview, @article])
   end
 
   def article_type

@@ -10,11 +10,17 @@ Honoluluanswers::Application.routes.draw do
 
   resources :categories, :only => :show
 
-  # legacy, redirects to the appropriate specific resource
-  resources :articles, :only => [:show, :article_type]
+  # legacy, controller redirects to the appropriate specific resource
+  resources :articles, :only => [:show, :article_type] do
+    get 'preview', :on => :member
+  end
 
-  resources :quick_answers, :only => :show
+  resources :quick_answers, :only => :show do
+    get 'preview', :on => :member
+  end
+
   resources :web_services, :only => :show
   resources :guides, :only => :show
+
   match '/articles/article-type/:content_type' => "articles#article_type"
 end

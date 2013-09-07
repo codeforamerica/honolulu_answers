@@ -27,8 +27,11 @@ ActiveAdmin.register QuickAnswer do
     column :slug
     column "Status", :status
     actions :defaults => true do |article|
-      show_on_site_text = article.published? ? "Open" : "Preview"
-      link_to show_on_site_text, article_path(article)
+      if article.published?
+        link_to "Open", article_path(article)
+      else
+        link_to "Preview", preview_article_path(article)
+      end
     end
   end
 
