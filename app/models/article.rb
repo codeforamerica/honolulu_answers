@@ -63,7 +63,8 @@ class Article < ActiveRecord::Base
   end
 
   has_paper_trail :class_name => 'ArticleVersion',
-    :ignore => [:access_count]
+    :ignore => [:access_count],
+    :meta => { :status => :status }
 
   def legacy?
     !render_markdown

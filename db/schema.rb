@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20131001150637) do
     t.string   "whodunnit"
     t.text     "object"
     t.datetime "created_at"
+    t.string   "status"
   end
 
   add_index "article_versions", ["item_type", "item_id"], :name => "index_article_versions_on_item_type_and_item_id"
