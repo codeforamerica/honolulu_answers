@@ -12,8 +12,8 @@ class QuickAnswersController < ApplicationController
   def show
     return if check_article_exists(params[:id])
     @article = QuickAnswer.find(params[:id]).latest_published_version
-    return if redirect_old_permalinks(@article)
     authorize! :read, @article
+    return if redirect_old_permalinks(@article)
     increment_access_counts @article
     set_content_variables(@article)
     @article.legacy? ? render(:show_html) : render(:show)
@@ -27,7 +27,7 @@ class QuickAnswersController < ApplicationController
 
   def redirect_old_permalinks(article)
     if request.path != quick_answer_path(article)
-      redirect_to article_path(article), :status => :moved_permanently
+      redirect_to article, :status => :moved_permanently
     end
   end
 
