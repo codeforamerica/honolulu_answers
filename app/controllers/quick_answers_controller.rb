@@ -1,33 +1,41 @@
 class QuickAnswersController < ApplicationController
 
+  before_filter :check_article_exists
+  before_filter :find_article
+
   def preview
-    return if check_article_exists(params[:id])
-    @article = QuickAnswer.find(params[:id])
     authorize! :preview, @article
-    flash.now[:info] = "This is a preview of the article"
+    flash.now[:info] = @article.published? ? "Up to date" : "Changes have been made"
     set_content_variables(@article)
     @article.legacy? ? render(:show_html) : render(:show)
   end
 
   def show
-    return if check_article_exists(params[:id])
-    @article = QuickAnswer.find(params[:id]).latest_published_version
+    @article = @article.latest_published
     authorize! :read, @article
     return if redirect_old_permalinks(@article)
     increment_access_counts @article
     set_content_variables(@article)
+    flash[:info] = @article.status
     @article.legacy? ? render(:show_html) : render(:show)
   end
 
   private
 
-  def check_article_exists(article_id)
-    render(:template => 'articles/missing') unless Article.exists?(article_id)
+  def check_article_exists()
+    render(:template => 'articles/missing') unless Article.exists?(params[:id])
+    return
+  end
+
+  def find_article
+    @article = QuickAnswer.find(params[:id])
   end
 
   def redirect_old_permalinks(article)
-    if request.path != quick_answer_path(article)
-      redirect_to article, :status => :moved_permanently
+    correct_path = "/quick_answers/" << article.slug
+    flash[:info] = "Expected: #{correct_path}. Actual: #{request.path}"
+    if request.path != correct_path
+      redirect_to correct_path
     end
   end
 

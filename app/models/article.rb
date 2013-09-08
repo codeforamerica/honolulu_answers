@@ -110,9 +110,12 @@ class Article < ActiveRecord::Base
     status == DRAFT
   end
 
-  def latest_published_version
-    version = ArticleVersion.where(:item_id => id, :status => PUBLISHED).order('created_at DESC').first
-    version ? version.reify : self
+  def latest_published
+    if published?
+      self
+    else
+      ArticleVersion.reify_latest_version_where(:item_id => id, :status => PUBLISHED)
+    end
   end
 
   def md_to_html( field )
