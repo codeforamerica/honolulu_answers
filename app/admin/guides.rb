@@ -6,7 +6,6 @@ ActiveAdmin.register Guide do
   filter :title
   filter :tags
   filter :contact_id
-  filter :status
 
   # View 
   index do
@@ -24,7 +23,8 @@ ActiveAdmin.register Guide do
       end
     end
     column :slug
-    column "Status", :status
+    column :published
+    column :pending_review
     actions :defaults => true do |article|
       show_on_site_text = article.published? ? "Open" : "Preview"
       link_to show_on_site_text, article_path(article)
@@ -43,7 +43,8 @@ ActiveAdmin.register Guide do
       row :slug
       row :created_at
       row :updated_at
-      row :status
+      row :published
+      row :pending_review
       table_for guide.guide_steps do
         column "Guide Steps" do |step|
           link_to step.step.to_s << ". " << step.title, admin_guide_step_path(step)

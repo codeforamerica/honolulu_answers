@@ -7,7 +7,6 @@ ActiveAdmin.register QuickAnswer do
   filter :title
   filter :tags
   filter :contact_id
-  filter :status
 
   # View 
   index do
@@ -25,7 +24,8 @@ ActiveAdmin.register QuickAnswer do
       end
     end
     column :slug
-    column "Status", :status
+    column :published
+    column :pending_review
     actions :defaults => true do |article|
       show_on_site_text = article.published? ? "Open" : "Preview"
       link_to show_on_site_text, article_path(article)

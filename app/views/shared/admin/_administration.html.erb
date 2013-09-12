@@ -1,8 +1,6 @@
   <%= f.inputs "Administration", id: 'edit_article_admin' do %>
-    <%= f.input :status, :as => :select,
-      :collection => Article::STATUS,
-      :include_blank => false,
-      :input_html => { :class => "cms_article_status" } %>
+    <%= f.input :published %>
+    <%= f.input :pending_review %>
     <%= f.input :user, :label => "Writer" %>
   <% end %>
 

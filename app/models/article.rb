@@ -21,7 +21,7 @@ class Article < ActiveRecord::Base
   has_many :keywords, :through => :wordcounts
 
   scope :by_access_count, order('access_count DESC')
-  scope :pending_review, where(:status => "Pending Review")
+  scope :pending_review, where(:pending_review => true)
 
   has_attached_file :author_pic,
     :storage => :s3,
@@ -43,7 +43,7 @@ class Article < ActiveRecord::Base
     :content_need_to_know, :render_markdown, :preview, :contact_id, :tags,
     :is_published, :slugs, :category_id, :updated_at, :created_at, :author_pic,
     :author_pic_file_name, :author_pic_content_type, :author_pic_file_size,
-    :author_pic_updated_at, :author_name, :author_link, :type, :service_url, :user_id, :status
+    :author_pic_updated_at, :author_name, :author_link, :type, :service_url, :user_id
 
   # A note on the content fields:
   # *  Originally the content for the articles was stored as HTML in Article#content.
@@ -63,12 +63,6 @@ class Article < ActiveRecord::Base
   after_destroy :qm_after_destroy
 
   before_validation :set_access_count_if_nil
-
-  STATUS = [
-    DRAFT = "Draft",
-    PENDING_REVIEW = "Pending Review",
-    PUBLISHED = "Published"
-  ]
 
   def legacy?
     !render_markdown
@@ -95,15 +89,15 @@ class Article < ActiveRecord::Base
   end
 
   def published?
-    status == PUBLISHED
+    published
   end
 
   def pending_review?
-    status == PENDING_REVIEW
+    pending_review
   end
 
   def draft?
-    status == DRAFT
+    !(pending_review || published)
   end
 
   def md_to_html( field )
@@ -183,7 +177,7 @@ class Article < ActiveRecord::Base
   end
 
   def indexable?
-    status == PUBLISHED
+    published?
   end
 
   def analyse
@@ -258,7 +252,7 @@ class Article < ActiveRecord::Base
   #   3) Create a new Wordcount row with :keyword_id => kw.id, :article_id => article.id and count as the frequency of the keyword in the article.
   def qm_after_create
     begin
-      if self.status == Article::PUBLISHED
+      if published?
         text = collect_text(
           :model => self,
           :fields => ['title','content_main','content_main_extra','content_need_to_know','preview','tags','category.name'])
