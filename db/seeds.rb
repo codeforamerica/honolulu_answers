@@ -16,10 +16,14 @@ Contact.create([
   { :name => "Example contact", :url => "http://honolulu.gov", :department => "Department of Administrative Affairs", :number => "(808) 768-3798" }
 ])
 
+Department.create([
+  { :name => 'Human Resources', :acronym => 'DHR' }
+])
+
 # The order is important, as it determines the IDs.
 User.create([
-  { :email => "writer@example.com", :password => "writer", :password_confirmation => "writer", :is_writer => true },
-  { :email => "editor@example.com", :password => "editor", :password_confirmation => "editor", :is_editor => true },
+  { :email => "writer@example.com", :department_id => 1, :password => "writer", :password_confirmation => "writer", :is_writer => true },
+  { :email => "editor@example.com", :department_id => 1, :password => "editor", :password_confirmation => "editor", :is_editor => true },
   { :email => "admin@example.com", :password => "adminn", :password_confirmation => "adminn", :is_admin => true }
 ])
 
