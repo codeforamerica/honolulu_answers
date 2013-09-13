@@ -8,7 +8,29 @@ ActiveAdmin.register QuickAnswer do
   filter :tags
   filter :contact_id
 
-  # View 
+  # override controller actions
+  member_action :update, :method => :put do
+    article = QuickAnswer.find(params[:id])
+    article_attrs = params[:quick_answer]
+    if params[:publish]
+      article_attrs.merge! :published => true
+    elsif params[:unpublish]
+      article_attrs.merge! :published => false
+    end
+    if params[:ask_review]
+      article_attrs.merge! :pending_review => true
+    elsif params[:ask_revise]
+      article_attrs.merge! :pending_review => false
+    end
+    if article.update_attributes(article_attrs)
+      flash[:notice] = "Article successfully updated"
+    else
+      flash[:error] = "There was a problem saving the article"
+    end
+    redirect_to({ :action => :index })
+  end
+
+  # View
   index do
     column "Quick Answer Title", :title do |article|
       link_to article.title, [:admin, article]
