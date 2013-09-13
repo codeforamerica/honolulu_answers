@@ -12,7 +12,7 @@ describe Keyword do
   let(:keyword) { FactoryGirl.create :keyword }
   subject { keyword }
   it { should be_valid }
-  
+
   it 'deserialises the metaphone field' do
     keyword.reload.metaphone.should eq( ["RJST", "RKST"] )
   end
