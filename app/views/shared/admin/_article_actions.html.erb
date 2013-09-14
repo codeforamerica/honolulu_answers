@@ -12,14 +12,14 @@
     <ol>
       <% if article.draft? %>
         <li class="commit button">
-          <input class="update" type="submit" name="update" value="Update" />
+          <input class="update" type="submit" name="update" value="Save" />
         </li>
         <li class="commit button">
           <input class="update" type="submit" name="publish" value="Publish" />
         </li>
       <% elsif article.pending_review? %>
         <li class="commit button">
-          <input class="update" type="submit" name="update" value="Update" />
+          <input class="update" type="submit" name="update" value="Save" />
         </li>
         <li class="commit button">
           <input class="update" type="submit" name="ask_revise" value="Ask Writer to Revise" />
@@ -29,7 +29,7 @@
         </li>
       <% elsif article.published? %>
         <li class="commit button">
-          <input class="update" type="submit" name="publish" value="Update" />
+          <input class="update" type="submit" name="publish" value="Save" />
         </li>
         <li class="commit button">
           <input class="update" type="submit" name="unpublish" value="Unpublish" />
@@ -64,7 +64,7 @@
     <ol>
       <li class="commit button">
       <input class="update" id="submit" name="commit" type="submit"
-      value="Update">
+      value="Save">
       </li>
     </ol>
   </fieldset>
