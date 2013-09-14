@@ -37,7 +37,7 @@ ActiveAdmin.register Contact do
           end
 
           column "" do |article|
-            if article.status == Article::PUBLISHED
+            if article.published?
               link_to "Open", article
             else
               link_to "Preview", article
@@ -48,7 +48,8 @@ ActiveAdmin.register Contact do
           column :type
           column :category
           column :user
-          column :status
+          column :published
+          column :pending_review
         end
       end
     end

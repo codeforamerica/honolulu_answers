@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     articles = [QuickAnswer, WebService, Guide]
     if !user # guest
-      can :read, :all, :status => Article::PUBLISHED
+      can :read, :all, :published => true
     else
       can :read, :all
 
@@ -18,8 +18,9 @@ class Ability
 
       if user.is_writer
         can :create, articles + [Category, Contact, GuideStep]
-        can [:update, :destroy], articles, :status => Article::DRAFT
-        can [:update, :destroy], GuideStep, :guide =>  { status: Article::DRAFT }
+        can [:update, :destroy], articles, :published => false, :pending_review => false
+        can [:update, :destroy], GuideStep,
+          :guide =>  { :published => false, :pending_review => false }
       end
     end
   end

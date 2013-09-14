@@ -12,21 +12,36 @@ ActiveAdmin.register_page "Dashboard" do
             column "Author", :user do |article|
               article.user.try(:email)
             end
-            column "Status", :status
+            column :published
+            column :pending_review
             column "Date Created", :created_at
             column "Date Updated", :updated_at
           end
         end if current_user.is_admin? || current_user.is_editor?
 
-        panel "Your Articles", :priority => 2 do
-          table_for current_user.articles.order("created_at DESC") do
+        panel "Your Draft Articles", :priority => 2 do
+          table_for current_user.articles.drafts.order("created_at DESC") do
             column "Article Title", :title do |article|
               link_to article.title, [:admin, article]
             end
-            column "Author", :user do |article|
-              article.user.try(:email)
+            column "Date Created", :created_at
+          end
+        end if current_user.is_writer?
+
+        panel "Your Pending Review Articles", :priority => 2 do
+          table_for current_user.articles.pending_review.order("created_at DESC") do
+            column "Article Title", :title do |article|
+              link_to article.title, [:admin, article]
             end
-            column "Status", :status
+            column "Date Created", :created_at
+          end
+        end if current_user.is_writer?
+
+        panel "Your Published Articles", :priority => 2 do
+          table_for current_user.articles.published.order("created_at DESC") do
+            column "Article Title", :title do |article|
+              link_to article.title, [:admin, article]
+            end
             column "Date Created", :created_at
           end
         end if current_user.is_writer?
@@ -39,7 +54,8 @@ ActiveAdmin.register_page "Dashboard" do
             column "Author", :user do |article|
               article.user.try(:email)
             end
-            column "Status", :status
+            column :published
+            column :pending_review
             column "Date Created", :created_at
           end
         end if current_user.is_editor?
@@ -47,7 +63,8 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Legacy articles" do
           table_for Article.where(:render_markdown => false) do
             column "Article Title", :title
-            column "Status", :status
+            column :published
+            column :pending_review
             column "" do |article|
               show_on_site_text = article.published? ? "Open on site" : "Preview on site"
               link_to show_on_site_text, article_path(article)
