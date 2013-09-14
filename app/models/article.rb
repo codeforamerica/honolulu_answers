@@ -21,7 +21,9 @@ class Article < ActiveRecord::Base
   has_many :keywords, :through => :wordcounts
 
   scope :by_access_count, order('access_count DESC')
+  scope :drafts, where(:pending_review => false).where(:published => false)
   scope :pending_review, where(:pending_review => true)
+  scope :published, where(:published => true)
 
   has_attached_file :author_pic,
     :storage => :s3,

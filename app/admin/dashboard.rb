@@ -19,16 +19,29 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end if current_user.is_admin? || current_user.is_editor?
 
-        panel "Your Articles", :priority => 2 do
-          table_for current_user.articles.order("created_at DESC") do
+        panel "Your Draft Articles", :priority => 2 do
+          table_for current_user.articles.drafts.order("created_at DESC") do
             column "Article Title", :title do |article|
               link_to article.title, [:admin, article]
             end
-            column "Author", :user do |article|
-              article.user.try(:email)
+            column "Date Created", :created_at
+          end
+        end if current_user.is_writer?
+
+        panel "Your Pending Review Articles", :priority => 2 do
+          table_for current_user.articles.pending_review.order("created_at DESC") do
+            column "Article Title", :title do |article|
+              link_to article.title, [:admin, article]
             end
-            column :published
-            column :pending_review
+            column "Date Created", :created_at
+          end
+        end if current_user.is_writer?
+
+        panel "Your Published Articles", :priority => 2 do
+          table_for current_user.articles.published.order("created_at DESC") do
+            column "Article Title", :title do |article|
+              link_to article.title, [:admin, article]
+            end
             column "Date Created", :created_at
           end
         end if current_user.is_writer?
