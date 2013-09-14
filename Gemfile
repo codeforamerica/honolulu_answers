@@ -52,21 +52,19 @@ end
 
 ## Testing
 group :test, :development do
-  gem 'rspec-rails', '>= 2.10.1'          # Testing framework
-  gem 'shoulda'                           # Extra RSpec matchers for Active Record Associations
-  gem 'capybara'                          # Simulates real-user behaviour for acceptance and integration testing
-  gem 'launchy'                           # Lets you 'save_and_open_page' in the middle of a test - opens up the browser and shows you the current state of the page
-  gem 'guard-rspec'                       # Guard integratio for RSpec.  Guard monitors files and automatically and intelligently runs 'rspec spec' in the background
-  gem 'factory_girl_rails'                # Create factories to test against
-  gem 'capybara-webkit'                   # JS driver for Capybara (headless)
-  gem 'memcached'                         # Local memcache
+  gem 'rspec-rails', '>= 2.0'             # Testing framework
+  gem 'shoulda', '~> 3.5.0'               # Extra RSpec matchers for Active Record Associations
+  gem 'factory_girl_rails', '~> 4.0'      # Create factories to test against
+  gem 'capybara', '~> 2.1'
+  gem 'guard', '~> 1.8.0'
+  gem 'guard-rspec', '~> 3.0.0'
+  gem 'terminal-notifier-guard'
   gem 'sextant'                           # visit /rails/routes in the browser for nicer 'rake routes'
+  gem 'memcached'                         # Local memcache
   gem 'seed_dump', '~> 0.6.0'             # Adds rake db:seed:dump to generate db/seeds.rb
 end
 
-gem 'test-unit'                           # Remove at your peril.  Too many other gems randomly depend on it.
 
 group :test do
   gem "sqlite3"                           # Use SQLite instead of PostgreSQL for tests
-  gem 'simplecov', :require => false      # Calculates code coverage and outputs info to html.
 end

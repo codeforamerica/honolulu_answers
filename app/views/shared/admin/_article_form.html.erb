@@ -11,13 +11,6 @@
 
 <%= semantic_form_for [:admin, @article] do |f| %>
 
-  <%= render :partial => "shared/admin/administration", locals: { :f => f, :article => @article } %>
-  <% if !current_user.is_admin? %>
-    <script type="text/javascript">
-      $('fieldset#edit_article_admin').hide();
-    </script>
-  <% end %>
-
   <%= render :partial => "shared/admin/article_details", locals: { :f => f, :article => @article } %>
 
   <% if (@article.is_a?(WebService) || @article.is_a?(QuickAnswer)) %>
@@ -25,5 +18,4 @@
   <% end %>
 
   <%= render :partial => "shared/admin/article_actions", locals: { :f => f, :article => @article } %>
-
 <% end %>
