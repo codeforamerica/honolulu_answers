@@ -4,8 +4,10 @@
     <%= f.input :user, :label => "Writer" %>
     <li>
       <label class="label">Status</label>
-      <p>This article is <%= article.published? ? "Published" : "Not published" %>.</p>
-      <p>This article is <%= article.pending_review? ? "Pending review" : "Not pending review" %>.</p>
+      <p>
+      This article is <%= article.published? ? "published" : "not published" %>
+      and <%= article.pending_review? ? "pending review" : "not pending review" %>.
+      </p>
     </li>
   <% end %>
   <fieldset class="buttons">
