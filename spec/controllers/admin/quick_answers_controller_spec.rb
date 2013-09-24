@@ -3,83 +3,139 @@ include Devise::TestHelpers
 
 describe Admin::QuickAnswersController do
 
-  context "As a writer" do
+  describe "Create" do
+    let(:create) { post :create, :quick_answer => {} }
+
     before(:each) do
+      sign_in FactoryGirl.create :writer
+      create
+    end
+
+    subject { QuickAnswer.last }
+    it { should_not be_published }
+    it { should_not be_pending_review }
+  end
+
+  describe "Update" do
+    let(:article) do
+      FactoryGirl.create(:quick_answer, :unpublished, :not_pending_review)
+    end
+
+    let(:update) do
+      put :update, :id => article.id, :quick_answer => { :title => 'new title' }
+    end
+
+    let(:update_with_publish) do
+      put :update, :id => article.id, :quick_answer => { :title => 'new title' },
+        :publish => ''
+    end
+
+    let(:update_with_unpublish) do
+      put :update, :id => article.id, :quick_answer => { :title => 'new title' },
+        :unpublish => ''
+    end
+
+    let(:update_with_ask_review) do
+      put :update, :id => article.id, :quick_answer => { :title => 'new title' },
+        :ask_review => ''
+    end
+
+    let(:update_with_ask_revise) do
+      put :update, :id => article.id, :quick_answer => { :title => 'new title' },
+        :ask_revise => ''
+    end
+
+    it "updates the title" do
       sign_in FactoryGirl.create(:writer)
+      update
+      article.reload.title.should eq('new title')
     end
 
-    describe "Create" do
-      it "is unpublished by default" do
-        post :create, :quick_answer => {}
-        QuickAnswer.last.published.should be_false
+    context "as a writer" do
+      before(:each) do
+        sign_in FactoryGirl.create(:writer)
       end
 
-      it "is not pending review by default" do
-        post :create, :quick_answer => {}
-        QuickAnswer.last.pending_review.should be_false
-      end
-    end
+      context "draft articles" do
+        let(:article) { FactoryGirl.create(:quick_answer, :draft) }
 
-    describe "Update" do
-      it "updates the title" do
-        article = FactoryGirl.create(:quick_answer)
-        put :update, :id => article.id, :quick_answer => { :title => 'new title' }
-        article.reload.title.should eq('new title')
+        it "can be updated with Ready to Review" do
+          update_with_ask_review
+          article.reload.should be_pending_review
+        end
+
+        it "cannot be published" do
+          update_with_publish
+          article.reload.should_not be_published
+        end
       end
 
-      describe "with Ready to Review" do
-        it "marks it as pending_review: true" do
-          article = FactoryGirl.create(:quick_answer, :not_pending_review)
-          put :update, :id => article.id, :ask_review => '', :quick_answer => {}
-          article.reload.read_attribute(:pending_review).should be_true
+      context "published articles" do
+        let(:article) { FactoryGirl.create(:quick_answer, :published) }
+
+        it "cannot be updated" do
+          update
+          article.reload.title.should_not eq('new title')
+        end
+
+        it "cannot be unpublished" do
+          update_with_unpublish
+          article.reload.should be_published
+        end
+      end
+
+      context "pending review articles" do
+        let(:article) { FactoryGirl.create(:quick_answer, :pending_review) }
+
+        it "cannot be updated" do
+          update
+          article.reload.title.should_not eq('new title')
         end
       end
     end
-  end
 
-  context "As an editor" do
-    before(:each) do
-      sign_in FactoryGirl.create(:editor)
-    end
 
-    describe "with 'Publish'" do
-      it "marks it as published: true" do
-        article = FactoryGirl.create(:quick_answer, :unpublished)
-        put :update, :id => article.id, :publish => '', :quick_answer => {}
-        article.reload.read_attribute(:published).should be_true
+    context "as an editor" do
+      before(:each) do
+        sign_in FactoryGirl.create(:editor)
+      end
+
+      context "unpublished articles" do
+        let(:article) { FactoryGirl.create(:quick_answer, :unpublished) }
+
+        it "can be published" do
+          update_with_publish
+          article.reload.should be_published
+        end
+      end
+
+      context "when pending review" do
+        it "can ask writer to revise" do
+          update_with_ask_revise
+          article.reload.should be_draft
+        end
+      end
+
+      context "published articles" do
+        let(:article) { FactoryGirl.create(:quick_answer, :published) }
+
+        it "can be unpublished" do
+          update_with_unpublish
+          article.reload.should_not be_published
+        end
       end
     end
 
-    describe "with 'Unpublish'" do
-      it "marks it as published: false" do
-        article = FactoryGirl.create(:quick_answer, :published)
-        put :update, :id => article.id, :unpublish => '', :quick_answer => {}
-        article.reload.read_attribute(:published).should be_false
-      end
-    end
+    context "as an admin" do
+      let(:admin) { FactoryGirl.create(:admin) }
+      before(:each) { sign_in admin }
 
-    describe "with 'Ask writer to revise'" do
-      it "marks it as pending_review: false" do
-        article = FactoryGirl.create(:quick_answer, :published)
-        put :update, :id => article.id, :ask_revise => '', :quick_answer => {}
-        article.reload.read_attribute(:pending_review).should be_false
-      end
-    end
-  end
-
-  context "As an admin" do
-    before(:each) do
-      @user = FactoryGirl.create(:admin)
-      sign_in  @user
-    end
-
-    describe "assign a writer" do
-      it "changes the user_id" do
-        article = FactoryGirl.create(:quick_answer)
-        put :update, :id => article.id,
-          :quick_answer => { :user_id => @user.id }
-        article.reload.user.should eq(@user)
+      it "writers can be assigned" do
+        put :update, :id => article.id, :quick_answer => { :title => 'new title',
+                                                           :user_id => admin.id }
+        article.reload.user.should eq(admin)
       end
     end
   end
 end
+
