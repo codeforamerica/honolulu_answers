@@ -23,5 +23,10 @@ FactoryGirl.define do
     trait :not_pending_review do
       pending_review false
     end
+
+    trait :draft do
+      pending_review false
+      published false
+    end
   end
 end

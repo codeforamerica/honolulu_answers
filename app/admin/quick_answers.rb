@@ -11,22 +11,29 @@ ActiveAdmin.register QuickAnswer do
   # override controller actions
   member_action :update, :method => :put do
     article = QuickAnswer.find(params[:id])
+    authorize! :update, article
     article_attrs = params[:quick_answer]
+
     if params[:publish]
+      authorize! :publish, article
       article_attrs.merge! :published => true
     elsif params[:unpublish]
+      authorize! :publish, article
       article_attrs.merge! :published => false
     end
+
     if params[:ask_review]
       article_attrs.merge! :pending_review => true
     elsif params[:ask_revise]
       article_attrs.merge! :pending_review => false
     end
+
     if article.update_attributes(article_attrs)
       flash[:notice] = "Article successfully updated"
     else
       flash[:error] = "There was a problem saving the article"
     end
+
     redirect_to({ :action => :index })
   end
 
