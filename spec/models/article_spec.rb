@@ -19,7 +19,7 @@ describe Article do
   it { should respond_to :content_main_extra }
   it { should respond_to :content_need_to_know }
 
-  let(:article) { FactoryGirl.create(:quick_answer) }
+  let(:article) { FactoryGirl.create(:article) }
   subject { article }
   it { should be_valid }
   its(:access_count) { should_not be_nil }

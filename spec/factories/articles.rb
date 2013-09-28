@@ -1,6 +1,6 @@
 FactoryGirl.define do
   # these are required but not yet validated
-  factory :quick_answer do
+  factory :article, :class => QuickAnswer do
     title "How can i test Honolulu Answers?"
     preview "Click the link to find out more"
     content_main "It's as easy as **using markdown** and \n\n## running specs"

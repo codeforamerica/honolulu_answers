@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :wordcount do
-    association :article, :factory => :quick_answer
+    article
     keyword
     count 10
   end

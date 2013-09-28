@@ -1,10 +1,5 @@
 <%= render :partial => 'shared/pagedown' %>
 
-<%# allow us to write the form in modules %>
-<% @article = @quick_answer if @quick_answer %>
-<% @article = @web_service if @web_service %>
-<% @article = @guide if @guide %>
-
 <%= semantic_form_for [:admin, @article] do |f| %>
 
   <%= render :partial => "shared/admin/article_details", locals: { :f => f, :article => @article } %>

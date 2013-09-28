@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    articles = [QuickAnswer, WebService, Guide]
+    articles = [QuickAnswer, WebService, Guide, Article]
     if !user # guest
       can :read, :all, :published => true
     else
