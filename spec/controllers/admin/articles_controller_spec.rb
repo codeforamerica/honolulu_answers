@@ -1,47 +1,54 @@
 require 'spec_helper'
 include Devise::TestHelpers
 
-describe Admin::QuickAnswersController do
+describe Admin::ArticlesController do
 
   describe "Create" do
-    let(:create) { post :create, :quick_answer => {} }
+    let(:create) { post :create, :article => FactoryGirl.attributes_for(:article) }
 
-    before(:each) do
-      sign_in FactoryGirl.create :writer
-      create
+    before(:each) { sign_in FactoryGirl.create(:writer) }
+
+    it "creates an article" do
+      expect{ create }.to change(Article, :count).by(1)
     end
 
-    subject { QuickAnswer.last }
-    it { should_not be_published }
-    it { should_not be_pending_review }
+    it "is unpublished by default" do
+      create
+      Article.last.should_not be_published
+    end
+
+    it "is not pending review by default" do
+      create
+      Article.last.should_not be_pending_review
+    end
   end
 
   describe "Update" do
     let(:article) do
-      FactoryGirl.create(:quick_answer, :unpublished, :not_pending_review)
+      FactoryGirl.create(:article, :unpublished, :not_pending_review)
     end
 
     let(:update) do
-      put :update, :id => article.id, :quick_answer => { :title => 'new title' }
+      put :update, :id => article.id, :article => { :title => 'new title' }
     end
 
     let(:update_with_publish) do
-      put :update, :id => article.id, :quick_answer => { :title => 'new title' },
+      put :update, :id => article.id, :article => { :title => 'new title' },
         :publish => ''
     end
 
     let(:update_with_unpublish) do
-      put :update, :id => article.id, :quick_answer => { :title => 'new title' },
+      put :update, :id => article.id, :article => { :title => 'new title' },
         :unpublish => ''
     end
 
     let(:update_with_ask_review) do
-      put :update, :id => article.id, :quick_answer => { :title => 'new title' },
+      put :update, :id => article.id, :article => { :title => 'new title' },
         :ask_review => ''
     end
 
     let(:update_with_ask_revise) do
-      put :update, :id => article.id, :quick_answer => { :title => 'new title' },
+      put :update, :id => article.id, :article => { :title => 'new title' },
         :ask_revise => ''
     end
 
@@ -57,7 +64,7 @@ describe Admin::QuickAnswersController do
       end
 
       context "draft articles" do
-        let(:article) { FactoryGirl.create(:quick_answer, :draft) }
+        let(:article) { FactoryGirl.create(:article, :draft) }
 
         it "can be updated with Ready to Review" do
           update_with_ask_review
@@ -71,7 +78,7 @@ describe Admin::QuickAnswersController do
       end
 
       context "published articles" do
-        let(:article) { FactoryGirl.create(:quick_answer, :published) }
+        let(:article) { FactoryGirl.create(:article, :published) }
 
         it "cannot be updated" do
           update
@@ -85,7 +92,7 @@ describe Admin::QuickAnswersController do
       end
 
       context "pending review articles" do
-        let(:article) { FactoryGirl.create(:quick_answer, :pending_review) }
+        let(:article) { FactoryGirl.create(:article, :pending_review) }
 
         it "cannot be updated" do
           update
@@ -101,7 +108,7 @@ describe Admin::QuickAnswersController do
       end
 
       context "unpublished articles" do
-        let(:article) { FactoryGirl.create(:quick_answer, :unpublished) }
+        let(:article) { FactoryGirl.create(:article, :unpublished) }
 
         it "can be published" do
           update_with_publish
@@ -117,7 +124,7 @@ describe Admin::QuickAnswersController do
       end
 
       context "published articles" do
-        let(:article) { FactoryGirl.create(:quick_answer, :published) }
+        let(:article) { FactoryGirl.create(:article, :published) }
 
         it "can be unpublished" do
           update_with_unpublish
@@ -131,8 +138,8 @@ describe Admin::QuickAnswersController do
       before(:each) { sign_in admin }
 
       it "writers can be assigned" do
-        put :update, :id => article.id, :quick_answer => { :title => 'new title',
-                                                           :user_id => admin.id }
+        put :update, :id => article.id, :article => { :title => 'new title',
+                                                      :user_id => admin.id }
         article.reload.user.should eq(admin)
       end
     end
