@@ -37,7 +37,7 @@ ActiveAdmin.register Article do
   # View
   index do
     column "Article Title", :title do |article|
-      link_to article.title, [:admin, article]
+      link_to article.title, admin_article_path(article)
     end
     column :category
     column :contact

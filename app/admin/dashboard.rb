@@ -7,7 +7,7 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Recent Articles" do
           table_for Article.order("created_at DESC").limit(5) do
             column "Article Title", :title do |article|
-              link_to article.title, [:admin, article]
+              link_to article.title, admin_article_path(article)
             end
             column "Author", :user do |article|
               article.user.try(:email)
@@ -22,7 +22,7 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Your Draft Articles", :priority => 2 do
           table_for current_user.articles.drafts.order("created_at DESC") do
             column "Article Title", :title do |article|
-              link_to article.title, [:admin, article]
+              link_to article.title, admin_article_path(article)
             end
             column "Date Created", :created_at
           end
@@ -31,7 +31,7 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Your Pending Review Articles", :priority => 2 do
           table_for current_user.articles.pending_review.order("created_at DESC") do
             column "Article Title", :title do |article|
-              link_to article.title, [:admin, article]
+              link_to article.title, admin_article_path(article)
             end
             column "Date Created", :created_at
           end
@@ -40,7 +40,7 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Your Published Articles", :priority => 2 do
           table_for current_user.articles.published.order("created_at DESC") do
             column "Article Title", :title do |article|
-              link_to article.title, [:admin, article]
+              link_to article.title, admin_article_path(article)
             end
             column "Date Created", :created_at
           end
@@ -49,7 +49,7 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Pending review" do
           table_for Article.pending_review.order("created_at ASC") do
             column "Article Title", :title do |article|
-              link_to article.title, [:admin, article]
+              link_to article.title, admin_article_path(article)
             end
             column "Author", :user do |article|
               article.user.try(:email)
@@ -70,7 +70,7 @@ ActiveAdmin.register_page "Dashboard" do
               link_to show_on_site_text, article_path(article)
             end
             column "" do |article|
-              link_to "edit", [:admin, article]
+              link_to "edit", admin_article_path(article)
             end
           end
         end if current_user.is_admin?
@@ -78,7 +78,7 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Users" do
           table_for User.order("created_at DESC").limit(5) do
             column "User", :email do |user|
-              link_to user.email, [:admin, user]
+              link_to user.email, admin_article_path(article)
             end
           end
           strong { link_to "View All Users", admin_users_path }

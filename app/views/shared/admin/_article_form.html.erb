@@ -1,6 +1,6 @@
 <%= render :partial => 'shared/pagedown' %>
 
-<%= semantic_form_for [:admin, @article] do |f| %>
+<%= semantic_form_for admin_article_path(@article) do |f| %>
 
   <%= render :partial => "shared/admin/article_details", locals: { :f => f, :article => @article } %>
 
