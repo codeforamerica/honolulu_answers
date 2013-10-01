@@ -13,8 +13,6 @@ describe Article do
   it { should respond_to :tags }
   it { should respond_to :access_count }
 
-  it { should respond_to :content_md }
-
   it { should respond_to :content_main }
   it { should respond_to :content_main_extra }
   it { should respond_to :content_need_to_know }

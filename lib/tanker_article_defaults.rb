@@ -10,10 +10,12 @@ module TankerArticleDefaults
 
     base.tankit index, :as => 'Article' do
       indexes :title
-      indexes :content_md
       indexes :category, :category => true
       indexes :tags
       indexes :preview
+      indexes :content do
+        [:content_main, :content_main_extra, :content_need_to_know]
+      end
 
       # NLP
       indexes :metaphones do

@@ -38,7 +38,7 @@ class Article < ActiveRecord::Base
 
   validates_presence_of :access_count
 
-  attr_accessible :title, :content, :content_md, :content_main,
+  attr_accessible :title, :content, :content_main,
     :content_main_extra, :content_need_to_know, :render_markdown, :preview,
     :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at,
     :created_at, :author_pic, :author_pic_file_name, :author_pic_content_type,

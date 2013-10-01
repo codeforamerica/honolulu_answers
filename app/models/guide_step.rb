@@ -7,9 +7,4 @@ class GuideStep < ActiveRecord::Base
 
   after_save { guide.update_tank_indexes }
   after_destroy { guide.delete_tank_indexes }
-
-  def content_md
-    content
-  end
-
 end
