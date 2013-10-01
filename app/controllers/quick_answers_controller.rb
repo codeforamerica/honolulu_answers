@@ -20,12 +20,6 @@ class QuickAnswersController < ApplicationController
       flash.now[:info] = "This article has not been published."
     end
 
-    # handle old html articles
-    unless @article.render_markdown
-      @content_html = @article.content
-      render :show_html and return
-    end
-
     @content_main =  @article.md_to_html(:content_main)
     @content_main_extra = @article.md_to_html(:content_main_extra)
     @content_need_to_know =  @article.md_to_html(:content_need_to_know)
