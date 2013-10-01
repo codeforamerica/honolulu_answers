@@ -4,11 +4,14 @@ class Guide < Article
   has_many :guide_steps
 
   tankit do
-    indexes :guide_steps_content do
+    indexes :category, :category => true
+    indexes :tags
+    indexes :preview
+    indexes :content do
       guide_steps.map { |gs| gs.content }
     end
-    indexes :guide_steps_title do
-      guide_steps.map { |gs| gs.title }
+    indexes :title do
+      [title] << guide_steps.map { |gs| gs.title }
     end
   end
 
