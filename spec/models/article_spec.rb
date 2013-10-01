@@ -7,7 +7,6 @@ describe Article do
   it { should have_many :wordcounts }
 
   it { should respond_to :title }
-  it { should respond_to :content }
   it { should respond_to :category }
   it { should respond_to :preview }
   it { should respond_to :tags }
