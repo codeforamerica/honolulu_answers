@@ -38,12 +38,12 @@ class Article < ActiveRecord::Base
 
   validates_presence_of :access_count
 
-  attr_accessible :title, :content, :content_main,
-    :content_main_extra, :content_need_to_know, :preview,
-    :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at,
-    :created_at, :author_pic, :author_pic_file_name, :author_pic_content_type,
-    :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link,
-    :type, :service_url, :user_id, :published, :pending_review
+  attr_accessible :title, :content_main, :content_main_extra,
+    :content_need_to_know, :preview, :contact_id, :tags, :is_published, :slugs,
+    :category_id, :updated_at, :created_at, :author_pic, :author_pic_file_name,
+    :author_pic_content_type, :author_pic_file_size, :author_pic_updated_at,
+    :author_name, :author_link, :type, :service_url, :user_id, :published,
+    :pending_review
 
   # Tanker callbacks to update the search index
   after_save :update_tank_indexes
