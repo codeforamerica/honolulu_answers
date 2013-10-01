@@ -39,7 +39,7 @@ class Article < ActiveRecord::Base
   validates_presence_of :access_count
 
   attr_accessible :title, :content, :content_main,
-    :content_main_extra, :content_need_to_know, :render_markdown, :preview,
+    :content_main_extra, :content_need_to_know, :preview,
     :contact_id, :tags, :is_published, :slugs, :category_id, :updated_at,
     :created_at, :author_pic, :author_pic_file_name, :author_pic_content_type,
     :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link,
@@ -76,10 +76,6 @@ class Article < ActiveRecord::Base
   end
 
   before_validation :set_access_count_if_nil
-
-  def legacy?
-    !render_markdown
-  end
 
   def self.search( query )
     begin
