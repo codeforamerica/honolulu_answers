@@ -45,11 +45,6 @@ class Article < ActiveRecord::Base
     :author_pic_file_size, :author_pic_updated_at, :author_name, :author_link,
     :type, :service_url, :user_id, :published, :pending_review
 
-  # A note on the content fields:
-  # *  Originally the content for the articles was stored as HTML in Article#content.
-  # *  We then moved to Markdown for content storage, resulting in Article#content_md.
-  # *  Most recently, the QuickAnswers were split into three distinct sections: content_main, content_main_extra and content_need_to_know. All these use Markdown.
-
   # Tanker callbacks to update the search index
   after_save :update_tank_indexes
   after_destroy :delete_tank_indexes
