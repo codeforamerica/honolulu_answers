@@ -24,7 +24,6 @@
           <% else %>
             <ul>
               <% @results.each do |article| %>
-                <% next unless article.published? %>
                   <li class="article-listing">
                     <h2>
                       <%= link_to article.title, article_path(article.id) %>

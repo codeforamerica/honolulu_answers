@@ -179,9 +179,6 @@ class Article < ActiveRecord::Base
     }
   end
 
-  def indexable?
-    published?
-  end
 
   def analyse
     qm_after_create
