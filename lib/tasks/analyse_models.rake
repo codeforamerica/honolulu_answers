@@ -6,7 +6,7 @@ namespace :admin do
     Keyword.destroy_all
     Wordcount.destroy_all
     Article.all.each do |article|
-      article.analyse_now
+      RailsNlp::TextAnalyser.new(article, Article::TEXT_ANALYSE_FIELDS).create_analysis
       pbar.inc
     end
   end

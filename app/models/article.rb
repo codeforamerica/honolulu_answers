@@ -192,15 +192,6 @@ class Article < ActiveRecord::Base
     }
   end
 
-
-  def analyse
-    qm_after_create
-  end
-
-  def analyse_now
-    qm_after_create_without_delay
-  end
-
   def set_access_count_if_nil
     self.access_count = 0 if self.access_count.nil?
   end
