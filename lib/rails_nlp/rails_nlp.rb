@@ -2,6 +2,8 @@
 module RailsNlp
   class TextAnalyser
     require 'facets/enumerable'
+    require 'action_view'
+
     include ActionView::Helpers::SanitizeHelper
 
     attr_accessor :model, :fields
