@@ -67,15 +67,15 @@ class Article < ActiveRecord::Base
   end
 
   after_create do
-    text_analyser.create_analysis
+    text_analyser.delay(:priority => 1).create_analysis
   end
 
   after_update do
-    text_analyser.update_analysis
+    text_analyser.delay(:priority => 1).update_analysis
   end
 
   after_destroy do
-    text_analyser.destroy_analysis
+    text_analyser.delay(:priority => 1).destroy_analysis
   end
 
   before_validation :set_access_count_if_nil

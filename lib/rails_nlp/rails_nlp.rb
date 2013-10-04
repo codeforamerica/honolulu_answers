@@ -80,7 +80,6 @@ module RailsNlp
         ErrorService.report e
       end
     end
-    handle_asynchronously :create_analysis, :priority => 1
 
     # 1) remove all wordcount rows for this article
     # 2) treat the article as a new article
@@ -94,7 +93,6 @@ module RailsNlp
         ErrorService.report(e)
       end
     end
-    handle_asynchronously :update_analysis, :priority => 1
 
     # 1) remove all wordcount rows for this article
     # 2) remove keywords where keyword.id isn't present in column Wordcount#keyword_id
@@ -106,7 +104,6 @@ module RailsNlp
         ErrorService.report(e)
       end
     end
-    handle_asynchronously :destroy_analysis, :priority => 1
 
   end
 end
