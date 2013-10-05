@@ -8,10 +8,10 @@ class Guide < Article
     indexes :tags
     indexes :preview
     indexes :content do
-      guide_steps.map { |gs| gs.content }
+      guide_steps.map(&:content).join(' ')
     end
     indexes :title do
-      [title] << guide_steps.map { |gs| gs.title }
+      title + " " + guide_steps.map(&:title).join(" ")
     end
   end
 
