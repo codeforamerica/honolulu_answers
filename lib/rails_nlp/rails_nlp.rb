@@ -21,7 +21,7 @@ module RailsNlp
       [].tap do |text|
         fields.each do |field|
           begin
-            field_contents = model.instance_eval(field)
+            field_contents = model.send(field)
             text << field_contents if field_contents
           rescue NoMethodError => e
             ErrorService.report(e)

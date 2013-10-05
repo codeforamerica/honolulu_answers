@@ -59,8 +59,7 @@ class Article < ActiveRecord::Base
   handle_asynchronously :delete_tank_indexes, :priority => 2
 
   TEXT_ANALYSE_FIELDS = ['title', 'content_main', 'content_main_extra',
-                         'content_need_to_know', 'preview', 'tags',
-                         'category.name']
+                         'content_need_to_know', 'preview', 'tags']
 
   def text_analyser
     @text_analyser ||= TextAnalyser.new(self, TEXT_ANALYSE_FIELDS)
