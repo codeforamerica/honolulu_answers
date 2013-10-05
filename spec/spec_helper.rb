@@ -1,3 +1,4 @@
+require_relative '../lib/rails_nlp/rails_nlp_spec'
 require 'capybara/rspec'
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'

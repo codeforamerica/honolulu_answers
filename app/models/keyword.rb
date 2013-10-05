@@ -9,7 +9,7 @@ class Keyword < ActiveRecord::Base
   after_create :analyse
 
   after_save do
-    Rails.cache.clear
+    Rails.cache.delete('additional_words')
   end
 
   # returns the total number of occurrences of this keyword across all articles
