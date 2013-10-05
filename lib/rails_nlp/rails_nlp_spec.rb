@@ -1,50 +1,14 @@
 # encoding: UTF-8
-require './spec_helper'
+require_relative 'spec_helper'
 
 describe RailsNlp::TextAnalyser do
-  before(:all) do
-    @analyser = RailsNlp::TextAnalyser.new
-  end
 
-  describe "Combining all the strings and texts of a model into one long string" do
-    it "works with a fantasy example" do
-      class AssocModel
-        attr_accessor :name
-        def name
-          @name || "INCEPTION"
-        end
-      end
-      class FakeModel
-        attr_accessor :name, :player_class, :level, :description, :private_text
-
-        def assoc_model
-          AssocModel.new
-        end
-
-        def name
-          @name || 'Dan Longstaff'
-        end
-
-        def player_class
-          @player_class || 'Fighter'
-        end
-
-        def level
-           @level || '32'
-        end
-
-        def description
-          @description || "<a href='about:blank'>Dan</a> wields his mighty sword with a <strong>tight fisted grip</strong>.\n\nLunging at his enemies' bodies he yells \"AAAARRRGGH!!\", before flailing wildly all that rests in his path."  
-        end
-
-        def private
-          @private_text || "you shouldn't be reading this you bottle-ale rascal, you filthy bung, away!"
-        end
-      end
-      model = FakeModel.new
-      text = @analyser.collect_text( :model => model, :fields => ['name', 'player_class', 'description', 'assoc_model.name'])
-      text.should eq(model.name + ' ' + model.player_class + ' ' + model.description + ' ' + model.assoc_model.name + ' ')
-    end
+  before(:each) do
+    @model = double("ActiveRecord model")
+    @model.stub(:name => "Jimmy")
+    @model.stub(:description => "He'll fix anything!")
+    @model.stub(:fields => ['name', 'description'])
+    @analyser = RailsNlp::TextAnalyser.new(@model, @model.fields)
   end
 
   describe "Clean the text of non-word characters" do
@@ -52,10 +16,6 @@ describe RailsNlp::TextAnalyser do
     it "removes html tags" do
       dirty = "<div id='content', class='class'>one two <br /><ul><li>three </li><br /><strong>four</strong></ul></div>"
       @analyser.clean(dirty).should eq "one two three four"
-    end
-
-    it "removes non-valid html" do
-      pending 'not working since the hml tokenizer in actionpack only supports valid xhtml'
     end
 
     it "doesn't remove foreign language characters" do
@@ -92,62 +52,18 @@ describe RailsNlp::TextAnalyser do
   describe "creating a frequency map of useful words" do
     it "ignores stop words" do
       string = "when is i a the then to but how where"
-      @analyser.freq_map(string).should == {}
+      @analyser.count_words(string).should == {}
     end
 
     it "returns a hash" do
       string = ""
-      @analyser.freq_map(string).class.should eq( {}.class )
+      @analyser.count_words(string).class.should eq(Hash)
     end
 
     it "maps each word to its ocurrence in the string" do
       string = "when nonstopword1 is nonstopword2  i a the then to nonstopword2 nonstopword2 but how where"
-      @analyser.freq_map(string).should == { 'nonstopword1' => 1, 'nonstopword2' => 3 }
+      @analyser.count_words(string).should == { 'nonstopword1' => 1, 'nonstopword2' => 3 }
     end
   end
-
-  describe "Given an array of words, return an array of Keywords" do
-    class PretendKeyword 
-      attr_accessor :name, :metaphones, :stem, :synonyms
-    end
-
-    # before(:all) do
-    #   @kw = PretendKeyword.new
-    #   @kw.name = "jobs"
-    #   @kw.metaphones = ["JPS", "APS"]
-    #   @kw.stem = 'job'
-    #   @kw.synonyms = ['occupation', 'business', 'line of work']
-    # end
-
-    it "uses an existing keyword if one is present" do
-      pending 'not sure how to test'
-      # we will have access to the Keyword model, i think.
-    end
-
-    it "creates a new keyword if one doesn't already exist" do
-      pending 'not sure how to test'
-    end
-
-    it "works with a nice example" do
-      words = %w{one two three four five}
-      keywords = @analyser.words_to_keywords( words )
-      keywords.map(&:name).should eq( words )
-    end
-
-    it "keywords should have computed stem" do
-      words = ['driving']
-      keywords = @analyser.words_to_keywords( words )
-      keywords.first.stem.should eq( 'drive' )
-    end
-
-    xit "keywords should have computed metaphones" do
-    end
-
-    xit "keywords should have computed synonyms" do
-    end
-  end
-  
-
-
 
 end
