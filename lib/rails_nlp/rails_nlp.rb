@@ -18,15 +18,12 @@ module RailsNlp
     end
 
     def collect_text
-      text = ''
-      fields.each do |field|
-        begin
-          text << model.instance_eval(field) + ' '
-        rescue NoMethodError => e
-          ErrorService.report e
+      [].tap do |text|
+        fields.each do |field|
+          field_contents = model.instance_eval(field)
+          text << field_contents if field_contents
         end
-      end
-      text
+      end.join(" ")
     end
 
     def clean str
