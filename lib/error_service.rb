@@ -2,6 +2,7 @@
 class ErrorService
   def self.report(exception)
     Rails.logger.error(exception.inspect)
+    Rails.logger.error(exception.backtrace)
     ReportExceptionJob.schedule(exception) if send_to_external?
     raise exception if re_raise?
   end
