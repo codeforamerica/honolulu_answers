@@ -20,8 +20,12 @@ module RailsNlp
     def collect_text
       [].tap do |text|
         fields.each do |field|
-          field_contents = model.instance_eval(field)
-          text << field_contents if field_contents
+          begin
+            field_contents = model.instance_eval(field)
+            text << field_contents if field_contents
+          rescue NoMethodError => e
+            ErrorService.report(e)
+          end
         end
       end.join(" ")
     end
