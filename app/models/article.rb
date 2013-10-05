@@ -69,8 +69,11 @@ class Article < ActiveRecord::Base
     text_analyser.delay(:priority => 1).create_analysis
   end
 
-  after_update do
-    text_analyser.delay(:priority => 1).update_analysis
+  around_update :update_analysis
+  def update_analysis
+    needs_analysis = !!(changes.keys & TEXT_ANALYSE_FIELDS).any?
+    yield
+    text_analyser.delay(:priority => 1).update_analysis if needs_analysis
   end
 
   after_destroy do
