@@ -1,7 +1,7 @@
-namespace :admin do  
+namespace :rails_nlp do  
   desc 'populate the keywords and wordcounts tables with data from the models'
 
-  task :analysemodels => :environment do
+  task :analyse_articles => :environment do
     pbar = ProgressBar.new("Please wait...", Article.count)
     Keyword.destroy_all
     Wordcount.destroy_all
