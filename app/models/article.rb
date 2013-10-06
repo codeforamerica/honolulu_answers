@@ -100,65 +100,6 @@ class Article < ActiveRecord::Base
     Kramdown::Document.new( field.to_s, :auto_ids => false).to_html
   end
 
-  def self.remove_stop_words string
-    eng_stop_list = Rails.cache.fetch('stop_words') do
-      CSV.read( "#{Rails.root.to_s}/lib/assets/eng_stop.csv" )
-    end
-    string = (string.downcase.split - eng_stop_list.flatten).join " "
-  end
-
-  def self.spell_check string
-    dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/en_US", 'en_US' )
-
-    dict_custom = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/blank", 'blank' )
-    Keyword.all(:select => ['name', 'synonyms']).each do |kw|
-      dict_custom.add kw.name
-    end
-    stop_words ||= Rails.cache.fetch('stop_words') do
-      CSV.read( "lib/assets/eng_stop.csv" ).flatten
-    end
-    stop_words.each{ |sw| dict_custom.add sw }
-
-    string_corrected = string.split.map do |word|
-      if dict.spell(word) or dict_custom.spell(word) # word is correct
-        word
-      else
-        suggestion = dict_custom.suggest( word ).first
-        suggestion.nil? ? word : suggestion
-      end
-    end
-
-    string_corrected.join ' '
-  end
-
-  def self.expand_query( query )
-    stems,metaphones,synonyms = [[],[],[]]
-    query.split.each do |term|
-      # try and hit the database first, only compute stuff if we have to
-      kw = Keyword.find_by_name(term)
-      if kw
-        stems << kw.stem
-        metaphones << kw.metaphone.compact
-        # synonyms << kw.synonyms.first(3)
-      else
-        stems << Text::PorterStemming.stem(term)
-        metaphones << Text::Metaphone.double_metaphone(term)
-        # synonyms << RailsNlp::BigHugeThesaurus.synonyms(term)
-      end
-    end
-
-    ## Construct the OR query
-    query_final =      "title:(#{query.split.join(' OR ')})^10"
-    query_final << " OR content:(#{query.split.join(' OR ')})^5"
-    query_final << " OR tags:(#{query.split.join(' OR ')})^8"
-    query_final << " OR stems:(#{stems.flatten.join(' OR ')})^3"
-    query_final << " OR metaphones:(#{metaphones.flatten.compact.join(' OR ')})^2"
-    # query_final << " OR #{'synonyms:"'  + synonyms.flatten.first(3).join( '" OR synonyms:"') + '"'}"
-    query_final << " OR synonyms:(#{query.split.join(' OR ')})"
-
-    return query_final
-  end
-
   def related
     Rails.cache.fetch("#{self.id}-related") {
       return [] if wordcounts.empty?

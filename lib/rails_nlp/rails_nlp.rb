@@ -123,6 +123,60 @@ module RailsNlp
       model.wordcounts.destroy_all
       delete_orphaned_keywords
     end
+  end
+
+  class QueryExpansion
+
+    def self.expand(query)
+      stems,metaphones = [[],[]]
+
+      (query.split - STOP_WORDS).each do |term|
+        if kw = Keyword.find_by_name(term)
+          stems << kw.stem
+          metaphones << kw.metaphone.compact
+        else
+          stems << Text::PorterStemming.stem(term)
+          metaphones << Text::Metaphone.double_metaphone(term)
+        end
+      end
+
+      ## Construct the OR query
+      query_final =      "title:(#{query.split.join(' OR ')})^10"
+      query_final << " OR content:(#{query.split.join(' OR ')})^5"
+      query_final << " OR tags:(#{query.split.join(' OR ')})^8"
+      query_final << " OR stems:(#{stems.flatten.join(' OR ')})^3"
+      query_final << " OR metaphones:(#{metaphones.flatten.compact.join(' OR ')})^2"
+      # query_final << " OR #{'synonyms:"'  + synonyms.flatten.first(3).join( '" OR synonyms:"') + '"'}"
+      query_final << " OR synonyms:(#{query.split.join(' OR ')})"
+
+      return query_final
+    end
+
+    def self.spell_check(string)
+      dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/en_US", 'en_US' )
+
+      dict_custom = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/blank", 'blank' )
+      Keyword.pluck(:name).each do |keyword|
+        dict_custom.add keyword
+      end
+
+      STOP_WORDS.each{ |sw| dict_custom.add sw }
+
+      string_corrected = string.split.map do |word|
+        if dict.spell(word) or dict_custom.spell(word) # word is correct
+          word
+        else
+          suggestion = dict_custom.suggest( word ).first
+          suggestion.nil? ? word : suggestion
+        end
+      end
+
+      string_corrected.join ' '
+    end
+
+    def self.remove_punctuation_and_plurals(query)
+      query.downcase.gsub(/[^\w]/, ' ').gsub(/ . /, ' ')
+    end
 
   end
 end
