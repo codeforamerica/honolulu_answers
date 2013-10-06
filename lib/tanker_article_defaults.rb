@@ -19,16 +19,13 @@ module TankerArticleDefaults
 
       # NLP
       indexes :metaphones do
-        keywords.map { |kw| kw.metaphone }
+        keywords.map(&:metaphone).uniq
       end
       indexes :synonyms do
-        keywords.map { |kw| kw.synonyms.first(5) }
-      end
-      indexes :keywords do
-        keywords.map { |kw| kw.name }
+        keywords.map { |kw| kw.synonyms.first(5) }.uniq
       end
       indexes :stems do
-        keywords.map { |kw| kw.stem }
+        keywords.map(&:stem).uniq
       end
     end
   end
