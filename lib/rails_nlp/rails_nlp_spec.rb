@@ -1,14 +1,15 @@
 # encoding: UTF-8
 require_relative 'spec_helper'
 
-describe RailsNlp::TextAnalyser do
+module RailsNlp
+describe TextAnalyser do
 
   before(:each) do
     @model = double("ActiveRecord model")
     @model.stub(:name => "Jimmy")
     @model.stub(:description => "He'll fix anything!")
     @model.stub(:fields => ['name', 'description'])
-    @analyser = RailsNlp::TextAnalyser.new(@model, @model.fields)
+    @analyser = TextAnalyser.new(@model, @model.fields)
   end
 
   describe "Clean the text of non-word characters" do
@@ -66,4 +67,20 @@ describe RailsNlp::TextAnalyser do
     end
   end
 
+end
+
+  describe QueryExpansion do
+    describe "#remove_stop_words(string)" do
+      it "removes common english words from a list of words" do
+        QueryExpansion.remove_stop_words('why am I a banana'.split).should eq(['banana'])
+      end
+    end
+
+    describe "#spell_check(string)" do
+      it "corrects misspelt words in the string" do
+        ['renew', 'driver', 'license'].each { |kw| Keyword.create!(:name => kw) }
+        QueryExpansion.spell_check('renw droivr lisence').should eq('renew driver license')
+      end
+    end
+  end
 end

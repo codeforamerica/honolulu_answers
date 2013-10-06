@@ -64,7 +64,6 @@ ActiveAdmin.register Guide do
   show do |guide|
     attributes_table do
       row :title
-      row :content
       row :preview
       row :category
       row :contact

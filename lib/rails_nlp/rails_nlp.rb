@@ -1,5 +1,37 @@
 # encoding: UTF-8
 module RailsNlp
+
+  STOP_WORDS = ['a','able','about','across','after','all','almost','also','am','among','an','and','any','are','as','at','be','because','been','but','by','can','cannot','could','dear','did','do','does','either','else','ever','every','for','from','get','got','had','has','have','he','her','hers','him','his','how','however','i','if','in','into','is','it','its','just','least','let','like','likely','may','me','might','most','must','my','neither','no','nor','not','of','off','often','on','only','or','other','our','own','rather','said','say','says','she','should','since','so','some','than','that','the','their','them','then','there','these','they','this','tis','to','too','twas','us','wants','was','we','were','what','when','where','which','while','who','whom','why','will','with','would','yet','you','your']
+
+  module ActiveRecordIncluded
+    def text_analyser
+      @text_analyser ||= TextAnalyser.new(self, self.class::TEXT_ANALYSE_FIELDS)
+    end
+
+    def create_analysis
+      text_analyser.delay(:priority => 1).create_analysis
+    end
+
+    def update_analysis
+      needs_analysis = !!(changes.keys & self.class::TEXT_ANALYSE_FIELDS).any?
+      yield
+      text_analyser.delay(:priority => 1).update_analysis if needs_analysis
+    end
+
+    def destroy_analysis
+      text_analyser.delay(:priority => 1).destroy_analysis
+    end
+
+    def self.included(base)
+      base.has_many :wordcounts
+      base.has_many :keywords, :through => :wordcounts
+
+      base.after_create :create_analysis
+      base.around_update :update_analysis
+      base.after_destroy :destroy_analysis
+    end
+  end
+
   class TextAnalyser
     require 'facets/enumerable'
     require 'action_view'
@@ -11,10 +43,6 @@ module RailsNlp
     def initialize(model, fields)
       @model = model
       @fields = fields
-    end
-
-    def stop_words
-      @stop_words ||= ['a','able','about','across','after','all','almost','also','am','among','an','and','any','are','as','at','be','because','been','but','by','can','cannot','could','dear','did','do','does','either','else','ever','every','for','from','get','got','had','has','have','he','her','hers','him','his','how','however','i','if','in','into','is','it','its','just','least','let','like','likely','may','me','might','most','must','my','neither','no','nor','not','of','off','often','on','only','or','other','our','own','rather','said','say','says','she','should','since','so','some','than','that','the','their','them','then','there','these','they','this','tis','to','too','twas','us','wants','was','we','were','what','when','where','which','while','who','whom','why','will','with','would','yet','you','your']
     end
 
     def collect_text
@@ -50,12 +78,9 @@ module RailsNlp
       str
     end
 
+    # Ruby Facets - http://www.webcitation.org/69k1oBjmR
     def count_words words
-      words = words.split
-      words = words - stop_words
-
-      # Ruby Facets - http://www.webcitation.org/69k1oBjmR
-      return words.frequency
+      QueryExpansion.remove_stop_words(words.split).frequency
     end
 
     def delete_orphaned_keywords
@@ -94,6 +119,63 @@ module RailsNlp
     def destroy_analysis
       model.wordcounts.destroy_all
       delete_orphaned_keywords
+    end
+  end
+
+  class QueryExpansion
+
+    def self.remove_stop_words(string_list)
+      string_list.map(&:downcase) - STOP_WORDS
+    end
+
+    def self.expand(query)
+      stems,metaphones = [[],[]]
+
+      remove_stop_words(query.split).each do |term|
+        if kw = Keyword.find_by_name(term)
+          stems << kw.stem
+          metaphones << kw.metaphone.compact
+        else
+          stems << Text::PorterStemming.stem(term)
+          metaphones << Text::Metaphone.double_metaphone(term)
+        end
+      end
+
+      query_final =      "title:(#{query.split.join(' OR ')})^10"
+      query_final << " OR tags:(#{query.split.join(' OR ')})^8"
+      query_final << " OR preview:(#{query.split.join(' OR ')})^5"
+      query_final << " OR content:(#{query.split.join(' OR ')})^5"
+      query_final << " OR stems:(#{stems.flatten.join(' OR ')})^3"
+      query_final << " OR metaphones:(#{metaphones.flatten.compact.join(' OR ')})^2"
+      query_final << " OR synonyms:(#{query.split.join(' OR ')})"
+
+      return query_final
+    end
+
+    def self.spell_check(string)
+      dict = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/en_US", 'en_US' )
+
+      dict_custom = Hunspell.new( "#{Rails.root.to_s}/lib/assets/dict/blank", 'blank' )
+      Keyword.pluck(:name).each do |keyword|
+        dict_custom.add keyword
+      end
+
+      STOP_WORDS.each{ |sw| dict_custom.add sw }
+
+      string_corrected = string.split.map do |word|
+        if dict.spell(word) or dict_custom.spell(word) # word is correct
+          word
+        else
+          suggestion = dict_custom.suggest( word ).first
+          suggestion.nil? ? word : suggestion
+        end
+      end
+
+      string_corrected.join ' '
+    end
+
+    def self.remove_punctuation_and_plurals(query)
+      query.downcase.gsub(/[^\w]/, ' ').gsub(/ . /, ' ')
     end
 
   end

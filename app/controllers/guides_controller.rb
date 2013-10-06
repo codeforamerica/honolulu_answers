@@ -18,7 +18,6 @@ class GuidesController < ApplicationController
       flash.now[:info] = "This article has not been published."
     end
 
-    @content_main = @article.md_to_html(@article.content)
 
     respond_to do |format|
       format.html # show.html.erb
