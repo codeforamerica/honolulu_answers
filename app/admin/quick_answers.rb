@@ -62,4 +62,19 @@ ActiveAdmin.register QuickAnswer do
   end
 
   form :partial => "shared/admin/article_form"
+
+  show do |article|
+    attributes_table do
+      row :title
+      row :preview
+      row :category
+      row :contact
+      row :slug
+      row :created_at
+      row :updated_at
+      row :published
+      row :pending_review
+    end
+  end
+
 end
