@@ -54,9 +54,13 @@ class Article < ActiveRecord::Base
   handle_asynchronously :delete_tank_indexes, :priority => 2
 
   TEXT_ANALYSE_FIELDS = ['title', 'content_main', 'content_main_extra',
-                         'content_need_to_know', 'preview', 'tags']
+    'content_need_to_know', 'preview', 'tags', 'category_name']
 
   before_validation :set_access_count_if_nil
+
+  def category_name
+    category.try(:name) || "Uncategorized"
+  end
 
   def self.search( query )
     begin
