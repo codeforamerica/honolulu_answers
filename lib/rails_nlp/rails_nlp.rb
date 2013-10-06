@@ -78,12 +78,9 @@ module RailsNlp
       str
     end
 
+    # Ruby Facets - http://www.webcitation.org/69k1oBjmR
     def count_words words
-      words = words.split
-      words = words - STOP_WORDS
-
-      # Ruby Facets - http://www.webcitation.org/69k1oBjmR
-      return words.frequency
+      QueryExpansion.remove_stop_words(words.split).frequency
     end
 
     def delete_orphaned_keywords
@@ -127,10 +124,14 @@ module RailsNlp
 
   class QueryExpansion
 
+    def self.remove_stop_words(string_list)
+      string_list.map(&:downcase) - STOP_WORDS
+    end
+
     def self.expand(query)
       stems,metaphones = [[],[]]
 
-      (query.split - STOP_WORDS).each do |term|
+      remove_stop_words(query.split).each do |term|
         if kw = Keyword.find_by_name(term)
           stems << kw.stem
           metaphones << kw.metaphone.compact
@@ -140,13 +141,11 @@ module RailsNlp
         end
       end
 
-      ## Construct the OR query
       query_final =      "title:(#{query.split.join(' OR ')})^10"
       query_final << " OR content:(#{query.split.join(' OR ')})^5"
       query_final << " OR tags:(#{query.split.join(' OR ')})^8"
       query_final << " OR stems:(#{stems.flatten.join(' OR ')})^3"
       query_final << " OR metaphones:(#{metaphones.flatten.compact.join(' OR ')})^2"
-      # query_final << " OR #{'synonyms:"'  + synonyms.flatten.first(3).join( '" OR synonyms:"') + '"'}"
       query_final << " OR synonyms:(#{query.split.join(' OR ')})"
 
       return query_final

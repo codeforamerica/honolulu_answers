@@ -21,18 +21,5 @@ describe Article do
   it { should be_valid }
   its(:access_count) { should_not be_nil }
 
-  describe "#remove_stop_words(string)" do
-    it "removes common english words from the string" do
-      Article.remove_stop_words('why am I a banana').should eq('banana')
-    end
-  end
-
-  describe "#spell_check(string)" do
-    it "corrects misspelt words in the string" do
-      ['renew', 'driver', 'license'].each { |kw| Keyword.create!(:name => kw) }
-      Article.spell_check('renw droivr lisence').should eq('renew driver license')
-    end
-  end
-
 end
 
