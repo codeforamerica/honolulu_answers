@@ -1,39 +1,34 @@
 class SearchController < ApplicationController
+
+  include RailsNlp
+
+  before_filter :filter_long_or_empty
+
   def index
-    return redirect_to root_path if params[:q].blank?
     query = params[:q].strip
     @query = query
 
-    # spell check the query.
-    @query_corrected = Article.spell_check query
+    @query_corrected = QueryExpansion.spell_check(query)
 
-    # remove puntuation and plurals.
-    query = query.downcase.gsub(/[^\w]/, ' ').gsub(/ . /, ' ')
-
-    # remove stop words
-    query = Article.remove_stop_words query
-
-    # Searchify can't handle requests longer than this (because of query
-    # expansion + Tanker inefficencies.  >10 can result in >8000 byte request
-    # strings)
-    if query.split.size > 10 || query.blank?
-      @query_corrected = query
-      @results = []
-      return
-    end
-
-    # expand the query
-    query_final = Article.expand_query(query)
-
-    # perform the search
-    @results = Article.search(query_final).select(&:published?)
-
-    # Log the search results
-    puts "search-request: IP:#{request.env['REMOTE_ADDR']}, params[:query]:#{query}, QUERY:#{query_final}, FIRST_RESULT:#{@results.first.title unless @results.empty?}, RESULTS_N:#{@results.size}" 
+    query_expanded = QueryExpansion.expand(query)
+    @results = Article.search(query_expanded).select(&:published?)
 
     respond_to do |format|
       format.json  { render @results }
       format.html
+    end
+  end
+
+  private
+
+  # Searchify can't handle requests longer than this (because of query
+  # expansion + Tanker inefficencies.  >10 can result in >8000 byte request
+  # strings)
+  def filter_long_or_empty
+    if params[:q].split.size > 10 || params[:q].blank?
+      @query = params[:q]
+      @results = []
+      render and return
     end
   end
 end
