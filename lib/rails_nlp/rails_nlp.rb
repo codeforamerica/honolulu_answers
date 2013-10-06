@@ -142,8 +142,9 @@ module RailsNlp
       end
 
       query_final =      "title:(#{query.split.join(' OR ')})^10"
-      query_final << " OR content:(#{query.split.join(' OR ')})^5"
       query_final << " OR tags:(#{query.split.join(' OR ')})^8"
+      query_final << " OR preview:(#{query.split.join(' OR ')})^5"
+      query_final << " OR content:(#{query.split.join(' OR ')})^5"
       query_final << " OR stems:(#{stems.flatten.join(' OR ')})^3"
       query_final << " OR metaphones:(#{metaphones.flatten.compact.join(' OR ')})^2"
       query_final << " OR synonyms:(#{query.split.join(' OR ')})"
