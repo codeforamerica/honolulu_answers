@@ -1,6 +1,8 @@
 # encoding: utf-8
 class Article < ActiveRecord::Base
   include RailsNlp
+  include RailsNlp::ActiveRecordIncluded
+
   include TankerArticleDefaults
 
   require_dependency 'keyword'
@@ -14,8 +16,6 @@ class Article < ActiveRecord::Base
   belongs_to :contact
   belongs_to :category
   belongs_to :user
-  has_many :wordcounts
-  has_many :keywords, :through => :wordcounts
 
   scope :by_access_count, order('access_count DESC')
   scope :drafts, where(:pending_review => false).where(:published => false)
@@ -55,25 +55,6 @@ class Article < ActiveRecord::Base
 
   TEXT_ANALYSE_FIELDS = ['title', 'content_main', 'content_main_extra',
                          'content_need_to_know', 'preview', 'tags']
-
-  def text_analyser
-    @text_analyser ||= TextAnalyser.new(self, TEXT_ANALYSE_FIELDS)
-  end
-
-  after_create do
-    text_analyser.delay(:priority => 1).create_analysis
-  end
-
-  around_update :update_analysis
-  def update_analysis
-    needs_analysis = !!(changes.keys & TEXT_ANALYSE_FIELDS).any?
-    yield
-    text_analyser.delay(:priority => 1).update_analysis if needs_analysis
-  end
-
-  after_destroy do
-    text_analyser.delay(:priority => 1).destroy_analysis
-  end
 
   before_validation :set_access_count_if_nil
 
