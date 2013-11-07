@@ -1,4 +1,0 @@
-zsh:1: command not found: ctags
-ctags: illegal option -- -
-usage: ctags [-BFadtuwvx] [-f tagsfile] file ...
-zsh:1: command not found: ctags
