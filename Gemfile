@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 ## Essentials
 ruby '1.9.3'                              # Ruby!
-gem 'rails', '3.2.15'                     # Rails!
+gem 'rails', '3.2.16'                     # Rails!
 gem 'pg'                                  # PostgreSQL, the database server
 gem 'thin'                                # Web server
 
