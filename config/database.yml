@@ -32,10 +32,9 @@ test:
   timeout: 5000
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: honoluluanswers
+  adapter: mysql
+  database: rails
   host: localhost
-  pool: 5
   timeout: 5000
-  <<: *login
+  username: rails
+  password: q6i9nL9DHd
