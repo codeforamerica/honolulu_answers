@@ -46,6 +46,7 @@ a.gsfn-jqmClose {
 body {
  background:transparent url("/assets/background_image.jpg") no-repeat 0 50%;
  background-attachment: fixed;
+ background-size: cover;
  font: 100%/1.5 "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
 }
 
@@ -297,7 +298,7 @@ div#welcome-line-l {
   float: left;
   margin-top: 12px;
   z-index: 1;
-  width: 35%;
+  width: 30%;
   border: 1px solid #666768;
 }
 
@@ -306,7 +307,7 @@ div#welcome-line-r {
   float: right;
   margin-top: 12px;
   z-index: 50;
-  width: 35%;
+  width: 30%;
   border: 1px solid #666768;
 }
  
