@@ -52,6 +52,7 @@ end
 
 ## Testing
 group :test, :development do
+  gem 'foreman'
   gem 'rspec-rails', '>= 2.0'             # Testing framework
   gem 'shoulda', '~> 3.5.0'               # Extra RSpec matchers for Active Record Associations
   gem 'factory_girl_rails', '~> 4.0'      # Create factories to test against
