@@ -46,6 +46,7 @@ a.gsfn-jqmClose {
 body {
  background:transparent url("/assets/background_image.jpg") no-repeat 0 50%;
  background-attachment: fixed;
+ background-size: cover;
  font: 100%/1.5 "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
 }
 
