@@ -1,0 +1,61 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "",
+    "Parameters": {
+        "DBPassword": {
+            "Default": "password",
+            "NoEcho": "true",
+            "Description": "The Drupal database admin account password",
+            "Type": "String",
+            "MinLength": "8",
+            "MaxLength": "41",
+            "AllowedPattern": "[a-zA-Z0-9]*",
+            "ConstraintDescription": "must contain only alphanumeric characters."
+        }
+    },
+    "Resources": {
+        "DBInstance": {
+            "Type": "AWS::RDS::DBInstance",
+            "Properties": {
+                "DBName": "honoluluanswers",
+                "Engine": "postgres",
+                "MasterUsername": "honolulu",
+                "DBInstanceClass": "db.t1.micro",
+                "DBSecurityGroups": [
+                    {
+                        "Ref": "DBSecurityGroup"
+                    }
+                ],
+                "AllocatedStorage": "5",
+                "MasterUserPassword": {
+                    "Ref": "DBPassword"
+                }
+            }
+        },
+        "DBSecurityGroup": {
+            "Type": "AWS::RDS::DBSecurityGroup",
+            "Properties": {
+                "DBSecurityGroupIngress": {
+                    "EC2SecurityGroupName": {
+                        "Ref": "HonoluluAnswersSecurityGroup"
+                    }
+                },
+                "GroupDescription": "Frontend Access"
+            }
+        },
+        "HonoluluAnswersSecurityGroup": {
+            "Type": "AWS::EC2::SecurityGroup",
+            "Properties": {
+                "GroupDescription": "Security group that the Honolulu Rails server and RDS server will both be in"
+            }
+        }
+    },
+    "Outputs": {
+        "HonoluluAnswersSecurityGroup": {
+            "Value": {"Fn::GetAtt": ["HonoluluAnswersSecurityGroup", "GroupId"] }
+        },
+        "DatabaseURL": {
+            "Value": {"Fn::GetAtt": ["DBInstance", "Endpoint.Address"] }
+        }
+    }
+}
