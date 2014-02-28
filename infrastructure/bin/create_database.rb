@@ -43,13 +43,13 @@ resources = {}
   resources[output[:output_key]] = output[:output_value]
 end
 
-databaseyml = <<END
-common: &login
+databaseyml = <<-END
+common: &common
   username: honolulu
   password: #{dbpassword}
   adapter: postgresql
   encoding: unicode
-  dataabse: honoluluanswers_dev
+  database: honoluluanswers_dev
   host: #{resources["DatabaseURL"]}
 
 development:
