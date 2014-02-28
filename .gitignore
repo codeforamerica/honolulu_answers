@@ -31,4 +31,4 @@ coverage/
 *tags
 tags
 
-config/database.yml
+infrastructure/ops_stackid
