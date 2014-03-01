@@ -39,7 +39,7 @@ gem 'kramdown'                            # Better markdown parser with support 
 gem 'friendly_id'                         # Create permalinks / descriptive URLs / slugs
 gem 'paperclip', '~> 3.0'                 # Easy file attachment library for ActiveRecord
 gem 'aws-sdk'                             # Upload files to Amazon S3
-gem 'aws-sdk-core’
+gem 'aws-sdk-core'
 
 ## Gems used only for assets and not required
 ## in production environments by default.
