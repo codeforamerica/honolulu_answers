@@ -82,18 +82,9 @@ custom_json = <<END
                 "username": "honolulu",
                 "host": "honolulu2.cwxmz3ebuvta.us-west-2.rds.amazonaws.com",
                 "port": "5432",
-                "database": "honoluluanswers_dev"
+                "database": "honoluluanswers"
             },
             
-            "environment_variables": {
-                "NEW_RELIC_LICENSE_KEY": "dunno",
-                "NEW_RELIC_APP_NAME": "dunno",
-                "S3_BUCKET": "honolulu-test-bucket",
-                "S3_KEY" : "AKIAIH7YMD3OB3EGBRRA",
-                "S3_SECRET" : "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",
-                "SEARCHIFY_API_URL" : "http://2zqe.api.searchify.com",
-                "SEARCHIFY_API_INDEX" : "http://:oh5H697EC1TRlc@2zqe.api.searchify.com"
-            },
           "migrate" : true
         }
       }
