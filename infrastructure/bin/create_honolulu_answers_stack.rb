@@ -52,6 +52,8 @@ opts = Trollop::options do
   opt :zone, 'The AWS availability zone to use', :type => String, :default => "us-west-2a"
   opt :source, 'The github repo where the source to build resides (will not work with anything but github!)', :type => String, :default => "https://github.com/stelligent/canaryboard.git"
   opt :size, 'The instance size to use', :type => String, :default => "m1.large"
+  opt :db, 'hostname of the DB server', :type => String, :required => true
+
 end
 
 # create the opsworks stack
@@ -71,7 +73,7 @@ servicerolearn = "arn:aws:iam::324320755747:role/aws-opsworks-service-role"
 ec2rolearn = "arn:aws:iam::324320755747:instance-profile/aws-opsworks-ec2-role"
 
 # opsworks configuration is passed in as json
-custom_json = <<END
+custom_json = <<-END
 {
       "deploy" : {
         "honoluluanswers" : {
@@ -80,7 +82,7 @@ custom_json = <<END
                 "adapter" : "postgresql",
                 "password": "password",
                 "username": "honolulu",
-                "host": "honolulu2.cwxmz3ebuvta.us-west-2.rds.amazonaws.com",
+                "host": "#{opts[:db]}",
                 "port": "5432",
                 "database": "honoluluanswers"
             },
