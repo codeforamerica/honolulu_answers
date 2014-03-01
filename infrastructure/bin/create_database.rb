@@ -49,7 +49,7 @@ common: &common
   password: #{dbpassword}
   adapter: postgresql
   encoding: unicode
-  database: honoluluanswers_dev
+  database: honoluluanswers
   host: #{resources["DatabaseURL"]}
 
 development:
