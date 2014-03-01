@@ -65,4 +65,5 @@ END
 puts databaseyml
 
 File.open("database.yml", 'w') { |file| file.write(databaseyml) }
+File.open("rds_instance", 'w') { |file| file.write(resources["DatabaseURL"]) } 
 
