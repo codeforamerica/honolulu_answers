@@ -130,7 +130,7 @@ layer_params = {
       :type => 'rails-app',
       :name => 'rails',
       :shortname => 'rails',
-      :packages => %w{libhunspell-1.3-0 postgresql-devel},
+      :packages => %w{git postgresql libxslt1-dev libxml2-dev libsasl2-dev libpq-dev sqlite3 memcached build-essential libsqlite3-dev libhunspell-1.3-0 gettext},
 #      :custom_recipes => {
 #        :deploy => %w{canaryboard::https-redirect}
 #      },
