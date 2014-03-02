@@ -28,7 +28,7 @@ dbpassword = "password"
 # create a cfn stack with all the resources the opsworks stack will need
 @cfn = Aws::CloudFormation.new region: "us-west-2"
 cfn_stack_name = "HonoluluAnswers-Database-#{@timestamp}"
-@cfn.create_stack stack_name: cfn_stack_name, template_body: File.open("./infrastructure/config/honolulu_rds.template", "rb").read, capabilities: ["CAPABILITY_IAM"], timeout_in_minutes: 20, parameters: [ { parameter_key: "DBPassword", parameter_value: dbpassword } ]
+@cfn.create_stack stack_name: cfn_stack_name, template_body: File.open("../config/honolulu_rds.template", "rb").read, capabilities: ["CAPABILITY_IAM"], timeout_in_minutes: 20, parameters: [ { parameter_key: "DBPassword", parameter_value: dbpassword } ]
 
 print_and_flush "creating required resources"
 while (stack_in_progress cfn_stack_name)
@@ -65,5 +65,4 @@ END
 puts databaseyml
 
 File.open("/tmp/database.yml", 'w') { |file| file.write(databaseyml) }
-File.open("/tmp/rds_instance", 'w') { |file| file.write(resources["DatabaseURL"]) } 
-
+File.open("/tmp/rds_instance", 'w') { |file| file.write(resources["DatabaseURL"]) }
