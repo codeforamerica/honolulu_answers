@@ -50,7 +50,7 @@ end
 opts = Trollop::options do
   opt :region, 'The AWS region to use', :type => String, :default => "us-west-2"
   opt :zone, 'The AWS availability zone to use', :type => String, :default => "us-west-2a"
-  opt :source, 'The github repo where the source to build resides (will not work with anything but github!)', :type => String, :default => "https://github.com/stelligent/canaryboard.git"
+  opt :source, 'The github repo where the source to build resides (will not work with anything but github!)', :type => String, :default => "https://github.com/stelligent/honolulu_answers.git"
   opt :size, 'The instance size to use', :type => String, :default => "m1.large"
   opt :db, 'hostname of the DB server', :type => String, :required => true
 
@@ -86,7 +86,7 @@ custom_json = <<-END
                 "port": "5432",
                 "database": "honoluluanswers"
             },
-            
+
           "migrate" : true
         }
       }
@@ -126,7 +126,7 @@ stack = ops.create_stack stack_params
 
 # create layer for CanaryBoard
 layer_params = {
-      stack_id: stack.stack_id, 
+      stack_id: stack.stack_id,
       :type => 'rails-app',
       :name => 'rails',
       :shortname => 'rails',
@@ -148,7 +148,7 @@ layer = ops.create_layer layer_params
 
 # create CanaryBoard app
 app_params = {
-      stack_id: stack.stack_id, 
+      stack_id: stack.stack_id,
       :name => 'honoluluanswers',
       :type => 'rails',
       :app_source => {
