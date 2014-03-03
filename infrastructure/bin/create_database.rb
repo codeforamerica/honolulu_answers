@@ -1,5 +1,6 @@
 require 'aws-sdk-core'
 
+STDOUT.sync = true
 
 # we set up a CLoudFormation stack, and we need to know if it's done yet. These are the statuses indicating "not done yet"
 PROGRESS_STATUSES = [ "CREATE_IN_PROGRESS",
