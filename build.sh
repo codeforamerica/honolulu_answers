@@ -4,3 +4,7 @@ bundle install
 bundle exec rake db:drop
 bundle exec rake db:setup
 bundle exec rake spec
+
+# Run static analysis
+gem install brakeman --version 2.1.1
+brakeman -o brakeman-output.tabs
