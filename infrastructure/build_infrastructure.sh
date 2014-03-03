@@ -1,4 +1,5 @@
 #!/bin/bash -e
+export RAILS_ENV="development"
 ruby infrastructure/bin/create_database.rb
 mv /tmp/database.yml config/database.yml
 gem install bundler
