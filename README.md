@@ -1,3 +1,25 @@
+This is a fork of Honolulu Answers used as a proof of concept of putting applications like this into AWS. If you'd like to launch this in an AWS account, spin up an Unbuntu EC2 instance and run these directions. (The application depends on several gems that have specific development requirements, so a lot of libraries need to be retrieved from repositories and installed. These directions will *only* work on Ubuntu, though they can probably be modified to run on other systems.)
+
+    cat > setup.bsh << SETUP
+    #!/bin/bash -e
+    sudo apt-get -y update
+    sudo apt-get -y install git postgresql ruby1.9.1-full ruby-bundler rubygems1.9.1 libxslt1-dev libxml2-dev libsasl2-dev libpq-dev sqlite3 memcached build-essential libsqlite3-dev libhunspell-1.3-0 gettext
+    \curl -sSL https://get.rvm.io | bash
+    source /home/ubuntu/.rvm/scripts/rvm
+    rvm install ruby-1.9.3-p484
+    git clone https://github.com/stelligent/honolulu_answers.git
+    cd honolulu_answers
+    export AWS_ACCESS_KEY_ID=YOURACCESSKEY
+    export AWS_SECRET_ACCESS_KEY=YOURSECRETKEY
+    bundle install
+    infrastructure/build_instructure.sh 
+    SETUP
+    time . ./setup.bsh
+
+After this script completes successfully, an OpsWorks stack will have been created and launching. You can find the IP Address of the server from the OpsWorks console.
+
+---
+
 [Honolulu Answers](http://answers.honolulu.gov) is a new approach to make it easier for people to navigate city information and services quickly. It's a citizen-focused website that is question-driven, with clean, easy-to-navigate design. Unlike a portal destination, Honolulu Answers is like Google -- type in anything, and it probably gives you the answer you're looking for, using the words you know. Every page on the site is an answer to a potential Google search question by a citizen, written in simple, friendly language, as if you'd asked your neighbor a question. The content is organized based on citizen understanding, the intuitive way you'd think of a problem, not the way the city is organized internally.
 
 Honolulu Answers is designed to be very user-friendly. It declutters the govt website experience, and it solves a problem people ordinarily have. And we hope it makes people's lives easier. Inspired by Gov.uk, Honolulu Answers is a first-of-its-kind for municipal government, a partnership between Code for America and the City & County of Honolulu.
