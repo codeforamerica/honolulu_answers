@@ -1,0 +1,227 @@
+
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "AWS CloudFormation Sample Template: Launches OpsWorks stack, layer, instances and associated resources to run a PHP application. ** This template creates one or more Amazon EC2 instances. You will be billed for the AWS resources used if you create a stack from this template.",
+  "Parameters": {
+    "DBPassword": {
+      "Default": "password",
+      "NoEcho": "true",
+      "Description": "The Drupal database admin account password",
+      "Type": "String",
+      "MinLength": "8",
+      "MaxLength": "41",
+      "AllowedPattern": "[a-zA-Z0-9]*",
+      "ConstraintDescription": "must contain only alphanumeric characters."
+    }
+  },
+  "Resources": {
+    "DBInstance": {
+      "Type": "AWS::RDS::DBInstance",
+      "Properties": {
+        "DBName": "honoluluanswers",
+        "Engine": "postgres",
+        "MasterUsername": "honolulu",
+        "DBInstanceClass": "db.t1.micro",
+        "DBSecurityGroups": [ { "Ref": "DBSecurityGroup" } ],
+        "AllocatedStorage": "5",
+        "MasterUserPassword": { "Ref": "DBPassword" }
+      }
+    },
+    "DBSecurityGroup": {
+      "Type": "AWS::RDS::DBSecurityGroup",
+      "Properties": {
+        "DBSecurityGroupIngress": [ { "EC2SecurityGroupName": { "Ref": "HonoluluAnswersSecurityGroup" } }, { "CIDRIP" : "0.0.0.0/0" } ],
+        "GroupDescription": "Frontend Access"
+      }
+    },
+    "HonoluluAnswersSecurityGroup": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Security group that the Honolulu Rails server and RDS server will both be in"
+      }
+    },
+    "myStack": {
+      "Type": "AWS::OpsWorks::Stack",
+      "Properties": {
+        "Name": { "Ref": "AWS::StackName" },
+        "ServiceRoleArn": { "Fn::GetAtt": [ "OpsWorksServiceRole", "Arn" ] },
+        "DefaultInstanceProfileArn": { "Fn::GetAtt": [ "OpsWorksInstanceProfile", "Arn" ] },
+        "CustomJson": {
+          "deploy": {
+            "honoluluanswers": {
+              "database": {
+                "adapter": "postgresql",
+                "password":  { "Ref": "DBPassword" },
+                "username": "honolulu",
+                "host": { "Fn::GetAtt": ["DBInstance", "Endpoint.Address"] },
+                "port": "5432",
+                "database": "honoluluanswers"
+              },
+              "environment_variables" : {
+                "NEW_RELIC_LICENSE_KEY": "dunno",
+                "NEW_RELIC_APP_NAME": "dunno",
+                "S3_BUCKET": "honolulu-test-bucket",
+                "S3_KEY" : "AKIAIH7YASDSADOB3EGBRRA",
+                "S3_SECRET" : "vD9fw1k4sPXp81rASDASDSADEcLRBn0t77Ia6A",
+                "SEARCHIFY_API_URL" : "http://:oh5H697EC1TRlc@2zqe.api.searchify.com",
+                "SEARCHIFY_API_INDEX" : "hnlgovanswers-dev"
+              },
+              "migrate": true
+            }
+          }
+        },
+        "DefaultOs": "Ubuntu 12.04 LTS",
+        "DefaultAvailabilityZone": "us-west-2c",
+        "DefaultSshKeyName": "jonny-labs-west2"
+      }
+    },
+    "myLayer": {
+      "Type": "AWS::OpsWorks::Layer",
+      "DependsOn": "myApp",
+      "Properties": {
+        "StackId": { "Ref": "myStack" },
+        "Name": "rails",
+        "Type": "rails-app",
+        "Shortname": "rails",
+        "EnableAutoHealing": "true",
+        "AutoAssignElasticIps": "false",
+        "AutoAssignPublicIps": "true",
+        "Attributes": {
+          "BundlerVersion": "1.3.5",
+          "PassengerVersion": "4.0.29",
+          "RailsStack": "apache_passenger",
+          "RubyVersion": "1.9.3",
+          "RubygemsVersion": "2.1.11"
+        },
+        "Packages": [
+          "nodejs",
+          "sqlite3",
+          "git",
+          "libxslt1-dev",
+          "libxml2-dev",
+          "libsasl2-dev",
+          "libpq-dev",
+          "memcached",
+          "build-essential",
+          "libsqlite3-dev",
+          "libhunspell-1.3-0",
+          "gettext",
+          "postgresql"
+        ],
+        "CustomRecipes": {
+          "Deploy": [
+          ]
+        }
+      }
+    },
+    "myInstance1": {
+      "Type": "AWS::OpsWorks::Instance",
+      "Properties": {
+        "StackId": { "Ref": "myStack" },
+        "LayerIds": [ { "Ref": "myLayer" } ],
+        "InstallUpdatesOnBoot": true,
+        "Os" : "Ubuntu 12.04 LTS",
+        "InstanceType": "m1.large",
+        "RootDeviceType": "ebs",
+        "Architecture": "x86_64"
+      }
+    },
+    "myApp": {
+      "Type": "AWS::OpsWorks::App",
+      "Properties": {
+        "StackId": { "Ref": "myStack" },
+        "Name": "honoluluanswers",
+        "Type": "rails",
+        "AppSource": {
+          "Type": "git",
+          "Url": "https://github.com/stelligent/honolulu_answers.git"
+        },
+        "Attributes": {
+          "DocumentRoot": "public",
+          "RailsEnv" : "development",
+          "AutoBundleOnDeploy" : "true"
+        }
+      }
+    },
+    "OpsWorksServiceRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "opsworks.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Path": "/",
+        "Policies": [
+          {
+            "PolicyName": "opsworks-service",
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "ec2:*",
+                    "iam:PassRole",
+                    "cloudwatch:GetMetricStatistics",
+                    "elasticloadbalancing:*"
+                  ],
+                  "Resource": "*"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "OpsWorksInstanceRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "ec2.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Path": "/"
+      }
+    },
+    "OpsWorksInstanceProfile": {
+      "Type": "AWS::IAM::InstanceProfile",
+      "Properties": {
+        "Path": "/",
+        "Roles": [
+          {
+            "Ref": "OpsWorksInstanceRole"
+          }
+        ]
+      }
+    }
+  },
+  "Outputs": {
+    "StackId": {
+      "Value": { "Ref": "myStack" }
+    },
+    "AppId": {
+      "Value": { "Ref": "myApp" }
+    }
+  }
+}
