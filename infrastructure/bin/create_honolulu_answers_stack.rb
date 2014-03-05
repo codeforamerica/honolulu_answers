@@ -90,8 +90,8 @@ custom_json = <<-END
                 "NEW_RELIC_LICENSE_KEY": "dunno",
                 "NEW_RELIC_APP_NAME": "dunno",
                 "S3_BUCKET": "honolulu-test-bucket",
-                "S3_KEY" : "AKIAIH7YMD3OB3EGBRRA",
-                "S3_SECRET" : "vD9fw1k4sPXp81rczodiGnK+7bEcLRBn0t77Ia6A",
+                "S3_KEY" : "YOURACCESSKEY",
+                "S3_SECRET" : "YOURSECRETKEY",
                 "SEARCHIFY_API_URL" : "http://:oh5H697EC1TRlc@2zqe.api.searchify.com",
                 "SEARCHIFY_API_INDEX" : "hnlgovanswers-dev"
             },
