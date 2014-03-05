@@ -65,8 +65,7 @@
                 "S3_SECRET" : "vD9fw1k4sPXp81rASDASDSADEcLRBn0t77Ia6A",
                 "SEARCHIFY_API_URL" : "http://:oh5H697EC1TRlc@2zqe.api.searchify.com",
                 "SEARCHIFY_API_INDEX" : "hnlgovanswers-dev"
-              },
-              "migrate": true
+              }
             }
           }
         },
