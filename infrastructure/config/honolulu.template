@@ -46,6 +46,10 @@
         "Name": { "Ref": "AWS::StackName" },
         "ServiceRoleArn": { "Fn::GetAtt": [ "OpsWorksServiceRole", "Arn" ] },
         "DefaultInstanceProfileArn": { "Fn::GetAtt": [ "OpsWorksInstanceProfile", "Arn" ] },
+        "CustomCookbooksSource": {
+          "Type": "git",
+          "Url": "https://github.com/stelligent/honolulu_answers_cookbooks.git"
+        },
         "CustomJson": {
           "deploy": {
             "honoluluanswers": {
