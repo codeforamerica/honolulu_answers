@@ -108,8 +108,8 @@
           "postgresql"
         ],
         "CustomRecipes": {
-          "Deploy": [
-          ]
+          "Setup": [ "environment::set_env_variables" ],
+          "Deploy": [ "honolulu::seed", "honolulu::searchify" ]
         }
       }
     },
