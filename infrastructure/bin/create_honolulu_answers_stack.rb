@@ -69,8 +69,13 @@ instance_type = opts[:size]
 # curious what the AWS calls look like? set http_wire_trace to true.
 Aws.config = { region: aws_region, http_wire_trace: false }
 
-servicerolearn = "arn:aws:iam::923120264911:role/aws-opsworks-service-role"
-ec2rolearn = "arn:aws:iam::923120264911:instance-profile/aws-opsworks-ec2-role"
+# stelligent prod values
+# servicerolearn = "arn:aws:iam::923120264911:role/aws-opsworks-service-role"
+# ec2rolearn = "arn:aws:iam::923120264911:instance-profile/aws-opsworks-ec2-role"
+
+# stelligent labs values
+servicerolearn = "arn:aws:iam::324320755747:role/aws-opsworks-service-role"
+ec2rolearn = "arn:aws:iam::324320755747:instance-profile/aws-opsworks-ec2-role"
 
 # opsworks configuration is passed in as json
 custom_json = <<-END
@@ -90,8 +95,8 @@ custom_json = <<-END
                 "NEW_RELIC_LICENSE_KEY": "dunno",
                 "NEW_RELIC_APP_NAME": "dunno",
                 "S3_BUCKET": "honolulu-test-bucket",
-                "S3_KEY" : "AKIAIH7YMD3OB3EGBRRA",
-                "S3_SECRET" : "vD9fw1k4sPXp81rczodiGnK+7bEcLRBn0t77Ia6A",
+                "S3_KEY" : "YOURACCESSKEY",
+                "S3_SECRET" : "YOURSECRETKEY",
                 "SEARCHIFY_API_URL" : "http://:oh5H697EC1TRlc@2zqe.api.searchify.com",
                 "SEARCHIFY_API_INDEX" : "hnlgovanswers-dev"
             },
