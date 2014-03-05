@@ -109,7 +109,7 @@
         ],
         "CustomRecipes": {
           "Setup": [ "environment::set_env_variables" ],
-          "Deploy": [ "honolulu::seed", "honolulu::searchify" ]
+          "Deploy": [ "honolulu::migrate", "honolulu::seed", "honolulu::searchify" ]
         }
       }
     },
@@ -149,14 +149,8 @@
           "Statement": [
             {
               "Effect": "Allow",
-              "Principal": {
-                "Service": [
-                  "opsworks.amazonaws.com"
-                ]
-              },
-              "Action": [
-                "sts:AssumeRole"
-              ]
+              "Principal": { "Service": [ "opsworks.amazonaws.com" ] },
+              "Action": [ "sts:AssumeRole" ]
             }
           ]
         },
