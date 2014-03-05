@@ -69,8 +69,8 @@ instance_type = opts[:size]
 # curious what the AWS calls look like? set http_wire_trace to true.
 Aws.config = { region: aws_region, http_wire_trace: false }
 
-servicerolearn = "arn:aws:iam::324320755747:role/aws-opsworks-service-role"
-ec2rolearn = "arn:aws:iam::324320755747:instance-profile/aws-opsworks-ec2-role"
+servicerolearn = "arn:aws:iam::923120264911:role/aws-opsworks-service-role"
+ec2rolearn = "arn:aws:iam::923120264911:instance-profile/aws-opsworks-ec2-role"
 
 # opsworks configuration is passed in as json
 custom_json = <<-END
@@ -180,7 +180,7 @@ instance_params =     {
       layer_ids: [layer.layer_id],
       instance_type: instance_type,
       hostname: "honoluluanswers",
-      ssh_key_name: "jonny-labs-west2",
+#      ssh_key_name: "jonny-labs-west2",
       :root_device_type => 'ebs',
       :architecture => 'x86_64'
     }
