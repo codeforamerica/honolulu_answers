@@ -1,22 +1,27 @@
-This is a fork of Honolulu Answers used as a proof of concept of putting applications like this into AWS. If you'd like to launch this in an AWS account, spin up an Unbuntu EC2 instance and run these directions. (The application depends on several gems that have specific development requirements, so a lot of libraries need to be retrieved from repositories and installed. These directions will *only* work on Ubuntu, though they can probably be modified to run on other systems.)
+## Setting up the Honolulu Answers application
+1. Create a new AWS IAM user and download the access keys. This user should have Aministrator permissions
+2. Launch a Ubuntu 12.04 ec2 instance
+3. SSH into the Ubuntu 12.04 ec2 instance
+4. Export your AWS Access Keys from the AWS IAM user you created in step #1:
+```
+export AWS_ACCESS_KEY_ID=YOURACCESSKEY
+export AWS_SECRET_ACCESS_KEY=YOURSECRETKEY
+```
 
-    cat > setup.bsh << SETUP
-    #!/bin/bash -e
-    sudo apt-get -y update
-    sudo apt-get -y install git postgresql ruby1.9.1-full ruby-bundler rubygems1.9.1 libxslt1-dev libxml2-dev libsasl2-dev libpq-dev sqlite3 memcached build-essential libsqlite3-dev libhunspell-1.3-0 gettext
-    \curl -sSL https://get.rvm.io | bash
-    source /home/ubuntu/.rvm/scripts/rvm
-    rvm install ruby-1.9.3-p484
-    git clone https://github.com/stelligent/honolulu_answers.git
-    cd honolulu_answers
-    export AWS_ACCESS_KEY_ID=YOURACCESSKEY
-    export AWS_SECRET_ACCESS_KEY=YOURSECRETKEY
-    bundle install
-    infrastructure/build_instructure.sh 
-    SETUP
-    time . ./setup.bsh
+5. Run the commands listed below:
+```
+sudo apt-get -y update
+sudo apt-get -y install git postgresql ruby1.9.1-full ruby-bundler rubygems1.9.1 libxslt1-dev libxml2-dev libsasl2-dev libpq-dev sqlite3 memcached build-essential libsqlite3-dev libhunspell-1.3-0 gettext
+\curl -sSL https://get.rvm.io | bash
+source /home/ubuntu/.rvm/scripts/rvm
+rvm install ruby-1.9.3-p484
+git clone https://github.com/stelligent/honolulu_answers.git
+cd honolulu_answers
+bundle install
+infrastructure/build_instructure.sh
+```
 
-After this script completes successfully, an OpsWorks stack will have been created and launching. You can find the IP Address of the server from the OpsWorks console.
+An Opsworks stack will have been created and launching. You can find the IP Address of the server from the OpsWorks console.
 
 ---
 
