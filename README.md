@@ -12,7 +12,8 @@ export AWS_ACCESS_KEY_ID=YOURACCESSKEY
 export AWS_SECRET_ACCESS_KEY=YOURSECRETKEY
 ```
 
-5. Run the commands listed below:
+Then, run the commands listed below:
+
 ```
 sudo apt-get -y update
 sudo apt-get -y install git postgresql ruby1.9.1-full ruby-bundler rubygems1.9.1 libxslt1-dev libxml2-dev libsasl2-dev libpq-dev sqlite3 memcached build-essential libsqlite3-dev libhunspell-1.3-0 gettext
