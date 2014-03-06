@@ -1,3 +1,7 @@
+## honolulu answers aws scripting poc
+
+Hi there. We used this repo to prove out that we could script the Honolulu Answers app deploy in AWS. This fork is not intended to be merged back into the original, and we don't plan on keeping it updated with any changes to made to the original. Use this application at your own risk!
+
 ## Setting up the Honolulu Answers application
 1. Create a new [AWS IAM user](https://console.aws.amazon.com/iam/home) and download the access keys. This user should have Aministrator permissions
 2. Launch an Ubuntu 12.04 ec2 instance in AWS
@@ -21,4 +25,9 @@ bundle install
 infrastructure/build_instructure.sh
 ```
 
-An Opsworks stack will have been created and launching. You can find the IP Address of the server from the OpsWorks console.
+An Opsworks stack will have been created and launching. To get details:
+1. Log into the AWS Management Console
+2. Go to the OpsWorks control panel
+3. You should see an OpsWorks stack listed named "Honolulu Answers" -- click on it. If you see more than one listed (because you kicked it off a few times), they are listed in alphabetical-then-chronological order. So the last "Honolulu Answers" stack listed will be the most recent one.
+4. Click on Instances
+5. Once the Instance turns green and shows its status as "online" you can click the IP address and the Honolulu Answers application should load!
