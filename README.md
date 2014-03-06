@@ -33,11 +33,15 @@ An Opsworks stack will have been created and launching. To get details:
 4. Click on **Instances** within the OpsWorks stack you selected.
 5. Once the Instance turns green and shows its status as *Online*,you can click the IP address link and the Honolulu Answers application will load!
 
-### Deleting an OpsWorks Stack
+### Deleting provisioned AWS resources
 1. Go to the [OpsWorks](http://console.aws.amazon.com/opsworks) console and select the OpsWorks stack that you've launched. Delete the Instances and Layers of the Stack. Once these are deleted, you can delete the Stack.
+2. Go to the [CloudFormation](http://console.aws.amazon.com/cloudformation) console and delete the corresponding CloudFormation stack. You can match the timestamp in the name to the OpsWorks stack.
 
 ### Changes made to this Github Fork
 
+A majority of the changes made to this github fork were additions in the infrastructure/ directory. Our scripts for building up the different AWS resources were added here.
+
+There were some minor changes to the app, moving some configuration out of environment variables into a configuration file. **NEED MORE DEETS HERE.**
 
 ### AWS Functionality Used
 #### OpsWorks
