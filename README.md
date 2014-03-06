@@ -28,8 +28,7 @@ infrastructure/build_instructure.sh
 
 An Opsworks stack will have been created and launching. To get details:
 
-1. Log into the AWS Management Console
-2. Go to the OpsWorks control panel
-3. You should see an OpsWorks stack listed named "Honolulu Answers" -- click on it. If you see more than one listed (because you kicked it off a few times), they are listed in alphabetical-then-chronological order. So the last "Honolulu Answers" stack listed will be the most recent one.
-4. Click on Instances
-5. Once the Instance turns green and shows its status as "online" you can click the IP address and the Honolulu Answers application should load!
+1. Log into the [OpsWorks](http://console.aws.amazon.com/opsworks) control panel
+3. You should see an OpsWorks stack listed named **Honolulu Answers** -- click on it. If you see more than one listed (because you kicked it off a few times), they are listed in alphabetical-then-chronological order. So the last *Honolulu Answers* stack listed will be the most recent one.
+4. Click on **Instances** within the OpsWorks stack you selected.
+5. Once the Instance turns green and shows its status as *Online*,you can click the IP address link and the Honolulu Answers application will load!
