@@ -36,6 +36,7 @@ An Opsworks stack will have been created and launching. To get details:
 ### Deleting provisioned AWS resources
 1. Go to the [OpsWorks](http://console.aws.amazon.com/opsworks) console and select the OpsWorks stack that you've launched. Delete the Instances and Layers of the Stack. Once these are deleted, you can delete the Stack.
 2. Go to the [CloudFormation](http://console.aws.amazon.com/cloudformation) console and delete the corresponding CloudFormation stack. You can match the timestamp in the name to the OpsWorks stack.
+3. Go to the [EC2 Console](https://console.aws.amazon.com/ec2/) and delete the Ubuntu instance you spun up to launch everything from.
 
 ### Changes made to this Github Fork
 
