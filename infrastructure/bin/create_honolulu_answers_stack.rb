@@ -53,6 +53,7 @@ opts = Trollop::options do
   opt :source, 'The github repo where the source to build resides (will not work with anything but github!)', :type => String, :default => "https://github.com/stelligent/honolulu_answers.git"
   opt :size, 'The instance size to use', :type => String, :default => "m1.large"
   opt :db, 'Hostname of the DB server', :type => String, :required => true
+  opt :accountnumber, 'Account number of your AWS account (no dashes!)', :type => String, :required => true
 
 end
 
@@ -74,8 +75,8 @@ Aws.config = { region: aws_region, http_wire_trace: false }
 # ec2rolearn = "arn:aws:iam::923120264911:instance-profile/aws-opsworks-ec2-role"
 
 # stelligent labs values
-servicerolearn = "arn:aws:iam::324320755747:role/aws-opsworks-service-role"
-ec2rolearn = "arn:aws:iam::324320755747:instance-profile/aws-opsworks-ec2-role"
+servicerolearn = "arn:aws:iam::#{opts[:accountnumber]}:role/aws-opsworks-service-role"
+ec2rolearn = "arn:aws:iam::#{opts[:accountnumber]}:instance-profile/aws-opsworks-ec2-role"
 
 # opsworks configuration is passed in as json
 custom_json = <<-END
