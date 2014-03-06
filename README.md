@@ -5,7 +5,7 @@ Hi there. We used this repo to demonstrate how to script the Honolulu Answers ap
 ## Setting up the Honolulu Answers application
 1. Create a new [AWS IAM user](https://console.aws.amazon.com/iam/) and download the access keys. This user should have Aministrator permissions
 2. Launch an Ubuntu 12.04 [EC2](https://console.aws.amazon.com/ec2) instance in AWS
-3. SSH into the Ubuntu 12.04 EC2 instance by clicking the chckbox next to the instance in the EC2 console, clicking the *Connect* button and following the insutrctions. 
+3. SSH into the Ubuntu 12.04 EC2 instance by clicking the chckbox next to the instance in the EC2 console, clicking the **Connect** button and following the insutrctions. 
 4. Export your AWS Access Keys from the AWS IAM user you created in step #1:
 ```
 export AWS_ACCESS_KEY_ID=YOURACCESSKEY
