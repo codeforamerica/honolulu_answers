@@ -42,7 +42,8 @@ An Opsworks stack will have been created and launching. To get details:
 
 A majority of the changes made to this github fork were additions in the infrastructure/ directory. Our scripts for building up the different AWS resources were added here.
 
-There were some minor changes to the app, moving some configuration out of environment variables into a configuration file. Now there's a `config/config.yml`. We now specify app configuration values in this file rather than relying on environment variables.
+There were some minor changes to the app, moving some configuration out of environment variables into a configuration file. Now there's a `config/config.yml`. We now specify app configuration values in this file rather than relying on environment variables. This file is loaded using the `config/application.rb`. The modified files include:
+- `config/initializers/tanker.rb`
 
 ### AWS Functionality Used
 #### OpsWorks
