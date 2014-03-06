@@ -14,6 +14,13 @@ export AWS_SECRET_ACCESS_KEY=YOURSECRETKEY
 export AWS_ACCT_NUMBER=YOURACCOUNTNUMBER
 ```
 
+Here's an example of what your exports might look like:
+
+```
+export AWS_ACCESS_KEY_ID=AKIAJ3SRLadsdasdLUNHQ
+export AWS_SECRET_ACCESS_KEY=uMPEOmaZ+niixOYjjdP6afasfawfasfsQbsqSup0rb2L+Y
+export AWS_ACCT_NUMBER=324322445747
+```
 Then, run the commands listed below:
 
 ```
