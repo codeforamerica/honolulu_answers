@@ -28,7 +28,14 @@ infrastructure/build_instructure.sh
 
 An Opsworks stack will have been created and launching. To get details:
 
-1. Log into the [OpsWorks](http://console.aws.amazon.com/opsworks) control panel
+1. Log into the [OpsWorks](http://console.aws.amazon.com/opsworks) console
 3. You should see an OpsWorks stack listed named **Honolulu Answers** -- click on it. If you see more than one listed (because you kicked it off a few times), they are listed in alphabetical-then-chronological order. So the last *Honolulu Answers* stack listed will be the most recent one.
 4. Click on **Instances** within the OpsWorks stack you selected.
 5. Once the Instance turns green and shows its status as *Online*,you can click the IP address link and the Honolulu Answers application will load!
+
+## Deleting an OpsWorks Stack
+1. Go to the [OpsWorks](http://console.aws.amazon.com/opsworks) console and select the OpsWorks stack that you've launched. Delete the Instances and Layers of the Stack. Once these are deleted, you can delete the Stack.
+
+
+
+
