@@ -26,6 +26,7 @@ infrastructure/build_instructure.sh
 ```
 
 An Opsworks stack will have been created and launching. To get details:
+
 1. Log into the AWS Management Console
 2. Go to the OpsWorks control panel
 3. You should see an OpsWorks stack listed named "Honolulu Answers" -- click on it. If you see more than one listed (because you kicked it off a few times), they are listed in alphabetical-then-chronological order. So the last "Honolulu Answers" stack listed will be the most recent one.
