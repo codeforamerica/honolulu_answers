@@ -40,6 +40,7 @@ cfn_stack_name = "HonoluluAnswers-#{@timestamp}"
   parameters: [
     { parameter_key: "DBPassword", parameter_value: dbpassword }
   ]
+)
 
 print_and_flush "creating required resources"
 while (stack_in_progress cfn_stack_name)
