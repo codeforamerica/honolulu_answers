@@ -1,6 +1,6 @@
 ## Setting up the Honolulu Answers application
-1. Create a new AWS IAM user and download the access keys. This user should have Aministrator permissions
-2. Launch a Ubuntu 12.04 ec2 instance
+1. Create a new [AWS IAM user](https://console.aws.amazon.com/iam/home) and download the access keys. This user should have Aministrator permissions
+2. Launch an Ubuntu 12.04 ec2 instance in AWS
 3. SSH into the Ubuntu 12.04 ec2 instance
 4. Export your AWS Access Keys from the AWS IAM user you created in step #1:
 ```
