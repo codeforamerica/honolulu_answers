@@ -39,5 +39,15 @@ An Opsworks stack will have been created and launching. To get details:
 ### Changes made to this Github Fork
 
 
+### AWS Functionality Used
+# OpsWorks
 
+AWS OpsWorks is an application management service that let's you model your application infrastructure and then takes care of provisioning Amazon EC2 instances.
 
+# RDS
+Amazon's Relational Database Service takes care of all the DB administration, and let's you just work with the data store. We spun up a postgreSQL RDS instance, and then configure it to work with the Honolulu Answers Application.
+
+### Other Tools Used
+# Jenkins
+
+# Cucumber
