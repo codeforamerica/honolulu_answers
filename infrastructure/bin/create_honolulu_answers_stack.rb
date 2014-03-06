@@ -60,7 +60,7 @@ end
 ops = Aws::OpsWorks.new region: "us-east-1"
 
 # alright, let's do this.
-puts "You're creating a CanaryBoard instance in the #{opts[:region]} region. (size: #{opts[:size]})"
+puts "You're creating a Honolulu Answers instance in the #{opts[:region]} region. (size: #{opts[:size]})"
 @timestamp = Time.now.strftime "%Y%m%d%H%M%S"
 
 aws_region = opts[:region]
