@@ -40,7 +40,15 @@ An Opsworks stack will have been created and launching. To get details:
 
 ### Changes made to this Github Fork
 
-A majority of the changes made to this github fork were additions in the infrastructure/ directory. Our scripts for building up the different AWS resources were added here.
+A majority of the changes made to this github fork were additions in the infrastructure/ directory. Our scripts for building up the different AWS resources were added here. We added a `build_infrastructure.sh` bash script that utilizes several other files from the infrastucture directory for building a Honolulu Answers Opsworks stack. The scripts called consist of:
+- `bin/create_database.rb` - Ruby script that calls `config/honolulu_rds.template` CloudFormation template to create a RDS database for the Honolulu Answers application
+- `bin/create_honolulu_answers_stack.rb` - This creates and configures the Honolulu Answers Opsworks stack
+- `bin/route53switch.rb` - This is currently unused, but is intended for doing blue/green deployments
+- `bin/create_cloudformation_stack.rb` - This is currently unused, but is intended for using CloudFormation to launch Opsworks stacks instead of ruby scripts.
+- `bin/wait_for_stack.rb` - This currently unused, but will work with CloudFormation
+- `config/honolulu.template` - This currently unused, but will be the CloudFormation template for launching a Honolulu Answers Opsworks stack.
+- `config/honolulu_rds.template` - CloudFormation template used for creating the RDS database.
+- `config/rds_params.json` - Json property file for defining rds parameters
 
 There were some minor changes to the app, moving some configuration out of environment variables into a configuration file. Now there's a `config/config.yml`. We now specify app configuration values in this file rather than relying on environment variables. This file is loaded using the `config/application.rb`. The modified files include:
 - `config/initializers/tanker.rb`
