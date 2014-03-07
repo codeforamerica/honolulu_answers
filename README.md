@@ -7,7 +7,7 @@ Hi there. We used this repo to demonstrate how to script the Honolulu Answers ap
 2. Go to the [AWS Account Information page](https://portal.aws.amazon.com/gp/aws/developer/account) and get your account number (it's in the top right hand corner).
 2. Launch an Ubuntu 12.04 [EC2](https://console.aws.amazon.com/ec2) instance in AWS
 3. SSH into the Ubuntu 12.04 EC2 instance by clicking the chckbox next to the instance in the EC2 console, clicking the **Connect** button and following the instructions. 
-4. Export your AWS Access Keys from the AWS IAM user you created in step #1:
+4. Export your AWS Access Keys and Account Number from the AWS IAM user you created in step #1:
 ```
 export AWS_ACCESS_KEY_ID=YOURACCESSKEY
 export AWS_SECRET_ACCESS_KEY=YOURSECRETKEY
@@ -19,7 +19,7 @@ Here's an example of what your exports might look like:
 ```
 export AWS_ACCESS_KEY_ID=AKIAJ3SRLadsdasdLUNHQ
 export AWS_SECRET_ACCESS_KEY=uMPEOmaZ+niixOYjjdP6afasfawfasfsQbsqSup0rb2L+Y
-export AWS_ACCT_NUMBER=324322445747
+export AWS_ACCT_NUMBER=9999999999999
 ```
 Then, run the commands listed below:
 
