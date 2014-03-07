@@ -6,7 +6,7 @@ Hi there. We used this repo to demonstrate how to script the Honolulu Answers ap
 1. Create a new [AWS IAM user](https://console.aws.amazon.com/iam/) and download the access keys. This user should have Aministrator permissions.
 2. Go to the [AWS Account Information page](https://portal.aws.amazon.com/gp/aws/developer/account) and get your account number (it's in the top right hand corner).
 2. Launch an Ubuntu 12.04 [EC2](https://console.aws.amazon.com/ec2) instance in AWS
-3. SSH into the Ubuntu 12.04 EC2 instance by clicking the chckbox next to the instance in the EC2 console, clicking the **Connect** button and following the insutrctions. 
+3. SSH into the Ubuntu 12.04 EC2 instance by clicking the chckbox next to the instance in the EC2 console, clicking the **Connect** button and following the instructions. 
 4. Export your AWS Access Keys from the AWS IAM user you created in step #1:
 ```
 export AWS_ACCESS_KEY_ID=YOURACCESSKEY
@@ -43,7 +43,7 @@ An Opsworks stack will have been created and launching. To get details:
 5. Once the Instance turns green and shows its status as *Online*,you can click the IP address link and the Honolulu Answers application will load!
 
 ### Deleting provisioned AWS resources
-1. Go to the [OpsWorks](http://console.aws.amazon.com/opsworks) console and select the OpsWorks stack that you've launched. Delete the Instances and Layers of the Stack. Once these are deleted, you can delete the Stack.
+1. Go to the [OpsWorks](http://console.aws.amazon.com/opsworks) console and select the OpsWorks stack that you've launched. Delete the Apps and the Instances of the Stack. Once these are deleted, you can delete the Stack.
 2. Go to the [CloudFormation](http://console.aws.amazon.com/cloudformation) console and delete the corresponding CloudFormation stack. You can match the timestamp in the name to the OpsWorks stack.
 3. Go to the [EC2 Console](https://console.aws.amazon.com/ec2/) and delete the Ubuntu instance you spun up to launch everything from.
 
