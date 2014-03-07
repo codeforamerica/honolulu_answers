@@ -59,8 +59,8 @@ A majority of the changes made to this github fork were additions in the [`infra
 - [`config/honolulu_rds.template`](https://github.com/stelligent/honolulu_answers/tree/master/infrastructure/config/honolulu_rds.template)  - CloudFormation template used for creating the RDS database.
 - [`config/rds_params.json`](https://github.com/stelligent/honolulu_answers/tree/master/infrastructure/config/rds_params.json)  - JSON property file for defining rds parameters
 
-There were some minor changes to the app, moving some configuration out of environment variables into a configuration file. Now there's a [`config/config.yml`](https://github.com/stelligent/honolulu_answers/tree/master/infrastructure/config/config.yml). We now specify app configuration values in this file rather than relying on environment variables. This file is loaded using the [`config/application.rb`](https://github.com/stelligent/honolulu_answers/tree/master/infrastructure/config/application.rb). The modified files include:
-- [`config/initializers/tanker.rb`](https://github.com/stelligent/honolulu_answers/tree/master/infrastructure/config/initializers/tanker.rb)
+There were some minor changes to the app, moving some configuration out of environment variables into a configuration file. Now there's a [`config/config.yml`](https://github.com/stelligent/honolulu_answers/tree/master/config/config.yml). We now specify app configuration values in this file rather than relying on environment variables. This file is loaded using the [`config/application.rb`](https://github.com/stelligent/honolulu_answers/tree/master/config/application.rb). The modified files include:
+- [`config/initializers/tanker.rb`](https://github.com/stelligent/honolulu_answers/tree/master/config/initializers/tanker.rb)
 
 ### AWS Services Used
 #### OpsWorks
