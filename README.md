@@ -35,7 +35,7 @@ bundle install
 infrastructure/build_infrastructure.sh
 ```
 
-After about 20 minutes, an Opsworks stack is created and launched. To get details:
+After about 50 minutes, an Opsworks stack is created and launched. To get details:
 
 1. Log into the [OpsWorks](http://console.aws.amazon.com/opsworks) console
 3. You should see an OpsWorks stack listed named **Honolulu Answers** -- click on it. If you see more than one listed (because you kicked it off a few times), they are listed in alphabetical-then-chronological order. So the last *Honolulu Answers* stack listed will be the most recent one.
