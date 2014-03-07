@@ -65,7 +65,7 @@ There were some minor changes to the app, moving some configuration out of envir
 ### AWS Services Used
 #### OpsWorks
 
-AWS OpsWorks is an application management service that let's you model your application infrastructure and then takes care of provisioning Amazon EC2 instances.
+AWS OpsWorks is an application management service that let's you model your application infrastructure. It manages the provisioning of EC2 instances, integrates with VPC, ELB and Elastic IP and provides Auto Healing and Monitoring. OpsWorks can be configured to make calls to your Chef cookbooks for configuring servers, run deployments, etc.
 
 #### RDS
 Amazon's Relational Database Service takes care of all the DB administration, and let's you just work with the data store. We spun up a postgreSQL RDS instance, and then configure it to work with the Honolulu Answers Application.
