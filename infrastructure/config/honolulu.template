@@ -6,7 +6,7 @@
     "DBPassword": {
       "Default": "password",
       "NoEcho": "true",
-      "Description": "The Drupal database admin account password",
+      "Description": "The database admin account password",
       "Type": "String",
       "MinLength": "8",
       "MaxLength": "41",
@@ -40,7 +40,7 @@
         "GroupDescription": "Security group that the Honolulu Rails server and RDS server will both be in"
       }
     },
-    "myStack": {
+    "stack": {
       "Type": "AWS::OpsWorks::Stack",
       "Properties": {
         "Name": { "Ref": "AWS::StackName" },
@@ -78,11 +78,11 @@
         "DefaultSshKeyName": "jonny-labs-west2"
       }
     },
-    "myLayer": {
+    "layer": {
       "Type": "AWS::OpsWorks::Layer",
-      "DependsOn": "myApp",
+      "DependsOn": "app",
       "Properties": {
-        "StackId": { "Ref": "myStack" },
+        "StackId": { "Ref": "stack" },
         "Name": "rails",
         "Type": "rails-app",
         "Shortname": "rails",
@@ -117,11 +117,11 @@
         }
       }
     },
-    "myInstance1": {
+    "instance": {
       "Type": "AWS::OpsWorks::Instance",
       "Properties": {
-        "StackId": { "Ref": "myStack" },
-        "LayerIds": [ { "Ref": "myLayer" } ],
+        "StackId": { "Ref": "stack" },
+        "LayerIds": [ { "Ref": "layer" } ],
         "InstallUpdatesOnBoot": true,
         "Os" : "Ubuntu 12.04 LTS",
         "InstanceType": "m1.large",
@@ -129,10 +129,10 @@
         "Architecture": "x86_64"
       }
     },
-    "myApp": {
+    "app": {
       "Type": "AWS::OpsWorks::App",
       "Properties": {
-        "StackId": { "Ref": "myStack" },
+        "StackId": { "Ref": "stack" },
         "Name": "honoluluanswers",
         "Type": "rails",
         "AppSource": {
@@ -215,10 +215,10 @@
   },
   "Outputs": {
     "StackId": {
-      "Value": { "Ref": "myStack" }
+      "Value": { "Ref": "stack" }
     },
     "AppId": {
-      "Value": { "Ref": "myApp" }
+      "Value": { "Ref": "app" }
     }
   }
 }
