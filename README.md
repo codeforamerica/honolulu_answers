@@ -14,7 +14,7 @@ export AWS_SECRET_ACCESS_KEY=YOURSECRETKEY
 export AWS_ACCT_NUMBER=YOURACCOUNTNUMBER
 ```
 
-Here's an example of what your exports might look like. Notice that your account number should have hyphens or spaces:
+Here's an ***example*** of what your exports might look like. Notice that your account number should have hyphens or spaces:
 
 ```
 export AWS_ACCESS_KEY_ID=AKIAJ3SRLadsdasdLUNHQ
