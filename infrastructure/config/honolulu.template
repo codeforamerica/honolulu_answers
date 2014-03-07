@@ -50,6 +50,7 @@
           "Type": "git",
           "Url": "https://github.com/stelligent/honolulu_answers_cookbooks.git"
         },
+        "UseCustomCookbooks": "true",
         "CustomJson": {
           "deploy": {
             "honoluluanswers": {
