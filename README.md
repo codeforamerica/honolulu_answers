@@ -70,6 +70,9 @@ AWS OpsWorks is an application management service that let's you model your appl
 #### RDS
 Amazon's Relational Database Service takes care of all the DB administration, and let's you just work with the data store. We spun up a postgreSQL RDS instance, and then configure it to work with the Honolulu Answers Application.
 
+#### CloudFormation
+AWS CloudFormation is a service for defining your AWS infrastructure requirements in an executable JSON file. AWS CloudFormation gives developers and systems administrators an easy way to create and manage a collection of related AWS resources, provisioning and updating them in an orderly and predictable fashion.
+
 ### Other Tools Used
 #### Jenkins
 
