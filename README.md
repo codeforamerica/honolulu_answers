@@ -49,7 +49,7 @@ After about 20 minutes, an Opsworks stack is created and launched. To get detail
 
 ### Changes made to this Github Fork
 
-A majority of the changes made to this github fork were additions in the `[infrastructure/](https://github.com/stelligent/honolulu_answers/tree/master/infrastructure)` directory of this repo. Our scripts for building up the different AWS resources were added here. We added a `build_infrastructure.sh` bash script that utilizes several other files from the infrastucture directory for building a Honolulu Answers Opsworks stack. The scripts called consist of:
+A majority of the changes made to this github fork were additions in the [`infrastructure/`](https://github.com/stelligent/honolulu_answers/tree/master/infrastructure) directory of this repo. Our scripts for building up the different AWS resources were added here. We added a `build_infrastructure.sh` bash script that utilizes several other files from the infrastucture directory for building a Honolulu Answers Opsworks stack. The scripts called consist of:
 - `bin/create_database.rb` - Ruby script that calls `config/honolulu_rds.template` CloudFormation template to create a RDS database for the Honolulu Answers application
 - `bin/create_honolulu_answers_stack.rb` - This creates and configures the Honolulu Answers Opsworks stack
 - `bin/route53switch.rb` - This is currently unused, but is intended for doing blue/green deployments
