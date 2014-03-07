@@ -1,8 +1,26 @@
+require "aws-sdk-core"
+
+Given(/^I have the CloudFormation stack information to query$/) do
+  @stackname = ENV["stack_name"]
+  expect(@stackname).to be, "$stack_name wasn't set in the local environment"
+  region = ENV["region"]
+  expect(region).to be, "$region wasn't set in the local environment"
+
+  cfn = Aws::CloudFormation.new region: region
+  instance_ids = cfn.describe_stack_resources(stack_name: @stackname).stack_resources.collect {|rsc| if rsc.resource_type == "AWS::OpsWorks::Instance" then rsc.physical_resource_id end }.compact
+
+  ops = Aws::OpsWorks.new region: "us-east-1"
+  @ip_address = ops.describe_instances( instance_ids: instance_ids).instances.first["public_ip"]
+
+  expect(@ip_address).to be, "No IP address associated with stack."
+
+end
+
 
 When(/^I pull up the Honolulu Answers application$/) do
   @error = nil
   begin
-    url = ENV["HONOURL"]
+    url = "http://#{@ip_address}/"
     @response = Net::HTTP.get_response(URI.parse(url).host, URI.parse(url).path)
   rescue Exception => e
     @error = e
