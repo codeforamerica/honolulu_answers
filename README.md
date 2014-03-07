@@ -1,6 +1,6 @@
 ## Honolulu Answers AWS Scripting Proof of Concept
 
-Hi there. We used this repo to demonstrate how to script the Honolulu Answers app to deploy in AWS. This fork is not intended to be merged back into the original, and we don't plan on keeping it updated with any changes to made to the original. Use this application at your own risk!
+Hi there. We used this repo to demonstrate how to script the Honolulu Answers app to deploy in Amazon Web Services (AWS). This fork is not intended to be merged back into the original, and we don't plan on keeping it updated with any changes to made to the original. You will incur AWS charges while resources are in use. Use this application at your own risk!
 
 ## Setting up the Honolulu Answers application
 1. Create a new [AWS IAM user](https://console.aws.amazon.com/iam/) and download the access keys. This user should have Aministrator permissions.
@@ -62,7 +62,7 @@ A majority of the changes made to this github fork were additions in the infrast
 There were some minor changes to the app, moving some configuration out of environment variables into a configuration file. Now there's a `config/config.yml`. We now specify app configuration values in this file rather than relying on environment variables. This file is loaded using the `config/application.rb`. The modified files include:
 - `config/initializers/tanker.rb`
 
-### AWS Functionality Used
+### AWS Services Used
 #### OpsWorks
 
 AWS OpsWorks is an application management service that let's you model your application infrastructure and then takes care of provisioning Amazon EC2 instances.
