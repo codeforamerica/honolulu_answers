@@ -19,7 +19,7 @@ Here's an ***example*** of what your exports might look like. Notice that your a
 ```
 export AWS_ACCESS_KEY_ID=AKIAJ3SRLadsdasdLUNHQ
 export AWS_SECRET_ACCESS_KEY=uMPEOmaZ+niixOYjjdP6afasfawfasfsQbsqSup0rb2L+Y
-export AWS_ACCT_NUMBER=9999999999999
+export AWS_ACCT_NUMBER=999988887777
 ```
 Then, run the commands listed below:
 
