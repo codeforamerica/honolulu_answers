@@ -32,7 +32,7 @@ rvm install ruby-1.9.3-p484
 git clone https://github.com/stelligent/honolulu_answers.git
 cd honolulu_answers
 bundle install
-infrastructure/build_instructure.sh
+infrastructure/build_infrastructure.sh
 ```
 
 After about 20 minutes, an Opsworks stack is created and launched. To get details:
