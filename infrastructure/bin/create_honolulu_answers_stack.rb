@@ -78,6 +78,9 @@ Aws.config = { region: aws_region, http_wire_trace: false }
 servicerolearn = "arn:aws:iam::#{opts[:accountnumber]}:role/aws-opsworks-service-role"
 ec2rolearn = "arn:aws:iam::#{opts[:accountnumber]}:instance-profile/aws-opsworks-ec2-role"
 
+puts servicerolearn
+puts ec2rolearn
+
 # opsworks configuration is passed in as json
 custom_json = <<-END
 {
