@@ -81,3 +81,9 @@ Jenkins is a Continuous Integration server that handles facilitating all of our 
 #### Cucumber
 
 Cucumber is a tool for running automated tests written in a human readable feature format. 
+
+
+### Working Systems
+
+[demo-ci.elasticoperations.com](http://demo-ci.elasticoperations.com/) - Working Continous Integration Server. Send emails to info@stelligent.com to receive credentials. 
+[demo.elasticoperations.com](http://demo.elasticoperations.com/) - Working Honolulu Answers application based on the automation described in this README. 
