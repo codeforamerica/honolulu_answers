@@ -51,7 +51,7 @@ opts = Trollop::options do
   opt :region, 'The AWS region to use', :type => String, :default => "us-west-2"
   opt :zone, 'The AWS availability zone to use', :type => String, :default => "us-west-2a"
   opt :source, 'The github repo where the source to build resides (will not work with anything but github!)', :type => String, :default => "https://github.com/stelligent/honolulu_answers.git"
-  opt :size, 'The instance size to use', :type => String, :default => "m1.large"
+  opt :size, 'The instance size to use', :type => String, :default => "m1.small"
   opt :db, 'Hostname of the DB server', :type => String, :required => true
   opt :accountnumber, 'Account number of your AWS account (no dashes!)', :type => String, :required => true
 
