@@ -96,5 +96,6 @@ Cucumber is a tool for running automated tests written in a human readable featu
 ### Diagrams
 ![Infrastructure Architecture](https://s3.amazonaws.com/stelligent_casestudies/infrastructure_architecture_honolulu_poc.png "Infrastructure Architecture")
 
+![Infrastructure Scripts](https://s3.amazonaws.com/stelligent_casestudies/infrastructure_scripts_honolulu_poc.png "Infrastructure Scripts")
 
 
