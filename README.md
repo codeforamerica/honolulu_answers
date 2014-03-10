@@ -79,7 +79,7 @@ AWS CloudFormation is a service for defining your AWS infrastructure requirement
 
 Jenkins is a Continuous Integration server that runs all of the automation code we've written. 
 
-The CI server is running at [demo-ci.elasticoperations.com](http://demo-ci.elasticoperations.com/). It polls multiple Github repos for changes. When a change is discovered, it initiates the pipeline. If the pipeline is successful, it creates an OpsWorks stack. We copy the IP Address of the OpsWorks stack instance and point the demo.elasticoperations.com subdomain to map to this instance (this will be automated) using [Amazon Route 53](https://aws.amazon.com/route53/).
+Stelligent's CI server is running at [demo-ci.elasticoperations.com](http://demo-ci.elasticoperations.com/). It polls multiple Github repos for changes. When a change is discovered, it initiates the pipeline. If the pipeline is successful, it creates an OpsWorks stack. We copy the IP Address of the OpsWorks stack instance and point the demo.elasticoperations.com subdomain to map to this instance (this will be automated) using [Amazon Route 53](https://aws.amazon.com/route53/).
 
 **TODO: The code for the Jenkins server and pipeline is located here: [honolulu_jenkins_cookbooks](https://github.com/stelligent/honolulu_jenkins_cookbooks)**.
 
