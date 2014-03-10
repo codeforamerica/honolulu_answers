@@ -15,7 +15,7 @@ PROGRESS_STATUSES = [
 
 # Parameterize
 dbpassword = 'password'
-cfn_stack_name = 'HonoluluAnswers-BSJ3'
+cfn_stack_name = 'HonoluluAnswers-BSJ4'
 
 # create a cfn stack with all the resources the opsworks stack will need
 @cfn = Aws::CloudFormation.new region: 'us-west-2'
