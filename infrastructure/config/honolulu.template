@@ -3,6 +3,11 @@
   "AWSTemplateFormatVersion": "2010-09-09",
   "Description": "AWS CloudFormation Sample Template: Launches OpsWorks stack, layer, instances and associated resources to run a PHP application. ** This template creates one or more Amazon EC2 instances. You will be billed for the AWS resources used if you create a stack from this template.",
   "Parameters": {
+    "KeyPairName" : {
+      "Default" : "jonny-labs-west2",
+      "Description" : "Name of an existing Amazon EC2 key pair for SSH access",
+      "Type" : "String"
+    },
     "DBPassword": {
       "Default": "password",
       "NoEcho": "true",
@@ -12,15 +17,63 @@
       "MaxLength": "41",
       "AllowedPattern": "[a-zA-Z0-9]*",
       "ConstraintDescription": "must contain only alphanumeric characters."
+    },
+     "DBUser": {
+      "Default": "honolulu",
+      "Description": "The database user",
+      "Type": "String",
+      "MinLength": "8",
+      "MaxLength": "41",
+      "AllowedPattern": "[a-zA-Z0-9]*",
+      "ConstraintDescription": "must contain only alphanumeric characters."
+    },
+    "DBName": {
+      "Default": "honoluluanswers",
+      "Description": "The database name",
+      "Type": "String",
+      "MinLength": "8",
+      "MaxLength": "41",
+      "AllowedPattern": "[a-zA-Z0-9]*",
+      "ConstraintDescription": "must contain only alphanumeric characters."
+    },
+    "SearchifyApiURL": {
+      "Default" : "http://:oh5H697EC1TRlc@2zqe.api.searchify.com",
+      "Description" : "Prviate Searchify API URL",
+      "Type" : "String"
+    },
+     "SearchifyIndex": {
+      "Default" : "hnlgovanswers-dev",
+      "Description" : "Searchify Index",
+      "Type" : "String"
     }
   },
   "Resources": {
+    "User" : {
+      "Type" : "AWS::IAM::User",
+      "Properties" : {
+        "Path": "/",
+        "Policies": [{
+          "PolicyName": "root",
+          "PolicyDocument": { "Statement":[{
+            "Effect":"Allow",
+            "Action":"*",
+            "Resource":"*"
+          }]}
+        }]
+      }
+    },
+     "HostKeys" : {
+      "Type" : "AWS::IAM::AccessKey",
+      "Properties" : {
+        "UserName" : { "Ref": "User" }
+      }
+    },
     "DBInstance": {
       "Type": "AWS::RDS::DBInstance",
       "Properties": {
-        "DBName": "honoluluanswers",
+        "DBName": { "Ref": "DBName" },
         "Engine": "postgres",
-        "MasterUsername": "honolulu",
+        "MasterUsername": { "Ref" : "DBUser"},
         "DBInstanceClass": "db.t1.micro",
         "DBSecurityGroups": [ { "Ref": "DBSecurityGroup" } ],
         "AllocatedStorage": "5",
@@ -57,26 +110,26 @@
               "database": {
                 "adapter": "postgresql",
                 "password":  { "Ref": "DBPassword" },
-                "username": "honolulu",
+                "username": { "Ref" : "DBUser" },
                 "host": { "Fn::GetAtt": ["DBInstance", "Endpoint.Address"] },
                 "port": "5432",
-                "database": "honoluluanswers"
+                "database": { "Ref" : "DBName" }
               },
               "environment_variables" : {
                 "NEW_RELIC_LICENSE_KEY": "dunno",
                 "NEW_RELIC_APP_NAME": "dunno",
                 "S3_BUCKET": "honolulu-test-bucket",
-                "S3_KEY" : "AKIAIH7YASDSADOB3EGBRRA",
-                "S3_SECRET" : "vD9fw1k4sPXp81rASDASDSADEcLRBn0t77Ia6A",
-                "SEARCHIFY_API_URL" : "http://:oh5H697EC1TRlc@2zqe.api.searchify.com",
-                "SEARCHIFY_API_INDEX" : "hnlgovanswers-dev"
+                "S3_KEY" : { "Ref" : "HostKeys" },
+                "S3_SECRET" : {"Fn::GetAtt": ["HostKeys", "SecretAccessKey"]},
+                "SEARCHIFY_API_URL" : { "Ref": "SearchifyApiURL" },
+                "SEARCHIFY_API_INDEX" : { "Ref": "SearchifyIndex" }
               }
             }
           }
         },
         "DefaultOs": "Ubuntu 12.04 LTS",
         "DefaultAvailabilityZone": "us-west-2c",
-        "DefaultSshKeyName": "jonny-labs-west2"
+        "DefaultSshKeyName": { "Ref": "KeyPairName" }
       }
     },
     "layer": {
@@ -188,14 +241,8 @@
           "Statement": [
             {
               "Effect": "Allow",
-              "Principal": {
-                "Service": [
-                  "ec2.amazonaws.com"
-                ]
-              },
-              "Action": [
-                "sts:AssumeRole"
-              ]
+              "Principal": { "Service": [ "ec2.amazonaws.com" ] },
+              "Action": [ "sts:AssumeRole" ]
             }
           ]
         },
@@ -206,20 +253,12 @@
       "Type": "AWS::IAM::InstanceProfile",
       "Properties": {
         "Path": "/",
-        "Roles": [
-          {
-            "Ref": "OpsWorksInstanceRole"
-          }
-        ]
+        "Roles": [ { "Ref": "OpsWorksInstanceRole" } ]
       }
     }
   },
   "Outputs": {
-    "StackId": {
-      "Value": { "Ref": "stack" }
-    },
-    "AppId": {
-      "Value": { "Ref": "app" }
-    }
+    "StackId": { "Value": { "Ref": "stack" } },
+    "AppId":   { "Value": { "Ref": "app" } }
   }
 }
