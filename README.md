@@ -94,7 +94,7 @@ Cucumber is a tool for running automated tests written in a human readable featu
 [demo.elasticoperations.com](http://demo.elasticoperations.com/) - Working Honolulu Answers application based on the automation described in this README. 
 
 ### Diagrams
-![Infrastructure Architecture](httpshttps://s3.amazonaws.com/stelligent_casestudies/infrastructure_architecture_honolulu_poc.png "Infrastructure Architecture")
+![Infrastructure Architecture](https://s3.amazonaws.com/stelligent_casestudies/infrastructure_architecture_honolulu_poc.png "Infrastructure Architecture")
 
 
 
