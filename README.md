@@ -76,7 +76,9 @@ AWS CloudFormation is a service for defining your AWS infrastructure requirement
 ### Other Tools Used
 #### Jenkins
 
-Jenkins is a Continuous Integration server that handles facilitating all of our automation. **The code for the Jenkins server and pipeline is located here: TBD**.
+Jenkins is a Continuous Integration server that handles facilitating all of our automation. 
+
+**TODO: The code for the Jenkins server and pipeline is located here: TBD**.
 
 #### Cucumber
 
