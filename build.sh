@@ -1,3 +1,5 @@
+#!/bin/bash -e
+
 export RAILS_ENV="test"
 export BHT_API_KEY="7868d47a7c43908cc80a44738acebb41"
 
