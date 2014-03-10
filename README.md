@@ -87,8 +87,14 @@ The CI server is running at [demo-ci.elasticoperations.com](http://demo-ci.elast
 
 Cucumber is a tool for running automated tests written in a human readable feature format. 
 
-
+## Resources 
 ### Working Systems
 
 [demo-ci.elasticoperations.com](http://demo-ci.elasticoperations.com/) - Working Continous Integration Server. Send emails to info@stelligent.com to receive credentials. 
 [demo.elasticoperations.com](http://demo.elasticoperations.com/) - Working Honolulu Answers application based on the automation described in this README. 
+
+### Diagrams
+![Infrastructure Architecture](httpshttps://s3.amazonaws.com/stelligent_casestudies/infrastructure_architecture_honolulu_poc.png "Infrastructure Architecture")
+
+
+
