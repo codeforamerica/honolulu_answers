@@ -23,6 +23,7 @@ end
 
 if hosted_zone.nil?
   puts "Couldn't find hosted zone name #{opts[:hostedzone]}"
+  exit 1
 else
   full_address = "#{opts[:subdomain]}.#{opts[:hostedzone]}"
 
