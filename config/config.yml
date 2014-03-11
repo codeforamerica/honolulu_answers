@@ -1,0 +1,16 @@
+defaults: &defaults
+  new_relic_app_key: "dunno"
+  new_relic_app_name: "dunno"
+  s3_bucket: "honolulu-test-bucket"
+  s3_key: "blank"
+  s3_secret: "blank"
+  searchify_api_url: "http://:oh5H697EC1TRlc@2zqe.api.searchify.com"
+  searchify_api_index: "hnlgovanswers-dev"
+
+
+development:
+  <<: *defaults
+test:
+  <<: *defaults
+production:
+  <<: *defaults

@@ -9,6 +9,9 @@ if defined?(Bundler)
   Bundler.require(:default, :assets, Rails.env)
 end
 
+AppConfig = YAML.load(ERB.new(File.read(File.expand_path('../config.yml', __FILE__))).result)[Rails.env]
+AppConfig.symbolize_keys!
+
 module Honoluluanswers
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

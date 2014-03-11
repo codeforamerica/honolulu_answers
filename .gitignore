@@ -31,4 +31,5 @@ coverage/
 *tags
 tags
 
-config/database.yml
+ops_stackid
+brakeman-output.tabs

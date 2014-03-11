@@ -37,8 +37,10 @@ gem 'json'                                # Convert between JSON and Ruby object
 ## Content and presentation
 gem 'kramdown'                            # Better markdown parser with support for markdown-extra
 gem 'friendly_id'                         # Create permalinks / descriptive URLs / slugs
-gem 'paperclip', '~> 3.0'                 # Easy file attachment library for ActiveRecord
-gem 'aws-sdk', '~> 1.3.4'                 # Upload files to Amazon S3
+gem 'paperclip'                 # Easy file attachment library for ActiveRecord
+gem 'aws-sdk'                             # Upload files to Amazon S3
+gem 'aws-sdk-core'
+gem 'trollop'
 
 ## Gems used only for assets and not required
 ## in production environments by default.

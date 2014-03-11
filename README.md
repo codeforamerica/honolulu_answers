@@ -1,129 +1,78 @@
-[Honolulu Answers](http://answers.honolulu.gov) is a new approach to make it easier for people to navigate city information and services quickly. It's a citizen-focused website that is question-driven, with clean, easy-to-navigate design. Unlike a portal destination, Honolulu Answers is like Google -- type in anything, and it probably gives you the answer you're looking for, using the words you know. Every page on the site is an answer to a potential Google search question by a citizen, written in simple, friendly language, as if you'd asked your neighbor a question. The content is organized based on citizen understanding, the intuitive way you'd think of a problem, not the way the city is organized internally.
+## Honolulu Answers AWS Scripting Proof of Concept
 
-Honolulu Answers is designed to be very user-friendly. It declutters the govt website experience, and it solves a problem people ordinarily have. And we hope it makes people's lives easier. Inspired by Gov.uk, Honolulu Answers is a first-of-its-kind for municipal government, a partnership between Code for America and the City & County of Honolulu.
+Hi there. We used this repo to demonstrate how to script the Honolulu Answers app to deploy in [Amazon Web Services](https://aws.amazon.com/) (AWS). This fork is not intended to be merged back into the original, and we don't plan on keeping it updated with any changes to made to the original. You will incur AWS charges while resources are in use. Use this application at your own risk!
 
-## First, a big Thank You:
-
-* Search results are aided by a thesaurus service provided by [words.bighugelabs.com](http://words.bighugelabs.com/).
-* Background photo courtesy of [Royal Realty](http://royalrealtyllc.com/)
-
-
-## Deploying Locally
-
-**If you are using OS X Snow Leopard, Lion or Mountain Lion, please follow this guide which will take you through the setup procedure**
-
-Mac OS X is best supported by Honolulu Answers, since it is what most of us at Code for America use. Ubuntu (and therefore presumeably other linux distributions) are also supported.  Windows is currently unsupported and untested.  
-
-[Instructions for OS X 10.8 Mountain Lion](https://github.com/codeforamerica/honolulu_answers/wiki/Installation-Instructions-for-OS-X-10.8-Mountain-Lion)
-
-Slightly outdated Ubuntu instructions are available [here](https://github.com/codeforamerica/honolulu_answers/wiki/Installation-Instructions-for-Ubuntu-12.04-Precise).
+## Setting up the Honolulu Answers application
+#### Prereqs:
+* [AWS Access Keys](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html) ready and enabled.
+* [AWS CLI tool](https://aws.amazon.com/cli/) installed and configured. The quickest way to do this is by launching an Amazon Linux EC2 instance (as the AWS CLI is preinstalled), but you can install them on your laptop as well, and then configure the application by using the command:
 
 
-## Usage
-    
-    $ foreman start
+    ```aws configure```
 
-## Deploying to Heroku
-    
-    $ heroku create honoluluanswers --stack cedar
-    $ git push heroku master
-    $ heroku config push
-    $ heroku config set LD_LIBRARY_PATH='lib/native'
-    $ heroku addons:add searchify:small # WARNING: paid addon!
-    $ heroku addons:add memcache
-    $ heroku addons:add newrelic:standard
-    $ heroku run rake db:setup
+Once you're AWS CLI tools are set up, clone this repo and this command will build a Honolulu Answers application infrastructure and then deploy the app to it.
 
-## Testing
+    sudo yum -y install git
+    git clone https://github.com/stelligent/honolulu_answers.git
+    cd honolulu_answers/
+    aws cloudformation create-stack --stack-name HonoluluAnswers --template-body "`cat infrastructure/config/honolulu.template`" --region us-east-1  --disable-rollback --capabilities="CAPABILITY_IAM"
 
-`foreman run bundle exec rake spec` command will run the current tests, these test need to be expanded.
+NOTE: Alternatively, you can use Jenkins to run through the above steps. After about 50 minutes, an Opsworks stack is created and launched. To get details:
 
-## Contributing
-In the spirit of [free software][free-sw], **everyone** is encouraged to help
-improve this project.
+1. Log into the [OpsWorks](http://console.aws.amazon.com/opsworks) console
+3. You should see an OpsWorks stack listed named **Honolulu Answers** -- click on it. If you see more than one listed (because you kicked it off a few times), they are listed in alphabetical-then-chronological order. So the last *Honolulu Answers* stack listed will be the most recent one.
+4. Click on **Instances** within the OpsWorks stack you selected.
+5. Once the Instance turns green and shows its status as *Online*,you can click the IP address link and the Honolulu Answers application will load!
 
-[free-sw]: http://www.fsf.org/licensing/essays/free-sw.html
+### Deleting provisioned AWS resources
+* Go to the [CloudFormation](http://console.aws.amazon.com/cloudformation) console and delete the corresponding CloudFormation stack. 
 
-Here are some ways *you* can contribute:
+### Changes made to this Github Fork
 
-* by using alpha, beta, and prerelease versions
-* by reporting bugs
-* by suggesting new features
-* by translating to a new language
-* by writing or editing documentation
-* by writing specifications
-* by writing code (**no patch is too small**: fix typos, add comments, clean up
-  inconsistent whitespace)
-* by refactoring code
-* by closing [issues][]
-* by reviewing patches
-* [financially][]
+A majority of the changes made to this github fork were additions in the [`infrastructure/`](https://github.com/stelligent/honolulu_answers/tree/master/infrastructure) directory of this repo. Our scripts for building up the different AWS resources were added here. 
+- [`build.sh`](https://github.com/stelligent/honolulu_answers/tree/master/build.sh) - runs the unit tests for the application.
+- [`infrastructure/build-and-deploy.sh`](https://github.com/stelligent/honolulu_answers/tree/master/infrastructure/build-and-deploy.sh) bash script that builds a Honolulu Answers infrastructure in AWS and then deploys the application to it. It uses other files from the infrastucture directory for building a Honolulu Answers Opsworks stack. 
+- [`infrastructure/config/honolulu.template`](https://github.com/stelligent/honolulu_answers/tree/master/infrastructure/config/honolulu.template)  - This cloudformation template defines the RDS instances, IAM roles, and OpsWorks stacks that go into the Honolulu Answers infrastructure.
+- [`infrastructure/bin/monitor_stack.rb`](https://github.com/stelligent/honolulu_answers/tree/master/infrastructure/bin/monitor_stack.rb) This is used by Jenkins to determine if the stack is up yet.
+- [`infrastructure/test-application.sh`](https://github.com/stelligent/honolulu_answers/tree/master/infrastructure/test-application.sh) - this script is used to run the acceptance stage tests against the application.
+- [`infrastructure/terminate-env.sh`](https://github.com/stelligent/honolulu_answers/tree/master/infrastructure/terminate-env.sh) - this script is used to tear down a provisioned Honolulu Answers application.
 
-[issues]: https://github.com/codeforamerica/honolulu_answers/issues
-[financially]: https://secure.codeforamerica.org/page/contribute
+There were some minor changes to the app, moving some configuration out of environment variables into a configuration file. Now there's a [`config/config.yml`](https://github.com/stelligent/honolulu_answers/tree/master/config/config.yml). We now specify app configuration values in this file rather than relying on environment variables. This file is loaded using the [`config/application.rb`](https://github.com/stelligent/honolulu_answers/tree/master/config/application.rb). The modified files include:
+- [`config/initializers/tanker.rb`](https://github.com/stelligent/honolulu_answers/tree/master/config/initializers/tanker.rb)
 
-## Submitting an Issue
-We use the [GitHub issue tracker][issues] to track bugs and features. Before
-submitting a bug report or feature request, check to make sure it hasn't
-already been submitted. You can indicate support for an existing issue by
-voting it up. When submitting a bug report, please include a [Gist][] that
-includes a stack trace and any details that may be necessary to reproduce the
-bug, including your gem version, Ruby version, and operating system. Ideally, a
-bug report should include a pull request with failing specs.
+### AWS Services Used
+#### OpsWorks
 
-[gist]: https://gist.github.com/
+AWS OpsWorks is an application management service that let's you model your application infrastructure. It manages the provisioning of EC2 instances, integrates with VPC, ELB and Elastic IP and provides Auto Healing and Monitoring. OpsWorks can be configured to make calls to your Chef cookbooks for configuring servers, run deployments, etc.
 
-## Submitting a Pull Request
-1. Fork the project.
-2. Create a topic branch.
-3. Implement your feature or bug fix.
-4. Add tests for your feature or bug fix.
-5. Run `bundle exec rake test`. If your changes are not 100% covered, go back
-   to step 4.
-6. Commit and push your changes.
-7. Submit a pull request. Please do not include changes to the gemspec or
-   version file. (If you want to create your own version for some reason,
-   please do so in a separate commit.)
+#### RDS
+Amazon's Relational Database Service takes care of all the DB administration, and let's you just work with the data store. We spun up a postgreSQL RDS instance, and then configure it to work with the Honolulu Answers Application.
 
-## Roadmap
-* Support other search indexes backends/services (perhaps just fulltext search in DB as a fallback)
-* A comprehensive admin component
-* Results tailored to current location
+#### CloudFormation
+AWS CloudFormation is a service for defining your AWS infrastructure requirements in an executable JSON file. AWS CloudFormation gives developers and systems administrators an easy way to create and manage a collection of related AWS resources, provisioning and updating them in an orderly and predictable fashion.
 
-## Supported Ruby Versions
-This library aims to support and is [tested against][travis] the following Ruby
-implementations:
+### Other Tools Used
+#### Jenkins
 
- * Ruby 1.9.3
+Jenkins is a Continuous Integration server that runs all of the automation code we've written. 
 
-If something doesn't work on one of these interpreters, it should be considered
-a bug.
+Stelligent's CI server is running at [demo-ci.elasticoperations.com](http://demo-ci.elasticoperations.com/). It polls multiple Github repos for changes. When a change is discovered, it initiates the pipeline. If the pipeline is successful, it creates an OpsWorks stack. We copy the IP Address of the OpsWorks stack instance and point the demo.elasticoperations.com subdomain to map to this instance (this will be automated) using [Amazon Route 53](https://aws.amazon.com/route53/).
 
-This library may inadvertently work (or seem to work) on other Ruby
-implementations, however support will only be provided for the versions listed
-above.
+The instructions for running your own Jenkins server and pipeline is located here: [honolulu_jenkins_cookbooks](https://github.com/stelligent/honolulu_jenkins_cookbooks).
 
-If you would like this library to support another Ruby version, you may
-volunteer to be a maintainer. Being a maintainer entails making sure all tests
-run and pass on that implementation. When something breaks on your
-implementation, you will be personally responsible for providing patches in a
-timely fashion. If critical issues for a particular implementation exist at the
-time of a major release, support for that Ruby version may be dropped.
+#### Cucumber
 
-## License
+Cucumber is a tool for running automated tests written in a human readable feature format. 
 
-Copyright (c) 2012, Code for America.
-All rights reserved.
+## Resources 
+### Working Systems
 
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+* [demo-ci.elasticoperations.com](http://demo-ci.elasticoperations.com/) - Working Continous Integration Server. To setup your own Jenkins server based on our open source scripts, go to [honolulu_jenkins_cookbooks](https://github.com/stelligent/honolulu_jenkins_cookbooks).
+* [demo.elasticoperations.com](http://demo.elasticoperations.com/) - Working Honolulu Answers application based on the automation described in this README. 
 
-* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-* Neither the name of Code for America nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+### Diagrams
+![Infrastructure Architecture](https://s3.amazonaws.com/stelligent_casestudies/infrastructure_architecture_honolulu_poc.png "Infrastructure Architecture")
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+![Infrastructure Scripts](https://s3.amazonaws.com/stelligent_casestudies/infrastructure_scripts_honolulu_poc.png "Infrastructure Scripts")
 
 
-[![Code for America Tracker](http://stats.codeforamerica.org/codeforamerica/honolulu_answers.png)][tracker]
-
-[tracker]: http://stats.codeforamerica.org/projects/honolulu_answers
