@@ -12,8 +12,8 @@ Hi there. We used this repo to demonstrate how to script the Honolulu Answers ap
 
 Once you're AWS CLI tools are set up, clone this repo and this command will build a Honolulu Answers application infrastructure and then deploy the app to it.
 
-    ```git clone https://github.com/stelligent/honolulu_answers.git```
-    ```aws cloudformation create-stack --stack-name HonoluluAnswers --template-body "`cat infrastructure/config/honolulu.template`" --region ${region}  --disable-rollback --capabilities="CAPABILITY_IAM"```
+    git clone https://github.com/stelligent/honolulu_answers.git
+    aws cloudformation create-stack --stack-name HonoluluAnswers --template-body "`cat infrastructure/config/honolulu.template`" --region ${region}  --disable-rollback --capabilities="CAPABILITY_IAM"
 
 NOTE: Alternatively, you can use Jenkins to run through the above steps. After about 50 minutes, an Opsworks stack is created and launched. To get details:
 
