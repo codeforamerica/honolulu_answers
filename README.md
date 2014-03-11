@@ -12,6 +12,7 @@ Hi there. We used this repo to demonstrate how to script the Honolulu Answers ap
 
 Once you're AWS CLI tools are set up, clone this repo and this command will build a Honolulu Answers application infrastructure and then deploy the app to it.
 
+    sudo yum -y install git
     git clone https://github.com/stelligent/honolulu_answers.git
     aws cloudformation create-stack --stack-name HonoluluAnswers --template-body "`cat infrastructure/config/honolulu.template`" --region ${region}  --disable-rollback --capabilities="CAPABILITY_IAM"
 
