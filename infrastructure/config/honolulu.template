@@ -128,8 +128,7 @@
           }
         },
         "DefaultOs": "Ubuntu 12.04 LTS",
-        "DefaultAvailabilityZone": "us-west-2c",
-        "DefaultSshKeyName": { "Ref": "KeyPairName" }
+        "DefaultAvailabilityZone": "us-west-2c"
       }
     },
     "layer": {
