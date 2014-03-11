@@ -3,11 +3,6 @@
   "AWSTemplateFormatVersion": "2010-09-09",
   "Description": "AWS CloudFormation Sample Template: Launches OpsWorks stack, layer, instances and associated resources to run a PHP application. ** This template creates one or more Amazon EC2 instances. You will be billed for the AWS resources used if you create a stack from this template.",
   "Parameters": {
-    "KeyPairName" : {
-      "Default" : "jonny-labs-west2",
-      "Description" : "Name of an existing Amazon EC2 key pair for SSH access",
-      "Type" : "String"
-    },
     "DBPassword": {
       "Default": "password",
       "NoEcho": "true",
