@@ -3,37 +3,15 @@
 Hi there. We used this repo to demonstrate how to script the Honolulu Answers app to deploy in [Amazon Web Services](https://aws.amazon.com/) (AWS). This fork is not intended to be merged back into the original, and we don't plan on keeping it updated with any changes to made to the original. You will incur AWS charges while resources are in use. Use this application at your own risk!
 
 ## Setting up the Honolulu Answers application
-1. Create a new [AWS IAM user](https://console.aws.amazon.com/iam/) and download the access keys. This user should have Aministrator permissions.
-2. Go to the [AWS Account Information page](https://portal.aws.amazon.com/gp/aws/developer/account) and get your account number (it's in the top right hand corner).
-2. Launch an Ubuntu 12.04 [EC2](https://console.aws.amazon.com/ec2) instance in AWS
-3. SSH into the Ubuntu 12.04 EC2 instance by clicking the checkbox next to the instance in the EC2 console, clicking the **Connect** button and following the instructions. 
-4. Export your AWS Access Keys and Account Number from the AWS IAM user you created in step #1:
-```
-export AWS_ACCESS_KEY_ID=YOURACCESSKEY
-export AWS_SECRET_ACCESS_KEY=YOURSECRETKEY
-export AWS_ACCT_NUMBER=YOURACCOUNTNUMBER
-```
+#### Prereqs:
+* [AWS Access Keys](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html) ready and enabled.
+* [AWS CLI tool](https://aws.amazon.com/cli/) installed and configured. The quickest way to do this is by launching an Amazon Linux EC2 instance (as the AWS CLI is preinstalled), but you can install them on your laptop as well, and then configure the application by using the command 
 
-Here's an ***example*** of what your exports might look like. Notice that your account number should *not* have hyphens or spaces:
+    aws configure
 
-```
-export AWS_ACCESS_KEY_ID=AKIAJ3SRLadsdasdLUNHQ
-export AWS_SECRET_ACCESS_KEY=uMPEOmaZ+niixOYjjdP6afasfawfasfsQbsqSup0rb2L+Y
-export AWS_ACCT_NUMBER=999988887777
-```
-Then, run the commands listed below:
+Once you're AWS CLI tools are set up, clone this repo and this command will build a Honolulu Answers application infrastructure and then deploy the app to it.
 
-```
-sudo apt-get -y update
-sudo apt-get -y install git postgresql ruby1.9.1-full ruby-bundler rubygems1.9.1 libxslt1-dev libxml2-dev libsasl2-dev libpq-dev sqlite3 memcached build-essential libsqlite3-dev libhunspell-1.3-0 gettext
-\curl -sSL https://get.rvm.io | bash
-source /home/ubuntu/.rvm/scripts/rvm
-rvm install ruby-1.9.3-p484
-git clone https://github.com/stelligent/honolulu_answers.git
-cd honolulu_answers
-bundle install
-infrastructure/build_infrastructure.sh
-```
+    aws cloudformation create-stack --stack-name HonoluluAnswers --template-body "`cat infrastructure/config/honolulu.template`" --region ${region}  --disable-rollback --capabilities="CAPABILITY_IAM"
 
 NOTE: Alternatively, you can use Jenkins to run through the above steps. After about 50 minutes, an Opsworks stack is created and launched. To get details:
 
@@ -43,9 +21,7 @@ NOTE: Alternatively, you can use Jenkins to run through the above steps. After a
 5. Once the Instance turns green and shows its status as *Online*,you can click the IP address link and the Honolulu Answers application will load!
 
 ### Deleting provisioned AWS resources
-1. Go to the [OpsWorks](http://console.aws.amazon.com/opsworks) console and select the OpsWorks stack that you've launched. Delete the Apps and the Instances of the Stack. Once these are deleted, you can delete the Stack.
-2. Go to the [CloudFormation](http://console.aws.amazon.com/cloudformation) console and delete the corresponding CloudFormation stack. You can match the timestamp in the name to the OpsWorks stack.
-3. Go to the [EC2 Console](https://console.aws.amazon.com/ec2/) and delete the Ubuntu instance you spun up to launch everything from.
+* Go to the [CloudFormation](http://console.aws.amazon.com/cloudformation) console and delete the corresponding CloudFormation stack. 
 
 ### Changes made to this Github Fork
 
