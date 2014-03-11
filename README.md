@@ -15,7 +15,7 @@ Once you're AWS CLI tools are set up, clone this repo and this command will buil
     sudo yum -y install git
     git clone https://github.com/stelligent/honolulu_answers.git
     cd honolulu_answers/
-    aws cloudformation create-stack --stack-name HonoluluAnswers --template-body "`cat infrastructure/config/honolulu.template`" --region ${region}  --disable-rollback --capabilities="CAPABILITY_IAM"
+    aws cloudformation create-stack --stack-name HonoluluAnswers --template-body "`cat infrastructure/config/honolulu.template`" --region us-east-1  --disable-rollback --capabilities="CAPABILITY_IAM"
 
 NOTE: Alternatively, you can use Jenkins to run through the above steps. After about 50 minutes, an Opsworks stack is created and launched. To get details:
 
