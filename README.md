@@ -26,7 +26,7 @@ NOTE: Alternatively, you can use Jenkins to run through the above steps. After a
 ### Changes made to this Github Fork
 
 A majority of the changes made to this github fork were additions in the [`infrastructure/`](https://github.com/stelligent/honolulu_answers/tree/master/infrastructure) directory of this repo. Our scripts for building up the different AWS resources were added here. 
-- [`build.sh`](https://github.com/stelligent/honolulu_answers/tree/master/infrastructure/build.sh) - runs the unit tests for the application.
+- [`build.sh`](https://github.com/stelligent/honolulu_answers/tree/master/build.sh) - runs the unit tests for the application.
 - [`infrastructure/build-and-deploy.sh`](https://github.com/stelligent/honolulu_answers/tree/master/infrastructure/build-and-deploy.sh) bash script that builds a Honolulu Answers infrastructure in AWS and then deploys the application to it. It uses other files from the infrastucture directory for building a Honolulu Answers Opsworks stack. 
 - [`infrastructure/config/honolulu.template`](https://github.com/stelligent/honolulu_answers/tree/master/infrastructure/config/honolulu.template)  - This cloudformation template defines the RDS instances, IAM roles, and OpsWorks stacks that go into the Honolulu Answers infrastructure.
 - [`infrastructure/bin/monitor_stack.rb`](https://github.com/stelligent/honolulu_answers/tree/master/infrastructure/bin/monitor_stack.rb) This is used by Jenkins to determine if the stack is up yet.
