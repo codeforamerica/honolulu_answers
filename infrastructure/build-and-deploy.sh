@@ -1,3 +1,4 @@
+#!/bin/bash -e
 gem install trollop 
 gem install aws-sdk-core --pre
 export stack_name=HonoluluAnswers-`date +%Y%m%d%H%M%S`
