@@ -64,7 +64,7 @@ Cucumber is a tool for running automated tests written in a human readable featu
 ## Resources 
 ### Working Systems
 
-[demo-ci.elasticoperations.com](http://demo-ci.elasticoperations.com/) - Working Continous Integration Server. Send emails to info@stelligent.com to receive credentials. 
+[demo-ci.elasticoperations.com](http://demo-ci.elasticoperations.com/) - Working Continous Integration Server. To setup your own Jenkins server based on our open source scripts, go to [honolulu_jenkins_cookbooks](https://github.com/stelligent/honolulu_jenkins_cookbooks).
 [demo.elasticoperations.com](http://demo.elasticoperations.com/) - Working Honolulu Answers application based on the automation described in this README. 
 
 ### Diagrams
