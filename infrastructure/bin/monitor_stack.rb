@@ -44,8 +44,5 @@ while (stack_in_progress cfn_stack_name)
 end
 puts
 
-# get the resource names out of the cfn stack so we can pass themto opsworks
-resources = {}
-@cfn.describe_stacks(stack_name: cfn_stack_name).stacks.first[:outputs].each do |output|
-  resources[output[:output_key]] = output[:output_value]
-end
+status = @cfn.describe_stacks(stack_name: cfn_stack_name).stacks.first[:stack_status]
+exit(status == 'CREATE_COMPLETE' ? 0 : 1)
