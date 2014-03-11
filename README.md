@@ -7,7 +7,7 @@ Hi there. We used this repo to demonstrate how to script the Honolulu Answers ap
 * [AWS Access Keys](http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html) ready and enabled.
 * [AWS CLI tool](https://aws.amazon.com/cli/) installed and configured. The quickest way to do this is by launching an Amazon Linux EC2 instance (as the AWS CLI is preinstalled), but you can install them on your laptop as well, and then configure the application by using the command 
 
-    aws configure
+`aws configure`
 
 Once you're AWS CLI tools are set up, clone this repo and this command will build a Honolulu Answers application infrastructure and then deploy the app to it.
 
