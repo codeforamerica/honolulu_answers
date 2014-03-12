@@ -1,13 +1,13 @@
-<% set_meta_tags :description => "Find answers to your questions about Honolulu City Services." %>
+<% set_meta_tags :description => "Finde Antworten auf deine Fragen zu Diensten der Stadt Münster." %>
 
 <div class="modal-container span8">
   <div class="main-modal">
     <div id="welcome-line-l"></div>
     <div id="welcome-line-r"></div>
-    <h3 class="welcome">Welcome To</h3>
-    <h1 class="home-modal">Honolulu Answers</h1>
+    <h3 class="welcome">Willkommen bei der</h3>
+    <h1 class="home-modal">Münster FAQ</h1>
     <p class="call">
-      Find answers to your questions about Honolulu city services.
+      Finde Antworten auf deine Fragen zu Diensten der Stadt Münster.
     </p>
 
     <div class="ribbon-front">
@@ -16,16 +16,16 @@
       <div class="ribbon-wrapper">
         <form id="search" action="search" name="search" method="get">
           <input type="text" name="q" id="query" title='query'
-            placeholder="Try driver license, jobs, or registration...">
-          <input class="btn-search" id="home-search" type="submit" value="SEARCH"
-            title="Search">
+            placeholder="Versuch Führerschein, Stellen, oder Meldung...">
+          <input class="btn-search" id="home-search" type="submit" value="Suchen"
+            title="Suchen">
         </form>
       </div>
     </div>
 
     <div class="popular">
       <div class="pop-heading">
-        <h2>Most Popular Categories:</h2>
+        <h2>Beliebteste Kategorien:</h2>
       </div>
       <div class="pop-categories">
         <%= render :partial => 'home/category', :collection => @popular_categories %>

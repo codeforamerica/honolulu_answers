@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 ## Essentials
 ruby '1.9.3'                              # Ruby!
 gem 'rails', '3.2.16'                     # Rails!
-gem 'pg'                                  # PostgreSQL, the database server
+gem 'pg'
 gem 'thin'                                # Web server
 
 gem 'newrelic_rpm', :group => [:production, :staging, :development] # Rails analytics - see the Heroku addon
@@ -52,6 +52,7 @@ end
 
 ## Testing
 group :test, :development do
+  gem 'foreman'
   gem 'rspec-rails', '>= 2.0'             # Testing framework
   gem 'shoulda', '~> 3.5.0'               # Extra RSpec matchers for Active Record Associations
   gem 'factory_girl_rails', '~> 4.0'      # Create factories to test against
@@ -62,9 +63,17 @@ group :test, :development do
   gem 'sextant'                           # visit /rails/routes in the browser for nicer 'rake routes'
   gem 'memcached'                         # Local memcache
   gem 'seed_dump', '~> 0.6.0'             # Adds rake db:seed:dump to generate db/seeds.rb
+  gem 'capistrano', '~> 3.1.0'
+  gem 'capistrano-rvm'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano3-unicorn'
 end
 
+group :development, :production do
+  gem 'unicorn'
+end
 
 group :test do
   gem "sqlite3"                           # Use SQLite instead of PostgreSQL for tests
 end
+
