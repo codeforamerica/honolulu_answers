@@ -20,6 +20,7 @@ gem 'meta-tags', :require => 'meta_tags'  # Search Engine Optimization (SEO) plu
 ## Performance and optimization
 gem 'delayed_job_active_record'           # Lets you queue tasks as background jobs
 gem 'dalli'                               # memcache gem for Rails.cache
+gem 'memcachier'
 gem 'kgio'                                # gives 20~30% performance boost to Dalli
 
 ## Admin
@@ -60,7 +61,6 @@ group :test, :development do
   gem 'guard-rspec', '~> 3.0.0'
   gem 'terminal-notifier-guard'
   gem 'sextant'                           # visit /rails/routes in the browser for nicer 'rake routes'
-  gem 'memcached'                         # Local memcache
   gem 'seed_dump', '~> 0.6.0'             # Adds rake db:seed:dump to generate db/seeds.rb
 end
 
