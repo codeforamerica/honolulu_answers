@@ -24,7 +24,7 @@ Honoluluanswers::Application.configure do
   config.assets.digest = true
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( home.js style.css mobile.css.scss active_admin.js active_admin.css.scss )
+  config.assets.precompile += %w( style.css mobile.css.scss active_admin.js active_admin.css.scss )
   config.assets.precompile << '*.js'
 
   #config.static_cache_control = "public, max-age=2592000"
@@ -57,9 +57,6 @@ Honoluluanswers::Application.configure do
   
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
-
-  # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( home.js style.css mobile.css.scss active_admin.js active_admin.css.scss )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
