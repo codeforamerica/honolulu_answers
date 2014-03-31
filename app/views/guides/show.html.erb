@@ -1,0 +1,97 @@
+<% set_meta_tags :description => @article.preview,
+                 :canonical => "http://answers.honolulu.gov#{request.fullpath}",
+                 :title => [@article.category.name, @article.title] %>
+<div class="page-container article">
+  <div class="breadcrumbs">
+    <%= link_to( "Home", root_url) %>
+    >
+    <%= link_to(@article.category.name, @article.category) %>
+    >
+    <%= @article.title %>
+  </div>
+  <div class="row">
+    <div class="span9">
+      <div class="main-content">
+        <!-- h3 class="content-type">< %= #@article.content_type %></h3 -->
+        <div class="header">
+          <h1>
+            <%= @article.title %>
+            <%= render :partial => "shared/twitter_share" %>
+          </h1>
+        </div>
+        <div class="content-text">
+          
+          <%= raw @content_html %>
+
+
+        </div>
+<script type="text/javascript">
+$(document).ready(function(){
+
+  $("#vtabs").jVertTabs({
+    equalHeights: true
+  });
+  function openTab(tabId,index){
+    $(tabId).jVertTabs('selected',index);
+  }
+});
+
+function prevTab(){
+	var tabs = $($(".open")[0].parentElement).children();
+	for(var t=0;t<tabs.length-1;t++){
+		if( $(tabs[t+1]).hasClass("open") ){
+			$(tabs[t]).click();
+			break;
+		}
+	}
+}
+function nextTab(){
+	var tabs = $($(".open")[0].parentElement).children();
+	for(var t=0;t<tabs.length-1;t++){
+		if( $(tabs[t]).hasClass("open") ){
+			$(tabs[t+1]).click();
+			break;
+		}
+	}
+}
+</script>
+
+<!-- begin vertical tabs demo -->
+<div id="vtabs">
+  <div>
+    <ul>
+      <% @article.guide_steps.each do |step| %>
+        <li><a href="#vtabs-content"><%= "#{step.step.to_s}. #{step.title}" %></a></li>
+      <% end %>
+    </ul>
+  </div>
+  <div>
+    <% @article.guide_steps.each do |step| %>
+      <div id="#vtabs-content">
+        <h2 class="vtab-content-header"><%= step.title %></h2>
+        <%= raw @article.raw_md_to_html( step.content ) %>
+      </div>
+    <% end %> 
+    <br/>
+    <br/>
+    <p style="margin-left:auto;margin-right:auto;text-align:center;display:block;">
+	    <a class="btn guidearrow" href="#" onclick="prevTab();" id="prev" style="display:inline;">&larr; Previous</a>
+	    &nbsp;&nbsp;&nbsp;&nbsp;
+	    |
+	    &nbsp;&nbsp;&nbsp;&nbsp;	    
+	    <a class="btn guidearrow" href="#" onclick="nextTab();" id="next" style="display:inline;">Next &rarr;</a>
+	</p>
+    
+  </div>
+</div>
+  <!-- -->
+
+      </div>
+    </div><!-- /span9 -->
+    
+    <div class="span3">
+      <%= render :partial => 'shared/articles_sidebar' %>
+    </div><!-- /span3 -->
+    
+  </div>
+</div>

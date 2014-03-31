@@ -1,0 +1,35 @@
+<% set_meta_tags :description => "Questions related to #{@category.name}.", :canonical => "http://answers.honolulu.gov#{request.fullpath}" %>
+<div class="page-container">
+  <div class="breadcrumbs">
+    <%= link_to( "Home", root_url) %>
+    >
+    <%= title @category.name %>
+  </div>
+  <div class="row">
+    <div class="span9">
+      <div class="main-content">
+        <div class="header">
+          <h1><%= @category.name %></h1>
+        </div>
+        <% if @category.description.strip != "" %>
+          <p><%= @category.description %></p>
+          <br/>
+        <% end %>
+        <ul>
+          <% @category.articles.by_access_count.each do |article| %>
+            <% next unless article.published? %>
+              <li class="article-listing">
+                <%= content_tag( :h2, link_to( article.title, article_path(article.id) ) ) %>
+                <p class="preview"><%= article.preview %></p>
+            </li>
+          <% end -%>
+        </ul>
+      </div>
+    </div><!-- /span9 -->
+
+    <div class="span3">
+      <%= render :partial => 'shared/categories_sidebar' %>
+    </div><!-- /span3 -->
+
+  </div><!-- /row -->
+</div><!-- /page-container -->

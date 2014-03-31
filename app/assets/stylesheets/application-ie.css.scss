@@ -1,0 +1,86 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *
+ *
+ *
+ *= require_self
+*/
+
+.page-container{
+  background-color: #fff;
+}
+
+ul.nav-top{
+  white-space: nowrap;
+}
+ul.nav-top li a{
+  white-space: nowrap;
+}
+
+.header-search input#query{
+  width: 160px !important;
+}
+
+.triangle-l{
+  display: none;
+}
+.triangle-r{
+  display: none;
+}
+
+div#welcome-line-l{
+  border: none !important;
+  border-top: 2px solid #666768 !important;
+  margin-top: 11px !important;
+}
+
+.side-head{
+  font-size: 15px !important;
+}
+
+li.category-listing{
+  border-bottom: none !important;
+}
+
+div#welcome-line-r{
+  border: none !important;
+  border-top: 2px solid #666768 !important;
+  margin-top: 11px !important;
+}
+
+h3.welcome{
+  font-family: 'Satisfy', Arial, sans-serif;
+}
+
+div.navbar-top{
+  height: none !important;
+  padding-bottom: 20px;
+  line-height: 260%;
+}
+
+.ribbon-front{
+  width: 100%;
+}
+
+.header-search input#query {
+  width: 100px !important;
+}
+.cfa-logos{
+  margin-top: -22px !important;  
+}
+
+.page-container .row .span3{
+  width: 200px !important;
+}
+
+.container .row{
+  _margin-left: 0px !important;
+}

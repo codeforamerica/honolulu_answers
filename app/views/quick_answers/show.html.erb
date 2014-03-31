@@ -1,0 +1,43 @@
+<% set_meta_tags :description => @article.preview,
+                 :canonical => "http://answers.honolulu.gov#{request.fullpath}",
+                 :title => [@article.category.name, @article.title] %>
+<div class="page-container article">
+  <div class="breadcrumbs">
+    <%= link_to( "Home", root_url) %>
+    >
+    <%= link_to(@article.category.name, @article.category) %>
+    >
+    <%= title @article.title %>
+  </div>
+  <div class="row">
+    <div class="span9">
+      <div class="main-content">
+        <h3 class="content-type"><%= @article.class.to_s.split(/(?=[A-Z])/).join(' ') %></h3>
+        <div class="header">
+          <h1>
+            <%= @article.title %>
+            <%= render :partial => "shared/twitter_share" %>
+          </h1>
+        </div>
+        <div class="content-text">
+          <% unless @content_main.strip.blank? %>
+            <div class="quick_top">
+              <%= @content_main.html_safe %>
+            </div>
+          <% end %>
+          <%= @content_main_extra.html_safe %>
+          <% unless @content_need_to_know.strip.blank? %>
+            <div class="quick_bottom">
+              <h3>What You Need to Know</h3>
+              <%= @content_need_to_know.html_safe %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div><!-- /span9 -->
+    
+    <div class="span3">
+      <%= render :partial => 'shared/articles_sidebar' %>
+    </div><!-- /span3 -->
+  </div>
+</div>

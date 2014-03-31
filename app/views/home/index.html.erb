@@ -1,0 +1,36 @@
+<% set_meta_tags :description => "Find answers to your questions about Honolulu City Services." %>
+
+<div class="modal-container span8">
+  <div class="main-modal">
+    <div id="welcome-line-l"></div>
+    <div id="welcome-line-r"></div>
+    <h3 class="welcome">Welcome To</h3>
+    <h1 class="home-modal">Honolulu Answers</h1>
+    <p class="call">
+      Find answers to your questions about Honolulu city services.
+    </p>
+
+    <div class="ribbon-front">
+      <div class="triangle-l"></div>
+      <div class="triangle-r"></div>
+      <div class="ribbon-wrapper">
+        <form id="search" action="search" name="search" method="get">
+          <input type="text" name="q" id="query" title='query'
+            placeholder="Try driver license, jobs, or registration...">
+          <input class="btn-search" id="home-search" type="submit" value="SEARCH"
+            title="Search">
+        </form>
+      </div>
+    </div>
+
+    <div class="popular">
+      <div class="pop-heading">
+        <h2>Most Popular Categories:</h2>
+      </div>
+      <div class="pop-categories">
+        <%= render :partial => 'home/category', :collection => @popular_categories %>
+      </div>
+    </div>
+
+  </div><!-- /main-modal -->
+</div><!-- /modal-container -->

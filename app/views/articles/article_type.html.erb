@@ -1,0 +1,46 @@
+<% set_meta_tags :description => "All #{@article_type.split(/(?=[A-Z])/).join(' ')} questions.", :canonical => "http://answers.honolulu.gov#{request.fullpath}" %>
+<div class="page-container">
+  <div class="breadcrumbs">
+    <%= link_to( "Home", root_url) %>
+    >
+    <%= title "All #{@article_type.split(/(?=[A-Z])/).join(' ')}s" %>
+  </div>
+  <div class="row">
+    <div class="span9">
+      <div class="main-content">
+        <div class="header"><h1><%= @article_type.split(/(?=[A-Z])/).join(' ') %>s</h1></div>
+        <ul>
+          <% category = nil %>
+          <% @articles.each do |article| %>
+          <% next unless article.published? %>
+            
+              <% if( article.category != category) %>
+                <% if(category) %>
+                    </ul>
+                <% end %>
+                  <% category = article.category %>
+                  <li class="category-listing">
+                  <% unless article.category %>
+                    <%= content_tag(:h1, "Miscellaneous") %>
+                  <% else %>
+                  <%= content_tag(:h1, link_to(article.category.name,article.category)) %>
+                  <% end %>
+                   <ul class="category-articles">
+              <% end %>      
+                    
+                      <li class="article-listing">
+                        <%= content_tag(:h2, link_to(article.title,article))%>
+                        <p class="preview"><%= article.preview %></p>
+                      </li>
+          <% end %>
+          <% if(category) %>
+            </ul>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="span3">
+      <%= render :partial => 'shared/categories_sidebar' %>
+    </div><!-- /span3 -->
+  </div>
+</div>

@@ -1,0 +1,144 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+*/
+
+
+#searchBox {
+  background:  rgba(255, 198, 10, 0.8);
+  width: 100%;
+  height: 70px;
+  margin: 0;
+  padding: 10px 0 0 0;
+  text-align: center;
+  position: relative;	
+  height:inherit;
+
+}
+
+#topPattern {
+  display:none;
+}
+
+form#search{ 
+  width:100%;
+  margin-top:5px;
+}
+.results #searchBox form{
+  width:inherit;
+  padding-top:0px;
+} 
+form#search input#query { 
+  width:80%;
+}
+#navigation{ 
+  padding:0px;
+}
+.results #navigation{ 
+  position:relative;
+}
+p.welcome{ 
+  display:none;
+}
+p.hnlanswers{ 
+  float:none;
+  display:block;
+}
+
+#content {
+  background-color: #fff;
+  margin: 0 auto;
+  padding: 5px;
+  min-width:300px;
+  width:inherit;
+}
+span.exampleText{ 
+  display:none;
+}
+
+input#query{ 
+  width: 200px;
+  padding:5px;
+  margin-top:5px;
+  
+}
+form#search input.btn {
+	width: 30px;
+	height: 30px;
+	cursor:pointer;
+}
+
+div.quickAnswer{
+  margin-top:10px;
+  width:inherit;
+}
+#searchStatus{ 
+  margin:2px;
+  font-size:16px;
+}
+#searchStatus .count{ 
+  font-size:12px;
+}
+div#results ul{ 
+  margin-top:5px;
+}
+div#results ul h1{
+  margin-top:5px;
+} 
+div#results ul li{
+  padding-bottom:5px;
+}
+
+#browse{
+	position: relative;
+	margin: 40px auto;
+	border-radius: 3px;
+	width:70%;
+}
+div.content {
+	width: inherit;
+	padding: 5px 0;
+}
+
+div.contact {
+  background-color: #ecdebd;
+  width: inherit;
+  padding: 5px 5px;
+  position: static;
+  color: #ecdebd;
+  margin-top:50px;
+}
+
+div.article{ 
+  padding: 10px 15px;
+  min-width:20px;
+  max-width:inherit;
+  border-top: 3px solid #BD8A38;
+  position: relative;
+  font: 14px arial;
+  position:relative;
+  left:0px;
+  margin:0px;
+}
+
+div.article h1{ 
+  font-size:32px;
+  color:#333;
+  font-weight:normal;
+  display: inline-block;
+}
+
+.disclaimer {
+	padding: 0 20px;
+}
+
+#cfa_corner_ribbon {
+  display:none;
+}

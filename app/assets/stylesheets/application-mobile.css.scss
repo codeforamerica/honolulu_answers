@@ -1,0 +1,155 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *
+ *
+ * application-mobile.css.scss
+ *
+ *= require_self
+ *= require_tree ./mobile
+*/
+
+
+/* tablet */
+@media (min-width:768px) and (max-width:979px){
+  .bubble{
+    display: none;
+  }
+  .hnl-logo{
+    border-bottom: none !important;
+  }
+  .navbar-top{
+    height: auto !important;
+  }
+  .ribbon-wrapper{
+    max-width: 100%;
+  }
+  .nav-top{
+    width: 330px !important;
+    padding-top: 50px !important;
+  }
+  .logo{
+    width: 180px !important;
+  }
+  .header-search{
+    padding-top: 40px !important;
+  }
+  .ribbon-wrapper #query{
+    width: 60% !important;
+  }
+  #query{
+    vertical-align: bottom;
+    
+  }
+}
+
+/* phone */
+
+@media only screen and (max-width: 600px), only screen and (max-device-width: 600px)  {
+  .modal-container{
+    padding-top: 15px !important;
+  }
+  .ribbon-front{
+    padding-top: 5px !important;
+    padding-bottom: 20px !important;
+  }
+  /* remove feedback side-tab */
+  .gsfn-widget-tab{
+    display: none !important; 
+  }
+  /* center Honolulu Answers title */
+  .navbar-top .container{
+    text-align: center;
+  }
+  /* make the nav work */
+  .nav-top{
+    background-color: #000;
+    margin-bottom: -10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* show the search */
+  .header-search{
+    display: block;
+    background-color: #000;
+    padding-bottom: 60px;
+    text-align: center;
+  }
+  #query{
+    width: 70% !important;
+  }
+  #search{
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .btn-search{
+    vertical-align: bottom !important;
+  }
+  /* homepage: remove lines, welcome text. fix search bar */
+  #welcome-line-l{
+    display: none !important; 
+  }
+  #welcome-line-r{
+    display: none !important;
+  }
+  .welcome{
+    display: none !important;
+  }
+  .home-modal{
+    display: none !important;
+  }
+  .ribbon-wrapper{
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .ribbon-front input#query{
+    width: 100% !important;
+  }
+  .ribbon-front .btn-search{
+    display: none;
+  }
+  /* move the main part down a bit */
+  .page-container{
+    margin-top: 150px !important;
+  }
+  /* adjust sidebar margins when they're one column */
+  .sidebar{
+    margin-left: 20px !important;
+    margin-right: 0px !important;
+  }
+  /* fix the footer */
+  .footer{
+    height: 150px !important;
+  }
+  .footer .container{
+    text-align: center;
+  }
+  .cfa-logos{
+    float: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 15px !important;
+  }
+  /* don't break links on homepage */
+  .category a{
+    white-space: nowrap;
+  }
+  a.hnl-logo{
+    border-bottom: none !important;
+  }
+  .modal-container{
+    max-width: 100%;
+  }
+  .navbar-top .container .row{
+    width: 100%;
+    background-color: #000;
+    padding-bottom: 10px;
+  }
+}

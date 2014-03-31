@@ -1,0 +1,25 @@
+Article.all.each do |a|
+  puts a.title
+  puts "Web Service?"
+  print " > "
+  x = gets.chomp
+  if x == 'y'
+    a.content_type = 'Web Service'
+  else 
+    a.content_type = 'Quick Answer'
+  end
+  a.save
+end
+
+Article.all.each do |a|
+  a.content = a.content.gsub(/hnlanswers.herokuapp/, 'answers.honolulu.gov')
+  a.save
+end
+
+Article.all.each do |a|
+  a.content = a.content.gsub(/target="_blank"/, '')
+  a.save
+end
+
+
+
