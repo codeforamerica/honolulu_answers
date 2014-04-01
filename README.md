@@ -25,14 +25,9 @@ Slightly outdated Ubuntu instructions are available [here](https://github.com/co
 
 ## Deploying to Heroku
     
-    $ heroku create honoluluanswers --stack cedar
-    $ git push heroku master
-    $ heroku config push
-    $ heroku config set LD_LIBRARY_PATH='lib/native'
-    $ heroku addons:add searchify:small # WARNING: paid addon!
-    $ heroku addons:add memcache
-    $ heroku addons:add newrelic:standard
-    $ heroku run rake db:setup
+See the wiki for up-to-date instructions:
+
+[https://github.com/codeforamerica/honolulu_answers/wiki/Installation-Instructions-for-OS-X-10.8-Mountain-Lion#deploying-on-heroku](https://github.com/codeforamerica/honolulu_answers/wiki/Installation-Instructions-for-OS-X-10.8-Mountain-Lion#deploying-on-heroku)
 
 ## Testing
 
