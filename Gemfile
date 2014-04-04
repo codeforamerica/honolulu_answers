@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 ## Essentials
 ruby '1.9.3'                              # Ruby!
-gem 'rails', '3.2.16'                     # Rails!
+gem 'rails', '~> 3.2.17'                  # Rails!
 gem 'pg'                                  # PostgreSQL, the database server
 gem 'thin'                                # Web server
 
@@ -48,7 +48,6 @@ group :assets do
   gem "meta_search", '>= 1.1.0.pre'       # Active_admin search for form_for
   gem 'uglifier', '>= 1.0.3'              # Squash down Javascript for speed
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'therubyracer'                      # Embeds the V8 Javascript interpreter into Ruby
 end
 
 ## Testing
