@@ -48,7 +48,6 @@ group :assets do
   gem "meta_search", '>= 1.1.0.pre'       # Active_admin search for form_for
   gem 'uglifier', '>= 1.0.3'              # Squash down Javascript for speed
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'therubyracer'                      # Embeds the V8 Javascript interpreter into Ruby
 end
 
 ## Testing
