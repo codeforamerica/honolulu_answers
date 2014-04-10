@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 #gem 'bundler', '~> 1.3.0.pre.5'		        # Bundler version to match what is used on Heroku.
 
 ## Essentials
-ruby '1.9.3'                              # Ruby!
-gem 'rails', '~> 3.2.17'                  # Rails!
+ruby '2.1.1'                              # Ruby!
+gem 'rails', '~> 4.0'                  # Rails!
 gem 'pg'                                  # PostgreSQL, the database server
 gem 'thin'                                # Web server
 
@@ -18,14 +18,16 @@ gem 'rollbar', '~>0.10.11'                # SaaS to track exceptions
 gem 'meta-tags', :require => 'meta_tags'  # Search Engine Optimization (SEO) plugin for Ruby on Rails applications.
 
 ## Performance and optimization
-gem 'delayed_job_active_record'           # Lets you queue tasks as background jobs
+gem 'delayed_job_active_record', '~> 4.0.0' # Lets you queue tasks as background jobs
 gem 'dalli'                               # memcache gem for Rails.cache
 gem 'memcachier'
 gem 'kgio'                                # gives 20~30% performance boost to Dalli
 
 ## Admin
-gem 'activeadmin', '0.6.0'                # Back-end Content Management System
-gem 'devise', '~> 2.0'                    # User authentication
+
+gem 'activeadmin', github: 'gregbell/active_admin'# Back-end Content Management System
+
+gem 'devise', '~> 3.2'                    # User authentication
 gem 'cancan'                              # User permissions
 
 ## Search and NLP
