@@ -41,15 +41,6 @@ gem 'friendly_id'                         # Create permalinks / descriptive URLs
 gem 'paperclip', '~> 3.0'                 # Easy file attachment library for ActiveRecord
 gem 'aws-sdk', '~> 1.3.4'                 # Upload files to Amazon S3
 
-## Gems used only for assets and not required
-## in production environments by default.
-group :assets do
-  gem 'sass-rails', '~> 3.2.5'            # Rails support for Sass, a CSS extension language
-  gem "meta_search", '>= 1.1.0.pre'       # Active_admin search for form_for
-  gem 'uglifier', '>= 1.0.3'              # Squash down Javascript for speed
-  gem 'coffee-rails', '~> 3.2.1'
-end
-
 ## Testing
 group :test, :development do
   gem 'rspec-rails', '>= 2.0'             # Testing framework
