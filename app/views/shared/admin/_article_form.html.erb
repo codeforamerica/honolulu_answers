@@ -9,6 +9,11 @@
 
   <%= render :partial => "shared/admin/article_details", locals: { :f => f, :article => @article } %>
 
+  <h3 id="markdown-cheatsheet">
+    <strong>Need help editing content?</strong> Read the
+    <%= link_to("Markdown Cheatsheet (PDF)", markdown_cheatsheet_path, :id => "markdown-cheatsheet") %>
+  </h3>
+
   <% if (@article.is_a?(WebService) || @article.is_a?(QuickAnswer)) %>
     <%= render :partial => "shared/admin/article_content", locals: { :f => f, :article => @article } %>
   <% end %>

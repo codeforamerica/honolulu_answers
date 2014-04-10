@@ -17,4 +17,6 @@ Honoluluanswers::Application.routes.draw do
   resources :web_services, :only => :show
   resources :guides, :only => :show
   match '/articles/article-type/:content_type' => "articles#article_type"
+
+  match "/admin/markdown-cheatsheet" => "admin/articles#download_markdown_cheatsheet", :as => "markdown_cheatsheet"
 end
