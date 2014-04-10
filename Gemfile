@@ -56,6 +56,7 @@ group :test, :development do
   gem 'shoulda', '~> 3.5.0'               # Extra RSpec matchers for Active Record Associations
   gem 'factory_girl_rails', '~> 4.0'      # Create factories to test against
   gem 'capybara', '~> 2.1'
+  gem 'launchy'
   gem 'guard', '~> 1.8.0'
   gem 'guard-rspec', '~> 3.0.0'
   gem 'terminal-notifier-guard'

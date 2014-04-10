@@ -1,5 +1,11 @@
 <%= render :partial => 'shared/pagedown' %>
 
+
+<h3 id="markdown-cheatsheet">
+  <strong>Need help editing content?</strong> Read the
+  <%= link_to("Markdown Cheatsheet (PDF)", markdown_cheatsheet_path, :id => "markdown-cheatsheet") %>
+</h3>
+
 <%= semantic_form_for [:admin, @guide_step] do |f| %>
   <%= f.inputs "Guide Steps Details" do %>
     <%=f.input :guide, :as => :select, :collection => Guide.all %>
