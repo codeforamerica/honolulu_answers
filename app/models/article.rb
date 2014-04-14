@@ -62,6 +62,14 @@ class Article < ActiveRecord::Base
     category.try(:name) || "Uncategorized"
   end
 
+  has_paper_trail :class_name => 'ArticleVersion',
+    :ignore => [:access_count],
+    :meta => { :status => :status }
+
+  def legacy?
+    !render_markdown
+  end
+
   def self.search( query )
     begin
       self.search_tank query
