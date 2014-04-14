@@ -43,12 +43,8 @@ ActiveRecord::Schema.define(:version => 20131001150637) do
   create_table "articles", :force => true do |t|
     t.datetime "updated"
     t.string   "title"
-<<<<<<< HEAD
-=======
-    t.text     "content"
->>>>>>> [#47] Initial integration with Papertrail - Articles now have versions
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "content_type"
     t.text     "preview"
     t.integer  "contact_id"
@@ -70,7 +66,6 @@ ActiveRecord::Schema.define(:version => 20131001150637) do
     t.integer  "user_id"
     t.boolean  "published"
     t.boolean  "pending_review"
-    t.boolean  "draft"
   end
 
   add_index "articles", ["slug"], :name => "index_articles_on_slug"
