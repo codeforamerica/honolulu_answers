@@ -159,6 +159,9 @@ GEM
     newrelic_rpm (3.5.5.38)
     nokogiri (1.5.6)
     orm_adapter (0.4.0)
+    paper_trail (2.7.2)
+      activerecord (~> 3.0)
+      railties (~> 3.0)
     paperclip (3.4.0)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -296,6 +299,7 @@ DEPENDENCIES
   meta-tags
   meta_search (>= 1.1.0.pre)
   newrelic_rpm
+  paper_trail (~> 2.7)
   paperclip (~> 3.0)
   pg
   progressbar
