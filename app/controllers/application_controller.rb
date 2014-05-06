@@ -15,4 +15,6 @@ class ApplicationController < ActionController::Base
     render(:template => 'articles/missing')
   end
 
+
+
 end

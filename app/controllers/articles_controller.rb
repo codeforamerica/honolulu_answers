@@ -13,4 +13,6 @@ class ArticlesController < ApplicationController
 
     @articles = Article.find_by_type(@article_type)
   end
+
+
 end

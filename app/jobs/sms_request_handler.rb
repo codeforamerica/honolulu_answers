@@ -1,70 +1,12 @@
-class HomeController < ApplicationController
-  include RailsNlp
-  require 'rufus-scheduler'
-  require 'json'
-  caches_page :index
-
-  def index
-    @popular_categories = Category.by_access_count.limit(3)
-    scheduler = Rufus::Scheduler.new
-
-    scheduler.every '10s' do
-
-      sender = "8333"
-      receiver = "03328919976"
-      message = "testing.."
-
-      smile_manager =  Smile_Api.new
-      #sent_response = smile_manager.send_sms(receiver,sender,message)
-
-
-
-      smile_response =  smile_manager.receive_sms()
-
-
-      response_status=JSON.parse(smile_response)
-      @sres = smile_response
-
-      @new_message=response_status["status"]
-
-      if(@new_message.blank? )
-        puts "no messages"
-      else
-        message = response_status["text"]
-        receiver = response_status["sender_num"]
-        sent_response = smile_manager.send_sms(receiver,sender,message)
-        query = message
-        @query = query
-
-        @query_corrected = QueryExpansion.spell_check(query)
-
-        query_expanded = QueryExpansion.expand(query)
-        @results = Article.search(query_expanded).select(&:published?)
-
-      end
-
-
-    end
-
-  end
-
-  def about
-  end
-
-
-
-
-end
-
-class Smile_Api
+class SmileApi
 
   require 'uri'
   require 'rubygems'
   require 'curb'
   def get_session
     user_name = "5"
-    password = "password"
-    #require 'open-uri'
+    password = "reHnuma532"
+    require 'open-uri'
     require 'json'
     # Set the request URL
     url = "http://api.smilesn.com/session?username="+user_name+"&password="+password
@@ -159,4 +101,3 @@ class Smile_Api
 
 
 end
-

@@ -69,8 +69,16 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
+    columnize (0.8.9)
+    curb (0.8.5)
     daemons (1.1.9)
     dalli (2.6.0)
+    debugger (1.6.6)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.3.2)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.3.2)
     delayed_job (3.0.4)
       activesupport (~> 3.0)
     delayed_job_active_record (0.3.3)
@@ -222,6 +230,8 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
+    rufus-scheduler (3.0.7)
+      tzinfo
     sass (3.2.5)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -279,7 +289,9 @@ DEPENDENCIES
   cancan
   capybara (~> 2.1)
   coffee-rails (~> 3.2.1)
+  curb
   dalli
+  debugger
   delayed_job_active_record
   devise (~> 2.0)
   facets
@@ -303,6 +315,7 @@ DEPENDENCIES
   rails (= 3.2.16)
   rollbar (~> 0.10.11)
   rspec-rails (>= 2.0)
+  rufus-scheduler
   sass-rails (~> 3.2.5)
   seed_dump (~> 0.6.0)
   sextant

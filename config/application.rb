@@ -66,5 +66,9 @@ module Honoluluanswers
 
     # Enable tables in the content fields for Articles
     config.action_view.sanitized_allowed_tags = 'table', 'tr', 'td'
+
+
+
+
   end
 end

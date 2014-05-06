@@ -1,4 +1,8 @@
 Honoluluanswers::Application.routes.draw do
+  get "smsrequesthandler/smshandler"
+
+  get "welcome/index"
+
   root :to => "home#index"
 
   # Content management
