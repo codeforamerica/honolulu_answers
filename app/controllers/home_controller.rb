@@ -12,38 +12,22 @@ class HomeController < ApplicationController
 
       sender = "8333"
       receiver = "03328919976"
-      message = "testing.."
-
+      message = "Rehnuma--Comming Soon"
       smile_manager =  Smile_Api.new
-      #sent_response = smile_manager.send_sms(receiver,sender,message)
-
-
-
       smile_response =  smile_manager.receive_sms()
 
-
       response_status=JSON.parse(smile_response)
-      @sres = smile_response
 
-      @new_message=response_status["status"]
-
-      if(@new_message.blank? )
-        puts "no messages"
+      if(response_status['status'].blank? )
+        #puts "no messages"
       else
-        message = response_status["text"]
-        receiver = response_status["sender_num"]
+
+        my_message = response_status['status']
+        receiver = my_message[0]["sender_num"]
+        receiver["+92"] = "0"
         sent_response = smile_manager.send_sms(receiver,sender,message)
-        query = message
-        @query = query
-
-        @query_corrected = QueryExpansion.spell_check(query)
-
-        query_expanded = QueryExpansion.expand(query)
-        @results = Article.search(query_expanded).select(&:published?)
 
       end
-
-
     end
 
   end
@@ -109,6 +93,7 @@ class Smile_Api
 
       session_id = self.get_session
     end
+
     url = "http://api.smilesn.com/sendsms?sid="+session_id+"&receivenum="+receive_num+"&sendernum=8333&textmessage="+text_message
 
     data = open_smile_uri(url)

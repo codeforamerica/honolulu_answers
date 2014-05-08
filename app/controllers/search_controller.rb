@@ -12,13 +12,14 @@ class SearchController < ApplicationController
 
     query_expanded = QueryExpansion.expand(query)
     @query_expanded = query_expanded
+
     @results = Article.search(query_expanded).select(&:published?)
 
     respond_to do |format|
       format.json  { render @results }
       format.html
     end
-    debugger
+
   end
 
   private
