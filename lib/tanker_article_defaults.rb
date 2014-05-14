@@ -3,9 +3,9 @@ module TankerArticleDefaults
     base.send(:include, ::Tanker)
 
     index = case Rails.env
-            when 'production' then 'hnlgovanswers'
-            when 'staging' then 'hnlgovanswers-stage'
-            else 'hnlgovanswers-dev'
+            when 'production' then 'Rehnuma_Articles'
+            when 'staging' then 'Rehnuma_Articles'
+            else 'Rehnuma_Articles'
             end
 
     base.tankit index, :as => 'Article' do

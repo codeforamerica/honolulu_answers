@@ -23,15 +23,15 @@ class Article < ActiveRecord::Base
   scope :published, where(:published => true)
 
   has_attached_file :author_pic,
-    :storage => :s3,
-    :bucket => ENV['S3_BUCKET'],
-    :s3_credentials => {
-      :access_key_id => ENV['S3_KEY'],
-      :secret_access_key => ENV['S3_SECRET']
-    },
-    :s3_protocol => :https,
-    :path => "/:style/:id/:filename",
-    :styles => { :thumb => "100x100" }
+                    :storage => :s3,
+                    :bucket => ENV['S3_BUCKET'],
+                    :s3_credentials => {
+                        :access_key_id => ENV['S3_KEY'],
+                        :secret_access_key => ENV['S3_SECRET']
+                    },
+                    :s3_protocol => :https,
+                    :path => "/:style/:id/:filename",
+                    :styles => { :thumb => "100x100" }
 
   validates_attachment_size :author_pic, :less_than => 5.megabytes
   validates_attachment_content_type :author_pic, :content_type => ['image/jpeg', 'image/png']
@@ -39,11 +39,11 @@ class Article < ActiveRecord::Base
   validates_presence_of :access_count
 
   attr_accessible :title, :content_main, :content_main_extra,
-    :content_need_to_know, :preview, :contact_id, :tags, :is_published, :slugs,
-    :category_id, :updated_at, :created_at, :author_pic, :author_pic_file_name,
-    :author_pic_content_type, :author_pic_file_size, :author_pic_updated_at,
-    :author_name, :author_link, :type, :service_url, :user_id, :published,
-    :pending_review
+                  :content_need_to_know, :preview, :contact_id, :tags, :is_published, :slugs,
+                  :category_id, :updated_at, :created_at, :author_pic, :author_pic_file_name,
+                  :author_pic_content_type, :author_pic_file_size, :author_pic_updated_at,
+                  :author_name, :author_link, :type, :service_url, :user_id, :published,
+                  :pending_review
 
   # Tanker callbacks to update the search index
   after_save :update_tank_indexes
@@ -54,7 +54,7 @@ class Article < ActiveRecord::Base
   handle_asynchronously :delete_tank_indexes, :priority => 2
 
   TEXT_ANALYSE_FIELDS = ['title', 'content_main', 'content_main_extra',
-    'content_need_to_know', 'preview', 'tags', 'category_name']
+                         'content_need_to_know', 'preview', 'tags', 'category_name']
 
   before_validation :set_access_count_if_nil
 
@@ -64,10 +64,9 @@ class Article < ActiveRecord::Base
 
   def self.search( query )
     begin
-
+      debugger
       self.search_tank query
     rescue Exception => exception
-      debugger
       ErrorService.report(exception)
       []
     end
