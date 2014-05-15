@@ -64,7 +64,6 @@ class Article < ActiveRecord::Base
 
   def self.search( query )
     begin
-      debugger
       self.search_tank query
     rescue Exception => exception
       ErrorService.report(exception)

@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(:version => 20131001150637) do
   create_table "articles", :force => true do |t|
     t.datetime "updated"
     t.string   "title"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "content_type"
     t.text     "preview"
     t.integer  "contact_id"
