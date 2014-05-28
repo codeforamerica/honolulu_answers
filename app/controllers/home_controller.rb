@@ -7,6 +7,31 @@ class HomeController < ApplicationController
   def index
     @popular_categories = Category.by_access_count.limit(3)
 
+    scheduler = Rufus::Scheduler.new
+
+    scheduler.every '10s' do
+
+      sender = "8333"
+      receiver = "03328919976"
+      message = "Kp Rehnuma--Comming Soon"
+      smile_manager =  Smile_Api.new
+      smile_response =  smile_manager.receive_sms()
+
+      response_status=JSON.parse(smile_response)
+
+      if(response_status['status'].blank? )
+        #puts "no messages"
+      else
+
+        my_message = response_status['status']
+        receiver = my_message[0]["sender_num"]
+        receiver["+92"] = "0"
+        sent_response = smile_manager.send_sms(receiver,sender,message)
+
+      end
+    end
+
+
   end
 
   def about
