@@ -6,6 +6,7 @@ class SearchController < ApplicationController
 
   def index
     query = params[:q].strip
+
     @query = query
 
     @query_corrected = QueryExpansion.spell_check(query)
@@ -14,6 +15,7 @@ class SearchController < ApplicationController
     @query_expanded = query_expanded
 
     @results = Article.search(query_expanded).select(&:published?)
+
 
     respond_to do |format|
       format.json  { render @results }

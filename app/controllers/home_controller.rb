@@ -3,6 +3,8 @@ class HomeController < ApplicationController
   require 'rufus-scheduler'
   require 'json'
   caches_page :index
+  include RailsNlp
+
 
   def index
     @popular_categories = Category.by_access_count.limit(3)
@@ -20,13 +22,34 @@ class HomeController < ApplicationController
       response_status=JSON.parse(smile_response)
 
       if(response_status['status'].blank? )
-        #puts "no messages"
+        puts "no messages"
       else
 
         my_message = response_status['status']
         receiver = my_message[0]["sender_num"]
         receiver["+92"] = "0"
-        sent_response = smile_manager.send_sms(receiver,sender,message)
+
+        user_text =  my_message[0]["text"]
+
+       # query = filter_long_or_empty(user_text)
+        query = user_text
+
+        @query_corrected = QueryExpansion.spell_check(query)
+
+        query_expanded = QueryExpansion.expand(query)
+        @query_expanded = query_expanded
+
+        @results = Article.search(query_expanded).select(&:published?)
+
+        @results.each do |article|
+
+           #link_to article.title, article_path(article.id)
+
+           message = article.preview
+           sent_response = smile_manager.send_sms(receiver,sender,message)
+        end
+
+
 
       end
     end
@@ -37,8 +60,18 @@ class HomeController < ApplicationController
   def about
   end
 
+  private
 
-
+  # Searchify can't handle requests longer than this (because of query
+  # expansion + Tanker inefficencies.  >10 can result in >8000 byte request
+  # strings)
+  def filter_long_or_empty(user_text)
+    if user_text.split.size > 10 || user_text.blank?
+      @query = user_text
+      @results = []
+      render and return
+    end
+  end
 
 end
 
@@ -48,27 +81,32 @@ class Smile_Api
   require 'rubygems'
   require 'curb'
   def get_session
-    user_name = "5"
-    password = "reHnuma532"
-    #require 'open-uri'
-    require 'json'
-    # Set the request URL
-    url = "http://api.smilesn.com/session?username="+user_name+"&password="+password
 
-    data = open_smile_uri(url)
+    if not ((ENV['smile_user']) && (ENV['smile_password']))
+      raise Exception.new "You must set ENV['Smile_User_Name'] = xxx, and ENV['Smile_Password'] = xxx, where xxx is your secret key for Smile_Api"
+    else
+      user_name = ENV['smile_user']
+      password = ENV['smile_password']
+      #require 'open-uri'
+      require 'json'
+      # Set the request URL
+      url = "http://api.smilesn.com/session?username="+user_name+"&password="+password
 
-    data=JSON.parse(data)
+      data = open_smile_uri(url)
+
+      data=JSON.parse(data)
 
 
-    sessionid= data['sessionid']
+      sessionid= data['sessionid']
 
-    file2 = File.open('session.txt', 'w')
+      file2 = File.open('session.txt', 'w')
 
-    file1 = File.open('session.txt', 'a')
-    file1.write(sessionid)
-    file1.close
+      file1 = File.open('session.txt', 'a')
+      file1.write(sessionid)
+      file1.close
 
-    return sessionid
+      return sessionid
+    end
 
   end
 
@@ -128,7 +166,6 @@ class Smile_Api
     session_id = File.read("session.txt")
 
     if session_id.blank?
-
       session_id = self.get_session
     end
     url = "http://api.smilesn.com/receivesms?sid="+session_id
