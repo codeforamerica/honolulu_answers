@@ -30,7 +30,6 @@ gem 'cancan'                              # User permissions
 
 ## Search and NLP
 gem 'tanker'                              # library for interacting with Searchify
-gem 'hunspell-ffi'                          # Spellchecking library
 gem 'hunspell-ffi'                        # Spellchecking library
 gem 'text'                                # NLP algorithms
 gem 'httparty'                            # For accessing APIs directly
