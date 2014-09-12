@@ -12,7 +12,7 @@ login: &login
 # This line is not compatible with the gem 'taps' used to sync the dataabse with heroku
 <%= file = File.join(Rails.root, "config", "dblogin.yml")
     IO.read(file) if File.exist?(file) %>
-  
+
 development:
   adapter: postgresql
   encoding: unicode
